@@ -1,0 +1,480 @@
+---
+title: "Trans"
+output:
+  workflowr::wflow_html:
+              toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+## Preprocess data
+
+### Convert plink files of genotype to .txt
+
+```{bash ./code/make_geno.sh}
+module load plink
+
+for CHR in `seq 22`
+do
+# convert bfiles to .raw files
+plink \
+--bfile /project2/xuanyao/data/DGN/genotype/chr${CHR}_QCed \
+--recodeA \
+--out /project2/xuanyao/data/DGN/txt_file_of_DGN/chr${CHR}
+
+# extract genotype meta
+awk \
+'BEGIN{print "id\tchr\tpos"}{printf("%s\tchr%s\t%s\n",$2,$1,$4)}' \
+/project2/xuanyao/data/DGN/genotype/chr${CHR}_QCed.bim > \
+/project2/xuanyao/data/DGN/txt_file_of_DGN/chr${CHR}_genotype_meta.txt
+
+# convert genotype to txt file
+Rscript --no-restore --no-save /project2/xuanyao/data/DGN/make_geno.R $CHR
+done
+```
+
+`make_geno.R`
+
+```{r ./code/make_geno.R}
+rm(list = ls())
+
+args = commandArgs(trailing = T)
+chr = args[1]
+
+dat = read.table(paste("/project2/xuanyao/data/DGN/txt_file_of_DGN/chr",chr,".raw",sep=""),header=T,check.names=F)
+geno = as.matrix(dat[,7:ncol(dat)])
+rownames(geno) = as.character(dat$IID)
+colnames(geno) = unlist(lapply(strsplit(colnames(dat)[7:ncol(dat)],"_"),"[",1))
+write.table(t(geno),
+            paste("./project2/xuanyao/data/DGN/txt_file_of_DGN/chr",chr,".genotype.matrix.eqtl.txt",sep = ""),
+            sep = "\t", quote = FALSE)
+```
+
+### Regress out covariates from expression data
+
+```{r ./code/regress_out_covariates.R}
+rm(list = ls())
+
+# import expression and covariates data
+load("./data/dgn.rdata")
+covariates_tec = read.table("./data/Technical_factors.txt",
+                        sep = '\t',
+                        header = T, row.names = 1,
+                        stringsAsFactors = F)
+covariates_bio = read.table("./data/Biological_and_hidden_factors.txt",
+                            sep = '\t',
+                            header = T, row.names = 1,
+                            stringsAsFactors = F)
+sample_names = read.table("data/samples.txt",
+                            header = T,
+                            stringsAsFactors = F)
+
+
+extract_residual <- function(y, x){
+  return(lm(y ~ x)$residuals)
+}
+
+
+rownames(ex) = sample_names$sample; colnames(ex) = gnames
+covariates_tec_used = as.matrix(covariates_tec[rownames(ex), ])
+covariates_bio_used = as.matrix(covariates_bio[rownames(ex), ])
+
+
+# regress out technical covariates
+ex_tec_regressed = apply(ex, 2, function(y) extract_residual(y, covariates_tec_used))
+ex_tec_bio_regressed = apply(ex_tec_regressed, 2, function(e) extract_residual(e, covariates_bio_used))
+
+saveRDS(ex_tec_bio_regressed, "./data/ex_var_regressed.rds")
+
+print("Done!")
+```
+
+
+### Remove low-quality genes
+
+Remove seudogenes, genes with mappability$<0.9$, and gene pairs with cross-mappability higher than 1.
+
+```{r ./code/remove.genes.R}
+rm(list = ls())
+
+library(WGCNA)
+source("functions_for_additional_analysis.R")
+options(stringsAsFactors = FALSE)
+
+# expression input
+datExpr = readRDS("./data/ex_var_regressed.rds")
+
+# remove pseudogenes
+pseudogenes = read.table("./result/pseudogenes.txt", sep ="\t", stringsAsFactors = F)
+ind_pseudo = colnames(datExpr) %in% unique(pseudogenes$V1)
+
+# remove low mappability genes
+mappability = read.table("./result/mappability.txt", sep ="\t", stringsAsFactors = F, header = T)
+ind_map = colnames(datExpr) %in% unique(mappability$gene_name)
+
+# remove cross-mappable genes
+cross_mappability = readRDS("./result/cross_mappable_genes.rds")
+ind_cross_map = unique(names(cross_mappability[!is.na(cross_mappability)]))
+ind_cross_map = colnames(datExpr) %in% ind_cross_map
+
+# all removed genes
+ind_remove = ind_pseudo | ind_map | ind_cross_map
+```
+
+
+## Coexpressed gene modules
+
+Cluster the co-expressed genes by WGCNA.
+
+```{r ./code/coexpressed.gene.network.R}
+# Genes left after removing low-quality genes
+datExpr = datExpr[, !ind_remove]
+
+# Parameter specification
+minModuleSize = 30
+MEDissThres = 0.15
+if_plot_adjacency_mat_parameter_selection = F
+if_plot_only_tree = F
+if_plot_color_and_tree = F
+if_plot_eigengene_heatmap_tree = F
+if_heatmap_of_network = T
+
+
+### Step1: network construction ###
+# determine the paramter in adjacency function: pickSoftThreshold() OR pickHardThreshold()
+powers = c(c(1:10), seq(from = 12, to=20, by=2))
+sft = pickSoftThreshold(datExpr, powerVector = powers, verbose = 5)
+softPower = sft$powerEstimate
+
+# network construction
+adjacency = adjacency(datExpr, power = softPower)
+TOM = TOMsimilarity(adjacency)
+dissTOM = 1-TOM
+
+
+### Step2: module detection ###
+# tree construction using hierarchical clustering based on TOM
+geneTree = hclust(as.dist(dissTOM), method = "average")
+
+# branch cutting using dynamic tree cut
+dynamicMods = cutreeDynamic(dendro = geneTree, distM = dissTOM,
+                            deepSplit = 2, pamRespectsDendro = FALSE,
+                            minClusterSize = minModuleSize)
+dynamicColors = labels2colors(dynamicMods)
+
+# eigene genes
+MEList = moduleEigengenes(datExpr, colors = dynamicColors)
+MEs = MEList$eigengenes
+
+# Call an automatic merging function
+merge = mergeCloseModules(datExpr, dynamicColors, cutHeight = MEDissThres, verbose = 3)
+mergedColors = merge$colors
+mergedMEs = merge$newMEs
+
+moduleLabels = match(mergedColors, c("grey", standardColors(50)))-1
+names(moduleLabels) = colnames(datExpr)
+
+# Save results
+result = list(moduleColors = mergedColors,
+              moduleLabels = moduleLabels,
+              MEs = mergedMEs,
+              old_moduleColors = dynamicColors,
+              old_moduleLabels = dynamicMods,
+              old_MEs = MEs,
+              geneTree = geneTree,
+              ind_remove = ind_remove)
+
+saveRDS(result, file = "./result/DGN_coexpressed_gene_network.rds")
+```
+
+
+## Calculate null zscores
+
+Here is the code of how I compute zscores for module $i$ and chromosome $j$, using randomly permuted samples. Calculating observed zscores (zscores based on the original real data) is similar, only need to remove line `genotype = genotype[ind.perm, ]`.
+
+```{r ./code/z.null.R}
+rm(list = ls())
+
+parameter = commandArgs(trailingOnly = T)
+module_id = parameter[1]
+chr = parameter[2]
+
+
+library(foreach)
+library(doParallel)
+
+# data input
+data_dir = "/project2/xuanyao/data/DGN/"
+datExpr = readRDS(paste0(data_dir, "txt_file_of_DGN/ex_var_regressed.rds"))
+gene_pos = read.table(paste0(data_dir, "txt_file_of_DGN/expression_meta_hg19.txt"),
+                      sep = '\t',
+                      header = T,
+                      stringsAsFactors = F)
+gene_result = readRDS(file = paste0(data_dir, "txt_file_of_DGN/DGN_coexpressed_gene_network.rds"))
+header = ifelse(chr==1, TRUE, FALSE)
+genotype = read.table(paste0(data_dir, "txt_file_of_DGN/chr", chr, ".genotype.matrix.eqtl.txt"),
+                      header = header, row.names=NULL,
+                      stringsAsFactors = F)
+genotype = genotype[!duplicated(genotype[, 1]), ]
+rownames(genotype) = genotype[, 1]
+genotype = t(genotype[, -1])
+
+
+# Use only the genes in the module and have postion info in the meta file
+gene_in_cluster = data.frame("gene_name"=names(gene_result$moduleLabels)[gene_result$moduleLabels == module_id], stringsAsFactors = F)
+gene_w_pos = merge(gene_in_cluster, gene_pos, by.x = 1, by.y = 1)
+exp.data = datExpr[, gene_w_pos$gene_name]
+print("Input part is done!")
+
+# run parallel on snps
+cores=(Sys.getenv("SLURM_NTASKS_PER_NODE"))
+cl = makeCluster(as.numeric(cores), outfile="")
+registerDoParallel(cl)
+
+M = ncol(genotype); K = ncol(exp.data); N = nrow(exp.data); ind.perm = sample(1:N)
+genotype = genotype[ind.perm, ]
+chunk.size = M %/% as.numeric(cores)
+system.time(
+  z.null <- foreach(i=1:cores, .combine='rbind') %dopar%
+    {
+      res = matrix(nrow = chunk.size, ncol = K,
+                   dimnames = list(colnames(genotype)[((i-1)*chunk.size+1):(i*chunk.size)], colnames(exp.data)))
+
+      for(j in 1:chunk.size){
+        snp = genotype[, j + (i-1)*chunk.size]
+        res[j, ] = apply(exp.data, 2, function(x) summary(lm(x~snp))$coefficients[2, 3] )
+
+        if(j %% 100 == 0){print(j+(i-1)*chunk.size)}
+      }
+      res
+    }
+)
+stopCluster(cl)
+print("Parallel part is done!")
+
+# Run PCO on snps left in the parallel part
+Nsnps_left = M %% as.numeric(cores)
+Nsnps_done = (chunk.size)*as.numeric(cores)
+if(Nsnps_left != 0){
+  res = matrix(nrow = Nsnps_left, ncol = K,
+               dimnames = list(colnames(genotype)[Nsnps_done+1:(Nsnps_left)], colnames(exp.data)) )
+
+  for(j in 1:Nsnps_left){
+    snp = genotype[, j + Nsnps_done]
+    res[j, ] = apply(exp.data, 2, function(x) summary(lm(x~snp))$coefficients[2, 3] )
+
+    print(Nsnps_done+j)
+  }
+
+  z.null = rbind(z.null, res)
+}
+print("All part is done!")
+
+
+saveRDS(z.null, file = paste0("./NULL/z.null/z.null.module", module_id, ".chr", chr, ".rds"))
+```
+
+
+## Calculate pvalues
+
+Here is the code using PCO to calculate pvalues. This uses only PC's with eigenvalue $\lambda > 1$.
+
+```{r ./code/p.null.R}
+rm(list = ls())
+
+parameter = commandArgs(trailingOnly = T)
+module_id = parameter[1]
+chr = parameter[2]
+p.method = parameter[3] #"truncPCO" #"PCO"
+
+script_dir = "./NULL/script/"
+zscore_dir = "./NULL/z.null/"
+
+# There files are modified PCO functions. Only use PC's with eigenvalue \lambda>1
+source(paste0(script_dir, "ModifiedPCOMerged.R"))
+source(paste0(script_dir, "liu.r"))
+source(paste0(script_dir, "liumod.R"))
+source(paste0(script_dir, "davies.R"))
+source(paste0(script_dir, "SigmaMetaEstimate.R"))
+library(foreach)
+library(doParallel)
+library(mvtnorm)
+library(MPAT)
+
+
+# zscore input
+z.null = readRDS(file = paste0(zscore_dir, "z.null.module", module_id, ".chr", chr, ".rds"))
+
+
+# input
+data_dir = "/project2/xuanyao/data/DGN/txt_file_of_DGN/"
+gene_all_pos = read.table(paste0(data_dir, "expression_meta_hg19.txt"),
+                          sep = '\t',
+                          header = T,
+                          stringsAsFactors = F)
+datExpr = readRDS(paste0(data_dir, "ex_var_regressed.rds"))
+gene_module = readRDS(file = paste0(data_dir, "DGN_coexpressed_gene_network.rds"))
+
+
+# Extract genes within the module that have gene meta info and are not on the chromosome for which we are calculating pvalues.
+# This step makes sure the signals are due to trans genetic effects.
+gene_cluster = data.frame("gene_name" = names(gene_module$moduleLabels[gene_module$moduleLabels == module_id]), stringsAsFactors = F)
+gene_pos = merge(gene_cluster, gene_all_pos, by.x = 1, by.y = 1)
+gene_trans = gene_pos[gene_pos$chrom != paste0("chr", chr), "gene_name"]
+
+# inputs for PCO
+Sigma = cor(datExpr[, gene_trans])
+SigmaO = ModifiedSigmaOEstimate(Sigma,simNum=1000)
+z.null_trans = z.null[, gene_trans]; rm(z.null)
+
+
+# Do parallel across snps
+cores=(Sys.getenv("SLURM_NTASKS_PER_NODE"))
+cl = makeCluster(as.numeric(cores), outfile="")
+registerDoParallel(cl)
+
+Nsnps = nrow(z.null_trans); snps = rownames(z.null_trans)
+chunk.size = Nsnps %/% as.numeric(cores)
+Nsnps_left = Nsnps %% as.numeric(cores)
+Nsnps_done = (chunk.size)*as.numeric(cores)
+
+system.time(
+  p.null <- foreach(i=1:cores, .combine='c') %dopar%
+    {
+      library(MPAT)
+      library(mvtnorm)
+
+      res <- rep(NA, chunk.size); names(res) <- snps[((i-1)*chunk.size+1):(i*chunk.size)]
+      for(x in 1:chunk.size) {
+        res[x] <- ModifiedPCOMerged(Z.vec=z.null_trans[x + (i-1)*chunk.size, ],
+                                    Sigma=Sigma, SigmaO=SigmaO,method = "davies")
+
+        if(x %% 100 == 0){print(x + (i-1)*chunk.size)}
+      }
+
+      res
+    }
+)
+stopCluster(cl)
+
+print("Parallel part is done!")
+
+
+# Do PCO on snps that are left in the parallel part.
+if(Nsnps_left != 0){
+  res_left = rep(NA, Nsnps_left); names(res_left) = snps[1:(Nsnps_left) + Nsnps_done]
+  for(k in 1:(Nsnps_left)){
+    res_left[k] = ModifiedPCOMerged(Z.vec=z.null_trans[k + Nsnps_done, ],
+                                    Sigma=Sigma, SigmaO=SigmaO,method = "davies")
+
+    print(k + Nsnps_done)
+  }
+
+  p.null = c(p.null, res_left)
+}
+
+print("All part is done!")
+
+
+saveRDS(pT.null, file = paste0("./NULL/p.null/p.null.module", module_id, ".chr", chr, ".", p.method, ".rds"))
+```
+
+
+## Multi-testing correction
+### Pvalue adjustment based on uniform null pvalue
+```{r ./code/fdr.R}
+rm(list = ls())
+
+library(qvalue)
+
+# estimate the p-value cut-off to control the false discovery rate at a certain level
+
+parameter = commandArgs(trailingOnly = T)
+fdr.level = parameter[1]
+adjust.method = parameter[2]
+
+# input pvalues for all 18 gene modules and 22 chromosomes
+pvalue_pc = NULL
+for(gene_cluster_id in 1:18){
+  for(chr in 1:22){
+    tmp_pc = readRDS(file = paste0("./TruncPCO/GeneCluster", gene_cluster_id, "/pvalue_pco_", chr, ".rds"))
+    names(tmp_pc) = paste0("C", gene_cluster_id, ":", names(tmp_pc))
+    pvalue_pc = c(pvalue_pc, tmp_pc)
+
+    cat("Gene cluster:", gene_cluster_id, ". Chr:", chr, "\n")
+    print(object.size(pvalue_pc))
+  }
+}
+
+# histogram of all pvalues
+png("./FDR/Hist of all pvalues")
+hist(pvalue_pc)
+dev.off()
+print("Histogram of pvalues saved!")
+
+
+# adjust pvalues
+if(adjust.method == "BH"){
+  p.adjusted = p.adjust(pvalue_pc, method = "BH")
+  print("BH correction of pvalue done!")
+
+
+  signal_q = p.adjusted[p.adjusted<fdr.level]
+  signal_name = names(signal_q)
+  signal_summary = cbind(pvalue_pc[signal_name], signal_q)
+  colnames(signal_summary) = c("pvalue.PCO", "qvalue.PCO")
+  write.table(signal_summary, file = "./FDR/transeQTL.Summary.BH.txt",
+              quote = FALSE)
+  print("Signals written in the file!")
+
+
+  saveRDS(p.adjusted, file = "./FDR/qvalueofPC.BH.rds")
+  print("qvalue results saved!")
+
+}else if(adjust.method == "qvalue"){
+  qobj_pc = qvalue(p = pvalue_pc, fdr.level=fdr.level)
+  print("FDR analysis of pc has been done!")
+
+
+  signal_q = qobj_pc$qvalues[qobj_pc$significant]
+  signal_name = names(signal_q)
+  signal_summary = cbind(qobj_pc$pvalues[signal_name], signal_q)
+  colnames(signal_summary) = c("pvalue.PCO", "qvalue.PCO")
+  write.table(signal_summary, file = "./FDR/transeQTL.Summary.q.txt",
+              quote = FALSE)
+  print("Signals written in the file!")
+
+
+  saveRDS(qobj_pc, file = "./FDR/qvalueofPC.q.rds")
+  print("qvalue results saved!")
+
+}
+```
+
+### Pvalue adjustment using empirical null pvalue
+
+## Post analysis of signals
+
+- Use all PC's. Adjust pvalues using `qvalue`.
+
+- Use PC's with eigenvalue $\lambda>1$. Adjust pvalues using empirical null.
+
+- Use the first PC. (elife method)
+
+- Single-variate method. (MatrixeQTL)
+
+## Others
+### Use only the first PC. Use all PC's.
+
+### Find phseudogenes, poor-mapped genes, and cross-mappable genes
+
+### Run MatrixeQTL
+- Prepare files
+
+- Run MatrixeQTL
