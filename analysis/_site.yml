@@ -5,18 +5,14 @@ navbar:
   left:
   - text: Home
     href: index.html
-  - text: About
-    href: about.html
-  - text: License
-    href: license.html
   - text: Projects
     menu:
     - text: Multi PC asso test for trans
       href: Trans.html
-    right: ~
-  - icon: fa-github
-    text: Source code
-    href: https://github.com/liliw-w/GradLog
+  - text: About
+    href: about.html
+  - text: License
+    href: license.html
   right:
   - icon: fa-github
     text: Source code
