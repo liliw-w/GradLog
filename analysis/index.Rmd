@@ -9,7 +9,7 @@ editor_options:
 ---
 
 <center>
-![](~/Documents/R/GradLog/image.png){width=70% height=3.7in}
+![](image.png){width=70% height=3.7in}
 </center>
 
 # Welcome
