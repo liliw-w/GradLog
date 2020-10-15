@@ -9,6 +9,14 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  - text: Projects
+    menu:
+    - text: Multi PC asso test for trans
+      href: Trans.html
+    right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/liliw-w/GradLog
 output:
   workflowr::wflow_html:
     toc: yes
