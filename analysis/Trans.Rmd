@@ -12,6 +12,12 @@ editor_options:
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
+## test
+
+```{bash eval=TRUE}
+cat ./code/test.R
+```
+
 
 ## Outine
 
