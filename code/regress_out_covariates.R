@@ -3,16 +3,16 @@ rm(list = ls())
 # import expression and covariates data
 load("./data/dgn.rdata")
 covariates_tec = read.table("./data/Technical_factors.txt",
-                        sep = '\t',
-                        header = T, row.names = 1,
-                        stringsAsFactors = F)
+                            sep = '\t',
+                            header = T, row.names = 1,
+                            stringsAsFactors = F)
 covariates_bio = read.table("./data/Biological_and_hidden_factors.txt",
                             sep = '\t',
                             header = T, row.names = 1,
                             stringsAsFactors = F)
 sample_names = read.table("data/samples.txt",
-                            header = T,
-                            stringsAsFactors = F)
+                          header = T,
+                          stringsAsFactors = F)
 
 
 extract_residual <- function(y, x){
