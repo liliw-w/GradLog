@@ -22,7 +22,3 @@ write.table(t(geno),
             sep = "\t", quote = FALSE)
 
 cat(paste0("chr", chr, " is done!"))
-
-# check the samples in genotype data is same with that in tumor sample data.
-# check if ".genotype.matrix.eqtl.txt" has sample name as header for chr1-22.
-# extract sample names
