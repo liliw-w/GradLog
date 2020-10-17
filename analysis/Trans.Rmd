@@ -13,47 +13,77 @@ knitr::opts_chunk$set(eval = FALSE)
 ```
 
 
+## Outine
+
+![](test.pdf){width=100% height=5in}
+
 ## Preprocess data
 
 ### Convert plink files of genotype to .txt
 
-```{bash ./code/make_geno.sh}
+```{bash ./code/make.geno.sh}
 module load plink
+module load R/3.6.1
+
+cd /scratch/midway2/liliw1/
+
+# dataset DGN: dir_plink=/project2/xuanyao/data/DGN
+# dataset DGN: dir_txt=/project2/xuanyao/data/DGN/txt_file_of_DGN
+# dataset DGN: dir_script=/project2/xuanyao/data/DGN
+# dataset DGN: awk 'BEGIN{print "id\tchr\tpos"}{printf("%s\tchr%s\t%s\n",$2,$1,$4)}'
+
+dir_plink=/project2/xuanyao/xuanyao/cancer_gbat/breast_cancer
+dir_txt=/project2/xuanyao/llw/breastcancerTCGA/txt_file_of_DGN
+dir_script=/scratch/midway2/liliw1/TCGA
+
 
 for CHR in `seq 22`
 do
 # convert bfiles to .raw files
 plink \
---bfile /project2/xuanyao/data/DGN/genotype/chr${CHR}_QCed \
+--bfile $dir_plink/genotype/chr${CHR}_QCed \
 --recodeA \
---out /project2/xuanyao/data/DGN/txt_file_of_DGN/chr${CHR}
+--out $dir_txt/chr${CHR}
 
 # extract genotype meta
 awk \
-'BEGIN{print "id\tchr\tpos"}{printf("%s\tchr%s\t%s\n",$2,$1,$4)}' \
-/project2/xuanyao/data/DGN/genotype/chr${CHR}_QCed.bim > \
-/project2/xuanyao/data/DGN/txt_file_of_DGN/chr${CHR}_genotype_meta.txt
+'BEGIN{print "id\tchr\tpos"}{key=sprintf("%s:%s", $1, $4);printf("%s\tchr%s\t%s\n",key,$1,$4)}' \
+$dir_plink/genotype/chr${CHR}_QCed.bim > \
+$dir_txt/chr${CHR}_genotype_meta.txt
 
 # convert genotype to txt file
-Rscript --no-restore --no-save /project2/xuanyao/data/DGN/make_geno.R $CHR
+Rscript --no-restore --no-save $dir_script/make.geno.R $CHR
+
 done
 ```
 
-`make_geno.R`
+`make.geno.R`
 
-```{r ./code/make_geno.R}
+```{r ./code/make.geno.R}
 rm(list = ls())
 
 args = commandArgs(trailing = T)
 chr = args[1]
 
-dat = read.table(paste("/project2/xuanyao/data/DGN/txt_file_of_DGN/chr",chr,".raw",sep=""),header=T,check.names=F)
-geno = as.matrix(dat[,7:ncol(dat)])
-rownames(geno) = as.character(dat$IID)
-colnames(geno) = unlist(lapply(strsplit(colnames(dat)[7:ncol(dat)],"_"),"[",1))
+# dataset DGN: dir_txt = "/project2/xuanyao/data/DGN/txt_file_of_DGN/"
+# dataset DGN: colnames(geno) = unlist(lapply(strsplit(colnames(genotype)[7:ncol(genotype)],"_"),"[",1))
+
+dir_txt = "/project2/xuanyao/llw/breastcancerTCGA/txt_file_of_DGN/"
+genotype = read.table(paste0(dir_txt, "chr",chr,".raw"),
+                 header = T, check.names = F)
+snp.meta = read.table(paste0(dir_txt, "chr",chr,"_genotype_meta.txt"),
+                      header = TRUE, stringsAsFactors = FALSE)
+
+geno = as.matrix(genotype[,7:ncol(genotype)])
+rownames(geno) = as.character(genotype$IID)
+colnames(geno) = snp.meta$id
+
+
 write.table(t(geno),
-            paste("./project2/xuanyao/data/DGN/txt_file_of_DGN/chr",chr,".genotype.matrix.eqtl.txt",sep = ""),
+            paste0(dir_txt, "chr", chr,".genotype.matrix.eqtl.txt"),
             sep = "\t", quote = FALSE)
+
+cat(paste0("chr", chr, " is done!"))
 ```
 
 ### Regress out covariates from expression data
