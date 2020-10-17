@@ -512,16 +512,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeeb3f712312c98162d5503c90ca5b1ed873c6aa0btargetblankeb3f712a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/eb3f712312c98162d5503c90ca5b1ed873c6aa0b" target="_blank">eb3f712</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2c4d88192654ecab6d259e023781d5667bc5b32btargetblank2c4d881a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/2c4d88192654ecab6d259e023781d5667bc5b32b" target="_blank">2c4d881</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeeb3f712312c98162d5503c90ca5b1ed873c6aa0btargetblankeb3f712a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2c4d88192654ecab6d259e023781d5667bc5b32btargetblank2c4d881a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/eb3f712312c98162d5503c90ca5b1ed873c6aa0b" target="_blank">eb3f712</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/2c4d88192654ecab6d259e023781d5667bc5b32b" target="_blank">2c4d881</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -539,11 +539,11 @@ Ignored files:
 Untracked files:
     Untracked:  code/make.geno.R
     Untracked:  code/make.geno.sh
-    Untracked:  code/test.R
 
 Unstaged changes:
     Deleted:    code/make_geno.R
     Deleted:    code/make_geno.sh
+    Modified:   code/regress_out_covariates.R
 
 </code></pre>
 <p>
@@ -582,6 +582,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/2c4d88192654ecab6d259e023781d5667bc5b32b/analysis/Trans.Rmd" target="_blank">2c4d881</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-10-17
+</td>
+<td>
+rewrite the code chunk using the ‘code’ parameter
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/a62f2e47917cf936538734c85622907f123c1dad/docs/Trans.html" target="_blank">a62f2e4</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-10-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -708,12 +742,6 @@ wflow_publish("./analysis/*.Rmd")
 </div>
 </div>
 </div>
-<div id="test" class="section level2">
-<h2>test</h2>
-<pre class="bash"><code>cat ./code/test.R</code></pre>
-<pre><code>a
-b</code></pre>
-</div>
 <div id="outine" class="section level2">
 <h2>Outine</h2>
 <p><embed src="test.pdf" style="width:100.0%;height:5in" /></p>
@@ -722,7 +750,7 @@ b</code></pre>
 <h2>Preprocess data</h2>
 <div id="convert-plink-files-of-genotype-to-.txt" class="section level3">
 <h3>Convert plink files of genotype to .txt</h3>
-<pre class="bash"><code>module load plink
+<pre class="r"><code>module load plink
 module load R/3.6.1
 
 cd /scratch/midway2/liliw1/
@@ -766,7 +794,7 @@ chr = args[1]
 
 dir_txt = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file_of_DGN/&quot;
 genotype = read.table(paste0(dir_txt, &quot;chr&quot;,chr,&quot;.raw&quot;),
-                 header = T, check.names = F)
+                      header = T, check.names = F)
 snp.meta = read.table(paste0(dir_txt, &quot;chr&quot;,chr,&quot;_genotype_meta.txt&quot;),
                       header = TRUE, stringsAsFactors = FALSE)
 
@@ -788,16 +816,16 @@ cat(paste0(&quot;chr&quot;, chr, &quot; is done!&quot;))</code></pre>
 # import expression and covariates data
 load(&quot;./data/dgn.rdata&quot;)
 covariates_tec = read.table(&quot;./data/Technical_factors.txt&quot;,
-                        sep = &#39;\t&#39;,
-                        header = T, row.names = 1,
-                        stringsAsFactors = F)
+                            sep = &#39;\t&#39;,
+                            header = T, row.names = 1,
+                            stringsAsFactors = F)
 covariates_bio = read.table(&quot;./data/Biological_and_hidden_factors.txt&quot;,
                             sep = &#39;\t&#39;,
                             header = T, row.names = 1,
                             stringsAsFactors = F)
 sample_names = read.table(&quot;data/samples.txt&quot;,
-                            header = T,
-                            stringsAsFactors = F)
+                          header = T,
+                          stringsAsFactors = F)
 
 
 extract_residual &lt;- function(y, x){
