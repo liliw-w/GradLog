@@ -6,7 +6,7 @@ chr = args[1]
 # dataset DGN: dir_txt = "/project2/xuanyao/data/DGN/txt_file_of_DGN/"
 # dataset DGN: colnames(geno) = unlist(lapply(strsplit(colnames(genotype)[7:ncol(genotype)],"_"),"[",1))
 
-dir_txt = "/project2/xuanyao/llw/breastcancerTCGA/txt_file_of_DGN/"
+dir_txt = "/project2/xuanyao/llw/breastcancerTCGA/txt_file"
 genotype = read.table(paste0(dir_txt, "chr",chr,".raw"),
                  header = T, check.names = F)
 snp.meta = read.table(paste0(dir_txt, "chr",chr,"_genotype_meta.txt"),

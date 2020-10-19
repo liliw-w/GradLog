@@ -403,7 +403,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -412,7 +412,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -421,10 +421,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-10-17
+<strong>Last updated:</strong> 2020-10-19
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -440,12 +440,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -512,16 +512,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2c4d88192654ecab6d259e023781d5667bc5b32btargetblank2c4d881a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/2c4d88192654ecab6d259e023781d5667bc5b32b" target="_blank">2c4d881</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2145266c37b9efca1ab5dc175450eb3f160d99d0targetblank2145266a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/2145266c37b9efca1ab5dc175450eb3f160d99d0" target="_blank">2145266</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2c4d88192654ecab6d259e023781d5667bc5b32btargetblank2c4d881a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2145266c37b9efca1ab5dc175450eb3f160d99d0targetblank2145266a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/2c4d88192654ecab6d259e023781d5667bc5b32b" target="_blank">2c4d881</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/2145266c37b9efca1ab5dc175450eb3f160d99d0" target="_blank">2145266</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -537,13 +537,21 @@ Ignored files:
     Ignored:    output/.DS_Store
 
 Untracked files:
-    Untracked:  code/make.geno.R
-    Untracked:  code/make.geno.sh
+    Untracked:  code/coexp.module.R
+    Untracked:  code/low.quality.genes.R
+    Untracked:  code/p.R
+    Untracked:  code/regress.out.covariates.R
+    Untracked:  code/z.R
 
 Unstaged changes:
-    Deleted:    code/make_geno.R
-    Deleted:    code/make_geno.sh
-    Modified:   code/regress_out_covariates.R
+    Modified:   analysis/Trans.Rmd
+    Deleted:    code/coexpressed.gene.network.R
+    Modified:   code/make.geno.R
+    Modified:   code/make.geno.sh
+    Deleted:    code/p.null.R
+    Deleted:    code/regress_out_covariates.R
+    Deleted:    code/remove.genes.R
+    Deleted:    code/z.null.R
 
 </code></pre>
 <p>
@@ -582,6 +590,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/5ccca4c0b00867eaa521792cd3d47b20667ced29/docs/Trans.html" target="_blank">5ccca4c</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-10-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -744,7 +769,7 @@ wflow_publish("./analysis/*.Rmd")
 </div>
 <div id="outine" class="section level2">
 <h2>Outine</h2>
-<p><embed src="test.pdf" style="width:100.0%;height:5in" /></p>
+<p><embed src="outline.pdf" style="width:100.0%;height:5in" /></p>
 </div>
 <div id="preprocess-data" class="section level2">
 <h2>Preprocess data</h2>
@@ -761,7 +786,7 @@ cd /scratch/midway2/liliw1/
 # dataset DGN: awk &#39;BEGIN{print &quot;id\tchr\tpos&quot;}{printf(&quot;%s\tchr%s\t%s\n&quot;,$2,$1,$4)}&#39;
 
 dir_plink=/project2/xuanyao/xuanyao/cancer_gbat/breast_cancer
-dir_txt=/project2/xuanyao/llw/breastcancerTCGA/txt_file_of_DGN
+dir_txt=/project2/xuanyao/llw/breastcancerTCGA/txt_file
 dir_script=/scratch/midway2/liliw1/TCGA
 
 
@@ -792,9 +817,9 @@ chr = args[1]
 # dataset DGN: dir_txt = &quot;/project2/xuanyao/data/DGN/txt_file_of_DGN/&quot;
 # dataset DGN: colnames(geno) = unlist(lapply(strsplit(colnames(genotype)[7:ncol(genotype)],&quot;_&quot;),&quot;[&quot;,1))
 
-dir_txt = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file_of_DGN/&quot;
+dir_txt = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file&quot;
 genotype = read.table(paste0(dir_txt, &quot;chr&quot;,chr,&quot;.raw&quot;),
-                      header = T, check.names = F)
+                 header = T, check.names = F)
 snp.meta = read.table(paste0(dir_txt, &quot;chr&quot;,chr,&quot;_genotype_meta.txt&quot;),
                       header = TRUE, stringsAsFactors = FALSE)
 
@@ -813,75 +838,108 @@ cat(paste0(&quot;chr&quot;, chr, &quot; is done!&quot;))</code></pre>
 <h3>Regress out covariates from expression data</h3>
 <pre class="r"><code>rm(list = ls())
 
-# import expression and covariates data
-load(&quot;./data/dgn.rdata&quot;)
-covariates_tec = read.table(&quot;./data/Technical_factors.txt&quot;,
-                            sep = &#39;\t&#39;,
-                            header = T, row.names = 1,
-                            stringsAsFactors = F)
-covariates_bio = read.table(&quot;./data/Biological_and_hidden_factors.txt&quot;,
-                            sep = &#39;\t&#39;,
-                            header = T, row.names = 1,
-                            stringsAsFactors = F)
-sample_names = read.table(&quot;data/samples.txt&quot;,
-                          header = T,
-                          stringsAsFactors = F)
-
+dir_data = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file&quot;
+setwd(dir_data)
 
 extract_residual &lt;- function(y, x){
   return(lm(y ~ x)$residuals)
 }
 
 
-rownames(ex) = sample_names$sample; colnames(ex) = gnames
-covariates_tec_used = as.matrix(covariates_tec[rownames(ex), ])
-covariates_bio_used = as.matrix(covariates_bio[rownames(ex), ])
+# import expression and covariates data
+load(&quot;./tumor.rdata&quot;)
+cov_exp = read.table(&quot;./tumor.exp_pc.txt&quot;,
+                     header = TRUE, row.names = NULL, stringsAsFactors = FALSE)
+cov_snp = read.table(&quot;./tumor.snp_pc.txt&quot;,
+                     header = FALSE, row.names = NULL, stringsAsFactors = FALSE)
+
+colnames(ex) = gnames
 
 
-# regress out technical covariates
-ex_tec_regressed = apply(ex, 2, function(y) extract_residual(y, covariates_tec_used))
-ex_tec_bio_regressed = apply(ex_tec_regressed, 2, function(e) extract_residual(e, covariates_bio_used))
-
-saveRDS(ex_tec_bio_regressed, &quot;./data/ex_var_regressed.rds&quot;)
+# regress out covariates
+ex_cov_regressed = apply(ex, 2, function(y) extract_residual(y, as.matrix(cbind(cov_exp, cov_snp))))
+saveRDS(ex_cov_regressed, &quot;./ex_var_regressed.rds&quot;)
 
 print(&quot;Done!&quot;)</code></pre>
 </div>
 <div id="remove-low-quality-genes" class="section level3">
 <h3>Remove low-quality genes</h3>
 <p>Remove seudogenes, genes with mappability<span class="math inline">\(&lt;0.9\)</span>, and gene pairs with cross-mappability higher than 1.</p>
+<p>The code here is for the breast cancer TCGA data. So the genes on chromosomes X and Y are also removed.</p>
 <pre class="r"><code>rm(list = ls())
 
-library(WGCNA)
-source(&quot;functions_for_additional_analysis.R&quot;)
 options(stringsAsFactors = FALSE)
 
-# expression input
-datExpr = readRDS(&quot;./data/ex_var_regressed.rds&quot;)
+# dataDGN: dir_data =
+# dataDGN: gene.name = colnames(datExpr)
+
+dir_data = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file&quot;
+setwd(dir_data)
+
+### Data preparation ###
+datExpr = readRDS(&quot;./ex_var_regressed.rds&quot;)
+gene.name = sapply(colnames(datExpr), function(x) strsplit(x, &quot;\\|&quot;)[[1]][1])
+
+# remove genes on chromosome X &amp; Y
+gene.meta = read.table(&quot;./tumor.gene_pos.txt&quot;,
+                       header = TRUE,
+                       stringsAsFactors = F)
+rownames(gene.meta) = gene.meta$gene
+ind_chrX = gene.meta[colnames(datExpr), &quot;chr&quot;] == &quot;chrX&quot; | gene.meta[colnames(datExpr), &quot;chr&quot;] == &quot;chrY&quot;
 
 # remove pseudogenes
-pseudogenes = read.table(&quot;./result/pseudogenes.txt&quot;, sep =&quot;\t&quot;, stringsAsFactors = F)
-ind_pseudo = colnames(datExpr) %in% unique(pseudogenes$V1)
+pseudogenes = read.table(&quot;./pseudogenes.txt&quot;, sep =&quot;\t&quot;, stringsAsFactors = F)
+ind_pseudo = gene.name %in% unique(pseudogenes$V1)
 
 # remove low mappability genes
-mappability = read.table(&quot;./result/mappability.txt&quot;, sep =&quot;\t&quot;, stringsAsFactors = F, header = T)
-ind_map = colnames(datExpr) %in% unique(mappability$gene_name)
+mappability = read.table(&quot;./mappability.txt&quot;, sep =&quot;\t&quot;, stringsAsFactors = F, header = T)
+ind_map = gene.name %in% unique(mappability$gene_name)
 
 # remove cross-mappable genes
-cross_mappability = readRDS(&quot;./result/cross_mappable_genes.rds&quot;)
-ind_cross_map = unique(names(cross_mappability[!is.na(cross_mappability)]))
-ind_cross_map = colnames(datExpr) %in% ind_cross_map
+cross_mappability = readRDS(&quot;./cross_mappable_genes.rds&quot;)
+cross_map_genes = unique(names(cross_mappability[!is.na(cross_mappability)]))
+ind_cross_map = gene.name %in% cross_map_genes
 
-# all removed genes
-ind_remove = ind_pseudo | ind_map | ind_cross_map</code></pre>
+ind_remove = ind_chrX | ind_pseudo | ind_map | ind_cross_map
+
+sum(ind_chrX)
+sum(ind_pseudo)
+sum(ind_map)
+sum(ind_cross_map)
+sum(ind_remove)
+
+
+write.table(as.matrix(data.frame(&quot;gene&quot; = colnames(datExpr),
+                                 &quot;gene.name&quot; = gene.name,
+                                 &quot;ind_remove&quot; = ind_remove,
+                                 &quot;ind_chrX&quot; = ind_chrX,
+                                 &quot;pseudo&quot; = ind_pseudo,
+                                 &quot;lowmap&quot; = ind_map,
+                                 &quot;crossmap&quot; = ind_cross_map)),
+            &quot;genes_rm_info.txt&quot;,
+            row.names = FALSE, col.names = TRUE, quote = FALSE)</code></pre>
 </div>
 </div>
 <div id="coexpressed-gene-modules" class="section level2">
 <h2>Coexpressed gene modules</h2>
 <p>Cluster the co-expressed genes by WGCNA.</p>
-<pre class="r"><code># Genes left after removing low-quality genes
-datExpr = datExpr[, !ind_remove]
+<pre class="r"><code>rm(list = ls())
 
-# Parameter specification
+library(WGCNA)
+
+dir_data = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file&quot;
+setwd(dir_data)
+
+# Data preparation
+datExpr = readRDS(&quot;./ex_var_regressed.rds&quot;)
+rm_info = read.table(&quot;./genes_rm_info.txt&quot;,
+                     header = TRUE, row.names = NULL,
+                     stringsAsFactors = FALSE)
+datExpr = datExpr[, !rm_info$ind_remove]
+
+
+# Run WGCNA
+### Parameter specification ###
 minModuleSize = 30
 MEDissThres = 0.15
 if_plot_adjacency_mat_parameter_selection = F
@@ -922,7 +980,7 @@ merge = mergeCloseModules(datExpr, dynamicColors, cutHeight = MEDissThres, verbo
 mergedColors = merge$colors
 mergedMEs = merge$newMEs
 
-moduleLabels = match(mergedColors, c(&quot;grey&quot;, standardColors(50)))-1
+moduleLabels = match(mergedColors, c(&quot;grey&quot;, standardColors(100)))-1
 names(moduleLabels) = colnames(datExpr)
 
 # Save results
@@ -933,34 +991,40 @@ result = list(moduleColors = mergedColors,
               old_moduleLabels = dynamicMods,
               old_MEs = MEs,
               geneTree = geneTree,
-              ind_remove = ind_remove)
-
-saveRDS(result, file = &quot;./result/DGN_coexpressed_gene_network.rds&quot;)</code></pre>
+              ind_remove = rm_info$ind_remove)
+saveRDS(result, file = &quot;./coexp.module.rds&quot;)</code></pre>
 </div>
-<div id="calculate-null-zscores" class="section level2">
-<h2>Calculate null zscores</h2>
-<p>Here is the code of how I compute zscores for module <span class="math inline">\(i\)</span> and chromosome <span class="math inline">\(j\)</span>, using randomly permuted samples. Calculating observed zscores (zscores based on the original real data) is similar, only need to remove line <code>genotype = genotype[ind.perm, ]</code>.</p>
+<div id="calculate-zscores" class="section level2">
+<h2>Calculate zscores</h2>
+<p><del>Here is the code of how I compute null zscores for module <span class="math inline">\(i\)</span> and chromosome <span class="math inline">\(j\)</span>, using randomly permuted samples. Calculating observed zscores (zscores based on the original real data) is similar, only need to remove line <code>genotype = genotype[ind.perm, ]</code>.</del></p>
+<p>Update the code to calculate the <strong>observed zscores</strong> from <strong>TCGA data</strong>.</p>
 <pre class="r"><code>rm(list = ls())
 
 parameter = commandArgs(trailingOnly = T)
 module_id = parameter[1]
 chr = parameter[2]
 
+setwd(&quot;/scratch/midway2/liliw1/TCGA/&quot;)
+
+# dataset DGN: dir_data = &quot;/project2/xuanyao/data/DGN/&quot;
+# dataset DGN: gene_meta = read.table(paste0(dir_data, &quot;expression_meta_hg19.txt&quot;), ...)
+# dataset DGN: gene_module = readRDS(file = paste0(dir_data, &quot;DGN_coexpressed_gene_network.rds&quot;))
+# dataset DGN: header = ifelse(chr==1, TRUE, FALSE) when reading genotype
+
 
 library(foreach)
 library(doParallel)
 
 # data input
-data_dir = &quot;/project2/xuanyao/data/DGN/&quot;
-datExpr = readRDS(paste0(data_dir, &quot;txt_file_of_DGN/ex_var_regressed.rds&quot;))
-gene_pos = read.table(paste0(data_dir, &quot;txt_file_of_DGN/expression_meta_hg19.txt&quot;),
+dir_data = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file/&quot;
+datExpr = readRDS(paste0(dir_data, &quot;ex_var_regressed.rds&quot;))
+gene_meta = read.table(paste0(dir_data, &quot;tumor.gene_pos.txt&quot;),
                       sep = &#39;\t&#39;,
                       header = T,
                       stringsAsFactors = F)
-gene_result = readRDS(file = paste0(data_dir, &quot;txt_file_of_DGN/DGN_coexpressed_gene_network.rds&quot;))
-header = ifelse(chr==1, TRUE, FALSE)
-genotype = read.table(paste0(data_dir, &quot;txt_file_of_DGN/chr&quot;, chr, &quot;.genotype.matrix.eqtl.txt&quot;),
-                      header = header, row.names=NULL,
+gene_module = readRDS(file = paste0(dir_data, &quot;coexp.module.rds&quot;))
+genotype = read.table(paste0(dir_data, &quot;chr&quot;, chr, &quot;.genotype.matrix.eqtl.txt&quot;),
+                      header = TRUE, row.names=NULL,
                       stringsAsFactors = F)
 genotype = genotype[!duplicated(genotype[, 1]), ]
 rownames(genotype) = genotype[, 1]
@@ -968,8 +1032,8 @@ genotype = t(genotype[, -1])
 
 
 # Use only the genes in the module and have postion info in the meta file
-gene_in_cluster = data.frame(&quot;gene_name&quot;=names(gene_result$moduleLabels)[gene_result$moduleLabels == module_id], stringsAsFactors = F)
-gene_w_pos = merge(gene_in_cluster, gene_pos, by.x = 1, by.y = 1)
+gene_in_cluster = data.frame(&quot;gene_name&quot;=names(gene_module$moduleLabels)[gene_module$moduleLabels == module_id], stringsAsFactors = F)
+gene_w_pos = merge(gene_in_cluster, gene_meta, by.x = 1, by.y = 1)
 exp.data = datExpr[, gene_w_pos$gene_name]
 print(&quot;Input part is done!&quot;)
 
@@ -978,11 +1042,11 @@ cores=(Sys.getenv(&quot;SLURM_NTASKS_PER_NODE&quot;))
 cl = makeCluster(as.numeric(cores), outfile=&quot;&quot;)
 registerDoParallel(cl)
 
-M = ncol(genotype); K = ncol(exp.data); N = nrow(exp.data); ind.perm = sample(1:N)
-genotype = genotype[ind.perm, ]
+M = ncol(genotype); K = ncol(exp.data); N = nrow(exp.data)
+#ind.perm = sample(1:N); genotype = genotype[ind.perm, ]
 chunk.size = M %/% as.numeric(cores)
 system.time(
-  z.null &lt;- foreach(i=1:cores, .combine=&#39;rbind&#39;) %dopar%
+  res.all &lt;- foreach(i=1:cores, .combine=&#39;rbind&#39;) %dopar%
     {
       res = matrix(nrow = chunk.size, ncol = K,
                    dimnames = list(colnames(genotype)[((i-1)*chunk.size+1):(i*chunk.size)], colnames(exp.data)))
@@ -1013,16 +1077,16 @@ if(Nsnps_left != 0){
     print(Nsnps_done+j)
   }
 
-  z.null = rbind(z.null, res)
+  res.all = rbind(res.all, res)
 }
 print(&quot;All part is done!&quot;)
 
 
-saveRDS(z.null, file = paste0(&quot;./NULL/z.null/z.null.module&quot;, module_id, &quot;.chr&quot;, chr, &quot;.rds&quot;))</code></pre>
+saveRDS(res.all, file = paste0(&quot;./z/z.module&quot;, module_id, &quot;.chr&quot;, chr, &quot;.rds&quot;))</code></pre>
 </div>
 <div id="calculate-pvalues" class="section level2">
 <h2>Calculate pvalues</h2>
-<p>Here is the code using PCO to calculate pvalues. This uses only PC’s with eigenvalue <span class="math inline">\(\lambda &gt; 1\)</span>.</p>
+<p>Here is the code using PCO to calculate pvalues. This uses only PC’s with eigenvalue <span class="math inline">\(\lambda &gt; 1\)</span>. Modified PCO code in <code>./script/*</code>.</p>
 <pre class="r"><code>rm(list = ls())
 
 parameter = commandArgs(trailingOnly = T)
@@ -1030,15 +1094,19 @@ module_id = parameter[1]
 chr = parameter[2]
 p.method = parameter[3] #&quot;truncPCO&quot; #&quot;PCO&quot;
 
-script_dir = &quot;./NULL/script/&quot;
-zscore_dir = &quot;./NULL/z.null/&quot;
 
-# There files are modified PCO functions. Only use PC&#39;s with eigenvalue \lambda&gt;1
-source(paste0(script_dir, &quot;ModifiedPCOMerged.R&quot;))
-source(paste0(script_dir, &quot;liu.r&quot;))
-source(paste0(script_dir, &quot;liumod.R&quot;))
-source(paste0(script_dir, &quot;davies.R&quot;))
-source(paste0(script_dir, &quot;SigmaMetaEstimate.R&quot;))
+setwd(&quot;/scratch/midway2/liliw1/TCGA/&quot;)
+
+# dataset DGN: dir_data = &quot;/project2/xuanyao/data/DGN/txt_file_of_DGN/&quot;
+# dataset DGN: gene_module = readRDS(file = paste0(dir_data, &quot;DGN_coexpressed_gene_network.rds&quot;))
+# dataset DGN: gene_meta = read.table(paste0(dir_data, &quot;expression_meta_hg19.txt&quot;), ...)
+
+
+source(paste0(&quot;./script/ModifiedPCOMerged.R&quot;))
+source(paste0(&quot;./script/liu.r&quot;))
+source(paste0(&quot;./script/liumod.R&quot;))
+source(paste0(&quot;./script/davies.R&quot;))
+source(paste0(&quot;./script/SigmaMetaEstimate.R&quot;))
 library(foreach)
 library(doParallel)
 library(mvtnorm)
@@ -1046,51 +1114,50 @@ library(MPAT)
 
 
 # zscore input
-z.null = readRDS(file = paste0(zscore_dir, &quot;z.null.module&quot;, module_id, &quot;.chr&quot;, chr, &quot;.rds&quot;))
+z_mat = readRDS(file = paste0(&quot;./z/z.module&quot;, module_id, &quot;.chr&quot;, chr, &quot;.rds&quot;))
 
 
-# input
-data_dir = &quot;/project2/xuanyao/data/DGN/txt_file_of_DGN/&quot;
-gene_all_pos = read.table(paste0(data_dir, &quot;expression_meta_hg19.txt&quot;),
-                          sep = &#39;\t&#39;,
-                          header = T,
-                          stringsAsFactors = F)
-datExpr = readRDS(paste0(data_dir, &quot;ex_var_regressed.rds&quot;))
-gene_module = readRDS(file = paste0(data_dir, &quot;DGN_coexpressed_gene_network.rds&quot;))
+# data input
+dir_data = &quot;/project2/xuanyao/llw/breastcancerTCGA/txt_file/&quot;
+datExpr = readRDS(paste0(dir_data, &quot;ex_var_regressed.rds&quot;))
+gene_meta = read.table(paste0(dir_data, &quot;tumor.gene_pos.txt&quot;),
+                      sep = &#39;\t&#39;,
+                      header = T,
+                      stringsAsFactors = F)
+gene_module = readRDS(file = paste0(dir_data, &quot;coexp.module.rds&quot;))
 
 
-# Extract genes within the module that have gene meta info and are not on the chromosome for which we are calculating pvalues.
-# This step makes sure the signals are due to trans genetic effects.
-gene_cluster = data.frame(&quot;gene_name&quot; = names(gene_module$moduleLabels[gene_module$moduleLabels == module_id]), stringsAsFactors = F)
-gene_pos = merge(gene_cluster, gene_all_pos, by.x = 1, by.y = 1)
-gene_trans = gene_pos[gene_pos$chrom != paste0(&quot;chr&quot;, chr), &quot;gene_name&quot;]
+# Use only the genes in the module &amp; have postion info in the meta file &amp; not on chromosome chr
+gene_in_cluster = data.frame(&quot;gene_name&quot; = names(gene_module$moduleLabels[gene_module$moduleLabels == module_id]), stringsAsFactors = F)
+gene_w_pos = merge(gene_in_cluster, gene_meta, by.x = 1, by.y = 1)
+gene_trans = gene_w_pos[gene_w_pos[,2] != paste0(&quot;chr&quot;, chr), &quot;gene_name&quot;]
 
-# inputs for PCO
+
 Sigma = cor(datExpr[, gene_trans])
 SigmaO = ModifiedSigmaOEstimate(Sigma,simNum=1000)
-z.null_trans = z.null[, gene_trans]; rm(z.null)
+z_mat_trans = z_mat[, gene_trans]; rm(z_mat)
 
 
-# Do parallel across snps
+# Do parallel
 cores=(Sys.getenv(&quot;SLURM_NTASKS_PER_NODE&quot;))
 cl = makeCluster(as.numeric(cores), outfile=&quot;&quot;)
 registerDoParallel(cl)
 
-Nsnps = nrow(z.null_trans); snps = rownames(z.null_trans)
+Nsnps = nrow(z_mat_trans); snps = rownames(z_mat_trans)
 chunk.size = Nsnps %/% as.numeric(cores)
 Nsnps_left = Nsnps %% as.numeric(cores)
 Nsnps_done = (chunk.size)*as.numeric(cores)
 
 system.time(
-  p.null &lt;- foreach(i=1:cores, .combine=&#39;c&#39;) %dopar%
+  res.all &lt;- foreach(i=1:cores, .combine=&#39;c&#39;) %dopar%
     {
       library(MPAT)
       library(mvtnorm)
 
       res &lt;- rep(NA, chunk.size); names(res) &lt;- snps[((i-1)*chunk.size+1):(i*chunk.size)]
       for(x in 1:chunk.size) {
-        res[x] &lt;- ModifiedPCOMerged(Z.vec=z.null_trans[x + (i-1)*chunk.size, ],
-                                    Sigma=Sigma, SigmaO=SigmaO,method = &quot;davies&quot;)
+        res[x] &lt;- ModifiedPCOMerged(Z.vec=z_mat_trans[x + (i-1)*chunk.size, ],
+                                                       Sigma=Sigma, SigmaO=SigmaO,method = &quot;davies&quot;)
 
         if(x %% 100 == 0){print(x + (i-1)*chunk.size)}
       }
@@ -1103,23 +1170,22 @@ stopCluster(cl)
 print(&quot;Parallel part is done!&quot;)
 
 
-# Do PCO on snps that are left in the parallel part.
 if(Nsnps_left != 0){
   res_left = rep(NA, Nsnps_left); names(res_left) = snps[1:(Nsnps_left) + Nsnps_done]
   for(k in 1:(Nsnps_left)){
-    res_left[k] = ModifiedPCOMerged(Z.vec=z.null_trans[k + Nsnps_done, ],
-                                    Sigma=Sigma, SigmaO=SigmaO,method = &quot;davies&quot;)
+    res_left[k] = ModifiedPCOMerged(Z.vec=z_mat_trans[k + Nsnps_done, ],
+                               Sigma=Sigma, SigmaO=SigmaO,method = &quot;davies&quot;)
 
     print(k + Nsnps_done)
   }
 
-  p.null = c(p.null, res_left)
+  res.all = c(res.all, res_left)
 }
 
 print(&quot;All part is done!&quot;)
 
 
-saveRDS(pT.null, file = paste0(&quot;./NULL/p.null/p.null.module&quot;, module_id, &quot;.chr&quot;, chr, &quot;.&quot;, p.method, &quot;.rds&quot;))</code></pre>
+saveRDS(res.all, file = paste0(&quot;./p/p.module&quot;, module_id, &quot;.chr&quot;, chr, &quot;.&quot;, p.method, &quot;.rds&quot;))</code></pre>
 </div>
 <div id="multi-testing-correction" class="section level2">
 <h2>Multi-testing correction</h2>

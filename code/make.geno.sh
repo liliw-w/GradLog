@@ -9,7 +9,7 @@ cd /scratch/midway2/liliw1/
 # dataset DGN: awk 'BEGIN{print "id\tchr\tpos"}{printf("%s\tchr%s\t%s\n",$2,$1,$4)}'
 
 dir_plink=/project2/xuanyao/xuanyao/cancer_gbat/breast_cancer
-dir_txt=/project2/xuanyao/llw/breastcancerTCGA/txt_file_of_DGN
+dir_txt=/project2/xuanyao/llw/breastcancerTCGA/txt_file
 dir_script=/scratch/midway2/liliw1/TCGA
 
 

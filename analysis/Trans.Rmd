@@ -15,7 +15,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 ## Outine
 
-![](test.pdf){width=100% height=5in}
+![](outline.pdf){width=100% height=5in}
 
 ## Preprocess data
 
@@ -32,7 +32,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 ### Regress out covariates from expression data
 
-```{r code=readLines('../code/regress_out_covariates.R')}
+```{r code=readLines('../code/regress.out.covariates.R')}
 ```
 
 
@@ -40,7 +40,9 @@ knitr::opts_chunk$set(eval = FALSE)
 
 Remove seudogenes, genes with mappability$<0.9$, and gene pairs with cross-mappability higher than 1.
 
-```{r code=readLines('../code/remove.genes.R')}
+The code here is for the breast cancer TCGA data. So the genes on chromosomes X and Y are also removed.
+
+```{r code=readLines('../code/low.quality.genes.R')}
 ```
 
 
@@ -48,23 +50,25 @@ Remove seudogenes, genes with mappability$<0.9$, and gene pairs with cross-mappa
 
 Cluster the co-expressed genes by WGCNA.
 
-```{r code=readLines('../code/coexpressed.gene.network.R')}
+```{r code=readLines('../code/coexp.module.R')}
 ```
 
 
-## Calculate null zscores
+## Calculate zscores
 
-Here is the code of how I compute zscores for module $i$ and chromosome $j$, using randomly permuted samples. Calculating observed zscores (zscores based on the original real data) is similar, only need to remove line `genotype = genotype[ind.perm, ]`.
+~~Here is the code of how I compute null zscores for module $i$ and chromosome $j$, using randomly permuted samples. Calculating observed zscores (zscores based on the original real data) is similar, only need to remove line `genotype = genotype[ind.perm, ]`.~~
 
-```{r code=readLines('../code/z.null.R')}
+Update the code to calculate the **observed zscores** from **TCGA data**.
+
+```{r code=readLines('../code/z.R')}
 ```
 
 
 ## Calculate pvalues
 
-Here is the code using PCO to calculate pvalues. This uses only PC's with eigenvalue $\lambda > 1$.
+Here is the code using PCO to calculate pvalues. This uses only PC's with eigenvalue $\lambda > 1$. Modified PCO code in `./script/*`.
 
-```{r code=readLines('../code/p.null.R')}
+```{r code=readLines('../code/p.R')}
 ```
 
 
