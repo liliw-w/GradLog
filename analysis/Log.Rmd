@@ -2,7 +2,7 @@
 title: "Log"
 output:
   workflowr::wflow_html:
-  toc: true
+              toc: true
 editor_options:
   chunk_output_type: console
 ---
@@ -11,7 +11,7 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
-## **Nov 01**
+## Nov 02
 ### Why use `minModuleSize=30` in WGCNA for TCGA?
 
 There are three reasons why I set the minimum number of genes in modules to be 30.
@@ -26,7 +26,7 @@ knitr::include_graphics("1101.fig1.minModuleSize.png", error = FALSE)
 
 The above plots used all 13634 genes without removing any poorly mapped genes. Next, I removed the poorly mapped genes, with 5258 genes left. I used 30 to cluster these 5258 genes and resulted in 18 modules. We then looked at the explained variance and found nothing seemed wrong. So we decided to use 30 for WGCNA and these 18 modules for downstream analysis.
 
-```{r}
+```{r out.height='80%', out.width='80%'}
 knitr::include_graphics("1101.fig2.minModuleSize.png", error = FALSE)
 ```
 
@@ -90,4 +90,3 @@ knitr::kable(term, row.names = FALSE)
 [source7]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5653461/
 [source8]: https://link.springer.com/article/10.1007%2Fs10555-010-9261-0
 
-## **Nov 06**
