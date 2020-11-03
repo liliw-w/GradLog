@@ -18,3 +18,5 @@ This is a website where I keep track of my research progress.
 
 # Topics
 - Multivariate association method to detect trans genetic effects that regulate multiple co-expressed genes. [click](Trans.html)
+
+- Logs. [click](Log.html)

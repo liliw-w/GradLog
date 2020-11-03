@@ -90,6 +90,7 @@ Here is the code using PCO to calculate pvalues. This uses only PC's with eigenv
 - Single-variate method. (MatrixeQTL)
 
 ## Others
+
 ### Use only the first PC. Use all PC's.
 
 ### Find phseudogenes, poor-mapped genes, and cross-mappable genes

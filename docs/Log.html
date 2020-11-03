@@ -11,16 +11,16 @@
 
 
 
-<title>GradLog</title>
+<title>Log</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -323,7 +323,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">GradLog</h1>
+<h1 class="title toc-ignore">Log</h1>
 
 </div>
 
@@ -351,7 +351,7 @@ $(document).ready(function () {
 <strong>Last updated:</strong> 2020-11-03
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -372,7 +372,67 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201014code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201014)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201014code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201014)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -405,6 +465,7 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/Log.Rmd
+    Untracked:  data/GO.organizedResult.csv
 
 Unstaged changes:
     Modified:   analysis/Trans.Rmd
@@ -422,273 +483,160 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/2a0480828f09a7687b7457d1ad1e9b70d42a1f56/docs/index.html" target="_blank">2a04808</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/c83022290cba1ef90ba05472cf91682f13abbfba/docs/index.html" target="_blank">c830222</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-19
-</td>
-<td>
-Update all code used for breast cancer TCGA data.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/82daa406e2d9e8bdfe9eb8f472dff3a970f359b1/docs/index.html" target="_blank">82daa40</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-17
-</td>
-<td>
-wflow_git_commit(“./code/”)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/41cdb6586b66ad665b850e9a1df9dacb60ca47c1/docs/index.html" target="_blank">41cdb65</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-15
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/6d56368b70da8d071f9affa8776aa13ae204bd7b/analysis/index.Rmd" target="_blank">6d56368</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-15
-</td>
-<td>
-wflow_publish(all = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/6d56368b70da8d071f9affa8776aa13ae204bd7b/docs/index.html" target="_blank">6d56368</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-15
-</td>
-<td>
-wflow_publish(all = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/88783b1e993ffe4e0f9741c653345381cc865d90/docs/index.html" target="_blank">88783b1</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-15
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/ba7b595ecdd9a2540609c7d1ad7b88b368fc02fa/analysis/index.Rmd" target="_blank">ba7b595</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-15
-</td>
-<td>
-wflow_publish(“analysis/index.Rmd”)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/5a86aaf54e086a519c08f801248b539a1e825c29/docs/index.html" target="_blank">5a86aaf</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-14
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/4382474f6df22a49cc2915c2de49d8a62ce35fa1/docs/index.html" target="_blank">4382474</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-14
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/liliw-w/GradLog/f79b80d03d24c2874a7935558182a8c35ebb4ea5/docs/index.html" target="_blank">f79b80d</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-14
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/d7821adbca951cc2a8ff7ea1a3ddc75b150486be/analysis/index.Rmd" target="_blank">d7821ad</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-14
-</td>
-<td>
-wflow_publish("./analysis/*.Rmd")
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/2a2d00732a569ddcfbc4a16eeb22378a9546c7db/analysis/index.Rmd" target="_blank">2a2d007</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-10-14
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<center>
-<img src="image.png" style="width:70.0%;height:3.7in" />
-</center>
-<div id="welcome" class="section level1">
-<h1>Welcome</h1>
-<p>This is a website where I keep track of my research progress.</p>
+<div id="nov-01" class="section level2">
+<h2><strong>Nov 01</strong></h2>
+<div id="why-use-minmodulesize30-in-wgcna-for-tcga" class="section level3">
+<h3>Why use <code>minModuleSize=30</code> in WGCNA for TCGA?</h3>
+<p>There are three reasons why I set the minimum number of genes in modules to be 30.</p>
+<p><strong>1. DGN used this setting.</strong></p>
+<p>At first, we looked at the variance explained by the top three PC of each modules under different settings, i.e. <code>minModuleSize=100, 50, 30</code>. We found that under setting of 30, the top three PC’s explained more variance, so we tended to use 30.</p>
+<p><img src="1101.fig1.minModuleSize.png" style="display: block; margin: auto;" /></p>
+<p>The above plots used all 13634 genes without removing any poorly mapped genes. Next, I removed the poorly mapped genes, with 5258 genes left. I used 30 to cluster these 5258 genes and resulted in 18 modules. We then looked at the explained variance and found nothing seemed wrong. So we decided to use 30 for WGCNA and these 18 modules for downstream analysis.</p>
+<p><img src="./docs/1101.fig2.minModuleSize.png" style="display: block; margin: auto;" /></p>
+<p><strong>2. 30 is the default module size in WGCNA tutorial, and also used by the elife paper.</strong></p>
+<p><a href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/FemaleLiver-02-networkConstr-auto.pdf">WGCNA tutorial</a> used 30 as default. The <a href="https://elifesciences.org/articles/58705#s4">elife method</a> also used the default parameters.</p>
+<p><strong>3. I tried other parameters, e.g. 100. 50, which both increase the unclassified genes.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">minModuleSize</th>
+<th align="right">Num.unclassified.geens</th>
+<th align="right">Num.modules</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">100</td>
+<td align="right">5247</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">3251</td>
+<td align="right">59</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">2908</td>
+<td align="right">57</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="topics" class="section level1">
-<h1>Topics</h1>
+<div id="look-into-enrichment-of-tcga-modules." class="section level3">
+<h3>Look into enrichment of TCGA modules.</h3>
+<p>Here is the <a href="https://biit.cs.ut.ee/gplink/l/5R4sgZawQC">complete enrichment result</a>.</p>
+<div id="kegg-pathway-enrichment" class="section level4">
+<h4>KEGG pathway enrichment</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">source</th>
+<th align="left">term_name</th>
+<th align="left">sig_module</th>
+<th align="left">p_adjusted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">KEGG</td>
+<td align="left">ErbB signaling pathway</td>
+<td align="left">21</td>
+<td align="left">0.008964903</td>
+</tr>
+<tr class="even">
+<td align="left">KEGG</td>
+<td align="left">Neuroactive ligand-receptor interaction</td>
+<td align="left">3</td>
+<td align="left">0.015524997</td>
+</tr>
+<tr class="odd">
+<td align="left">KEGG</td>
+<td align="left">Mucin type O-glycan biosynthesis</td>
+<td align="left">20</td>
+<td align="left">0.016931426</td>
+</tr>
+<tr class="even">
+<td align="left">KEGG</td>
+<td align="left">Human papillomavirus infection</td>
+<td align="left">2</td>
+<td align="left">0.019400355</td>
+</tr>
+<tr class="odd">
+<td align="left">KEGG</td>
+<td align="left">Prolactin signaling pathway</td>
+<td align="left">2</td>
+<td align="left">0.041320205</td>
+</tr>
+<tr class="even">
+<td align="left">KEGG</td>
+<td align="left">Cocaine addiction</td>
+<td align="left">2;26</td>
+<td align="left">0.04269822;0.049447144</td>
+</tr>
+<tr class="odd">
+<td align="left">KEGG</td>
+<td align="left">PI3K-Akt signaling pathway</td>
+<td align="left">21</td>
+<td align="left">0.048894331</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><p>Multivariate association method to detect trans genetic effects that regulate multiple co-expressed genes. <a href="Trans.html">click</a></p></li>
-<li><p>Logs. <a href="Log.html">click</a></p></li>
+<li><p><strong>ErbB signaling pathway</strong>: "ErbB family members and some of their ligands are often over-expressed, amplified, or mutated in many forms of cancer, making them important therapeutic targets. For example, researchers have found EGFR to be amplified and/or mutated in gliomas and NSCLC while ErbB2 amplifications are seen in breast, ovarian, bladder, NSCLC, as well as several other tumor types. <a href="https://www.cellsignal.com/contents/science-cst-pathways-kinase-signaling/erbb-her-signaling/pathways-erbb#:~:text=The%20ErbB%20receptors%20signal%20through,making%20them%20important%20therapeutic%20targets.">[source]</a></p></li>
+<li><p><strong>Neuroactive ligand-receptor interaction</strong>:</p>
+<ul>
+<li>Influence on breast cancer MCF-7 cells: “Telocinobufagin might regulate neuroactive ligand-receptor interaction pathway to exert its influences in breast cancer MCF-7 cells.” <a href="https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/S0344033818301018">[source]</a></li>
+<li>Involved in the regulation of renal cell carcinoma. <a href="https://www.karger.com/Article/Pdf/368504">[source]</a></li>
+</ul></li>
+<li><p><strong>Mucin type O-glycan biosynthesis</strong>: “Changes in mucin-type O-linked glycosylation are seen in over 90% of breast cancers” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6103458/">[source]</a> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1479595/">[source]</a></p></li>
+<li><p><strong>Human papillomavirus infection</strong>: “We demonstrated that HPV is associated with breast cancer development, although the role of HPV in breast cancers is still questionable and further research is required to investigate, in more detail, the role of HPV infection in breast cancer.” <a href="https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-5286-0#Sec17">[source]</a></p></li>
+<li><p><strong>Prolactin signaling pathway</strong>: “elevated PRL levels are correlated with increased breast cancer risk and metastasis” “In vitro studies have indicated a role for PRL in breast cancer proliferation and survival.” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5653461/">[source]</a></p></li>
+<li><p><strong>Cocaine addiction</strong>: ???</p></li>
+<li><p><strong>PI3K-Akt signaling pathway</strong>: “PI3K/Akt signaling pathway is key in the development of BC” (breast cancer) <a href="https://link.springer.com/article/10.1007%2Fs10555-010-9261-0">[source]</a></p></li>
 </ul>
+</div>
+</div>
+</div>
+<div id="nov-06" class="section level2">
+<h2><strong>Nov 06</strong></h2>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre><code>R version 3.6.3 (2020-02-29)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS Catalina 10.15.6
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+ [1] workflowr_1.6.2 Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25  
+ [5] later_1.0.0     R6_2.4.1        backports_1.1.5 git2r_0.27.1   
+ [9] magrittr_1.5    evaluate_0.14   highr_0.8       stringi_1.4.6  
+[13] rlang_0.4.7     fs_1.3.2        promises_1.1.0  rmarkdown_2.1  
+[17] tools_3.6.3     stringr_1.4.0   glue_1.3.2      httpuv_1.5.2   
+[21] xfun_0.12       yaml_2.2.1      compiler_3.6.3  htmltools_0.4.0
+[25] knitr_1.28     </code></pre>
+</div>
 </div>
 
 

@@ -1,0 +1,93 @@
+---
+title: "Log"
+output:
+  workflowr::wflow_html:
+  toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+## **Nov 01**
+### Why use `minModuleSize=30` in WGCNA for TCGA?
+
+There are three reasons why I set the minimum number of genes in modules to be 30.
+
+**1. DGN used this setting.**
+
+At first, we looked at the variance explained by the top three PC of each modules under different settings, i.e. `minModuleSize=100, 50, 30`. We found that under setting of 30, the top three PC's explained more variance, so we tended to use 30.
+
+```{r}
+knitr::include_graphics("1101.fig1.minModuleSize.png", error = FALSE)
+```
+
+The above plots used all 13634 genes without removing any poorly mapped genes. Next, I removed the poorly mapped genes, with 5258 genes left. I used 30 to cluster these 5258 genes and resulted in 18 modules. We then looked at the explained variance and found nothing seemed wrong. So we decided to use 30 for WGCNA and these 18 modules for downstream analysis.
+
+```{r}
+knitr::include_graphics("1101.fig2.minModuleSize.png", error = FALSE)
+```
+
+
+**2. 30 is the default module size in WGCNA tutorial, and also used by the elife paper.**
+
+[WGCNA tutorial] used 30 as default. The [elife method] also used the default parameters.
+
+[WGCNA tutorial]: https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/FemaleLiver-02-networkConstr-auto.pdf
+[elife method]: https://elifesciences.org/articles/58705#s4
+
+**3. I tried other parameters, e.g. 100. 50, which both increase the unclassified genes.**
+
+```{r}
+res = data.frame("minModuleSize" = c(100, 50, 30),
+                 "Num unclassified geens" = c(5247, 3251, 2908),
+                 "Num modules" = c(4, 59, 57))
+knitr::kable(res)
+```
+
+
+### Look into enrichment of TCGA modules.
+
+Here is the [complete enrichment result].
+
+[complete enrichment result]: https://biit.cs.ut.ee/gplink/l/5R4sgZawQC
+
+#### KEGG pathway enrichment
+```{r}
+res = read.csv("./data/GO.organizedResult.csv", stringsAsFactors = FALSE)
+
+ind.term = res$source == "KEGG"
+term = res[ind.term, -4]
+
+knitr::kable(term, row.names = FALSE)
+```
+
+
+* **ErbB signaling pathway**: "ErbB family members and some of their ligands are often over-expressed, amplified, or mutated in many forms of cancer, making them important therapeutic targets. For example, researchers have found EGFR to be amplified and/or mutated in gliomas and NSCLC while ErbB2 amplifications are seen in breast, ovarian, bladder, NSCLC, as well as several other tumor types. [[source]][source1]
+
+* **Neuroactive ligand-receptor interaction**:
+  * Influence on breast cancer MCF-7 cells: "Telocinobufagin might regulate neuroactive ligand-receptor interaction pathway to exert its influences in breast cancer MCF-7 cells." [[source]][source3]
+  * Involved in the regulation of renal cell carcinoma. [[source]][source2]
+  
+* **Mucin type O-glycan biosynthesis**: "Changes in mucin-type O-linked glycosylation are seen in over 90% of breast cancers" [[source]][source4] [[source]][source5]
+
+* **Human papillomavirus infection**: "We demonstrated that HPV is associated with breast cancer development, although the role of HPV in breast cancers is still questionable and further research is required to investigate, in more detail, the role of HPV infection in breast cancer." [[source]][source6]
+
+* **Prolactin signaling pathway**: "elevated PRL levels are correlated with increased breast cancer risk and metastasis" "In vitro studies have indicated a role for PRL in breast cancer proliferation and survival." [[source]][source7]
+
+* **Cocaine addiction**: ???
+
+* **PI3K-Akt signaling pathway**: "PI3K/Akt signaling pathway is key in the development of BC" (breast cancer) [[source]][source8]
+  
+[source1]: https://www.cellsignal.com/contents/science-cst-pathways-kinase-signaling/erbb-her-signaling/pathways-erbb#:~:text=The%20ErbB%20receptors%20signal%20through,making%20them%20important%20therapeutic%20targets.
+[source2]: https://www.karger.com/Article/Pdf/368504
+[source3]: https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/S0344033818301018
+[source4]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6103458/
+[source5]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1479595/
+[source6]: https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-5286-0#Sec17
+[source7]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5653461/
+[source8]: https://link.springer.com/article/10.1007%2Fs10555-010-9261-0
+
+## **Nov 06**
