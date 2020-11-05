@@ -3,6 +3,7 @@ title: "Log"
 output:
   workflowr::wflow_html:
               toc: true
+              toc_depth: 4
 editor_options:
   chunk_output_type: console
 ---
@@ -33,7 +34,7 @@ knitr::include_graphics("1101.fig2.minModuleSize.png", error = FALSE)
 
 **2. 30 is the default module size in WGCNA tutorial, and also used by the elife paper.**
 
-[WGCNA tutorial] used 30 as default. The [elife method] also used the default parameters.
+[WGCNA tutorial] used 30 as default. ~~The [elife method] also used the default parameters.~~ (Correction: elife method used the default parameters in the R package, where `minClusterSize = 20`.)
 
 [WGCNA tutorial]: https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/FemaleLiver-02-networkConstr-auto.pdf
 [elife method]: https://elifesciences.org/articles/58705#s4
@@ -41,9 +42,10 @@ knitr::include_graphics("1101.fig2.minModuleSize.png", error = FALSE)
 **3. I tried other parameters, e.g. 100. 50, which both increase the unclassified genes.**
 
 ```{r}
-res = data.frame("minModuleSize" = c(100, 50, 30),
-                 "Num unclassified geens" = c(5247, 3251, 2908),
-                 "Num modules" = c(4, 59, 57))
+res = data.frame("minModuleSize" = c(100, 50, 30, 20),
+                 "Num.unclassified.genes" = c(5247, 3251, 2908, 2813),
+                 "Num.modules" = c(4, 33, 57, 81),
+                 "Max.num.genes" = c(1972, 397, 356, 326))
 knitr::kable(res)
 ```
 
@@ -89,4 +91,86 @@ knitr::kable(term, row.names = FALSE)
 [source6]: https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-5286-0#Sec17
 [source7]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5653461/
 [source8]: https://link.springer.com/article/10.1007%2Fs10555-010-9261-0
+
+
+
+### Debug code for TruncPCO.
+
+I was doubting that TruncPCO (using only $\lambda>1$) code may have bugs because of the following weird qqplot and histogram of pvalues.
+
+```{r out.height='70%', out.width='70%'}
+knitr::include_graphics("1101.fig3.TruncPCO.png", error = FALSE)
+```
+
+Rows are qqplot and histogram of pvalues. These pvalues are observed pvalues rather than null pvalues. Left column is for standard PCO (using all $\lambda$'s); right is for TruncPCO. I thought TruncPCO is weird because a histogram of pvalues shouldn't be as skewed as the lower right one. This skewed plot means pvalues by TruncPCO are overall smaller than PCO. We thought this may be due to LD among snps, i.e. the tests are not independent. However, even with the LD complication, the histogram should be approximately flat as in the lower left plot, where the tests are not independent either.
+
+So I looked into the code for TruncPCO and see if there are bugs I didn't notice. *(This paragraph explains what the bug is. See the histogram by the debugged code in next paragraph.)* PCO uses the minimum pvalue of six tests as the test statistic, i.e.
+$$T_{PCO}=min(p_{PCMinP}, p_{PCFisher}, p_{PCLC}, p_{WI}, p_{Wald}, p_{VC})$$
+
+Then use a inverse normal distribution to calculate pvalue of $T_{PCO}$. So the key step is to compute the six pvalues. The bug happens in the step of computing $p_{WI}$. The test statistic for this pvalus is,
+$$T_{WI}=\sum_{k=1}^K {z_k^2} = \sum_{k=1}^K {PC_k^2}=\sum_{k=1}^K {\lambda_k \chi_{1k}^2}$$
+,where $K$ is number of all PC's of expression matrix, $PC_k=u_k^Tz \sim N(0, \lambda_k)$, $u_k$ is k-th eigenvector with eigenvalue $\lambda_k$; $z$ is zscore vector for one snp to $K$ genes, $\chi_{1k}$ is chi-square distribution with DF 1. If we only use $\lambda>1$ for TruncPCO, i.e. $T_{WI}^{Trunc}=\sum_{k=1}^{k_0} {PC_k^2}=\sum_{k=1}^{k_0} {\lambda_k \chi_{1k}^2}$, what I only need to do is to subset $\lambda$'s and $PC_k$'s. That is what I did for other five tests. However, in the original PCO package, $T_{WI}$ is calculated using $\sum_{k=1}^K {z_k^2}$ and I should have changed $z_k$'s to $PC_k$'s. But I missed this. So, $T_{WI}$ actually used all $K$ $z_k$'s, and it's larger than the real $T_{WI}^{Trunc}$, therefore the pvalue is smaller than the real $p_{WI}^{Trunc}$. That is why in the above plot, TruncPCO has many small pvalues and its histogram skews to the left.
+
+So I used the debuged code and re-computed pvalues for the same (module, chr). The result is in the third column.
+
+```{r}
+knitr::include_graphics("1101.fig4.TruncPCO.png", error = FALSE)
+```
+
+The histogram became approximately flat. For this (module13, chr19), there seems to be some signals. Next, I give another example (module, chr), where there seems no signals.
+
+```{r}
+knitr::include_graphics("1101.fig5.TruncPCO.png", error = FALSE)
+```
+
+The histogram by the debugged TruncPCO is still almost flat in this cese, which makes sense.
+
+Now I have the updated pvalues. Next, I rerun TruncPCO for the null zscore, and use the null p's to adjust for these updated pvalues. Then see how many snps are significant ($p_{adj}<\frac{0.05}{18\times22}$). I do this because I want to see how are the signals by this debugged TruncPCO compared with those by the previous TruncPCO. For now, I checked for the above two (module, chr) and the signals are almost the same.
+
+From now on, I will use this correct version of TruncPCO to compute p's for other datasets and update p's for datasets I've analyzed.
+
+### Use tensorQTL do more permutation?
+
+So far, the way we use to adjust p is to permute samples once, calculate null z, then null p, then using this null p distribution to adjust the observe p's. This one-time permutation procedure should work. We do the permutation once because multiple permutation is computation-time heavy. So can we use tensorQTL to make permutation faster?
+
+As far as I understand, tensorQTL is like FastQTL, which does fast permutation to provide the adjusted minimum pvalues for each gene. This is gene-level adjustment, not the snp-level adjustment as we want. So we can't have more faster permutations by tensorQTL.
+
+### Do another round of permutation.
+
+To see how stable the signals are, I do another round of permutation for the above two (module, chr). Here I use TruncPCO for pvalues and empirical null for p adjustment. The following table gives the results.
+
+```{r}
+res = data.frame("example" = c("(module13,chr19)", "(module17,chr15)"),
+                 "oldTruncPCO.perm.1" = c(157, 1),
+                 "TruncPCO.perm.1" = c(159, 0),
+                 "TruncPCO.perm.2" = c(155, 1))
+knitr::kable(res)
+```
+
+
+
+### Notation table
+
+To make it clear, the following table is for notations of different methods.
+
+```{r results='asis'}
+res = data.frame("data" = c("observe", "null"),
+                 "PCO" = c("p.PCO", "p.null.PCO"),
+                 "TruncPCO.old" = c(NA, NA),
+                 "TruncPCO" = c("p.TruncPCO", "p.null.TruncPCO"))
+knitr::kable(res)
+```
+
+* "data" is for the data used. "observe" means pvalues are calculated from the observed data. "null" means pvalues are computed from permutation data. This is needed because we need to adjust pvalues in the downstream FDR analysis using the empirical null distribution of pvalues.
+  * We use empirical null because snps are in LD, so the tests are not independent and therefore the null distribution of p is not necessarily uniform.
+  * Why not using BH? BH assumes independent tests and uniform null.
+  * Why not using Bonferroni? Conservative for snp-level FDR correction, particularly for the trans snp-level FDR.
+  * ~~Approaches to deal with the multiple testing in QTL studies, cis and trans. (???)~~
+* "PCO" is the standard PCO using all $\lambda$'s. "TruncPCO.old" is PCO using only $\lambda>1$. This is the method used for all results obtained before 11/02/2020. I added ".old" because the code of this TruncPCO has bugs. "TruncPCO" uses the debugded code.
+
+### Signals we have so far.
+
+```{r}
+knitr::include_graphics("1101.fig6.signals.png", error = FALSE)
+```
 
