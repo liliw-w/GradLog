@@ -406,7 +406,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -415,7 +415,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -427,7 +427,7 @@ div.tocify {
 <strong>Last updated:</strong> 2020-11-05
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -443,12 +443,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree5bc34ec29c863fe52b0cbea6219fd45fae83a381targetblank5bc34eca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/5bc34ec29c863fe52b0cbea6219fd45fae83a381" target="_blank">5bc34ec</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree58f14e881a1e055d06b5e4f7c3c201a454859fd8targetblank58f14e8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/58f14e881a1e055d06b5e4f7c3c201a454859fd8" target="_blank">58f14e8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree5bc34ec29c863fe52b0cbea6219fd45fae83a381targetblank5bc34eca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree58f14e881a1e055d06b5e4f7c3c201a454859fd8targetblank58f14e8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/5bc34ec29c863fe52b0cbea6219fd45fae83a381" target="_blank">5bc34ec</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/58f14e881a1e055d06b5e4f7c3c201a454859fd8" target="_blank">58f14e8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -538,9 +538,6 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
-
-Unstaged changes:
-    Modified:   analysis/Log.Rmd
 
 </code></pre>
 <p>
@@ -579,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/58f14e881a1e055d06b5e4f7c3c201a454859fd8/analysis/Log.Rmd" target="_blank">58f14e8</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-05
+</td>
+<td>
+wflow_publish(“analysis/Log.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/58f14e881a1e055d06b5e4f7c3c201a454859fd8/docs/Log.html" target="_blank">58f14e8</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-05
+</td>
+<td>
+wflow_publish(“analysis/Log.Rmd”)
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -856,13 +887,124 @@ Lili Wang
 <h3>Debug code for TruncPCO.</h3>
 <p>I was doubting that TruncPCO (using only <span class="math inline">\(\lambda&gt;1\)</span>) code may have bugs because of the following weird qqplot and histogram of pvalues.</p>
 <p><img src="1101.fig3.TruncPCO.png" width="70%" height="70%" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101.fig3.TruncPCO">
+Past versions of 1101.fig3.TruncPCO.png
+</button>
+</p>
+<div id="fig-1101.fig3.TruncPCO" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/58f14e881a1e055d06b5e4f7c3c201a454859fd8/docs/1101.fig3.TruncPCO.png" target="_blank">58f14e8</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Rows are qqplot and histogram of pvalues. These pvalues are observed pvalues rather than null pvalues. Left column is for standard PCO (using all <span class="math inline">\(\lambda\)</span>’s); right is for TruncPCO. I thought TruncPCO is weird because a histogram of pvalues shouldn’t be as skewed as the lower right one. This skewed plot means pvalues by TruncPCO are overall smaller than PCO. We thought this may be due to LD among snps, i.e. the tests are not independent. However, even with the LD complication, the histogram should be approximately flat as in the lower left plot, where the tests are not independent either.</p>
 <p>So I looked into the code for TruncPCO and see if there are bugs I didn’t notice. <em>(This paragraph explains what the bug is. See the histogram by the debugged code in next paragraph.)</em> PCO uses the minimum pvalue of six tests as the test statistic, i.e. <span class="math display">\[T_{PCO}=min(p_{PCMinP}, p_{PCFisher}, p_{PCLC}, p_{WI}, p_{Wald}, p_{VC})\]</span></p>
 <p>Then use a inverse normal distribution to calculate pvalue of <span class="math inline">\(T_{PCO}\)</span>. So the key step is to compute the six pvalues. The bug happens in the step of computing <span class="math inline">\(p_{WI}\)</span>. The test statistic for this pvalus is, <span class="math display">\[T_{WI}=\sum_{k=1}^K {z_k^2} = \sum_{k=1}^K {PC_k^2}=\sum_{k=1}^K {\lambda_k \chi_{1k}^2}\]</span> ,where <span class="math inline">\(K\)</span> is number of all PC’s of expression matrix, <span class="math inline">\(PC_k=u_k^Tz \sim N(0, \lambda_k)\)</span>, <span class="math inline">\(u_k\)</span> is k-th eigenvector with eigenvalue <span class="math inline">\(\lambda_k\)</span>; <span class="math inline">\(z\)</span> is zscore vector for one snp to <span class="math inline">\(K\)</span> genes, <span class="math inline">\(\chi_{1k}\)</span> is chi-square distribution with DF 1. If we only use <span class="math inline">\(\lambda&gt;1\)</span> for TruncPCO, i.e. <span class="math inline">\(T_{WI}^{Trunc}=\sum_{k=1}^{k_0} {PC_k^2}=\sum_{k=1}^{k_0} {\lambda_k \chi_{1k}^2}\)</span>, what I only need to do is to subset <span class="math inline">\(\lambda\)</span>’s and <span class="math inline">\(PC_k\)</span>’s. That is what I did for other five tests. However, in the original PCO package, <span class="math inline">\(T_{WI}\)</span> is calculated using <span class="math inline">\(\sum_{k=1}^K {z_k^2}\)</span> and I should have changed <span class="math inline">\(z_k\)</span>’s to <span class="math inline">\(PC_k\)</span>’s. But I missed this. So, <span class="math inline">\(T_{WI}\)</span> actually used all <span class="math inline">\(K\)</span> <span class="math inline">\(z_k\)</span>’s, and it’s larger than the real <span class="math inline">\(T_{WI}^{Trunc}\)</span>, therefore the pvalue is smaller than the real <span class="math inline">\(p_{WI}^{Trunc}\)</span>. That is why in the above plot, TruncPCO has many small pvalues and its histogram skews to the left.</p>
 <p>So I used the debuged code and re-computed pvalues for the same (module, chr). The result is in the third column.</p>
 <p><img src="1101.fig4.TruncPCO.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101.fig4.TruncPCO">
+Past versions of 1101.fig4.TruncPCO.png
+</button>
+</p>
+<div id="fig-1101.fig4.TruncPCO" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/58f14e881a1e055d06b5e4f7c3c201a454859fd8/docs/1101.fig4.TruncPCO.png" target="_blank">58f14e8</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The histogram became approximately flat. For this (module13, chr19), there seems to be some signals. Next, I give another example (module, chr), where there seems no signals.</p>
 <p><img src="1101.fig5.TruncPCO.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101.fig5.TruncPCO">
+Past versions of 1101.fig5.TruncPCO.png
+</button>
+</p>
+<div id="fig-1101.fig5.TruncPCO" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/58f14e881a1e055d06b5e4f7c3c201a454859fd8/docs/1101.fig5.TruncPCO.png" target="_blank">58f14e8</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The histogram by the debugged TruncPCO is still almost flat in this cese, which makes sense.</p>
 <p>Now I have the updated pvalues. Next, I rerun TruncPCO for the null zscore, and use the null p’s to adjust for these updated pvalues. Then see how many snps are significant (<span class="math inline">\(p_{adj}&lt;\frac{0.05}{18\times22}\)</span>). I do this because I want to see how are the signals by this debugged TruncPCO compared with those by the previous TruncPCO. For now, I checked for the above two (module, chr) and the signals are almost the same.</p>
 <p>From now on, I will use this correct version of TruncPCO to compute p’s for other datasets and update p’s for datasets I’ve analyzed.</p>
@@ -941,6 +1083,43 @@ Lili Wang
 <div id="signals-we-have-so-far." class="section level3">
 <h3>Signals we have so far.</h3>
 <p><img src="1101.fig6.signals.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101.fig6.signals">
+Past versions of 1101.fig6.signals.png
+</button>
+</p>
+<div id="fig-1101.fig6.signals" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/58f14e881a1e055d06b5e4f7c3c201a454859fd8/docs/1101.fig6.signals.png" target="_blank">58f14e8</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -962,14 +1141,17 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] workflowr_1.6.2
+
 loaded via a namespace (and not attached):
- [1] workflowr_1.6.2 Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25  
- [5] later_1.0.0     R6_2.4.1        backports_1.1.5 git2r_0.27.1   
- [9] magrittr_1.5    evaluate_0.14   highr_0.8       stringi_1.4.6  
-[13] rlang_0.4.7     fs_1.3.2        promises_1.1.0  whisker_0.4    
-[17] rmarkdown_2.1   tools_3.6.3     stringr_1.4.0   glue_1.3.2     
-[21] httpuv_1.5.2    xfun_0.12       yaml_2.2.1      compiler_3.6.3 
-[25] htmltools_0.4.0 knitr_1.28     </code></pre>
+ [1] Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25   later_1.0.0    
+ [5] R6_2.4.1        backports_1.1.5 git2r_0.27.1    magrittr_1.5   
+ [9] evaluate_0.14   highr_0.8       stringi_1.4.6   rlang_0.4.7    
+[13] fs_1.3.2        promises_1.1.0  whisker_0.4     rmarkdown_2.1  
+[17] tools_3.6.3     stringr_1.4.0   glue_1.3.2      httpuv_1.5.2   
+[21] xfun_0.12       yaml_2.2.1      compiler_3.6.3  htmltools_0.4.0
+[25] knitr_1.28     </code></pre>
 </div>
 </div>
 </div>
