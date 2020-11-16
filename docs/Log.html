@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree7266ca31811c70f298c8a992b2c328786ccc58cftargetblank7266ca3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/7266ca31811c70f298c8a992b2c328786ccc58cf" target="_blank">7266ca3</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecff4a06bbcaaa0c1ba6ebcf27a073ef75679f633targetblankcff4a06a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633" target="_blank">cff4a06</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree7266ca31811c70f298c8a992b2c328786ccc58cftargetblank7266ca3a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecff4a06bbcaaa0c1ba6ebcf27a073ef75679f633targetblankcff4a06a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/7266ca31811c70f298c8a992b2c328786ccc58cf" target="_blank">7266ca3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633" target="_blank">cff4a06</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -538,9 +538,6 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
-
-Untracked files:
-    Untracked:  data/signals.summary.txt
 
 </code></pre>
 <p>
@@ -579,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633/analysis/Log.Rmd" target="_blank">cff4a06</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-16
+</td>
+<td>
+wflow_publish(c(“analysis/Log.Rmd”, “data/signals.summary.txt”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/d13875e9b2538a0a2d5d73b62b6c5d49684cea95/docs/Log.html" target="_blank">d13875e</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -755,8 +786,6 @@ Build site.
 <div id="results-summary." class="section level3">
 <h3>Results summary.</h3>
 <p>This table is for the results summary.</p>
-<pre><code>Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-incomplete final line found by readTableHeader on &#39;data/signals.summary.txt&#39;</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -803,11 +832,85 @@ incomplete final line found by readTableHeader on &#39;data/signals.summary.txt&
 <p><strong>Question</strong>: Is this too small for claiming significance for trans?</p>
 <p>The right plot is the histogram of the chromosomes the signals are on.</p>
 <p><img src="plot.TCGA.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.TCGA">
+Past versions of plot.TCGA.png
+</button>
+</p>
+<div id="fig-plot.TCGA" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633/docs/plot.TCGA.png" target="_blank">cff4a06</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="dgn" class="section level3">
 <h3>DGN</h3>
 <p>As showed in the plot for DGN, among 500 independent signals, most of their pvalues have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
 <p><img src="plot.DGN.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.DGN">
+Past versions of plot.DGN.png
+</button>
+</p>
+<div id="fig-plot.DGN" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633/docs/plot.DGN.png" target="_blank">cff4a06</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gtex" class="section level3">
 <h3>GTEx</h3>
