@@ -12,6 +12,95 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+
+## Nov 16
+
+### Work I did.
+For the last week, I re-write the whole pipeline into snakemake files, so that I can run different datasets with ease. [script]
+
+[script]: https://github.com/liliw-w/Trans/tree/main/script
+
+Before listing the results, I will first describe the key steps in the pipeine.
+
+1. Construct co-expressed modules using `minModuleSize=20`.
+2. Compute zscores by tensorQTL.
+3. Compute pvalues by TruncPCO.
+4. Adjust for multiple testing based on one-time permutation, followed by Bonferroni.
+
+### Results summary.
+
+This table is for the results summary.
+
+```{r}
+signals.summary = read.delim("data/signals.summary.txt", check.names = F, stringsAsFactors = F, quote = NULL)
+knitr::kable(signals.summary)
+```
+
+### TCGA
+The following plot is for the 2063 independent signals. The left plot is the histogram of $-logp$. Since signals with $p<10^{-16}$ have pvalue as 0 in R, here I give these signals pvalue of $10^{-17}$, which have $-logp=17$. The plot shows that among 2063 signals, most of them have $p \approx 10^{-5}$. 
+
+**Question**: Is this too small for claiming significance for trans?
+
+The right plot is the histogram of the chromosomes the signals are on.
+
+```{r}
+knitr::include_graphics("plot.TCGA.png", error = FALSE)
+```
+
+
+### DGN
+
+As showed in the plot for DGN, among 500 independent signals, most of their pvalues have $p \approx 10^{-5}$.
+
+```{r}
+knitr::include_graphics("plot.DGN.png", error = FALSE)
+```
+
+
+### GTEx
+
+1. Expression data pre-process.
+
+Below is how GTEx 2020 paper pre-processs expression data.
+
+"Gene-level expression quantification was performed using RNA-SeQC [68]. Gene-level read counts and TPM values were produced using the following read-level filters: 1) reads were uniquely mapped (corresponding to a mapping quality of 255 for STAR BAMs); 2) reads were aligned in proper pairs; 3) the read alignment distance was ≤ 6; 4) reads were fully contained within exon boundaries. Reads overlapping introns were not counted. These filters were applied using the “-strictMode” flag in RNA-SeQC. Gene expression values for all samples from a given tissue were normalized for eQTL analyses using the following procedure: 1) read counts were normalized between samples using TMM [69]; 2) genes were selected based on expression thresholds of ≥0.1 TPM in ≥20% of samples and ≥6 reads (unnormalized) in ≥20% of samples; 3) expression values for each gene were inverse normal transformed across samples." [link][GTEx 2020 paper supp]
+
+[GTEx 2020 paper supp]: https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf
+
+2. Genotype data pre-process.
+
+Any filter? QCed? script?
+
+## Nov 09
+
+### Paper using permutation-based false discovery rate.
+
+This [paper] uses permutations to correct for FDR of a complex test statistic. Like in our cases, it's unrealistic to do thousands of permutations. Specifically, they did 10 permutations and adjusted pvalues based on these 10 empirical null distributions. They justied why 10 permutations are enough.
+
+[paper]: https://www-nature-com.proxy.uchicago.edu/articles/ng.2756#Sec12
+
+### Modify PCO code from one SNP a time to multiple SNPs.
+
+1. davies method
+
+`davies.R`: Remove `PACKAGE=MPAT`; Run in command line `R SMP SHLIB qfc.cpp`; Run in R `dyn.load("./script/qfc.so")`
+
+2. liumod method
+
+Use liumod method when `p.WI ==0 | p.WI < 0`.
+
+### Snakemake pipeline.
+
+### Results
+
+z (tensorQTL) + p (TruncPCO) + FDR (one time permutation).
+
+z & p: add index for observe data or permutation.
+
+`minModuleSize=20` in WGCNA.
+
+DGN; TCGA
+
 ## Nov 02
 ### Why use `minModuleSize=30` in WGCNA for TCGA?
 
@@ -173,4 +262,5 @@ knitr::kable(res)
 ```{r}
 knitr::include_graphics("1101.fig6.signals.png", error = FALSE)
 ```
+
 

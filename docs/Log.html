@@ -406,7 +406,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -415,7 +415,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -424,10 +424,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-05
+<strong>Last updated:</strong> 2020-11-16
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -443,12 +443,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree58f14e881a1e055d06b5e4f7c3c201a454859fd8targetblank58f14e8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/58f14e881a1e055d06b5e4f7c3c201a454859fd8" target="_blank">58f14e8</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef0a14c615c62e9dabf7da371d5d19b49347e84d1targetblankf0a14c6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/f0a14c615c62e9dabf7da371d5d19b49347e84d1" target="_blank">f0a14c6</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree58f14e881a1e055d06b5e4f7c3c201a454859fd8targetblank58f14e8a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef0a14c615c62e9dabf7da371d5d19b49347e84d1targetblankf0a14c6a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/58f14e881a1e055d06b5e4f7c3c201a454859fd8" target="_blank">58f14e8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/f0a14c615c62e9dabf7da371d5d19b49347e84d1" target="_blank">f0a14c6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -538,6 +538,12 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
+
+Untracked files:
+    Untracked:  data/signals.summary.txt
+
+Unstaged changes:
+    Modified:   analysis/Log.Rmd
 
 </code></pre>
 <p>
@@ -576,6 +582,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/f0a14c615c62e9dabf7da371d5d19b49347e84d1/docs/Log.html" target="_blank">f0a14c6</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -683,6 +706,117 @@ Build site.
 </div>
 <hr>
 </div>
+</div>
+</div>
+<div id="nov-16" class="section level2">
+<h2>Nov 16</h2>
+<div id="work-i-did." class="section level3">
+<h3>Work I did.</h3>
+<p>For the last week, I re-write the whole pipeline into snakemake files, so that I can run different datasets with ease. <a href="https://github.com/liliw-w/Trans/tree/main/script">script</a></p>
+<p>Before listing the results, I will first describe the key steps in the pipeine.</p>
+<ol style="list-style-type: decimal">
+<li>Construct co-expressed modules using <code>minModuleSize=20</code>.</li>
+<li>Compute zscores by tensorQTL.</li>
+<li>Compute pvalues by TruncPCO.</li>
+<li>Adjust for multiple testing based on one-time permutation, followed by Bonferroni.</li>
+</ol>
+</div>
+<div id="results-summary." class="section level3">
+<h3>Results summary.</h3>
+<p>This table is for the results summary.</p>
+<pre><code>Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+incomplete final line found by readTableHeader on &#39;data/signals.summary.txt&#39;</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dataset</th>
+<th align="left">nGene</th>
+<th align="right">nModule</th>
+<th align="left">pvalue</th>
+<th align="left">pvalue correction</th>
+<th align="right">FDR level</th>
+<th align="right">“(transeQTL, module)”</th>
+<th align="right">unique transeQTLs</th>
+<th align="right">independent transeQTLs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left">17673;8963;8710</td>
+<td align="right">81</td>
+<td align="left">TruncPCO</td>
+<td align="left">empirical null</td>
+<td align="right">0.05</td>
+<td align="right">17210</td>
+<td align="right">17171</td>
+<td align="right">2063</td>
+</tr>
+<tr class="even">
+<td align="left">DGN</td>
+<td align="left">11979; 8120; 3859</td>
+<td align="right">21</td>
+<td align="left">TruncPCO</td>
+<td align="left">empirical null</td>
+<td align="right">0.05</td>
+<td align="right">3536</td>
+<td align="right">3439</td>
+<td align="right">500</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tcga" class="section level3">
+<h3>TCGA</h3>
+<p>The following plot is for the 2063 independent signals. The left plot is the histogram of <span class="math inline">\(-logp\)</span>. Since signals with <span class="math inline">\(p&lt;10^{-16}\)</span> have pvalue as 0 in R, here I give these signals pvalue of <span class="math inline">\(10^{-17}\)</span>, which have <span class="math inline">\(-logp=17\)</span>. The plot shows that among 2063 signals, most of them have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
+<p><strong>Question</strong>: Is this too small for claiming significance for trans?</p>
+<p>The right plot is the histogram of the chromosomes the signals are on.</p>
+<p><img src="plot.TCGA.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="dgn" class="section level3">
+<h3>DGN</h3>
+<p>As showed in the plot for DGN, among 500 independent signals, most of their pvalues have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
+<p><img src="plot.DGN.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gtex" class="section level3">
+<h3>GTEx</h3>
+<ol style="list-style-type: decimal">
+<li>Expression data pre-process.</li>
+</ol>
+<p>Below is how GTEx 2020 paper pre-processs expression data.</p>
+<p>“Gene-level expression quantification was performed using RNA-SeQC [68]. Gene-level read counts and TPM values were produced using the following read-level filters: 1) reads were uniquely mapped (corresponding to a mapping quality of 255 for STAR BAMs); 2) reads were aligned in proper pairs; 3) the read alignment distance was ≤ 6; 4) reads were fully contained within exon boundaries. Reads overlapping introns were not counted. These filters were applied using the “-strictMode” flag in RNA-SeQC. Gene expression values for all samples from a given tissue were normalized for eQTL analyses using the following procedure: 1) read counts were normalized between samples using TMM [69]; 2) genes were selected based on expression thresholds of ≥0.1 TPM in ≥20% of samples and ≥6 reads (unnormalized) in ≥20% of samples; 3) expression values for each gene were inverse normal transformed across samples." <a href="https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf">link</a></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Genotype data pre-process.</li>
+</ol>
+<p>Any filter? QCed? script?</p>
+</div>
+</div>
+<div id="nov-09" class="section level2">
+<h2>Nov 09</h2>
+<div id="paper-using-permutation-based-false-discovery-rate." class="section level3">
+<h3>Paper using permutation-based false discovery rate.</h3>
+<p>This <a href="https://www-nature-com.proxy.uchicago.edu/articles/ng.2756#Sec12">paper</a> uses permutations to correct for FDR of a complex test statistic. Like in our cases, it’s unrealistic to do thousands of permutations. Specifically, they did 10 permutations and adjusted pvalues based on these 10 empirical null distributions. They justied why 10 permutations are enough.</p>
+</div>
+<div id="modify-pco-code-from-one-snp-a-time-to-multiple-snps." class="section level3">
+<h3>Modify PCO code from one SNP a time to multiple SNPs.</h3>
+<ol style="list-style-type: decimal">
+<li>davies method</li>
+</ol>
+<p><code>davies.R</code>: Remove <code>PACKAGE=MPAT</code>; Run in command line <code>R SMP SHLIB qfc.cpp</code>; Run in R <code>dyn.load("./script/qfc.so")</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li>liumod method</li>
+</ol>
+<p>Use liumod method when <code>p.WI ==0 | p.WI &lt; 0</code>.</p>
+</div>
+<div id="snakemake-pipeline." class="section level3">
+<h3>Snakemake pipeline.</h3>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<p>z (tensorQTL) + p (TruncPCO) + FDR (one time permutation).</p>
+<p>z &amp; p: add index for observe data or permutation.</p>
+<p><code>minModuleSize=20</code> in WGCNA.</p>
+<p>DGN; TCGA</p>
 </div>
 </div>
 <div id="nov-02" class="section level2">
@@ -1141,17 +1275,14 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
-other attached packages:
-[1] workflowr_1.6.2
-
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25   later_1.0.0    
- [5] R6_2.4.1        backports_1.1.5 git2r_0.27.1    magrittr_1.5   
- [9] evaluate_0.14   highr_0.8       stringi_1.4.6   rlang_0.4.7    
-[13] fs_1.3.2        promises_1.1.0  whisker_0.4     rmarkdown_2.1  
-[17] tools_3.6.3     stringr_1.4.0   glue_1.3.2      httpuv_1.5.2   
-[21] xfun_0.12       yaml_2.2.1      compiler_3.6.3  htmltools_0.4.0
-[25] knitr_1.28     </code></pre>
+ [1] workflowr_1.6.2 Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25  
+ [5] later_1.0.0     R6_2.4.1        backports_1.1.5 git2r_0.27.1   
+ [9] magrittr_1.5    evaluate_0.14   highr_0.8       stringi_1.4.6  
+[13] rlang_0.4.7     fs_1.3.2        promises_1.1.0  whisker_0.4    
+[17] rmarkdown_2.1   tools_3.6.3     stringr_1.4.0   glue_1.3.2     
+[21] httpuv_1.5.2    xfun_0.12       yaml_2.2.1      compiler_3.6.3 
+[25] htmltools_0.4.0 knitr_1.28     </code></pre>
 </div>
 </div>
 </div>
