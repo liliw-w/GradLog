@@ -31,7 +31,7 @@ Before listing the results, I will first describe the key steps in the pipeine.
 
 This table is for the results summary.
 
-```{r}
+```{r warning=FALSE}
 signals.summary = read.delim("data/signals.summary.txt", check.names = F, stringsAsFactors = F, quote = NULL)
 knitr::kable(signals.summary)
 ```
