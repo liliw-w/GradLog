@@ -44,7 +44,7 @@ The following plot is for the 2063 independent signals. The left plot is the his
 The right plot is the histogram of the chromosomes the signals are on.
 
 ```{r}
-knitr::include_graphics("../data/plot.TCGA.png", error = FALSE)
+knitr::include_graphics("plot.TCGA.png", error = FALSE)
 ```
 
 
@@ -53,7 +53,7 @@ knitr::include_graphics("../data/plot.TCGA.png", error = FALSE)
 As showed in the plot for DGN, among 500 independent signals, most of their pvalues have $p \approx 10^{-5}$.
 
 ```{r}
-knitr::include_graphics("../data/plot.DGN.png", error = FALSE)
+knitr::include_graphics("plot.DGN.png", error = FALSE)
 ```
 
 
