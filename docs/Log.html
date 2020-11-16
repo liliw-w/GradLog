@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb1d9196edc58d364c72bf771bc5ed75b29834906targetblankb1d9196a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/b1d9196edc58d364c72bf771bc5ed75b29834906" target="_blank">b1d9196</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree655ec47ad3d931c75dce55ed137633816840d8f2targetblank655ec47a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/655ec47ad3d931c75dce55ed137633816840d8f2" target="_blank">655ec47</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb1d9196edc58d364c72bf771bc5ed75b29834906targetblankb1d9196a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree655ec47ad3d931c75dce55ed137633816840d8f2targetblank655ec47a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/b1d9196edc58d364c72bf771bc5ed75b29834906" target="_blank">b1d9196</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/655ec47ad3d931c75dce55ed137633816840d8f2" target="_blank">655ec47</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -538,6 +538,10 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
+
+Unstaged changes:
+    Deleted:    data/plot.DGN.png
+    Deleted:    data/plot.TCGA.png
 
 </code></pre>
 <p>
@@ -576,6 +580,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/655ec47ad3d931c75dce55ed137633816840d8f2/analysis/Log.Rmd" target="_blank">655ec47</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-16
+</td>
+<td>
+wflow_publish(c(“analysis/Log.Rmd”, “docs/plot.DGN.png”, “docs/plot.TCGA.png”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/1a318114073f2dc97cced11038c8af23674c23dd/docs/Log.html" target="_blank">1a31811</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -865,7 +903,7 @@ Build site.
 <p>The following plot is for the 2063 independent signals. The left plot is the histogram of <span class="math inline">\(-logp\)</span>. Since signals with <span class="math inline">\(p&lt;10^{-16}\)</span> have pvalue as 0 in R, here I give these signals pvalue of <span class="math inline">\(10^{-17}\)</span>, which have <span class="math inline">\(-logp=17\)</span>. The plot shows that among 2063 signals, most of them have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
 <p><strong>Question</strong>: Is this too small for claiming significance for trans?</p>
 <p>The right plot is the histogram of the chromosomes the signals are on.</p>
-<p><img src="../data/plot.TCGA.png" width="1500" style="display: block; margin: auto;" /></p>
+<p><img src="plot.TCGA.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.TCGA">
 Past versions of plot.TCGA.png
@@ -890,7 +928,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/b1d9196edc58d364c72bf771bc5ed75b29834906/data/plot.TCGA.png" target="_blank">b1d9196</a>
+<a href="https://github.com/liliw-w/GradLog/blob/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633/docs/plot.TCGA.png" target="_blank">cff4a06</a>
 </td>
 <td>
 Lili Wang
@@ -907,7 +945,7 @@ Lili Wang
 <div id="dgn" class="section level3">
 <h3>DGN</h3>
 <p>As showed in the plot for DGN, among 500 independent signals, most of their pvalues have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
-<p><img src="../data/plot.DGN.png" width="1500" style="display: block; margin: auto;" /></p>
+<p><img src="plot.DGN.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.DGN">
 Past versions of plot.DGN.png
@@ -932,7 +970,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/b1d9196edc58d364c72bf771bc5ed75b29834906/data/plot.DGN.png" target="_blank">b1d9196</a>
+<a href="https://github.com/liliw-w/GradLog/blob/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633/docs/plot.DGN.png" target="_blank">cff4a06</a>
 </td>
 <td>
 Lili Wang
@@ -1447,13 +1485,13 @@ other attached packages:
 [1] workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4      png_0.1-7       rprojroot_1.3-2 digest_0.6.25  
- [5] later_1.0.0     R6_2.4.1        backports_1.1.5 git2r_0.27.1   
- [9] magrittr_1.5    evaluate_0.14   highr_0.8       stringi_1.4.6  
-[13] rlang_0.4.7     fs_1.3.2        promises_1.1.0  whisker_0.4    
-[17] rmarkdown_2.1   tools_3.6.3     stringr_1.4.0   glue_1.3.2     
-[21] httpuv_1.5.2    xfun_0.12       yaml_2.2.1      compiler_3.6.3 
-[25] htmltools_0.4.0 knitr_1.28     </code></pre>
+ [1] Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25   later_1.0.0    
+ [5] R6_2.4.1        backports_1.1.5 git2r_0.27.1    magrittr_1.5   
+ [9] evaluate_0.14   highr_0.8       stringi_1.4.6   rlang_0.4.7    
+[13] fs_1.3.2        promises_1.1.0  whisker_0.4     rmarkdown_2.1  
+[17] tools_3.6.3     stringr_1.4.0   glue_1.3.2      httpuv_1.5.2   
+[21] xfun_0.12       yaml_2.2.1      compiler_3.6.3  htmltools_0.4.0
+[25] knitr_1.28     </code></pre>
 </div>
 </div>
 </div>
