@@ -424,7 +424,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-16
+<strong>Last updated:</strong> 2020-11-19
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree655ec47ad3d931c75dce55ed137633816840d8f2targetblank655ec47a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/655ec47ad3d931c75dce55ed137633816840d8f2" target="_blank">655ec47</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree830b86a2b8c34482dc5486f0e978d8424b3a2a2atargetblank830b86aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/830b86a2b8c34482dc5486f0e978d8424b3a2a2a" target="_blank">830b86a</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree655ec47ad3d931c75dce55ed137633816840d8f2targetblank655ec47a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree830b86a2b8c34482dc5486f0e978d8424b3a2a2atargetblank830b86aa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/655ec47ad3d931c75dce55ed137633816840d8f2" target="_blank">655ec47</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/830b86a2b8c34482dc5486f0e978d8424b3a2a2a" target="_blank">830b86a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -538,10 +538,6 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
-
-Unstaged changes:
-    Deleted:    data/plot.DGN.png
-    Deleted:    data/plot.TCGA.png
 
 </code></pre>
 <p>
@@ -580,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/830b86a2b8c34482dc5486f0e978d8424b3a2a2a/analysis/Log.Rmd" target="_blank">830b86a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
+</td>
+<td>
+Add FDR based on combined chr/module.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/30f85a08c6d4dc21af29a0f6dc17f4bf8ce95989/docs/Log.html" target="_blank">30f85a0</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -863,10 +893,10 @@ Build site.
 <tr class="header">
 <th align="left">Dataset</th>
 <th align="left">nGene</th>
-<th align="right">nModule</th>
+<th align="left">nModule</th>
 <th align="left">pvalue</th>
 <th align="left">pvalue correction</th>
-<th align="right">FDR level</th>
+<th align="left">FDR level</th>
 <th align="right">“(transeQTL, module)”</th>
 <th align="right">unique transeQTLs</th>
 <th align="right">independent transeQTLs</th>
@@ -876,34 +906,84 @@ Build site.
 <tr class="odd">
 <td align="left">TCGA</td>
 <td align="left">17673;8963;8710</td>
-<td align="right">81</td>
+<td align="left">81</td>
 <td align="left">TruncPCO</td>
 <td align="left">empirical null</td>
-<td align="right">0.05</td>
+<td align="left">0.05</td>
 <td align="right">17210</td>
 <td align="right">17171</td>
 <td align="right">2063</td>
 </tr>
 <tr class="even">
+<td align="left">TCGA</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">empirical null combined chr</td>
+<td align="left"></td>
+<td align="right">8556</td>
+<td align="right">8548</td>
+<td align="right">317</td>
+</tr>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">empirical null combined chr+module</td>
+<td align="left"></td>
+<td align="right">9205</td>
+<td align="right">9196</td>
+<td align="right">423</td>
+</tr>
+<tr class="even">
 <td align="left">DGN</td>
 <td align="left">11979; 8120; 3859</td>
-<td align="right">21</td>
+<td align="left">21</td>
 <td align="left">TruncPCO</td>
 <td align="left">empirical null</td>
-<td align="right">0.05</td>
+<td align="left">0.05</td>
 <td align="right">3536</td>
 <td align="right">3439</td>
 <td align="right">500</td>
+</tr>
+<tr class="odd">
+<td align="left">DGN</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">empirical null combined chr</td>
+<td align="left"></td>
+<td align="right">733</td>
+<td align="right">671</td>
+<td align="right">47</td>
+</tr>
+<tr class="even">
+<td align="left">DGN</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">empirical null combined chr+module</td>
+<td align="left"></td>
+<td align="right">678</td>
+<td align="right">641</td>
+<td align="right">42</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="tcga" class="section level3">
 <h3>TCGA</h3>
-<p>The following plot is for the 2063 independent signals. The left plot is the histogram of <span class="math inline">\(-logp\)</span>. Since signals with <span class="math inline">\(p&lt;10^{-16}\)</span> have pvalue as 0 in R, here I give these signals pvalue of <span class="math inline">\(10^{-17}\)</span>, which have <span class="math inline">\(-logp=17\)</span>. The plot shows that among 2063 signals, most of them have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
+<p>The following three plots are for FDR correction based on each module and chr pair; combined chr’s for each module; combined chr’s and modules.</p>
+<p>The first plot is for the 2063 independent signals. The left plot is the histogram of <span class="math inline">\(-logp\)</span>. Since signals with <span class="math inline">\(p&lt;10^{-16}\)</span> have pvalue as 0 in R, here I give these signals pvalue of <span class="math inline">\(10^{-17}\)</span>, which have <span class="math inline">\(-logp=17\)</span>. The plot shows that among 2063 signals, most of them have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
 <p><strong>Question</strong>: Is this too small for claiming significance for trans?</p>
 <p>The right plot is the histogram of the chromosomes the signals are on.</p>
-<p><img src="plot.TCGA.png" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center">
+<img src="plot.TCGA.png" alt="(module, chr) pair"  />
+<p class="caption">
+(module, chr) pair
+</p>
+</div>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.TCGA">
 Past versions of plot.TCGA.png
@@ -928,6 +1008,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/830b86a2b8c34482dc5486f0e978d8424b3a2a2a/docs/plot.TCGA.png" target="_blank">830b86a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633/docs/plot.TCGA.png" target="_blank">cff4a06</a>
 </td>
 <td>
@@ -941,11 +1032,103 @@ Lili Wang
 </table>
 </div>
 </div>
+<div class="figure" style="text-align: center">
+<img src="plotchr.TCGA.png" alt="combine chr"  />
+<p class="caption">
+combine chr
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plotchr.TCGA">
+Past versions of plotchr.TCGA.png
+</button>
+</p>
+<div id="fig-plotchr.TCGA" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/830b86a2b8c34482dc5486f0e978d8424b3a2a2a/docs/plotchr.TCGA.png" target="_blank">830b86a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="plotchr.module.TCGA.png" alt="combine chr and modules"  />
+<p class="caption">
+combine chr and modules
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plotchr.module.TCGA">
+Past versions of plotchr.module.TCGA.png
+</button>
+</p>
+<div id="fig-plotchr.module.TCGA" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/830b86a2b8c34482dc5486f0e978d8424b3a2a2a/docs/plotchr.module.TCGA.png" target="_blank">830b86a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="dgn" class="section level3">
 <h3>DGN</h3>
+<p>The following three plots are for FDR correction based on each module and chr pair; combined chr’s for each module; combined chr’s and modules.</p>
 <p>As showed in the plot for DGN, among 500 independent signals, most of their pvalues have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
-<p><img src="plot.DGN.png" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center">
+<img src="plot.DGN.png" alt="(module, chr) pair"  />
+<p class="caption">
+(module, chr) pair
+</p>
+</div>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.DGN">
 Past versions of plot.DGN.png
@@ -970,6 +1153,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/830b86a2b8c34482dc5486f0e978d8424b3a2a2a/docs/plot.DGN.png" target="_blank">830b86a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/cff4a06bbcaaa0c1ba6ebcf27a073ef75679f633/docs/plot.DGN.png" target="_blank">cff4a06</a>
 </td>
 <td>
@@ -977,6 +1171,92 @@ Lili Wang
 </td>
 <td>
 2020-11-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="plotchr.DGN.png" alt="combine chr"  />
+<p class="caption">
+combine chr
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plotchr.DGN">
+Past versions of plotchr.DGN.png
+</button>
+</p>
+<div id="fig-plotchr.DGN" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/830b86a2b8c34482dc5486f0e978d8424b3a2a2a/docs/plotchr.DGN.png" target="_blank">830b86a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="plotchr.module.DGN.png" alt="combine chr and modules"  />
+<p class="caption">
+combine chr and modules
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plotchr.module.DGN">
+Past versions of plotchr.module.DGN.png
+</button>
+</p>
+<div id="fig-plotchr.module.DGN" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/830b86a2b8c34482dc5486f0e978d8424b3a2a2a/docs/plotchr.module.DGN.png" target="_blank">830b86a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
 </td>
 </tr>
 </tbody>
