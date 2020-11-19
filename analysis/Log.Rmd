@@ -33,27 +33,49 @@ This table is for the results summary.
 
 ```{r warning=FALSE}
 signals.summary = read.delim("data/signals.summary.txt", check.names = F, stringsAsFactors = F, quote = NULL)
+signals.summary[is.na(signals.summary)] = " "
 knitr::kable(signals.summary)
 ```
 
 ### TCGA
-The following plot is for the 2063 independent signals. The left plot is the histogram of $-logp$. Since signals with $p<10^{-16}$ have pvalue as 0 in R, here I give these signals pvalue of $10^{-17}$, which have $-logp=17$. The plot shows that among 2063 signals, most of them have $p \approx 10^{-5}$. 
+
+The following three plots are for FDR correction based on each module and chr pair; combined chr's for each module; combined chr's and modules.
+
+The first plot is for the 2063 independent signals. The left plot is the histogram of $-logp$. Since signals with $p<10^{-16}$ have pvalue as 0 in R, here I give these signals pvalue of $10^{-17}$, which have $-logp=17$. The plot shows that among 2063 signals, most of them have $p \approx 10^{-5}$. 
 
 **Question**: Is this too small for claiming significance for trans?
 
 The right plot is the histogram of the chromosomes the signals are on.
 
-```{r}
+```{r fig.cap="(module, chr) pair"}
 knitr::include_graphics("plot.TCGA.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr"}
+knitr::include_graphics("plotchr.TCGA.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr and modules"}
+knitr::include_graphics("plotchr.module.TCGA.png", error = FALSE)
 ```
 
 
 ### DGN
 
+The following three plots are for FDR correction based on each module and chr pair; combined chr's for each module; combined chr's and modules.
+
 As showed in the plot for DGN, among 500 independent signals, most of their pvalues have $p \approx 10^{-5}$.
 
-```{r}
+```{r fig.cap="(module, chr) pair"}
 knitr::include_graphics("plot.DGN.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr"}
+knitr::include_graphics("plotchr.DGN.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr and modules"}
+knitr::include_graphics("plotchr.module.DGN.png", error = FALSE)
 ```
 
 
