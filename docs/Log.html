@@ -424,7 +424,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-19
+<strong>Last updated:</strong> 2020-11-22
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree830b86a2b8c34482dc5486f0e978d8424b3a2a2atargetblank830b86aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/830b86a2b8c34482dc5486f0e978d8424b3a2a2a" target="_blank">830b86a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1daabf55ae681962a6f8623afd1f3a0afc5862b5targetblank1daabf5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/1daabf55ae681962a6f8623afd1f3a0afc5862b5" target="_blank">1daabf5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree830b86a2b8c34482dc5486f0e978d8424b3a2a2atargetblank830b86aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1daabf55ae681962a6f8623afd1f3a0afc5862b5targetblank1daabf5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/830b86a2b8c34482dc5486f0e978d8424b3a2a2a" target="_blank">830b86a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/1daabf55ae681962a6f8623afd1f3a0afc5862b5" target="_blank">1daabf5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -576,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1daabf55ae681962a6f8623afd1f3a0afc5862b5/analysis/Log.Rmd" target="_blank">1daabf5</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-22
+</td>
+<td>
+Nov 23. Add enrichment results for signals.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/e93d6a0d412c9c6bbf5cfbdeb36882cf27c0e6bb/docs/Log.html" target="_blank">e93d6a0</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -872,6 +906,162 @@ Build site.
 </div>
 </div>
 </div>
+<div id="nov-23" class="section level2">
+<h2>Nov 23</h2>
+<p>Last week, I used three ways to correct for the multiple testing based on the empirical null distributions, including correction based on (1) each module and chromosome pair; (2) combined chromosomes for each module; and (3) combined all chromosomes and modules. For the signals obtained from these three ways, I looked at their pvalues and the chromosomes they are on and found out that the latter two correction ways make more sense. So next I will look at the enrichment of the signals’ nearest genes.</p>
+<p>Some notes about what I did. I use the signals obtained from the combined chr’s and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its nearest genes as all the genes that have TSS upstream/downstream 0.5Mbp away from the signal. There are 528 genes for DGN and 2656 genes for TCGA.</p>
+<p>Next, I looked at the enrichment of these genes.</p>
+<div id="dgn" class="section level3">
+<h3>DGN</h3>
+<p>The complete enrichment result (used 510 genes) can be found <a href="https://biit.cs.ut.ee/gplink/l/5gyp1i9xS1">here</a>.</p>
+<p>Question: weird covariates in DGN dataset?</p>
+<p>There are basically two types of enrichment,</p>
+<ol style="list-style-type: decimal">
+<li>Mineral related.</li>
+</ol>
+<ul>
+<li><p>Pathways. KEGG: Mineral absorption; REAC: Metallothioneins bind metals, Response to metal ions; WP: Zinc homeostasis, Copper homeostasis.</p></li>
+<li><p>Biological process: stress response to metal ion; stress response to copper ion; detoxification of copper ion; cellular response to zinc ion; cellular response to copper ion.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Olfactory related.</li>
+</ol>
+<ul>
+<li><p>Pathways. KEGG: Olfactory transduction; REAC: Olfactory Signaling Pathway.</p></li>
+<li><p>Molecular function: olfactory receptor activity.</p></li>
+<li><p>Biological process: detection of chemical stimulus involved in sensory perception of smell; sensory perception of smell.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="enrich_DGN.png" alt="Enrichment of DGN signals."  />
+<p class="caption">
+Enrichment of DGN signals.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-enrich_DGN">
+Past versions of enrich_DGN.png
+</button>
+</p>
+<div id="fig-enrich_DGN" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1daabf55ae681962a6f8623afd1f3a0afc5862b5/docs/enrich_DGN.png" target="_blank">1daabf5</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tcga" class="section level3">
+<h3>TCGA</h3>
+<p>The complete enrichment result (used 2265 genes ???) can be found <a href="https://biit.cs.ut.ee/gplink/l/wJtdk0Z_SE">here</a>.</p>
+<p>Question: enrichment of all genes v.s. nearest genes of signals? 1Mb include too many genes?</p>
+<ol style="list-style-type: decimal">
+<li>immune-related pathways.</li>
+</ol>
+<ul>
+<li><p>Antigen processing and presentation</p>
+<p>“The immune surveillance of transformed/tumour cells drives alteration of the antigen processing and presentation pathways to evade detection and hence the immune response. Evasion of the immune response is a significant event tumour development and considered one of the hallmarks of cancer.” <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/imm.12675">[source]</a></p></li>
+</ul>
+<ul>
+<li><p>Rheumatoid arthritis</p>
+<p>“large cohort studies have consistently reported decreased occurrence of breast cancer among women with RA” <a href="https://ard.bmj.com/content/79/5/581.abstract">[source]</a></p></li>
+</ul>
+<ul>
+<li><p>Autoimmune thyroid disease</p>
+<p>“Some studies determined that the prevalence of AITD (auto-immune thyroid disease) was higher among breast cancer patients.” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5351489/">[source]</a></p></li>
+</ul>
+<ul>
+<li><p>Type I diabetes mellitus ???</p>
+<p>“Two studies found no association between breast cancer and type 1 diabetes” <a href="https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(05)01736-5/fulltext">[source]</a></p></li>
+</ul>
+<ul>
+<li>Graft-versus-host disease; Allograft rejection</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Transcription factor</li>
+</ol>
+<ul>
+<li><p>GKLF, KLF3</p>
+<p>“In breast cancer, GKLF expression was increased and associated with the stages of tumor progression in the breast” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4656400/">[source]</a> <a href="https://pubmed.ncbi.nlm.nih.gov/11103818/">[source]</a></p></li>
+</ul>
+<ul>
+<li><p>BTEB2, BTEB4, BTEB1</p></li>
+<li><p>Sp2, Sp1, Sp4, Sp3</p>
+<p>“The majority of genes in cancer cells that are involved in the generation of ATP by glycolysis and the abnormal generation of fatty acids by de novo synthesis have binding sites for Sp transcription factors in their promoters, and there is evidence that these transcription factors are involved in the regulation of a number of metabolic genes in cancers”<br />
+“This suggests that Sp proteins play an important role in regulating cancer cell metabolism.” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3218407/">[source]</a></p></li>
+</ul>
+<ul>
+<li><p>AP-2alpha, AP-2gamma</p>
+<p>“Taken together, these data strongly support a role for the AP-2 gene family in the control of cell growth and differentiation in breast cancer.” <a href="https://cancerres.aacrjournals.org/content/58/23/5466.long">[source]</a></p></li>
+</ul>
+<ul>
+<li><p>E2F-3, E2F-2, E2F-4</p>
+<p>“Taken together, these results reveal that the E2F transcription factors play key roles in mediating tumor development and metastasis in addition to their well-characterized roles in cell cycle control.” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4135561/">[source]</a></p></li>
+</ul>
+<p><img src="enrich_TCGA.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-enrich_TCGA">
+Past versions of enrich_TCGA.png
+</button>
+</p>
+<div id="fig-enrich_TCGA" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1daabf55ae681962a6f8623afd1f3a0afc5862b5/docs/enrich_TCGA.png" target="_blank">1daabf5</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 <div id="nov-16" class="section level2">
 <h2>Nov 16</h2>
 <div id="work-i-did." class="section level3">
@@ -900,43 +1090,14 @@ Build site.
 <th align="right">“(transeQTL, module)”</th>
 <th align="right">unique transeQTLs</th>
 <th align="right">independent transeQTLs</th>
+<th align="left">Num nearest genes</th>
+<th></th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">TCGA</td>
-<td align="left">17673;8963;8710</td>
-<td align="left">81</td>
-<td align="left">TruncPCO</td>
-<td align="left">empirical null</td>
-<td align="left">0.05</td>
-<td align="right">17210</td>
-<td align="right">17171</td>
-<td align="right">2063</td>
-</tr>
-<tr class="even">
-<td align="left">TCGA</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">empirical null combined chr</td>
-<td align="left"></td>
-<td align="right">8556</td>
-<td align="right">8548</td>
-<td align="right">317</td>
-</tr>
-<tr class="odd">
-<td align="left">TCGA</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">empirical null combined chr+module</td>
-<td align="left"></td>
-<td align="right">9205</td>
-<td align="right">9196</td>
-<td align="right">423</td>
-</tr>
-<tr class="even">
 <td align="left">DGN</td>
 <td align="left">11979; 8120; 3859</td>
 <td align="left">21</td>
@@ -946,8 +1107,12 @@ Build site.
 <td align="right">3536</td>
 <td align="right">3439</td>
 <td align="right">500</td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">DGN</td>
 <td align="left"></td>
 <td align="left"></td>
@@ -957,8 +1122,12 @@ Build site.
 <td align="right">733</td>
 <td align="right">671</td>
 <td align="right">47</td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">DGN</td>
 <td align="left"></td>
 <td align="left"></td>
@@ -968,11 +1137,60 @@ Build site.
 <td align="right">678</td>
 <td align="right">641</td>
 <td align="right">42</td>
+<td align="left">528</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">TCGA</td>
+<td align="left">17673;8963;8710</td>
+<td align="left">81</td>
+<td align="left">TruncPCO</td>
+<td align="left">empirical null</td>
+<td align="left">0.05</td>
+<td align="right">17210</td>
+<td align="right">17171</td>
+<td align="right">2063</td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">empirical null combined chr</td>
+<td align="left"></td>
+<td align="right">8556</td>
+<td align="right">8548</td>
+<td align="right">317</td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">TCGA</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">empirical null combined chr+module</td>
+<td align="left"></td>
+<td align="right">9205</td>
+<td align="right">9196</td>
+<td align="right">423</td>
+<td align="left">2656</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tcga" class="section level3">
+<div id="tcga-1" class="section level3">
 <h3>TCGA</h3>
 <p>The following three plots are for FDR correction based on each module and chr pair; combined chr’s for each module; combined chr’s and modules.</p>
 <p>The first plot is for the 2063 independent signals. The left plot is the histogram of <span class="math inline">\(-logp\)</span>. Since signals with <span class="math inline">\(p&lt;10^{-16}\)</span> have pvalue as 0 in R, here I give these signals pvalue of <span class="math inline">\(10^{-17}\)</span>, which have <span class="math inline">\(-logp=17\)</span>. The plot shows that among 2063 signals, most of them have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
@@ -1119,7 +1337,7 @@ Lili Wang
 </div>
 </div>
 </div>
-<div id="dgn" class="section level3">
+<div id="dgn-1" class="section level3">
 <h3>DGN</h3>
 <p>The following three plots are for FDR correction based on each module and chr pair; combined chr’s for each module; combined chr’s and modules.</p>
 <p>As showed in the plot for DGN, among 500 independent signals, most of their pvalues have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
