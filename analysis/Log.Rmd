@@ -12,6 +12,109 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Nov 23
+
+Last week, I used three ways to correct for the multiple testing based on the empirical null distributions, including correction based on (1) each module and chromosome pair; (2) combined chromosomes for each module; and (3) combined all chromosomes and modules. For the signals obtained from these three ways, I looked at their pvalues and the chromosomes they are on and found out that the latter two correction ways make more sense. So next I will look at the enrichment of the signals' nearest genes.
+
+Some notes about what I did. I use the signals obtained from the combined chr's and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its nearest genes as all the genes that have TSS upstream/downstream 0.5Mbp away from the signal. There are 528 genes for DGN and 2656 genes for TCGA.
+
+Next, I looked at the enrichment of these genes.
+
+### DGN
+The complete enrichment result (used 510 genes) can be found [here][enrichment result of DGN].
+
+[enrichment result of DGN]: https://biit.cs.ut.ee/gplink/l/5gyp1i9xS1
+
+Question: weird covariates in DGN dataset?
+
+There are basically two types of enrichment,
+
+1. Mineral related.
++ Pathways. KEGG: Mineral absorption; REAC: Metallothioneins bind metals, Response to metal ions; WP: Zinc homeostasis, Copper homeostasis.
+
++ Biological process: stress response to metal ion; stress response to copper ion; detoxification of copper ion; cellular response to zinc ion; cellular response to copper ion.
+
+2. Olfactory related.
++ Pathways. KEGG: Olfactory transduction; REAC: Olfactory Signaling Pathway.
+
++ Molecular function: olfactory receptor activity.
+
++ Biological process: detection of chemical stimulus involved in sensory perception of smell; sensory perception of smell.
+
+```{r fig.cap="Enrichment of DGN signals."}
+knitr::include_graphics("enrich_DGN.png", error = FALSE)
+```
+
+### TCGA
+The complete enrichment result (used 2265 genes ???) can be found [here][enrichment result of TCGA].
+
+[enrichment result of TCGA]: https://biit.cs.ut.ee/gplink/l/wJtdk0Z_SE
+
+Question: enrichment of all genes v.s. nearest genes of signals? 1Mb include too many genes?
+
+1. immune-related pathways.
+
++ Antigen processing and presentation
+
+  "The immune surveillance of transformed/tumour cells drives alteration of the antigen processing and presentation pathways to evade detection and hence the immune response. Evasion of the immune response is a significant event tumour development and considered one of the hallmarks of cancer." [[source]][Antigen processing and presentation]
+
+[Antigen processing and presentation]: https://onlinelibrary.wiley.com/doi/full/10.1111/imm.12675
+
++ Rheumatoid arthritis
+
+  "large cohort studies have consistently reported decreased occurrence of breast cancer among women with RA" [[source]][Rheumatoid arthritis]
+
+[Rheumatoid arthritis]: https://ard.bmj.com/content/79/5/581.abstract
+
++ Autoimmune thyroid disease
+
+  "Some studies determined that the prevalence of AITD (auto-immune thyroid disease) was higher among breast cancer patients." [[source]][Autoimmune thyroid disease]
+
+[Autoimmune thyroid disease]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5351489/
+
++ Type I diabetes mellitus ???
+
+  "Two studies found no association between breast cancer and type 1 diabetes" [[source]][Type I diabetes mellitus]
+
+[Type I diabetes mellitus]: https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(05)01736-5/fulltext
+
+
++ Graft-versus-host disease; Allograft rejection
+
+2. Transcription factor
+
++ GKLF, KLF3
+
+  "In breast cancer, GKLF expression was increased and associated with the stages of tumor progression in the breast" [[source]][GKLF1] [[source]][GKLF2]
+
+[GKLF1]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4656400/
+[GKLF2]: https://pubmed.ncbi.nlm.nih.gov/11103818/
+
++ BTEB2, BTEB4, BTEB1
+
++ Sp2, Sp1, Sp4, Sp3
+
+  "The majority of genes in cancer cells that are involved in the generation of ATP by glycolysis and the abnormal generation of fatty acids by de novo synthesis have binding sites for Sp transcription factors in their promoters, and there is evidence that these transcription factors are involved in the regulation of a number of metabolic genes in cancers" \
+"This suggests that Sp proteins play an important role in regulating cancer cell metabolism."  [[source]][Sp]
+
+[Sp]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3218407/
+
++ AP-2alpha, AP-2gamma
+
+  "Taken together, these data strongly support a role for the AP-2 gene family in the control of cell growth and differentiation in breast cancer." [[source]][AP-2]
+
+[AP-2]: https://cancerres.aacrjournals.org/content/58/23/5466.long
+
++ E2F-3, E2F-2, E2F-4
+
+  "Taken together, these results reveal that the E2F transcription factors play key roles in mediating tumor development and metastasis in addition to their well-characterized roles in cell cycle control." [[source]][E2F]
+
+[E2F]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4135561/
+
+```{r}
+knitr::include_graphics("enrich_TCGA.png", error = FALSE)
+```
+
 
 ## Nov 16
 
