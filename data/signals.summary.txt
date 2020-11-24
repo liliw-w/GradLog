@@ -1,7 +1,8 @@
-Dataset	nGene	nModule	pvalue	pvalue correction	FDR level	"(transeQTL, module)"	unique transeQTLs	independent transeQTLs	Num nearest genes			
-DGN	11979; 8120; 3859	21	TruncPCO	empirical null	0.05	3536	3439	500				
-DGN				empirical null combined chr		733	671	47				
-DGN				empirical null combined chr+module		678	641	42	528			
-TCGA	17673;8963;8710 	81	TruncPCO	empirical null	0.05	17210	17171	2063				
-TCGA				empirical null combined chr		8556	8548	317				
-TCGA				empirical null combined chr+module		9205	9196	423	2656			
+Dataset	nGene	nModule	pvalue	pvalue correction	FDR level	"(transeQTL, module)"	unique transeQTLs	Num nearest genes	independent transeQTLs	Num nearest genes indep
+
+DGN	11979; 8120; 3859	21	TruncPCO	empirical null	0.05	3536	3439		500	
+DGN				empirical null combined chr		733	671		47	
+DGN				empirical null combined chr+module		678	641	50	42	38
+TCGA	17673;8963;8710 	81	TruncPCO	empirical null	0.05	17210	17171		2063	
+TCGA				empirical null combined chr		8556	8548		317	
+TCGA				empirical null combined chr+module		9205	9196	548	423	331
