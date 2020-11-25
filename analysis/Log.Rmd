@@ -49,6 +49,43 @@ Under BH correction with 0.05 as threshold, there are basically two types of enr
 
 I also tried the independent signals (gene list is [here](./converted.indep.TCGA.txt)). There is no enriched term under 0.05 BH.
 
+### GBAT signals
+
+The following table summarizes the signals from GBAT and whether they are reproduced by our method.
+
+From the Figure 4 of [GBAT paper], there are 5 labeled transcription factors that regulate multiple genes in trans. I checked that if these 5 genes have nearby SNPs that are identified as signals in our analysis (`Regulator.signal`). Then checked the modules the signals correspond to (`signal.module`). Next, I checked whether the TF target genes identified by GBAT (`Target`) are in our modules (`Target.in.module`). If so, check which module these genes are (`Target.module`).
+
+[GBAT paper]: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02120-1/figures/4Form
+
+The regulator *PLAGL1* is close to the signal 6:144304358, which corresponds to module 11. Only 5 of this regulator's target genes are in our modules and none of them are clustered into module 11.
+
+The regulator *NFE2* is close to the signal 12:54685880, which corresponds to module 1 and module 11. Among the 6 target genes, 2 are in our modules. One is in module1, the other one is in module 5.
+
+The regulator *NFKBIA* is close to the signal 14:35602108, which corresponds to module 11. Among the 3 target genes, one is in our modules and it is in module 11.
+
+The regulator *IKZF1* is close to multiple signals, which are introns of *IKZF1*. The signals correspond to multiple modules including 1,2,5,6,7,8,11,18. Among the regulator's 4 target genes, one is in our modules and it is in module 18.
+
+The regulator *SENP7* is not close to any signals.
+
+```{r warning=FALSE}
+res = read.delim("data/GBAT.txt", check.names = F, stringsAsFactors = F, quote = NULL)
+res[is.na(res)] = " "
+knitr::kable(res)
+```
+
+### Look at some top signals
+
+I looked at part of the top signals with very small pvalues. The following table summarizes the signals' postions, the corresponding modules, pvalues, the signal's nearest gene, and the gene info. The first two rows give the signals that are near two TFs, *IKZF1, KLF2*.
+
+Notes: Some pvalues are zero because they are smaller than the numerical precision ($<10^{-16}$).
+
+```{r warning=FALSE}
+res = read.delim("data/top.signals.txt", check.names = F, stringsAsFactors = F, quote = NULL)
+res[is.na(res)] = " "
+knitr::kable(res)
+```
+
+
 ## Nov 16
 
 ### Work I did.
