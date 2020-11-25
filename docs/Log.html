@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree5e13a3fe132ff540212c59140637fe96be0c3002targetblank5e13a3fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/5e13a3fe132ff540212c59140637fe96be0c3002" target="_blank">5e13a3f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2cd28223db40b3294fce241b959425be5b4906f3targetblank2cd2822a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/2cd28223db40b3294fce241b959425be5b4906f3" target="_blank">2cd2822</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree5e13a3fe132ff540212c59140637fe96be0c3002targetblank5e13a3fa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2cd28223db40b3294fce241b959425be5b4906f3targetblank2cd2822a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/5e13a3fe132ff540212c59140637fe96be0c3002" target="_blank">5e13a3f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/2cd28223db40b3294fce241b959425be5b4906f3" target="_blank">2cd2822</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -576,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/2cd28223db40b3294fce241b959425be5b4906f3/analysis/Log.Rmd" target="_blank">2cd2822</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Add GBAT and top signals analysis.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/7f94c8ecbfdb90f3eca9cc24cff516efab0101d5/docs/Log.html" target="_blank">7f94c8e</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -963,6 +997,169 @@ Build site.
 <li>MHC class II receptor activity/immunity-related: <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/imm.12675">Antigen processing and presentation</a>, <a href="https://ard.bmj.com/content/79/5/581.abstract">Rheumatoid arthritis</a>, et al.</li>
 </ol>
 <p>I also tried the independent signals (gene list is <a href="./converted.indep.TCGA.txt">here</a>). There is no enriched term under 0.05 BH.</p>
+</div>
+<div id="gbat-signals" class="section level3">
+<h3>GBAT signals</h3>
+<p>The following table summarizes the signals from GBAT and whether they are reproduced by our method.</p>
+<p>From the Figure 4 of <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02120-1/figures/4Form">GBAT paper</a>, there are 5 labeled transcription factors that regulate multiple genes in trans. I checked that if these 5 genes have nearby SNPs that are identified as signals in our analysis (<code>Regulator.signal</code>). Then checked the modules the signals correspond to (<code>signal.module</code>). Next, I checked whether the TF target genes identified by GBAT (<code>Target</code>) are in our modules (<code>Target.in.module</code>). If so, check which module these genes are (<code>Target.module</code>).</p>
+<p>The regulator <em>PLAGL1</em> is close to the signal 6:144304358, which corresponds to module 11. Only 5 of this regulator’s target genes are in our modules and none of them are clustered into module 11.</p>
+<p>The regulator <em>NFE2</em> is close to the signal 12:54685880, which corresponds to module 1 and module 11. Among the 6 target genes, 2 are in our modules. One is in module1, the other one is in module 5.</p>
+<p>The regulator <em>NFKBIA</em> is close to the signal 14:35602108, which corresponds to module 11. Among the 3 target genes, one is in our modules and it is in module 11.</p>
+<p>The regulator <em>IKZF1</em> is close to multiple signals, which are introns of <em>IKZF1</em>. The signals correspond to multiple modules including 1,2,5,6,7,8,11,18. Among the regulator’s 4 target genes, one is in our modules and it is in module 18.</p>
+<p>The regulator <em>SENP7</em> is not close to any signals.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Regulator</th>
+<th align="left">Regulator.chr</th>
+<th align="left">Regulator.start</th>
+<th align="left">Regulator.end</th>
+<th align="left">Regulator.signal</th>
+<th align="left">signal.module</th>
+<th align="left">Target</th>
+<th align="left">Target.in.module</th>
+<th align="left">Target.module</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">PLAGL1</td>
+<td align="left">chr6</td>
+<td align="left">144261436</td>
+<td align="left">144329396</td>
+<td align="left">6:144304358</td>
+<td align="left">11</td>
+<td align="left">PAQR7;IDI1;MAPKAPK3;VAV1;TTC9;RGL4;CERS2;RAB37;JAK3;HM13;PNPLA1;OGDH;AMPD2;CYFIP2;TGM3;CKAP4;GPX3;PRAM1;CD82;MFSD12;AP5B1;GAPVD1;IQCE;BRAT1</td>
+<td align="left">AMPD2;CERS2;MAPKAPK3;TTC9;TGM3</td>
+<td align="left">7;8;6;0;2</td>
+</tr>
+<tr class="even">
+<td align="left">NFE2</td>
+<td align="left">chr12</td>
+<td align="left">54685890</td>
+<td align="left">54694821</td>
+<td align="left">12:54685880</td>
+<td align="left">1;11</td>
+<td align="left">SPOCD1;EPS15L1;VIL1;TMEM158;NCF4;FRMD3</td>
+<td align="left">TMEM158;NCF4</td>
+<td align="left">1;5</td>
+</tr>
+<tr class="odd">
+<td align="left">NFKBIA</td>
+<td align="left">chr14</td>
+<td align="left">35870719</td>
+<td align="left">35873955</td>
+<td align="left">14:35602108</td>
+<td align="left">11</td>
+<td align="left">RELB;GHRL;NFKB2</td>
+<td align="left">GHRL</td>
+<td align="left">11</td>
+</tr>
+<tr class="even">
+<td align="left">IKZF1</td>
+<td align="left">chr7</td>
+<td align="left">50348295</td>
+<td align="left">50472798</td>
+<td align="left">introns</td>
+<td align="left">1;2;5;6;7;8;11;18</td>
+<td align="left">KIAA0319L;IGF2R;DUSP13;MICAL2</td>
+<td align="left">DUSP13</td>
+<td align="left">18</td>
+</tr>
+<tr class="odd">
+<td align="left">SENP7</td>
+<td align="left">chr3</td>
+<td align="left">101043048</td>
+<td align="left">101232056</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">ZNF418;ZNF671;ZNF211;ZNF304;ZNF135;ZNF551;TRAPPC2P1;ZNF547;ZNF134;ZNF256;ZNF416;ZNF667-AS1;OPLAH;ZNF649;ZNF85;ZNF264</td>
+<td align="left">OPLAH</td>
+<td align="left">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="look-at-some-top-signals" class="section level3">
+<h3>Look at some top signals</h3>
+<p>I looked at part of the top signals with very small pvalues. The following table summarizes the signals’ postions, the corresponding modules, pvalues, the signal’s nearest gene, and the gene info. The first two rows give the signals that are near two TFs, <em>IKZF1, KLF2</em>.</p>
+<p>Notes: Some pvalues are zero because they are smaller than the numerical precision (<span class="math inline">\(&lt;10^{-16}\)</span>).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">snp</th>
+<th align="left">pos</th>
+<th align="left">module</th>
+<th align="left">pvalue</th>
+<th align="left">nearest_gene</th>
+<th align="left">gene.chr</th>
+<th align="right">gene.start</th>
+<th align="right">gene.end</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rs10251980</td>
+<td align="left">7:50366637</td>
+<td align="left">1;2;5;6;7;11;18</td>
+<td align="left">3.21e-11;0;1.86e-10;4.30e-12;0;0;6.08e-11</td>
+<td align="left">IKZF1</td>
+<td align="left">chr7</td>
+<td align="right">50348295</td>
+<td align="right">50472798</td>
+</tr>
+<tr class="even">
+<td align="left">rs3745318</td>
+<td align="left">19:16436262</td>
+<td align="left">12</td>
+<td align="left">4.51e-12;</td>
+<td align="left">KLF2</td>
+<td align="left">chr19</td>
+<td align="right">16435636</td>
+<td align="right">16439496</td>
+</tr>
+<tr class="odd">
+<td align="left">rs194862</td>
+<td align="left">7:103786280</td>
+<td align="left">18</td>
+<td align="left">4.0e-8;</td>
+<td align="left">ORC5</td>
+<td align="left">chr7</td>
+<td align="right">103808623</td>
+<td align="right">103848495</td>
+</tr>
+<tr class="even">
+<td align="left">rs6445826</td>
+<td align="left">3:56848999</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">ARHGEF3</td>
+<td align="left">chr3</td>
+<td align="right">56761447</td>
+<td align="right">56950464</td>
+</tr>
+<tr class="odd">
+<td align="left">rs12492506</td>
+<td align="left">3:188511248</td>
+<td align="left">18</td>
+<td align="left">5.11e-8;</td>
+<td align="left">LPP</td>
+<td align="left">chr3</td>
+<td align="right">187871685</td>
+<td align="right">188608460</td>
+</tr>
+<tr class="even">
+<td align="left">rs2592551</td>
+<td align="left">2:85780131</td>
+<td align="left">7</td>
+<td align="left">1.30e-12;</td>
+<td align="left">GGCX</td>
+<td align="left">chr2</td>
+<td align="right">85771842</td>
+<td align="right">85788616</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="nov-16" class="section level2">
