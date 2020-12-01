@@ -424,7 +424,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-24
+<strong>Last updated:</strong> 2020-11-30
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2cd28223db40b3294fce241b959425be5b4906f3targetblank2cd2822a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/2cd28223db40b3294fce241b959425be5b4906f3" target="_blank">2cd2822</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree575d859783de6d853bfe5bbb222a8efdb5829097targetblank575d859a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/575d859783de6d853bfe5bbb222a8efdb5829097" target="_blank">575d859</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree2cd28223db40b3294fce241b959425be5b4906f3targetblank2cd2822a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree575d859783de6d853bfe5bbb222a8efdb5829097targetblank575d859a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/2cd28223db40b3294fce241b959425be5b4906f3" target="_blank">2cd2822</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/575d859783de6d853bfe5bbb222a8efdb5829097" target="_blank">575d859</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -576,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/575d859783de6d853bfe5bbb222a8efdb5829097/analysis/Log.Rmd" target="_blank">575d859</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-30
+</td>
+<td>
+Add Dec 01. Add multiple permutations part.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/6c1da29047ec93bb01b977c1c2d103ff70c25e89/docs/Log.html" target="_blank">6c1da29</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -974,10 +1008,77 @@ Build site.
 </div>
 </div>
 </div>
+<div id="dec-01" class="section level2">
+<h2>Dec 01</h2>
+<div id="work-i-did." class="section level3">
+<h3>Work I did.</h3>
+<p>Here I give a brief summary of my last week’s work. Firstly, I ran multiple permutations to generate multiple empirical nulls so that I can validate if our previous results based on one-time permutation are stable. Secondly, I ran GTEx datesets for all tissues.</p>
+</div>
+<div id="multiple-permutations" class="section level3">
+<h3>Multiple permutations</h3>
+<p>The following table and figures summarize the signals under different numbers of permutations.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">FDR</th>
+<th align="right">(QTL, module)#1</th>
+<th align="right">(QTL, module)#5</th>
+<th align="right">unique QTL #1</th>
+<th align="right">unique QTL #5</th>
+<th align="right">independent QTL #1</th>
+<th align="right">independent QTL #5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(module, chr)</td>
+<td align="right">3536</td>
+<td align="right">1350</td>
+<td align="right">3439</td>
+<td align="right">1286</td>
+<td align="right">500</td>
+<td align="right">125</td>
+</tr>
+<tr class="even">
+<td align="left">combined chr</td>
+<td align="right">733</td>
+<td align="right">293</td>
+<td align="right">671</td>
+<td align="right">261</td>
+<td align="right">47</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">combined chr+module</td>
+<td align="right">678</td>
+<td align="right">624</td>
+<td align="right">641</td>
+<td align="right">589</td>
+<td align="right">42</td>
+<td align="right">38</td>
+</tr>
+</tbody>
+</table>
+<p><img src="figure/Log.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/Log.Rmd/unnamed-chunk-1-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Before interpreting the reuslt, I will first describe these figures.</p>
+<ul>
+<li><p>The table gives the number of signals under different FDR methods (“FDR”) and signal types (i.e. (QTL, module) signal pair, unique signal, independent signal). For each case combination, I also give the results based on one permutation (“#1”) and five permuations (“#5”).</p></li>
+<li><p>For a more intuitive sense of these numbers, I also plot them in the second figure, where colors represent the FDR methods, sub-figures are for signal types, x-axis is for number of permutations, and y-axis is for number of signals.</p></li>
+<li><p>To look at the difference and interactions of the signals under different permutations, I draw the Venn diagram in the third figure. Still, colors represent the FDR methods. For simplicity, I only looked at the unique signals.</p></li>
+</ul>
+<p>Generally speaking, increasing the number of permutations decreases the number of signals.</p>
+<ul>
+<li><p>For FDR based on each (module, chr) pair, there were 3439 unique QTLs under 1-perm. However, these signals decrease to 1286 after increasing the number of permutations to 5. From the Venn plot (red), we can see that among the 3439 QTLs from 1-perm, 2247 are no longer signals after increasing permutations.</p></li>
+<li><p>For FDR based on combined chromosomes, using 1-perm and 5-perm generated 671 and 261 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. 410 QTLs become insignificant under more permutations.</p></li>
+<li><p>For FDR based on combined chromosomes and modules, using 1-perm and 5-perm generated 641 abd 589 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. Only 52 QTLs become insignificant under more permutations.</p></li>
+</ul>
+<p>The results show that (module, chr) pair and combined chromosomes-based FDR are not stable if we only use one permutation. However, combined chromosomes and modules-based FDR seems quite stable. (WHY?) In order to check if keep increasing permutations will keep decreasing signals, I am running 10 permutations.</p>
+</div>
+</div>
 <div id="nov-23" class="section level2">
 <h2>Nov 23</h2>
 <p>Last week, I used three ways to correct for the multiple testing based on the empirical null distributions, including correction based on (1) each module and chromosome pair; (2) combined chromosomes for each module; and (3) combined all chromosomes and modules. For the signals obtained from these three ways, I looked at their pvalues and the chromosomes they are on and found out that the latter two correction ways make more sense. So next I will look at the enrichment of the signals’ nearest genes.</p>
-<p>Some notes about what I did. I use the signals obtained from the combined chr’s and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its <em>nearest</em> gene as the closest gene of which TSS is upstream/downstream 0.5Mbp away from the signal. As a result, there are 50 nearest genes for DGN and 548 for TCGA.</p>
+<p>Some notes about what I did. I use the signals obtained from the combined chr’s and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its <strong>nearest</strong> gene as the <strong>closest</strong> gene of which TSS is upstream/downstream 0.5Mbp away from the signal. As a result, there are 50 nearest genes for DGN and 548 for TCGA.</p>
 <p>Next, I looked at the enrichment of these genes.</p>
 <div id="dgn" class="section level3">
 <h3>DGN</h3>
@@ -1164,7 +1265,7 @@ Build site.
 </div>
 <div id="nov-16" class="section level2">
 <h2>Nov 16</h2>
-<div id="work-i-did." class="section level3">
+<div id="work-i-did.-1" class="section level3">
 <h3>Work I did.</h3>
 <p>For the last week, I re-write the whole pipeline into snakemake files, so that I can run different datasets with ease. <a href="https://github.com/liliw-w/Trans/tree/main/script">script</a></p>
 <p>Before listing the results, I will first describe the key steps in the pipeine.</p>
@@ -2063,19 +2164,38 @@ locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
 
 other attached packages:
-[1] workflowr_1.6.2
+[1] gridExtra_2.3       VennDiagram_1.6.20  futile.logger_1.4.3
+[4] ggpubr_0.4.0        ggplot2_3.3.2       workflowr_1.6.2    
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25   later_1.0.0    
- [5] R6_2.4.1        backports_1.1.5 git2r_0.27.1    magrittr_1.5   
- [9] evaluate_0.14   highr_0.8       stringi_1.4.6   rlang_0.4.7    
-[13] fs_1.3.2        promises_1.1.0  whisker_0.4     rmarkdown_2.1  
-[17] tools_3.6.3     stringr_1.4.0   glue_1.3.2      httpuv_1.5.2   
-[21] xfun_0.12       yaml_2.2.1      compiler_3.6.3  htmltools_0.4.0
-[25] knitr_1.28     </code></pre>
+ [1] Rcpp_1.0.4           lattice_0.20-38      tidyr_1.1.2         
+ [4] assertthat_0.2.1     rprojroot_1.3-2      digest_0.6.25       
+ [7] R6_2.4.1             cellranger_1.1.0     plyr_1.8.6          
+[10] futile.options_1.0.1 backports_1.1.5      evaluate_0.14       
+[13] highr_0.8            pillar_1.4.3         rlang_0.4.7         
+[16] curl_4.3             readxl_1.3.1         data.table_1.13.2   
+[19] car_3.0-6            whisker_0.4          rmarkdown_2.1       
+[22] labeling_0.3         stringr_1.4.0        foreign_0.8-75      
+[25] munsell_0.5.0        broom_0.5.6          compiler_3.6.3      
+[28] httpuv_1.5.2         xfun_0.12            pkgconfig_2.0.3     
+[31] htmltools_0.4.0      tidyselect_1.1.0     tibble_3.0.0        
+[34] rio_0.5.16           fansi_0.4.1          crayon_1.3.4        
+[37] dplyr_0.8.4          withr_2.1.2          later_1.0.0         
+[40] nlme_3.1-144         gtable_0.3.0         lifecycle_0.2.0     
+[43] git2r_0.27.1         magrittr_1.5         formatR_1.7         
+[46] scales_1.1.0         zip_2.0.4            cli_2.0.2           
+[49] stringi_1.4.6        carData_3.0-3        farver_2.0.3        
+[52] ggsignif_0.6.0       reshape2_1.4.4       fs_1.3.2            
+[55] promises_1.1.0       ellipsis_0.3.0       generics_0.0.2      
+[58] vctrs_0.3.4          cowplot_1.0.0        openxlsx_4.1.4      
+[61] lambda.r_1.2.4       tools_3.6.3          forcats_0.4.0       
+[64] glue_1.3.2           purrr_0.3.3          hms_0.5.3           
+[67] abind_1.4-5          yaml_2.2.1           colorspace_1.4-1    
+[70] rstatix_0.6.0        knitr_1.28           haven_2.2.0         </code></pre>
 </div>
 </div>
 </div>
