@@ -12,11 +12,89 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Dec 01
+
+### Work I did.
+
+Here I give a brief summary of my last week's work. Firstly, I ran multiple permutations to generate multiple empirical nulls so that I can validate if our previous results based on one-time permutation are stable. Secondly, I ran GTEx datesets for all tissues.
+
+### Multiple permutations
+
+The following table and figures summarize the signals under different numbers of permutations.
+
+```{r results='asis', message=FALSE}
+require(ggplot2)
+require(ggpubr)
+require(VennDiagram)
+require(gridExtra)
+
+Kperm = 2; perm.seq = c(1, 5)
+res = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
+                 "(QTL, module)#1" = c(3536, 733, 678),
+                 "(QTL, module)#5" = c(1350, 293, 624),
+                 "unique QTL #1" = c(3439, 671, 641),
+                 "unique QTL #5" = c(1286, 261, 589),
+                 "independent QTL #1" = c(500, 47, 42),
+                 "independent QTL #5" = c(125, 21, 38),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+file_name = c("LD.prun.in.txt", "LD.prun.in.perm5.txt",
+              "LD.prun.in.chr.txt", "LD.prun.in.chr.perm5.txt",
+              "LD.prun.in.chr.module.txt", "LD.prun.in.chr.module.perm5.txt")
+
+# print the result table
+knitr::kable(res)
+
+# draw the results in lines
+plot.all = list(); ylim.seq = c(3550, 3550, 500)
+for(i in 1:3){
+  plotData = cbind(t(res[, 1:Kperm+(i-1)*Kperm+1]))
+  colnames(plotData) = res$FDR; rownames(plotData) = perm.seq
+  plotData = reshape2::melt(plotData); colnames(plotData) = c("Nperm", "FDR", "NumofQTLs")
+  plot.all[[i]] <- ggplot(plotData, aes(x = Nperm, y = NumofQTLs, col=factor(FDR))) + geom_line() + geom_point() + ylim(0, ylim.seq[i]) + theme(legend.position="none")
+}
+ggarrange(plotlist = plot.all,
+          nrow = 1, ncol=3,
+          labels = c("(QTL, module)", "unique QTL", "independent QTL"),
+          legend = "bottom", common.legend = TRUE,
+          font.label = list(size = 10))
+
+# draw the Venn diagram of the results to see the interaction
+uniq_signals = lapply(file_name, function(x) read.table(paste0("data/", x), stringsAsFactors = FALSE)$V1)
+names(uniq_signals) = paste0("QTL.perm", rep(perm.seq, 3))
+venn.col = c("pink", "light green", "light blue")
+venn.list = list()
+for(i in 1:3){
+  venn.list[[i]] = venn.diagram(uniq_signals[1:Kperm+(i-1)*Kperm], fill = rep(venn.col[i], Kperm), alpha = rep(0.5, Kperm), lwd =0, print.mode = c('raw', 'percent'), NULL, main = res$FDR[i])
+}
+grid.arrange(gTree(children=venn.list[[1]]),
+             gTree(children=venn.list[[2]]),
+             gTree(children=venn.list[[3]]),
+             ncol=2, nrow = 2)
+```
+
+Before interpreting the reuslt, I will first describe these figures.
+
++ The table gives the number of signals under different FDR methods ("FDR") and signal types (i.e. (QTL, module) signal pair, unique signal, independent signal). For each case combination, I also give the results based on one permutation ("#1") and five permuations ("#5").
+
++ For a more intuitive sense of these numbers, I also plot them in the second figure, where colors represent the FDR methods, sub-figures are for signal types, x-axis is for number of permutations, and y-axis is for number of signals.
+
++ To look at the difference and interactions of the signals under different permutations, I draw the Venn diagram in the third figure. Still, colors represent the FDR methods. For simplicity, I only looked at the unique signals.
+
+Generally speaking, increasing the number of permutations decreases the number of signals.
+
++ For FDR based on each (module, chr) pair, there were 3439 unique QTLs under 1-perm. However, these signals decrease to 1286 after increasing the number of permutations to 5. From the Venn plot (red), we can see that among the 3439 QTLs from 1-perm, 2247 are no longer signals after increasing permutations.
+
++ For FDR based on combined chromosomes, using 1-perm and 5-perm generated 671 and 261 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. 410 QTLs become insignificant under more permutations.
+
++ For FDR based on combined chromosomes and modules, using 1-perm and 5-perm generated 641 abd 589 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. Only 52 QTLs become insignificant under more permutations.
+
+The results show that (module, chr) pair and combined chromosomes-based FDR are not stable if we only use one permutation. However, combined chromosomes and modules-based FDR seems quite stable. (WHY?) In order to check if keep increasing permutations will keep decreasing signals, I am running 10 permutations.
+
 ## Nov 23
 
 Last week, I used three ways to correct for the multiple testing based on the empirical null distributions, including correction based on (1) each module and chromosome pair; (2) combined chromosomes for each module; and (3) combined all chromosomes and modules. For the signals obtained from these three ways, I looked at their pvalues and the chromosomes they are on and found out that the latter two correction ways make more sense. So next I will look at the enrichment of the signals' nearest genes.
 
-Some notes about what I did. I use the signals obtained from the combined chr's and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its *nearest* gene as the closest gene of which TSS is upstream/downstream 0.5Mbp away from the signal. As a result, there are 50 nearest genes for DGN and 548 for TCGA.
+Some notes about what I did. I use the signals obtained from the combined chr's and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its **nearest** gene as the **closest** gene of which TSS is upstream/downstream 0.5Mbp away from the signal. As a result, there are 50 nearest genes for DGN and 548 for TCGA.
 
 Next, I looked at the enrichment of these genes.
 
