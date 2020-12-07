@@ -15,9 +15,29 @@ knitr::opts_chunk$set(echo=FALSE)
 ## Dec 07
 
 ### Update results for multiple permutations.
-In order to check if keep increasing permutations will keep decreasing signals, I ran more permutations, i.e. 1, 5, 10, 15, 20. See section in `Dec 01`. The figures show that if we use FDR based on the combined chr and modules, maybe we should use 10 permutations rather than 1.
+In order to check if keep increasing permutations will keep decreasing signals, I ran more permutations, i.e. 1, 5, 10, 15, 20. See section in `Dec 01`. The figures show that if we use the FDR based on the combined chr and modules, maybe we should use 10 permutations rather than just 1 permutation, since the number of signals starts to be stable from 10-perm.
 
+### GTEx genes
+Last week, we wanted to check how many GTEx genes are cross-mapped, poorly mapped, or pseudogenes in the following way *"If many genes not in the protein coding/lincRNA category don’t have mappability score or multimappablity scores, we can remove them too."*
 
+However, I found that in the cross-mappability file, there are 27949 genes in total, the minimum cross-mappability score is 1 and 0.5 in files `*cross_mappability_strength.txt.gz` and `*cross_mappability_strength_symmetric_mean_sorted.txt.gz`, respectively. So I think all genes in this cross-mappability file should be considered cross-mapped (cross-mappability > 0), according to [Battle 2018][Battle mappability]
+
+[Battle mappability]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6305209/
+
+For example, in whole blood, there are 20315 genes in total, among which, 14582 and 1189 are protein_coding and lincRNA, respectively, with the remaining 4544 genes in other catogories. Among 14582 protein coding genes, 9962 are in the cross-mappability file, 2015 have mappability of NA or $<0.9$. Combined together, 9991 are removed, leaving 4591 genes.
+
++ protein_coding: 14582, 9962, 2015, 9991, 4591
++ lincRNA: 1189, 512, 215, 533, 656
++ Others: 4544, 2622, 1476, 2668, 1876
+
+Question: Can we simply use the GTEx genes that are protein coding/lincRNA?
+
+### eQTLGen and DGN
+Some genes in DGN modules are not in eQTLGen trans dataset.
+
+Do DGN provide the ENS id of the gene symbols?
+
+New ways to filter DGN genes? (1) genes not in `gencode.v19.annotation.gtf.gz`; (2) gene_type "pseudogene"; (3)
 
 ## Dec 01
 
