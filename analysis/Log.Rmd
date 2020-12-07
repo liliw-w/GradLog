@@ -12,6 +12,13 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Dec 07
+
+### Update results for multiple permutations.
+In order to check if keep increasing permutations will keep decreasing signals, I ran more permutations, i.e. 1, 5, 10, 15, 20. See section in `Dec 01`. The figures show that if we use FDR based on the combined chr and modules, maybe we should use 10 permutations rather than 1.
+
+
+
 ## Dec 01
 
 ### Work I did.
@@ -28,22 +35,40 @@ require(ggpubr)
 require(VennDiagram)
 require(gridExtra)
 
-Kperm = 2; perm.seq = c(1, 5)
-res = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
-                 "(QTL, module)#1" = c(3536, 733, 678),
-                 "(QTL, module)#5" = c(1350, 293, 624),
+perm.seq = c(1, 5, 10, 15, 20); Kperm = length(perm.seq)
+file_name = c("LD.prun.in.txt", "LD.prun.in.perm5.txt", "LD.prun.in.perm20.txt",
+              "LD.prun.in.chr.txt", "LD.prun.in.chr.perm5.txt", "LD.prun.in.chr.perm20.txt",
+              "LD.prun.in.chr.module.txt", "LD.prun.in.chr.module.perm5.txt", "LD.prun.in.chr.module.perm20.txt")
+perm.seq.venn = c(1, 5, 20); Kperm.venn = length(perm.seq.venn)
+
+res.pair = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
+                 "(QTL, module) #1" = c(3536, 733, 678),
+                 "(QTL, module) #5" = c(1350, 293, 624),
+                 "(QTL, module) #10" = c(1047, 258, 589),
+                 "(QTL, module) #15" = c(938, 251, 564),
+                 "(QTL, module) #20" = c(889, 239, 563),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res.pair)
+
+res.uniq = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
                  "unique QTL #1" = c(3439, 671, 641),
                  "unique QTL #5" = c(1286, 261, 589),
+                 "unique QTL #10" = c(993, 227, 555),
+                 "unique QTL #15" = c(887, 220, 531),
+                 "unique QTL #20" = c(845, 208, 530),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res.uniq)
+
+res.indep = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
                  "independent QTL #1" = c(500, 47, 42),
                  "independent QTL #5" = c(125, 21, 38),
+                 "independent QTL #10" = c(77, 18, 33),
+                 "independent QTL #15" = c(63, 18, 32),
+                 "independent QTL #20" = c(52, 17, 32),
                  check.names = FALSE, stringsAsFactors = FALSE)
-file_name = c("LD.prun.in.txt", "LD.prun.in.perm5.txt",
-              "LD.prun.in.chr.txt", "LD.prun.in.chr.perm5.txt",
-              "LD.prun.in.chr.module.txt", "LD.prun.in.chr.module.perm5.txt")
+knitr::kable(res.indep)
 
-# print the result table
-knitr::kable(res)
-
+res = cbind(res.pair, res.uniq[, -1], res.indep[, -1])
 # draw the results in lines
 plot.all = list(); ylim.seq = c(3550, 3550, 500)
 for(i in 1:3){
@@ -60,11 +85,11 @@ ggarrange(plotlist = plot.all,
 
 # draw the Venn diagram of the results to see the interaction
 uniq_signals = lapply(file_name, function(x) read.table(paste0("data/", x), stringsAsFactors = FALSE)$V1)
-names(uniq_signals) = paste0("QTL.perm", rep(perm.seq, 3))
+names(uniq_signals) = paste0("QTL.perm", rep(perm.seq.venn, 3))
 venn.col = c("pink", "light green", "light blue")
 venn.list = list()
 for(i in 1:3){
-  venn.list[[i]] = venn.diagram(uniq_signals[1:Kperm+(i-1)*Kperm], fill = rep(venn.col[i], Kperm), alpha = rep(0.5, Kperm), lwd =0, print.mode = c('raw', 'percent'), NULL, main = res$FDR[i])
+  venn.list[[i]] = venn.diagram(uniq_signals[1:Kperm.venn+(i-1)*Kperm.venn], fill = rep(venn.col[i], Kperm.venn), alpha = rep(0.5, Kperm.venn), lwd =0, print.mode = c('raw', 'percent'), NULL, main = res$FDR[i])
 }
 grid.arrange(gTree(children=venn.list[[1]]),
              gTree(children=venn.list[[2]]),
