@@ -424,7 +424,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-07
+<strong>Last updated:</strong> 2020-12-09
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4bc95f515cafcf4e8510be91d4dcea047c1968cctargetblank4bc95f5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/4bc95f515cafcf4e8510be91d4dcea047c1968cc" target="_blank">4bc95f5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree06abf1a362905ba731d18eed05cbdac04619bd69targetblank06abf1aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/06abf1a362905ba731d18eed05cbdac04619bd69" target="_blank">06abf1a</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4bc95f515cafcf4e8510be91d4dcea047c1968cctargetblank4bc95f5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree06abf1a362905ba731d18eed05cbdac04619bd69targetblank06abf1aa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/4bc95f515cafcf4e8510be91d4dcea047c1968cc" target="_blank">4bc95f5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/06abf1a362905ba731d18eed05cbdac04619bd69" target="_blank">06abf1a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -576,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/06abf1a362905ba731d18eed05cbdac04619bd69/analysis/Log.Rmd" target="_blank">06abf1a</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-12-09
+</td>
+<td>
+Add description of datasets and mappability files.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/05ca58ca4f099e5557b8459369b5df1316268242/docs/Log.html" target="_blank">05ca58c</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-12-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1076,6 +1110,70 @@ Build site.
 </div>
 </div>
 </div>
+<div id="dec-10" class="section level2">
+<h2>Dec 10</h2>
+<div id="description-of-datasets-and-mappability-files" class="section level3">
+<h3>Description of datasets and mappability files</h3>
+<ul>
+<li><p>DGN</p>
+<p>Genes expressed in DGN are based on the human genome GRCh37 and gene symbols were mapped to unique Ensembl gene ids according to Gencode v19, corresponding to the annotations used in the mappability file.</p>
+<p>Gene annotation file for mappability is <code>gencode.v19.annotation.table.txt</code>, which is based on the human genome GRCh37 using annotations from Gencode v19 and includes <strong>57820</strong> genes in total. Each of 57820 genes has a mappability score in <code>hg19_gencode19_75merExon_36merUTR_2mismatch_gene_mappability.txt.gz</code>. And only those gene pairs with cross-mappable score larger than 1 are included in <code>hg19_gencode19_75merExon_36merUTR_2mismatch_cross_mappability_symmetric_mean.txt.gz</code>.</p>
+<p>Not all DGN-expressed genes have mappbility info. So in the gene filtering step, I will first filter out genes that are included in the mappability file.</p>
+<p><strong>Remark</strong>: The pseudogene list <code>/project2/xuanyao/data/mappability/pseudogenes.txt</code> only includes pseudogenes in category “pseudogene” but not other pseudogene categories in file <code>gencode.v19.annotation.table.txt</code>. Since we need to remove all kinds of pseudogenes, using this list is enough.</p></li>
+<li><p>GTEx v8</p>
+<p>Gene annotation file for expression matrices is <code>gencode.v26.GRCh38.genes_annotation_table.txt</code>, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes <strong>56200</strong> genes in total.</p>
+<p>Gene annotation file for mappability is <code>gencode.v26.annotation.table.txt</code>, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes <strong>58219</strong> genes in total. Each of 58219 genes has a mappability score in <code>hg38_gene_mappability.txt.gz</code>. And only those gene pairs with cross-mappable score larger than 1 are included in <code>hg38_cross_mappability_strength_symmetric_mean_sorted.txt.gz</code>.</p>
+<p>All 56200 genes used in expression matrices are included in the gene annotation file for mappability, which means they all have mappability info.</p></li>
+</ul>
+</div>
+<div id="gene-filter" class="section level3">
+<h3>Gene filter</h3>
+<p>The following are the filtering steps.</p>
+<ol style="list-style-type: decimal">
+<li><p>Remove genes that are not in the gencode annotation file (Gencode v19 or Gencode v26).</p>
+<p>This filtering step aims to remove genes without mappability info.</p></li>
+<li><p>Remove genes that are not protein coding genes or lincRNA genes.</p>
+<p>This step removes all pseudogenes and genes that don’t have clear “annotation and functional interpretations” and “avoid genes enriched for mapping artefacts”, like <a href="https://www.biorxiv.org/content/biorxiv/early/2019/10/03/787903/DC1/embed/media-1.pdf?download=false">GTEx 2019 paper</a>. We can have the gene class from the gencode annotation file.</p></li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Remove genes with mappability <span class="math inline">\(&lt;0.9\)</span>.</p></li>
+<li><p>Remove gene pairs with cross-mappability <span class="math inline">\(\ge 1\)</span>.</p>
+<p>The cross-mappable gene pairs are defined to be all genes included in the cross-mappability file.</p></li>
+<li><p>Remove genes that are not autosomal.</p></li>
+</ol>
+<p>Number of genes left/removed in each filter step is summarized in the following table. “All” is for the number of all genes in the “Dataset”; “Annotated” is for genes included in the gencode annotation file; “Filtered” is for genes that are not protein coding/lincRNA, poorly mapped, cross-mapped, or not autosomal in total; “Filtered.info” gives genes in the four categories; “Final” gives genes for the downstream use.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dataset</th>
+<th align="right">All</th>
+<th align="right">Annotated</th>
+<th align="right">Filtered</th>
+<th align="left">Filtered.info</th>
+<th align="right">Final</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DGN</td>
+<td align="right">13634</td>
+<td align="right">12585</td>
+<td align="right">9953</td>
+<td align="left">453;2786;8705;1</td>
+<td align="right">3681</td>
+</tr>
+<tr class="even">
+<td align="left">TCGA</td>
+<td align="right">17656</td>
+<td align="right">15994</td>
+<td align="right">12694</td>
+<td align="left">336;3504;10697;598</td>
+<td align="right">4962</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="dec-07" class="section level2">
 <h2>Dec 07</h2>
 <div id="update-results-for-multiple-permutations." class="section level3">
@@ -1224,104 +1322,7 @@ Build site.
 </tr>
 </tbody>
 </table>
-<p><img src="figure/Log.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
-Past versions of unnamed-chunk-1-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-1-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/99bc5ee61484adbbc431b399b1b43be3d617cb1b/docs/figure/Log.Rmd/unnamed-chunk-1-1.png" target="_blank">99bc5ee</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-12-06
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/98251c3935758bd8cc69d10c7bf9343b3be24fe9/docs/figure/Log.Rmd/unnamed-chunk-1-1.png" target="_blank">98251c3</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-11-30
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><img src="figure/Log.Rmd/unnamed-chunk-1-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-2">
-Past versions of unnamed-chunk-1-2.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-1-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/99bc5ee61484adbbc431b399b1b43be3d617cb1b/docs/figure/Log.Rmd/unnamed-chunk-1-2.png" target="_blank">99bc5ee</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-12-06
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/98251c3935758bd8cc69d10c7bf9343b3be24fe9/docs/figure/Log.Rmd/unnamed-chunk-1-2.png" target="_blank">98251c3</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2020-11-30
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/Log.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" />NULL <img src="figure/Log.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Before interpreting the reuslt, I will first describe these figures.</p>
 <ul>
 <li><p>The table gives the number of signals under different FDR methods (“FDR”) and signal types (i.e. (QTL, module) signal pair, unique signal, independent signal). For each case combination, I also give the results based on one permutation (“#1”) and five permuations (“#5”).</p></li>
@@ -2436,7 +2437,7 @@ other attached packages:
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.4           lattice_0.20-38      tidyr_1.1.2         
  [4] assertthat_0.2.1     rprojroot_1.3-2      digest_0.6.25       
- [7] R6_2.4.1             cellranger_1.1.0     plyr_1.8.6          
+ [7] plyr_1.8.6           R6_2.4.1             cellranger_1.1.0    
 [10] futile.options_1.0.1 backports_1.1.5      evaluate_0.14       
 [13] highr_0.8            pillar_1.4.3         rlang_0.4.7         
 [16] curl_4.3             readxl_1.3.1         data.table_1.13.2   
