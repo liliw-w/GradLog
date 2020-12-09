@@ -12,6 +12,62 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Dec 10
+### Description of datasets and mappability files
++ DGN
+
+  Genes expressed in DGN are based on the human genome GRCh37 and gene symbols were mapped to unique Ensembl gene ids according to Gencode v19, corresponding to the annotations used in the mappability file.
+  
+  Gene annotation file for mappability is `gencode.v19.annotation.table.txt`, which is based on the human genome GRCh37 using annotations from Gencode v19 and includes **57820** genes in total. Each of 57820 genes has a mappability score in `hg19_gencode19_75merExon_36merUTR_2mismatch_gene_mappability.txt.gz`. And only those gene pairs with cross-mappable score larger than 1 are included in `hg19_gencode19_75merExon_36merUTR_2mismatch_cross_mappability_symmetric_mean.txt.gz`.
+
+  Not all DGN-expressed genes have mappbility info. So in the gene filtering step, I will first filter out genes that are included in the mappability file.
+  
+  **Remark**: The pseudogene list `/project2/xuanyao/data/mappability/pseudogenes.txt` only includes pseudogenes in category "pseudogene" but not other pseudogene categories in file `gencode.v19.annotation.table.txt`. Since we need to remove all kinds of pseudogenes, using this list is enough.
+
++ GTEx v8
+
+  Gene annotation file for expression matrices is `gencode.v26.GRCh38.genes_annotation_table.txt`, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes **56200** genes in total.
+   
+  Gene annotation file for mappability is `gencode.v26.annotation.table.txt`, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes **58219** genes in total. Each of 58219 genes has a mappability score in `hg38_gene_mappability.txt.gz`. And only those gene pairs with cross-mappable score larger than 1 are included in `hg38_cross_mappability_strength_symmetric_mean_sorted.txt.gz`.
+  
+  All 56200 genes used in expression matrices are included in the gene annotation file for mappability, which means they all have mappability info.
+
+### Gene filter
+
+The following are the filtering steps.
+
+1. Remove genes that are not in the gencode annotation file (Gencode v19 or Gencode v26).
+  
+    This filtering step aims to remove genes without mappability info.
+  
+2. Remove genes that are not protein coding genes or lincRNA genes.
+
+    This step removes all pseudogenes and genes that don't have clear "annotation and functional interpretations" and "avoid genes enriched for mapping artefacts", like [GTEx 2019 paper][]. We can have the gene class from the gencode annotation file.
+
+[GTEx 2019 paper]: https://www.biorxiv.org/content/biorxiv/early/2019/10/03/787903/DC1/embed/media-1.pdf?download=false
+
+3. Remove genes with mappability $<0.9$.
+
+4. Remove gene pairs with cross-mappability $\ge 1$.
+
+    The cross-mappable gene pairs are defined to be all genes included in the cross-mappability file.
+
+5. Remove genes that are not autosomal.
+
+Number of genes left/removed in each filter step is summarized in the following table. "All" is for the number of all genes in the "Dataset"; "Annotated" is for genes included in the gencode annotation file; "Filtered" is for genes that are not protein coding/lincRNA, poorly mapped, cross-mapped, or not autosomal in total; "Filtered.info" gives genes in the four categories; "Final" gives genes for the downstream use.
+
+```{r}
+res = data.frame("Dataset" = c("DGN", "TCGA"),
+                     "All" = c(13634, 17656),
+                     "Annotated" = c(12585, 15994),
+                     "Filtered" = c(9953, 12694),
+                     "Filtered.info" = c("453;2786;8705;1", "336;3504;10697;598"),
+                     "Final" = c(3681, 4962),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+
 ## Dec 07
 
 ### Update results for multiple permutations.
@@ -108,6 +164,7 @@ uniq_signals = lapply(file_name, function(x) read.table(paste0("data/", x), stri
 names(uniq_signals) = paste0("QTL.perm", rep(perm.seq.venn, 3))
 venn.col = c("pink", "light green", "light blue")
 venn.list = list()
+flog.threshold(ERROR)
 for(i in 1:3){
   venn.list[[i]] = venn.diagram(uniq_signals[1:Kperm.venn+(i-1)*Kperm.venn], fill = rep(venn.col[i], Kperm.venn), alpha = rep(0.5, Kperm.venn), lwd =0, print.mode = c('raw', 'percent'), NULL, main = res$FDR[i])
 }
