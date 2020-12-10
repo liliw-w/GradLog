@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo=FALSE)
 ```
 
 ## Dec 10
+
 ### Description of datasets and mappability files
 + DGN
 
@@ -67,6 +68,12 @@ res = data.frame("Dataset" = c("DGN", "TCGA"),
 knitr::kable(res)
 ```
 
+
+### eQTLGen?
+
+We want to check if signals in DGN can be replicated using the full trans-eQTL summary statistics from [eQTLGen][]. This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog. So it's not what we expected for the whole genome. In addition, not all genes have zscores for all snps.
+
+[eQTLGen]: https://www.eqtlgen.org/trans-eqtls.html
 
 ## Dec 07
 
