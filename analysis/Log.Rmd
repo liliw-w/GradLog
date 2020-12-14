@@ -12,6 +12,30 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Dec 14
+
+### eQTLGen
+
+*This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.*
+
+After gene filter steps described in `Dec 10`, there are 4963 left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules.
+
+The 3642 genes result in 19 gene modules. Next, I will do two things.
+
+1. Apply PCO to the these modules and eQTLGen SNPs, based on eQTLGen zscores.
+
+    Remark: Among 10317 eQTLGen SNPs, 9918 have zscores for all genes on the different chromosomes.
+
+  + FDR correction based on qvalue (threshold $0.05$).
+  
+      2194 (module, signal) pairs; 909 unique signals.
+    
+      The largest pvalue is $5.82*10^{-4}$.
+  
+  + Use significance threshold as $\frac{0.05}{\#DGN signals}$.
+
+2. Apply PCO to these modules and whole genome SNPs, based on tensorQTL zscores.
+
 ## Dec 10
 
 ### Description of datasets and mappability files
