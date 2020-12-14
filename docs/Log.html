@@ -424,7 +424,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-10
+<strong>Last updated:</strong> 2020-12-14
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -515,16 +515,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4936e7bdc9e20d5417c8518d68e081e0fe2227f0targetblank4936e7ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/4936e7bdc9e20d5417c8518d68e081e0fe2227f0" target="_blank">4936e7b</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree702727b3944f1ac783dd08ebb86c02791d77d664targetblank702727ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/702727b3944f1ac783dd08ebb86c02791d77d664" target="_blank">702727b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4936e7bdc9e20d5417c8518d68e081e0fe2227f0targetblank4936e7ba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree702727b3944f1ac783dd08ebb86c02791d77d664targetblank702727ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/4936e7bdc9e20d5417c8518d68e081e0fe2227f0" target="_blank">4936e7b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/702727b3944f1ac783dd08ebb86c02791d77d664" target="_blank">702727b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -576,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/702727b3944f1ac783dd08ebb86c02791d77d664/analysis/Log.Rmd" target="_blank">702727b</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-12-14
+</td>
+<td>
+Add eQTLGen results.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/cad859845ef33f5db95f85164fca8243ff2ca45e/docs/Log.html" target="_blank">cad8598</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2020-12-10
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1144,6 +1178,28 @@ Build site.
 </div>
 </div>
 </div>
+<div id="dec-14" class="section level2">
+<h2>Dec 14</h2>
+<div id="eqtlgen" class="section level3">
+<h3>eQTLGen</h3>
+<p><em>This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.</em></p>
+<p>After gene filter steps described in <code>Dec 10</code>, there are 4963 left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules.</p>
+<p>The 3642 genes result in 19 gene modules. Next, I will do two things.</p>
+<ol style="list-style-type: decimal">
+<li><p>Apply PCO to the these modules and eQTLGen SNPs, based on eQTLGen zscores.</p>
+<p>Remark: Among 10317 eQTLGen SNPs, 9918 have zscores for all genes on the different chromosomes.</p></li>
+</ol>
+<ul>
+<li><p>FDR correction based on qvalue (threshold <span class="math inline">\(0.05\)</span>).</p>
+<p>2194 (module, signal) pairs; 909 unique signals.</p>
+<p>The largest pvalue is <span class="math inline">\(5.82*10^{-4}\)</span>.</p></li>
+<li><p>Use significance threshold as <span class="math inline">\(\frac{0.05}{\#DGN signals}\)</span>.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Apply PCO to these modules and whole genome SNPs, based on tensorQTL zscores.</li>
+</ol>
+</div>
+</div>
 <div id="dec-10" class="section level2">
 <h2>Dec 10</h2>
 <div id="description-of-datasets-and-mappability-files" class="section level3">
@@ -1207,7 +1263,7 @@ Build site.
 </tbody>
 </table>
 </div>
-<div id="eqtlgen" class="section level3">
+<div id="eqtlgen-1" class="section level3">
 <h3>eQTLGen?</h3>
 <p>We want to check if signals in DGN can be replicated using the full trans-eQTL summary statistics from <a href="https://www.eqtlgen.org/trans-eqtls.html">eQTLGen</a>. This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog. So it’s not what we expected for the whole genome. In addition, not all genes have zscores for all snps.</p>
 </div>
