@@ -12,6 +12,39 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Dec 17
+
+### GTEx v8 Whole Blood
+
+To make it easier for updates, I summarized all results [here](./all_signals.txt). ???
+
+```{r}
+res = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
+                 "(QTL, module) #10" = c(148, 8, 4),
+                 "unique QTL #10" = c(148, 8, 4),
+                 "independent QTL #10" = c(50, 5, 2),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+There are only 4 significant signals, including 3:56815721, 9:26583610, 9:26583818, and 9:26584038, of which 2 are independent. The first 3:56815721 is SNP rs1354034, which is an intron variant of gene *ARHGEF3*.
+
+There are much fewer signals than DGN. To take a closer look at the signals pvalues, I plot the histogram of $p<10^{-6}$.
+
+```{r fig.cap=c("GTEx_v8.Whole_Blood", "DGN")}
+knitr::include_graphics(c("GTEx.Whole_Blood.p.png", "DGN.p.png"), error = FALSE)
+```
+
+It shows that pvalues of GTEx are generally larger than that of DGN. So there are fewer signals.
+
+Is it due to the relatively small sample size? GTEx whole blood (670) v.s. DGN whole blood (913)? Run DGN using similar sample size?
+
+### Multiple permutations in Dec 01
+
+Update results of perm20 using the completely independent permutations? For combined chr and module FDR, perm1 and perm20 don't differ much? For combined chr FDR, perm20 is completely included in perm1? For module and chr FDR, most of perm20 signals are included in perm1?
+
+Rerun completely independent samples for perm 5 and perm10? For multiple times?
+
 ## Dec 14
 
 ### eQTLGen
