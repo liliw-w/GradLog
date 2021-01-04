@@ -1,4 +1,0 @@
-Dataset   All Annotated Filtered  Filtered_info Final Nmodule FDR Nperm QTL_Module unique_QTL independent_QTL
-DGN	13634 12585 9953	453;2786;8705;1	3681
-TCGA	17656  15994	12694	336;3504;10697;598	4962
-GTEx_v8.Whole_Blood
