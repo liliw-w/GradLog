@@ -1,0 +1,88 @@
+---
+title: "Log2021"
+output:
+  workflowr::wflow_html:
+              toc: true
+              toc_depth: 4
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+
+## Jan 05
+
+### eQTLGen
+
+
+1. eQTLGen description
+
+    *This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.*
+
+    After gene filter steps described in `Dec 10`, there are 4963 genes left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are also included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules. These 3642 genes result in 19 gene modules.
+
+2. Replication of DGN signals in eQTLGen
+
+    The table below gives the signals found in eQTLGen and DGN.
+
+    The first two rows give results based on eQTLGen zscores, with row 1 using `qvalue` for FDR correction (threshold $0.05$) and row 2 using $\frac{0.05}{\#DGN signals}$ as significance threshold. The third row is based on the same gene modules and SNPs but tensorQTL zscores using DGN expression data. The FDR correction uses the empirical distribution of pvalues from the combined chr's and modules (10 permutations).
+
+
+```{r}
+res = data.frame("Dataset" = c("eQTLGen", "eQTLGen", "eQTLGen_DGN"),
+                 "FDR" = c("qvalue", "0.05/#DGN signals", "combined chr+module #10-perms"),
+                 "minp" = c(5.82e-04, 1.18e-04, 1.11e-07),
+                 "(QTL, module)" = c(2195, 1707, 420),
+                 "unique QTL" = c(909, 762, 374),
+                 "independent QTL" = c(348, 286, 28),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+
+Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 16 replicated signals consists of 6 independent SNPs, including (based on GRCh37),
+
++ [rs12485738] : 3:56865776, intron variant of *ARHGEF3*.
++ [rs643381] :  6:139839423. ([rs590856], 6:139844429).
++ [rs149007767] 7:50370254: , intron variant of *IKZF1*.
++ [rs12718597] : 7:50428428, intron variant of *IKZF1*.
++ [rs35979828] : 12:54685880, 500B downstream variant of *NFE2*.
++ [rs7210990] : 17:16170764, intron variant of *PIGL*.
+
+[rs12485738]: https://www.ncbi.nlm.nih.gov/snp/rs12485738
+[rs643381]: https://www.ncbi.nlm.nih.gov/snp/rs643381
+[rs590856]: https://www.ncbi.nlm.nih.gov/snp/rs590856
+[rs149007767]: https://www.ncbi.nlm.nih.gov/snp/rs149007767
+[rs12718597]: https://www.ncbi.nlm.nih.gov/snp/rs12718597
+[rs35979828]: https://www.ncbi.nlm.nih.gov/snp/rs35979828
+[rs7210990]: https://www.ncbi.nlm.nih.gov/snp/rs7210990
+
+### GTEx
+
+#### Results
+
+The table below summarizes all results I have so far. (The dataset "DGN_new" represents DGN through the standard filtering (see "Gene filter" on Dec 10).)
+
+The following figures give the distributions of pvalues in various datasets.
+
+```{r warning=FALSE}
+res = read.table("data/all_signals.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = TRUE)
+res[is.na(res)] = " "
+knitr::kable(res)
+```
+
+
+```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial")}
+knitr::include_graphics(c("DGN.p.png", "DGN_new.p.png", "Whole_Blood.p.png", "Muscle_Skeletal.p.png", "Skin_Sun_Exposed_Lower_leg.p.png", "Artery_Tibial.p.png"), error = FALSE)
+```
+
+#### Remarks
+
+1. GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).
+
+
+### New TCGA by the standard filtering
+

@@ -1,0 +1,606 @@
+---
+title: "Log2020"
+output:
+  workflowr::wflow_html:
+              toc: true
+              toc_depth: 4
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+
+## Dec 17
+
+### GTEx v8 Whole Blood
+
+To make it easier for updates, I summarized all results [here](./all_signals.txt). ???
+
+```{r}
+res = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
+                 "(QTL, module) #10" = c(148, 8, 4),
+                 "unique QTL #10" = c(148, 8, 4),
+                 "independent QTL #10" = c(50, 5, 2),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+There are only 4 significant signals, including 3:56815721, 9:26583610, 9:26583818, and 9:26584038, of which 2 are independent. The first 3:56815721 is SNP rs1354034, which is an intron variant of gene *ARHGEF3*.
+
+There are much fewer signals than DGN. To take a closer look at the signals pvalues, I plot the histogram of $p<10^{-6}$.
+
+```{r fig.cap=c("GTEx_v8.Whole_Blood", "DGN")}
+knitr::include_graphics(c("Whole_Blood.p.png", "DGN.p.png"), error = FALSE)
+```
+
+It shows that pvalues of GTEx are generally larger than that of DGN. So there are fewer signals.
+
+Is it due to the relatively small sample size? GTEx whole blood (670) v.s. DGN whole blood (913)? Run DGN using similar sample size?
+
+### Multiple permutations in Dec 01
+
+Update results of perm20 using the completely independent permutations? For combined chr and module FDR, perm1 and perm20 don't differ much? For combined chr FDR, perm20 is completely included in perm1? For module and chr FDR, most of perm20 signals are included in perm1?
+
+Rerun completely independent samples for perm 5 and perm10? For multiple times?
+
+## Dec 14
+
+### eQTLGen
+
+*This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.*
+
+After gene filter steps described in `Dec 10`, there are 4963 left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules.
+
+The 3642 genes result in 19 gene modules. Next, I will do two things.
+
+1. Apply PCO to the these modules and eQTLGen SNPs, based on eQTLGen zscores.
+
+    Remark: Among 10317 eQTLGen SNPs, 9918 have zscores for all genes on the different chromosomes.
+
+  + FDR correction based on qvalue (threshold $0.05$).
+  
+      2194 (module, signal) pairs; 909 unique signals.
+    
+      The largest pvalue is $5.82*10^{-4}$.
+  
+  + Use significance threshold as $\frac{0.05}{\#DGN signals}$.
+
+2. Apply PCO to these modules and whole genome SNPs, based on tensorQTL zscores.
+
+## Dec 10
+
+### Description of datasets and mappability files
++ DGN
+
+  Genes expressed in DGN are based on the human genome GRCh37 and gene symbols were mapped to unique Ensembl gene ids according to Gencode v19, corresponding to the annotations used in the mappability file.
+  
+  Gene annotation file for mappability is `gencode.v19.annotation.table.txt`, which is based on the human genome GRCh37 using annotations from Gencode v19 and includes **57820** genes in total. Each of 57820 genes has a mappability score in `hg19_gencode19_75merExon_36merUTR_2mismatch_gene_mappability.txt.gz`. And only those gene pairs with cross-mappable score larger than 1 are included in `hg19_gencode19_75merExon_36merUTR_2mismatch_cross_mappability_symmetric_mean.txt.gz`.
+
+  Not all DGN-expressed genes have mappbility info. So in the gene filtering step, I will first filter out genes that are included in the mappability file.
+  
+  **Remark**: The pseudogene list `/project2/xuanyao/data/mappability/pseudogenes.txt` only includes pseudogenes in category "pseudogene" but not other pseudogene categories in file `gencode.v19.annotation.table.txt`. Since we need to remove all kinds of pseudogenes, using this list is enough.
+
++ GTEx v8
+
+  Gene annotation file for expression matrices is `gencode.v26.GRCh38.genes_annotation_table.txt`, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes **56200** genes in total.
+   
+  Gene annotation file for mappability is `gencode.v26.annotation.table.txt`, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes **58219** genes in total. Each of 58219 genes has a mappability score in `hg38_gene_mappability.txt.gz`. And only those gene pairs with cross-mappable score larger than 1 are included in `hg38_cross_mappability_strength_symmetric_mean_sorted.txt.gz`.
+  
+  All 56200 genes used in expression matrices are included in the gene annotation file for mappability, which means they all have mappability info.
+
+### Gene filter
+
+The following are the filtering steps.
+
+1. Remove genes that are not in the gencode annotation file (Gencode v19 or Gencode v26).
+  
+    This filtering step aims to remove genes without mappability info.
+  
+2. Remove genes that are not protein coding genes or lincRNA genes.
+
+    This step removes all pseudogenes and genes that don't have clear "annotation and functional interpretations" and "avoid genes enriched for mapping artefacts", like [GTEx 2019 paper][]. We can have the gene class from the gencode annotation file.
+
+[GTEx 2019 paper]: https://www.biorxiv.org/content/biorxiv/early/2019/10/03/787903/DC1/embed/media-1.pdf?download=false
+
+3. Remove genes with mappability $<0.9$.
+
+4. Remove gene pairs with cross-mappability $\ge 1$.
+
+    The cross-mappable gene pairs are defined to be all genes included in the cross-mappability file.
+
+5. Remove genes that are not autosomal.
+
+Number of genes left/removed in each filter step is summarized in the following table. "All" is for the number of all genes in the "Dataset"; "Annotated" is for genes included in the gencode annotation file; "Filtered" is for genes that are not protein coding/lincRNA, poorly mapped, cross-mapped, or not autosomal in total; "Filtered.info" gives genes in the four categories; "Final" gives genes for the downstream use.
+
+```{r}
+res = data.frame("Dataset" = c("DGN", "TCGA"),
+                     "All" = c(13634, 17656),
+                     "Annotated" = c(12585, 15994),
+                     "Filtered" = c(9953, 12694),
+                     "Filtered.info" = c("453;2786;8705;1", "336;3504;10697;598"),
+                     "Final" = c(3681, 4962),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+
+### eQTLGen?
+
+We want to check if signals in DGN can be replicated using the full trans-eQTL summary statistics from [eQTLGen][]. This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog. So it's not what we expected for the whole genome. In addition, not all genes have zscores for all snps.
+
+[eQTLGen]: https://www.eqtlgen.org/trans-eqtls.html
+
+## Dec 07
+
+### Update results for multiple permutations.
+In order to check if keep increasing permutations will keep decreasing signals, I ran more permutations, i.e. 1, 5, 10, 15, 20. See section in `Dec 01`. The figures show that if we use the FDR based on the combined chr and modules, maybe we should use 10 permutations rather than just 1 permutation, since the number of signals starts to be stable from 10-perm.
+
+### GTEx genes
+Last week, we wanted to check how many GTEx genes are cross-mapped, poorly mapped, or pseudogenes in the following way *"If many genes not in the protein coding/lincRNA category don’t have mappability score or multimappablity scores, we can remove them too."*
+
+However, I found that in the cross-mappability file, there are 27949 genes in total, the minimum cross-mappability score is 1 and 0.5 in files `*cross_mappability_strength.txt.gz` and `*cross_mappability_strength_symmetric_mean_sorted.txt.gz`, respectively. So I think all genes in this cross-mappability file should be considered cross-mapped (cross-mappability > 0), according to [Battle 2018][Battle mappability]
+
+[Battle mappability]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6305209/
+
+For example, in whole blood, there are 20315 genes in total, among which, 14582 and 1189 are protein_coding and lincRNA, respectively, with the remaining 4544 genes in other catogories. Among 14582 protein coding genes, 9962 are in the cross-mappability file, 2015 have mappability of NA or $<0.9$. Combined together, 9991 are removed, leaving 4591 genes.
+
++ protein_coding: 14582, 9962, 2015, 9991, 4591
++ lincRNA: 1189, 512, 215, 533, 656
++ Others: 4544, 2622, 1476, 2668, 1876
+
+Question: Can we simply use the GTEx genes that are protein coding/lincRNA?
+
+### eQTLGen and DGN
+Some genes in DGN modules are not in eQTLGen trans dataset.
+
+Do DGN provide the ENS id of the gene symbols?
+
+New ways to filter DGN genes? (1) genes not in `gencode.v19.annotation.gtf.gz`; (2) gene_type "pseudogene"; (3)
+
+## Dec 01
+
+### Work I did.
+
+Here I give a brief summary of my last week's work. Firstly, I ran multiple permutations to generate multiple empirical nulls so that I can validate if our previous results based on one-time permutation are stable. Secondly, I ran GTEx datesets for all tissues.
+
+### Multiple permutations
+
+The following table and figures summarize the signals under different numbers of permutations.
+
+```{r results='asis', message=FALSE}
+require(ggplot2)
+require(ggpubr)
+require(VennDiagram)
+require(gridExtra)
+
+perm.seq = c(1, 5, 10, 15, 20); Kperm = length(perm.seq)
+file_name = c("LD.prun.in.txt", "LD.prun.in.perm5.txt", "LD.prun.in.perm20.txt",
+              "LD.prun.in.chr.txt", "LD.prun.in.chr.perm5.txt", "LD.prun.in.chr.perm20.txt",
+              "LD.prun.in.chr.module.txt", "LD.prun.in.chr.module.perm5.txt", "LD.prun.in.chr.module.perm20.txt")
+perm.seq.venn = c(1, 5, 20); Kperm.venn = length(perm.seq.venn)
+
+res.pair = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
+                 "(QTL, module) #1" = c(3536, 733, 678),
+                 "(QTL, module) #5" = c(1350, 293, 624),
+                 "(QTL, module) #10" = c(1047, 258, 589),
+                 "(QTL, module) #15" = c(938, 251, 564),
+                 "(QTL, module) #20" = c(889, 239, 563),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res.pair)
+
+res.uniq = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
+                 "unique QTL #1" = c(3439, 671, 641),
+                 "unique QTL #5" = c(1286, 261, 589),
+                 "unique QTL #10" = c(993, 227, 555),
+                 "unique QTL #15" = c(887, 220, 531),
+                 "unique QTL #20" = c(845, 208, 530),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res.uniq)
+
+res.indep = data.frame("FDR" = c("(module, chr)", "combined chr", "combined chr+module"),
+                 "independent QTL #1" = c(500, 47, 42),
+                 "independent QTL #5" = c(125, 21, 38),
+                 "independent QTL #10" = c(77, 18, 33),
+                 "independent QTL #15" = c(63, 18, 32),
+                 "independent QTL #20" = c(52, 17, 32),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res.indep)
+
+res = cbind(res.pair, res.uniq[, -1], res.indep[, -1])
+# draw the results in lines
+plot.all = list(); ylim.seq = c(3550, 3550, 500)
+for(i in 1:3){
+  plotData = cbind(t(res[, 1:Kperm+(i-1)*Kperm+1]))
+  colnames(plotData) = res$FDR; rownames(plotData) = perm.seq
+  plotData = reshape2::melt(plotData); colnames(plotData) = c("Nperm", "FDR", "NumofQTLs")
+  plot.all[[i]] <- ggplot(plotData, aes(x = Nperm, y = NumofQTLs, col=factor(FDR))) + geom_line() + geom_point() + ylim(0, ylim.seq[i]) + theme(legend.position="none")
+}
+ggarrange(plotlist = plot.all,
+          nrow = 1, ncol=3,
+          labels = c("(QTL, module)", "unique QTL", "independent QTL"),
+          legend = "bottom", common.legend = TRUE,
+          font.label = list(size = 10))
+
+# draw the Venn diagram of the results to see the interaction
+uniq_signals = lapply(file_name, function(x) read.table(paste0("data/", x), stringsAsFactors = FALSE)$V1)
+names(uniq_signals) = paste0("QTL.perm", rep(perm.seq.venn, 3))
+venn.col = c("pink", "light green", "light blue")
+venn.list = list()
+flog.threshold(ERROR)
+for(i in 1:3){
+  venn.list[[i]] = venn.diagram(uniq_signals[1:Kperm.venn+(i-1)*Kperm.venn], fill = rep(venn.col[i], Kperm.venn), alpha = rep(0.5, Kperm.venn), lwd =0, print.mode = c('raw', 'percent'), NULL, main = res$FDR[i])
+}
+grid.arrange(gTree(children=venn.list[[1]]),
+             gTree(children=venn.list[[2]]),
+             gTree(children=venn.list[[3]]),
+             ncol=2, nrow = 2)
+```
+
+Before interpreting the reuslt, I will first describe these figures.
+
++ The table gives the number of signals under different FDR methods ("FDR") and signal types (i.e. (QTL, module) signal pair, unique signal, independent signal). For each case combination, I also give the results based on one permutation ("#1") and five permuations ("#5").
+
++ For a more intuitive sense of these numbers, I also plot them in the second figure, where colors represent the FDR methods, sub-figures are for signal types, x-axis is for number of permutations, and y-axis is for number of signals.
+
++ To look at the difference and interactions of the signals under different permutations, I draw the Venn diagram in the third figure. Still, colors represent the FDR methods. For simplicity, I only looked at the unique signals.
+
+Generally speaking, increasing the number of permutations decreases the number of signals.
+
++ For FDR based on each (module, chr) pair, there were 3439 unique QTLs under 1-perm. However, these signals decrease to 1286 after increasing the number of permutations to 5. From the Venn plot (red), we can see that among the 3439 QTLs from 1-perm, 2247 are no longer signals after increasing permutations.
+
++ For FDR based on combined chromosomes, using 1-perm and 5-perm generated 671 and 261 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. 410 QTLs become insignificant under more permutations.
+
++ For FDR based on combined chromosomes and modules, using 1-perm and 5-perm generated 641 abd 589 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. Only 52 QTLs become insignificant under more permutations.
+
+The results show that (module, chr) pair and combined chromosomes-based FDR are not stable if we only use one permutation. However, combined chromosomes and modules-based FDR seems quite stable. (WHY?) In order to check if keep increasing permutations will keep decreasing signals, I am running 10 permutations.
+
+## Nov 23
+
+Last week, I used three ways to correct for the multiple testing based on the empirical null distributions, including correction based on (1) each module and chromosome pair; (2) combined chromosomes for each module; and (3) combined all chromosomes and modules. For the signals obtained from these three ways, I looked at their pvalues and the chromosomes they are on and found out that the latter two correction ways make more sense. So next I will look at the enrichment of the signals' nearest genes.
+
+Some notes about what I did. I use the signals obtained from the combined chr's and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its **nearest** gene as the **closest** gene of which TSS is upstream/downstream 0.5Mbp away from the signal. As a result, there are 50 nearest genes for DGN and 548 for TCGA.
+
+Next, I looked at the enrichment of these genes.
+
+### DGN
+Since I am not able to share the link to the complete enrichment result, I posted the 47 genes used by [David][David website link] enrichment tool [here](./converted.DGN.txt) to reproduce the results.
+
+[David website link]: https://david.ncifcrf.gov/
+
+Under BH correction with 0.05 as threshold, there is one significant enrichment cluster: SPRY-domain-related, which includes four genes *BTNL3, BTNL8, BTNL9, TRIM58*.
+
+I doubt that this enrichment happens because some signals are physically close to each other but their nearest genes are different. So I looked at the enrichment of genes that are closest to the independent signals (previously I used all signals). The gene list used by David is [here](./converted.indep.DGN.txt). There is no enriched term under 0.05 BH.
+
+
+### TCGA
+I post the 474 genes used by David enrichment tool [here](./converted.TCGA.txt) to reproduce the results.
+
+Under BH correction with 0.05 as threshold, there are basically two types of enrichment.
+
+1. Guanylate-binding protein
+
+    Relation with cancer: [[source]][Guanylate-binding protein1] [[source]][Guanylate-binding protein2]
+
+[Guanylate-binding protein1]: https://pubmed.ncbi.nlm.nih.gov/29115931/
+[Guanylate-binding protein2]: https://www.frontiersin.org/articles/10.3389/fimmu.2019.03139/full
+	
+2. MHC class II receptor activity/immunity-related: [Antigen processing and presentation], [Rheumatoid arthritis], et al.
+
+[Antigen processing and presentation]: https://onlinelibrary.wiley.com/doi/full/10.1111/imm.12675
+[Rheumatoid arthritis]: https://ard.bmj.com/content/79/5/581.abstract
+
+I also tried the independent signals (gene list is [here](./converted.indep.TCGA.txt)). There is no enriched term under 0.05 BH.
+
+### GBAT signals
+
+The following table summarizes the signals from GBAT and whether they are reproduced by our method.
+
+From the Figure 4 of [GBAT paper], there are 5 labeled transcription factors that regulate multiple genes in trans. I checked that if these 5 genes have nearby SNPs that are identified as signals in our analysis (`Regulator.signal`). Then checked the modules the signals correspond to (`signal.module`). Next, I checked whether the TF target genes identified by GBAT (`Target`) are in our modules (`Target.in.module`). If so, check which module these genes are (`Target.module`).
+
+[GBAT paper]: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02120-1/figures/4Form
+
+The regulator *PLAGL1* is close to the signal 6:144304358, which corresponds to module 11. Only 5 of this regulator's target genes are in our modules and none of them are clustered into module 11.
+
+The regulator *NFE2* is close to the signal 12:54685880, which corresponds to module 1 and module 11. Among the 6 target genes, 2 are in our modules. One is in module1, the other one is in module 5.
+
+The regulator *NFKBIA* is close to the signal 14:35602108, which corresponds to module 11. Among the 3 target genes, one is in our modules and it is in module 11.
+
+The regulator *IKZF1* is close to multiple signals, which are introns of *IKZF1*. The signals correspond to multiple modules including 1,2,5,6,7,8,11,18. Among the regulator's 4 target genes, one is in our modules and it is in module 18.
+
+The regulator *SENP7* is not close to any signals.
+
+```{r warning=FALSE}
+res = read.delim("data/GBAT.txt", check.names = F, stringsAsFactors = F, quote = NULL)
+res[is.na(res)] = " "
+knitr::kable(res)
+```
+
+### Look at some top signals
+
+I looked at part of the top signals with very small pvalues. The following table summarizes the signals' postions, the corresponding modules, pvalues, the signal's nearest gene, and the gene info. The first two rows give the signals that are near two TFs, *IKZF1, KLF2*.
+
+Notes: Some pvalues are zero because they are smaller than the numerical precision ($<10^{-16}$).
+
+```{r warning=FALSE}
+res = read.delim("data/top.signals.txt", check.names = F, stringsAsFactors = F, quote = NULL)
+res[is.na(res)] = " "
+knitr::kable(res)
+```
+
+
+## Nov 16
+
+### Work I did.
+For the last week, I re-write the whole pipeline into snakemake files, so that I can run different datasets with ease. [script]
+
+[script]: https://github.com/liliw-w/Trans/tree/main/script
+
+Before listing the results, I will first describe the key steps in the pipeine.
+
+1. Construct co-expressed modules using `minModuleSize=20`.
+2. Compute zscores by tensorQTL.
+3. Compute pvalues by TruncPCO.
+4. Adjust for multiple testing based on one-time permutation, followed by Bonferroni.
+
+### Results summary.
+
+This table is for the results summary.
+
+```{r warning=FALSE}
+signals.summary = read.delim("data/signals.summary.txt", check.names = F, stringsAsFactors = F, quote = NULL)
+signals.summary[is.na(signals.summary)] = " "
+knitr::kable(signals.summary)
+```
+
+### TCGA
+
+The following three plots are for FDR correction based on each module and chr pair; combined chr's for each module; combined chr's and modules.
+
+The first plot is for the 2063 independent signals. The left plot is the histogram of $-logp$. Since signals with $p<10^{-16}$ have pvalue as 0 in R, here I give these signals pvalue of $10^{-17}$, which have $-logp=17$. The plot shows that among 2063 signals, most of them have $p \approx 10^{-5}$. 
+
+**Question**: Is this too small for claiming significance for trans?
+
+The right plot is the histogram of the chromosomes the signals are on.
+
+```{r fig.cap="(module, chr) pair"}
+knitr::include_graphics("plot.TCGA.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr"}
+knitr::include_graphics("plotchr.TCGA.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr and modules"}
+knitr::include_graphics("plotchr.module.TCGA.png", error = FALSE)
+```
+
+
+### DGN
+
+The following three plots are for FDR correction based on each module and chr pair; combined chr's for each module; combined chr's and modules.
+
+As showed in the plot for DGN, among 500 independent signals, most of their pvalues have $p \approx 10^{-5}$.
+
+```{r fig.cap="(module, chr) pair"}
+knitr::include_graphics("plot.DGN.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr"}
+knitr::include_graphics("plotchr.DGN.png", error = FALSE)
+```
+
+```{r fig.cap="combine chr and modules"}
+knitr::include_graphics("plotchr.module.DGN.png", error = FALSE)
+```
+
+
+### GTEx
+
+1. Expression data pre-process.
+
+Below is how GTEx 2020 paper pre-processs expression data.
+
+"Gene-level expression quantification was performed using RNA-SeQC [68]. Gene-level read counts and TPM values were produced using the following read-level filters: 1) reads were uniquely mapped (corresponding to a mapping quality of 255 for STAR BAMs); 2) reads were aligned in proper pairs; 3) the read alignment distance was ≤ 6; 4) reads were fully contained within exon boundaries. Reads overlapping introns were not counted. These filters were applied using the “-strictMode” flag in RNA-SeQC. Gene expression values for all samples from a given tissue were normalized for eQTL analyses using the following procedure: 1) read counts were normalized between samples using TMM [69]; 2) genes were selected based on expression thresholds of ≥0.1 TPM in ≥20% of samples and ≥6 reads (unnormalized) in ≥20% of samples; 3) expression values for each gene were inverse normal transformed across samples." [source][GTEx 2020 paper supp]
+
+[GTEx 2020 paper supp]: https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf
+
+2. Genotype data pre-process.
+
+Any filter? QCed? script?
+
+## Nov 09
+
+### Paper using permutation-based false discovery rate.
+
+This [paper] uses permutations to correct for FDR of a complex test statistic. Like in our cases, it's unrealistic to do thousands of permutations. Specifically, they did 10 permutations and adjusted pvalues based on these 10 empirical null distributions. They justied why 10 permutations are enough.
+
+[paper]: https://www-nature-com.proxy.uchicago.edu/articles/ng.2756#Sec12
+
+### Modify PCO code from one SNP a time to multiple SNPs.
+
+1. davies method
+
+`davies.R`: Remove `PACKAGE=MPAT`; Run in command line `R SMP SHLIB qfc.cpp`; Run in R `dyn.load("./script/qfc.so")`
+
+2. liumod method
+
+Use liumod method when `p.WI ==0 | p.WI < 0`.
+
+### Snakemake pipeline.
+
+### Results
+
+z (tensorQTL) + p (TruncPCO) + FDR (one time permutation).
+
+z & p: add index for observe data or permutation.
+
+`minModuleSize=20` in WGCNA.
+
+DGN; TCGA
+
+## Nov 02
+### Why use `minModuleSize=30` in WGCNA for TCGA?
+
+There are three reasons why I set the minimum number of genes in modules to be 30.
+
+**1. DGN used this setting.**
+
+At first, we looked at the variance explained by the top three PC of each modules under different settings, i.e. `minModuleSize=100, 50, 30`. We found that under setting of 30, the top three PC's explained more variance, so we tended to use 30.
+
+```{r}
+knitr::include_graphics("1101.fig1.minModuleSize.png", error = FALSE)
+```
+
+The above plots used all 13634 genes without removing any poorly mapped genes. Next, I removed the poorly mapped genes, with 5258 genes left. I used 30 to cluster these 5258 genes and resulted in 18 modules. We then looked at the explained variance and found nothing seemed wrong. So we decided to use 30 for WGCNA and these 18 modules for downstream analysis.
+
+```{r out.height='80%', out.width='80%'}
+knitr::include_graphics("1101.fig2.minModuleSize.png", error = FALSE)
+```
+
+
+**2. 30 is the default module size in WGCNA tutorial, and also used by the elife paper.**
+
+[WGCNA tutorial] used 30 as default. ~~The [elife method] also used the default parameters.~~ (Correction: elife method used the default parameters in the R package, where `minClusterSize = 20`.)
+
+[WGCNA tutorial]: https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/FemaleLiver-02-networkConstr-auto.pdf
+[elife method]: https://elifesciences.org/articles/58705#s4
+
+**3. I tried other parameters, e.g. 100. 50, which both increase the unclassified genes.**
+
+```{r}
+res = data.frame("minModuleSize" = c(100, 50, 30, 20),
+                 "Num.unclassified.genes" = c(5247, 3251, 2908, 2813),
+                 "Num.modules" = c(4, 33, 57, 81),
+                 "Max.num.genes" = c(1972, 397, 356, 326))
+knitr::kable(res)
+```
+
+
+### Look into enrichment of TCGA modules.
+
+Here is the [complete enrichment result].
+
+[complete enrichment result]: https://biit.cs.ut.ee/gplink/l/5R4sgZawQC
+
+#### KEGG pathway enrichment
+```{r}
+res = read.csv("./data/GO.organizedResult.csv", stringsAsFactors = FALSE)
+
+ind.term = res$source == "KEGG"
+term = res[ind.term, -4]
+
+knitr::kable(term, row.names = FALSE)
+```
+
+
+* **ErbB signaling pathway**: "ErbB family members and some of their ligands are often over-expressed, amplified, or mutated in many forms of cancer, making them important therapeutic targets. For example, researchers have found EGFR to be amplified and/or mutated in gliomas and NSCLC while ErbB2 amplifications are seen in breast, ovarian, bladder, NSCLC, as well as several other tumor types. [[source]][source1]
+
+* **Neuroactive ligand-receptor interaction**:
+  * Influence on breast cancer MCF-7 cells: "Telocinobufagin might regulate neuroactive ligand-receptor interaction pathway to exert its influences in breast cancer MCF-7 cells." [[source]][source3]
+  * Involved in the regulation of renal cell carcinoma. [[source]][source2]
+  
+* **Mucin type O-glycan biosynthesis**: "Changes in mucin-type O-linked glycosylation are seen in over 90% of breast cancers" [[source]][source4] [[source]][source5]
+
+* **Human papillomavirus infection**: "We demonstrated that HPV is associated with breast cancer development, although the role of HPV in breast cancers is still questionable and further research is required to investigate, in more detail, the role of HPV infection in breast cancer." [[source]][source6]
+
+* **Prolactin signaling pathway**: "elevated PRL levels are correlated with increased breast cancer risk and metastasis" "In vitro studies have indicated a role for PRL in breast cancer proliferation and survival." [[source]][source7]
+
+* **Cocaine addiction**: ???
+
+* **PI3K-Akt signaling pathway**: "PI3K/Akt signaling pathway is key in the development of BC" (breast cancer) [[source]][source8]
+  
+[source1]: https://www.cellsignal.com/contents/science-cst-pathways-kinase-signaling/erbb-her-signaling/pathways-erbb#:~:text=The%20ErbB%20receptors%20signal%20through,making%20them%20important%20therapeutic%20targets.
+[source2]: https://www.karger.com/Article/Pdf/368504
+[source3]: https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/S0344033818301018
+[source4]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6103458/
+[source5]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1479595/
+[source6]: https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-5286-0#Sec17
+[source7]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5653461/
+[source8]: https://link.springer.com/article/10.1007%2Fs10555-010-9261-0
+
+
+
+### Debug code for TruncPCO.
+
+I was doubting that TruncPCO (using only $\lambda>1$) code may have bugs because of the following weird qqplot and histogram of pvalues.
+
+```{r out.height='70%', out.width='70%'}
+knitr::include_graphics("1101.fig3.TruncPCO.png", error = FALSE)
+```
+
+Rows are qqplot and histogram of pvalues. These pvalues are observed pvalues rather than null pvalues. Left column is for standard PCO (using all $\lambda$'s); right is for TruncPCO. I thought TruncPCO is weird because a histogram of pvalues shouldn't be as skewed as the lower right one. This skewed plot means pvalues by TruncPCO are overall smaller than PCO. We thought this may be due to LD among snps, i.e. the tests are not independent. However, even with the LD complication, the histogram should be approximately flat as in the lower left plot, where the tests are not independent either.
+
+So I looked into the code for TruncPCO and see if there are bugs I didn't notice. *(This paragraph explains what the bug is. See the histogram by the debugged code in next paragraph.)* PCO uses the minimum pvalue of six tests as the test statistic, i.e.
+$$T_{PCO}=min(p_{PCMinP}, p_{PCFisher}, p_{PCLC}, p_{WI}, p_{Wald}, p_{VC})$$
+
+Then use a inverse normal distribution to calculate pvalue of $T_{PCO}$. So the key step is to compute the six pvalues. The bug happens in the step of computing $p_{WI}$. The test statistic for this pvalus is,
+$$T_{WI}=\sum_{k=1}^K {z_k^2} = \sum_{k=1}^K {PC_k^2}=\sum_{k=1}^K {\lambda_k \chi_{1k}^2}$$
+,where $K$ is number of all PC's of expression matrix, $PC_k=u_k^Tz \sim N(0, \lambda_k)$, $u_k$ is k-th eigenvector with eigenvalue $\lambda_k$; $z$ is zscore vector for one snp to $K$ genes, $\chi_{1k}$ is chi-square distribution with DF 1. If we only use $\lambda>1$ for TruncPCO, i.e. $T_{WI}^{Trunc}=\sum_{k=1}^{k_0} {PC_k^2}=\sum_{k=1}^{k_0} {\lambda_k \chi_{1k}^2}$, what I only need to do is to subset $\lambda$'s and $PC_k$'s. That is what I did for other five tests. However, in the original PCO package, $T_{WI}$ is calculated using $\sum_{k=1}^K {z_k^2}$ and I should have changed $z_k$'s to $PC_k$'s. But I missed this. So, $T_{WI}$ actually used all $K$ $z_k$'s, and it's larger than the real $T_{WI}^{Trunc}$, therefore the pvalue is smaller than the real $p_{WI}^{Trunc}$. That is why in the above plot, TruncPCO has many small pvalues and its histogram skews to the left.
+
+So I used the debuged code and re-computed pvalues for the same (module, chr). The result is in the third column.
+
+```{r}
+knitr::include_graphics("1101.fig4.TruncPCO.png", error = FALSE)
+```
+
+The histogram became approximately flat. For this (module13, chr19), there seems to be some signals. Next, I give another example (module, chr), where there seems no signals.
+
+```{r}
+knitr::include_graphics("1101.fig5.TruncPCO.png", error = FALSE)
+```
+
+The histogram by the debugged TruncPCO is still almost flat in this cese, which makes sense.
+
+Now I have the updated pvalues. Next, I rerun TruncPCO for the null zscore, and use the null p's to adjust for these updated pvalues. Then see how many snps are significant ($p_{adj}<\frac{0.05}{18\times22}$). I do this because I want to see how are the signals by this debugged TruncPCO compared with those by the previous TruncPCO. For now, I checked for the above two (module, chr) and the signals are almost the same.
+
+From now on, I will use this correct version of TruncPCO to compute p's for other datasets and update p's for datasets I've analyzed.
+
+### Use tensorQTL do more permutation?
+
+So far, the way we use to adjust p is to permute samples once, calculate null z, then null p, then using this null p distribution to adjust the observe p's. This one-time permutation procedure should work. We do the permutation once because multiple permutation is computation-time heavy. So can we use tensorQTL to make permutation faster?
+
+As far as I understand, tensorQTL is like FastQTL, which does fast permutation to provide the adjusted minimum pvalues for each gene. This is gene-level adjustment, not the snp-level adjustment as we want. So we can't have more faster permutations by tensorQTL.
+
+### Do another round of permutation.
+
+To see how stable the signals are, I do another round of permutation for the above two (module, chr). Here I use TruncPCO for pvalues and empirical null for p adjustment. The following table gives the results.
+
+```{r}
+res = data.frame("example" = c("(module13,chr19)", "(module17,chr15)"),
+                 "oldTruncPCO.perm.1" = c(157, 1),
+                 "TruncPCO.perm.1" = c(159, 0),
+                 "TruncPCO.perm.2" = c(155, 1))
+knitr::kable(res)
+```
+
+
+
+### Notation table
+
+To make it clear, the following table is for notations of different methods.
+
+```{r results='asis'}
+res = data.frame("data" = c("observe", "null"),
+                 "PCO" = c("p.PCO", "p.null.PCO"),
+                 "TruncPCO.old" = c(NA, NA),
+                 "TruncPCO" = c("p.TruncPCO", "p.null.TruncPCO"))
+knitr::kable(res)
+```
+
+* "data" is for the data used. "observe" means pvalues are calculated from the observed data. "null" means pvalues are computed from permutation data. This is needed because we need to adjust pvalues in the downstream FDR analysis using the empirical null distribution of pvalues.
+  * We use empirical null because snps are in LD, so the tests are not independent and therefore the null distribution of p is not necessarily uniform.
+  * Why not using BH? BH assumes independent tests and uniform null.
+  * Why not using Bonferroni? Conservative for snp-level FDR correction, particularly for the trans snp-level FDR.
+  * ~~Approaches to deal with the multiple testing in QTL studies, cis and trans. (???)~~
+* "PCO" is the standard PCO using all $\lambda$'s. "TruncPCO.old" is PCO using only $\lambda>1$. This is the method used for all results obtained before 11/02/2020. I added ".old" because the code of this TruncPCO has bugs. "TruncPCO" uses the debugded code.
+
+### Signals we have so far.
+
+```{r}
+knitr::include_graphics("1101.fig6.signals.png", error = FALSE)
+```
+
+

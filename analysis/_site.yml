@@ -9,8 +9,10 @@ navbar:
     menu:
     - text: Multi PC asso test for trans
       href: Trans.html
-    - text: Log
-      href: Log.html
+    - text: Log2020
+      href: Log2020.html
+    - text: Log2021
+      href: Log2021.html
   - text: About
     href: about.html
   - text: License
