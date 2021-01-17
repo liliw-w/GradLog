@@ -427,7 +427,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-04
+<strong>Last updated:</strong> 2021-01-17
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree361c43ee4f6361a32103c987e6e5ec3ad30edb08targetblank361c43ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/361c43ee4f6361a32103c987e6e5ec3ad30edb08" target="_blank">361c43e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb4ce27bdf62d804dca1bd3ff81f689620dddf4ddtargetblankb4ce27ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/b4ce27bdf62d804dca1bd3ff81f689620dddf4dd" target="_blank">b4ce27b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree361c43ee4f6361a32103c987e6e5ec3ad30edb08targetblank361c43ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb4ce27bdf62d804dca1bd3ff81f689620dddf4ddtargetblankb4ce27ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/361c43ee4f6361a32103c987e6e5ec3ad30edb08" target="_blank">361c43e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/b4ce27bdf62d804dca1bd3ff81f689620dddf4dd" target="_blank">b4ce27b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -543,7 +543,7 @@ Ignored files:
     Ignored:    output/.DS_Store
 
 Unstaged changes:
-    Deleted:    analysis/Log.Rmd
+    Deleted:    data/all_signals.txt
 
 </code></pre>
 <p>
@@ -587,6 +587,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/b4ce27bdf62d804dca1bd3ff81f689620dddf4dd/analysis/Log2021.Rmd" target="_blank">b4ce27b</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-17
+</td>
+<td>
+Update GTEx.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/51b1a4cc02e4dd63c9a84c02ea8c597e171bc5ca/docs/Log2021.html" target="_blank">51b1a4c</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/23d78aacbfd5ed4ed07e702b4071961aec7928bb/analysis/Log2021.Rmd" target="_blank">23d78aa</a>
 </td>
 <td>
@@ -606,72 +640,13 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 </div>
 </div>
 </div>
-<div id="jan-05" class="section level2">
-<h2>Jan 05</h2>
-<div id="eqtlgen" class="section level3">
-<h3>eQTLGen</h3>
-<ol style="list-style-type: decimal">
-<li><p>eQTLGen description</p>
-<p><em>This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.</em></p>
-<p>After gene filter steps described in <code>Dec 10</code>, there are 4963 genes left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are also included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules. These 3642 genes result in 19 gene modules.</p></li>
-<li><p>Replication of DGN signals in eQTLGen</p>
-<p>The table below gives the signals found in eQTLGen and DGN.</p>
-<p>The first two rows give results based on eQTLGen zscores, with row 1 using <code>qvalue</code> for FDR correction (threshold <span class="math inline">\(0.05\)</span>) and row 2 using <span class="math inline">\(\frac{0.05}{\#DGN signals}\)</span> as significance threshold. The third row is based on the same gene modules and SNPs but tensorQTL zscores using DGN expression data. The FDR correction uses the empirical distribution of pvalues from the combined chr’s and modules (10 permutations).</p></li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="left">FDR</th>
-<th align="right">minp</th>
-<th align="right">(QTL, module)</th>
-<th align="right">unique QTL</th>
-<th align="right">independent QTL</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">eQTLGen</td>
-<td align="left">qvalue</td>
-<td align="right">5.82e-04</td>
-<td align="right">2195</td>
-<td align="right">909</td>
-<td align="right">348</td>
-</tr>
-<tr class="even">
-<td align="left">eQTLGen</td>
-<td align="left">0.05/#DGN signals</td>
-<td align="right">1.18e-04</td>
-<td align="right">1707</td>
-<td align="right">762</td>
-<td align="right">286</td>
-</tr>
-<tr class="odd">
-<td align="left">eQTLGen_DGN</td>
-<td align="left">combined chr+module #10-perms</td>
-<td align="right">1.00e-07</td>
-<td align="right">420</td>
-<td align="right">374</td>
-<td align="right">28</td>
-</tr>
-</tbody>
-</table>
-<p>Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 16 replicated signals consists of 6 independent SNPs, including (based on GRCh37),</p>
-<ul>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12485738">rs12485738</a> : 3:56865776, intron variant of <em>ARHGEF3</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs643381">rs643381</a> : 6:139839423. (<a href="https://www.ncbi.nlm.nih.gov/snp/rs590856">rs590856</a>, 6:139844429).</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs149007767">rs149007767</a> 7:50370254: , intron variant of <em>IKZF1</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12718597">rs12718597</a> : 7:50428428, intron variant of <em>IKZF1</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs35979828">rs35979828</a> : 12:54685880, 500B downstream variant of <em>NFE2</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs7210990">rs7210990</a> : 17:16170764, intron variant of <em>PIGL</em>.</li>
-</ul>
-</div>
+<div id="jan-05-jan-19" class="section level2">
+<h2>Jan 05, Jan 19</h2>
 <div id="gtex" class="section level3">
 <h3>GTEx</h3>
 <div id="results" class="section level4">
 <h4>Results</h4>
-<p>The table below summarizes all results I have so far. (The dataset “DGN_new” represents DGN through the standard filtering (see “Gene filter” on Dec 10).)</p>
-<p>The following figures give the distributions of pvalues in various datasets.</p>
+<p>The table below summarizes all results I have so far, followed by figures of the distributions of pvalues in various datasets.</p>
 <table>
 <thead>
 <tr class="header">
@@ -796,10 +771,25 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
+<tr class="even">
+<td align="left">GTEx_v8.Muscle_Skeletal.cross</td>
+<td align="right">706</td>
+<td align="right">21031</td>
+<td align="right">21031</td>
+<td align="right">7141</td>
+<td align="left">675;4447;3631;0</td>
+<td align="right">13890</td>
+<td align="left">39</td>
+<td align="left">combined chr+module</td>
+<td align="left">10</td>
+<td align="left">43</td>
+<td align="left">43</td>
+<td align="left">4</td>
+</tr>
 </tbody>
 </table>
 <div class="figure" style="text-align: center">
-<img src="DGN.p.png" alt="DGN"  />
+<img src="DGN.p.png" alt="DGN" width="70%" height="70%" />
 <p class="caption">
 DGN
 </p>
@@ -842,7 +832,7 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="DGN_new.p.png" alt="DGN_new"  />
+<img src="DGN_new.p.png" alt="DGN_new" width="70%" height="70%" />
 <p class="caption">
 DGN_new
 </p>
@@ -885,7 +875,7 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Whole_Blood.p.png" alt="Whole_Blood"  />
+<img src="Whole_Blood.p.png" alt="Whole_Blood" width="70%" height="70%" />
 <p class="caption">
 Whole_Blood
 </p>
@@ -928,7 +918,7 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Muscle_Skeletal.p.png" alt="Muscle_Skeletal"  />
+<img src="Muscle_Skeletal.p.png" alt="Muscle_Skeletal" width="70%" height="70%" />
 <p class="caption">
 Muscle_Skeletal
 </p>
@@ -971,7 +961,7 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Skin_Sun_Exposed_Lower_leg.p.png" alt="Skin_Sun_Exposed_Lower_leg"  />
+<img src="Skin_Sun_Exposed_Lower_leg.p.png" alt="Skin_Sun_Exposed_Lower_leg" width="70%" height="70%" />
 <p class="caption">
 Skin_Sun_Exposed_Lower_leg
 </p>
@@ -1014,7 +1004,7 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Artery_Tibial.p.png" alt="Artery_Tibial"  />
+<img src="Artery_Tibial.p.png" alt="Artery_Tibial" width="70%" height="70%" />
 <p class="caption">
 Artery_Tibial
 </p>
@@ -1056,16 +1046,517 @@ Lili Wang
 </table>
 </div>
 </div>
+<div class="figure" style="text-align: center">
+<img src="Muscle_Skeletal.cross.p.png" alt="Muscle_Skeletal.cross" width="70%" height="70%" />
+<p class="caption">
+Muscle_Skeletal.cross
+</p>
+</div>
 </div>
 <div id="remarks" class="section level4">
 <h4>Remarks</h4>
 <ol style="list-style-type: decimal">
-<li>GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).</li>
+<li><p>The dataset “DGN_new” represents DGN through the standard filtering (see “Gene filter” on Dec 10).</p></li>
+<li><p>GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).</p></li>
+<li><p>The dataset “GTEx_v8.Muscle_Skeletal.cross” uses Muscle_Skeletal samples from GTEx_v8 (similar as GTEx_v8.Muscle_Skeletal), but without removing cross-mapped genes before constructing gene modules. Therefore, there are 13890 genes (v.s. 5430 in GTEx_v8.Muscle_Skeletal) in total which result in 39 modules (v.s. 18 in GTEx_v8.Muscle_Skeletal). We do this step because we observed that there are relatively few signals using our original pipeline and we wonder if the reason to this observation is us filtering too many genes in the first step and leaving too few signals. To check on this, we put the “filtering” to the last step, i.e. including potentially cross-mapped genes into the analysis and generate significant variant-module pairs. We then exclude those where target eGene in the module is cross-mappable with any gene within 1Mb of the variant. Hopefully we could have more signals.</p>
+<p>However, though the increased genes and modules, the number of identified signals (43) is similar as that using the original pipeline (38). Next, I will look into these signals.</p></li>
 </ol>
+<table>
+<caption>GTEx_v8.Muscle_Skeletal</caption>
+<thead>
+<tr class="header">
+<th align="left">variant-module</th>
+<th align="left">p</th>
+<th align="left">q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">module15:10:48930105</td>
+<td align="left">8.63e-10</td>
+<td align="left">8.33e-03</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132440814</td>
+<td align="left">1.56e-09</td>
+<td align="left">2.16e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132448891</td>
+<td align="left">3.36e-09</td>
+<td align="left">4.74e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132450078</td>
+<td align="left">5.81e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132450726</td>
+<td align="left">5.96e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132450916</td>
+<td align="left">8.89e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132451361</td>
+<td align="left">5.97e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132451586</td>
+<td align="left">1.11e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132453865</td>
+<td align="left">1.05e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132454053</td>
+<td align="left">9.94e-13</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132454171</td>
+<td align="left">1.03e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132454631</td>
+<td align="left">1.44e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132454724</td>
+<td align="left">1.08e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132455672</td>
+<td align="left">1.07e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132455979</td>
+<td align="left">1.04e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132456154</td>
+<td align="left">9.96e-13</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132456710</td>
+<td align="left">6.04e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132458606</td>
+<td align="left">5.33e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132459905</td>
+<td align="left">4.84e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132459971</td>
+<td align="left">5.04e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132460190</td>
+<td align="left">5.05e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132460375</td>
+<td align="left">5.56e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132460917</td>
+<td align="left">5.03e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132461111</td>
+<td align="left">5.17e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132463834</td>
+<td align="left">5.47e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132464413</td>
+<td align="left">3.90e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132464907</td>
+<td align="left">1.01e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132466034</td>
+<td align="left">4.56e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132468333</td>
+<td align="left">1.32e-10</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132468353</td>
+<td align="left">5.74e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132468564</td>
+<td align="left">8.53e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132469724</td>
+<td align="left">5.63e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132469899</td>
+<td align="left">6.96e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132470043</td>
+<td align="left">1.03e-10</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132470796</td>
+<td align="left">5.42e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module15:5:132471932</td>
+<td align="left">8.01e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module15:5:132474927</td>
+<td align="left">2.71e-10</td>
+<td align="left">2.94e-03</td>
+</tr>
+<tr class="even">
+<td align="left">module4:22:23508295</td>
+<td align="left">3.76e-10</td>
+<td align="left">5.71e-03</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>GTEx_v8.Muscle_Skeletal.cross</caption>
+<thead>
+<tr class="header">
+<th align="left">variant-module</th>
+<th align="left">p</th>
+<th align="left">q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">module8:1:123955560</td>
+<td align="left">9.97e-12</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module8:1:123955561</td>
+<td align="left">1.06e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:16:36353041</td>
+<td align="left">3.49e-11</td>
+<td align="left">6.67e-03</td>
+</tr>
+<tr class="even">
+<td align="left">module8:16:36353056</td>
+<td align="left">8.29e-11</td>
+<td align="left">1.25e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132453865</td>
+<td align="left">1.56e-09</td>
+<td align="left">3.12e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132454053</td>
+<td align="left">1.59e-09</td>
+<td align="left">2.86e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132454171</td>
+<td align="left">1.52e-09</td>
+<td align="left">3.33e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132454631</td>
+<td align="left">1.43e-09</td>
+<td align="left">3.57e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132454724</td>
+<td align="left">1.53e-09</td>
+<td align="left">3.23e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132455672</td>
+<td align="left">1.50e-09</td>
+<td align="left">3.45e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132455979</td>
+<td align="left">1.56e-09</td>
+<td align="left">3.03e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132456154</td>
+<td align="left">1.78e-09</td>
+<td align="left">3.42e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132456710</td>
+<td align="left">1.36e-09</td>
+<td align="left">3.33e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132458606</td>
+<td align="left">3.37e-10</td>
+<td align="left">1.76e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132459905</td>
+<td align="left">6.50e-10</td>
+<td align="left">1.74e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132459971</td>
+<td align="left">3.92e-10</td>
+<td align="left">1.43e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132460190</td>
+<td align="left">3.50e-10</td>
+<td align="left">1.58e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132460375</td>
+<td align="left">3.37e-10</td>
+<td align="left">1.67e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132460917</td>
+<td align="left">3.98e-10</td>
+<td align="left">1.36e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132461111</td>
+<td align="left">3.57e-10</td>
+<td align="left">1.50e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132463834</td>
+<td align="left">8.21e-10</td>
+<td align="left">2.40e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132464413</td>
+<td align="left">9.93e-10</td>
+<td align="left">2.69e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132466034</td>
+<td align="left">6.75e-10</td>
+<td align="left">1.67e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132468333</td>
+<td align="left">1.86e-09</td>
+<td align="left">3.50e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132468353</td>
+<td align="left">1.69e-09</td>
+<td align="left">3.06e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132468564</td>
+<td align="left">2.43e-09</td>
+<td align="left">4.19e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132469724</td>
+<td align="left">1.93e-09</td>
+<td align="left">3.66e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132469899</td>
+<td align="left">1.73e-09</td>
+<td align="left">3.24e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132470043</td>
+<td align="left">1.56e-09</td>
+<td align="left">2.94e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:132470796</td>
+<td align="left">1.85e-09</td>
+<td align="left">3.33e-02</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:132471932</td>
+<td align="left">2.37e-09</td>
+<td align="left">4.29e-02</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:46659000</td>
+<td align="left">9.86e-13</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:46906585</td>
+<td align="left">2.34e-11</td>
+<td align="left">7.14e-03</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:47027928</td>
+<td align="left">0.00e+00</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:47068540</td>
+<td align="left">0.00e+00</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:47166316</td>
+<td align="left">3.33e-16</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:47210790</td>
+<td align="left">0.00e+00</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:47210990</td>
+<td align="left">0.00e+00</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:47258679</td>
+<td align="left">4.44e-16</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:47258917</td>
+<td align="left">3.33e-16</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:49809727</td>
+<td align="left">2.70e-13</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="even">
+<td align="left">module8:5:49930686</td>
+<td align="left">0.00e+00</td>
+<td align="left">0.00e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">module8:5:49936394</td>
+<td align="left">1.10e-11</td>
+<td align="left">0.00e+00</td>
+</tr>
+</tbody>
+</table>
+<p>For GTEx_v8.Muscle_Skeletal, there are 38 variant-module pairs, corresponding to 2 module (module 15, module4) and 3 independent loci on (chr5, chr10, chr22). GTEx_v8.Muscle_Skeletal.cross has 43 variant-module pairs, corresponding to 1 module (module 8) and 4 independent loci on (chr1, chr5, chr16).</p>
+<p>The signal on chr5 is significant for both module 15 (114 genes) and module 8 (394 genes) in two datasets, which have 82 shared genes. Take SNP <a href="https://www.nature.com/articles/nature24277#Sec9">rs2706381</a> (chr5:132474927) for example. It is <a href="https://www.nature.com/articles/nature24277#Sec9">“in cis with IRF1 (<span class="math inline">\(P \le 2\times10^{-10}\)</span>; Fig. 6c), a transcription factor that facilitates regulation of the interferon-induced immune response”</a>. It is also <a href="https://www.nature.com/articles/nature24277#Sec9">“associated in trans with PSME1 (<span class="math inline">\(P \le 1.1\times10^{-11}\)</span>) and PARP10 (<span class="math inline">\(P \le 7.8\times10^{-10}\)</span>)”</a>. These two genes are included in module 15. The reference also gives additional results to “suggest that cis-regulatory loci affecting IRF1 are regulators of interferon-responsive inflammatory processes involving genes including PSME1 and PARP10, with implications for complex traits specific to muscle tissue”.</p>
+<p>I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list <a href="./gene.GTEx_v8.Muscle_Skeletal.module15.txt">here</a>.</p>
+<p>SNP 10:48930105. module 15.</p>
+<p>module4:22:23508295</p>
 </div>
 </div>
 <div id="new-tcga-by-the-standard-filtering" class="section level3">
 <h3>New TCGA by the standard filtering</h3>
+</div>
+<div id="eqtlgen" class="section level3">
+<h3>eQTLGen</h3>
+<ol style="list-style-type: decimal">
+<li><p>eQTLGen description</p>
+<p><em>This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.</em></p>
+<p>After gene filter steps described in <code>Dec 10</code>, there are 4963 genes left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are also included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules. These 3642 genes result in 19 gene modules.</p></li>
+<li><p>Replication of DGN signals in eQTLGen</p>
+<p>The table below gives the signals found in eQTLGen and DGN.</p>
+<p>The first two rows give results based on eQTLGen zscores, with row 1 using <code>qvalue</code> for FDR correction (threshold <span class="math inline">\(0.05\)</span>) and row 2 using <span class="math inline">\(\frac{0.05}{\#DGN signals}\)</span> as significance threshold. The third row is based on the same gene modules and SNPs but tensorQTL zscores using DGN expression data. The FDR correction uses the empirical distribution of pvalues from the combined chr’s and modules (10 permutations).</p></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dataset</th>
+<th align="left">FDR</th>
+<th align="right">minp</th>
+<th align="right">(QTL, module)</th>
+<th align="right">unique QTL</th>
+<th align="right">independent QTL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">eQTLGen</td>
+<td align="left">qvalue</td>
+<td align="right">5.82e-04</td>
+<td align="right">2195</td>
+<td align="right">909</td>
+<td align="right">348</td>
+</tr>
+<tr class="even">
+<td align="left">eQTLGen</td>
+<td align="left">0.05/#DGN signals</td>
+<td align="right">1.18e-04</td>
+<td align="right">1707</td>
+<td align="right">762</td>
+<td align="right">286</td>
+</tr>
+<tr class="odd">
+<td align="left">eQTLGen_DGN</td>
+<td align="left">combined chr+module #10-perms</td>
+<td align="right">1.00e-07</td>
+<td align="right">420</td>
+<td align="right">374</td>
+<td align="right">28</td>
+</tr>
+</tbody>
+</table>
+<p>Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 16 replicated signals consists of 6 independent SNPs, including (based on GRCh37),</p>
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12485738">rs12485738</a> : 3:56865776, intron variant of <em>ARHGEF3</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs643381">rs643381</a> : 6:139839423. (<a href="https://www.ncbi.nlm.nih.gov/snp/rs590856">rs590856</a>, 6:139844429).</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs149007767">rs149007767</a> 7:50370254: , intron variant of <em>IKZF1</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12718597">rs12718597</a> : 7:50428428, intron variant of <em>IKZF1</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs35979828">rs35979828</a> : 12:54685880, 500B downstream variant of <em>NFE2</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs7210990">rs7210990</a> : 17:16170764, intron variant of <em>PIGL</em>.</li>
+</ul>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
