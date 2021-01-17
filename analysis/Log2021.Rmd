@@ -118,4 +118,10 @@ Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 1
 [rs7210990]: https://www.ncbi.nlm.nih.gov/snp/rs7210990
 
 
+3. Replication of DGN signals in eQTLGen
+
+```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial", "Muscle_Skeletal.cross"), out.width="70%", out.height="70%"}
+knitr::include_graphics("./eQTLGen_DGN_venn.jpeg", error = FALSE)
+```
+
 
