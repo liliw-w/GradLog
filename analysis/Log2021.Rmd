@@ -13,7 +13,64 @@ knitr::opts_chunk$set(echo=FALSE)
 ```
 
 
-## Jan 05
+## Jan 05, Jan 19
+
+### GTEx
+
+#### Results
+
+The table below summarizes all results I have so far, followed by figures of the distributions of pvalues in various datasets.
+
+```{r warning=FALSE}
+res = read.table("data/signals.all.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = TRUE)
+res[is.na(res)] = " "
+knitr::kable(res)
+```
+
+
+```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial", "Muscle_Skeletal.cross"), out.width="70%", out.height="70%"}
+knitr::include_graphics(c("DGN.p.png", "DGN_new.p.png", "Whole_Blood.p.png", "Muscle_Skeletal.p.png", "Skin_Sun_Exposed_Lower_leg.p.png", "Artery_Tibial.p.png", "Muscle_Skeletal.cross.p.png"), error = FALSE)
+```
+
+#### Remarks
+
+1. The dataset "DGN_new" represents DGN through the standard filtering (see "Gene filter" on Dec 10).
+
+2. GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).
+
+3. The dataset "GTEx_v8.Muscle_Skeletal.cross" uses Muscle_Skeletal samples from GTEx_v8 (similar as GTEx_v8.Muscle_Skeletal), but without removing cross-mapped genes before constructing gene modules. Therefore, there are 13890 genes (v.s. 5430 in GTEx_v8.Muscle_Skeletal) in total which result in 39 modules (v.s. 18 in GTEx_v8.Muscle_Skeletal). We do this step because we observed that there are relatively few signals using our original pipeline and we wonder if the reason to this observation is us filtering too many genes in the first step and leaving too few signals. To check on this, we put the "filtering" to the last step, i.e. including potentially cross-mapped genes into the analysis and generate significant variant-module pairs. We then exclude those where target eGene in the module is cross-mappable with any gene within 1Mb of the variant. Hopefully we could have more signals.
+
+    However, though the increased genes and modules, the number of identified signals (43) is similar as that using the original pipeline (38). Next, I will look into these signals.
+    
+```{r warning=FALSE}
+res = read.table("data/signals.GTEx_v8.Muscle_Skeletal.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = FALSE, col.names = c('variant-module', "p", "q"))
+res$p = as.character(format(res$p, scientific = TRUE, digits = 3)); res$q = as.character(format(res$q, scientific = TRUE, digits = 3))
+
+knitr::kable(res, caption = 'GTEx_v8.Muscle_Skeletal')
+
+
+res = read.table("data/signals.GTEx_v8.Muscle_Skeletal.cross.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = FALSE, col.names = c('variant-module', "p", "q"))
+res$p = as.character(format(res$p, scientific = TRUE, digits = 3)); res$q = as.character(format(res$q, scientific = TRUE, digits = 3))
+
+knitr::kable(res, caption = 'GTEx_v8.Muscle_Skeletal.cross')
+```
+
+    For GTEx_v8.Muscle_Skeletal, there are 38 variant-module pairs, corresponding to 2 module (module 15, module4) and 3 independent loci on (chr5, chr10, chr22). GTEx_v8.Muscle_Skeletal.cross has 43 variant-module pairs, corresponding to 1 module (module 8) and 4 independent loci on (chr1, chr5, chr16).
+    
+    The signal on chr5 is significant for both module 15 (114 genes) and module 8 (394 genes) in two datasets, which have 82 shared genes. Take SNP [rs2706381][rs2706381 GTEx ref] (chr5:132474927) for example. It is ["in cis with IRF1 ($P \le 2\times10^{-10}$; Fig. 6c), a transcription factor that facilitates regulation of the interferon-induced immune response"][rs2706381 GTEx ref]. It is also ["associated in trans with PSME1 ($P \le 1.1\times10^{-11}$) and PARP10 ($P \le 7.8\times10^{-10}$)"][rs2706381 GTEx ref]. These two genes are included in module 15. The reference also gives additional results to "suggest that cis-regulatory loci affecting IRF1 are regulators of interferon-responsive inflammatory processes involving genes including PSME1 and PARP10, with implications for complex traits specific to muscle tissue".
+    
+    I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list [here](./gene.GTEx_v8.Muscle_Skeletal.module15.txt).
+    
+    SNP 10:48930105. module 15.
+    
+    module4:22:23508295
+
+
+[rs2706381 GTEx ref]: https://www.nature.com/articles/nature24277#Sec9
+
+
+### New TCGA by the standard filtering
+
 
 ### eQTLGen
 
@@ -60,29 +117,5 @@ Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 1
 [rs35979828]: https://www.ncbi.nlm.nih.gov/snp/rs35979828
 [rs7210990]: https://www.ncbi.nlm.nih.gov/snp/rs7210990
 
-### GTEx
 
-#### Results
-
-The table below summarizes all results I have so far. (The dataset "DGN_new" represents DGN through the standard filtering (see "Gene filter" on Dec 10).)
-
-The following figures give the distributions of pvalues in various datasets.
-
-```{r warning=FALSE}
-res = read.table("data/all_signals.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = TRUE)
-res[is.na(res)] = " "
-knitr::kable(res)
-```
-
-
-```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial")}
-knitr::include_graphics(c("DGN.p.png", "DGN_new.p.png", "Whole_Blood.p.png", "Muscle_Skeletal.p.png", "Skin_Sun_Exposed_Lower_leg.p.png", "Artery_Tibial.p.png"), error = FALSE)
-```
-
-#### Remarks
-
-1. GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).
-
-
-### New TCGA by the standard filtering
 

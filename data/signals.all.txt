@@ -1,0 +1,9 @@
+Dataset	Nsample	All	Annotated	Filtered	Filtered_info	Final	Nmodule	FDR	Nperm	QTL_Module	unique_QTL	independent_QTL
+DGN	913	13634	11979	8120	0;165;1663;8073	3859	21	combined chr+module	20	659	623	40
+DGN_new	913	13634	12585	9939	1;453;1798;8705	3695	19	combined chr+module	10	331	275	26
+TCGA	788	17656	15994	12694	336;3504;10697;598	4962						
+GTEx_v8.Whole_Blood	670	20315	20315	15245	619;4544;3677;13096	5070	22	combined chr+module	10	4	4	2
+GTEx_v8.Muscle_Skeletal	706	21031	21031	15601	675;4447;3631;13490	5430	18	combined chr+module	10	38	38	3
+GTEx_v8.Skin_Sun_Exposed_Lower_leg	605	25196	25196	18801	807;6458;4557;15650	6395	30	combined chr+module	10	1	1	1
+GTEx_v8.Artery_Tibial	584	23304	23304	17390	795;5588;4202;14730	5914	20	combined chr+module	10	0	0	0
+GTEx_v8.Muscle_Skeletal.cross	706	21031	21031	7141	675;4447;3631;0	13890	39	combined chr+module	10	43	43	4
