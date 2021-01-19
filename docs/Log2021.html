@@ -427,7 +427,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-17
+<strong>Last updated:</strong> 2021-01-19
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecc5fc2819c50a235676ebf78877d78ee4499b218targetblankcc5fc28a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/cc5fc2819c50a235676ebf78877d78ee4499b218" target="_blank">cc5fc28</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree11c79eb5f073cdff8f48f909a8c3d1e3974d2b03targetblank11c79eba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/11c79eb5f073cdff8f48f909a8c3d1e3974d2b03" target="_blank">11c79eb</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecc5fc2819c50a235676ebf78877d78ee4499b218targetblankcc5fc28a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree11c79eb5f073cdff8f48f909a8c3d1e3974d2b03targetblank11c79eba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/cc5fc2819c50a235676ebf78877d78ee4499b218" target="_blank">cc5fc28</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/11c79eb5f073cdff8f48f909a8c3d1e3974d2b03" target="_blank">11c79eb</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -579,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/11c79eb5f073cdff8f48f909a8c3d1e3974d2b03/analysis/Log2021.Rmd" target="_blank">11c79eb</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-19
+</td>
+<td>
+Add simulation.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/51465aef79db94aa2c17b98069e03c1e23630d1f/docs/Log2021.html" target="_blank">51465ae</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -673,6 +707,147 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 </div>
 <div id="jan-05-jan-19" class="section level2">
 <h2>Jan 05, Jan 19</h2>
+<div id="simulation" class="section level3">
+<h3>Simulation</h3>
+<p>The simulations here aim to compare the power of PC-based tests including PC1 (using only the primary PC) and PCO (using combined PC’s), and non-PC based test MinP. The simulations consist of two parts: (1) verify that type 1 error is well controlled; (2) compare power of tests. At this time, I simply assume there is no LD among SNPs, i.e. tests are independent.</p>
+<ol style="list-style-type: decimal">
+<li>Verify that type 1 error is well controlled.</li>
+</ol>
+<p>Since the tests are assumed to be independent, the null pvalues should be uniformly distributed. To verify that, I estimate the null pvalues by empirical p’s obtained from the following steps.</p>
+<p>Step1. Generate <span class="math inline">\(z_0 \sim N(0, \Sigma) | H_0\)</span>.</p>
+<p>Step2. Run tests including PC1, PCO, MinP for <span class="math inline">\(10^6\)</span> times and obtain <span class="math inline">\(10^6\)</span> p’s for each test.</p>
+<p>Step3. Compute the empirical T1E at significance <span class="math inline">\(\alpha\)</span> by <span class="math inline">\(\frac{I\{p&lt;\alpha\}}{10^6}\)</span>. Draw qqplot of <span class="math inline">\(-log_{10}p\)</span>.</p>
+<p>The correlation matrix <span class="math inline">\(\Sigma\)</span> is the correlation of genes in module15 of GTEx dataset Muscle_Skeletal (Sigma.Muscle_Skeletal.module15.chr7.rds).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">alpha</th>
+<th align="right">PC1</th>
+<th align="right">PCO</th>
+<th align="left">MinP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5e-02</td>
+<td align="right">0.050356</td>
+<td align="right">0.053584</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">1e-04</td>
+<td align="right">0.000093</td>
+<td align="right">0.000114</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center">
+<img src="./qqplot.simulation.null.png" alt="qqplot.simulation.null"  />
+<p class="caption">
+qqplot.simulation.null
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-qqplot.simulation.null">
+Past versions of qqplot.simulation.null.png
+</button>
+</p>
+<div id="fig-qqplot.simulation.null" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/11c79eb5f073cdff8f48f909a8c3d1e3974d2b03/docs/qqplot.simulation.null.png" target="_blank">11c79eb</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Compare power of tests.</li>
+</ol>
+<p>To compare the power of non-/PC-based tests, I will run the oracle test in addition to PC1, PCO, and MinP to benchmark the power. It’s mentioned in the PCO paper that given a fixed correlation relationship among the phenotypes, the power of a test depends on the relationship bewteen the true effects (<span class="math inline">\(\beta\)</span>) and the phenotype correlation (<span class="math inline">\(\Sigma\)</span>). Therefore, to see which tests perform well in what cases, I will consider different models, including (1) <span class="math inline">\(\beta=10 u_1\)</span>; (2) <span class="math inline">\(\beta=4 u_k\)</span>; (3) <span class="math inline">\(\beta=1.5 u_K\)</span>; (4) <span class="math inline">\(\beta=rnorm(K)\)</span>; (5) <span class="math inline">\(\beta=rnorm(0.7K)\)</span>; (6) <span class="math inline">\(\beta=rnorm(0.3K)\)</span>.</p>
+<p>Step1. Generate <span class="math inline">\(z_0 \sim N(\beta, \Sigma) | H_1\)</span>.</p>
+<p>Step2. Run tests including Oracle, PC1, PCO, MinP for <span class="math inline">\(10^6\)</span> times and obtain <span class="math inline">\(10^6\)</span> p’s for each test.</p>
+<p>Step3. Compute the power at significance <span class="math inline">\(\alpha\)</span> by <span class="math inline">\(\frac{I\{p&lt;\alpha\}}{10^6}\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Model</th>
+<th align="right">Oracle</th>
+<th align="right">PC1</th>
+<th align="right">PCO</th>
+<th align="left">MinP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">u1</td>
+<td align="right">0.946341</td>
+<td align="right">0.902540</td>
+<td align="right">0.746301</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">uPCO</td>
+<td align="right">0.989835</td>
+<td align="right">0.050178</td>
+<td align="right">0.713434</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">uK</td>
+<td align="right">0.953727</td>
+<td align="right">0.049719</td>
+<td align="right">0.054140</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">100%</td>
+<td align="right">1.000000</td>
+<td align="right">0.058867</td>
+<td align="right">0.945918</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">70%</td>
+<td align="right">1.000000</td>
+<td align="right">0.058910</td>
+<td align="right">0.580368</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">30%</td>
+<td align="right">0.999995</td>
+<td align="right">0.050201</td>
+<td align="right">0.149904</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="gtex" class="section level3">
 <h3>GTEx</h3>
 <div id="results" class="section level4">
