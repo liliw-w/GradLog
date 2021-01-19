@@ -15,6 +15,52 @@ knitr::opts_chunk$set(echo=FALSE)
 
 ## Jan 05, Jan 19
 
+### Simulation
+
+The simulations here aim to compare the power of PC-based tests including PC1 (using only the primary PC) and PCO (using combined PC's), and non-PC based test MinP. The simulations consist of two parts: (1) verify that type 1 error is well controlled; (2) compare power of tests. At this time, I simply assume there is no LD among SNPs, i.e. tests are independent.
+
+1. Verify that type 1 error is well controlled.
+
+  Since the tests are assumed to be independent, the null pvalues should be uniformly distributed. To verify that, I estimate the null pvalues by empirical p's obtained from the following steps.
+  
+  Step1. Generate $z_0 \sim N(0, \Sigma) | H_0$.
+  
+  Step2. Run tests including PC1, PCO, MinP for $10^6$ times and obtain $10^6$ p's for each test.
+  
+  Step3. Compute the empirical T1E at significance $\alpha$ by $\frac{I\{p<\alpha\}}{10^6}$. Draw qqplot of $-log_{10}p$.
+  
+  The correlation matrix $\Sigma$ is the correlation of genes in module15 of GTEx dataset Muscle_Skeletal (Sigma.Muscle_Skeletal.module15.chr7.rds).
+  
+```{r warning=FALSE}
+res = read.table("data/simulation.null.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = TRUE)
+res[is.na(res)] = " "
+knitr::kable(res)
+
+```
+
+```{r fig.cap="qqplot.simulation.null"}
+knitr::include_graphics("./qqplot.simulation.null.png", error = FALSE)
+```
+
+
+2. Compare power of tests.
+
+  To compare the power of non-/PC-based tests, I will run the oracle test in addition to PC1, PCO, and MinP to benchmark the power. It's mentioned in the PCO paper that given a fixed correlation relationship among the phenotypes, the power of a test depends on the relationship bewteen the true effects ($\beta$) and the phenotype correlation ($\Sigma$). Therefore, to see which tests perform well in what cases, I will consider different models, including (1) $\beta=10 u_1$; (2) $\beta=4 u_k$; (3) $\beta=1.5 u_K$; (4) $\beta=rnorm(K)$; (5) $\beta=rnorm(0.7K)$; (6) $\beta=rnorm(0.3K)$.
+  
+  Step1. Generate $z_0 \sim N(\beta, \Sigma) | H_1$.
+  
+  Step2. Run tests including Oracle, PC1, PCO, MinP for $10^6$ times and obtain $10^6$ p's for each test.
+  
+  Step3. Compute the power at significance $\alpha$ by $\frac{I\{p<\alpha\}}{10^6}$.
+
+```{r warning=FALSE}
+res = read.table("data/simulation.alt.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = TRUE)
+res[is.na(res)] = " "
+knitr::kable(res)
+
+```
+
+
 ### GTEx
 
 #### Results
