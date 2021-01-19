@@ -110,6 +110,16 @@ knitr::kable(res, caption = 'GTEx_v8.Muscle_Skeletal.cross')
     SNP 10:48930105. module 15.
     
     module4:22:23508295
+    
+    + Check if the signals' nearby genes are cross-mapped with genes in their corresponding module. The signal on chr5 corresponding to module8 has 20 genes +/- 500Kb away from its TSS. Many of them are crosspable with genes in the module 8. The number of of genes in the module crossmapped with each of the 20 genes are: `1, 144, 0, 62, 54, 0, 63, 4, 0, 0, 0, 59, 145, 0, 0, 128, 0, 23, 53`, where the nearest gene is crossmappable with 1 gene in the module.
+    
+  + The other signals on chr1, chr16, and chr5:47210790 don't have any nearby genes around its TSS.
+
+  + See the following plot for number of cross-mapped genes in each module.
+    
+```{r}
+knitr::include_graphics('nCross.png', error = FALSE)
+```
 
 
 [rs2706381 GTEx ref]: https://www.nature.com/articles/nature24277#Sec9
