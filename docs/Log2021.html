@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree11c79eb5f073cdff8f48f909a8c3d1e3974d2b03targetblank11c79eba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/11c79eb5f073cdff8f48f909a8c3d1e3974d2b03" target="_blank">11c79eb</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb8815e3a5cad91b286dd209681a60875e4ea6d2ctargetblankb8815e3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/b8815e3a5cad91b286dd209681a60875e4ea6d2c" target="_blank">b8815e3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree11c79eb5f073cdff8f48f909a8c3d1e3974d2b03targetblank11c79eba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb8815e3a5cad91b286dd209681a60875e4ea6d2ctargetblankb8815e3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/11c79eb5f073cdff8f48f909a8c3d1e3974d2b03" target="_blank">11c79eb</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/b8815e3a5cad91b286dd209681a60875e4ea6d2c" target="_blank">b8815e3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -579,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b8815e3a5cad91b286dd209681a60875e4ea6d2c/analysis/Log2021.Rmd" target="_blank">b8815e3</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-19
+</td>
+<td>
+docs/nCross.png
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/0611c355e9eae2bcad4336efdf32a86a777ee6e4/docs/Log2021.html" target="_blank">0611c35</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1738,6 +1772,12 @@ Lili Wang
 <p>I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list <a href="./gene.GTEx_v8.Muscle_Skeletal.module15.txt">here</a>.</p>
 <p>SNP 10:48930105. module 15.</p>
 <p>module4:22:23508295</p>
+<ul>
+<li><p>Check if the signals’ nearby genes are cross-mapped with genes in their corresponding module. The signal on chr5 corresponding to module8 has 20 genes +/- 500Kb away from its TSS. Many of them are crosspable with genes in the module 8. The number of of genes in the module crossmapped with each of the 20 genes are: <code>1, 144, 0, 62, 54, 0, 63, 4, 0, 0, 0, 59, 145, 0, 0, 128, 0, 23, 53</code>, where the nearest gene is crossmappable with 1 gene in the module.</p></li>
+<li><p>The other signals on chr1, chr16, and chr5:47210790 don’t have any nearby genes around its TSS.</p></li>
+<li><p>See the following plot for number of cross-mapped genes in each module.</p></li>
+</ul>
+<p><img src="nCross.png" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="new-tcga-by-the-standard-filtering" class="section level3">
