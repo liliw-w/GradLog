@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9526e7a4db2194d4466bfb704904b23f4e671808targetblank9526e7aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/9526e7a4db2194d4466bfb704904b23f4e671808" target="_blank">9526e7a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb7111b226ef2465c1082c1bf829c3c72e56de4d3targetblankb7111b2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/b7111b226ef2465c1082c1bf829c3c72e56de4d3" target="_blank">b7111b2</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9526e7a4db2194d4466bfb704904b23f4e671808targetblank9526e7aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb7111b226ef2465c1082c1bf829c3c72e56de4d3targetblankb7111b2a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/9526e7a4db2194d4466bfb704904b23f4e671808" target="_blank">9526e7a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/b7111b226ef2465c1082c1bf829c3c72e56de4d3" target="_blank">b7111b2</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -579,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b7111b226ef2465c1082c1bf829c3c72e56de4d3/analysis/Log2021.Rmd" target="_blank">b7111b2</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-26
+</td>
+<td>
+wflow_publish(c(“analysis/Log2021.Rmd”, “docs/signalsv.s.FDR.png”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/1b48368459d0a166d3bfc3723f18a344babcb81c/docs/Log2021.html" target="_blank">1b48368</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -829,7 +863,7 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 <div id="larger-fdr-level-signals-in-large-and-small-module" class="section level3">
 <h3>Larger FDR level, #signals in large and small module?</h3>
 <p>Here I will look at how the number of signals changes in the original large and current small modules when I increase the FDR level.</p>
-<p>The plot below is based on Muscle tissue from GTEx_v8. The x-axis is for various FDR levels, including 5%, 10%, 15%, and 20%. The y-axis is for the number of signals under these FDR levels. I plot two types of signals, i.e. module and SNP pairs (left subplot) and unique SNPs (right subplot). The two colors represent our previous WGCNA modules (red) and current smaller WGCNA modules (blue).</p>
+<p>The plot below is based on Muscle tissue from GTEx_v8. The x-axis is for various FDR levels, including 5%, 10%, 15%, and 20%. The y-axis is for the number of signals under these FDR levels. I plot three types of signals, i.e. module and SNP pairs (left subplot), unique SNPs (middle subplot), independent SNPs (right subplot). The two colors represent our previous WGCNA modules (red) and current smaller WGCNA modules (blue).</p>
 <p>We can observe (1) When increasing FDR levels, number of signals only increase a little bit, say 3-5 more signals. This means that the corrected pvalues are bipolar, i.e. either very small or very large. (2) Signals based on smaller modules are similar to that of previous standard modules.</p>
 <div class="figure" style="text-align: center">
 <img src="./signalsv.s.FDR.png" alt="#signals v.s.FDR"  />
@@ -859,6 +893,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b7111b226ef2465c1082c1bf829c3c72e56de4d3/docs/signalsv.s.FDR.png" target="_blank">b7111b2</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-26
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/liliw-w/GradLog/blob/9526e7a4db2194d4466bfb704904b23f4e671808/docs/signalsv.s.FDR.png" target="_blank">9526e7a</a>
