@@ -427,7 +427,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-19
+<strong>Last updated:</strong> 2021-01-26
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreed22021e4b203e7f09b0095a5bed0db071302b976targetblankd22021ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/d22021e4b203e7f09b0095a5bed0db071302b976" target="_blank">d22021e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree16f7005f5912525fa5678a416cabad511d9c0e42targetblank16f7005a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/16f7005f5912525fa5678a416cabad511d9c0e42" target="_blank">16f7005</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreed22021e4b203e7f09b0095a5bed0db071302b976targetblankd22021ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree16f7005f5912525fa5678a416cabad511d9c0e42targetblank16f7005a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/d22021e4b203e7f09b0095a5bed0db071302b976" target="_blank">d22021e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/16f7005f5912525fa5678a416cabad511d9c0e42" target="_blank">16f7005</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -579,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/16f7005f5912525fa5678a416cabad511d9c0e42/analysis/Log2021.Rmd" target="_blank">16f7005</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-26
+</td>
+<td>
+wflow_publish(c(“analysis/Log2021.Rmd”, “data/signals.all.txt”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/82152fd9cf25b5181433540129f1caabec8921f3/docs/Log2021.html" target="_blank">82152fd</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -754,6 +788,44 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 </div>
 <hr>
 </div>
+</div>
+</div>
+<div id="jan-26" class="section level2">
+<h2>Jan 26</h2>
+<div id="smaller-gene-modules-more-signals" class="section level3">
+<h3>Smaller gene modules, more signals?</h3>
+<p>I changed the parameter <code>deepSplit</code> in function <code>cutreeDynamic</code> from package WGCNA to get modules with smaller size. I run it on the Muscle tissue from GTEx (see <code>GTEx_v8.Muscle_Skeletal.WGCNA</code> in the GTEx results table). Compared to <code>GTEx_v8.Muscle_Skeletal</code>, though more modules (32 v.s. 18), they have same independent signals (3), located on chr5, chr10, and chr22.</p>
+<p>The corresponding modules of these signals from small and large WGCNA share a large proportion of genes.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">signal.Chr</th>
+<th align="left">module.small (#genes)</th>
+<th align="left">module.big (#genes)</th>
+<th align="right">#overlapped genes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">chr5</td>
+<td align="left">module21 (89)</td>
+<td align="left">module15 (114)</td>
+<td align="right">88</td>
+</tr>
+<tr class="even">
+<td align="left">chr10</td>
+<td align="left">module21 (89)</td>
+<td align="left">module15 (114)</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="left">chr22</td>
+<td align="left">module2 (297)</td>
+<td align="left">module4 (350)</td>
+<td align="right">257</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="jan-05-jan-19" class="section level2">
@@ -1042,6 +1114,21 @@ Lili Wang
 <td align="left">43</td>
 <td align="left">43</td>
 <td align="left">4</td>
+</tr>
+<tr class="odd">
+<td align="left">GTEx_v8.Muscle_Skeletal.WGCNA</td>
+<td align="right">706</td>
+<td align="right">21031</td>
+<td align="right">21031</td>
+<td align="right">15601</td>
+<td align="left">675;4447;3631;13490</td>
+<td align="right">5430</td>
+<td align="left">32</td>
+<td align="left">combined chr+module</td>
+<td align="left">10</td>
+<td align="left">44</td>
+<td align="left">44</td>
+<td align="left">3</td>
 </tr>
 </tbody>
 </table>
