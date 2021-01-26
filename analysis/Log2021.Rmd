@@ -12,6 +12,23 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Jan 26
+
+### Smaller gene modules, more signals?
+
+I changed the parameter `deepSplit`  in function `cutreeDynamic` from package WGCNA to get modules with smaller size. I run it on the Muscle tissue from GTEx (see `GTEx_v8.Muscle_Skeletal.WGCNA` in the GTEx results table). Compared to `GTEx_v8.Muscle_Skeletal`, though more modules (32 v.s. 18), they have same independent signals (3), located on chr5, chr10, and chr22.
+
+The corresponding modules of these signals from small and large WGCNA share a large proportion of genes.
+
+```{r}
+res = data.frame("signal.Chr" = c("chr5", "chr10", "chr22"),
+                 "module.small (#genes)" = paste0("module", c(21, 21, 2), c(' (89)', ' (89)', ' (297)')),
+                 "module.big (#genes)" = paste0("module", c(15, 15, 4), c(' (114)', ' (114)', ' (350)')),
+                 "#overlapped genes" = c(88, 88, 257),
+                 check.names = FALSE)
+knitr::kable(res)
+```
+
 
 ## Jan 05, Jan 19
 

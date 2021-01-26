@@ -7,3 +7,4 @@ GTEx_v8.Muscle_Skeletal	706	21031	21031	15601	675;4447;3631;13490	5430	18	combin
 GTEx_v8.Skin_Sun_Exposed_Lower_leg	605	25196	25196	18801	807;6458;4557;15650	6395	30	combined chr+module	10	1	1	1
 GTEx_v8.Artery_Tibial	584	23304	23304	17390	795;5588;4202;14730	5914	20	combined chr+module	10	0	0	0
 GTEx_v8.Muscle_Skeletal.cross	706	21031	21031	7141	675;4447;3631;0	13890	39	combined chr+module	10	43	43	4
+GTEx_v8.Muscle_Skeletal.WGCNA	706	21031	21031	15601	675;4447;3631;13490	5430	32	combined chr+module	10	44	44	3
