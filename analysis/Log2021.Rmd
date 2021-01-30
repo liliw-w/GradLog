@@ -14,6 +14,13 @@ knitr::opts_chunk$set(echo=FALSE)
 
 ## Jan 26
 
+### Module sizes, cluster methods/parameters?
+
+```{r fig.cap="Modules v.s. methods/parameters"}
+knitr::include_graphics("./modules.png", error = FALSE)
+```
+
+
 ### Larger FDR level, #signals in large and small module?
 
 Here I will look at how the number of signals changes in the original large and current small modules when I increase the FDR level.
