@@ -14,10 +14,24 @@ knitr::opts_chunk$set(echo=FALSE)
 
 ## Jan 26
 
-### Module sizes, cluster methods/parameters?
+### simulation
 
-```{r fig.cap="Modules v.s. methods/parameters"}
-knitr::include_graphics("./modules.png", error = FALSE)
++ Methods: Oracle, PC1, PCO, MinP, minp.
+
++ Models: $z \sim N(\sqrt{N} \beta, \Sigma)$. $\beta \sim N(0, \sigma_{b}^2 I_{K \times K})$.
+
+1. various sample size $N$. 200, 400, 600, 800, 1000.
+
+2. various $\sigma_{b}^2$. 0.005, 0.01, 0.05, 0.1, 0.2.
+
+3. various causality percentage. ???
+
++ simulation.
+  
+  Generate $10^4$ zscores under each model. $10^4$ simulations.
+
+```{r fig.cap=c("power comparison")}
+knitr::include_graphics(c("power.png"), error = FALSE)
 ```
 
 
@@ -29,8 +43,8 @@ The plot below is based on Muscle tissue from GTEx_v8. The x-axis is for various
 
 We can observe (1) When increasing FDR levels, number of signals only increase a little bit, say 3-5 more signals. This means that the corrected pvalues are bipolar, i.e. either very small or very large. (2) Signals based on smaller modules are similar to that of previous standard modules.
 
-```{r fig.cap="#signals v.s.FDR"}
-knitr::include_graphics("./signalsv.s.FDR.png", error = FALSE)
+```{r fig.cap=c("Muscle: #signals v.s.FDR", "DGN: #signals v.s.FDR")}
+knitr::include_graphics(c("./signalsv.s.FDR.Muscle.png", "./signalsv.s.FDR.DGN.png"), error = FALSE)
 ```
 
 
@@ -47,6 +61,10 @@ res = data.frame("signal.Chr" = c("chr5", "chr10", "chr22"),
                  "#overlapped genes" = c(88, 88, 257),
                  check.names = FALSE)
 knitr::kable(res)
+```
+
+```{r fig.cap=c("Modules v.s. methods/parameters", "p distribution of Muscle")}
+knitr::include_graphics(c("./modules.png", "./Muscle_Skeleta.p.WGCNA.png"), error = FALSE)
 ```
 
 
