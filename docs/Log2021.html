@@ -427,7 +427,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-30
+<strong>Last updated:</strong> 2021-02-02
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeaf77a67144476c5f5d538dd369be98755ac3a669targetblankaf77a67a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/af77a67144476c5f5d538dd369be98755ac3a669" target="_blank">af77a67</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0b5d8d3467486ab96260d08796bd15f84bd8b368targetblank0b5d8d3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/0b5d8d3467486ab96260d08796bd15f84bd8b368" target="_blank">0b5d8d3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeaf77a67144476c5f5d538dd369be98755ac3a669targetblankaf77a67a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0b5d8d3467486ab96260d08796bd15f84bd8b368targetblank0b5d8d3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/af77a67144476c5f5d538dd369be98755ac3a669" target="_blank">af77a67</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/0b5d8d3467486ab96260d08796bd15f84bd8b368" target="_blank">0b5d8d3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -579,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/analysis/Log2021.Rmd" target="_blank">0b5d8d3</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-02
+</td>
+<td>
+wflow_publish(c(“analysis/Log2021.Rmd”, “docs/modules.png”, “docs/Muscle_Skeleta.p.WGCNA.png”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/bb3c0167c3a5fe978c67b3ee26743b21e08d7514/docs/Log2021.html" target="_blank">bb3c016</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-30
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -911,20 +945,33 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 </div>
 <div id="jan-26" class="section level2">
 <h2>Jan 26</h2>
-<div id="module-sizes-cluster-methodsparameters" class="section level3">
-<h3>Module sizes, cluster methods/parameters?</h3>
+<div id="simulation" class="section level3">
+<h3>simulation</h3>
+<ul>
+<li><p>Methods: Oracle, PC1, PCO, MinP, minp.</p></li>
+<li><p>Models: <span class="math inline">\(z \sim N(\sqrt{N} \beta, \Sigma)\)</span>. <span class="math inline">\(\beta \sim N(0, \sigma_{b}^2 I_{K \times K})\)</span>.</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>various sample size <span class="math inline">\(N\)</span>. 200, 400, 600, 800, 1000.</p></li>
+<li><p>various <span class="math inline">\(\sigma_{b}^2\)</span>. 0.005, 0.01, 0.05, 0.1, 0.2.</p></li>
+<li><p>various causality percentage. ???</p></li>
+</ol>
+<ul>
+<li><p>simulation.</p>
+<p>Generate <span class="math inline">\(10^4\)</span> zscores under each model. <span class="math inline">\(10^4\)</span> simulations.</p></li>
+</ul>
 <div class="figure" style="text-align: center">
-<img src="./modules.png" alt="Modules v.s. methods/parameters"  />
+<img src="power.png" alt="power comparison"  />
 <p class="caption">
-Modules v.s. methods/parameters
+power comparison
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-modules">
-Past versions of modules.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power">
+Past versions of power.png
 </button>
 </p>
-<div id="fig-modules" class="collapse">
+<div id="fig-power" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -943,24 +990,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/af77a67144476c5f5d538dd369be98755ac3a669/docs/modules.png" target="_blank">af77a67</a>
+<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/power.png" target="_blank">0b5d8d3</a>
 </td>
 <td>
 Lili Wang
 </td>
 <td>
-2021-01-30
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/301726295134b063cc529b09d126e305e44f4b04/docs/modules.png" target="_blank">3017262</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-01-30
+2021-02-02
 </td>
 </tr>
 </tbody>
@@ -974,17 +1010,17 @@ Lili Wang
 <p>The plot below is based on Muscle tissue from GTEx_v8. The x-axis is for various FDR levels, including 5%, 10%, 15%, and 20%. The y-axis is for the number of signals under these FDR levels. I plot three types of signals, i.e. module and SNP pairs (left subplot), unique SNPs (middle subplot), independent SNPs (right subplot). The two colors represent our previous WGCNA modules (red) and current smaller WGCNA modules (blue).</p>
 <p>We can observe (1) When increasing FDR levels, number of signals only increase a little bit, say 3-5 more signals. This means that the corrected pvalues are bipolar, i.e. either very small or very large. (2) Signals based on smaller modules are similar to that of previous standard modules.</p>
 <div class="figure" style="text-align: center">
-<img src="./signalsv.s.FDR.png" alt="#signals v.s.FDR"  />
+<img src="./signalsv.s.FDR.Muscle.png" alt="Muscle: #signals v.s.FDR"  />
 <p class="caption">
-#signals v.s.FDR
+Muscle: #signals v.s.FDR
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-signalsv.s.FDR">
-Past versions of signalsv.s.FDR.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-signalsv.s.FDR.Muscle">
+Past versions of signalsv.s.FDR.Muscle.png
 </button>
 </p>
-<div id="fig-signalsv.s.FDR" class="collapse">
+<div id="fig-signalsv.s.FDR.Muscle" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -1003,24 +1039,56 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/b7111b226ef2465c1082c1bf829c3c72e56de4d3/docs/signalsv.s.FDR.png" target="_blank">b7111b2</a>
+<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/signalsv.s.FDR.Muscle.png" target="_blank">0b5d8d3</a>
 </td>
 <td>
 Lili Wang
 </td>
 <td>
-2021-01-26
+2021-02-02
 </td>
 </tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="./signalsv.s.FDR.DGN.png" alt="DGN: #signals v.s.FDR"  />
+<p class="caption">
+DGN: #signals v.s.FDR
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-signalsv.s.FDR.DGN">
+Past versions of signalsv.s.FDR.DGN.png
+</button>
+</p>
+<div id="fig-signalsv.s.FDR.DGN" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/9526e7a4db2194d4466bfb704904b23f4e671808/docs/signalsv.s.FDR.png" target="_blank">9526e7a</a>
+<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/signalsv.s.FDR.DGN.png" target="_blank">0b5d8d3</a>
 </td>
 <td>
 Lili Wang
 </td>
 <td>
-2021-01-26
+2021-02-02
 </td>
 </tr>
 </tbody>
@@ -1062,11 +1130,119 @@ Lili Wang
 </tr>
 </tbody>
 </table>
+<div class="figure" style="text-align: center">
+<img src="./modules.png" alt="Modules v.s. methods/parameters"  />
+<p class="caption">
+Modules v.s. methods/parameters
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-modules">
+Past versions of modules.png
+</button>
+</p>
+<div id="fig-modules" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/modules.png" target="_blank">0b5d8d3</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-02
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/af77a67144476c5f5d538dd369be98755ac3a669/docs/modules.png" target="_blank">af77a67</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-30
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/301726295134b063cc529b09d126e305e44f4b04/docs/modules.png" target="_blank">3017262</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-01-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="./Muscle_Skeleta.p.WGCNA.png" alt="p distribution of Muscle"  />
+<p class="caption">
+p distribution of Muscle
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-Muscle_Skeleta.p.WGCNA">
+Past versions of Muscle_Skeleta.p.WGCNA.png
+</button>
+</p>
+<div id="fig-Muscle_Skeleta.p.WGCNA" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/Muscle_Skeleta.p.WGCNA.png" target="_blank">0b5d8d3</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="jan-05-jan-19" class="section level2">
 <h2>Jan 05, Jan 19</h2>
-<div id="simulation" class="section level3">
+<div id="simulation-1" class="section level3">
 <h3>Simulation</h3>
 <p>The simulations here aim to compare the power of PC-based tests including PC1 (using only the primary PC) and PCO (using combined PC’s), and non-PC based test MinP. The simulations consist of two parts: (1) verify that type 1 error is well controlled; (2) compare power of tests. At this time, I simply assume there is no LD among SNPs, i.e. tests are independent.</p>
 <ol style="list-style-type: decimal">
