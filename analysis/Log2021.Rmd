@@ -32,10 +32,17 @@ knitr::opts_chunk$set(echo=FALSE)
   
 The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?
 
+```{r fig.cap=c("N", "var", "caus")}
+knitr::include_graphics(c("./N.png", "./var.png", "caus.png"), error = FALSE)
+```
+
 ```{r fig.cap=c("power comparison")}
 knitr::include_graphics(c("power.png"), error = FALSE)
 ```
 
+```{r fig.cap=c("bar plot")}
+knitr::include_graphics(c("test.png"), error = FALSE)
+```
 
 ### Larger FDR level, #signals in large and small module?
 
