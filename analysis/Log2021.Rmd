@@ -29,6 +29,8 @@ knitr::opts_chunk$set(echo=FALSE)
 + simulation.
   
   Generate $10^4$ zscores under each model. $10^4$ simulations.
+  
+The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?
 
 ```{r fig.cap=c("power comparison")}
 knitr::include_graphics(c("power.png"), error = FALSE)
@@ -63,8 +65,14 @@ res = data.frame("signal.Chr" = c("chr5", "chr10", "chr22"),
 knitr::kable(res)
 ```
 
+The above table is for clusters obtained by method 'WGCNA.min20_deep2' (big) and 'WGCNA.min20_deep4' (small). Next, I give more info about the clusters by more methods, i.e. #genes in modules (A), #unclassfied genes (B), and #modules (C) by the six methods. I also give the pvalue distribution corresponding to these clusters below.
+
+Generally, funcExplorer gives more modules, smaller module, and much more unclassified genes. Though the smaller modules, there aren't many extreme pvalues. Say, the minimum p of all is about $10^{-9}$, as compared to $10^{-14}$ by other methods.
+
+From the pvalue plot, it looks like 'WGCNA.min10_deep4' gives smaller clusters and some extreme pvalues. So next step I will run the whole pipleline for this setting.
+
 ```{r fig.cap=c("Modules v.s. methods/parameters", "p distribution of Muscle")}
-knitr::include_graphics(c("./modules.png", "./Muscle_Skeleta.p.WGCNA.png"), error = FALSE)
+knitr::include_graphics(c("./modules.png", "./Muscle_Skeleta.p.funcExplorer.png"), error = FALSE)
 ```
 
 
