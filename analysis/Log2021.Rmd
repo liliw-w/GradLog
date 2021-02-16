@@ -12,6 +12,57 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Feb 16
+
+### simulation
+
++ tests
+    
+  + Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>1\}}\lambda_k u_k u_k^T) Z$
+  
+  + PC1;
+  
+  + minp = $min\{p_1, \dots, p_K \} \times K$
+  
+  + PCO: Use $\{\lambda_k: \lambda_k>1\}$.
+  
++ Multiple testing
+
+  The significance threshold is set based on the Bofferroni correction as the $\frac{0.05}{50\times10^6} = 10^{-9}$ for univariate test and PC-based tests.
+  
++ scenerios ($K=100$)
+
+  + N: var.b = 0.01; caus = 100 (100%); N.seq = c(200, 400, 600, 800, 1000)
+  
+  + caus: var.b = 0.02; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)
+  
+  + caus_fix: var.b.fix = 0.2; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)
+
++ results
+
+```{r fig.cap="power under Bonferroni corretion cutoff"}
+knitr::include_graphics(c("power.lambda1.png"), error = FALSE)
+```
+
++ Try other tests
+    
+  + Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>0.1\}}\lambda_k u_k u_k^T) Z$
+  
+  + PCO: Use $\{\lambda_k: \lambda_k>0.1\}$.
+
+```{r fig.cap="power under Bonferroni corretion cutoff"}
+knitr::include_graphics(c("power.lambda0.1.png"), error = FALSE)
+```
+
++ For talk
+
+(This figure should be updated as for the case of 'u1', the threshold is falsely set as 0.05, which should be $10^{-9}$.)
+
+```{r fig.cap="PC1 v.s. PCO"}
+knitr::include_graphics(c("talk.png"), error = FALSE)
+```
+
+
 ## Jan 26
 
 ### simulation
@@ -32,12 +83,12 @@ knitr::opts_chunk$set(echo=FALSE)
   
 The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?
 
-```{r fig.cap=c("N", "var", "caus")}
-knitr::include_graphics(c("./N.png", "./var.png", "caus.png"), error = FALSE)
+```{r fig.cap="power under cutoff 0.05"}
+knitr::include_graphics(c("power_05.png"), error = FALSE)
 ```
 
 ```{r fig.cap=c("power comparison")}
-knitr::include_graphics(c("power.png"), error = FALSE)
+knitr::include_graphics(c("plot.error_bar.png"), error = FALSE)
 ```
 
 ```{r fig.cap=c("bar plot")}
