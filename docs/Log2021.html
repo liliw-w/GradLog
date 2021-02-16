@@ -427,7 +427,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-02-06
+<strong>Last updated:</strong> 2021-02-16
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree912aceee499f2c36a3957a2681af9b5d270cc343targetblank912aceea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/912aceee499f2c36a3957a2681af9b5d270cc343" target="_blank">912acee</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8960692331102d9c1f1dcb7766e23d5bbc783c7btargetblank8960692a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/8960692331102d9c1f1dcb7766e23d5bbc783c7b" target="_blank">8960692</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree912aceee499f2c36a3957a2681af9b5d270cc343targetblank912aceea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8960692331102d9c1f1dcb7766e23d5bbc783c7btargetblank8960692a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/912aceee499f2c36a3957a2681af9b5d270cc343" target="_blank">912acee</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/8960692331102d9c1f1dcb7766e23d5bbc783c7b" target="_blank">8960692</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -579,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/analysis/Log2021.Rmd" target="_blank">8960692</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-16
+</td>
+<td>
+Update simulation.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/5f143be496f7db7241fbab3dc61ba9dda45e195f/docs/Log2021.html" target="_blank">5f143be</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1011,9 +1045,173 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 </div>
 </div>
 </div>
+<div id="feb-16" class="section level2">
+<h2>Feb 16</h2>
+<div id="simulation" class="section level3">
+<h3>simulation</h3>
+<ul>
+<li><p>tests</p>
+<ul>
+<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k&gt;1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
+<li><p>PC1;</p></li>
+<li><p>minp = <span class="math inline">\(min\{p_1, \dots, p_K \} \times K\)</span></p></li>
+<li><p>PCO: Use <span class="math inline">\(\{\lambda_k: \lambda_k&gt;1\}\)</span>.</p></li>
+</ul></li>
+<li><p>Multiple testing</p>
+<p>The significance threshold is set based on the Bofferroni correction as the <span class="math inline">\(\frac{0.05}{50\times10^6} = 10^{-9}\)</span> for univariate test and PC-based tests.</p></li>
+<li><p>scenerios (<span class="math inline">\(K=100\)</span>)</p>
+<ul>
+<li><p>N: var.b = 0.01; caus = 100 (100%); N.seq = c(200, 400, 600, 800, 1000)</p></li>
+<li><p>caus: var.b = 0.02; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)</p></li>
+<li><p>caus_fix: var.b.fix = 0.2; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)</p></li>
+</ul></li>
+<li><p>results</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="power.lambda1.png" alt="power under Bonferroni corretion cutoff"  />
+<p class="caption">
+power under Bonferroni corretion cutoff
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda1">
+Past versions of power.lambda1.png
+</button>
+</p>
+<div id="fig-power.lambda1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power.lambda1.png" target="_blank">8960692</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Try other tests</p>
+<ul>
+<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k&gt;0.1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
+<li><p>PCO: Use <span class="math inline">\(\{\lambda_k: \lambda_k&gt;0.1\}\)</span>.</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="power.lambda0.1.png" alt="power under Bonferroni corretion cutoff"  />
+<p class="caption">
+power under Bonferroni corretion cutoff
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda0.1">
+Past versions of power.lambda0.1.png
+</button>
+</p>
+<div id="fig-power.lambda0.1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power.lambda0.1.png" target="_blank">8960692</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>For talk</li>
+</ul>
+<p>(This figure should be updated as for the case of ‘u1’, the threshold is falsely set as 0.05, which should be <span class="math inline">\(10^{-9}\)</span>.)</p>
+<div class="figure" style="text-align: center">
+<img src="talk.png" alt="PC1 v.s. PCO"  />
+<p class="caption">
+PC1 v.s. PCO
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-talk">
+Past versions of talk.png
+</button>
+</p>
+<div id="fig-talk" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/talk.png" target="_blank">8960692</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 <div id="jan-26" class="section level2">
 <h2>Jan 26</h2>
-<div id="simulation" class="section level3">
+<div id="simulation-1" class="section level3">
 <h3>simulation</h3>
 <ul>
 <li><p>Methods: Oracle, PC1, PCO, MinP, minp.</p></li>
@@ -1030,17 +1228,17 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 </ul>
 <p>The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?</p>
 <div class="figure" style="text-align: center">
-<img src="./N.png" alt="N"  />
+<img src="power_05.png" alt="power under cutoff 0.05"  />
 <p class="caption">
-N
+power under cutoff 0.05
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-N">
-Past versions of N.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power_05">
+Past versions of power_05.png
 </button>
 </p>
-<div id="fig-N" class="collapse">
+<div id="fig-power_05" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -1059,13 +1257,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/912aceee499f2c36a3957a2681af9b5d270cc343/docs/N.png" target="_blank">912acee</a>
+<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power_05.png" target="_blank">8960692</a>
 </td>
 <td>
 Lili Wang
 </td>
 <td>
-2021-02-06
+2021-02-16
 </td>
 </tr>
 </tbody>
@@ -1073,103 +1271,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="./var.png" alt="var"  />
-<p class="caption">
-var
-</p>
-</div>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-var">
-Past versions of var.png
-</button>
-</p>
-<div id="fig-var" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/912aceee499f2c36a3957a2681af9b5d270cc343/docs/var.png" target="_blank">912acee</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-02-06
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="figure" style="text-align: center">
-<img src="caus.png" alt="caus"  />
-<p class="caption">
-caus
-</p>
-</div>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-caus">
-Past versions of caus.png
-</button>
-</p>
-<div id="fig-caus" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/912aceee499f2c36a3957a2681af9b5d270cc343/docs/caus.png" target="_blank">912acee</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-02-06
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="figure" style="text-align: center">
-<img src="power.png" alt="power comparison"  />
+<img src="plot.error_bar.png" alt="power comparison"  />
 <p class="caption">
 power comparison
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power">
-Past versions of power.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.error_bar">
+Past versions of plot.error_bar.png
 </button>
 </p>
-<div id="fig-power" class="collapse">
+<div id="fig-plot.error_bar" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -1188,24 +1300,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/74c629e7a179ab4fa37672fc63d508c3ff2b5b8d/docs/power.png" target="_blank">74c629e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/plot.error_bar.png" target="_blank">8960692</a>
 </td>
 <td>
 Lili Wang
 </td>
 <td>
-2021-02-06
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/power.png" target="_blank">0b5d8d3</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-02-02
+2021-02-16
 </td>
 </tr>
 </tbody>
@@ -1497,7 +1598,7 @@ Lili Wang
 </div>
 <div id="jan-05-jan-19" class="section level2">
 <h2>Jan 05, Jan 19</h2>
-<div id="simulation-1" class="section level3">
+<div id="simulation-2" class="section level3">
 <h3>Simulation</h3>
 <p>The simulations here aim to compare the power of PC-based tests including PC1 (using only the primary PC) and PCO (using combined PC’s), and non-PC based test MinP. The simulations consist of two parts: (1) verify that type 1 error is well controlled; (2) compare power of tests. At this time, I simply assume there is no LD among SNPs, i.e. tests are independent.</p>
 <ol style="list-style-type: decimal">
