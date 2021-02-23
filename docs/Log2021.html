@@ -427,7 +427,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-02-16
+<strong>Last updated:</strong> 2021-02-23
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -518,16 +518,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8960692331102d9c1f1dcb7766e23d5bbc783c7btargetblank8960692a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/8960692331102d9c1f1dcb7766e23d5bbc783c7b" target="_blank">8960692</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecbbe31912c59713652e5dd47a717dc0ff7263547targetblankcbbe319a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/cbbe31912c59713652e5dd47a717dc0ff7263547" target="_blank">cbbe319</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8960692331102d9c1f1dcb7766e23d5bbc783c7btargetblank8960692a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecbbe31912c59713652e5dd47a717dc0ff7263547targetblankcbbe319a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/8960692331102d9c1f1dcb7766e23d5bbc783c7b" target="_blank">8960692</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/cbbe31912c59713652e5dd47a717dc0ff7263547" target="_blank">cbbe319</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -579,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/analysis/Log2021.Rmd" target="_blank">cbbe319</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-23
+</td>
+<td>
+wflow_publish(c(“analysis/Log2021.Rmd”, “docs/power.lambda0.1.png”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/85072fc9f9f6e1b79da237ed672b71a3427efe4f/docs/Log2021.html" target="_blank">85072fc</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1045,6 +1079,127 @@ wflow_git_commit(c("analysis/_site.yml“,”analysis/index.Rmd",
 </div>
 </div>
 </div>
+<div id="feb-23" class="section level2">
+<h2>Feb 23</h2>
+</div>
+<div id="updated-simulation" class="section level2">
+<h2>Updated simulation</h2>
+<ol style="list-style-type: decimal">
+<li>Adjusted variance of effects</li>
+</ol>
+<ul>
+<li><p>tests</p>
+<ul>
+<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k&gt;0.1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
+<li><p>PCO: Use <span class="math inline">\(\{\lambda_k: \lambda_k&gt;0.1\}\)</span>.</p></li>
+</ul></li>
+<li><p>scenerios (<span class="math inline">\(K=100,K=105\)</span>)</p>
+<ul>
+<li><p>N: var.b = 0.003; caus = 30%; N.seq = c(200, 400, 600, 800, 1000)</p></li>
+<li><p>caus: var.b = 0.003; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)</p></li>
+<li><p>caus_fix: var.b.fix = 0.1; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)</p></li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Run for other <span class="math inline">\(\Sigma\)</span>’s. <span class="math inline">\(K=100,K=105\)</span></p></li>
+<li><p>FDR level</p></li>
+</ol>
+<p>The minimum null pvalue of PCO is <span class="math inline">\(\ge 10^{-9}\)</span>, similar as the significance threshold we use here <span class="math inline">\(10^{-9}\)</span>.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Results</li>
+</ol>
+<div class="figure" style="text-align: center">
+<img src="power.lambda0.1.K100.png" alt="power under Bonferroni corretion cutoff"  />
+<p class="caption">
+power under Bonferroni corretion cutoff
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda0.1.K100">
+Past versions of power.lambda0.1.K100.png
+</button>
+</p>
+<div id="fig-power.lambda0.1.K100" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda0.1.K100.png" target="_blank">cbbe319</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="power.lambda0.1.K105.png" alt="Another Sigma (K=105)"  />
+<p class="caption">
+Another Sigma (K=105)
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda0.1.K105">
+Past versions of power.lambda0.1.K105.png
+</button>
+</p>
+<div id="fig-power.lambda0.1.K105" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda0.1.K105.png" target="_blank">cbbe319</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="real-data-analysis-by-pco-using-more-lambdas" class="section level2">
+<h2>Real data analysis by PCO using more <span class="math inline">\(\lambda\)</span>’s</h2>
+<p><span class="math inline">\(\{\lambda: \lambda&gt;0.1\}\)</span></p>
+<p>Dataset: Muscle_Skeletal</p>
+</div>
 <div id="feb-16" class="section level2">
 <h2>Feb 16</h2>
 <div id="simulation" class="section level3">
@@ -1097,6 +1252,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda1.png" target="_blank">cbbe319</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-23
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power.lambda1.png" target="_blank">8960692</a>
 </td>
 <td>
@@ -1147,6 +1313,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda0.1.png" target="_blank">cbbe319</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-23
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power.lambda0.1.png" target="_blank">8960692</a>
 </td>
 <td>
@@ -1192,6 +1369,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/talk.png" target="_blank">cbbe319</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2021-02-23
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/talk.png" target="_blank">8960692</a>
