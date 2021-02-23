@@ -12,6 +12,50 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## Feb 23
+
+## Updated simulation
+
+1. Adjusted variance of effects
+
+  + tests
+  
+    + Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>0.1\}}\lambda_k u_k u_k^T) Z$
+  
+    + PCO: Use $\{\lambda_k: \lambda_k>0.1\}$.
+
+  + scenerios ($K=100,K=105$)
+
+    + N: var.b = 0.003; caus = 30%; N.seq = c(200, 400, 600, 800, 1000)
+  
+    + caus: var.b = 0.003; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)
+  
+    + caus_fix: var.b.fix = 0.1; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)
+
+
+2. Run for other $\Sigma$'s. $K=100,K=105$
+
+3. FDR level
+
+The minimum null pvalue of PCO is $\ge 10^{-9}$, similar as the significance threshold we use here $10^{-9}$.
+
+4. Results
+
+```{r fig.cap="power under Bonferroni corretion cutoff"}
+knitr::include_graphics(c("power.lambda0.1.K100.png"), error = FALSE)
+```
+
+
+```{r fig.cap="Another Sigma (K=105)"}
+knitr::include_graphics(c("power.lambda0.1.K105.png"), error = FALSE)
+```
+
+## Real data analysis by PCO using more $\lambda$'s
+
+$\{\lambda: \lambda>0.1\}$
+
+Dataset: Muscle_Skeletal
+
 ## Feb 16
 
 ### simulation
