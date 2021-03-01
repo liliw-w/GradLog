@@ -12,6 +12,26 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## March 1
+
+### Real data analysis by PCO using more $\lambda$'s
+
+Dataset: Muscle_Skeletal. 
+
+Fewer (independent) signals. $PCO_{\{\lambda: \lambda>0.1\}}$ (1 signal) v.s. $PCO_{\{\lambda: \lambda>1\}}$ (3 signals).
+
+### proteomics data
+
+See the google doc [here][proteomics data].
+
+[proteomics data]: https://docs.google.com/spreadsheets/d/1PizRyY3VnvTHxu3PIM2_2sLbrj0Q_mxzRC9TrIm7vi4/edit?usp=sharing
+
+
+### Other stuff
+
++ RCC account storage
+
+
 ## Feb 23
 
 ## Updated simulation
@@ -50,11 +70,6 @@ knitr::include_graphics(c("power.lambda0.1.K100.png"), error = FALSE)
 knitr::include_graphics(c("power.lambda0.1.K105.png"), error = FALSE)
 ```
 
-## Real data analysis by PCO using more $\lambda$'s
-
-$\{\lambda: \lambda>0.1\}$
-
-Dataset: Muscle_Skeletal
 
 ## Feb 16
 
