@@ -12,6 +12,17 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## March 8
+
+### Muscle
+
++ Less modules, PCO$_{\{\lambda: \lambda>0.1\}}$. 1 independent signal, large p.
+
++ More modules, PCO$_{\{\lambda: \lambda>0.1\}}$. 5 independent signal, small p.
+
++ More modules, PCO$_{\{\lambda: \lambda>1\}}$. 5 independent signal, relatively large p.
+
+
 ## March 1
 
 ### Real data analysis by PCO using more $\lambda$'s
