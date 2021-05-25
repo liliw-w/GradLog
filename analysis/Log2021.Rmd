@@ -12,6 +12,101 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## May 26
+
+### Are trans-eQTLs cis-eQTLs?
+
+Updated the way to define cis-eQTLs. Previously, cis-eQTL signals are gene-based (from Pheonix using fastQTL). In this section, I compare trans signals with SNP-based cis-eQTLs from two datasets, i.e. GTEx_v7 (whole blood) and DGN.
+
+- GTEx_v7. [Here](https://www.gtexportal.org/home/datasets) provides all significant variant-gene associations.
+
+- DGN. Two steps to obtain SNP-based significant associations.
+  1. Gene-based associations. (eGenes using fastQTL, result from Pheonix)
+  
+  2. Find all cis-eQTLs for each gene.
+  
+      See "4.2 cis-eQTL mapping" described [here](https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf). (p.s. I checked GTEx source code and turns out that [the actual code GTEx used](https://github.com/francois-a/fastqtl/blob/master/R/calculateSignificanceFastQTL.R) is a bit different. See below for key lines.)
+
+```{r eval=FALSE, echo=TRUE}
+pt = mean(c(max(eGene$bpval), min(eGene$bpval)))
+eGene$pval_nominal_threshold = signif(qbeta(pt,
+                                            eGene$shape1, eGene$shape2, ncp=0, lower.tail=TRUE, log.p=FALSE), 6)
+```
+
+
+
+```{r}
+res = data.frame("Dataset" = c("DGN", "eQTLGen_DGN"),
+                 "#signal" = c(313, 784),
+                 "GTEx_v7_is_ciseQTL(SNP-based)" = c(51, 221),
+                 "GTEx_v7_cis-eGene" = c(16, 32),
+                 "DGN_is_ciseQTL(SNP-based)" = c(156, 502),
+                 "DGN_cis-eGene" = c(39, 83),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+
+## May 19
+
+### How many trans-eQTLs detected in DGN/GTEx whole blood are replicated in eQTLGen?
+
+Replication of DGN signals in eQTLGen. Based on updated results, i.e. smaller and more gene modules & PCO$_{\lambda>0.1}$.
+
+
+```{r eval=FALSE}
+res = data.frame("Dataset" = c("eQTLGen", "eQTLGen_DGN", "DGN"),
+                 "FDR" = c("0.05/#DGN signals", "combined chr+module #10-perms", "combined chr+module #10-perms"),
+                 "minp" = c(NA, 4.64e-08, 1.91e-08),
+                 "(QTL, module)" = c(NA, 882, 334),
+                 "unique QTL" = c(NA, 784, 313),
+                 "independent QTL" = c(NA, 50, 28),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+
+
+### Are trans-eQTLs cis-eQTLs?
+
+1. Dataset: DGN
+
+```{r}
+res = data.frame("Dataset" = c("DGN", "eQTLGen_DGN"),
+                 "#signal" = c(313, 784),
+                 "is_ciseQTL(gene-based)" = c(7, 17),
+                 #"cis-eGene" = c(, ),
+                 "is_cissQTL(SNP-based)" = c(9, 30),
+                 #"cis-sGene" = c(, ),
+                 "is_cise(s)QTL(gene-based)" = c(15, 45),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+knitr::kable(res)
+```
+
+**Observations:**
+
+1.1 DGN
+
+- Among 313 trans signals, 7 are also (gene-based) cis-eQTLs, corresponding to 5~7 independent SNPs. The cis-eGenes include **SLC2A3, NFE2, KIAA0391, NFKBIA, ERN1, AC016753.7, MAT2A**.
+
+- Among 313 unique trans signals, **229 (~73%)** have a neareset gene that are eGenes (with cis-eQTLs). Among 28 independent trans signals, **19 (~68%)** have a neareset gene that are eGenes (with cis-eQTLs).
+
+- Among 313 trans signals, 9 are also cis-sQTLs, corresponding to 6 independent SNPs.
+
+1.2 eQTLGen_DGN
+
+- Among 784 trans signals, 17 are also (gene-based) cis-eQTLs, corresponding to 9 independent SNPs. The cis-eGenes include **AC016753.7, CPEB4, KIAA0391, MAT2A, MRFAP1, NFKBIA, PAQR6, PWP1, RNF181, RP11-539L10.2, RP11-69M1.4, S100P, SENP7, SLC25A44, SLC2A3, SMG5, TMEM79, ZNF782**.
+
+- Among 784 unique trans signals, **590 (~75%)** have a neareset gene that are eGenes (with cis-eQTLs). Among 50 independent trans signals, **29 (~58%)** have a neareset gene that are eGenes (with cis-eQTLs).
+
+- Among 784 trans signals, 30 are also cis-sQTLs, corresponding to 10 independent SNPs.
+
+
+2. Dataset: TCGA
+
+
+3. eQTLGen?
+
 ## March 8
 
 ### Muscle
