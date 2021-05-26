@@ -42,15 +42,29 @@ res = data.frame("Dataset" = c("DGN", "eQTLGen_DGN"),
                  "GTEx_v7_cis-eGene" = c(16, 32),
                  "DGN_is_ciseQTL(SNP-based)" = c(156, 502),
                  "DGN_cis-eGene" = c(39, 83),
+                 "DGN_is_cissQTL(SNP-based)" = c(101, 381),
+                 "DGN_cis-sIntro" = c(71, 182),
+                 "DGN_cis-e/sQTL" = c(182, 551),
                  check.names = FALSE, stringsAsFactors = FALSE)
 knitr::kable(res)
 ```
 
+
+**A diagram version:**
+
+```{r fig.cap="Are trans-eQTLs cis-e/sQTLs?"}
+knitr::include_graphics("0526-1.png", error = FALSE)
+```
+
 **Observations:**
 
-For DGN, among 313 trans signals, 156 (~49.8%) are also cis-eQTLs, corresponding to 39 eGenes, including:
+- For DGN, among 313 trans signals, 156 (~49.8%) are also cis-eQTLs, corresponding to 39 eGenes, including:
 
 *AC016753.7, BECN1, C17orf50, C2orf68, CFL2, CTD-2562J15.6, ERN1, FAM177A1, FIGNL1, FKRP, GGCX, HABP4, HSD17B1P1, ICAM2, KIAA0391, MAT2A, MLX, NEK6, NFE2, NFKBIA, OR2W3, PARP2, PEX12, PPP2R3C, PRKD2, PSMC3IP, RETSAT, RNF181, RP11-1094M14.8, RP11-69M1.4, RP11-85K15.2, SLC1A5, SLC2A3, SLFN12L, SYMPK, TMEM150A, TTC5, VAMP8, ZNF782*
+
+- For DGN, 101 (~32.3%) out of 313 trans signals are cis-sQTLs, corresponding to 71 introns. 26 trans-eQTLs are only sQTLs but not eQTLs. These signals are located on chromosome 15 and 19.
+
+- Among 313 trans signals, 182 (~58.1%) are either cis-eQTLs or cis-sQTLs.
 
 
 ## May 19
