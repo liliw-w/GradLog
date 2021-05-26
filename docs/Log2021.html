@@ -430,7 +430,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-05-24
+<strong>Last updated:</strong> 2021-05-26
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -521,16 +521,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef509189c9a4d79b7c9a937a0131bc4ebc6d3f33ftargetblankf509189a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/f509189c9a4d79b7c9a937a0131bc4ebc6d3f33f" target="_blank">f509189</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1f02e91fb8206c139bf84a6a9146d941cd3aeb0ctargetblank1f02e91a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/1f02e91fb8206c139bf84a6a9146d941cd3aeb0c" target="_blank">1f02e91</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef509189c9a4d79b7c9a937a0131bc4ebc6d3f33ftargetblankf509189a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1f02e91fb8206c139bf84a6a9146d941cd3aeb0ctargetblank1f02e91a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/f509189c9a4d79b7c9a937a0131bc4ebc6d3f33f" target="_blank">f509189</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/1f02e91fb8206c139bf84a6a9146d941cd3aeb0c" target="_blank">1f02e91</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -582,6 +582,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1f02e91fb8206c139bf84a6a9146d941cd3aeb0c/analysis/Log2021.Rmd" target="_blank">1f02e91</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-05-26
+</td>
+<td>
+edits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/096ef88fdffa71c6c1d50ffabb455e646dc58b28/docs/Log2021.html" target="_blank">096ef88</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-05-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1244,6 +1278,9 @@ eGene$pval_nominal_threshold = signif(qbeta(pt,
 <th align="right">GTEx_v7_cis-eGene</th>
 <th align="right">DGN_is_ciseQTL(SNP-based)</th>
 <th align="right">DGN_cis-eGene</th>
+<th align="right">DGN_is_cissQTL(SNP-based)</th>
+<th align="right">DGN_cis-sIntro</th>
+<th align="right">DGN_cis-e/sQTL</th>
 </tr>
 </thead>
 <tbody>
@@ -1254,6 +1291,9 @@ eGene$pval_nominal_threshold = signif(qbeta(pt,
 <td align="right">16</td>
 <td align="right">156</td>
 <td align="right">39</td>
+<td align="right">101</td>
+<td align="right">71</td>
+<td align="right">182</td>
 </tr>
 <tr class="even">
 <td align="left">eQTLGen_DGN</td>
@@ -1262,12 +1302,65 @@ eGene$pval_nominal_threshold = signif(qbeta(pt,
 <td align="right">32</td>
 <td align="right">502</td>
 <td align="right">83</td>
+<td align="right">381</td>
+<td align="right">182</td>
+<td align="right">551</td>
 </tr>
 </tbody>
 </table>
+<p><strong>A diagram version:</strong></p>
+<div class="figure" style="text-align: center">
+<img src="0526-1.png" alt="Are trans-eQTLs cis-e/sQTLs?"  />
+<p class="caption">
+Are trans-eQTLs cis-e/sQTLs?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0526-1">
+Past versions of 0526-1.png
+</button>
+</p>
+<div id="fig-0526-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1f02e91fb8206c139bf84a6a9146d941cd3aeb0c/docs/0526-1.png" target="_blank">1f02e91</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-05-26
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Observations:</strong></p>
-<p>For DGN, among 313 trans signals, 156 (~49.8%) are also cis-eQTLs, corresponding to 39 eGenes, including:</p>
+<ul>
+<li>For DGN, among 313 trans signals, 156 (~49.8%) are also cis-eQTLs, corresponding to 39 eGenes, including:</li>
+</ul>
 <p><em>AC016753.7, BECN1, C17orf50, C2orf68, CFL2, CTD-2562J15.6, ERN1, FAM177A1, FIGNL1, FKRP, GGCX, HABP4, HSD17B1P1, ICAM2, KIAA0391, MAT2A, MLX, NEK6, NFE2, NFKBIA, OR2W3, PARP2, PEX12, PPP2R3C, PRKD2, PSMC3IP, RETSAT, RNF181, RP11-1094M14.8, RP11-69M1.4, RP11-85K15.2, SLC1A5, SLC2A3, SLFN12L, SYMPK, TMEM150A, TTC5, VAMP8, ZNF782</em></p>
+<ul>
+<li><p>For DGN, 101 (~32.3%) out of 313 trans signals are cis-sQTLs, corresponding to 71 introns. 26 trans-eQTLs are only sQTLs but not eQTLs. These signals are located on chromosome 15 and 19.</p></li>
+<li><p>Among 313 trans signals, 182 (~58.1%) are either cis-eQTLs or cis-sQTLs.</p></li>
+</ul>
 </div>
 </div>
 <div id="may-19" class="section level2">
