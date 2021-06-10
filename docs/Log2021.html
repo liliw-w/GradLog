@@ -430,7 +430,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-05-26
+<strong>Last updated:</strong> 2021-06-10
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -521,16 +521,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1f02e91fb8206c139bf84a6a9146d941cd3aeb0ctargetblank1f02e91a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/1f02e91fb8206c139bf84a6a9146d941cd3aeb0c" target="_blank">1f02e91</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree52166c09bceb3f48a7d061b72ad84777ef4b144etargetblank52166c0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/52166c09bceb3f48a7d061b72ad84777ef4b144e" target="_blank">52166c0</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1f02e91fb8206c139bf84a6a9146d941cd3aeb0ctargetblank1f02e91a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree52166c09bceb3f48a7d061b72ad84777ef4b144etargetblank52166c0a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/1f02e91fb8206c139bf84a6a9146d941cd3aeb0c" target="_blank">1f02e91</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/52166c09bceb3f48a7d061b72ad84777ef4b144e" target="_blank">52166c0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -544,6 +544,11 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
+
+Untracked files:
+    Untracked:  simulation.null.lambda1.RData
+    Untracked:  tmp2.png
+    Untracked:  tmp3.png
 
 </code></pre>
 <p>
@@ -582,6 +587,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/52166c09bceb3f48a7d061b72ad84777ef4b144e/analysis/Log2021.Rmd" target="_blank">52166c0</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-10
+</td>
+<td>
+update Snakemake file with python lines
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/04c44fc61b812b6245d10b6c2d75ce94e0e57646/docs/Log2021.html" target="_blank">04c44fc</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-05-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1249,6 +1288,79 @@ wflow_git_commit(c("analysis/_site.yml", "analysis/index.Rmd",
 </table>
 </div>
 <hr>
+</div>
+</div>
+</div>
+<div id="june-11" class="section level2">
+<h2>June 11</h2>
+<div id="compare-with-dgn_transeqtl_battle2014" class="section level3">
+<h3>Compare with ‘DGN_transeQTL_battle2014’</h3>
+<ul>
+<li>Summary of Battle trans-eQTL signals</li>
+</ul>
+<p>They gave 736 significant (gene, SNP) pairs, corresponding to 350 unique trans-eQTLs and 138 unique trans-eGenes.</p>
+<p>The following is a a table of the number of trans-target genes of these 350 unique trans-eQTLs. We can see most of the trans-eQTLs have only 1 or 2 trans-target genes (<span class="math inline">\(283+34=317, \approx 91\%\)</span>).</p>
+<pre><code>
+  1   2   3   4   5   6   7   8  11  13  14  22  23  24  29  33  59 
+283  34   3   1  12   1   2   2   2   1   2   1   2   1   1   1   1 </code></pre>
+<p>Let’s take a look at the trans-eQTLs with more than 2 target genes. We can see these trans-eQTLs are mainly located around the regions 3:56849749, 3:101043565, 7:50366637, 17:33875262.</p>
+<pre><code>            sig N_transeGene if_transPCO num_included
+ 1:  3:56849749           59        TRUE           29
+ 2:  3:56858686           33        TRUE           16
+ 3:  3:56865776           29        TRUE           15
+ 4: 3:101242751           24       FALSE            0
+ 5: 3:101043565           23       FALSE            0
+ 6: 3:101106527           23       FALSE            0
+ 7: 3:101232736           22       FALSE            0
+ 8: 3:100963761           14       FALSE            0
+ 9: 3:100970240           14       FALSE            0
+10: 3:100994497           13       FALSE            0
+11:  3:56851387           11        TRUE            3
+12:  3:56880444           11        TRUE            5
+13: 3:100915962            8       FALSE            0
+14:  7:50366637            8        TRUE            4
+15:  3:56874033            7        TRUE            4
+16: 3:101068620            7       FALSE            0
+17:  3:56871432            6        TRUE            4
+18: 3:101042594            5       FALSE            0
+19: 3:101080694            5       FALSE            0
+20: 3:101085413            5       FALSE            0
+21: 3:101135210            5       FALSE            0
+22: 3:101160339            5       FALSE            0
+23: 3:101184134            5       FALSE            0
+24: 3:101191663            5       FALSE            0
+25: 3:101231921            5       FALSE            0
+26: 3:101237307            5       FALSE            0
+27: 3:101252514            5       FALSE            0
+28: 3:101253091            5       FALSE            0
+29: 3:101253605            5       FALSE            0
+30:  7:50428445            4        TRUE            2
+31:  7:50435777            3       FALSE            1
+32: 17:33875262            3       FALSE            1
+33: 17:33902635            3       FALSE            1
+            sig N_transeGene if_transPCO num_included</code></pre>
+<ul>
+<li>As for our results from trans-PCO</li>
+</ul>
+<p>We have identified 313 unique trans-eQTLs, among which 24 are also detected by Battle’s univariate method. The above table gives which Battle’s signals are replicated by trans-PCO.</p>
+<p>Table of the number of target genes for replicated trans-eQTLs.</p>
+<pre><code>
+ 1  2  4  6  7  8 11 29 33 59 
+12  3  1  1  1  1  2  1  1  1 </code></pre>
+<ol style="list-style-type: decimal">
+<li><p>Signals detected by univariate but missed by trans-PCO.</p>
+<p>Since trans-PCO tends to identify SNPs that have effects on multiple genes, I will focus on the univariate trans-eQTLs that correspond to multiple genes (<span class="math inline">\(&gt;2\)</span>). For this type of signals, there are 33 trans-eQTLs in total, among which 9 are detected by trans-PCO. For the rest of 24 missed trans-eQTLs, there are basically three types: (1) 21 near the region “3:101043565”, (2) 1 at “7:50435777”, (3) 2 at “17:33875262” and “17:33875262”.</p>
+<ol style="list-style-type: decimal">
+<li><p>Even though the 20 missed trans-eQTLs correspond to multiple genes, ranging from 5 ~ 24, they are still missed by trans-PCO. So I checked their trans-target genes, and it turns out that all of the target genes are filtered out at the beginning of our analysis for being cross-mappable or poorly mapped.</p></li>
+<li><p>As for the rest of three trans-eQTLs that are missed by trans-PCO, only one of their 3 trans-target genes are included in our analysis.</p></li>
+</ol></li>
+</ol>
+<div id="take-aways" class="section level4">
+<h4>Take-aways</h4>
+<ol style="list-style-type: decimal">
+<li><p>Trans-PCO tends to be more likely to detect trans-eQTLs with effects on multiple target genes.</p></li>
+<li><p>Some signals could be missed at the step of filtering out genes.</p></li>
+</ol>
 </div>
 </div>
 </div>
@@ -3405,7 +3517,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.2
+[1] data.table_1.13.2 workflowr_1.6.2  
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.4      rprojroot_1.3-2 digest_0.6.25   later_1.0.0    
