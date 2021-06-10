@@ -12,6 +12,66 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## June 11
+
+### Compare with 'DGN_transeQTL_battle2014'
+
+- Summary of Battle trans-eQTL signals
+
+They gave 736 significant (gene, SNP) pairs, corresponding to 350 unique trans-eQTLs and 138 unique trans-eGenes.
+
+```{r message=FALSE}
+require(data.table)
+
+Battle = fread("data/DGN_transeQTL_battle2014.txt", header = TRUE)
+Us_sig = fread('data/DGN_PCO.lambda.01.LD.prun.in.chr.module.perm10.txt', header = FALSE, col.names = "sig")
+meta = fread('data/DGN_PCO.lambda.01.gene.meta.txt', header = TRUE)
+
+Battle_sig_sum = data.table("sig" = unique(Battle$snp))
+Battle_sig_sum$N_transeGene = sapply(Battle_sig_sum$sig, function(x) {length(unique(Battle[Battle$snp %in% x, GENE_NAME]))})
+Battle_sig_sum$if_transPCO = Battle_sig_sum$sig %in% Us_sig$sig
+Battle_sig_sum$trans_eGene = sapply(Battle_sig_sum$sig, function(x) {paste0(unique(Battle[Battle$snp %in% x, GENE_NAME]), collapse = ";")})
+Battle_sig_sum$num_included = sapply(strsplit(Battle_sig_sum[, trans_eGene], ";"), function(x) sum(!meta[match(x, meta$gene), Remove], na.rm = TRUE))
+Battle_sig_sum = Battle_sig_sum[order(Battle_sig_sum$N_transeGene, decreasing = T), ]
+
+```
+
+The following is a a table of the number of trans-target genes of these 350 unique trans-eQTLs. We can see most of the trans-eQTLs have only 1 or 2 trans-target genes ($283+34=317, \approx 91\%$).
+
+```{r}
+table(Battle_sig_sum$N_transeGene)
+```
+
+Let's take a look at the trans-eQTLs with more than 2 target genes. We can see these trans-eQTLs are mainly located around the regions 3:56849749, 3:101043565, 7:50366637, 17:33875262.
+
+```{r}
+Battle_sig_sum[Battle_sig_sum$N_transeGene>2, -'trans_eGene']
+```
+
+- As for our results from trans-PCO
+
+We have identified 313 unique trans-eQTLs, among which 24 are also detected by Battle's univariate method. The above table gives which Battle's signals are replicated by trans-PCO.
+
+Table of the number of target genes for replicated trans-eQTLs.
+
+```{r}
+table(Battle_sig_sum[Battle_sig_sum$if_transPCO, N_transeGene])
+```
+
+1. Signals detected by univariate but missed by trans-PCO.
+
+    Since trans-PCO tends to identify SNPs that have effects on multiple genes, I will focus on the univariate trans-eQTLs that correspond to multiple genes ($>2$). For this type of signals, there are 33 trans-eQTLs in total, among which 9 are detected by trans-PCO. For the rest of 24 missed trans-eQTLs, there are basically three types: (1) 21 near the region "3:101043565", (2) 1 at "7:50435777", (3) 2 at "17:33875262" and "17:33875262".
+
+    (1) Even though the 20 missed trans-eQTLs correspond to multiple genes, ranging from 5 ~ 24, they are still missed by trans-PCO. So I checked their trans-target genes, and it turns out that all of the target genes are filtered out at the beginning of our analysis for being cross-mappable or poorly mapped.
+    
+    (2) As for the rest of three trans-eQTLs that are missed by trans-PCO, only one of their 3 trans-target genes are included in our analysis.
+    
+#### Take-aways
+
+1. Trans-PCO tends to be more likely to detect trans-eQTLs with effects on multiple target genes.
+
+2. Some signals could be missed at the step of filtering out genes.
+
 ## May 26
 
 ### Are trans-eQTLs cis-eQTLs?
