@@ -430,7 +430,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-10
+<strong>Last updated:</strong> 2021-06-11
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -521,16 +521,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree52166c09bceb3f48a7d061b72ad84777ef4b144etargetblank52166c0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/52166c09bceb3f48a7d061b72ad84777ef4b144e" target="_blank">52166c0</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree170be3805403d7ec3e28149f4faf4100d573f34dtargetblank170be38a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/170be3805403d7ec3e28149f4faf4100d573f34d" target="_blank">170be38</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree52166c09bceb3f48a7d061b72ad84777ef4b144etargetblank52166c0a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree170be3805403d7ec3e28149f4faf4100d573f34dtargetblank170be38a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/52166c09bceb3f48a7d061b72ad84777ef4b144e" target="_blank">52166c0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/170be3805403d7ec3e28149f4faf4100d573f34d" target="_blank">170be38</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -544,11 +544,9 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
-
-Untracked files:
-    Untracked:  simulation.null.lambda1.RData
-    Untracked:  tmp2.png
-    Untracked:  tmp3.png
+    Ignored:    simulation.null.lambda1.RData
+    Ignored:    tmp2.png
+    Ignored:    tmp3.png
 
 </code></pre>
 <p>
@@ -587,6 +585,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/170be3805403d7ec3e28149f4faf4100d573f34d/analysis/Log2021.Rmd" target="_blank">170be38</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-11
+</td>
+<td>
+revise ‘comparison with univariate’
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/8ab02f2e0ee6e4899f24cb6261229dd57c78021a/docs/Log2021.html" target="_blank">8ab02f2</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-10
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1293,6 +1325,106 @@ wflow_git_commit(c("analysis/_site.yml", "analysis/index.Rmd",
 </div>
 <div id="june-11" class="section level2">
 <h2>June 11</h2>
+<div id="compare-with-truncated-dgn_transeqtl_battle2014" class="section level3">
+<h3>Compare with truncated ‘DGN_transeQTL_battle2014’</h3>
+<p>In this section, I removed trans-eGenes from Battle’s result that are not included in our analysis for being cross-mappable or poorly mapped. I do this to makes sure univariate and multivariate are based on the same set of genes. I go through the same analysis as below.</p>
+<ul>
+<li>Summary of the new version Battle trans-eQTL signals</li>
+</ul>
+<p>After filter our some trans-eGenes, there are <strong>157</strong> (v.s. 736) significant (gene, SNP) pairs left, corresponding to 84 unique trans-eQTLs and 47 unique trans-eGenes.</p>
+<p>The following is a a table of the number of trans-target genes of these 84 unique trans-eQTLs.</p>
+<pre><code>
+ 1  2  3  4  5 15 16 29 
+75  1  1  3  1  1  1  1 </code></pre>
+<p>We have identified 313 unique trans-eQTLs, among which 24 are also detected by Battle’s univariate method. The above table gives which Battle’s signals are replicated by trans-PCO.</p>
+<p>Among 84 Battle’s trans-eQTLs, 24 (~28.57%) are also detected by trans-PCO. For 9 signals with more than one trans-target genes included in our analysis, all of them are detected by trans-PCO. Trans-PCO also detected other 15 signals with only one trans-target gene used in our analysis. For the other 60 univariate signals that are missed by trans-PCO, they have only one trans-target gene included in trans-PCO.</p>
+<pre><code>            sig N_transeGene if_transPCO num_included
+ 1:  3:56849749           29        TRUE           29
+ 2:  3:56858686           16        TRUE           16
+ 3:  3:56865776           15        TRUE           15
+ 4:  3:56880444            5        TRUE            5
+ 5:  3:56871432            4        TRUE            4
+ 6:  3:56874033            4        TRUE            4
+ 7:  7:50366637            4        TRUE            4
+ 8:  3:56851387            3        TRUE            3
+ 9:  7:50428445            2        TRUE            2
+10: 7:106337250            1       FALSE            1
+11: 12:54723028            1       FALSE            1
+12: 12:54729872            1       FALSE            1
+13: 4:103432974            1       FALSE            1
+14: 4:103443569            1       FALSE            1
+15: 4:103448582            1       FALSE            1
+16: 4:103511114            1       FALSE            1
+17: 1:118147675            1       FALSE            1
+18: 1:118158079            1       FALSE            1
+19: 19:37441365            1       FALSE            1
+20: 19:37469098            1       FALSE            1
+21: 19:37503899            1       FALSE            1
+22: 19:37504596            1       FALSE            1
+23: 19:37507729            1       FALSE            1
+24: 19:37516220            1       FALSE            1
+25: 19:37520927            1       FALSE            1
+26: 19:37547219            1       FALSE            1
+27: 19:37563211            1       FALSE            1
+28: 19:37573074            1       FALSE            1
+29: 19:37582471            1       FALSE            1
+30: 19:37584650            1       FALSE            1
+31: 19:37597395            1       FALSE            1
+32: 19:37620248            1       FALSE            1
+33: 19:37627113            1       FALSE            1
+34: 19:37632877            1       FALSE            1
+35: 19:37634291            1       FALSE            1
+36: 19:37642165            1       FALSE            1
+37: 19:37649577            1       FALSE            1
+38: 19:37650929            1       FALSE            1
+39: 19:37684966            1       FALSE            1
+40: 17:33875262            1       FALSE            1
+41: 1:248039451            1        TRUE            1
+42: 1:248039713            1       FALSE            1
+43: 1:248041182            1       FALSE            1
+44: 1:248058265            1       FALSE            1
+45: 19:44889660            1       FALSE            1
+46: 19:44930738            1        TRUE            1
+47: 19:44931995            1       FALSE            1
+48: 19:44932972            1        TRUE            1
+49: 19:44933947            1        TRUE            1
+50: 19:44938980            1        TRUE            1
+51: 19:44947050            1       FALSE            1
+52: 19:44947184            1        TRUE            1
+53: 19:44959866            1       FALSE            1
+54: 19:44973969            1       FALSE            1
+55: 19:44978298            1       FALSE            1
+56: 19:44979443            1       FALSE            1
+57: 19:44995990            1       FALSE            1
+58: 19:45001346            1       FALSE            1
+59: 19:45001619            1       FALSE            1
+60: 14:35523266            1       FALSE            1
+61: 14:35571651            1        TRUE            1
+62: 14:35624831            1       FALSE            1
+63: 21:44473062            1       FALSE            1
+64: 21:44473425            1       FALSE            1
+65: 21:44473446            1       FALSE            1
+66:  12:8142798            1        TRUE            1
+67:  12:8143483            1        TRUE            1
+68:  12:8161503            1        TRUE            1
+69:  12:8179891            1       FALSE            1
+70:  12:8185853            1       FALSE            1
+71:  12:8190206            1       FALSE            1
+72: 6:159498130            1       FALSE            1
+73: 15:80260554            1        TRUE            1
+74: 15:80263217            1        TRUE            1
+75: 15:80263345            1        TRUE            1
+76: 15:80263406            1        TRUE            1
+77:  7:50435777            1       FALSE            1
+78: 6:169749100            1       FALSE            1
+79: 14:20811332            1        TRUE            1
+80: 17:33902635            1       FALSE            1
+81: 17:34019488            1       FALSE            1
+82: 17:34043021            1       FALSE            1
+83: 17:34051176            1       FALSE            1
+84:  9:99288951            1       FALSE            1
+            sig N_transeGene if_transPCO num_included</code></pre>
+</div>
 <div id="compare-with-dgn_transeqtl_battle2014" class="section level3">
 <h3>Compare with ‘DGN_transeQTL_battle2014’</h3>
 <ul>
