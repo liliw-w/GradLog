@@ -12,6 +12,18 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## June 14
+
+### Why there are so many eQTLGen signals using PCO_${\lambda<0.1}$?
+
+Check the QQ-plot of the observed pvalues from eQTLGen using PCO_${\lambda<0.1}$ (9918 unique SNPs, all eQTLGen variants) and PCO_${\lambda<1}$ (909 unique SNPs).
+
+
+```{r}
+knitr::include_graphics("qqplot.p_obs.eQTLGen.png", error = FALSE)
+```
+
+
 ## June 11
 
 ### Compare with truncated 'DGN_transeQTL_battle2014'
