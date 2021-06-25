@@ -12,6 +12,60 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## June 25
+
+### Replication of eQTLGen results in trans-PCO of eQTLGen summary stats?
+
+I first give some data statistics here.
+
+```{r}
+res = data.frame("Dataset" = c("eQTGen", "eQTGen", "eQTLGen_trans-PCO", "eQTLGen_trans-PCO"),
+                 "Method" = c("FDR<0.05", "filter", "qvalue", "Bonferroni"),
+                 "#(gene, SNP)/(module, SNP)" = c(59786, 20394, 406729, 55634),
+                 "#unique genes/modules" = c(6298, 1857, 75, 74),
+                 "unique SNPs" = c(3853, 2469, 9918, 9915),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(res)
+```
+
+- The eQTGen's original result [here](https://www.eqtlgen.org/trans-eqtls.html) gives 59786 (gene, trans-eQTL) pairs under FDR $<0.05$, corresponding to 6298 unique genes and 3853 unique SNPs.
+
+- After some filtering, to make sure the eQTGen trans-eQTLs and genes are included in out trans-PCO result using eQTLGen summary stats. **There are 20394 (gene, trans-eQTL) pairs left, corresponding to 1857 unique genes and 2469 unique SNPs.**
+
+- Orignal eQTLGen_trans-PCO result (under qvalue FDR correction): 406729 (module, trans-eQTL) pairs, corresponding to all 75 unique modules and 9918 unique SNPs.
+
+- Under Bonferroni correction (p<6.721785e-08): **55634, 74, 9915**.
+
+Next, I will check how eQTGen signals are replicated in eQTLGen_trans-PCO results (see bold text above). The basic idea is, for an eQTGen trans-eQTL, find its trans-target genes, then look at how these genes are distributed in each gene modules we used for eQTLGen_trans-PCO, and whether the corresponding (module, trans-eQTL) are identified by eQTLGen_trans-PCO. Specifically, I will check two things.
+
+1. For a trans-eQTL whose trans-target genes are included in one of our PCO module, is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (Power)
+
+    Since in previous analysis, the intuition is PCO tends to pick modules where there are multiple trans-target genes for a SNP. Therefore, in the below figure, I picked out all the eQTGen trans-eQTLs that have >2 target genes and plotted them on x-axis. The target genes are distributed on the Y-axis for each PCO module. Number/color is for #target genes. These (module, SNP) pairs should be significant in eQTLGen_trans-PCO. I circled out (red) those (module, SNP) pairs that are missed by eQTLGen_trans-PCO. As a result, 11 (module, SNP) (11 unique SNPs) are missed.
+
+```{r fig.cap=c("Power")}
+knitr::include_graphics(c("0625_power.png"), error = FALSE)
+```
+
+Check [here](../docs/0625_power.png) for clearer version.
+
+2. For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)
+
+    Similar plot, except Number/color is SNP with 0, 1, or 2 target genes in each module. These (module, SNP) pairs are less likely to be identified by eQTLGen_trans-PCO. Yet, I circled out (green) those (module, SNP) pairs that are still identified by eQTLGen_trans-PCO.
+
+```{r fig.cap=c("TIE")}
+knitr::include_graphics(c("0625_TIE.png"), error = FALSE)
+```
+
+Check [here](../docs/0625_TIE.png) for clearer version.
+
+#### Observation
+
+1. Almost all eQTGen trans-eQTLs with >2 target genes and their corresponding module are identified by eQTLGen_trans-PCO. This may suggest a good power of eQTLGen_trans-PCO.
+
+2. However, the false positiva rate may be inflated, as a large amount of SNPs that has no target genes in the modules are also identified. (**Maybe although none of the genes in the module are target genes for the SNPs, the genes may be cross-mappable with the SNP's other traget genes that are filter out?**)
+
+
+
 ## June 14
 
 ### Why there are so many eQTLGen signals using PCO_${\lambda<0.1}$?
