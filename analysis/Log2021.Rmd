@@ -46,7 +46,7 @@ Next, I will check how eQTGen signals are replicated in eQTLGen_trans-PCO result
 knitr::include_graphics(c("0625_power.png"), error = FALSE)
 ```
 
-Check [here](../docs/0625_power.png) for clearer version.
+Check [here](0625_power.png) for clearer version.
 
 2. For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)
 
@@ -56,7 +56,7 @@ Check [here](../docs/0625_power.png) for clearer version.
 knitr::include_graphics(c("0625_TIE.png"), error = FALSE)
 ```
 
-Check [here](../docs/0625_TIE.png) for clearer version.
+Check [here](0625_TIE.png) for clearer version.
 
 #### Observation
 
