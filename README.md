@@ -1,5 +1,3 @@
 # GradLog
 
-A [workflowr][] project.
-
-[workflowr]: https://github.com/jdblischak/workflowr
+This site is where I keep track of my project progress.
