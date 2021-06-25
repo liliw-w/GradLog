@@ -399,7 +399,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-14
+<strong>Last updated:</strong> 2021-06-25
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4fc3dffcaa851ffd73851b931c99222ae428d814targetblank4fc3dffa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/4fc3dffcaa851ffd73851b931c99222ae428d814" target="_blank">4fc3dff</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0f607209229988d6a203f2951470251684069e51targetblank0f60720a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/0f607209229988d6a203f2951470251684069e51" target="_blank">0f60720</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4fc3dffcaa851ffd73851b931c99222ae428d814targetblank4fc3dffa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0f607209229988d6a203f2951470251684069e51targetblank0f60720a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/4fc3dffcaa851ffd73851b931c99222ae428d814" target="_blank">4fc3dff</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/0f607209229988d6a203f2951470251684069e51" target="_blank">0f60720</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -513,9 +513,9 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
-    Ignored:    simulation.null.lambda1.RData
-    Ignored:    tmp2.png
-    Ignored:    tmp3.png
+
+Unstaged changes:
+    Modified:   .gitignore
 
 </code></pre>
 <p>
@@ -554,6 +554,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0f607209229988d6a203f2951470251684069e51/analysis/Log2021.Rmd" target="_blank">0f60720</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-25
+</td>
+<td>
+Replication of eQTLGen results in trans-PCO of eQTLGen summary stats
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/25a87c0f0409f1dbb98f615a7393b30c183665b8/docs/Log2021.html" target="_blank">25a87c0</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-14
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1323,6 +1357,164 @@ wflow_git_commit(c("analysis/_site.yml", "analysis/index.Rmd",
 </table>
 </div>
 <hr>
+</div>
+</div>
+</div>
+<div id="june-25" class="section level2">
+<h2>June 25</h2>
+<div id="replication-of-eqtlgen-results-in-trans-pco-of-eqtlgen-summary-stats" class="section level3">
+<h3>Replication of eQTLGen results in trans-PCO of eQTLGen summary stats?</h3>
+<p>I first give some data statistics here.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dataset</th>
+<th align="left">Method</th>
+<th align="right">#(gene, SNP)/(module, SNP)</th>
+<th align="right">#unique genes/modules</th>
+<th align="right">unique SNPs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">eQTGen</td>
+<td align="left">FDR&lt;0.05</td>
+<td align="right">59786</td>
+<td align="right">6298</td>
+<td align="right">3853</td>
+</tr>
+<tr class="even">
+<td align="left">eQTGen</td>
+<td align="left">filter</td>
+<td align="right">20394</td>
+<td align="right">1857</td>
+<td align="right">2469</td>
+</tr>
+<tr class="odd">
+<td align="left">eQTLGen_trans-PCO</td>
+<td align="left">qvalue</td>
+<td align="right">406729</td>
+<td align="right">75</td>
+<td align="right">9918</td>
+</tr>
+<tr class="even">
+<td align="left">eQTLGen_trans-PCO</td>
+<td align="left">Bonferroni</td>
+<td align="right">55634</td>
+<td align="right">74</td>
+<td align="right">9915</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>The eQTGen’s original result <a href="https://www.eqtlgen.org/trans-eqtls.html">here</a> gives 59786 (gene, trans-eQTL) pairs under FDR <span class="math inline">\(&lt;0.05\)</span>, corresponding to 6298 unique genes and 3853 unique SNPs.</p></li>
+<li><p>After some filtering, to make sure the eQTGen trans-eQTLs and genes are included in out trans-PCO result using eQTLGen summary stats. <strong>There are 20394 (gene, trans-eQTL) pairs left, corresponding to 1857 unique genes and 2469 unique SNPs.</strong></p></li>
+<li><p>Orignal eQTLGen_trans-PCO result (under qvalue FDR correction): 406729 (module, trans-eQTL) pairs, corresponding to all 75 unique modules and 9918 unique SNPs.</p></li>
+<li><p>Under Bonferroni correction (p&lt;6.721785e-08): <strong>55634, 74, 9915</strong>.</p></li>
+</ul>
+<p>Next, I will check how eQTGen signals are replicated in eQTLGen_trans-PCO results (see bold text above). The basic idea is, for an eQTGen trans-eQTL, find its trans-target genes, then look at how these genes are distributed in each gene modules we used for eQTLGen_trans-PCO, and whether the corresponding (module, trans-eQTL) are identified by eQTLGen_trans-PCO. Specifically, I will check two things.</p>
+<ol style="list-style-type: decimal">
+<li><p>For a trans-eQTL whose trans-target genes are included in one of our PCO module, is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (Power)</p>
+<p>Since in previous analysis, the intuition is PCO tends to pick modules where there are multiple trans-target genes for a SNP. Therefore, in the below figure, I picked out all the eQTGen trans-eQTLs that have &gt;2 target genes and plotted them on x-axis. The target genes are distributed on the Y-axis for each PCO module. Number/color is for #target genes. These (module, SNP) pairs should be significant in eQTLGen_trans-PCO. I circled out (red) those (module, SNP) pairs that are missed by eQTLGen_trans-PCO. As a result, 11 (module, SNP) (11 unique SNPs) are missed.</p></li>
+</ol>
+<div class="figure" style="text-align: center">
+<img src="0625_power.png" alt="Power"  />
+<p class="caption">
+Power
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0625_power">
+Past versions of 0625_power.png
+</button>
+</p>
+<div id="fig-0625_power" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0f607209229988d6a203f2951470251684069e51/docs/0625_power.png" target="_blank">0f60720</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Check <a href="../docs/0625_power.png">here</a> for clearer version.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)</p>
+<p>Similar plot, except Number/color is SNP with 0, 1, or 2 target genes in each module. These (module, SNP) pairs are less likely to be identified by eQTLGen_trans-PCO. Yet, I circled out (green) those (module, SNP) pairs that are still identified by eQTLGen_trans-PCO.</p></li>
+</ol>
+<div class="figure" style="text-align: center">
+<img src="0625_TIE.png" alt="TIE"  />
+<p class="caption">
+TIE
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0625_TIE">
+Past versions of 0625_TIE.png
+</button>
+</p>
+<div id="fig-0625_TIE" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0f607209229988d6a203f2951470251684069e51/docs/0625_TIE.png" target="_blank">0f60720</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Check <a href="../docs/0625_TIE.png">here</a> for clearer version.</p>
+<div id="observation" class="section level4">
+<h4>Observation</h4>
+<ol style="list-style-type: decimal">
+<li><p>Almost all eQTGen trans-eQTLs with &gt;2 target genes and their corresponding module are identified by eQTLGen_trans-PCO. This may suggest a good power of eQTLGen_trans-PCO.</p></li>
+<li><p>However, the false positiva rate may be inflated, as a large amount of SNPs that has no target genes in the modules are also identified. (<strong>Maybe although none of the genes in the module are target genes for the SNPs, the genes may be cross-mappable with the SNP’s other traget genes that are filter out?</strong>)</p></li>
+</ol>
 </div>
 </div>
 </div>
