@@ -399,7 +399,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-25
+<strong>Last updated:</strong> 2021-06-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreebdc8aeceaab1683e68dde3db74c4469a1ffad757targetblankbdc8aeca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/bdc8aeceaab1683e68dde3db74c4469a1ffad757" target="_blank">bdc8aec</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1b79abbfc3a37486b82a1da080a41c5c0f384809targetblank1b79abba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/1b79abbfc3a37486b82a1da080a41c5c0f384809" target="_blank">1b79abb</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreebdc8aeceaab1683e68dde3db74c4469a1ffad757targetblankbdc8aeca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree1b79abbfc3a37486b82a1da080a41c5c0f384809targetblank1b79abba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/bdc8aeceaab1683e68dde3db74c4469a1ffad757" target="_blank">bdc8aec</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/1b79abbfc3a37486b82a1da080a41c5c0f384809" target="_blank">1b79abb</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -551,6 +551,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1b79abbfc3a37486b82a1da080a41c5c0f384809/analysis/Log2021.Rmd" target="_blank">1b79abb</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-29
+</td>
+<td>
+Add ‘estimate eQTLGen sigma by indepdent null eQTLGen zscores’
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/15631a852eeb691fda1e40929a43dc15e7fc2320/docs/Log2021.html" target="_blank">15631a8</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1391,6 +1425,158 @@ wflow_git_commit(c("analysis/_site.yml", "analysis/index.Rmd",
 </div>
 </div>
 </div>
+<div id="june-29" class="section level2">
+<h2>June 29</h2>
+<div id="try-using-zscores-to-build-sigma-plot-of-number-of-snps-with-low-zscores" class="section level3">
+<h3>“Try using zscores to build sigma, plot of number of SNPs with low zscores”</h3>
+<ol style="list-style-type: decimal">
+<li>plot of number of SNPs with low zscores</li>
+</ol>
+<p>In this section, I am going to check how the estimated Sigma <span class="math inline">\(\hat{\Sigma}_{K}\)</span> (correlation matrix of zscores/residule expression across genes) can affect PCO’s pvalues. Use eQTLGen zscores. Consider two <span class="math inline">\(\hat{\Sigma}\)</span>’s. (1) <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>, computed by <span class="math inline">\(cor(\tilde{Y}_{n \times K}^{DGN})\)</span>, where <span class="math inline">\(\tilde{Y}\)</span> is the residual expression data from DGN, n is sample size, K is gene module size. (2) <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, computed by <span class="math inline">\(cor(\tilde{Z}_{m \times K}^{eQTLGen})\)</span>, where z is genome-wide independent null zscores from eQTLGen, m is the number of null SNPs (m is in fact much less than genome-wide, but should be sufficient?).</p>
+<p>Since for each null SNP, we should have its zscores on all genes (or at least all genes in the module we consider), but eQTLGen doesn’t provide zscores for all genome-wide SNPs (only disease-related variants for trans-eQTLs and close-to-gene variants for cis-eQTLs). Therefore, I will first extract the common SNPs for each module. Main steps include:</p>
+<ul>
+<li><p>Combine the zscores of all the significant/non-significant gene-SNP pairs in both eQTLGen cis-eQTL and trans-eQTL results.</p></li>
+<li><p>For each module, extract the common SNPs that have zscores available for all genes in the module.</p></li>
+<li><p>For each module, further extract the common SNPs that are “NULL SNPs”. A snp for a module is defined as a “null snp” if its z-scores for all genes in this module are below some z-score cutoff (i.e. all z-scores are small z’s").</p></li>
+<li><p>Among these common null SNPs, check how many of them are independent. (Use DGN genotype ‘plink –indep-pairwise 50 5 0.2’ ??? in this case, some SNPs not included in DGN are also considered as "independent. ref panel including all eQTLGen snps?)</p></li>
+</ul>
+<p><img src="asset/0629_num_nullSNP.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0629_num_nullSNP">
+Past versions of 0629_num_nullSNP.png
+</button>
+</p>
+<div id="fig-0629_num_nullSNP" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1b79abbfc3a37486b82a1da080a41c5c0f384809/docs/asset/0629_num_nullSNP.png" target="_blank">1b79abb</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Here I explain the above figure. x-axis is for each module (75), y-axis is for number of SNPs under various scenarios that can be used for computing <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>. Color is for various z-scores cutoff for defining “NULL SNPs”. The cutoff is pvalue of z. Smaller cutoff, more insignificant z. Point shape is for unique SNPs and independent SNPs. The barplot in the lower panel gives the number of genes in each module.</p>
+<div id="observations" class="section level4">
+<h4>Observations</h4>
+<ol style="list-style-type: decimal">
+<li><p>For larger gene module, the common null SNPs (unique and independent) are fewer.</p></li>
+<li><p>The average number of the unique null SNPs is ~8000 (under pvalue of z &gt; 0.001). The independent null SNPs is ~4000.</p></li>
+<li><p>Since we were particularly interested at eQTLGen’s module1, (as all eQTLGen trans-variants are significant for module1,) next I will focus on module1. I use the 2282 independent null SNPs (under pvalue of z &gt; 0.001) for module1 to calculate <span class="math inline">\(\hat{\Sigma}_{nullz}(module1)\)</span>.</p></li>
+</ol>
+</div>
+</div>
+<div id="build-sigma-hatsigma_dgn-and-hatsigma_nullz-and-check-pco-pvalues." class="section level3">
+<h3>Build Sigma <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span> and <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> and check PCO pvalues.</h3>
+<p>eQTLGen’s module1. Run PCO based on two Sigmas, <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span> and <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> built on 2282 independent null SNPs. Calculate pvalues of 9918 SNPs across chromosomes.</p>
+<p><img src="asset/0629_effect.of.Sigma.on.PCO.pvalue.module1.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0629_effect.of.Sigma.on.PCO.pvalue.module1">
+Past versions of 0629_effect.of.Sigma.on.PCO.pvalue.module1.png
+</button>
+</p>
+<div id="fig-0629_effect.of.Sigma.on.PCO.pvalue.module1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1b79abbfc3a37486b82a1da080a41c5c0f384809/docs/asset/0629_effect.of.Sigma.on.PCO.pvalue.module1.png" target="_blank">1b79abb</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>In the above figure, x-axis is for snp across chromosomes, y-axis is for log(p) for the module1, color is for different <span class="math inline">\(\hat{\Sigma}\)</span>, grey dashed line is the Bonferroni pvalue threshold (~1e-8).</p>
+<p><img src="asset/0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1">
+Past versions of 0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png
+</button>
+</p>
+<div id="fig-0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1b79abbfc3a37486b82a1da080a41c5c0f384809/docs/asset/0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png" target="_blank">1b79abb</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-06-29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The above figure gives QQ-plot for all pvalues across 22 chr’s of module1.</p>
+<div id="observations-1" class="section level4">
+<h4>Observations</h4>
+<ol style="list-style-type: decimal">
+<li>Using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> gives larger PCO pvalues, than using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>. Number of signals decreases. Under Bonferroni pvalue threshold (~1e-8), when using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, there are 790 out of 9918 SNPs are significant, compared to 9794 significant SNPs using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
 <div id="june-25" class="section level2">
 <h2>June 25</h2>
 <div id="replication-of-eqtlgen-results-in-trans-pco-of-eqtlgen-summary-stats" class="section level3">
@@ -1547,6 +1733,10 @@ liliw-w
 <li><p>However, the false positiva rate may be inflated, as a large amount of SNPs that has no target genes in the modules are also identified. (<strong>Maybe although none of the genes in the module are target genes for the SNPs, the genes may be cross-mappable with the SNP’s other traget genes that are filter out?</strong>)</p></li>
 </ol>
 </div>
+</div>
+<div id="how-does-zero-values-affect-qvalue" class="section level3">
+<h3>How does zero values affect qvalue?</h3>
+<p>Short answer:</p>
 </div>
 </div>
 <div id="june-14" class="section level2">
