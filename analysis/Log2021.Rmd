@@ -12,6 +12,61 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## June 29
+
+### "Try using zscores to build sigma, plot of number of SNPs with low zscores"
+
+1. plot of number of SNPs with low zscores
+
+In this section, I am going to check how the estimated Sigma $\hat{\Sigma}_{K}$ (correlation matrix of zscores/residule expression across genes) can affect PCO's pvalues. Use eQTLGen zscores. Consider two $\hat{\Sigma}$'s. (1) $\hat{\Sigma}_{DGN}$, computed by $cor(\tilde{Y}_{n \times K}^{DGN})$, where $\tilde{Y}$ is the residual expression data from DGN, n is sample size, K is gene module size. (2) $\hat{\Sigma}_{nullz}$, computed by $cor(\tilde{Z}_{m \times K}^{eQTLGen})$, where z is genome-wide independent null zscores from eQTLGen, m is the number of null SNPs (m is in fact much less than genome-wide, but should be sufficient?).
+
+Since for each null SNP, we should have its zscores on all genes (or at least all genes in the module we consider), but eQTLGen doesn't provide zscores for all genome-wide SNPs (only disease-related variants for trans-eQTLs and close-to-gene variants for cis-eQTLs). Therefore, I will first extract the common SNPs for each module. Main steps include:
+
+- Combine the zscores of all the significant/non-significant gene-SNP pairs in both eQTLGen cis-eQTL and trans-eQTL results.
+
+- For each module, extract the common SNPs that have zscores available for all genes in the module.
+
+- For each module, further extract the common SNPs that are "NULL SNPs". A snp for a module is defined as a "null snp" if its z-scores for all genes in this module are below some z-score cutoff (i.e. all z-scores are small z's").
+
+- Among these common null SNPs, check how many of them are independent. (Use DGN genotype 'plink --indep-pairwise 50 5 0.2' ??? in this case, some SNPs not included in DGN are also considered as "independent. ref panel including all eQTLGen snps?)
+
+```{r}
+knitr::include_graphics(c("asset/0629_num_nullSNP.png"), error = FALSE)
+```
+
+Here I explain the above figure. x-axis is for each module (75), y-axis is for number of SNPs under various scenarios that can be used for computing $\hat{\Sigma}_{nullz}$. Color is for various z-scores cutoff for defining "NULL SNPs". The cutoff is pvalue of z. Smaller cutoff, more insignificant z. Point shape is for unique SNPs and independent SNPs. The barplot in the lower panel gives the number of genes in each module.
+
+#### Observations
+
+1. For larger gene module, the common null SNPs (unique and independent) are fewer.
+
+2. The average number of the unique null SNPs is ~8000 (under pvalue of z > 0.001). The independent null SNPs is ~4000.
+
+3. Since we were particularly interested at eQTLGen's module1, (as all eQTLGen trans-variants are significant for module1,) next I will focus on module1. I use the 2282 independent null SNPs (under pvalue of z > 0.001) for module1 to calculate $\hat{\Sigma}_{nullz}(module1)$.
+
+### Build Sigma $\hat{\Sigma}_{DGN}$ and $\hat{\Sigma}_{nullz}$ and check PCO pvalues.
+
+eQTLGen's module1. Run PCO based on two Sigmas, $\hat{\Sigma}_{DGN}$ and $\hat{\Sigma}_{nullz}$ built on 2282 independent null SNPs. Calculate pvalues of 9918 SNPs across chromosomes.
+
+
+```{r}
+knitr::include_graphics(c("asset/0629_effect.of.Sigma.on.PCO.pvalue.module1.png"), error = FALSE)
+```
+
+In the above figure, x-axis is for snp across chromosomes, y-axis is for log(p) for the module1, color is for different $\hat{\Sigma}$, grey dashed line is the Bonferroni pvalue threshold (~1e-8).
+
+```{r}
+knitr::include_graphics(c("asset/0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png"), error = FALSE)
+```
+
+The above figure gives QQ-plot for all pvalues across 22 chr's of module1.
+
+#### Observations
+
+1. Using $\hat{\Sigma}_{nullz}$ gives larger PCO pvalues, than using $\hat{\Sigma}_{DGN}$. Number of signals decreases. Under Bonferroni pvalue threshold (~1e-8), when using $\hat{\Sigma}_{nullz}$, there are 790 out of 9918 SNPs are significant, compared to 9794 significant SNPs using $\hat{\Sigma}_{DGN}$.
+
+
+
 ## June 25
 
 ### Replication of eQTLGen results in trans-PCO of eQTLGen summary stats?
@@ -64,7 +119,9 @@ Check [here](0625_TIE.png) for clearer version.
 
 2. However, the false positiva rate may be inflated, as a large amount of SNPs that has no target genes in the modules are also identified. (**Maybe although none of the genes in the module are target genes for the SNPs, the genes may be cross-mappable with the SNP's other traget genes that are filter out?**)
 
+### How does zero values affect qvalue?
 
+Short answer: 
 
 ## June 14
 
