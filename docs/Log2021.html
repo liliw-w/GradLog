@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8bef12c1d327e3302b0df742da198670733254b0targetblank8bef12ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/8bef12c1d327e3302b0df742da198670733254b0" target="_blank">8bef12c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9275134104895899d8e293e4982d51af90ae06cetargetblank9275134a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/9275134104895899d8e293e4982d51af90ae06ce" target="_blank">9275134</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8bef12c1d327e3302b0df742da198670733254b0targetblank8bef12ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9275134104895899d8e293e4982d51af90ae06cetargetblank9275134a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/8bef12c1d327e3302b0df742da198670733254b0" target="_blank">8bef12c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/9275134104895899d8e293e4982d51af90ae06ce" target="_blank">9275134</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -551,6 +551,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/analysis/Log2021.Rmd" target="_blank">9275134</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-07-08
+</td>
+<td>
+Move figures for Log2021 to asset folder
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/331721bf31d6a3b1b51b174538dd1b2c487b004a/docs/Log2021.html" target="_blank">331721b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-07-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1722,7 +1756,7 @@ liliw-w
 <p>Since in previous analysis, the intuition is PCO tends to pick modules where there are multiple trans-target genes for a SNP. Therefore, in the below figure, I picked out all the eQTGen trans-eQTLs that have &gt;2 target genes and plotted them on x-axis. The target genes are distributed on the Y-axis for each PCO module. Number/color is for #target genes. These (module, SNP) pairs should be significant in eQTLGen_trans-PCO. I circled out (red) those (module, SNP) pairs that are missed by eQTLGen_trans-PCO. As a result, 11 (module, SNP) (11 unique SNPs) are missed.</p></li>
 </ol>
 <div class="figure" style="text-align: center">
-<img src="0625_power.png" alt="Power"  />
+<img src="asset/0625_power.png" alt="Power"  />
 <p class="caption">
 Power
 </p>
@@ -1751,26 +1785,26 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/0f607209229988d6a203f2951470251684069e51/docs/0625_power.png" target="_blank">0f60720</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0625_power.png" target="_blank">9275134</a>
 </td>
 <td>
 liliw-w
 </td>
 <td>
-2021-06-25
+2021-07-08
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Check <a href="0625_power.png">here</a> for clearer version.</p>
+<p>Check <a href="asset/0625_power.png">here</a> for clearer version.</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)</p>
 <p>Similar plot, except Number/color is SNP with 0, 1, or 2 target genes in each module. These (module, SNP) pairs are less likely to be identified by eQTLGen_trans-PCO. Yet, I circled out (green) those (module, SNP) pairs that are still identified by eQTLGen_trans-PCO.</p></li>
 </ol>
 <div class="figure" style="text-align: center">
-<img src="0625_TIE.png" alt="TIE"  />
+<img src="asset/0625_TIE.png" alt="TIE"  />
 <p class="caption">
 TIE
 </p>
@@ -1799,20 +1833,20 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/0f607209229988d6a203f2951470251684069e51/docs/0625_TIE.png" target="_blank">0f60720</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0625_TIE.png" target="_blank">9275134</a>
 </td>
 <td>
 liliw-w
 </td>
 <td>
-2021-06-25
+2021-07-08
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Check <a href="0625_TIE.png">here</a> for clearer version.</p>
+<p>Check <a href="asset/0625_TIE.png">here</a> for clearer version.</p>
 <div id="observation" class="section level4">
 <h4>Observation</h4>
 <ol style="list-style-type: decimal">
@@ -1831,13 +1865,13 @@ liliw-w
 <div id="why-there-are-so-many-eqtlgen-signals-using-pco_lambda0.1" class="section level3">
 <h3>Why there are so many eQTLGen signals using PCO_<span class="math inline">\({\lambda&lt;0.1}\)</span>?</h3>
 <p>Check the QQ-plot of the observed pvalues from eQTLGen using PCO_<span class="math inline">\({\lambda&lt;0.1}\)</span> (9918 unique SNPs, all eQTLGen variants) and PCO_<span class="math inline">\({\lambda&lt;1}\)</span> (909 unique SNPs).</p>
-<p><img src="qqplot.p_obs.eQTLGen.png" style="display: block; margin: auto;" /></p>
+<p><img src="asset/0614_qqplot.p_obs.eQTLGen.png" style="display: block; margin: auto;" /></p>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-qqplot.p_obs.eQTLGen">
-Past versions of qqplot.p_obs.eQTLGen.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0614_qqplot.p_obs.eQTLGen">
+Past versions of 0614_qqplot.p_obs.eQTLGen.png
 </button>
 </p>
-<div id="fig-qqplot.p_obs.eQTLGen" class="collapse">
+<div id="fig-0614_qqplot.p_obs.eQTLGen" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -1856,13 +1890,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/4fc3dffcaa851ffd73851b931c99222ae428d814/docs/qqplot.p_obs.eQTLGen.png" target="_blank">4fc3dff</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0614_qqplot.p_obs.eQTLGen.png" target="_blank">9275134</a>
 </td>
 <td>
 liliw-w
 </td>
 <td>
-2021-06-14
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2113,7 +2147,7 @@ eGene$pval_nominal_threshold = signif(qbeta(pt,
 </table>
 <p><strong>A diagram version:</strong></p>
 <div class="figure" style="text-align: center">
-<img src="0526-1.png" alt="Are trans-eQTLs cis-e/sQTLs?"  />
+<img src="asset/0526-1.png" alt="Are trans-eQTLs cis-e/sQTLs?"  />
 <p class="caption">
 Are trans-eQTLs cis-e/sQTLs?
 </p>
@@ -2142,13 +2176,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/1f02e91fb8206c139bf84a6a9146d941cd3aeb0c/docs/0526-1.png" target="_blank">1f02e91</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0526-1.png" target="_blank">9275134</a>
 </td>
 <td>
 liliw-w
 </td>
 <td>
-2021-05-26
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2289,17 +2323,17 @@ liliw-w
 <li>Results</li>
 </ol>
 <div class="figure" style="text-align: center">
-<img src="power.lambda0.1.K100.png" alt="power under Bonferroni corretion cutoff"  />
+<img src="asset/0223_power.lambda0.1.K100.png" alt="power under Bonferroni corretion cutoff"  />
 <p class="caption">
 power under Bonferroni corretion cutoff
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda0.1.K100">
-Past versions of power.lambda0.1.K100.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0223_power.lambda0.1.K100">
+Past versions of 0223_power.lambda0.1.K100.png
 </button>
 </p>
-<div id="fig-power.lambda0.1.K100" class="collapse">
+<div id="fig-0223_power.lambda0.1.K100" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2318,13 +2352,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda0.1.K100.png" target="_blank">cbbe319</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0223_power.lambda0.1.K100.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-23
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2332,17 +2366,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="power.lambda0.1.K105.png" alt="Another Sigma (K=105)"  />
+<img src="asset/0223_power.lambda0.1.K105.png" alt="Another Sigma (K=105)"  />
 <p class="caption">
 Another Sigma (K=105)
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda0.1.K105">
-Past versions of power.lambda0.1.K105.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0223_power.lambda0.1.K105">
+Past versions of 0223_power.lambda0.1.K105.png
 </button>
 </p>
-<div id="fig-power.lambda0.1.K105" class="collapse">
+<div id="fig-0223_power.lambda0.1.K105" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2361,13 +2395,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda0.1.K105.png" target="_blank">cbbe319</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0223_power.lambda0.1.K105.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-23
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2398,17 +2432,17 @@ Lili Wang
 <li><p>results</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="power.lambda1.png" alt="power under Bonferroni corretion cutoff"  />
+<img src="asset/0216_power.lambda1.png" alt="power under Bonferroni corretion cutoff"  />
 <p class="caption">
 power under Bonferroni corretion cutoff
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda1">
-Past versions of power.lambda1.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0216_power.lambda1">
+Past versions of 0216_power.lambda1.png
 </button>
 </p>
-<div id="fig-power.lambda1" class="collapse">
+<div id="fig-0216_power.lambda1" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2427,24 +2461,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda1.png" target="_blank">cbbe319</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0216_power.lambda1.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-23
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power.lambda1.png" target="_blank">8960692</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-02-16
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2459,17 +2482,17 @@ Lili Wang
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="power.lambda0.1.png" alt="power under Bonferroni corretion cutoff"  />
+<img src="asset/0216_power.lambda0.1.png" alt="power under Bonferroni corretion cutoff"  />
 <p class="caption">
 power under Bonferroni corretion cutoff
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power.lambda0.1">
-Past versions of power.lambda0.1.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0216_power.lambda0.1">
+Past versions of 0216_power.lambda0.1.png
 </button>
 </p>
-<div id="fig-power.lambda0.1" class="collapse">
+<div id="fig-0216_power.lambda0.1" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2488,24 +2511,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/power.lambda0.1.png" target="_blank">cbbe319</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0216_power.lambda0.1.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-23
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power.lambda0.1.png" target="_blank">8960692</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-02-16
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2517,17 +2529,17 @@ Lili Wang
 </ul>
 <p>(This figure should be updated as for the case of ‘u1’, the threshold is falsely set as 0.05, which should be <span class="math inline">\(10^{-9}\)</span>.)</p>
 <div class="figure" style="text-align: center">
-<img src="talk.png" alt="PC1 v.s. PCO"  />
+<img src="asset/0216_talk.png" alt="PC1 v.s. PCO"  />
 <p class="caption">
 PC1 v.s. PCO
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-talk">
-Past versions of talk.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0216_talk">
+Past versions of 0216_talk.png
 </button>
 </p>
-<div id="fig-talk" class="collapse">
+<div id="fig-0216_talk" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2546,24 +2558,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/cbbe31912c59713652e5dd47a717dc0ff7263547/docs/talk.png" target="_blank">cbbe319</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0216_talk.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-23
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/talk.png" target="_blank">8960692</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-02-16
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2591,17 +2592,17 @@ Lili Wang
 </ul>
 <p>The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?</p>
 <div class="figure" style="text-align: center">
-<img src="power_05.png" alt="power under cutoff 0.05"  />
+<img src="asset/0126_power_05.png" alt="power under cutoff 0.05"  />
 <p class="caption">
 power under cutoff 0.05
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-power_05">
-Past versions of power_05.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0126_power_05">
+Past versions of 0126_power_05.png
 </button>
 </p>
-<div id="fig-power_05" class="collapse">
+<div id="fig-0126_power_05" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2620,13 +2621,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/power_05.png" target="_blank">8960692</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0126_power_05.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-16
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2634,17 +2635,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="plot.error_bar.png" alt="power comparison"  />
+<img src="asset/0126_plot.error_bar.png" alt="power comparison"  />
 <p class="caption">
 power comparison
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot.error_bar">
-Past versions of plot.error_bar.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0126_plot.error_bar">
+Past versions of 0126_plot.error_bar.png
 </button>
 </p>
-<div id="fig-plot.error_bar" class="collapse">
+<div id="fig-0126_plot.error_bar" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2663,13 +2664,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/8960692331102d9c1f1dcb7766e23d5bbc783c7b/docs/plot.error_bar.png" target="_blank">8960692</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0126_plot.error_bar.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-16
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2677,17 +2678,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="test.png" alt="bar plot"  />
+<img src="asset/0126_test.png" alt="bar plot"  />
 <p class="caption">
 bar plot
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-test">
-Past versions of test.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0126_test">
+Past versions of 0126_test.png
 </button>
 </p>
-<div id="fig-test" class="collapse">
+<div id="fig-0126_test" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2706,13 +2707,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/912aceee499f2c36a3957a2681af9b5d270cc343/docs/test.png" target="_blank">912acee</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0126_test.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-06
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2726,17 +2727,17 @@ Lili Wang
 <p>The plot below is based on Muscle tissue from GTEx_v8. The x-axis is for various FDR levels, including 5%, 10%, 15%, and 20%. The y-axis is for the number of signals under these FDR levels. I plot three types of signals, i.e. module and SNP pairs (left subplot), unique SNPs (middle subplot), independent SNPs (right subplot). The two colors represent our previous WGCNA modules (red) and current smaller WGCNA modules (blue).</p>
 <p>We can observe (1) When increasing FDR levels, number of signals only increase a little bit, say 3-5 more signals. This means that the corrected pvalues are bipolar, i.e. either very small or very large. (2) Signals based on smaller modules are similar to that of previous standard modules.</p>
 <div class="figure" style="text-align: center">
-<img src="./signalsv.s.FDR.Muscle.png" alt="Muscle: #signals v.s.FDR"  />
+<img src="asset/0126_signalsv.s.FDR.Muscle.png" alt="Muscle: #signals v.s.FDR"  />
 <p class="caption">
 Muscle: #signals v.s.FDR
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-signalsv.s.FDR.Muscle">
-Past versions of signalsv.s.FDR.Muscle.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0126_signalsv.s.FDR.Muscle">
+Past versions of 0126_signalsv.s.FDR.Muscle.png
 </button>
 </p>
-<div id="fig-signalsv.s.FDR.Muscle" class="collapse">
+<div id="fig-0126_signalsv.s.FDR.Muscle" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2755,13 +2756,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/signalsv.s.FDR.Muscle.png" target="_blank">0b5d8d3</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0126_signalsv.s.FDR.Muscle.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-02
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2769,17 +2770,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="./signalsv.s.FDR.DGN.png" alt="DGN: #signals v.s.FDR"  />
+<img src="asset/0126_signalsv.s.FDR.DGN.png" alt="DGN: #signals v.s.FDR"  />
 <p class="caption">
 DGN: #signals v.s.FDR
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-signalsv.s.FDR.DGN">
-Past versions of signalsv.s.FDR.DGN.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0126_signalsv.s.FDR.DGN">
+Past versions of 0126_signalsv.s.FDR.DGN.png
 </button>
 </p>
-<div id="fig-signalsv.s.FDR.DGN" class="collapse">
+<div id="fig-0126_signalsv.s.FDR.DGN" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2798,13 +2799,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/signalsv.s.FDR.DGN.png" target="_blank">0b5d8d3</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0126_signalsv.s.FDR.DGN.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-02
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2850,17 +2851,17 @@ Lili Wang
 <p>Generally, funcExplorer gives more modules, smaller module, and much more unclassified genes. Though the smaller modules, there aren’t many extreme pvalues. Say, the minimum p of all is about <span class="math inline">\(10^{-9}\)</span>, as compared to <span class="math inline">\(10^{-14}\)</span> by other methods.</p>
 <p>From the pvalue plot, it looks like ‘WGCNA.min10_deep4’ gives smaller clusters and some extreme pvalues. So next step I will run the whole pipleline for this setting.</p>
 <div class="figure" style="text-align: center">
-<img src="./modules.png" alt="Modules v.s. methods/parameters"  />
+<img src="asset/0126_modules.png" alt="Modules v.s. methods/parameters"  />
 <p class="caption">
 Modules v.s. methods/parameters
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-modules">
-Past versions of modules.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0126_modules">
+Past versions of 0126_modules.png
 </button>
 </p>
-<div id="fig-modules" class="collapse">
+<div id="fig-0126_modules" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2879,35 +2880,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/0b5d8d3467486ab96260d08796bd15f84bd8b368/docs/modules.png" target="_blank">0b5d8d3</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0126_modules.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-02
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/af77a67144476c5f5d538dd369be98755ac3a669/docs/modules.png" target="_blank">af77a67</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-01-30
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/liliw-w/GradLog/blob/301726295134b063cc529b09d126e305e44f4b04/docs/modules.png" target="_blank">3017262</a>
-</td>
-<td>
-Lili Wang
-</td>
-<td>
-2021-01-30
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2915,17 +2894,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="./Muscle_Skeleta.p.funcExplorer.png" alt="p distribution of Muscle"  />
+<img src="asset/0126_Muscle_Skeleta.p.funcExplorer.png" alt="p distribution of Muscle"  />
 <p class="caption">
 p distribution of Muscle
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-Muscle_Skeleta.p.funcExplorer">
-Past versions of Muscle_Skeleta.p.funcExplorer.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0126_Muscle_Skeleta.p.funcExplorer">
+Past versions of 0126_Muscle_Skeleta.p.funcExplorer.png
 </button>
 </p>
-<div id="fig-Muscle_Skeleta.p.funcExplorer" class="collapse">
+<div id="fig-0126_Muscle_Skeleta.p.funcExplorer" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -2944,13 +2923,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/74c629e7a179ab4fa37672fc63d508c3ff2b5b8d/docs/Muscle_Skeleta.p.funcExplorer.png" target="_blank">74c629e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0126_Muscle_Skeleta.p.funcExplorer.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-02-06
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -2997,17 +2976,17 @@ Lili Wang
 </tbody>
 </table>
 <div class="figure" style="text-align: center">
-<img src="./qqplot.simulation.null.png" alt="qqplot.simulation.null"  />
+<img src="asset/0119_qqplot.simulation.null.png" alt="qqplot.simulation.null"  />
 <p class="caption">
 qqplot.simulation.null
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-qqplot.simulation.null">
-Past versions of qqplot.simulation.null.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_qqplot.simulation.null">
+Past versions of 0119_qqplot.simulation.null.png
 </button>
 </p>
-<div id="fig-qqplot.simulation.null" class="collapse">
+<div id="fig-0119_qqplot.simulation.null" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3026,13 +3005,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/11c79eb5f073cdff8f48f909a8c3d1e3974d2b03/docs/qqplot.simulation.null.png" target="_blank">11c79eb</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_qqplot.simulation.null.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-19
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -3309,17 +3288,17 @@ Lili Wang
 </tbody>
 </table>
 <div class="figure" style="text-align: center">
-<img src="DGN.p.png" alt="DGN" width="70%" height="70%" />
+<img src="asset/0119_DGN.p.png" alt="DGN" width="70%" height="70%" />
 <p class="caption">
 DGN
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-DGN.p">
-Past versions of DGN.p.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_DGN.p">
+Past versions of 0119_DGN.p.png
 </button>
 </p>
-<div id="fig-DGN.p" class="collapse">
+<div id="fig-0119_DGN.p" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3338,13 +3317,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/b1109759a6eae54fe2d872646616312b1f8aa73f/docs/DGN.p.png" target="_blank">b110975</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_DGN.p.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2020-12-17
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -3352,17 +3331,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="DGN_new.p.png" alt="DGN_new" width="70%" height="70%" />
+<img src="asset/0119_DGN_new.p.png" alt="DGN_new" width="70%" height="70%" />
 <p class="caption">
 DGN_new
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-DGN_new.p">
-Past versions of DGN_new.p.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_DGN_new.p">
+Past versions of 0119_DGN_new.p.png
 </button>
 </p>
-<div id="fig-DGN_new.p" class="collapse">
+<div id="fig-0119_DGN_new.p" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3381,13 +3360,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/361c43ee4f6361a32103c987e6e5ec3ad30edb08/docs/DGN_new.p.png" target="_blank">361c43e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_DGN_new.p.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-04
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -3395,17 +3374,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Whole_Blood.p.png" alt="Whole_Blood" width="70%" height="70%" />
+<img src="asset/0119_Whole_Blood.p.png" alt="Whole_Blood" width="70%" height="70%" />
 <p class="caption">
 Whole_Blood
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-Whole_Blood.p">
-Past versions of Whole_Blood.p.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_Whole_Blood.p">
+Past versions of 0119_Whole_Blood.p.png
 </button>
 </p>
-<div id="fig-Whole_Blood.p" class="collapse">
+<div id="fig-0119_Whole_Blood.p" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3424,13 +3403,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/361c43ee4f6361a32103c987e6e5ec3ad30edb08/docs/Whole_Blood.p.png" target="_blank">361c43e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_Whole_Blood.p.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-04
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -3438,17 +3417,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Muscle_Skeletal.p.png" alt="Muscle_Skeletal" width="70%" height="70%" />
+<img src="asset/0119_Muscle_Skeletal.p.png" alt="Muscle_Skeletal" width="70%" height="70%" />
 <p class="caption">
 Muscle_Skeletal
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-Muscle_Skeletal.p">
-Past versions of Muscle_Skeletal.p.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_Muscle_Skeletal.p">
+Past versions of 0119_Muscle_Skeletal.p.png
 </button>
 </p>
-<div id="fig-Muscle_Skeletal.p" class="collapse">
+<div id="fig-0119_Muscle_Skeletal.p" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3467,13 +3446,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/361c43ee4f6361a32103c987e6e5ec3ad30edb08/docs/Muscle_Skeletal.p.png" target="_blank">361c43e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_Muscle_Skeletal.p.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-04
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -3481,17 +3460,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Skin_Sun_Exposed_Lower_leg.p.png" alt="Skin_Sun_Exposed_Lower_leg" width="70%" height="70%" />
+<img src="asset/0119_Skin_Sun_Exposed_Lower_leg.p.png" alt="Skin_Sun_Exposed_Lower_leg" width="70%" height="70%" />
 <p class="caption">
 Skin_Sun_Exposed_Lower_leg
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-Skin_Sun_Exposed_Lower_leg.p">
-Past versions of Skin_Sun_Exposed_Lower_leg.p.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_Skin_Sun_Exposed_Lower_leg.p">
+Past versions of 0119_Skin_Sun_Exposed_Lower_leg.p.png
 </button>
 </p>
-<div id="fig-Skin_Sun_Exposed_Lower_leg.p" class="collapse">
+<div id="fig-0119_Skin_Sun_Exposed_Lower_leg.p" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3510,13 +3489,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/361c43ee4f6361a32103c987e6e5ec3ad30edb08/docs/Skin_Sun_Exposed_Lower_leg.p.png" target="_blank">361c43e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_Skin_Sun_Exposed_Lower_leg.p.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-04
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -3524,17 +3503,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Artery_Tibial.p.png" alt="Artery_Tibial" width="70%" height="70%" />
+<img src="asset/0119_Artery_Tibial.p.png" alt="Artery_Tibial" width="70%" height="70%" />
 <p class="caption">
 Artery_Tibial
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-Artery_Tibial.p">
-Past versions of Artery_Tibial.p.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_Artery_Tibial.p">
+Past versions of 0119_Artery_Tibial.p.png
 </button>
 </p>
-<div id="fig-Artery_Tibial.p" class="collapse">
+<div id="fig-0119_Artery_Tibial.p" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3553,13 +3532,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/361c43ee4f6361a32103c987e6e5ec3ad30edb08/docs/Artery_Tibial.p.png" target="_blank">361c43e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_Artery_Tibial.p.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-04
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -3567,17 +3546,17 @@ Lili Wang
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="Muscle_Skeletal.cross.p.png" alt="Muscle_Skeletal.cross" width="70%" height="70%" />
+<img src="asset/0119_Muscle_Skeletal.cross.p.png" alt="Muscle_Skeletal.cross" width="70%" height="70%" />
 <p class="caption">
 Muscle_Skeletal.cross
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-Muscle_Skeletal.cross.p">
-Past versions of Muscle_Skeletal.cross.p.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_Muscle_Skeletal.cross.p">
+Past versions of 0119_Muscle_Skeletal.cross.p.png
 </button>
 </p>
-<div id="fig-Muscle_Skeletal.cross.p" class="collapse">
+<div id="fig-0119_Muscle_Skeletal.cross.p" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3596,13 +3575,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/60cf10e13c677eb4ad76bd2be51ad8a4815357b6/docs/Muscle_Skeletal.cross.p.png" target="_blank">60cf10e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_Muscle_Skeletal.cross.p.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-17
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -4051,7 +4030,7 @@ Lili Wang
 
 The signal on chr5 is significant for both module 15 (114 genes) and module 8 (394 genes) in two datasets, which have 82 shared genes. Take SNP [rs2706381][rs2706381 GTEx ref] (chr5:132474927) for example. It is [&quot;in cis with IRF1 ($P \le 2\times10^{-10}$; Fig. 6c), a transcription factor that facilitates regulation of the interferon-induced immune response&quot;][rs2706381 GTEx ref]. It is also [&quot;associated in trans with PSME1 ($P \le 1.1\times10^{-11}$) and PARP10 ($P \le 7.8\times10^{-10}$)&quot;][rs2706381 GTEx ref]. These two genes are included in module 15. The reference also gives additional results to &quot;suggest that cis-regulatory loci affecting IRF1 are regulators of interferon-responsive inflammatory processes involving genes including PSME1 and PARP10, with implications for complex traits specific to muscle tissue&quot;.
 
-I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list [here](./gene.GTEx_v8.Muscle_Skeletal.module15.txt).
+I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list [here](asset/0119_gene.GTEx_v8.Muscle_Skeletal.module15.txt).
 
 SNP 10:48930105. module 15.
 
@@ -4062,13 +4041,13 @@ module4:22:23508295
 <li><p>The other signals on chr1, chr16, and chr5:47210790 don’t have any nearby genes around its TSS.</p></li>
 <li><p>See the following plot for number of cross-mapped genes in each module.</p></li>
 </ul>
-<p><img src="nCross.png" style="display: block; margin: auto;" /></p>
+<p><img src="asset/0119_nCross.png" style="display: block; margin: auto;" /></p>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-nCross">
-Past versions of nCross.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_nCross">
+Past versions of 0119_nCross.png
 </button>
 </p>
-<div id="fig-nCross" class="collapse">
+<div id="fig-0119_nCross" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -4087,13 +4066,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/d22021e4b203e7f09b0095a5bed0db071302b976/docs/nCross.png" target="_blank">d22021e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_nCross.png" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-19
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -4166,17 +4145,17 @@ Lili Wang
 <li>Replication of DGN signals in eQTLGen</li>
 </ol>
 <div class="figure" style="text-align: center">
-<img src="./eQTLGen_DGN_venn.jpeg" alt="DGN" width="70%" height="70%" />
+<img src="asset/0119_eQTLGen_DGN_venn.jpeg" alt="DGN" width="70%" height="70%" />
 <p class="caption">
 DGN
 </p>
 </div>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-eQTLGen_DGN_venn">
-Past versions of eQTLGen_DGN_venn.jpeg
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0119_eQTLGen_DGN_venn">
+Past versions of 0119_eQTLGen_DGN_venn.jpeg
 </button>
 </p>
-<div id="fig-eQTLGen_DGN_venn" class="collapse">
+<div id="fig-0119_eQTLGen_DGN_venn" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -4195,13 +4174,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/liliw-w/GradLog/blob/60cf10e13c677eb4ad76bd2be51ad8a4815357b6/docs/eQTLGen_DGN_venn.jpeg" target="_blank">60cf10e</a>
+<a href="https://github.com/liliw-w/GradLog/blob/9275134104895899d8e293e4982d51af90ae06ce/docs/asset/0119_eQTLGen_DGN_venn.jpeg" target="_blank">9275134</a>
 </td>
 <td>
-Lili Wang
+liliw-w
 </td>
 <td>
-2021-01-17
+2021-07-08
 </td>
 </tr>
 </tbody>
@@ -4230,18 +4209,18 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] data.table_1.14.0 workflowr_1.6.2  
+[1] data.table_1.14.0
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.6        whisker_0.4       knitr_1.33        magrittr_2.0.1   
- [5] R6_2.5.0          rlang_0.4.11      fansi_0.5.0       highr_0.9        
- [9] stringr_1.4.0     tools_4.1.0       xfun_0.23         utf8_1.2.1       
-[13] git2r_0.28.0      htmltools_0.5.1.1 ellipsis_0.3.2    rprojroot_2.0.2  
-[17] yaml_2.2.1        digest_0.6.27     tibble_3.1.2      lifecycle_1.0.0  
-[21] crayon_1.4.1      later_1.2.0       vctrs_0.3.8       promises_1.2.0.1 
-[25] fs_1.5.0          glue_1.4.2        evaluate_0.14     rmarkdown_2.8    
-[29] stringi_1.6.2     compiler_4.1.0    pillar_1.6.1      httpuv_1.6.1     
-[33] pkgconfig_2.0.3  </code></pre>
+ [5] workflowr_1.6.2   R6_2.5.0          rlang_0.4.11      fansi_0.5.0      
+ [9] highr_0.9         stringr_1.4.0     tools_4.1.0       xfun_0.23        
+[13] utf8_1.2.1        git2r_0.28.0      htmltools_0.5.1.1 ellipsis_0.3.2   
+[17] rprojroot_2.0.2   yaml_2.2.1        digest_0.6.27     tibble_3.1.2     
+[21] lifecycle_1.0.0   crayon_1.4.1      later_1.2.0       vctrs_0.3.8      
+[25] promises_1.2.0.1  fs_1.5.0          glue_1.4.2        evaluate_0.14    
+[29] rmarkdown_2.8     stringi_1.6.2     compiler_4.1.0    pillar_1.6.1     
+[33] httpuv_1.6.1      pkgconfig_2.0.3  </code></pre>
 </div>
 </div>
 </div>
