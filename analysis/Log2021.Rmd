@@ -12,6 +12,30 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+## July 08
+
+### How expression PCs affect the signals?
+
+The following table gives the number of unique signals under various FDR levels for DGN regressing out expression PC as covariates ("DGN_wo_expPC") and keeping expression PCs ("DGN_with_expPC").
+
+```{r}
+df <- data.frame("FDR level" = c(0.05, 0.1),
+                 "DGN_wo_expPC" = c(313, 512),
+                 "DGN_wo_expPC_maxp" = as.character(c(1.9e-08, 6.5e-08)),
+                 "DGN_with_expPC" = c(169, 225),
+                 "DGN_with_expPC_maxp" = as.character(c(4.0e-09, 2.0e-08)),
+                 "overlap" = c(125, 167),
+                 "#*" = c(218, 303),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(df)
+```
+
+
+### Correlation between meta-ed gene zscores from eQTLGen
+
+Check document [here](asset/0708-Correlation between meta-ed gene zscores from eQTLGen.pdf).
+
+
 ## June 29
 
 ### "Try using zscores to build sigma, plot of number of SNPs with low zscores"
