@@ -36,6 +36,15 @@ knitr::kable(df)
 Check document [here](asset/0708-Correlation between meta-ed gene zscores from eQTLGen.pdf).
 
 
+## July 06
+
+### How Sigma $\hat{\Sigma}_{DGN_exp}$ and $\hat{\Sigma}_{nullz}$ affect PCO pvalues for DGN?
+
+I inspected three modules. Check [here](asset/0706_Sigma_effect_on_PCO.pdf) for the comparison.
+
+For individual and clearer figures, check [here](asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.origp.png), [here](asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module20.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.log10.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.origp.png), [here](asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module73.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.log10.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.origp.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.log10.png).
+
+
 ## June 29
 
 ### "Try using zscores to build sigma, plot of number of SNPs with low zscores"
