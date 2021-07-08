@@ -266,17 +266,17 @@ Some notes about what I did. I use the signals obtained from the combined chr's 
 Next, I looked at the enrichment of these genes.
 
 ### DGN
-Since I am not able to share the link to the complete enrichment result, I posted the 47 genes used by [David][David website link] enrichment tool [here](./converted.DGN.txt) to reproduce the results.
+Since I am not able to share the link to the complete enrichment result, I posted the 47 genes used by [David][David website link] enrichment tool [here](asset/1123_converted.DGN.txt) to reproduce the results.
 
 [David website link]: https://david.ncifcrf.gov/
 
 Under BH correction with 0.05 as threshold, there is one significant enrichment cluster: SPRY-domain-related, which includes four genes *BTNL3, BTNL8, BTNL9, TRIM58*.
 
-I doubt that this enrichment happens because some signals are physically close to each other but their nearest genes are different. So I looked at the enrichment of genes that are closest to the independent signals (previously I used all signals). The gene list used by David is [here](./converted.indep.DGN.txt). There is no enriched term under 0.05 BH.
+I doubt that this enrichment happens because some signals are physically close to each other but their nearest genes are different. So I looked at the enrichment of genes that are closest to the independent signals (previously I used all signals). The gene list used by David is [here](asset/1123_converted.indep.DGN.txt). There is no enriched term under 0.05 BH.
 
 
 ### TCGA
-I post the 474 genes used by David enrichment tool [here](./converted.TCGA.txt) to reproduce the results.
+I post the 474 genes used by David enrichment tool [here](asset/1123_converted.TCGA.txt) to reproduce the results.
 
 Under BH correction with 0.05 as threshold, there are basically two types of enrichment.
 
@@ -292,7 +292,7 @@ Under BH correction with 0.05 as threshold, there are basically two types of enr
 [Antigen processing and presentation]: https://onlinelibrary.wiley.com/doi/full/10.1111/imm.12675
 [Rheumatoid arthritis]: https://ard.bmj.com/content/79/5/581.abstract
 
-I also tried the independent signals (gene list is [here](./converted.indep.TCGA.txt)). There is no enriched term under 0.05 BH.
+I also tried the independent signals (gene list is [here](asset/1123_converted.indep.TCGA.txt)). There is no enriched term under 0.05 BH.
 
 ### GBAT signals
 
@@ -366,15 +366,15 @@ The first plot is for the 2063 independent signals. The left plot is the histogr
 The right plot is the histogram of the chromosomes the signals are on.
 
 ```{r fig.cap="(module, chr) pair"}
-knitr::include_graphics("plot.TCGA.png", error = FALSE)
+knitr::include_graphics("asset/1116_plot.TCGA.png", error = FALSE)
 ```
 
 ```{r fig.cap="combine chr"}
-knitr::include_graphics("plotchr.TCGA.png", error = FALSE)
+knitr::include_graphics("asset/1116_plotchr.TCGA.png", error = FALSE)
 ```
 
 ```{r fig.cap="combine chr and modules"}
-knitr::include_graphics("plotchr.module.TCGA.png", error = FALSE)
+knitr::include_graphics("asset/1116_plotchr.module.TCGA.png", error = FALSE)
 ```
 
 
@@ -385,15 +385,15 @@ The following three plots are for FDR correction based on each module and chr pa
 As showed in the plot for DGN, among 500 independent signals, most of their pvalues have $p \approx 10^{-5}$.
 
 ```{r fig.cap="(module, chr) pair"}
-knitr::include_graphics("plot.DGN.png", error = FALSE)
+knitr::include_graphics("asset/1116_plot.DGN.png", error = FALSE)
 ```
 
 ```{r fig.cap="combine chr"}
-knitr::include_graphics("plotchr.DGN.png", error = FALSE)
+knitr::include_graphics("asset/1116_plotchr.DGN.png", error = FALSE)
 ```
 
 ```{r fig.cap="combine chr and modules"}
-knitr::include_graphics("plotchr.module.DGN.png", error = FALSE)
+knitr::include_graphics("asset/1116_plotchr.module.DGN.png", error = FALSE)
 ```
 
 
@@ -451,13 +451,13 @@ There are three reasons why I set the minimum number of genes in modules to be 3
 At first, we looked at the variance explained by the top three PC of each modules under different settings, i.e. `minModuleSize=100, 50, 30`. We found that under setting of 30, the top three PC's explained more variance, so we tended to use 30.
 
 ```{r}
-knitr::include_graphics("1101.fig1.minModuleSize.png", error = FALSE)
+knitr::include_graphics("asset/1102_fig1.minModuleSize.png", error = FALSE)
 ```
 
 The above plots used all 13634 genes without removing any poorly mapped genes. Next, I removed the poorly mapped genes, with 5258 genes left. I used 30 to cluster these 5258 genes and resulted in 18 modules. We then looked at the explained variance and found nothing seemed wrong. So we decided to use 30 for WGCNA and these 18 modules for downstream analysis.
 
 ```{r out.height='80%', out.width='80%'}
-knitr::include_graphics("1101.fig2.minModuleSize.png", error = FALSE)
+knitr::include_graphics("asset/1102_fig2.minModuleSize.png", error = FALSE)
 ```
 
 
@@ -528,7 +528,7 @@ knitr::kable(term, row.names = FALSE)
 I was doubting that TruncPCO (using only $\lambda>1$) code may have bugs because of the following weird qqplot and histogram of pvalues.
 
 ```{r out.height='70%', out.width='70%'}
-knitr::include_graphics("1101.fig3.TruncPCO.png", error = FALSE)
+knitr::include_graphics("asset/1102_fig3.TruncPCO.png", error = FALSE)
 ```
 
 Rows are qqplot and histogram of pvalues. These pvalues are observed pvalues rather than null pvalues. Left column is for standard PCO (using all $\lambda$'s); right is for TruncPCO. I thought TruncPCO is weird because a histogram of pvalues shouldn't be as skewed as the lower right one. This skewed plot means pvalues by TruncPCO are overall smaller than PCO. We thought this may be due to LD among snps, i.e. the tests are not independent. However, even with the LD complication, the histogram should be approximately flat as in the lower left plot, where the tests are not independent either.
@@ -543,13 +543,13 @@ $$T_{WI}=\sum_{k=1}^K {z_k^2} = \sum_{k=1}^K {PC_k^2}=\sum_{k=1}^K {\lambda_k \c
 So I used the debuged code and re-computed pvalues for the same (module, chr). The result is in the third column.
 
 ```{r}
-knitr::include_graphics("1101.fig4.TruncPCO.png", error = FALSE)
+knitr::include_graphics("asset/1102_fig4.TruncPCO.png", error = FALSE)
 ```
 
 The histogram became approximately flat. For this (module13, chr19), there seems to be some signals. Next, I give another example (module, chr), where there seems no signals.
 
 ```{r}
-knitr::include_graphics("1101.fig5.TruncPCO.png", error = FALSE)
+knitr::include_graphics("asset/1102_fig5.TruncPCO.png", error = FALSE)
 ```
 
 The histogram by the debugged TruncPCO is still almost flat in this cese, which makes sense.
@@ -600,7 +600,7 @@ knitr::kable(res)
 ### Signals we have so far.
 
 ```{r}
-knitr::include_graphics("1101.fig6.signals.png", error = FALSE)
+knitr::include_graphics("asset/1102_fig6.signals.png", error = FALSE)
 ```
 
 
