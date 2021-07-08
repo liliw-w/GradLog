@@ -122,20 +122,20 @@ Next, I will check how eQTGen signals are replicated in eQTLGen_trans-PCO result
     Since in previous analysis, the intuition is PCO tends to pick modules where there are multiple trans-target genes for a SNP. Therefore, in the below figure, I picked out all the eQTGen trans-eQTLs that have >2 target genes and plotted them on x-axis. The target genes are distributed on the Y-axis for each PCO module. Number/color is for #target genes. These (module, SNP) pairs should be significant in eQTLGen_trans-PCO. I circled out (red) those (module, SNP) pairs that are missed by eQTLGen_trans-PCO. As a result, 11 (module, SNP) (11 unique SNPs) are missed.
 
 ```{r fig.cap=c("Power")}
-knitr::include_graphics(c("0625_power.png"), error = FALSE)
+knitr::include_graphics(c("asset/0625_power.png"), error = FALSE)
 ```
 
-Check [here](0625_power.png) for clearer version.
+Check [here](asset/0625_power.png) for clearer version.
 
 2. For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)
 
     Similar plot, except Number/color is SNP with 0, 1, or 2 target genes in each module. These (module, SNP) pairs are less likely to be identified by eQTLGen_trans-PCO. Yet, I circled out (green) those (module, SNP) pairs that are still identified by eQTLGen_trans-PCO.
 
 ```{r fig.cap=c("TIE")}
-knitr::include_graphics(c("0625_TIE.png"), error = FALSE)
+knitr::include_graphics(c("asset/0625_TIE.png"), error = FALSE)
 ```
 
-Check [here](0625_TIE.png) for clearer version.
+Check [here](asset/0625_TIE.png) for clearer version.
 
 #### Observation
 
@@ -155,7 +155,7 @@ Check the QQ-plot of the observed pvalues from eQTLGen using PCO_${\lambda<0.1}$
 
 
 ```{r}
-knitr::include_graphics("qqplot.p_obs.eQTLGen.png", error = FALSE)
+knitr::include_graphics("asset/0614_qqplot.p_obs.eQTLGen.png", error = FALSE)
 ```
 
 
@@ -301,7 +301,7 @@ knitr::kable(res)
 **A diagram version:**
 
 ```{r fig.cap="Are trans-eQTLs cis-e/sQTLs?"}
-knitr::include_graphics("0526-1.png", error = FALSE)
+knitr::include_graphics("asset/0526-1.png", error = FALSE)
 ```
 
 **Observations:**
@@ -436,12 +436,12 @@ The minimum null pvalue of PCO is $\ge 10^{-9}$, similar as the significance thr
 4. Results
 
 ```{r fig.cap="power under Bonferroni corretion cutoff"}
-knitr::include_graphics(c("power.lambda0.1.K100.png"), error = FALSE)
+knitr::include_graphics(c("asset/0223_power.lambda0.1.K100.png"), error = FALSE)
 ```
 
 
 ```{r fig.cap="Another Sigma (K=105)"}
-knitr::include_graphics(c("power.lambda0.1.K105.png"), error = FALSE)
+knitr::include_graphics(c("asset/0223_power.lambda0.1.K105.png"), error = FALSE)
 ```
 
 
@@ -474,7 +474,7 @@ knitr::include_graphics(c("power.lambda0.1.K105.png"), error = FALSE)
 + results
 
 ```{r fig.cap="power under Bonferroni corretion cutoff"}
-knitr::include_graphics(c("power.lambda1.png"), error = FALSE)
+knitr::include_graphics(c("asset/0216_power.lambda1.png"), error = FALSE)
 ```
 
 + Try other tests
@@ -484,7 +484,7 @@ knitr::include_graphics(c("power.lambda1.png"), error = FALSE)
   + PCO: Use $\{\lambda_k: \lambda_k>0.1\}$.
 
 ```{r fig.cap="power under Bonferroni corretion cutoff"}
-knitr::include_graphics(c("power.lambda0.1.png"), error = FALSE)
+knitr::include_graphics(c("asset/0216_power.lambda0.1.png"), error = FALSE)
 ```
 
 + For talk
@@ -492,7 +492,7 @@ knitr::include_graphics(c("power.lambda0.1.png"), error = FALSE)
 (This figure should be updated as for the case of 'u1', the threshold is falsely set as 0.05, which should be $10^{-9}$.)
 
 ```{r fig.cap="PC1 v.s. PCO"}
-knitr::include_graphics(c("talk.png"), error = FALSE)
+knitr::include_graphics(c("asset/0216_talk.png"), error = FALSE)
 ```
 
 
@@ -517,15 +517,15 @@ knitr::include_graphics(c("talk.png"), error = FALSE)
 The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?
 
 ```{r fig.cap="power under cutoff 0.05"}
-knitr::include_graphics(c("power_05.png"), error = FALSE)
+knitr::include_graphics(c("asset/0126_power_05.png"), error = FALSE)
 ```
 
 ```{r fig.cap=c("power comparison")}
-knitr::include_graphics(c("plot.error_bar.png"), error = FALSE)
+knitr::include_graphics(c("asset/0126_plot.error_bar.png"), error = FALSE)
 ```
 
 ```{r fig.cap=c("bar plot")}
-knitr::include_graphics(c("test.png"), error = FALSE)
+knitr::include_graphics(c("asset/0126_test.png"), error = FALSE)
 ```
 
 ### Larger FDR level, #signals in large and small module?
@@ -537,7 +537,7 @@ The plot below is based on Muscle tissue from GTEx_v8. The x-axis is for various
 We can observe (1) When increasing FDR levels, number of signals only increase a little bit, say 3-5 more signals. This means that the corrected pvalues are bipolar, i.e. either very small or very large. (2) Signals based on smaller modules are similar to that of previous standard modules.
 
 ```{r fig.cap=c("Muscle: #signals v.s.FDR", "DGN: #signals v.s.FDR")}
-knitr::include_graphics(c("./signalsv.s.FDR.Muscle.png", "./signalsv.s.FDR.DGN.png"), error = FALSE)
+knitr::include_graphics(c("asset/0126_signalsv.s.FDR.Muscle.png", "asset/0126_signalsv.s.FDR.DGN.png"), error = FALSE)
 ```
 
 
@@ -563,7 +563,7 @@ Generally, funcExplorer gives more modules, smaller module, and much more unclas
 From the pvalue plot, it looks like 'WGCNA.min10_deep4' gives smaller clusters and some extreme pvalues. So next step I will run the whole pipleline for this setting.
 
 ```{r fig.cap=c("Modules v.s. methods/parameters", "p distribution of Muscle")}
-knitr::include_graphics(c("./modules.png", "./Muscle_Skeleta.p.funcExplorer.png"), error = FALSE)
+knitr::include_graphics(c("asset/0126_modules.png", "asset/0126_Muscle_Skeleta.p.funcExplorer.png"), error = FALSE)
 ```
 
 
@@ -593,7 +593,7 @@ knitr::kable(res)
 ```
 
 ```{r fig.cap="qqplot.simulation.null"}
-knitr::include_graphics("./qqplot.simulation.null.png", error = FALSE)
+knitr::include_graphics("asset/0119_qqplot.simulation.null.png", error = FALSE)
 ```
 
 
@@ -629,7 +629,7 @@ knitr::kable(res)
 
 
 ```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial", "Muscle_Skeletal.cross"), out.width="70%", out.height="70%"}
-knitr::include_graphics(c("DGN.p.png", "DGN_new.p.png", "Whole_Blood.p.png", "Muscle_Skeletal.p.png", "Skin_Sun_Exposed_Lower_leg.p.png", "Artery_Tibial.p.png", "Muscle_Skeletal.cross.p.png"), error = FALSE)
+knitr::include_graphics(c("asset/0119_DGN.p.png", "asset/0119_DGN_new.p.png", "asset/0119_Whole_Blood.p.png", "asset/0119_Muscle_Skeletal.p.png", "asset/0119_Skin_Sun_Exposed_Lower_leg.p.png", "asset/0119_Artery_Tibial.p.png", "asset/0119_Muscle_Skeletal.cross.p.png"), error = FALSE)
 ```
 
 #### Remarks
@@ -659,7 +659,7 @@ knitr::kable(res, caption = 'GTEx_v8.Muscle_Skeletal.cross')
     
     The signal on chr5 is significant for both module 15 (114 genes) and module 8 (394 genes) in two datasets, which have 82 shared genes. Take SNP [rs2706381][rs2706381 GTEx ref] (chr5:132474927) for example. It is ["in cis with IRF1 ($P \le 2\times10^{-10}$; Fig. 6c), a transcription factor that facilitates regulation of the interferon-induced immune response"][rs2706381 GTEx ref]. It is also ["associated in trans with PSME1 ($P \le 1.1\times10^{-11}$) and PARP10 ($P \le 7.8\times10^{-10}$)"][rs2706381 GTEx ref]. These two genes are included in module 15. The reference also gives additional results to "suggest that cis-regulatory loci affecting IRF1 are regulators of interferon-responsive inflammatory processes involving genes including PSME1 and PARP10, with implications for complex traits specific to muscle tissue".
     
-    I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list [here](./gene.GTEx_v8.Muscle_Skeletal.module15.txt).
+    I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list [here](asset/0119_gene.GTEx_v8.Muscle_Skeletal.module15.txt).
     
     SNP 10:48930105. module 15.
     
@@ -672,7 +672,7 @@ knitr::kable(res, caption = 'GTEx_v8.Muscle_Skeletal.cross')
   + See the following plot for number of cross-mapped genes in each module.
     
 ```{r}
-knitr::include_graphics('nCross.png', error = FALSE)
+knitr::include_graphics('asset/0119_nCross.png', error = FALSE)
 ```
 
 
@@ -731,7 +731,7 @@ Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 1
 3. Replication of DGN signals in eQTLGen
 
 ```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial", "Muscle_Skeletal.cross"), out.width="70%", out.height="70%"}
-knitr::include_graphics("./eQTLGen_DGN_venn.jpeg", error = FALSE)
+knitr::include_graphics("asset/0119_eQTLGen_DGN_venn.jpeg", error = FALSE)
 ```
 
 
