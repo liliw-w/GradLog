@@ -13,6 +13,79 @@ knitr::opts_chunk$set(echo=FALSE)
 ```
 
 
+## September 02
+
+### Keep cross mappable genes in the filtering step
+
+1. Genes and modules containing cross mappable genes
+
++-----------------------+------------------------+
+| All genes:            | 13634  |
++-----------------------+------------------------+
+| With meta:            | 12585  |
++-----------------------+------------------------+
+| Final use:            | 10461  |
++-----------------------+------------------------+
+| All removed:          | 3173   |
++-----------------------+------------------------+
+| including:            |- meta: 1049 |
+|                       |- auto: 1 |
+|                       |- prote&linc: 453|
+|                       |- low_map: 1798 |
+|                       |- cross_map: 0 |
++-----------------------+------------------------+
+| Number of modules:    | 158                    |
++-----------------------+------------------------+
+
+
+```{r fig.cap="Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.", fig.show='hold', fig.align='center', out.width="50%"}
+knitr::include_graphics(c("asset/0902_plot_module_size.png", "asset/0902_plot_module_size_cross_within_module.png"), error = FALSE)
+```
+
+2. Run PCO with cross mappable genes
+
+```{r fig.cap="Figure. Illustration of PCO with cross mappable genes.", out.width="70%"}
+knitr::include_graphics(c("asset/0902_PCO_keep_crossmap.jpeg"), error = FALSE)
+```
+
+Problem: Computational infeasible
+
+- In phase 1, for each SNP, filter out genes within the module that are cross mappable with any of its cis- genes. Not fast, as need to search pairs of (cis- gene, module gene) in the cross-mappability file with 23,727,385 cross-mappable gene pairs.
+
+The code I use,
+
+```{r eval=FALSE, echo=TRUE}
+if_cross <- sapply(cis_Genes[1:10], function(x){
+  colSums(matrix(outer(x, module_Geneid, FUN = "paste", sep=";") %in% cross_map$V4 |
+                   t(outer(module_Geneid, x, FUN = "paste", sep=";")) %in% cross_map$V4, ncol = length(module_Geneid)) ) == 0
+} )
+```
+
+Time elapsed,
+
+```{r fig.cap="Figure. Time used for a SNP with ~40 cis- genes and a module with 15 genes.", out.width="40%"}
+knitr::include_graphics(c("asset/0902_time_cross_map.png"), error = FALSE)
+```
+
+
+```{r eval=FALSE}
+require(ggplot2)
+
+Time = rep(NA, 10); Time[c(1, 2, 5, 10)] = c(3.551, 8.543, 22.114, 45.454)
+df_time = data.frame("num_of_SNP" = c(1, 2, 5, 10),
+                     "time" = c(3.551, 8.543, 22.114, 45.454),
+                     check.names = FALSE, stringsAsFactors = FALSE)
+ggplot(df_time, aes(x = num_of_SNP, y = time)) + 
+  geom_point() +
+  geom_line(linetype = "dashed") +
+  labs(x = "Number of SNP", y = "time(s)" ) +
+  theme_bw() + xlim(0, 10)
+```
+
+- In phase 2, each SNP could correspond to modules with different gene combinations, thus diff. $\Sigma$ for with-in module correlation and $\Sigma^0$, which is the estimated correlation of six tests involved in PCO using 2000 simulations. Thus, computing $\Sigma^0$ for each SNP should take a long time.
+
+
+
 ## July 08
 
 ### How expression PCs affect the signals?
