@@ -38,9 +38,13 @@ knitr::opts_chunk$set(echo=FALSE)
 +-----------------------+------------------------+
 
 
-```{r fig.cap="Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.", fig.show='hold', fig.align='center', out.width="50%"}
+```{r eval=FALSE, out.width="50%", out.height="20%", fig.cap="Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.", fig.show="hold", fig.align="center"}
 knitr::include_graphics(c("asset/0902_plot_module_size.png", "asset/0902_plot_module_size_cross_within_module.png"), error = FALSE)
 ```
+
+![](asset/0902_plot_module_size.png){width=50%}![](asset/0902_plot_module_size_cross_within_module.png){width=50%}
+
+Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.
 
 2. Run PCO with cross mappable genes
 
