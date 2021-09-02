@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo=FALSE)
 knitr::include_graphics(c("asset/0902_plot_module_size.png", "asset/0902_plot_module_size_cross_within_module.png"), error = FALSE)
 ```
 
-![](asset/0902_plot_module_size.png){width=50%}![](asset/0902_plot_module_size_cross_within_module.png){width=50%}
+![](asset/0902_plot_module_size.png){width=30%}![](asset/0902_plot_module_size_cross_within_module.png){width=30%}
 
 Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.
 
