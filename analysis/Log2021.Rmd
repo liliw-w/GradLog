@@ -13,7 +13,30 @@ knitr::opts_chunk$set(echo=FALSE)
 ```
 
 
-## September 02
+## September 02, September 07
+
+### Computation time
+
+#### Problem
+
+Last time, we ran into the problem that it is computational unfeasible if we want to run PCO without removing cross mappable genes in the previous step. See the illustration in the following figure.
+
+There are two main steps that need long computational time. (1) For each SNP, remove genes from the module that are cross mappable with cis- genes of the SNP. (2) In this case, we would have module containing different genes for SNPs with different cis- genes, thus different $\Sigma$ and $\Sigma^O$. Therefore, tremendously increase the computational time.
+
+#### Try solution 1: filtering SNPs instead
+
+One of the possible solutions we mentioned is, instead of filtering genes for each SNP, we can try filtering SNPs and keeping the module unchanged. That being said, if a SNP has cis- genes cross mappable with any genes in the module, then this SNP is removed from the following PCO analysis.
+
+In this way, there are two advantages. First, it's faster to filter SNPs than genes. Second, we will have same module for all remained SNPs, thus same $\Sigma$ and $\Sigma^O$.
+
+So, next I check how many SNPs will be left after this filtering step.
+
+```{r fig.cap="Figure. SNP remained. The bar plot gives the number of SNPs, while the line plot gives the percentage of the remained SNPs on each chr.", out.width="70%"}
+knitr::include_graphics(c("asset/0907_SNP_remain.png"), error = FALSE)
+```
+
+We can see, if we filter SNPs instead, over half of the genome will be removed from the p-value analysis. We could miss a lot of signals.
+
 
 ### Keep cross mappable genes in the filtering step
 
