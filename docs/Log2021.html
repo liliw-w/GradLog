@@ -399,7 +399,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-09-02
+<strong>Last updated:</strong> 2021-09-07
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree60d26b9d6b2c6bd9a4411a0ce838d1089fd96c93targetblank60d26b9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/60d26b9d6b2c6bd9a4411a0ce838d1089fd96c93" target="_blank">60d26b9</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb7769260a045ab7d7952f05cb2d4938b953752c2targetblankb776926a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/b7769260a045ab7d7952f05cb2d4938b953752c2" target="_blank">b776926</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree60d26b9d6b2c6bd9a4411a0ce838d1089fd96c93targetblank60d26b9a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb7769260a045ab7d7952f05cb2d4938b953752c2targetblankb776926a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/60d26b9d6b2c6bd9a4411a0ce838d1089fd96c93" target="_blank">60d26b9</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/b7769260a045ab7d7952f05cb2d4938b953752c2" target="_blank">b776926</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -551,6 +551,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b7769260a045ab7d7952f05cb2d4938b953752c2/analysis/Log2021.Rmd" target="_blank">b776926</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-09-07
+</td>
+<td>
+Add Sep 07
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/671dc182ed62e67fd811d2ee5de9ff1c53cfb96b/docs/Log2021.html" target="_blank">671dc18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-09-02
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1663,8 +1697,66 @@ wflow_git_commit(c("analysis/_site.yml", "analysis/index.Rmd",
 </div>
 </div>
 </div>
-<div id="september-02" class="section level2">
-<h2>September 02</h2>
+<div id="september-02-september-07" class="section level2">
+<h2>September 02, September 07</h2>
+<div id="computation-time" class="section level3">
+<h3>Computation time</h3>
+<div id="problem" class="section level4">
+<h4>Problem</h4>
+<p>Last time, we ran into the problem that it is computational unfeasible if we want to run PCO without removing cross mappable genes in the previous step. See the illustration in the following figure.</p>
+<p>There are two main steps that need long computational time. (1) For each SNP, remove genes from the module that are cross mappable with cis- genes of the SNP. (2) In this case, we would have module containing different genes for SNPs with different cis- genes, thus different <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\Sigma^O\)</span>. Therefore, tremendously increase the computational time.</p>
+</div>
+<div id="try-solution-1-filtering-snps-instead" class="section level4">
+<h4>Try solution 1: filtering SNPs instead</h4>
+<p>One of the possible solutions we mentioned is, instead of filtering genes for each SNP, we can try filtering SNPs and keeping the module unchanged. That being said, if a SNP has cis- genes cross mappable with any genes in the module, then this SNP is removed from the following PCO analysis.</p>
+<p>In this way, there are two advantages. First, it’s faster to filter SNPs than genes. Second, we will have same module for all remained SNPs, thus same <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\Sigma^O\)</span>.</p>
+<p>So, next I check how many SNPs will be left after this filtering step.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/0907_SNP_remain.png" alt="Figure. SNP remained. The bar plot gives the number of SNPs, while the line plot gives the percentage of the remained SNPs on each chr." width="70%" />
+<p class="caption">
+Figure. SNP remained. The bar plot gives the number of SNPs, while the line plot gives the percentage of the remained SNPs on each chr.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0907_SNP_remain">
+Past versions of 0907_SNP_remain.png
+</button>
+</p>
+<div id="fig-0907_SNP_remain" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b7769260a045ab7d7952f05cb2d4938b953752c2/docs/asset/0907_SNP_remain.png" target="_blank">b776926</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We can see, if we filter SNPs instead, over half of the genome will be removed from the p-value analysis. We could miss a lot of signals.</p>
+</div>
+</div>
 <div id="keep-cross-mappable-genes-in-the-filtering-step" class="section level3">
 <h3>Keep cross mappable genes in the filtering step</h3>
 <ol style="list-style-type: decimal">
