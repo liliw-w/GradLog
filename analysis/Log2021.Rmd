@@ -12,8 +12,474 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE)
 ```
 
+```{css style settings, echo = FALSE}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+```
 
-## September 02, September 07
+## Nov 15
+
+### 1. Proportion of colocalized regions for 29 blood-related UKBB traits
+
+#### Procedure
+
+- Aim: to see how many regions have shared signals for both trait and module. (PP4 > 0.75)
+
+- I consider two types of regions:
+
+  1. One type as stated at last week. Based on module-QTLs and GWAS-QTLs with $p<10^{-5}$.
+  2. Among the above regions, only use regions whose lead SNPs are module-QTLs signals. (Note, here I used the threshold $p<10^{-8}$, as I don't have module-signals based on empirical null FDR correction yet.)
+
+- Colocalized regions
+  
+  Defined as regions with $\text{PP4} > 0.75$ and $\text{#SNPs in region} \ge 5$.
+
+#### Results
+
+```{r fig.cap="The proportion of colocalized regions for 29 blood-related UKBB traits.", out.width="80%"}
+knitr::include_graphics(c("asset/1115_all.traits.coloc.region.summary.png"), error = FALSE)
+```
+
+- This figure gives (1) the number of regions at the upper panel, (2) proportion of colocalized regions at the lower panel.
+
+- Blue is for the frist type of regions. Green is for the second type of reigons, based on module-QTL signals.
+
+- Dark color is for the colocalized regions, while light color is for the base regions.
+
+
+### 2. Enrichment of colocalized regions
+
+#### Procedure
+
+- colocalized regions: region lead SNP's module-QTL $p<10^{-8}$, $\text{PP4} > 0.75$, and $\text{#SNPs in region} \ge 5$.
+
+- Look at the enrichment of these colocalized regions, and the relationship with the corresponding trait.
+
+#### Results
+
+```{r fig.cap="traits v.s. module v.s. coloc region", out.width="50%"}
+knitr::include_graphics(c("asset/1115_traits.module.coloc.region.png"), error = FALSE)
+```
+
+- The above figure shows, what are the modules that have colocalized regions with a trait.
+
+- Similar traits should have similar colocalized module patterns.
+
+
+```{r}
+df <- data.frame("Phenocode" = c(30000, 30140, 30200, 30300),
+                 "Trait Abbreviation" = c("WBC", "NEUT", "NEUT_P", "HLSR"),
+                 "Trait" = c("White blood cell count", "Neutrophill count", "Neutrophill percentage", "High light scatter reticulocyte count"),
+                 "g:Profiler" = c("https://biit.cs.ut.ee/gplink/l/jWgRmfj9SM", "https://biit.cs.ut.ee/gplink/l/Hs8Nsb99QV", "https://biit.cs.ut.ee/gplink/l/NKfAXoO9Sp", "https://biit.cs.ut.ee/gplink/l/VJWuuEEzTF"),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(df)
+```
+
+- This table gives the enrichment of the module genes for each trait.
+
+- "module4" enriched in platelet activation. Many traits among these 29 blood-related traits are colocalized with "module4".
+
+- Although "module15" is extensively colocalized with many traits, it's not enriched in any pathway.
+
+
+### 3. Mendelian Randomization (MR) among SNPs, module, trait
+
+- Use R package [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/#installation).
+
+- **Problem**: no $\beta, \text{se}(\beta)$ for module as exposure. Exposure file requirements see [here](https://mrcieu.github.io/TwoSampleMR/articles/exposure.html).
+
+- How people do MR? [Paper-Yanyu](https://www.medrxiv.org/content/10.1101/2021.06.01.21258159v1.full-text)
+
+  1. the instrument variants were selected using LD clumping function (ld_clump) in the R package ieugwasr
+
+> We used the EUR super-population in 1000 Genomes data (1000 Genomes Project Consortium, 2015) as the LD reference panel and the data was downloaded from http://fileserve.mrcieu.ac.uk/ld/1kg.v3.tgz. The LD clumping parameters were clump_kb = 10000 and clump_r2 = 0.001. The p-value parameter (clump_p) in the LD clumping was 10−5 for IDP GWAS and 5 × 10−8 for phenotype GWAS, which gave approximately independent and significant variant instruments.
+
+  2. The MR analysis was performed using the R package TwoSampleMR
+
+> reported the MR results using three MR methods: i) inverse variance weighted MR (Burgess et al., 2013); ii) median-based estimator: weighted median (Bowden et al., 2016); iii) MR Egger analysis (Bowden et al., 2015), which corresponds to mr_ivw, mr_weighted_median, and mr_egger_regression in TwoSampleMR.
+
+  3. further reported a meta-analyzed p-value summarizing the results of the three MR tests being performed
+
+> The meta-analysis is based on an extension of ACAT method (Liu et al., 2019) that takes into account the direction of the effects.
+
+
+### 4. coloc between cis- and trans- signals
+
+
+
+## Nov 08
+
+### Some statistics
+
+- Out of 6,203,169 SNPs in DGN, 6,133,791 (~98.88%) are also included in UKBB GWAS SNPs, 69,378 snps are missed.
+
+- ~~Among 6,133,791 overlapped SNPs, 5,753,809 (~93.81%) are [`high_quality`](https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files) variants.~~
+
+
+### coloc procedure
+
+- To do coloc, I compare the pvalues of SNPs within a specific region from each module in DGN and a GWAS trait.
+
+  - For DGN, I use the pvalues from the procedure where I didn't filter genes based on mappability. There are 166 modules.
+  
+  - For GWAS, I use the summary statistics of EUR population.
+
+- Define Regions
+
+  I define coloc regions based on DGN pvalues. For a module, I first sort the pvalues and pick the SNP with the smallest p. Then collect the SNPs in flanking regions within **100kb**. These SNPs consist of the first region. Then use the second smallest p and define a second region out of the remaining SNPs. I only consider the regions within which at least one SNP has ** $p<1e-5$ **.
+
+- SNP filtering
+
+  Based on the above preliminary regions, I updated the regions based on the following criterias:
+  
+  - Remove SNPs not included in GWAS.
+  - Remove SNPs without rsid.
+  - Remove SNPs with low_confidence, no high_quality.
+  - Remove duplicated SNPs.
+  - Remove the regions within which all SNPs have GWAS ** $p>1e-5$ **.
+  - Remove SNPs with GWAS $se(\beta)=0$, for `coloc` purpose.
+
+- Do coloc
+
+  - Use the simple coloc, `coloc.abf`.
+  - A region with **PP4 > 0.75** is defined as being colocalized.
+
+
+### Results
+
+1. Trait v.s. #regions v.s. #coloc regions
+
+```{r}
+df <- data.frame("UKBB trait id" = c(30080, 30090, 30100),
+                 "Trait" = c("Platelet count", "Platelet crit", "Mean platelet volume"),
+                 "#regions" = c(508, 506, 560),
+                 "#coloc regions" = c(54, 85, 35),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(df)
+```
+
+
+2. #SNPs in colocalized regions
+
+```{r fig.cap="An example of colocalized region visualization. Trait Platelet count.", out.width="70%"}
+knitr::include_graphics(c("asset/1108_coloc.region.summary.png"), error = FALSE)
+```
+
+```{r fig.cap="An example of colocalized region visualization. Trait Platelet crit", out.width="70%"}
+knitr::include_graphics(c("asset/1108_pheno30090.coloc.region.summary.png"), error = FALSE)
+```
+
+```{r fig.cap="An example of colocalized region visualization. Trait Mean platelet volume", out.width="70%"}
+knitr::include_graphics(c("asset/1108_pheno30100.coloc.region.summary.png"), error = FALSE)
+```
+
+
+3. Colocalized region visualization by [`locuscomparer`](https://github.com/boxiangliu/locuscomparer)
+
+```{r fig.cap="An example of colocalized region visualization.", out.width="50%"}
+knitr::include_graphics(c("asset/1108_pheno30080.module102:7:50427982.reg.coloc.png"), error = FALSE)
+```
+
+
+4. [29 UKBB blood traits](https://www.biorxiv.org/content/10.1101/2021.04.07.438882v1.full)
+
+> For our study, we examined 29 blood trait GWASs in the UK Biobank, including traits from platelets, red blood cells, white blood cells and reticulocytes (Table S1A).
+
+
+## Nov 01
+
+### Colocalization
+
+#### enloc
+
+[Paper][enloc paper]:
+
+```{r fig.cap="enloc equation", out.width="80%"}
+knitr::include_graphics(c("asset/1101_enloc_theory.png"), error = FALSE)
+```
+
+[Code tutorial][enloc code tutorial]:
+
+```{r fig.cap="enloc code workflow", out.width="80%"}
+knitr::include_graphics(c("asset/1101_enloc_code_pipeline.png"), error = FALSE)
+```
+
+- Need to provide "expression file" for the first fine-mapping. But we don't have this file in the case of a module being the "expression trait".
+
+- DAP can be applied to each LD block independently. [independent LD block][] provided a working recipe to segment the full genome based on the population-specific LD structures.
+
+- Example of using enloc for colocalization: [GTEx 2020][]. Used for "cis-QTL-GWAS colocalization: ENLOC."
+
+
+```{r echo=FALSE, eval=FALSE}
+GTEx_enloc = "> To identify target genes and GWAS loci of interest, we performed cis colocalization analysis on 87 GWAS traits across 49 tissues. After extensive comparison of colocalization methods, we chose ENLOC [32] as our primary approach. The main factors leading to this decision were the need to account for allelic heterogeneity in expression/splicing traits (Fig. 2, fig. S10), and the high sensitivity of the methods to the prior on the enrichment of GWAS probability of causality given the cis-e/sQTL’s posterior inclusion probability (PIP).
+
+> In short, ENLOC yields regional colocalization probabilities (rcp) for (GWAS region, trait, tissue, gene) or (GWAS region, trait, tissue, intron) tuples
+
+> First, for protein-coding and lincRNA genes in the cis-eQTL analysis, the expression levels and genotypes in the cis-window were processed with DAPG [112].
+
+We used individuals of European ancestry in the GTEx study and variants with MAF > 0.01 to generate eVariant enrichment estimates and variants’ posterior inclusion probabilities (PIP). The main motivation in using individuals of European ancestry was to match the LD structure as closely as possible to the ones from the GWAS studies (mostly European-based). Expression levels were corrected by the same covariates as in the main eVariant analysis.
+
+Second, the imputed GWAS summary statistics were split into approximately LD-independent regions [46], with each region defining a GWAS locus. Lastly, ENLOC was run for all cis-eVariant regions and overlapping GWAS loci for each trait, yielding colocalization results for 12,662,634 (tissue, gene, GWAS locus, trait) tuples.
+
+
+1. prepare probabilistic eQTL annotations generated from software package DAP-G.
+
+DAP works well for small genomic regions harboring a handful of QTNs. This is typically the case in molecular QTL mapping, where candidate loci usually span no more than 2 Mb. When there are more QTNs (e.g., > 5) in a locus, the adaptive DAP exploration with high precision may become time consuming. In applications of GWAS, we essentially consider a single locus that spans the whole genome, and for a single trait, the number of independent association signals may range from hundreds to thousands.
+
+fine-map cis-eQTLs.
+"
+```
+
+
+
+#### coloc
+
+[Paper-coloc single][coloc paper - single causal variant], [Paper-coloc multiple][coloc paper - multiple causal variants]:
+
+```{r fig.cap="coloc equation", out.width="30%"}
+knitr::include_graphics(c("asset/1101_coloc_theory.png"), error = FALSE)
+```
+
+
+[Code tutorial][coloc code tutorial]:
+
+First, segment the whole genome. Then fine-map each traits by [`susieR`][susieR code tutorial], better than `coloc.abf` as it allows multiple causal variants. Finally, coloc.
+
+```{r fig.cap="coloc code workflow", out.width="80%"}
+knitr::include_graphics(c("asset/1101_coloc_code_workflow.png"), error = FALSE)
+```
+
+- Determine LD block?
+  Independent LD block + small GWAS pvalue loci + small module pvalue loci
+
+- Example of using coloc for colocalization:
+  - [Mu & Li][Mu & Li coloc paper]: `coloc` + default prior.
+  - [GTEx 2020][]: Used for "Colocalization of cis- and trans-QTLs.", `coloc` + default prior. In addition, used for "Colocalization of neutrophil ieQTLs and GWAS traits": `coloc` + `enloc` prior.
+
+
+
+#### Ref
+
+[enloc paper]: https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006646
+[coloc paper - single causal variant]: https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004383
+[coloc paper - multiple causal variants]: https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1009440
+[enloc code tutorial]: https://github.com/xqwen/fastenloc/tree/master/tutorial
+[independent LD block]: https://academic.oup.com/bioinformatics/article/32/2/283/1743626
+[GTEx 2020]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/
+[coloc code tutorial]: https://chr1swallace.github.io/coloc/
+[susieR code tutorial]: https://stephenslab.github.io/susieR/articles/index.html
+[Mu & Li coloc paper]: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#Sec11)
+
+
+## Oct 25
+
+###  Pan UKBB website
+
+See website [here](https://pan.ukbb.broadinstitute.org/).
+
+Files website [here](https://pan.ukbb.broadinstitute.org/docs/technical-overview).
+
+- SNPs: 28,987,534 variants
+- Trait:
+- Population? meta? for ($\beta, \text{se}, p, \text{low_confidence}$)
+
+#### Trait
+
+- `category`: A categorization of the phenotype
+
+blood related traits:
+
+1. "Biological samples > Assay results > Blood assays > Blood count"
+
+e.g. Platelet count, Monocyte percentage, el al
+
+2. "Biological samples > Assay results > Blood assays > Blood biochemistry"
+
+e.g. HDL cholesterol, Rheumatoid factor, et al
+
+3. "UK Biobank Assessment Centre > Physical measures > Blood pressure"
+
+4. "Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism ..."
+
+e.g. anaemias, D57 Sickle-cell disorders, el al
+
+- `pheno_sex`: Use which one? "both_sexes", "females", "males"
+
+- `modifier`: `irnt` or `raw`?
+
+#### Variants filtering
+
+> summary statistics with low-confidence statistics removed and only considering high-quality variants.
+
+- `af`: allele frequency
+- `low_confidence`: criteria about allele count; includes some (non-exhaustive) basic quality control filters.
+- `high_quality`: A boolean corresponding to a high-quality variant based on these filters ... on "Files website".
+
+
+## October 07, October 18
+
+### MSigDB gene modules, incorporated with DGN genes
+
+MSigDB hallmark gene sets have 50 clusters, consisting of 4383 genes. 3276 genes are included in 12132 DGN genes (without removing cross-mappable genes).
+
+Run Trans-PCO on the MSigDB hallmark gene sets.
+
+#### pvalues' distribution - qqplot
+
+Marked modules with significant signals by eye. See figure [here](asset/1007_MSigDB_p_distribution.png).
+
+#### Signals under empirical FDR
+
+1. signals summary, under FDR 0.05, 0.1
+```{r}
+df <- data.frame("FDR level" = c(0.05, 0.1),
+                 "#signals" = c(808, 965),
+                 "#unique signals" = c(321, 411),
+                 "#independent signals" = c(23, 42),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(df)
+```
+
+cross-mapped genes in 50 gene sets? already removed cross-mapped reads?
+
+2. module (with annotation, size) v.s. chromosome signals
+
+```{r fig.cap="#signals of MSigDB modules for each module v.s. chr."}
+knitr::include_graphics(c("asset/1018-num_signals_module_vs_chr_.png"), error = FALSE)
+```
+
+
+### STRING PPI interaction network, clustered by hierarchical clustering.
+
+Out of 12132 DGN genes, 11911 genes in the data included in STRING PPI network. As a result of hierarchical clustering, 11911 genes consist of 198 modules, with module size ranging from 210 ~ 26.
+
+Run Trans-PCO on these modules.
+
+#### pvalues' distribution - qqplot
+
+A selected set of modules.
+
+Marked modules with significant signals by eye. See figure [here]().
+
+
+### DGN_no_filter_on_mappability
+
+Without removing genes with mappability issues.
+
+#### pvalues' distribution - qqplot
+
+
+## October 04
+
+### Molecular Signatures Database
+
+The [MSigDB](http://www.gsea-msigdb.org/gsea/msigdb/index.jsp) gene sets are divided into [9 major collections](http://www.gsea-msigdb.org/gsea/msigdb/collections.jsp): the hallmark gene sets, and C1 - C8 gene sets.
+
+### Hallmark gene sets
+
+> What? Hallmark gene sets summarize and represent specific well-defined biological states or processes and display coherent expression.
+
+> How? These gene sets were generated by a computational methodology based on identifying gene set overlaps and retaining genes that display coordinate expression.
+
+```{r fig.cap="Pipeline to obtain hallmark gene sets from other MSigDB gene sets.", out.width="50%"}
+knitr::include_graphics(c("asset/1004_hallmark_pipeline.jpeg"), error = FALSE)
+```
+
+See [paper here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/).
+
+> pros? The hallmarks reduce noise and redundancy of the original overlapping gene sets, from which a hallmark is derived ('founder' sets).
+
+Initial release. 50 hallmark gene sets. Comprise 4,022 original overlapping gene sets from 8,380 v4.0 MSigDB gene sets of collections C1 through C6.
+
+```{r fig.cap="50 hallmark gene sets size", out.width="50%"}
+knitr::include_graphics(c("asset/1004_geneSet_size_h.all.v7.4.symbols.gmt.png"), error = FALSE)
+```
+
+Summary of the hallmark gene sets: name, process category, description, number of founder sets and number of genes it contains. [Table.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/table/T1/?report=objectonly)
+
+```{r fig.cap="Overlapped genes among 50 hallmark gene sets", out.width="80%"}
+knitr::include_graphics(c("asset/1004_geneSet_overlap_h.all.v7.4.symbols.gmt.png"), error = FALSE)
+```
+
+
+## September 30
+
+### STRING PPI networks + Hierarchical clustering
+
+Question: Do the clusters make sense? Are the large clusters too loose or the small clusters too tight?
+
+- Large clusters too loose such that can be separated to a few smaller cluster?
+
+I looked at the top two largest clusters: Module 1 with 214 genes, and Module 2 with 188 genes.
+
+```{r fig.cap="", out.width="70%"}
+knitr::include_graphics(c("asset/0930_stringPPI_large_module.png"), error = FALSE)
+```
+
+- Small clusters too tight such that can be merged into less bigger cluster?
+
+I looked at the last three smallest clusters: Module 194, 193, 192, with 23, 26, 26 genes, correspondingly.
+
+```{r fig.cap="", out.width="80%"}
+knitr::include_graphics(c("asset/0930_stringPPI_small_module.png"), error = FALSE)
+```
+
+
+## Septermber 23
+
+### STRING PPI networks
+
+#### Data
+
+- Protein network data downloaded from [here](https://www.string-db.org/cgi/download?sessionId=b0t6ChKtUCa8).
+
+- Out of 12132 DGN genes, 11911 genes in the data included in STRING network, with 3076398 edges.
+
+#### Clustering
+
+A [paper](https://academic.oup.com/bioinformatics/article/30/10/1343/266738) reviews [a list of PPI networks clustering methods](https://academic.oup.com/view-large/86243930).
+
+> Clustering approaches to PPI networks can be broadly categorized as **topology-free** and **graph-based** ones. Topology-free approaches use traditional clustering techniques using notions of distance between proteins that do not take into account the topology of the network. Graph-based clustering approaches consider instead the topology of the network, and usually rely on specialized clustering techniques.
+
+1. MCODE & MCL
+
+    Too many genes for MCODE, I waited 1h and there was no result coming out.
+
+2. Hierarchical clustering from clustermaker & R
+
+    Hierarchical clustering in the Cytoscape plug-in, clustermaker, can't handle so many genes. So I tried to do hierarchical clustering in R.
+    
+    Specifically, I used the "PPI scores" between two genes as the similary measurement for computing distances. Those gene pairs without edges (no PPI interaction) have 0 scores and 1 distance. Genes with itself have 1 scores and 0 distance (diagonals of distance matrix). Then I used the `hclust` in R to construct the hierarchical tree, and the dynamic tree cut `cutreeDynamic` for branch cutting, as used in WGCNA.
+    
+    As a result, 11911 genes consist of 198 modules, with module size ranging from 210 ~ 26.
+
+### HumanBase predicted tissue-specific interactions
+
+#### Data
+
+- Blood tissue interactions downloaded from [here](https://hb.flatironinstitute.org/download).
+
+
+#### Clustering
+
+1. functional module detection
+
+2. MCODE (graph-based clustering, since only have edge info)
+
+
+## September 02, September 07, September 10
+
+### Pre-filter cross-map genes before grouping genes into modules
+
+Out of 10461 genes, (after filtering based on meta info, protain and lincRNA, low mappability), do additional gene filtering if genes have too many cross-map genes (e.g. use 1K as the threshold). 4314 genes are removed.
+
+As a result, 6147 genes are remained and are grouped in 95 modules.
+
 
 ### Computation time
 
