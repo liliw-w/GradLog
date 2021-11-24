@@ -21,6 +21,146 @@ blockquote {
 }
 ```
 
+## Nov 23
+
+### 1. Are the dark green signals eQTLGen signals?
+
+#### Procedure
+
+- Check those dark green signals (colocalized regions): region lead SNP's module-QTL $p<10^{-8}$, $\text{PP4} > 0.75$, and $\text{#SNPs in region} \ge 5$.
+
+- eQTLGen SNPs, cis- & trans- signals.
+
+#### Observations
+
+- trans-
+
+  #all regions for all traits: 551 . \
+  #unique regions: 105 . \
+  #unique lead SNPs: 74 . \
+  Out of 74 unique lead SNPs, 9 are included in eQTLGen trans- SNPs. \
+  Out of 9 SNPs, 9 are eQTLGen trans- signals.
+
+- cis-
+
+  #all regions for all traits: 551 . \
+  #unique regions: 105 . \
+  #unique lead SNPs: 74 . \
+  Out of 74 unique lead SNPs, 65 are included in eQTLGen cis- SNPs. \
+  Out of 65 SNPs, 61 are eQTLGen cis- signals. \
+
+- trans- & cis-
+
+  Out of 74 unique lead SNPs, 65 are included in eQTLGen SNPs. \
+  Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.
+
+
+### 2. Look at module 15
+
+We wanted to look at module15, because in [earlier section](#Enrichment-of-colocalized-regions), we found that module15 correspond to multiple regions extensively colocalized with multiple ukbb traits, but we didn't find any enrichment of the genes in module15.
+
+- coloc region & traits
+
+  See [file](../data/module15.coloc.traits.txt) for detailed traits and regions.
+
+```{r}
+df <- read.delim("./data/module15.coloc.traits.snp.summary.txt",
+                 row.names = NULL, check.names = FALSE)
+knitr::kable(df[, !colnames(df) %in% c("Module", "Chr", "Pos")],
+             caption = "The colocalization between the module and traits are from the following regions (marked by lead SNPs):")
+```
+
+
+```{r}
+df <- read.delim("./data/module15.coloc.traits.txt",
+                 row.names = NULL, check.names = FALSE)
+knitr::kable(table(df[!duplicated(df$Phenocode), "GWAS Group"]),
+             col.names = c("GWAS Group", "#traits"),
+             caption = "The coloc traits are from the follwing trait groups, mostly `Red blood cells`. (bc we have more Red blood cells traits?)")
+```
+
+
+- module15
+
+  191 genes. [Enrichment in g:profiler](https://biit.cs.ut.ee/gplink/l/4H3dKiAaRm)
+
+
+??? genes: number, enrichment in David
+
+
+### 3. Look at module 4
+
+We wanted to look at module4, because in [earlier section](#Enrichment-of-colocalized-regions), we found that module4 correspond to multiple regions extensively colocalized with multiple ukbb traits.
+
+- coloc region & traits
+
+  See [file](../data/module4.coloc.traits.txt) for detailed traits and regions.
+
+```{r}
+df <- read.delim("./data/module4.coloc.traits.snp.summary.txt",
+                 row.names = NULL, check.names = FALSE)
+knitr::kable(df[, !colnames(df) %in% c("Module", "Chr", "Pos")],
+             caption = "The colocalization between the module and traits are from the following regions (marked by lead SNPs):")
+```
+
+
+```{r}
+df <- read.delim("./data/module4.coloc.traits.txt",
+                 row.names = NULL, check.names = FALSE)
+
+knitr::kable(table(df[!duplicated(df$Phenocode), "GWAS Group"]),
+             col.names = c("GWAS Group", "#traits"),
+             caption = "The coloc traits are from the follwing trait groups, mostly `Red blood cells`")
+```
+
+### 4. coloc between cis- and trans- signals
+
+#### Procedure
+
+- 130 regions, based on module-QTLs. With region lead SNP's module-QTL $p<10^{-8}$ and with at least one cis- gene.
+
+- I will test colocalization between module and a gene, if the genes' 500k flanking region have (>5) overlapped SNPs with the module region.
+
+- Update the region by the overlapped SNPs of both module-QTLs and gene eQTLs.
+
+- Exclude the region if the minimum eQTL $p>10^{-5}$.
+
+#### Basics
+
+130 regions. With region lead SNP's module-QTL $p<10^{-8}$ and with at least one cis- gene.
+
+```{r out.width="70%", fig.cap=c("Fig A: region v.s. #cis genes. Fig B: region v.s. dis")}
+knitr::include_graphics(c("asset/1123_region.cis.gene.png"), error = FALSE)
+```
+
+#### Observations
+
+- As a result, there are 429 (region, module, gene) sets remained.
+
+- Out of which, 89 regions are colocalized (PP.H4.abf > 0.75).
+
+- Distribution of coloc regions
+
+```{r fig.cap="", out.width="50%"}
+knitr::include_graphics(c("asset/1123_cis_coloc.region.summary.png"), error = FALSE)
+```
+
+```{r fig.cap="Region v.s. #cis genes. Light blue is for the cis genes near the region. Dark blue is for the colocalized cis genes. There are 120 regions in total, out of which 54 have at least one colocalized cis- gene.", out.width="50%"}
+knitr::include_graphics(c("asset/1123_fig_bar_prop_cis.png"), error = FALSE)
+```
+
+**Note**: Here there are 120 regions instead of 130 regions, because I excluded the cis- gene regions with $min(p)>10^{-5}$ before I do the coloc.
+
+
+- Colocalized region visualization
+
+![](asset/1123_1.reg.module25:3:101011537.gene.SENP7.reg.coloc.png){ width=45% }
+![](asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png){ width=45% }
+
+
+### 5. MR under assumption of $\text{var}{\beta}$ (slack)
+
+
 ## Nov 15
 
 ### 1. Proportion of colocalized regions for 29 blood-related UKBB traits
@@ -92,6 +232,11 @@ knitr::kable(df)
 
 - **Problem**: no $\beta, \text{se}(\beta)$ for module as exposure. Exposure file requirements see [here](https://mrcieu.github.io/TwoSampleMR/articles/exposure.html).
 
+- Use [SMR](https://www.nature.com/articles/ng.3538#Sec11)? No. As SMR is also $\beta, \text{se}(\beta)$ based. In addition to that, it only uses one SNP as instrument variable.
+
+  - SMR only uses one SNP as instrument variable. "top associated cis-eQTL".
+  - Distinguishing pleiotropy from linkage; test for pleiotropic association.
+
 - How people do MR? [Paper-Yanyu](https://www.medrxiv.org/content/10.1101/2021.06.01.21258159v1.full-text)
 
   1. the instrument variants were selected using LD clumping function (ld_clump) in the R package ieugwasr
@@ -105,9 +250,6 @@ knitr::kable(df)
   3. further reported a meta-analyzed p-value summarizing the results of the three MR tests being performed
 
 > The meta-analysis is based on an extension of ACAT method (Liu et al., 2019) that takes into account the direction of the effects.
-
-
-### 4. coloc between cis- and trans- signals
 
 
 
