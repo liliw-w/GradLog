@@ -1,0 +1,5 @@
+Region	Module	Chr	Pos	traits	cis_genes	link_gene	link_snp	note
+module4:1:248039451	module4	1	248039451	15	OR2W3;TRIM58	https://www.ncbi.nlm.nih.gov/gene/343171;https://www.ncbi.nlm.nih.gov/gene/25893	https://www.ncbi.nlm.nih.gov/snp/rs3811444?horizontal_tab=true#publications	introns
+module4:3:56848999	module4	3	56848999	3	ARHGEF3	https://www.ncbi.nlm.nih.gov/gene/50650	https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true	intron of ARHGEF3
+module4:3:56901292	module4	3	56901292	4	ARHGEF3	https://www.ncbi.nlm.nih.gov/gene/50650	https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true	intron of ARHGEF3
+module4:9:99118445	module4	9	99118445	4	SLC35D2	https://www.ncbi.nlm.nih.gov/gene/11046	https://www.ncbi.nlm.nih.gov/snp/rs11794772?horizontal_tab=true	intron

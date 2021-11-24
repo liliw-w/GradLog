@@ -1,0 +1,45 @@
+Phenocode	trait	GWAS Group	GWAS Trait	Region
+30070	RBC_W	Red blood cells	Red blood cell distribution width	module15:17:33867678
+30240	RET_P	Red blood cells	Reticulocyte percentage	module15:17:33867678
+30250	RET	Red blood cells	Reticulocyte count	module15:17:33867678
+30260	MRV	Red blood cells	Mean reticulocyte volume	module15:17:33867678
+30280	IRF	Red blood cells	Immature reticulocyte fraction	module15:17:33867678
+30010	RBC	Red blood cells	Red blood cell count	module15:19:4502201
+30020	HGB	Red blood cells	Haemoglobin concentration	module15:19:4502201
+30050	MCH	Red blood cells	Mean corpuscular haemoglobin	module15:19:4502201
+30060	MCHC	Red blood cells	Mean corpuscular haemoglobin concentration	module15:19:4502201
+30280	IRF	Red blood cells	Immature reticulocyte fraction	module15:19:4502201
+30290	HLSR_P	Red blood cells	High light scatter reticulocyte percentage	module15:19:4502201
+30300	HLSR	Red blood cells	High light scatter reticulocyte count	module15:19:4502201
+30280	IRF	Red blood cells	Immature reticulocyte fraction	module15:2:60725451
+30010	RBC	Red blood cells	Red blood cell count	module15:2:8762414
+30040	MCV	Red blood cells	Mean corpuscular volume	module15:2:8762414
+30050	MCH	Red blood cells	Mean corpuscular haemoglobin	module15:2:8762414
+30060	MCHC	Red blood cells	Mean corpuscular haemoglobin concentration	module15:2:8762414
+30070	RBC_W	Red blood cells	Red blood cell distribution width	module15:2:8762414
+30270	MSCV	Red blood cells	Mean sphered cell volume	module15:2:8762414
+30240	RET_P	Red blood cells	Reticulocyte percentage	module15:2:8762414
+30250	RET	Red blood cells	Reticulocyte count	module15:2:8762414
+30260	MRV	Red blood cells	Mean reticulocyte volume	module15:2:8762414
+30280	IRF	Red blood cells	Immature reticulocyte fraction	module15:2:8762414
+30290	HLSR_P	Red blood cells	High light scatter reticulocyte percentage	module15:2:8762414
+30300	HLSR	Red blood cells	High light scatter reticulocyte count	module15:2:8762414
+30120	LYMPH	White blood cells	Lymphocyte count	module15:2:8762414
+30130	MONO	White blood cells	Monocyte count	module15:2:8762414
+30010	RBC	Red blood cells	Red blood cell count	module15:6:139840693
+30020	HGB	Red blood cells	Haemoglobin concentration	module15:6:139840693
+30030	HCT	Red blood cells	Haematocrit percentage	module15:6:139840693
+30050	MCH	Red blood cells	Mean corpuscular haemoglobin	module15:6:139840693
+30270	MSCV	Red blood cells	Mean sphered cell volume	module15:6:139840693
+30240	RET_P	Red blood cells	Reticulocyte percentage	module15:6:139840693
+30250	RET	Red blood cells	Reticulocyte count	module15:6:139840693
+30090	PLTC	Platelets	Platelet crit	module15:7:50426097
+30010	RBC	Red blood cells	Red blood cell count	module15:7:50426097
+30020	HGB	Red blood cells	Haemoglobin concentration	module15:7:50426097
+30040	MCV	Red blood cells	Mean corpuscular volume	module15:7:50426097
+30050	MCH	Red blood cells	Mean corpuscular haemoglobin	module15:7:50426097
+30270	MSCV	Red blood cells	Mean sphered cell volume	module15:7:50426097
+30250	RET	Red blood cells	Reticulocyte count	module15:7:50426097
+30260	MRV	Red blood cells	Mean reticulocyte volume	module15:7:50426097
+30280	IRF	Red blood cells	Immature reticulocyte fraction	module15:7:50426097
+30290	HLSR_P	Red blood cells	High light scatter reticulocyte percentage	module15:7:50426097

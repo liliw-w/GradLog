@@ -1,0 +1,27 @@
+Phenocode	trait	GWAS Group	GWAS Trait	Region
+30010	RBC	Red blood cells	Red blood cell count	module4:1:248039451
+30020	HGB	Red blood cells	Haemoglobin concentration	module4:1:248039451
+30030	HCT	Red blood cells	Haematocrit percentage	module4:1:248039451
+30040	MCV	Red blood cells	Mean corpuscular volume	module4:1:248039451
+30050	MCH	Red blood cells	Mean corpuscular haemoglobin	module4:1:248039451
+30060	MCHC	Red blood cells	Mean corpuscular haemoglobin concentration	module4:1:248039451
+30070	RBC_W	Red blood cells	Red blood cell distribution width	module4:1:248039451
+30270	MSCV	Red blood cells	Mean sphered cell volume	module4:1:248039451
+30260	MRV	Red blood cells	Mean reticulocyte volume	module4:1:248039451
+30280	IRF	Red blood cells	Immature reticulocyte fraction	module4:1:248039451
+30000	WBC	White blood cells	White blood cell count	module4:1:248039451
+30120	LYMPH	White blood cells	Lymphocyte count	module4:1:248039451
+30140	NEUT	White blood cells	Neutrophill count	module4:1:248039451
+30150	EO	White blood cells	Eosinophill count	module4:1:248039451
+30190	MONO_P	White blood cells	Monocyte percentage	module4:1:248039451
+30100	MPV	Platelets	Mean platelet volume	module4:3:56848999
+30240	RET_P	Red blood cells	Reticulocyte percentage	module4:3:56848999
+30120	LYMPH	White blood cells	Lymphocyte count	module4:3:56848999
+30080	PLT	Platelets	Platelet count	module4:3:56901292
+30100	MPV	Platelets	Mean platelet volume	module4:3:56901292
+30250	RET	Red blood cells	Reticulocyte count	module4:3:56901292
+30260	MRV	Red blood cells	Mean reticulocyte volume	module4:3:56901292
+30080	PLT	Platelets	Platelet count	module4:9:99118445
+30090	PLTC	Platelets	Platelet crit	module4:9:99118445
+30100	MPV	Platelets	Mean platelet volume	module4:9:99118445
+30110	PDW	Platelets	Platelet distribution width	module4:9:99118445

@@ -1,0 +1,7 @@
+Region	Module	Chr	Pos	traits	cis_genes	link_gene	link_snp	note
+module15:17:33867678	module15	17	33867678	5	SLFN12L;SLFN14	https://www.ncbi.nlm.nih.gov/gene/100506736;https://www.ncbi.nlm.nih.gov/gene/342618		
+module15:19:4502201	module15	19	4502201	7	PLIN4	https://www.ncbi.nlm.nih.gov/gene/729359		
+module15:2:60725451	module15	2	60725451	1				
+module15:2:8762414	module15	2	8762414	14	ID2	https://www.ncbi.nlm.nih.gov/gene/3398		
+module15:6:139840693	module15	6	139840693	7	CITED2	https://www.ncbi.nlm.nih.gov/gene/10370	https://www.ncbi.nlm.nih.gov/snp/rs592423?horizontal_tab=true#publications	
+module15:7:50426097	module15	7	50426097	10	IKZF1	https://www.ncbi.nlm.nih.gov/gene/10320		intron
