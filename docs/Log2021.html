@@ -399,7 +399,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-11-15
+<strong>Last updated:</strong> 2021-11-24
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreec50e156165e9d5b6476cde458a0c6965b55a66a5targetblankc50e156a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/c50e156165e9d5b6476cde458a0c6965b55a66a5" target="_blank">c50e156</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree94a7bb9e36654ec06af3e122a9fcb14e5b22cf8ftargetblank94a7bb9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/94a7bb9e36654ec06af3e122a9fcb14e5b22cf8f" target="_blank">94a7bb9</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreec50e156165e9d5b6476cde458a0c6965b55a66a5targetblankc50e156a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree94a7bb9e36654ec06af3e122a9fcb14e5b22cf8ftargetblank94a7bb9a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/c50e156165e9d5b6476cde458a0c6965b55a66a5" target="_blank">c50e156</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/94a7bb9e36654ec06af3e122a9fcb14e5b22cf8f" target="_blank">94a7bb9</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -515,7 +515,7 @@ Ignored files:
     Ignored:    output/.DS_Store
 
 Untracked files:
-    Untracked:  data/ukbb_blood_traits_coloc_module_enrich.csv
+    Untracked:  analysis/test_log.Rmd
 
 </code></pre>
 <p>
@@ -554,6 +554,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/94a7bb9e36654ec06af3e122a9fcb14e5b22cf8f/analysis/Log2021.Rmd" target="_blank">94a7bb9</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-24
+</td>
+<td>
+add notes
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/91631c920d01f81af3611c92c61cdc365f1a5a91/docs/Log2021.html" target="_blank">91631c9</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1742,11 +1776,394 @@ blockquote {
     border-left: 5px solid #eee;
 }
 </style>
+<div id="nov-23" class="section level2">
+<h2>Nov 23</h2>
+<div id="are-the-dark-green-signals-eqtlgen-signals" class="section level3">
+<h3>1. Are the dark green signals eQTLGen signals?</h3>
+<div id="procedure" class="section level4">
+<h4>Procedure</h4>
+<ul>
+<li><p>Check those dark green signals (colocalized regions): region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span>, <span class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
+<li><p>eQTLGen SNPs, cis- &amp; trans- signals.</p></li>
+</ul>
+</div>
+<div id="observations" class="section level4">
+<h4>Observations</h4>
+<ul>
+<li><p>trans-</p>
+<p>#all regions for all traits: 551 .<br />
+#unique regions: 105 .<br />
+#unique lead SNPs: 74 .<br />
+Out of 74 unique lead SNPs, 9 are included in eQTLGen trans- SNPs.<br />
+Out of 9 SNPs, 9 are eQTLGen trans- signals.</p></li>
+<li><p>cis-</p>
+<p>#all regions for all traits: 551 .<br />
+#unique regions: 105 .<br />
+#unique lead SNPs: 74 .<br />
+Out of 74 unique lead SNPs, 65 are included in eQTLGen cis- SNPs.<br />
+Out of 65 SNPs, 61 are eQTLGen cis- signals.<br />
+</p></li>
+<li><p>trans- &amp; cis-</p>
+<p>Out of 74 unique lead SNPs, 65 are included in eQTLGen SNPs.<br />
+Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
+</ul>
+</div>
+</div>
+<div id="look-at-module-15" class="section level3">
+<h3>2. Look at module 15</h3>
+<p>We wanted to look at module15, because in <a href="#Enrichment-of-colocalized-regions">earlier section</a>, we found that module15 correspond to multiple regions extensively colocalized with multiple ukbb traits, but we didn’t find any enrichment of the genes in module15.</p>
+<ul>
+<li><p>coloc region &amp; traits</p>
+<p>See <a href="../data/module15.coloc.traits.txt">file</a> for detailed traits and regions.</p></li>
+</ul>
+<table style="width:100%;">
+<caption>The colocalization between the module and traits are from the following regions (marked by lead SNPs):</caption>
+<colgroup>
+<col width="9%" />
+<col width="3%" />
+<col width="7%" />
+<col width="40%" />
+<col width="35%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Region</th>
+<th align="right">traits</th>
+<th align="left">cis_genes</th>
+<th align="left">link_gene</th>
+<th align="left">link_snp</th>
+<th align="left">note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">module15:17:33867678</td>
+<td align="right">5</td>
+<td align="left">SLFN12L;SLFN14</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/100506736;https://www.ncbi.nlm.nih.gov/gene/342618" class="uri">https://www.ncbi.nlm.nih.gov/gene/100506736;https://www.ncbi.nlm.nih.gov/gene/342618</a></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">module15:19:4502201</td>
+<td align="right">7</td>
+<td align="left">PLIN4</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/729359" class="uri">https://www.ncbi.nlm.nih.gov/gene/729359</a></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">module15:2:60725451</td>
+<td align="right">1</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">module15:2:8762414</td>
+<td align="right">14</td>
+<td align="left">ID2</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/3398" class="uri">https://www.ncbi.nlm.nih.gov/gene/3398</a></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">module15:6:139840693</td>
+<td align="right">7</td>
+<td align="left">CITED2</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/10370" class="uri">https://www.ncbi.nlm.nih.gov/gene/10370</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs592423?horizontal_tab=true#publications" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs592423?horizontal_tab=true#publications</a></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">module15:7:50426097</td>
+<td align="right">10</td>
+<td align="left">IKZF1</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/10320" class="uri">https://www.ncbi.nlm.nih.gov/gene/10320</a></td>
+<td align="left"></td>
+<td align="left">intron</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>The coloc traits are from the follwing trait groups, mostly <code>Red blood cells</code>. (bc we have more Red blood cells traits?)</caption>
+<thead>
+<tr class="header">
+<th align="left">GWAS Group</th>
+<th align="right">#traits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Platelets</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Red blood cells</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="left">White blood cells</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>module15</p>
+<p>191 genes. <a href="https://biit.cs.ut.ee/gplink/l/4H3dKiAaRm">Enrichment in g:profiler</a></p></li>
+</ul>
+<p>??? genes: number, enrichment in David</p>
+</div>
+<div id="look-at-module-4" class="section level3">
+<h3>3. Look at module 4</h3>
+<p>We wanted to look at module4, because in <a href="#Enrichment-of-colocalized-regions">earlier section</a>, we found that module4 correspond to multiple regions extensively colocalized with multiple ukbb traits.</p>
+<ul>
+<li><p>coloc region &amp; traits</p>
+<p>See <a href="../data/module4.coloc.traits.txt">file</a> for detailed traits and regions.</p></li>
+</ul>
+<table>
+<caption>The colocalization between the module and traits are from the following regions (marked by lead SNPs):</caption>
+<colgroup>
+<col width="9%" />
+<col width="3%" />
+<col width="6%" />
+<col width="37%" />
+<col width="35%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Region</th>
+<th align="right">traits</th>
+<th align="left">cis_genes</th>
+<th align="left">link_gene</th>
+<th align="left">link_snp</th>
+<th align="left">note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">module4:1:248039451</td>
+<td align="right">15</td>
+<td align="left">OR2W3;TRIM58</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/343171;https://www.ncbi.nlm.nih.gov/gene/25893" class="uri">https://www.ncbi.nlm.nih.gov/gene/343171;https://www.ncbi.nlm.nih.gov/gene/25893</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs3811444?horizontal_tab=true#publications" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs3811444?horizontal_tab=true#publications</a></td>
+<td align="left">introns</td>
+</tr>
+<tr class="even">
+<td align="left">module4:3:56848999</td>
+<td align="right">3</td>
+<td align="left">ARHGEF3</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/50650" class="uri">https://www.ncbi.nlm.nih.gov/gene/50650</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true</a></td>
+<td align="left">intron of ARHGEF3</td>
+</tr>
+<tr class="odd">
+<td align="left">module4:3:56901292</td>
+<td align="right">4</td>
+<td align="left">ARHGEF3</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/50650" class="uri">https://www.ncbi.nlm.nih.gov/gene/50650</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true</a></td>
+<td align="left">intron of ARHGEF3</td>
+</tr>
+<tr class="even">
+<td align="left">module4:9:99118445</td>
+<td align="right">4</td>
+<td align="left">SLC35D2</td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/11046" class="uri">https://www.ncbi.nlm.nih.gov/gene/11046</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs11794772?horizontal_tab=true" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs11794772?horizontal_tab=true</a></td>
+<td align="left">intron</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>The coloc traits are from the follwing trait groups, mostly <code>Red blood cells</code></caption>
+<thead>
+<tr class="header">
+<th align="left">GWAS Group</th>
+<th align="right">#traits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Platelets</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Red blood cells</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">White blood cells</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="coloc-between-cis--and-trans--signals" class="section level3">
+<h3>4. coloc between cis- and trans- signals</h3>
+<div id="procedure-1" class="section level4">
+<h4>Procedure</h4>
+<ul>
+<li><p>130 regions, based on module-QTLs. With region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span> and with at least one cis- gene.</p></li>
+<li><p>I will test colocalization between module and a gene, if the genes’ 500k flanking region have (&gt;5) overlapped SNPs with the module region.</p></li>
+<li><p>Update the region by the overlapped SNPs of both module-QTLs and gene eQTLs.</p></li>
+<li><p>Exclude the region if the minimum eQTL <span class="math inline">\(p&gt;10^{-5}\)</span>.</p></li>
+</ul>
+</div>
+<div id="basics" class="section level4">
+<h4>Basics</h4>
+<p>130 regions. With region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span> and with at least one cis- gene.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/1123_region.cis.gene.png" alt="Fig A: region v.s. #cis genes. Fig B: region v.s. dis" width="70%" />
+<p class="caption">
+Fig A: region v.s. #cis genes. Fig B: region v.s. dis
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1123_region.cis.gene">
+Past versions of 1123_region.cis.gene.png
+</button>
+</p>
+<div id="fig-1123_region.cis.gene" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/eb8733a621537abd39a691427a450badecbb1c0f/docs/asset/1123_region.cis.gene.png" target="_blank">eb8733a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="observations-1" class="section level4">
+<h4>Observations</h4>
+<ul>
+<li><p>As a result, there are 429 (region, module, gene) sets remained.</p></li>
+<li><p>Out of which, 89 regions are colocalized (PP.H4.abf &gt; 0.75).</p></li>
+<li><p>Distribution of coloc regions</p></li>
+</ul>
+<p><img src="asset/1123_cis_coloc.region.summary.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1123_cis_coloc.region.summary">
+Past versions of 1123_cis_coloc.region.summary.png
+</button>
+</p>
+<div id="fig-1123_cis_coloc.region.summary" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/eb8733a621537abd39a691427a450badecbb1c0f/docs/asset/1123_cis_coloc.region.summary.png" target="_blank">eb8733a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/1123_fig_bar_prop_cis.png" alt="Region v.s. #cis genes. Light blue is for the cis genes near the region. Dark blue is for the colocalized cis genes. There are 120 regions in total, out of which 54 have at least one colocalized cis- gene." width="50%" />
+<p class="caption">
+Region v.s. #cis genes. Light blue is for the cis genes near the region. Dark blue is for the colocalized cis genes. There are 120 regions in total, out of which 54 have at least one colocalized cis- gene.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1123_fig_bar_prop_cis">
+Past versions of 1123_fig_bar_prop_cis.png
+</button>
+</p>
+<div id="fig-1123_fig_bar_prop_cis" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/eb8733a621537abd39a691427a450badecbb1c0f/docs/asset/1123_fig_bar_prop_cis.png" target="_blank">eb8733a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Note</strong>: Here there are 120 regions instead of 130 regions, because I excluded the cis- gene regions with <span class="math inline">\(min(p)&gt;10^{-5}\)</span> before I do the coloc.</p>
+<ul>
+<li>Colocalized region visualization</li>
+</ul>
+<p><img src="asset/1123_1.reg.module25:3:101011537.gene.SENP7.reg.coloc.png" style="width:45.0%" /> <img src="asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png" style="width:45.0%" /></p>
+</div>
+</div>
+<div id="mr-under-assumption-of-textvarbeta-slack" class="section level3">
+<h3>5. MR under assumption of <span class="math inline">\(\text{var}{\beta}\)</span> (slack)</h3>
+</div>
+</div>
 <div id="nov-15" class="section level2">
 <h2>Nov 15</h2>
 <div id="proportion-of-colocalized-regions-for-29-blood-related-ukbb-traits" class="section level3">
 <h3>1. Proportion of colocalized regions for 29 blood-related UKBB traits</h3>
-<div id="procedure" class="section level4">
+<div id="procedure-2" class="section level4">
 <h4>Procedure</h4>
 <ul>
 <li><p>Aim: to see how many regions have shared signals for both trait and module. (PP4 &gt; 0.75)</p></li>
@@ -1767,6 +2184,43 @@ blockquote {
 The proportion of colocalized regions for 29 blood-related UKBB traits.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1115_all.traits.coloc.region.summary">
+Past versions of 1115_all.traits.coloc.region.summary.png
+</button>
+</p>
+<div id="fig-1115_all.traits.coloc.region.summary" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1115_all.traits.coloc.region.summary.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li><p>This figure gives (1) the number of regions at the upper panel, (2) proportion of colocalized regions at the lower panel.</p></li>
 <li><p>Blue is for the frist type of regions. Green is for the second type of reigons, based on module-QTL signals.</p></li>
@@ -1776,7 +2230,7 @@ The proportion of colocalized regions for 29 blood-related UKBB traits.
 </div>
 <div id="enrichment-of-colocalized-regions" class="section level3">
 <h3>2. Enrichment of colocalized regions</h3>
-<div id="procedure-1" class="section level4">
+<div id="procedure-3" class="section level4">
 <h4>Procedure</h4>
 <ul>
 <li><p>colocalized regions: region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span>, <span class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
@@ -1790,6 +2244,43 @@ The proportion of colocalized regions for 29 blood-related UKBB traits.
 <p class="caption">
 traits v.s. module v.s. coloc region
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1115_traits.module.coloc.region">
+Past versions of 1115_traits.module.coloc.region.png
+</button>
+</p>
+<div id="fig-1115_traits.module.coloc.region" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1115_traits.module.coloc.region.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>The above figure shows, what are the modules that have colocalized regions with a trait.</p></li>
@@ -1849,6 +2340,11 @@ traits v.s. module v.s. coloc region
 <ul>
 <li><p>Use R package <a href="https://mrcieu.github.io/TwoSampleMR/#installation">TwoSampleMR</a>.</p></li>
 <li><p><strong>Problem</strong>: no <span class="math inline">\(\beta, \text{se}(\beta)\)</span> for module as exposure. Exposure file requirements see <a href="https://mrcieu.github.io/TwoSampleMR/articles/exposure.html">here</a>.</p></li>
+<li><p>Use <a href="https://www.nature.com/articles/ng.3538#Sec11">SMR</a>? No. As SMR is also <span class="math inline">\(\beta, \text{se}(\beta)\)</span> based. In addition to that, it only uses one SNP as instrument variable.</p>
+<ul>
+<li>SMR only uses one SNP as instrument variable. “top associated cis-eQTL”.</li>
+<li>Distinguishing pleiotropy from linkage; test for pleiotropic association.</li>
+</ul></li>
 <li><p>How people do MR? <a href="https://www.medrxiv.org/content/10.1101/2021.06.01.21258159v1.full-text">Paper-Yanyu</a></p>
 <ol style="list-style-type: decimal">
 <li>the instrument variants were selected using LD clumping function (ld_clump) in the R package ieugwasr</li>
@@ -1869,9 +2365,6 @@ traits v.s. module v.s. coloc region
 <blockquote>
 <p>The meta-analysis is based on an extension of ACAT method (Liu et al., 2019) that takes into account the direction of the effects.</p>
 </blockquote>
-</div>
-<div id="coloc-between-cis--and-trans--signals" class="section level3">
-<h3>4. coloc between cis- and trans- signals</h3>
 </div>
 </div>
 <div id="nov-08" class="section level2">
@@ -1954,17 +2447,128 @@ traits v.s. module v.s. coloc region
 An example of colocalized region visualization. Trait Platelet count.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1108_coloc.region.summary">
+Past versions of 1108_coloc.region.summary.png
+</button>
+</p>
+<div id="fig-1108_coloc.region.summary" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1108_coloc.region.summary.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <img src="asset/1108_pheno30090.coloc.region.summary.png" alt="An example of colocalized region visualization. Trait Platelet crit" width="70%" />
 <p class="caption">
 An example of colocalized region visualization. Trait Platelet crit
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1108_pheno30090.coloc.region.summary">
+Past versions of 1108_pheno30090.coloc.region.summary.png
+</button>
+</p>
+<div id="fig-1108_pheno30090.coloc.region.summary" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1108_pheno30090.coloc.region.summary.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <img src="asset/1108_pheno30100.coloc.region.summary.png" alt="An example of colocalized region visualization. Trait Mean platelet volume" width="70%" />
 <p class="caption">
 An example of colocalized region visualization. Trait Mean platelet volume
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1108_pheno30100.coloc.region.summary">
+Past versions of 1108_pheno30100.coloc.region.summary.png
+</button>
+</p>
+<div id="fig-1108_pheno30100.coloc.region.summary" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1108_pheno30100.coloc.region.summary.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ol start="3" style="list-style-type: decimal">
 <li>Colocalized region visualization by <a href="https://github.com/boxiangliu/locuscomparer"><code>locuscomparer</code></a></li>
@@ -1974,6 +2578,43 @@ An example of colocalized region visualization. Trait Mean platelet volume
 <p class="caption">
 An example of colocalized region visualization.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1108_pheno30080.module102:7:50427982.reg.coloc">
+Past versions of 1108_pheno30080.module102:7:50427982.reg.coloc.png
+</button>
+</p>
+<div id="fig-1108_pheno30080.module102:7:50427982.reg.coloc" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1108_pheno30080.module102:7:50427982.reg.coloc.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ol start="4" style="list-style-type: decimal">
 <li><a href="https://www.biorxiv.org/content/10.1101/2021.04.07.438882v1.full">29 UKBB blood traits</a></li>
@@ -1996,12 +2637,86 @@ An example of colocalized region visualization.
 enloc equation
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101_enloc_theory">
+Past versions of 1101_enloc_theory.png
+</button>
+</p>
+<div id="fig-1101_enloc_theory" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1101_enloc_theory.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><a href="https://github.com/xqwen/fastenloc/tree/master/tutorial">Code tutorial</a>:</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1101_enloc_code_pipeline.png" alt="enloc code workflow" width="80%" />
 <p class="caption">
 enloc code workflow
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101_enloc_code_pipeline">
+Past versions of 1101_enloc_code_pipeline.png
+</button>
+</p>
+<div id="fig-1101_enloc_code_pipeline" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1101_enloc_code_pipeline.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>Need to provide “expression file” for the first fine-mapping. But we don’t have this file in the case of a module being the “expression trait”.</p></li>
@@ -2018,6 +2733,43 @@ enloc code workflow
 coloc equation
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101_coloc_theory">
+Past versions of 1101_coloc_theory.png
+</button>
+</p>
+<div id="fig-1101_coloc_theory" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1101_coloc_theory.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><a href="https://chr1swallace.github.io/coloc/">Code tutorial</a>:</p>
 <p>First, segment the whole genome. Then fine-map each traits by <a href="https://stephenslab.github.io/susieR/articles/index.html"><code>susieR</code></a>, better than <code>coloc.abf</code> as it allows multiple causal variants. Finally, coloc.</p>
 <div class="figure" style="text-align: center">
@@ -2025,6 +2777,43 @@ coloc equation
 <p class="caption">
 coloc code workflow
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1101_coloc_code_workflow">
+Past versions of 1101_coloc_code_workflow.png
+</button>
+</p>
+<div id="fig-1101_coloc_code_workflow" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1101_coloc_code_workflow.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>Determine LD block? Independent LD block + small GWAS pvalue loci + small module pvalue loci</p></li>
@@ -2137,6 +2926,43 @@ coloc code workflow
 #signals of MSigDB modules for each module v.s. chr.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1018-num_signals_module_vs_chr_">
+Past versions of 1018-num_signals_module_vs_chr_.png
+</button>
+</p>
+<div id="fig-1018-num_signals_module_vs_chr_" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1018-num_signals_module_vs_chr_.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="string-ppi-interaction-network-clustered-by-hierarchical-clustering." class="section level3">
@@ -2177,6 +3003,43 @@ coloc code workflow
 Pipeline to obtain hallmark gene sets from other MSigDB gene sets.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1004_hallmark_pipeline">
+Past versions of 1004_hallmark_pipeline.jpeg
+</button>
+</p>
+<div id="fig-1004_hallmark_pipeline" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1004_hallmark_pipeline.jpeg" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>See <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/">paper here</a>.</p>
 <blockquote>
 <p>pros? The hallmarks reduce noise and redundancy of the original overlapping gene sets, from which a hallmark is derived (‘founder’ sets).</p>
@@ -2188,12 +3051,86 @@ Pipeline to obtain hallmark gene sets from other MSigDB gene sets.
 50 hallmark gene sets size
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1004_geneSet_size_h.all.v7.4.symbols.gmt">
+Past versions of 1004_geneSet_size_h.all.v7.4.symbols.gmt.png
+</button>
+</p>
+<div id="fig-1004_geneSet_size_h.all.v7.4.symbols.gmt" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1004_geneSet_size_h.all.v7.4.symbols.gmt.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Summary of the hallmark gene sets: name, process category, description, number of founder sets and number of genes it contains. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/table/T1/?report=objectonly">Table.</a></p>
 <div class="figure" style="text-align: center">
 <img src="asset/1004_geneSet_overlap_h.all.v7.4.symbols.gmt.png" alt="Overlapped genes among 50 hallmark gene sets" width="80%" />
 <p class="caption">
 Overlapped genes among 50 hallmark gene sets
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1004_geneSet_overlap_h.all.v7.4.symbols.gmt">
+Past versions of 1004_geneSet_overlap_h.all.v7.4.symbols.gmt.png
+</button>
+</p>
+<div id="fig-1004_geneSet_overlap_h.all.v7.4.symbols.gmt" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/1004_geneSet_overlap_h.all.v7.4.symbols.gmt.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -2207,11 +3144,85 @@ Overlapped genes among 50 hallmark gene sets
 </ul>
 <p>I looked at the top two largest clusters: Module 1 with 214 genes, and Module 2 with 188 genes.</p>
 <p><img src="asset/0930_stringPPI_large_module.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0930_stringPPI_large_module">
+Past versions of 0930_stringPPI_large_module.png
+</button>
+</p>
+<div id="fig-0930_stringPPI_large_module" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/0930_stringPPI_large_module.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li>Small clusters too tight such that can be merged into less bigger cluster?</li>
 </ul>
 <p>I looked at the last three smallest clusters: Module 194, 193, 192, with 23, 26, 26 genes, correspondingly.</p>
 <p><img src="asset/0930_stringPPI_small_module.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0930_stringPPI_small_module">
+Past versions of 0930_stringPPI_small_module.png
+</button>
+</p>
+<div id="fig-0930_stringPPI_small_module" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/b27c4e1fcf611b039932dc2b8caca1241ea81803/docs/asset/0930_stringPPI_small_module.png" target="_blank">b27c4e1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="septermber-23" class="section level2">
@@ -2587,7 +3598,7 @@ liliw-w
 </div>
 </div>
 <p>Here I explain the above figure. x-axis is for each module (75), y-axis is for number of SNPs under various scenarios that can be used for computing <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>. Color is for various z-scores cutoff for defining “NULL SNPs”. The cutoff is pvalue of z. Smaller cutoff, more insignificant z. Point shape is for unique SNPs and independent SNPs. The barplot in the lower panel gives the number of genes in each module.</p>
-<div id="observations" class="section level4">
+<div id="observations-2" class="section level4">
 <h4>Observations</h4>
 <ol style="list-style-type: decimal">
 <li><p>For larger gene module, the common null SNPs (unique and independent) are fewer.</p></li>
@@ -2677,7 +3688,7 @@ liliw-w
 </div>
 </div>
 <p>The above figure gives QQ-plot for all pvalues across 22 chr’s of module1.</p>
-<div id="observations-1" class="section level4">
+<div id="observations-3" class="section level4">
 <h4>Observations</h4>
 <ol style="list-style-type: decimal">
 <li>Using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> gives larger PCO pvalues, than using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>. Number of signals decreases. Under Bonferroni pvalue threshold (~1e-8), when using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, there are 790 out of 9918 SNPs are significant, compared to 9794 significant SNPs using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>.</li>
