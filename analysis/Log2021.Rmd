@@ -21,6 +21,176 @@ blockquote {
 }
 ```
 
+
+## Dec 13
+
+### 1. Add trait MS to coloc analysis
+
+- Request summary statistic from [link](https://imsgc.net/).
+
+- Meta analysis from 15 GWASs.
+
+I added coloc results of MS to [earlier section](#Proportion-of-colocalized-regions-for-immune-traits).
+
+
+### 2. Look at the colocalized regions between trans and immune traits
+
+#### coloc regions overview
+
+- I specifically looked at the following three traits, as they have a relatively high proportion of coloc regions from [earlier section](#Proportion-of-colocalized-regions-for-immune-traits).
+
+```{r}
+df <- data.frame("disease" = c("crohn's disease (cd)", "Inflammaroty bowel disease (ibd)", "Allergy"),
+                 "#light green regions" = c(51, 48, 43),
+                 "#dark green regions" = c(20, 18, 11),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+df <- cbind(df, "coloc prop" = df[["#dark green regions"]]/df[["#light green regions"]] )
+knitr::kable(df)
+```
+
+*light green regions: regions with lead module-QTL pvalue<1e-8.
+
+*dark green regions: coloc regions with lead module-QTL pvalue<1e-8.
+
+
+- What are those dark green regions in specific?
+
+Fig: Colocalized regions summary of crohn's disease, Inflammaroty bowel disease, Allergic disases. **Specifically for dark green regions**, i.e. coloc regions with lead module-QTL pvalue<1e-8.
+
+![](asset/1213_cd.coloc.Pval.region.summary.png){ width=32% }
+![](asset/1213_ibd.coloc.Pval.region.summary.png){ width=32% }
+![](asset/1213_Allergy.coloc.Pval.region.summary.png){ width=32% }
+
+
+#### Observations
+
+![](asset/1213_cd_ibd_Allergy_coloc_info.png){width=30%}
+![](asset/1213_cd_ibd_Allergy_coloc_region_overlap.png){width=25%}
+
+- These three traits share very similar coloc regions.
+
+  See the above venn diagram. The coloc regions of three traits are largely overlapped.
+
+
+```{r}
+df <- data.frame("module" = paste0("module", c(25, 51, 153, 156)),
+                 "#Genes" = c(123, 61, 15, 13),
+                 "Enrichment" = c("some genes are ZNF* genes", "almost all genes are ZNF* genes", "", "12 genes are ZNF* genes"),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(df)
+```
+
+- Module enrichment, relevant to immune?
+
+  - See [enrichment results here](https://biit.cs.ut.ee/gplink/l/VQIAZG_ZQT).
+  
+  - See [g:profiler enrichment overview](asset/1213_cd_ibd_Allergy_coloc_module.png).
+  
+  - See [g:profiler enrichment query file](asset/1213_cd_ibd_Allergy_coloc_module_gprofiler_query.txt).
+  
+  - See [David enrichment query file and gene descriptions](asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx).
+  
+  **Question: These four modules contain many zinc finger genes.**
+
+
+- SNP variants
+
+  - cis-genes?
+  
+  For the 20 lead SNPs, they are, Intron Variant of gene *SENP7*, *IMPG2*, *CEP97*, Non Coding Transcript Variant/2KB Upstream Variant of gene *SENP7*, or 500B Downstream Variant of gene *FAM172BP*.
+
+
+
+## Nov 29, Dec 06
+
+### 0. out 130 regions, % of colocalization
+
+I updated it to [earlier section](#coloc-between-cis--and-trans--signals) -> `Observations` -> `Distribution of coloc regions`.
+
+
+### 1. Other blood related traits: immune diseases
+
+Traits refer to [Paper](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#MOESM1).
+
+72 GWAS of immune-related and non-immune traits.
+
+> We compiled a set of 72 well-powered GWAS, including 14 for autoimmune diseases (11 unique disease types), 36 blood traits, and 22 other traits (Additional File 1: Table S4),
+
+> 72 publicly available GWAS summary statistics for 11 autoimmune diseases (14 studies).
+
+
+#### 14 autoimmune diseases overview
+
+See [file](../docs/asset/1129_72_traits_GWAS.xlsx).
+
+- There are 14 studies (datasets) for 11 immune diseases.
+
+- For two studies (MS, ApD), the summary stat is only available upon request. (Update: we have requested sum stat for MS and added its coloc results here.)
+
+- For one study (sle), the previous dataset is no longer available. So I downloaded the updated version (meta- v.s. EUR-).
+
+- **Many studies meta-analyze multiple datasets**
+
+  - Use meta sum stat for coloc?
+  - Use meta sample sizes of cases and controls?
+
+
+#### coloc proportion {#Proportion-of-colocalized-regions-for-immune-traits}
+
+The following figure is similar to [earlier section](#Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits), which gives regions and proportions of coloc regions.
+
+
+```{r fig.cap="The proportion of colocalized regions for 11 auto-immune diseases.", out.width="70%"}
+knitr::include_graphics(c("asset/1129_all.traits.coloc.region.summary.png"), error = FALSE)
+```
+
+For a specific trait, the coloc regions' summary and visualization are in folder `/scratch/midway2/liliw1/coloc/pmid*_*/plot`.
+
+
+#### Observations
+
+- These 11 immune diseases generally have less blue regions (GWAS regions with minimum QTL $p>10^{-5}$).
+
+- Also less green regions (regions with very small module-QTL pvalues).
+
+- Also lower proportion of coloc regions, out of blue and green regions. 8 diseases have 0 coloc regions.
+
+- Due to meta-analysis? Cell type complexity?
+
+
+### 2. MR under assumption of $\text{var}{\beta}$ (on slack)
+
+#### Procedure
+
+For MR R package and code tutorial, see [earlier section](#Mendelian-Randomization-MR-among-SNPs-module-trait).
+
+Basically, we will need $\beta$, $\text{se}({\beta})$ for both module-QTLs and GWAS-QTLs. However, we don't have estiamted $\beta$ for module-QTLs. What we have is just $p$.
+
+Therefore, on slack, assumptions to make TwoSampleMR work,
+
+- (Strong assumption) set $\beta=z$, $\text{se}({\beta})=1$.
+
+- (Strong assumption) Since we only have $p$, we will only have absolute zscores. So one way to deal with this is to assume $\beta_{SNP-module}$ and $\beta_{SNP-GWAS}$ have the same sign (+), so that we only consider the consistency of effect magnitude.
+
+- We look at each trans-eQTL region separately, rather than combine all trans-eQTL regions for a module, as what we do here is "like mediation analysis, SNP affect trait through this gene module", "rather than to infer if the module is causal for the trait, the causality between module and trait".
+
+
+#### Results
+
+Here I take trait 30090 (platelet crit) for an example.
+
+MR result in figure `pheno30090.region.mr.png`.
+
+
+#### Observations
+
+- $\beta_{SNP-module}$ is much larger than $\beta_{SNP-GWAS}$.
+
+- Insufficient (1) or only a few (mostly 2, a few 3) independent SNPs (IV) used for MR, as we consider one region each time and the region is quite short (100k).
+
+
+
+
 ## Nov 23
 
 ### 1. Are the dark green signals eQTLGen signals?
@@ -113,7 +283,7 @@ knitr::kable(table(df[!duplicated(df$Phenocode), "GWAS Group"]),
              caption = "The coloc traits are from the follwing trait groups, mostly `Red blood cells`")
 ```
 
-### 4. coloc between cis- and trans- signals
+### 4. coloc between cis- and trans- signals {#coloc-between-cis--and-trans--signals}
 
 #### Procedure
 
@@ -158,12 +328,9 @@ knitr::include_graphics(c("asset/1123_fig_bar_prop_cis.png"), error = FALSE)
 ![](asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png){ width=45% }
 
 
-### 5. MR under assumption of $\text{var}{\beta}$ (slack)
-
-
 ## Nov 15
 
-### 1. Proportion of colocalized regions for 29 blood-related UKBB traits
+### 1. Proportion of colocalized regions for 29 blood related UKBB traits {#Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits}
 
 #### Procedure
 
@@ -226,7 +393,7 @@ knitr::kable(df)
 - Although "module15" is extensively colocalized with many traits, it's not enriched in any pathway.
 
 
-### 3. Mendelian Randomization (MR) among SNPs, module, trait
+### 3. Mendelian Randomization (MR) among SNPs, module, trait {#Mendelian-Randomization-MR-among-SNPs-module-trait}
 
 - Use R package [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/#installation).
 
@@ -252,7 +419,7 @@ knitr::kable(df)
 > The meta-analysis is based on an extension of ACAT method (Liu et al., 2019) that takes into account the direction of the effects.
 
 
-
+ 
 ## Nov 08
 
 ### Some statistics
