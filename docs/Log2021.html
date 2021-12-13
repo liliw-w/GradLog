@@ -399,7 +399,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-11-24
+<strong>Last updated:</strong> 2021-12-12
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree94a7bb9e36654ec06af3e122a9fcb14e5b22cf8ftargetblank94a7bb9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/94a7bb9e36654ec06af3e122a9fcb14e5b22cf8f" target="_blank">94a7bb9</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecdc581e5e25014ca7b0152b11d15547fd4524102targetblankcdc581ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/cdc581e5e25014ca7b0152b11d15547fd4524102" target="_blank">cdc581e</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree94a7bb9e36654ec06af3e122a9fcb14e5b22cf8ftargetblank94a7bb9a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecdc581e5e25014ca7b0152b11d15547fd4524102targetblankcdc581ea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/94a7bb9e36654ec06af3e122a9fcb14e5b22cf8f" target="_blank">94a7bb9</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/cdc581e5e25014ca7b0152b11d15547fd4524102" target="_blank">cdc581e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -554,6 +554,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/cdc581e5e25014ca7b0152b11d15547fd4524102/analysis/Log2021.Rmd" target="_blank">cdc581e</a>
+</td>
+<td>
+llw
+</td>
+<td>
+2021-12-12
+</td>
+<td>
+update progress
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/5565fdd73ab08feb41746c72cb0a7ef119b32adf/docs/Log2021.html" target="_blank">5565fdd</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2021-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1776,18 +1810,244 @@ blockquote {
     border-left: 5px solid #eee;
 }
 </style>
+<div id="dec-13" class="section level2">
+<h2>Dec 13</h2>
+<div id="add-trait-ms-to-coloc-analysis" class="section level3">
+<h3>1. Add trait MS to coloc analysis</h3>
+<ul>
+<li><p>Request summary statistic from <a href="https://imsgc.net/">link</a>.</p></li>
+<li><p>Meta analysis from 15 GWASs.</p></li>
+</ul>
+<p>I added coloc results of MS to <a href="#Proportion-of-colocalized-regions-for-immune-traits">earlier section</a>.</p>
+</div>
+<div id="look-at-the-colocalized-regions-between-trans-and-immune-traits" class="section level3">
+<h3>2. Look at the colocalized regions between trans and immune traits</h3>
+<div id="coloc-regions-overview" class="section level4">
+<h4>coloc regions overview</h4>
+<ul>
+<li>I specifically looked at the following three traits, as they have a relatively high proportion of coloc regions from <a href="#Proportion-of-colocalized-regions-for-immune-traits">earlier section</a>.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">disease</th>
+<th align="right">#light green regions</th>
+<th align="right">#dark green regions</th>
+<th align="right">coloc prop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">crohn’s disease (cd)</td>
+<td align="right">51</td>
+<td align="right">20</td>
+<td align="right">0.3921569</td>
+</tr>
+<tr class="even">
+<td align="left">Inflammaroty bowel disease (ibd)</td>
+<td align="right">48</td>
+<td align="right">18</td>
+<td align="right">0.3750000</td>
+</tr>
+<tr class="odd">
+<td align="left">Allergy</td>
+<td align="right">43</td>
+<td align="right">11</td>
+<td align="right">0.2558140</td>
+</tr>
+</tbody>
+</table>
+<p>*light green regions: regions with lead module-QTL pvalue&lt;1e-8.</p>
+<p>*dark green regions: coloc regions with lead module-QTL pvalue&lt;1e-8.</p>
+<ul>
+<li>What are those dark green regions in specific?</li>
+</ul>
+<p>Fig: Colocalized regions summary of crohn’s disease, Inflammaroty bowel disease, Allergic disases. <strong>Specifically for dark green regions</strong>, i.e. coloc regions with lead module-QTL pvalue&lt;1e-8.</p>
+<p><img src="asset/1213_cd.coloc.Pval.region.summary.png" style="width:32.0%" /> <img src="asset/1213_ibd.coloc.Pval.region.summary.png" style="width:32.0%" /> <img src="asset/1213_Allergy.coloc.Pval.region.summary.png" style="width:32.0%" /></p>
+</div>
+<div id="observations" class="section level4">
+<h4>Observations</h4>
+<p><img src="asset/1213_cd_ibd_Allergy_coloc_info.png" style="width:30.0%" /> <img src="asset/1213_cd_ibd_Allergy_coloc_region_overlap.png" style="width:25.0%" /></p>
+<ul>
+<li><p>These three traits share very similar coloc regions.</p>
+<p>See the above venn diagram. The coloc regions of three traits are largely overlapped.</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">module</th>
+<th align="right">#Genes</th>
+<th align="left">Enrichment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">module25</td>
+<td align="right">123</td>
+<td align="left">some genes are ZNF* genes</td>
+</tr>
+<tr class="even">
+<td align="left">module51</td>
+<td align="right">61</td>
+<td align="left">almost all genes are ZNF* genes</td>
+</tr>
+<tr class="odd">
+<td align="left">module153</td>
+<td align="right">15</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">module156</td>
+<td align="right">13</td>
+<td align="left">12 genes are ZNF* genes</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Module enrichment, relevant to immune?</p>
+<ul>
+<li><p>See <a href="https://biit.cs.ut.ee/gplink/l/VQIAZG_ZQT">enrichment results here</a>.</p></li>
+<li><p>See <a href="asset/1213_cd_ibd_Allergy_coloc_module.png">g:profiler enrichment overview</a>.</p></li>
+<li><p>See <a href="asset/1213_cd_ibd_Allergy_coloc_module_gprofiler_query.txt">g:profiler enrichment query file</a>.</p></li>
+<li><p>See <a href="asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx">David enrichment query file and gene descriptions</a>.</p></li>
+</ul>
+<p><strong>Question: These four modules contain many zinc finger genes.</strong></p></li>
+<li><p>SNP variants</p>
+<ul>
+<li>cis-genes?</li>
+</ul>
+<p>For the 20 lead SNPs, they are, Intron Variant of gene <em>SENP7</em>, <em>IMPG2</em>, <em>CEP97</em>, Non Coding Transcript Variant/2KB Upstream Variant of gene <em>SENP7</em>, or 500B Downstream Variant of gene <em>FAM172BP</em>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="nov-29-dec-06" class="section level2">
+<h2>Nov 29, Dec 06</h2>
+<div id="out-130-regions-of-colocalization" class="section level3">
+<h3>0. out 130 regions, % of colocalization</h3>
+<p>I updated it to <a href="#coloc-between-cis--and-trans--signals">earlier section</a> -&gt; <code>Observations</code> -&gt; <code>Distribution of coloc regions</code>.</p>
+</div>
+<div id="other-blood-related-traits-immune-diseases" class="section level3">
+<h3>1. Other blood related traits: immune diseases</h3>
+<p>Traits refer to <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#MOESM1">Paper</a>.</p>
+<p>72 GWAS of immune-related and non-immune traits.</p>
+<blockquote>
+<p>We compiled a set of 72 well-powered GWAS, including 14 for autoimmune diseases (11 unique disease types), 36 blood traits, and 22 other traits (Additional File 1: Table S4),</p>
+</blockquote>
+<blockquote>
+<p>72 publicly available GWAS summary statistics for 11 autoimmune diseases (14 studies).</p>
+</blockquote>
+<div id="autoimmune-diseases-overview" class="section level4">
+<h4>14 autoimmune diseases overview</h4>
+<p>See <a href="../docs/asset/1129_72_traits_GWAS.xlsx">file</a>.</p>
+<ul>
+<li><p>There are 14 studies (datasets) for 11 immune diseases.</p></li>
+<li><p>For two studies (MS, ApD), the summary stat is only available upon request. (Update: we have requested sum stat for MS and added its coloc results here.)</p></li>
+<li><p>For one study (sle), the previous dataset is no longer available. So I downloaded the updated version (meta- v.s. EUR-).</p></li>
+<li><p><strong>Many studies meta-analyze multiple datasets</strong></p>
+<ul>
+<li>Use meta sum stat for coloc?</li>
+<li>Use meta sample sizes of cases and controls?</li>
+</ul></li>
+</ul>
+</div>
+<div id="Proportion-of-colocalized-regions-for-immune-traits" class="section level4">
+<h4>coloc proportion</h4>
+<p>The following figure is similar to <a href="#Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits">earlier section</a>, which gives regions and proportions of coloc regions.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/1129_all.traits.coloc.region.summary.png" alt="The proportion of colocalized regions for 11 auto-immune diseases." width="70%" />
+<p class="caption">
+The proportion of colocalized regions for 11 auto-immune diseases.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1129_all.traits.coloc.region.summary">
+Past versions of 1129_all.traits.coloc.region.summary.png
+</button>
+</p>
+<div id="fig-1129_all.traits.coloc.region.summary" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/69b76c8e4b08c292abc095812021b9d55ac2f74c/docs/asset/1129_all.traits.coloc.region.summary.png" target="_blank">69b76c8</a>
+</td>
+<td>
+llw
+</td>
+<td>
+2021-12-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>For a specific trait, the coloc regions’ summary and visualization are in folder <code>/scratch/midway2/liliw1/coloc/pmid*_*/plot</code>.</p>
+</div>
+<div id="observations-1" class="section level4">
+<h4>Observations</h4>
+<ul>
+<li><p>These 11 immune diseases generally have less blue regions (GWAS regions with minimum QTL <span class="math inline">\(p&gt;10^{-5}\)</span>).</p></li>
+<li><p>Also less green regions (regions with very small module-QTL pvalues).</p></li>
+<li><p>Also lower proportion of coloc regions, out of blue and green regions. 8 diseases have 0 coloc regions.</p></li>
+<li><p>Due to meta-analysis? Cell type complexity?</p></li>
+</ul>
+</div>
+</div>
+<div id="mr-under-assumption-of-textvarbeta-on-slack" class="section level3">
+<h3>2. MR under assumption of <span class="math inline">\(\text{var}{\beta}\)</span> (on slack)</h3>
+<div id="procedure" class="section level4">
+<h4>Procedure</h4>
+<p>For MR R package and code tutorial, see <a href="#Mendelian-Randomization-MR-among-SNPs-module-trait">earlier section</a>.</p>
+<p>Basically, we will need <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\text{se}({\beta})\)</span> for both module-QTLs and GWAS-QTLs. However, we don’t have estiamted <span class="math inline">\(\beta\)</span> for module-QTLs. What we have is just <span class="math inline">\(p\)</span>.</p>
+<p>Therefore, on slack, assumptions to make TwoSampleMR work,</p>
+<ul>
+<li><p>(Strong assumption) set <span class="math inline">\(\beta=z\)</span>, <span class="math inline">\(\text{se}({\beta})=1\)</span>.</p></li>
+<li><p>(Strong assumption) Since we only have <span class="math inline">\(p\)</span>, we will only have absolute zscores. So one way to deal with this is to assume <span class="math inline">\(\beta_{SNP-module}\)</span> and <span class="math inline">\(\beta_{SNP-GWAS}\)</span> have the same sign (+), so that we only consider the consistency of effect magnitude.</p></li>
+<li><p>We look at each trans-eQTL region separately, rather than combine all trans-eQTL regions for a module, as what we do here is “like mediation analysis, SNP affect trait through this gene module”, “rather than to infer if the module is causal for the trait, the causality between module and trait”.</p></li>
+</ul>
+</div>
+<div id="results" class="section level4">
+<h4>Results</h4>
+<p>Here I take trait 30090 (platelet crit) for an example.</p>
+<p>MR result in figure <code>pheno30090.region.mr.png</code>.</p>
+</div>
+<div id="observations-2" class="section level4">
+<h4>Observations</h4>
+<ul>
+<li><p><span class="math inline">\(\beta_{SNP-module}\)</span> is much larger than <span class="math inline">\(\beta_{SNP-GWAS}\)</span>.</p></li>
+<li><p>Insufficient (1) or only a few (mostly 2, a few 3) independent SNPs (IV) used for MR, as we consider one region each time and the region is quite short (100k).</p></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="nov-23" class="section level2">
 <h2>Nov 23</h2>
 <div id="are-the-dark-green-signals-eqtlgen-signals" class="section level3">
 <h3>1. Are the dark green signals eQTLGen signals?</h3>
-<div id="procedure" class="section level4">
+<div id="procedure-1" class="section level4">
 <h4>Procedure</h4>
 <ul>
 <li><p>Check those dark green signals (colocalized regions): region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span>, <span class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
 <li><p>eQTLGen SNPs, cis- &amp; trans- signals.</p></li>
 </ul>
 </div>
-<div id="observations" class="section level4">
+<div id="observations-3" class="section level4">
 <h4>Observations</h4>
 <ul>
 <li><p>trans-</p>
@@ -2004,7 +2264,7 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 </div>
 <div id="coloc-between-cis--and-trans--signals" class="section level3">
 <h3>4. coloc between cis- and trans- signals</h3>
-<div id="procedure-1" class="section level4">
+<div id="procedure-2" class="section level4">
 <h4>Procedure</h4>
 <ul>
 <li><p>130 regions, based on module-QTLs. With region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span> and with at least one cis- gene.</p></li>
@@ -2060,7 +2320,7 @@ liliw-w
 </div>
 </div>
 </div>
-<div id="observations-1" class="section level4">
+<div id="observations-4" class="section level4">
 <h4>Observations</h4>
 <ul>
 <li><p>As a result, there are 429 (region, module, gene) sets remained.</p></li>
@@ -2155,15 +2415,12 @@ liliw-w
 <p><img src="asset/1123_1.reg.module25:3:101011537.gene.SENP7.reg.coloc.png" style="width:45.0%" /> <img src="asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png" style="width:45.0%" /></p>
 </div>
 </div>
-<div id="mr-under-assumption-of-textvarbeta-slack" class="section level3">
-<h3>5. MR under assumption of <span class="math inline">\(\text{var}{\beta}\)</span> (slack)</h3>
-</div>
 </div>
 <div id="nov-15" class="section level2">
 <h2>Nov 15</h2>
-<div id="proportion-of-colocalized-regions-for-29-blood-related-ukbb-traits" class="section level3">
-<h3>1. Proportion of colocalized regions for 29 blood-related UKBB traits</h3>
-<div id="procedure-2" class="section level4">
+<div id="Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits" class="section level3">
+<h3>1. Proportion of colocalized regions for 29 blood related UKBB traits</h3>
+<div id="procedure-3" class="section level4">
 <h4>Procedure</h4>
 <ul>
 <li><p>Aim: to see how many regions have shared signals for both trait and module. (PP4 &gt; 0.75)</p></li>
@@ -2176,7 +2433,7 @@ liliw-w
 <p>Defined as regions with <span class="math inline">\(\text{PP4} &gt; 0.75\)</span> and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
 </ul>
 </div>
-<div id="results" class="section level4">
+<div id="results-1" class="section level4">
 <h4>Results</h4>
 <div class="figure" style="text-align: center">
 <img src="asset/1115_all.traits.coloc.region.summary.png" alt="The proportion of colocalized regions for 29 blood-related UKBB traits." width="80%" />
@@ -2230,14 +2487,14 @@ liliw-w
 </div>
 <div id="enrichment-of-colocalized-regions" class="section level3">
 <h3>2. Enrichment of colocalized regions</h3>
-<div id="procedure-3" class="section level4">
+<div id="procedure-4" class="section level4">
 <h4>Procedure</h4>
 <ul>
 <li><p>colocalized regions: region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span>, <span class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
 <li><p>Look at the enrichment of these colocalized regions, and the relationship with the corresponding trait.</p></li>
 </ul>
 </div>
-<div id="results-1" class="section level4">
+<div id="results-2" class="section level4">
 <h4>Results</h4>
 <div class="figure" style="text-align: center">
 <img src="asset/1115_traits.module.coloc.region.png" alt="traits v.s. module v.s. coloc region" width="50%" />
@@ -2335,7 +2592,7 @@ liliw-w
 </ul>
 </div>
 </div>
-<div id="mendelian-randomization-mr-among-snps-module-trait" class="section level3">
+<div id="Mendelian-Randomization-MR-among-SNPs-module-trait" class="section level3">
 <h3>3. Mendelian Randomization (MR) among SNPs, module, trait</h3>
 <ul>
 <li><p>Use R package <a href="https://mrcieu.github.io/TwoSampleMR/#installation">TwoSampleMR</a>.</p></li>
@@ -2403,7 +2660,7 @@ liliw-w
 </ul></li>
 </ul>
 </div>
-<div id="results-2" class="section level3">
+<div id="results-3" class="section level3">
 <h3>Results</h3>
 <ol style="list-style-type: decimal">
 <li>Trait v.s. #regions v.s. #coloc regions</li>
@@ -3598,7 +3855,7 @@ liliw-w
 </div>
 </div>
 <p>Here I explain the above figure. x-axis is for each module (75), y-axis is for number of SNPs under various scenarios that can be used for computing <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>. Color is for various z-scores cutoff for defining “NULL SNPs”. The cutoff is pvalue of z. Smaller cutoff, more insignificant z. Point shape is for unique SNPs and independent SNPs. The barplot in the lower panel gives the number of genes in each module.</p>
-<div id="observations-2" class="section level4">
+<div id="observations-5" class="section level4">
 <h4>Observations</h4>
 <ol style="list-style-type: decimal">
 <li><p>For larger gene module, the common null SNPs (unique and independent) are fewer.</p></li>
@@ -3688,7 +3945,7 @@ liliw-w
 </div>
 </div>
 <p>The above figure gives QQ-plot for all pvalues across 22 chr’s of module1.</p>
-<div id="observations-3" class="section level4">
+<div id="observations-6" class="section level4">
 <h4>Observations</h4>
 <ol style="list-style-type: decimal">
 <li>Using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> gives larger PCO pvalues, than using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>. Number of signals decreases. Under Bonferroni pvalue threshold (~1e-8), when using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, there are 790 out of 9918 SNPs are significant, compared to 9794 significant SNPs using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>.</li>
@@ -5081,7 +5338,7 @@ liliw-w
 </div>
 <div id="gtex" class="section level3">
 <h3>GTEx</h3>
-<div id="results-3" class="section level4">
+<div id="results-4" class="section level4">
 <h4>Results</h4>
 <p>The table below summarizes all results I have so far, followed by figures of the distributions of pvalues in various datasets.</p>
 <table style="width:100%;">
