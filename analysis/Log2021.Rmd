@@ -84,7 +84,7 @@ knitr::kable(df)
 
   - See [enrichment results here](https://biit.cs.ut.ee/gplink/l/VQIAZG_ZQT).
   
-  - See [g:profiler enrichment overview](asset/1213_cd_ibd_Allergy_coloc_module.png).
+  - See [g:profiler enrichment overview](asset/1213_cd_ibd_Allergy_coloc_module_enrich.png).
   
   - See [g:profiler enrichment query file](asset/1213_cd_ibd_Allergy_coloc_module_gprofiler_query.txt).
   
