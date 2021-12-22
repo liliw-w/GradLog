@@ -21,6 +21,28 @@ blockquote {
 }
 ```
 
+## Dec 20
+
+### 1. What is gene *SENP7*?
+
+In [earlier section](#coloc-region-between-module-and-immune-trait), we observed that, there are 4 modules that have coloc regions with the three immune traits crohn's disease, Inflammaroty bowel disease, Allergic diseases.
+
+Genes of these modules are mostly zinc finger genes, and enriched in relevant terms.
+
+The lead SNPs of the coloc regions are close to several genes, including *SENP7*.
+
+So we wanted to see if *SENP7* is close to any zinc finger genes.
+
+- Located on Chr 3. Protein coding gene.
+
+- Closest to gene [*ZNF90P1*](https://www.ncbi.nlm.nih.gov/gene/?term=ZNF90P1), a pseudogene. Its location on [Genome browser](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A101043118%2D101232085&hgsid=1242828115_b2ZR5XmJBYJAa0EEIja9ez9peZeK).
+
+- Does *SENP7* have functions relevant to autoimmune disease? See [paper](https://www.nature.com/articles/s41467-018-05321-2).
+
+    Inflammasome activity <-- *NLRP3* activation <-- SUMO-mediated regulation (SUMOylation) <-- SUMO-specific proteases *SENP7* promotes NLRP3 activation
+
+    Also [paper](https://www.cell.com/cell-reports/pdf/S2211-1247(19)31499-8.pdf).
+
 
 ## Dec 13
 
@@ -33,7 +55,7 @@ blockquote {
 I added coloc results of MS to [earlier section](#Proportion-of-colocalized-regions-for-immune-traits).
 
 
-### 2. Look at the colocalized regions between trans and immune traits
+### 2. Look at the colocalized regions between trans and immune traits {#coloc-region-between-module-and-immune-trait}
 
 #### coloc regions overview
 
