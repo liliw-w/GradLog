@@ -19,6 +19,8 @@ This is a website where I keep track of my research progress.
 # Topics
 - Multivariate association method to detect trans genetic effects that regulate multiple co-expressed genes. [click](Trans.html)
 
+- Logs in 2022. [click](Log2022.html)
+
 - Logs in 2021. [click](Log2021.html)
 
 - Logs in 2020. [click](Log2020.html)
