@@ -23,3 +23,93 @@ blockquote {
 
 ## Jan 05
 
+### 1. trans-eQTL and complex disease in [eQTLGen, Võsa, Franke et al](https://www.nature.com/articles/s41588-021-00913-z)
+
+#### Question: are there any trans-eQTLs that are GWAS hits?
+
+Observations from the paper:
+
+- Meta-analysis using up to **31,684 blood samples** from 37 eQTLGen Consortium cohorts.
+
+- For trans, they focused on **10,317 trait-associated SNPs**.
+
+
+The paper linked trans-eQTLs with traits in two ways to find the potential driver genes for traits.
+
+1. trans-eQTL analysis
+
+- One-third of trait-associated variants have distal effects.
+
+  Identified 59,786 trans-eQTL, representing 3,853 SNPs (**37% of tested GWAS SNPs**) and 6,298 genes (32% of tested genes).
+
+  > The largest previous trans-eQTL meta-analysis in blood (N = 5,311) identified trans-eQTL for **8% of tested SNPs**.
+
+
+- Identify genes that are coordinately affected by **multiple independent trait-associated SNPs**.
+
+  Identified **47 GWAS traits** for which at least four independent variants affected the same gene in trans (Supplementary Tables 10). Examples genes affected by at least three SLE-associated genetic variants.
+
+
+But, Individual trans-eQTL effects too weak to detect. Another way to look for the potential driver genes for traits and the "core" genes:
+
+2. eQTSs (associations between PGSs and gene expression, Fig. 6a, 6b)
+
+- Individual trait-associated SNPs are combined into a PGS that is associated with gene expression.
+
+- when the PGS for a trait correlates with the expression of a gene, trans-eQTL effects of individual risk variants converge on that gene, and it can be prioritized as a putative driver of the disease.
+
+- 1,263 traits in total. 18,210 eQTSs representing 689 unique traits (**55% of tested traits**) and 2,568 genes (**13% of tested genes**).
+
+- Of these genes, 719 (**28%**) were not identified in the trans-eQTL analysis.
+
+**Therefore, all 3,853 trans-eQTLs eQTLGen identified are GWAS hits.**
+
+
+#### Question: if so, can we replicate them?
+
+Among 10,317 trait-associated SNPs, 9,056 (~89%) are included in DGN SNPs. Among 3,853 eQTLGen trans- eQTLs, **27 (~0.7%) are replicated in DGN signals (1,863, $p<1e-8$)**.
+
+In the paper, another trans- study was mentioned,
+
+> The largest previous trans-eQTL meta-analysis in blood (N = 5,311) identified trans-eQTL for **8% of tested SNPs**.
+
+
+### 2. gene *SENP7*
+
+#### the cross mappability of SENP7 and the genes in the trans modules
+
+As noted in [earlier section](Log2021.html), we observed,
+
+- *SENP7* is the neasrest gene of the lead SNPs of coloc regions.
+- Gene *ZNF90P1* is located within *SENP7*.
+- Modules 25, 51, 153, 156 have coloc regions with immune traits and consist of many zinc finger genes.
+
+Therefore, we wanted to know,
+
+1. Does gene *ZNF90P1* have expression data?
+
+I looked at the expression matrix of 13634 genes. *ZNF90P1* doesn't have expression data in this matrix.
+
+2. What is the cross mappability between *SENP7* and the zinc finger genes in the modules?
+
+See files for the cross mappability for [module 25][module 25 cross map with gene SENP7], [module 51][module 51 cross map with gene SENP7], [module 153][module 153 cross map with gene SENP7], [module 156][module 156 cross map with gene SENP7].
+
+[module 25 cross map with gene SENP7]: asset/2022/0105_SENP7_module25_size123_crossMap.txt
+[module 51 cross map with gene SENP7]: asset/2022/0105_SENP7_module51_size61_crossMap.txt
+[module 153 cross map with gene SENP7]: asset/2022/0105_SENP7_module153_size15_crossMap.txt
+[module 156 cross map with gene SENP7]: asset/2022/0105_SENP7_module156_size13_crossMap.txt
+
+The columns include: "score" for cross mappability score, "score_map1" for mappability score of gene1, "score_map2" for mappability score of gene2.
+
+3. For the genes in the trans modules,
+
+See a previous [file here](asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx).
+
+
+#### highlighting SENP7 as a trans-meQTL
+
+https://www-nature-com.proxy.uchicago.edu/articles/s41588-021-00969-x Another paper highlighting SENP7 as a trans-meQTL.
+
+
+### 3. pQTL resource
+
