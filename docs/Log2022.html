@@ -399,7 +399,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-03
+<strong>Last updated:</strong> 2022-01-04
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree68ded6fafda2c750d6daf577fa3019160d657b0dtargetblank68ded6fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/68ded6fafda2c750d6daf577fa3019160d657b0d" target="_blank">68ded6f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9e5c2e02a0e8f42e2fd9c4f697dd3d8c16fff6e2targetblank9e5c2e0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/9e5c2e02a0e8f42e2fd9c4f697dd3d8c16fff6e2" target="_blank">9e5c2e0</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree68ded6fafda2c750d6daf577fa3019160d657b0dtargetblank68ded6fa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9e5c2e02a0e8f42e2fd9c4f697dd3d8c16fff6e2targetblank9e5c2e0a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/68ded6fafda2c750d6daf577fa3019160d657b0d" target="_blank">68ded6f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/9e5c2e02a0e8f42e2fd9c4f697dd3d8c16fff6e2" target="_blank">9e5c2e0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -554,6 +554,40 @@ Message
 <tbody>
 <tr>
 <td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/9e5c2e02a0e8f42e2fd9c4f697dd3d8c16fff6e2/analysis/Log2022.Rmd" target="_blank">9e5c2e0</a>
+</td>
+<td>
+llw
+</td>
+<td>
+2022-01-04
+</td>
+<td>
+new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/97b4ca1336ea92e396991f1569177c14360eb07c/docs/Log2022.html" target="_blank">97b4ca1</a>
+</td>
+<td>
+llw
+</td>
+<td>
+2022-01-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 html
 </td>
 <td>
@@ -603,6 +637,81 @@ blockquote {
 </style>
 <div id="jan-05" class="section level2">
 <h2>Jan 05</h2>
+<div id="trans-eqtl-and-complex-disease-in-eqtlgen-võsa-franke-et-al" class="section level3">
+<h3>1. trans-eQTL and complex disease in <a href="https://www.nature.com/articles/s41588-021-00913-z">eQTLGen, Võsa, Franke et al</a></h3>
+<div id="question-are-there-any-trans-eqtls-that-are-gwas-hits" class="section level4">
+<h4>Question: are there any trans-eQTLs that are GWAS hits?</h4>
+<p>Observations from the paper:</p>
+<ul>
+<li><p>Meta-analysis using up to <strong>31,684 blood samples</strong> from 37 eQTLGen Consortium cohorts.</p></li>
+<li><p>For trans, they focused on <strong>10,317 trait-associated SNPs</strong>.</p></li>
+</ul>
+<p>The paper linked trans-eQTLs with traits in two ways to find the potential driver genes for traits.</p>
+<ol style="list-style-type: decimal">
+<li>trans-eQTL analysis</li>
+</ol>
+<ul>
+<li><p>One-third of trait-associated variants have distal effects.</p>
+<p>Identified 59,786 trans-eQTL, representing 3,853 SNPs (<strong>37% of tested GWAS SNPs</strong>) and 6,298 genes (32% of tested genes).</p>
+<blockquote>
+<p>The largest previous trans-eQTL meta-analysis in blood (N = 5,311) identified trans-eQTL for <strong>8% of tested SNPs</strong>.</p>
+</blockquote></li>
+<li><p>Identify genes that are coordinately affected by <strong>multiple independent trait-associated SNPs</strong>.</p>
+<p>Identified <strong>47 GWAS traits</strong> for which at least four independent variants affected the same gene in trans (Supplementary Tables 10). Examples genes affected by at least three SLE-associated genetic variants.</p></li>
+</ul>
+<p>But, Individual trans-eQTL effects too weak to detect. Another way to look for the potential driver genes for traits and the “core” genes:</p>
+<ol start="2" style="list-style-type: decimal">
+<li>eQTSs (associations between PGSs and gene expression, Fig. 6a, 6b)</li>
+</ol>
+<ul>
+<li><p>Individual trait-associated SNPs are combined into a PGS that is associated with gene expression.</p></li>
+<li><p>when the PGS for a trait correlates with the expression of a gene, trans-eQTL effects of individual risk variants converge on that gene, and it can be prioritized as a putative driver of the disease.</p></li>
+<li><p>1,263 traits in total. 18,210 eQTSs representing 689 unique traits (<strong>55% of tested traits</strong>) and 2,568 genes (<strong>13% of tested genes</strong>).</p></li>
+<li><p>Of these genes, 719 (<strong>28%</strong>) were not identified in the trans-eQTL analysis.</p></li>
+</ul>
+<p><strong>Therefore, all 3,853 trans-eQTLs eQTLGen identified are GWAS hits.</strong></p>
+</div>
+<div id="question-if-so-can-we-replicate-them" class="section level4">
+<h4>Question: if so, can we replicate them?</h4>
+<p>Among 10,317 trait-associated SNPs, 9,056 (~89%) are included in DGN SNPs. Among 3,853 eQTLGen trans- eQTLs, <strong>27 (~0.7%) are replicated in DGN signals (1,863, <span class="math inline">\(p&lt;1e-8\)</span>)</strong>.</p>
+<p>In the paper, another trans- study was mentioned,</p>
+<blockquote>
+<p>The largest previous trans-eQTL meta-analysis in blood (N = 5,311) identified trans-eQTL for <strong>8% of tested SNPs</strong>.</p>
+</blockquote>
+</div>
+</div>
+<div id="gene-senp7" class="section level3">
+<h3>2. gene <em>SENP7</em></h3>
+<div id="the-cross-mappability-of-senp7-and-the-genes-in-the-trans-modules" class="section level4">
+<h4>the cross mappability of SENP7 and the genes in the trans modules</h4>
+<p>As noted in <a href="Log2021.html">earlier section</a>, we observed,</p>
+<ul>
+<li><em>SENP7</em> is the neasrest gene of the lead SNPs of coloc regions.</li>
+<li>Gene <em>ZNF90P1</em> is located within <em>SENP7</em>.</li>
+<li>Modules 25, 51, 153, 156 have coloc regions with immune traits and consist of many zinc finger genes.</li>
+</ul>
+<p>Therefore, we wanted to know,</p>
+<ol style="list-style-type: decimal">
+<li>Does gene <em>ZNF90P1</em> have expression data?</li>
+</ol>
+<p>I looked at the expression matrix of 13634 genes. <em>ZNF90P1</em> doesn’t have expression data in this matrix.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>What is the cross mappability between <em>SENP7</em> and the zinc finger genes in the modules?</li>
+</ol>
+<p>See files for the cross mappability for <a href="asset/2022/0105_SENP7_module25_size123_crossMap.txt">module 25</a>, <a href="asset/2022/0105_SENP7_module51_size61_crossMap.txt">module 51</a>, <a href="asset/2022/0105_SENP7_module153_size15_crossMap.txt">module 153</a>, <a href="asset/2022/0105_SENP7_module156_size13_crossMap.txt">module 156</a>.</p>
+<p>The columns include: “score” for cross mappability score, “score_map1” for mappability score of gene1, “score_map2” for mappability score of gene2.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>For the genes in the trans modules,</li>
+</ol>
+<p>See a previous <a href="asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx">file here</a>.</p>
+</div>
+<div id="highlighting-senp7-as-a-trans-meqtl" class="section level4">
+<h4>highlighting SENP7 as a trans-meQTL</h4>
+<p><a href="https://www-nature-com.proxy.uchicago.edu/articles/s41588-021-00969-x" class="uri">https://www-nature-com.proxy.uchicago.edu/articles/s41588-021-00969-x</a> Another paper highlighting SENP7 as a trans-meQTL.</p>
+</div>
+</div>
+<div id="pqtl-resource" class="section level3">
+<h3>3. pQTL resource</h3>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -638,6 +747,7 @@ loaded via a namespace (and not attached):
 [29] evaluate_0.14    rmarkdown_2.10   stringi_1.7.6    bslib_0.3.1     
 [33] compiler_4.1.0   pillar_1.6.4     jsonlite_1.7.2   httpuv_1.6.4    
 [37] pkgconfig_2.0.3 </code></pre>
+</div>
 </div>
 </div>
 
