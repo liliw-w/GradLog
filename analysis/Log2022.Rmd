@@ -21,6 +21,53 @@ blockquote {
 }
 ```
 
+## Jan 12
+
+### 1. Make a story out of the trans- signals
+
+#### More concrete examples
+
+1. Trait, gene, trans- signal
+
+SLE signals in Fig. 5.
+
+> reflecting the involvement of interferon signaling in SLE pathophysiology
+
+```{r fig.cap="", out.width="100%"}
+knitr::include_graphics(c("asset/2022/0112_Systemic lupus erythematosus_tile.png"), error = FALSE)
+```
+
+
+
+2. additional examples of trans-eQTL variants associated with traits
+
+- ZNF131 locus, age of menarche
+
+  Supplementary Figure 11A, rs1532331
+  
+- FADS1/FADS2 locus, lipid levels
+
+  Supplementary Figure 11B, rs174574
+
+- IFIH1 locus, inflammatory bowel disease and SLE
+
+  Supplementary Figure 11C, rs1990760
+
+- GSDMB locus, asthma
+
+  Supplementary Figure 11D, rs7216389
+
+- CLOCK locus, height
+
+  Supplementary Figure 11E, rs1311351834
+
+
+3. eQTSs genes GO enrichment
+
+4. eQTSs genes associated with HDL
+
+
+
 ## Jan 05
 
 ### 1. trans-eQTL and complex disease in [eQTLGen, Võsa, Franke et al](https://www.nature.com/articles/s41588-021-00913-z)
