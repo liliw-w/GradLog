@@ -33,94 +33,97 @@ The lead SNPs of the coloc regions are close to several genes, including *SENP7*
 
 So we wanted to see if *SENP7* is close to any zinc finger genes.
 
-- Located on Chr 3. Protein coding gene.
+-   Located on Chr 3. Protein coding gene.
 
-- Closest to gene [*ZNF90P1*](https://www.ncbi.nlm.nih.gov/gene/?term=ZNF90P1), a pseudogene. Its location on [Genome browser](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A101043118%2D101232085&hgsid=1242828115_b2ZR5XmJBYJAa0EEIja9ez9peZeK).
+-   Closest to gene [*ZNF90P1*](https://www.ncbi.nlm.nih.gov/gene/?term=ZNF90P1), a pseudogene. Its location on [Genome browser](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A101043118%2D101232085&hgsid=1242828115_b2ZR5XmJBYJAa0EEIja9ez9peZeK).
 
-- Does *SENP7* have functions relevant to autoimmune disease? See [paper](https://www.nature.com/articles/s41467-018-05321-2).
+-   Does *SENP7* have functions relevant to autoimmune disease? See [paper](https://www.nature.com/articles/s41467-018-05321-2).
 
-    Inflammasome activity <-- *NLRP3* activation <-- SUMO-mediated regulation (SUMOylation) <-- SUMO-specific proteases *SENP7* promotes NLRP3 activation
+    Inflammasome activity \<-- *NLRP3* activation \<-- SUMO-mediated regulation (SUMOylation) \<-- SUMO-specific proteases *SENP7* promotes NLRP3 activation
 
     Also [paper](https://www.cell.com/cell-reports/pdf/S2211-1247(19)31499-8.pdf).
-
 
 ## Dec 13
 
 ### 1. Add trait MS to coloc analysis
 
-- Request summary statistic from [link](https://imsgc.net/).
+-   Request summary statistic from [link](https://imsgc.net/).
 
-- Meta analysis from 15 GWASs.
+-   Meta analysis from 15 GWASs.
 
 I added coloc results of MS to [earlier section](#Proportion-of-colocalized-regions-for-immune-traits).
-
 
 ### 2. Look at the colocalized regions between trans and immune traits {#coloc-region-between-module-and-immune-trait}
 
 #### coloc regions overview
 
-- I specifically looked at the following three traits, as they have a relatively high proportion of coloc regions from [earlier section](#Proportion-of-colocalized-regions-for-immune-traits).
+-   I specifically looked at the following three traits, as they have a relatively high proportion of coloc regions from [earlier section](#Proportion-of-colocalized-regions-for-immune-traits).
 
 ```{r}
-df <- data.frame("disease" = c("crohn's disease (cd)", "Inflammaroty bowel disease (ibd)", "Allergy"),
-                 "#light green regions" = c(51, 48, 43),
-                 "#dark green regions" = c(20, 18, 11),
+df <- data.frame("disease" = c("crohn's disease (cd)", "Inflammaroty bowel disease (ibd)", "Allergy", "MS"),
+                 "#light green regions" = c(51, 48, 43, 20),
+                 "#dark green regions" = c(20, 18, 11, 1),
                  stringsAsFactors = FALSE, check.names = FALSE)
 df <- cbind(df, "coloc prop" = df[["#dark green regions"]]/df[["#light green regions"]] )
 knitr::kable(df)
 ```
 
-*light green regions: regions with lead module-QTL pvalue<1e-8.
 
-*dark green regions: coloc regions with lead module-QTL pvalue<1e-8.
+\*light green regions: regions with lead module-QTL pvalue\<1e-8.
 
+\*dark green regions: coloc regions with lead module-QTL pvalue\<1e-8.
 
-- What are those dark green regions in specific?
+-   What are those dark green regions in specific?
 
-Fig: Colocalized regions summary of crohn's disease, Inflammaroty bowel disease, Allergic disases. **Specifically for dark green regions**, i.e. coloc regions with lead module-QTL pvalue<1e-8.
+Fig: Colocalized regions summary of crohn's disease, Inflammaroty bowel disease, Allergic disases. **Specifically for dark green regions**, i.e. coloc regions with lead module-QTL pvalue\<1e-8.
 
-![](asset/1213_cd.coloc.Pval.region.summary.png){ width=32% }
-![](asset/1213_ibd.coloc.Pval.region.summary.png){ width=32% }
-![](asset/1213_Allergy.coloc.Pval.region.summary.png){ width=32% }
+![](asset/1213_cd.coloc.Pval.region.summary.png){width="32%"} ![](asset/1213_ibd.coloc.Pval.region.summary.png){width="32%"} ![](asset/1213_Allergy.coloc.Pval.region.summary.png){width="32%"}
+
+**For MS, there is only one dark green region, module44:7:50308527. This region has 69 SNPs, and corresponds to module 44 and chr 7.**
 
 
 #### Observations
 
-![](asset/1213_cd_ibd_Allergy_coloc_info.png){width=30%}
-![](asset/1213_cd_ibd_Allergy_coloc_region_overlap.png){width=25%}
+![](asset/1213_cd_ibd_Allergy_coloc_info.png){width="30%"} ![](asset/1213_cd_ibd_Allergy_coloc_region_overlap.png){width="25%"}
 
-- These three traits share very similar coloc regions.
+-   These three traits share very similar coloc regions.
 
-  See the above venn diagram. The coloc regions of three traits are largely overlapped.
+    See the above venn diagram. The coloc regions of three traits are largely overlapped.
 
-
-```{r}
-df <- data.frame("module" = paste0("module", c(25, 51, 153, 156)),
-                 "#Genes" = c(123, 61, 15, 13),
-                 "Enrichment" = c("some genes are ZNF* genes", "almost all genes are ZNF* genes", "", "12 genes are ZNF* genes"),
+```{r add module44}
+df <- data.frame("module" = paste0("module", c(25, 51, 153, 156, 44)),
+                 "#Genes" = c(123, 61, 15, 13, 70),
+                 "Enrichment" = c("some genes are ZNF* genes", "almost all genes are ZNF* genes", "no genes are ZNF* genes", "12 genes are ZNF* genes", "no genes are ZNF* genes"),
                  stringsAsFactors = FALSE, check.names = FALSE)
 knitr::kable(df)
 ```
 
-- Module enrichment, relevant to immune?
+(Note: I added module44 on the above table, but not for the below module enrichment.)
 
-  - See [enrichment results here](https://biit.cs.ut.ee/gplink/l/VQIAZG_ZQT).
-  
-  - See [g:profiler enrichment overview](asset/1213_cd_ibd_Allergy_coloc_module_enrich.png).
-  
-  - See [g:profiler enrichment query file](asset/1213_cd_ibd_Allergy_coloc_module_gprofiler_query.txt).
-  
-  - See [David enrichment query file and gene descriptions](asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx).
-  
-  **Question: These four modules contain many zinc finger genes.**
+-   Module enrichment, relevant to immune?
+
+    -   See [enrichment results here](https://biit.cs.ut.ee/gplink/l/VQIAZG_ZQT).
+
+    -   See [g:profiler enrichment overview](asset/1213_cd_ibd_Allergy_coloc_module_enrich.png).
+
+    -   See [g:profiler enrichment query file](asset/1213_cd_ibd_Allergy_coloc_module_gprofiler_query.txt).
+
+    -   See [David enrichment query file and gene descriptions](asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx).
+
+    **Question: These four modules contain many zinc finger genes.**
+    
+    - **For MS, module 44's contained genes and enrichment result see [here](https://biit.cs.ut.ee/gplink/l/t6CyzBjcS9).**
 
 
-- SNP variants
+-   SNP variants
 
-  - cis-genes?
-  
-  For the 20 lead SNPs, they are, Intron Variant of gene *SENP7*, *IMPG2*, *CEP97*, Non Coding Transcript Variant/2KB Upstream Variant of gene *SENP7*, or 500B Downstream Variant of gene *FAM172BP*.
+    -   cis-genes?
 
+    For the 20 lead SNPs, they are, Intron Variant of gene *SENP7*, *IMPG2*, *CEP97*, Non Coding Transcript Variant/2KB Upstream Variant of gene *SENP7*, or 500B Downstream Variant of gene *FAM172BP*.
+    
+    - **For MS, cis- genes?**
+    
+      The lead SNP of region module44:7:50308527 is close to gene [*IKZF1*](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A50295000%2D50472798&hgsid=1260587557_latSAw7QoV0gBDVTJRA2kKabpth8).
 
 
 ## Nov 29, Dec 06
@@ -128,7 +131,6 @@ knitr::kable(df)
 ### 0. out 130 regions, % of colocalization
 
 I updated it to [earlier section](#coloc-between-cis--and-trans--signals) -> `Observations` -> `Distribution of coloc regions`.
-
 
 ### 1. Other blood related traits: immune diseases
 
@@ -140,27 +142,24 @@ Traits refer to [Paper](https://genomebiology.biomedcentral.com/articles/10.1186
 
 > 72 publicly available GWAS summary statistics for 11 autoimmune diseases (14 studies).
 
-
 #### 14 autoimmune diseases overview
 
 See [file](../docs/asset/1129_72_traits_GWAS.xlsx).
 
-- There are 14 studies (datasets) for 11 immune diseases.
+-   There are 14 studies (datasets) for 11 immune diseases.
 
-- For two studies (MS, ApD), the summary stat is only available upon request. (Update: we have requested sum stat for MS and added its coloc results here.)
+-   For two studies (MS, ApD), the summary stat is only available upon request. (Update: we have requested sum stat for MS and added its coloc results here.)
 
-- For one study (sle), the previous dataset is no longer available. So I downloaded the updated version (meta- v.s. EUR-).
+-   For one study (sle), the previous dataset is no longer available. So I downloaded the updated version (meta- v.s. EUR-).
 
-- **Many studies meta-analyze multiple datasets**
+-   **Many studies meta-analyze multiple datasets**
 
-  - Use meta sum stat for coloc?
-  - Use meta sample sizes of cases and controls?
-
+    -   Use meta sum stat for coloc?
+    -   Use meta sample sizes of cases and controls?
 
 #### coloc proportion {#Proportion-of-colocalized-regions-for-immune-traits}
 
 The following figure is similar to [earlier section](#Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits), which gives regions and proportions of coloc regions.
-
 
 ```{r fig.cap="The proportion of colocalized regions for 11 auto-immune diseases.", out.width="70%"}
 knitr::include_graphics(c("asset/1129_all.traits.coloc.region.summary.png"), error = FALSE)
@@ -168,17 +167,15 @@ knitr::include_graphics(c("asset/1129_all.traits.coloc.region.summary.png"), err
 
 For a specific trait, the coloc regions' summary and visualization are in folder `/scratch/midway2/liliw1/coloc/pmid*_*/plot`.
 
-
 #### Observations
 
-- These 11 immune diseases generally have less blue regions (GWAS regions with minimum QTL $p>10^{-5}$).
+-   These 11 immune diseases generally have less blue regions (GWAS regions with minimum QTL $p>10^{-5}$).
 
-- Also less green regions (regions with very small module-QTL pvalues).
+-   Also less green regions (regions with very small module-QTL pvalues).
 
-- Also lower proportion of coloc regions, out of blue and green regions. 8 diseases have 0 coloc regions.
+-   Also lower proportion of coloc regions, out of blue and green regions. 8 diseases have 0 coloc regions.
 
-- Due to meta-analysis? Cell type complexity?
-
+-   Due to meta-analysis? Cell type complexity?
 
 ### 2. MR under assumption of $\text{var}{\beta}$ (on slack)
 
@@ -190,12 +187,11 @@ Basically, we will need $\beta$, $\text{se}({\beta})$ for both module-QTLs and G
 
 Therefore, on slack, assumptions to make TwoSampleMR work,
 
-- (Strong assumption) set $\beta=z$, $\text{se}({\beta})=1$.
+-   (Strong assumption) set $\beta=z$, $\text{se}({\beta})=1$.
 
-- (Strong assumption) Since we only have $p$, we will only have absolute zscores. So one way to deal with this is to assume $\beta_{SNP-module}$ and $\beta_{SNP-GWAS}$ have the same sign (+), so that we only consider the consistency of effect magnitude.
+-   (Strong assumption) Since we only have $p$, we will only have absolute zscores. So one way to deal with this is to assume $\beta_{SNP-module}$ and $\beta_{SNP-GWAS}$ have the same sign (+), so that we only consider the consistency of effect magnitude.
 
-- We look at each trans-eQTL region separately, rather than combine all trans-eQTL regions for a module, as what we do here is "like mediation analysis, SNP affect trait through this gene module", "rather than to infer if the module is causal for the trait, the causality between module and trait".
-
+-   We look at each trans-eQTL region separately, rather than combine all trans-eQTL regions for a module, as what we do here is "like mediation analysis, SNP affect trait through this gene module", "rather than to infer if the module is causal for the trait, the causality between module and trait".
 
 #### Results
 
@@ -203,15 +199,11 @@ Here I take trait 30090 (platelet crit) for an example.
 
 MR result in figure `pheno30090.region.mr.png`.
 
-
 #### Observations
 
-- $\beta_{SNP-module}$ is much larger than $\beta_{SNP-GWAS}$.
+-   $\beta_{SNP-module}$ is much larger than $\beta_{SNP-GWAS}$.
 
-- Insufficient (1) or only a few (mostly 2, a few 3) independent SNPs (IV) used for MR, as we consider one region each time and the region is quite short (100k).
-
-
-
+-   Insufficient (1) or only a few (mostly 2, a few 3) independent SNPs (IV) used for MR, as we consider one region each time and the region is quite short (100k).
 
 ## Nov 23
 
@@ -219,41 +211,40 @@ MR result in figure `pheno30090.region.mr.png`.
 
 #### Procedure
 
-- Check those dark green signals (colocalized regions): region lead SNP's module-QTL $p<10^{-8}$, $\text{PP4} > 0.75$, and $\text{#SNPs in region} \ge 5$.
+-   Check those dark green signals (colocalized regions): region lead SNP's module-QTL $p<10^{-8}$, $\text{PP4} > 0.75$, and $\text{#SNPs in region} \ge 5$.
 
-- eQTLGen SNPs, cis- & trans- signals.
+-   eQTLGen SNPs, cis- & trans- signals.
 
 #### Observations
 
-- trans-
+-   trans-
 
-  #all regions for all traits: 551 . \
-  #unique regions: 105 . \
-  #unique lead SNPs: 74 . \
-  Out of 74 unique lead SNPs, 9 are included in eQTLGen trans- SNPs. \
-  Out of 9 SNPs, 9 are eQTLGen trans- signals.
+    #all regions for all traits: 551 .\
+    #unique regions: 105 .\
+    #unique lead SNPs: 74 .\
+    Out of 74 unique lead SNPs, 9 are included in eQTLGen trans- SNPs.\
+    Out of 9 SNPs, 9 are eQTLGen trans- signals.
 
-- cis-
+-   cis-
 
-  #all regions for all traits: 551 . \
-  #unique regions: 105 . \
-  #unique lead SNPs: 74 . \
-  Out of 74 unique lead SNPs, 65 are included in eQTLGen cis- SNPs. \
-  Out of 65 SNPs, 61 are eQTLGen cis- signals. \
+    #all regions for all traits: 551 .\
+    #unique regions: 105 .\
+    #unique lead SNPs: 74 .\
+    Out of 74 unique lead SNPs, 65 are included in eQTLGen cis- SNPs.\
+    Out of 65 SNPs, 61 are eQTLGen cis- signals.\
 
-- trans- & cis-
+-   trans- & cis-
 
-  Out of 74 unique lead SNPs, 65 are included in eQTLGen SNPs. \
-  Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.
-
+    Out of 74 unique lead SNPs, 65 are included in eQTLGen SNPs.\
+    Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.
 
 ### 2. Look at module 15
 
 We wanted to look at module15, because in [earlier section](#Enrichment-of-colocalized-regions), we found that module15 correspond to multiple regions extensively colocalized with multiple ukbb traits, but we didn't find any enrichment of the genes in module15.
 
-- coloc region & traits
+-   coloc region & traits
 
-  See [file](../data/module15.coloc.traits.txt) for detailed traits and regions.
+    See [file](../data/module15.coloc.traits.txt) for detailed traits and regions.
 
 ```{r}
 df <- read.delim("./data/module15.coloc.traits.snp.summary.txt",
@@ -261,7 +252,6 @@ df <- read.delim("./data/module15.coloc.traits.snp.summary.txt",
 knitr::kable(df[, !colnames(df) %in% c("Module", "Chr", "Pos")],
              caption = "The colocalization between the module and traits are from the following regions (marked by lead SNPs):")
 ```
-
 
 ```{r}
 df <- read.delim("./data/module15.coloc.traits.txt",
@@ -271,22 +261,19 @@ knitr::kable(table(df[!duplicated(df$Phenocode), "GWAS Group"]),
              caption = "The coloc traits are from the follwing trait groups, mostly `Red blood cells`. (bc we have more Red blood cells traits?)")
 ```
 
+-   module15
 
-- module15
-
-  191 genes. [Enrichment in g:profiler](https://biit.cs.ut.ee/gplink/l/4H3dKiAaRm)
-
+    191 genes. [Enrichment in g:profiler](https://biit.cs.ut.ee/gplink/l/4H3dKiAaRm)
 
 ??? genes: number, enrichment in David
-
 
 ### 3. Look at module 4
 
 We wanted to look at module4, because in [earlier section](#Enrichment-of-colocalized-regions), we found that module4 correspond to multiple regions extensively colocalized with multiple ukbb traits.
 
-- coloc region & traits
+-   coloc region & traits
 
-  See [file](../data/module4.coloc.traits.txt) for detailed traits and regions.
+    See [file](../data/module4.coloc.traits.txt) for detailed traits and regions.
 
 ```{r}
 df <- read.delim("./data/module4.coloc.traits.snp.summary.txt",
@@ -294,7 +281,6 @@ df <- read.delim("./data/module4.coloc.traits.snp.summary.txt",
 knitr::kable(df[, !colnames(df) %in% c("Module", "Chr", "Pos")],
              caption = "The colocalization between the module and traits are from the following regions (marked by lead SNPs):")
 ```
-
 
 ```{r}
 df <- read.delim("./data/module4.coloc.traits.txt",
@@ -309,13 +295,13 @@ knitr::kable(table(df[!duplicated(df$Phenocode), "GWAS Group"]),
 
 #### Procedure
 
-- 130 regions, based on module-QTLs. With region lead SNP's module-QTL $p<10^{-8}$ and with at least one cis- gene.
+-   130 regions, based on module-QTLs. With region lead SNP's module-QTL $p<10^{-8}$ and with at least one cis- gene.
 
-- I will test colocalization between module and a gene, if the genes' 500k flanking region have (>5) overlapped SNPs with the module region.
+-   I will test colocalization between module and a gene, if the genes' 500k flanking region have (>5) overlapped SNPs with the module region.
 
-- Update the region by the overlapped SNPs of both module-QTLs and gene eQTLs.
+-   Update the region by the overlapped SNPs of both module-QTLs and gene eQTLs.
 
-- Exclude the region if the minimum eQTL $p>10^{-5}$.
+-   Exclude the region if the minimum eQTL $p>10^{-5}$.
 
 #### Basics
 
@@ -327,11 +313,11 @@ knitr::include_graphics(c("asset/1123_region.cis.gene.png"), error = FALSE)
 
 #### Observations
 
-- As a result, there are 429 (region, module, gene) sets remained.
+-   As a result, there are 429 (region, module, gene) sets remained.
 
-- Out of which, 89 regions are colocalized (PP.H4.abf > 0.75).
+-   Out of which, 89 regions are colocalized (PP.H4.abf > 0.75).
 
-- Distribution of coloc regions
+-   Distribution of coloc regions
 
 ```{r fig.cap="", out.width="50%"}
 knitr::include_graphics(c("asset/1123_cis_coloc.region.summary.png"), error = FALSE)
@@ -343,12 +329,9 @@ knitr::include_graphics(c("asset/1123_fig_bar_prop_cis.png"), error = FALSE)
 
 **Note**: Here there are 120 regions instead of 130 regions, because I excluded the cis- gene regions with $min(p)>10^{-5}$ before I do the coloc.
 
+-   Colocalized region visualization
 
-- Colocalized region visualization
-
-![](asset/1123_1.reg.module25:3:101011537.gene.SENP7.reg.coloc.png){ width=45% }
-![](asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png){ width=45% }
-
+![](asset/1123_1.reg.module25:3:101011537.gene.SENP7.reg.coloc.png){width="45%"} ![](asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png){width="45%"}
 
 ## Nov 15
 
@@ -356,16 +339,16 @@ knitr::include_graphics(c("asset/1123_fig_bar_prop_cis.png"), error = FALSE)
 
 #### Procedure
 
-- Aim: to see how many regions have shared signals for both trait and module. (PP4 > 0.75)
+-   Aim: to see how many regions have shared signals for both trait and module. (PP4 > 0.75)
 
-- I consider two types of regions:
+-   I consider two types of regions:
 
-  1. One type as stated at last week. Based on module-QTLs and GWAS-QTLs with $p<10^{-5}$.
-  2. Among the above regions, only use regions whose lead SNPs are module-QTLs signals. (Note, here I used the threshold $p<10^{-8}$, as I don't have module-signals based on empirical null FDR correction yet.)
+    1.  One type as stated at last week. Based on module-QTLs and GWAS-QTLs with $p<10^{-5}$.
+    2.  Among the above regions, only use regions whose lead SNPs are module-QTLs signals. (Note, here I used the threshold $p<10^{-8}$, as I don't have module-signals based on empirical null FDR correction yet.)
 
-- Colocalized regions
-  
-  Defined as regions with $\text{PP4} > 0.75$ and $\text{#SNPs in region} \ge 5$.
+-   Colocalized regions
+
+    Defined as regions with $\text{PP4} > 0.75$ and $\text{#SNPs in region} \ge 5$.
 
 #### Results
 
@@ -373,20 +356,19 @@ knitr::include_graphics(c("asset/1123_fig_bar_prop_cis.png"), error = FALSE)
 knitr::include_graphics(c("asset/1115_all.traits.coloc.region.summary.png"), error = FALSE)
 ```
 
-- This figure gives (1) the number of regions at the upper panel, (2) proportion of colocalized regions at the lower panel.
+-   This figure gives (1) the number of regions at the upper panel, (2) proportion of colocalized regions at the lower panel.
 
-- Blue is for the frist type of regions. Green is for the second type of reigons, based on module-QTL signals.
+-   Blue is for the frist type of regions. Green is for the second type of reigons, based on module-QTL signals.
 
-- Dark color is for the colocalized regions, while light color is for the base regions.
+-   Dark color is for the colocalized regions, while light color is for the base regions.
 
-
-### 2. Enrichment of colocalized regions
+### 2. Enrichment of colocalized regions {#enrichment-of-colocalized-regions}
 
 #### Procedure
 
-- colocalized regions: region lead SNP's module-QTL $p<10^{-8}$, $\text{PP4} > 0.75$, and $\text{#SNPs in region} \ge 5$.
+-   colocalized regions: region lead SNP's module-QTL $p<10^{-8}$, $\text{PP4} > 0.75$, and $\text{#SNPs in region} \ge 5$.
 
-- Look at the enrichment of these colocalized regions, and the relationship with the corresponding trait.
+-   Look at the enrichment of these colocalized regions, and the relationship with the corresponding trait.
 
 #### Results
 
@@ -394,10 +376,9 @@ knitr::include_graphics(c("asset/1115_all.traits.coloc.region.summary.png"), err
 knitr::include_graphics(c("asset/1115_traits.module.coloc.region.png"), error = FALSE)
 ```
 
-- The above figure shows, what are the modules that have colocalized regions with a trait.
+-   The above figure shows, what are the modules that have colocalized regions with a trait.
 
-- Similar traits should have similar colocalized module patterns.
-
+-   Similar traits should have similar colocalized module patterns.
 
 ```{r}
 df <- data.frame("Phenocode" = c(30000, 30140, 30200, 30300),
@@ -408,81 +389,76 @@ df <- data.frame("Phenocode" = c(30000, 30140, 30200, 30300),
 knitr::kable(df)
 ```
 
-- This table gives the enrichment of the module genes for each trait.
+-   This table gives the enrichment of the module genes for each trait.
 
-- "module4" enriched in platelet activation. Many traits among these 29 blood-related traits are colocalized with "module4".
+-   "module4" enriched in platelet activation. Many traits among these 29 blood-related traits are colocalized with "module4".
 
-- Although "module15" is extensively colocalized with many traits, it's not enriched in any pathway.
-
+-   Although "module15" is extensively colocalized with many traits, it's not enriched in any pathway.
 
 ### 3. Mendelian Randomization (MR) among SNPs, module, trait {#Mendelian-Randomization-MR-among-SNPs-module-trait}
 
-- Use R package [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/#installation).
+-   Use R package [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/#installation).
 
-- **Problem**: no $\beta, \text{se}(\beta)$ for module as exposure. Exposure file requirements see [here](https://mrcieu.github.io/TwoSampleMR/articles/exposure.html).
+-   **Problem**: no $\beta, \text{se}(\beta)$ for module as exposure. Exposure file requirements see [here](https://mrcieu.github.io/TwoSampleMR/articles/exposure.html).
 
-- Use [SMR](https://www.nature.com/articles/ng.3538#Sec11)? No. As SMR is also $\beta, \text{se}(\beta)$ based. In addition to that, it only uses one SNP as instrument variable.
+-   Use [SMR](https://www.nature.com/articles/ng.3538#Sec11)? No. As SMR is also $\beta, \text{se}(\beta)$ based. In addition to that, it only uses one SNP as instrument variable.
 
-  - SMR only uses one SNP as instrument variable. "top associated cis-eQTL".
-  - Distinguishing pleiotropy from linkage; test for pleiotropic association.
+    -   SMR only uses one SNP as instrument variable. "top associated cis-eQTL".
+    -   Distinguishing pleiotropy from linkage; test for pleiotropic association.
 
-- How people do MR? [Paper-Yanyu](https://www.medrxiv.org/content/10.1101/2021.06.01.21258159v1.full-text)
+-   How people do MR? [Paper-Yanyu](https://www.medrxiv.org/content/10.1101/2021.06.01.21258159v1.full-text)
 
-  1. the instrument variants were selected using LD clumping function (ld_clump) in the R package ieugwasr
+    1.  the instrument variants were selected using LD clumping function (ld_clump) in the R package ieugwasr
 
-> We used the EUR super-population in 1000 Genomes data (1000 Genomes Project Consortium, 2015) as the LD reference panel and the data was downloaded from http://fileserve.mrcieu.ac.uk/ld/1kg.v3.tgz. The LD clumping parameters were clump_kb = 10000 and clump_r2 = 0.001. The p-value parameter (clump_p) in the LD clumping was 10−5 for IDP GWAS and 5 × 10−8 for phenotype GWAS, which gave approximately independent and significant variant instruments.
+> We used the EUR super-population in 1000 Genomes data (1000 Genomes Project Consortium, 2015) as the LD reference panel and the data was downloaded from <http://fileserve.mrcieu.ac.uk/ld/1kg.v3.tgz>. The LD clumping parameters were clump_kb = 10000 and clump_r2 = 0.001. The p-value parameter (clump_p) in the LD clumping was 10−5 for IDP GWAS and 5 × 10−8 for phenotype GWAS, which gave approximately independent and significant variant instruments.
 
-  2. The MR analysis was performed using the R package TwoSampleMR
+2.  The MR analysis was performed using the R package TwoSampleMR
 
 > reported the MR results using three MR methods: i) inverse variance weighted MR (Burgess et al., 2013); ii) median-based estimator: weighted median (Bowden et al., 2016); iii) MR Egger analysis (Bowden et al., 2015), which corresponds to mr_ivw, mr_weighted_median, and mr_egger_regression in TwoSampleMR.
 
-  3. further reported a meta-analyzed p-value summarizing the results of the three MR tests being performed
+3.  further reported a meta-analyzed p-value summarizing the results of the three MR tests being performed
 
 > The meta-analysis is based on an extension of ACAT method (Liu et al., 2019) that takes into account the direction of the effects.
 
-
- 
 ## Nov 08
 
 ### Some statistics
 
-- Out of 6,203,169 SNPs in DGN, 6,133,791 (~98.88%) are also included in UKBB GWAS SNPs, 69,378 snps are missed.
+-   Out of 6,203,169 SNPs in DGN, 6,133,791 (\~98.88%) are also included in UKBB GWAS SNPs, 69,378 snps are missed.
 
-- ~~Among 6,133,791 overlapped SNPs, 5,753,809 (~93.81%) are [`high_quality`](https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files) variants.~~
-
+-   ~~Among 6,133,791 overlapped SNPs, 5,753,809 (\~93.81%) are [`high_quality`](https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files) variants.~~
 
 ### coloc procedure
 
-- To do coloc, I compare the pvalues of SNPs within a specific region from each module in DGN and a GWAS trait.
+-   To do coloc, I compare the pvalues of SNPs within a specific region from each module in DGN and a GWAS trait.
 
-  - For DGN, I use the pvalues from the procedure where I didn't filter genes based on mappability. There are 166 modules.
-  
-  - For GWAS, I use the summary statistics of EUR population.
+    -   For DGN, I use the pvalues from the procedure where I didn't filter genes based on mappability. There are 166 modules.
 
-- Define Regions
+    -   For GWAS, I use the summary statistics of EUR population.
 
-  I define coloc regions based on DGN pvalues. For a module, I first sort the pvalues and pick the SNP with the smallest p. Then collect the SNPs in flanking regions within **100kb**. These SNPs consist of the first region. Then use the second smallest p and define a second region out of the remaining SNPs. I only consider the regions within which at least one SNP has ** $p<1e-5$ **.
+-   Define Regions
 
-- SNP filtering
+    I define coloc regions based on DGN pvalues. For a module, I first sort the pvalues and pick the SNP with the smallest p. Then collect the SNPs in flanking regions within **100kb**. These SNPs consist of the first region. Then use the second smallest p and define a second region out of the remaining SNPs. I only consider the regions within which at least one SNP has \*\* $p<1e-5$ \*\*.
 
-  Based on the above preliminary regions, I updated the regions based on the following criterias:
-  
-  - Remove SNPs not included in GWAS.
-  - Remove SNPs without rsid.
-  - Remove SNPs with low_confidence, no high_quality.
-  - Remove duplicated SNPs.
-  - Remove the regions within which all SNPs have GWAS ** $p>1e-5$ **.
-  - Remove SNPs with GWAS $se(\beta)=0$, for `coloc` purpose.
+-   SNP filtering
 
-- Do coloc
+    Based on the above preliminary regions, I updated the regions based on the following criterias:
 
-  - Use the simple coloc, `coloc.abf`.
-  - A region with **PP4 > 0.75** is defined as being colocalized.
+    -   Remove SNPs not included in GWAS.
+    -   Remove SNPs without rsid.
+    -   Remove SNPs with low_confidence, no high_quality.
+    -   Remove duplicated SNPs.
+    -   Remove the regions within which all SNPs have GWAS \*\* $p>1e-5$ \*\*.
+    -   Remove SNPs with GWAS $se(\beta)=0$, for `coloc` purpose.
 
+-   Do coloc
+
+    -   Use the simple coloc, `coloc.abf`.
+    -   A region with **PP4 > 0.75** is defined as being colocalized.
 
 ### Results
 
-1. Trait v.s. #regions v.s. #coloc regions
+1.  Trait v.s. #regions v.s. #coloc regions
 
 ```{r}
 df <- data.frame("UKBB trait id" = c(30080, 30090, 30100),
@@ -493,8 +469,7 @@ df <- data.frame("UKBB trait id" = c(30080, 30090, 30100),
 knitr::kable(df)
 ```
 
-
-2. #SNPs in colocalized regions
+2.  #SNPs in colocalized regions
 
 ```{r fig.cap="An example of colocalized region visualization. Trait Platelet count.", out.width="70%"}
 knitr::include_graphics(c("asset/1108_coloc.region.summary.png"), error = FALSE)
@@ -508,18 +483,15 @@ knitr::include_graphics(c("asset/1108_pheno30090.coloc.region.summary.png"), err
 knitr::include_graphics(c("asset/1108_pheno30100.coloc.region.summary.png"), error = FALSE)
 ```
 
-
-3. Colocalized region visualization by [`locuscomparer`](https://github.com/boxiangliu/locuscomparer)
+3.  Colocalized region visualization by [`locuscomparer`](https://github.com/boxiangliu/locuscomparer)
 
 ```{r fig.cap="An example of colocalized region visualization.", out.width="50%"}
 knitr::include_graphics(c("asset/1108_pheno30080.module102:7:50427982.reg.coloc.png"), error = FALSE)
 ```
 
-
-4. [29 UKBB blood traits](https://www.biorxiv.org/content/10.1101/2021.04.07.438882v1.full)
+4.  [29 UKBB blood traits](https://www.biorxiv.org/content/10.1101/2021.04.07.438882v1.full)
 
 > For our study, we examined 29 blood trait GWASs in the UK Biobank, including traits from platelets, red blood cells, white blood cells and reticulocytes (Table S1A).
-
 
 ## Nov 01
 
@@ -527,24 +499,23 @@ knitr::include_graphics(c("asset/1108_pheno30080.module102:7:50427982.reg.coloc.
 
 #### enloc
 
-[Paper][enloc paper]:
+[Paper](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006646):
 
 ```{r fig.cap="enloc equation", out.width="80%"}
 knitr::include_graphics(c("asset/1101_enloc_theory.png"), error = FALSE)
 ```
 
-[Code tutorial][enloc code tutorial]:
+[Code tutorial](https://github.com/xqwen/fastenloc/tree/master/tutorial):
 
 ```{r fig.cap="enloc code workflow", out.width="80%"}
 knitr::include_graphics(c("asset/1101_enloc_code_pipeline.png"), error = FALSE)
 ```
 
-- Need to provide "expression file" for the first fine-mapping. But we don't have this file in the case of a module being the "expression trait".
+-   Need to provide "expression file" for the first fine-mapping. But we don't have this file in the case of a module being the "expression trait".
 
-- DAP can be applied to each LD block independently. [independent LD block][] provided a working recipe to segment the full genome based on the population-specific LD structures.
+-   DAP can be applied to each LD block independently. [independent LD block](https://academic.oup.com/bioinformatics/article/32/2/283/1743626) provided a working recipe to segment the full genome based on the population-specific LD structures.
 
-- Example of using enloc for colocalization: [GTEx 2020][]. Used for "cis-QTL-GWAS colocalization: ENLOC."
-
+-   Example of using enloc for colocalization: [GTEx 2020](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/). Used for "cis-QTL-GWAS colocalization: ENLOC."
 
 ```{r echo=FALSE, eval=FALSE}
 GTEx_enloc = "> To identify target genes and GWAS loci of interest, we performed cis colocalization analysis on 87 GWAS traits across 49 tissues. After extensive comparison of colocalization methods, we chose ENLOC [32] as our primary approach. The main factors leading to this decision were the need to account for allelic heterogeneity in expression/splicing traits (Fig. 2, fig. S10), and the high sensitivity of the methods to the prior on the enrichment of GWAS probability of causality given the cis-e/sQTL’s posterior inclusion probability (PIP).
@@ -566,91 +537,74 @@ fine-map cis-eQTLs.
 "
 ```
 
-
-
 #### coloc
 
-[Paper-coloc single][coloc paper - single causal variant], [Paper-coloc multiple][coloc paper - multiple causal variants]:
+[Paper-coloc single](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004383), [Paper-coloc multiple](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1009440):
 
 ```{r fig.cap="coloc equation", out.width="30%"}
 knitr::include_graphics(c("asset/1101_coloc_theory.png"), error = FALSE)
 ```
 
+[Code tutorial](https://chr1swallace.github.io/coloc/):
 
-[Code tutorial][coloc code tutorial]:
-
-First, segment the whole genome. Then fine-map each traits by [`susieR`][susieR code tutorial], better than `coloc.abf` as it allows multiple causal variants. Finally, coloc.
+First, segment the whole genome. Then fine-map each traits by [`susieR`](https://stephenslab.github.io/susieR/articles/index.html), better than `coloc.abf` as it allows multiple causal variants. Finally, coloc.
 
 ```{r fig.cap="coloc code workflow", out.width="80%"}
 knitr::include_graphics(c("asset/1101_coloc_code_workflow.png"), error = FALSE)
 ```
 
-- Determine LD block?
-  Independent LD block + small GWAS pvalue loci + small module pvalue loci
+-   Determine LD block? Independent LD block + small GWAS pvalue loci + small module pvalue loci
 
-- Example of using coloc for colocalization:
-  - [Mu & Li][Mu & Li coloc paper]: `coloc` + default prior.
-  - [GTEx 2020][]: Used for "Colocalization of cis- and trans-QTLs.", `coloc` + default prior. In addition, used for "Colocalization of neutrophil ieQTLs and GWAS traits": `coloc` + `enloc` prior.
+-   Example of using coloc for colocalization:
 
-
+    -   [Mu & Li](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#Sec11)): `coloc` + default prior.
+    -   [GTEx 2020](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/): Used for "Colocalization of cis- and trans-QTLs.", `coloc` + default prior. In addition, used for "Colocalization of neutrophil ieQTLs and GWAS traits": `coloc` + `enloc` prior.
 
 #### Ref
 
-[enloc paper]: https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006646
-[coloc paper - single causal variant]: https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004383
-[coloc paper - multiple causal variants]: https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1009440
-[enloc code tutorial]: https://github.com/xqwen/fastenloc/tree/master/tutorial
-[independent LD block]: https://academic.oup.com/bioinformatics/article/32/2/283/1743626
-[GTEx 2020]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/
-[coloc code tutorial]: https://chr1swallace.github.io/coloc/
-[susieR code tutorial]: https://stephenslab.github.io/susieR/articles/index.html
-[Mu & Li coloc paper]: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#Sec11)
-
-
 ## Oct 25
 
-###  Pan UKBB website
+### Pan UKBB website
 
 See website [here](https://pan.ukbb.broadinstitute.org/).
 
 Files website [here](https://pan.ukbb.broadinstitute.org/docs/technical-overview).
 
-- SNPs: 28,987,534 variants
-- Trait:
-- Population? meta? for ($\beta, \text{se}, p, \text{low_confidence}$)
+-   SNPs: 28,987,534 variants
+-   Trait:
+-   Population? meta? for ($\beta, \text{se}, p, \text{low_confidence}$)
 
 #### Trait
 
-- `category`: A categorization of the phenotype
+-   `category`: A categorization of the phenotype
 
 blood related traits:
 
-1. "Biological samples > Assay results > Blood assays > Blood count"
+1.  "Biological samples > Assay results > Blood assays > Blood count"
 
 e.g. Platelet count, Monocyte percentage, el al
 
-2. "Biological samples > Assay results > Blood assays > Blood biochemistry"
+2.  "Biological samples > Assay results > Blood assays > Blood biochemistry"
 
 e.g. HDL cholesterol, Rheumatoid factor, et al
 
-3. "UK Biobank Assessment Centre > Physical measures > Blood pressure"
+3.  "UK Biobank Assessment Centre > Physical measures > Blood pressure"
 
-4. "Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism ..."
+4.  "Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism ..."
 
 e.g. anaemias, D57 Sickle-cell disorders, el al
 
-- `pheno_sex`: Use which one? "both_sexes", "females", "males"
+-   `pheno_sex`: Use which one? "both_sexes", "females", "males"
 
-- `modifier`: `irnt` or `raw`?
+-   `modifier`: `irnt` or `raw`?
 
 #### Variants filtering
 
 > summary statistics with low-confidence statistics removed and only considering high-quality variants.
 
-- `af`: allele frequency
-- `low_confidence`: criteria about allele count; includes some (non-exhaustive) basic quality control filters.
-- `high_quality`: A boolean corresponding to a high-quality variant based on these filters ... on "Files website".
-
+-   `af`: allele frequency
+-   `low_confidence`: criteria about allele count; includes some (non-exhaustive) basic quality control filters.
+-   `high_quality`: A boolean corresponding to a high-quality variant based on these filters ... on "Files website".
 
 ## October 07, October 18
 
@@ -666,7 +620,8 @@ Marked modules with significant signals by eye. See figure [here](asset/1007_MSi
 
 #### Signals under empirical FDR
 
-1. signals summary, under FDR 0.05, 0.1
+1.  signals summary, under FDR 0.05, 0.1
+
 ```{r}
 df <- data.frame("FDR level" = c(0.05, 0.1),
                  "#signals" = c(808, 965),
@@ -678,16 +633,15 @@ knitr::kable(df)
 
 cross-mapped genes in 50 gene sets? already removed cross-mapped reads?
 
-2. module (with annotation, size) v.s. chromosome signals
+2.  module (with annotation, size) v.s. chromosome signals
 
 ```{r fig.cap="#signals of MSigDB modules for each module v.s. chr."}
 knitr::include_graphics(c("asset/1018-num_signals_module_vs_chr_.png"), error = FALSE)
 ```
 
-
 ### STRING PPI interaction network, clustered by hierarchical clustering.
 
-Out of 12132 DGN genes, 11911 genes in the data included in STRING PPI network. As a result of hierarchical clustering, 11911 genes consist of 198 modules, with module size ranging from 210 ~ 26.
+Out of 12132 DGN genes, 11911 genes in the data included in STRING PPI network. As a result of hierarchical clustering, 11911 genes consist of 198 modules, with module size ranging from 210 \~ 26.
 
 Run Trans-PCO on these modules.
 
@@ -697,13 +651,11 @@ A selected set of modules.
 
 Marked modules with significant signals by eye. See figure [here]().
 
-
 ### DGN_no_filter_on_mappability
 
 Without removing genes with mappability issues.
 
 #### pvalues' distribution - qqplot
-
 
 ## October 04
 
@@ -737,14 +689,13 @@ Summary of the hallmark gene sets: name, process category, description, number o
 knitr::include_graphics(c("asset/1004_geneSet_overlap_h.all.v7.4.symbols.gmt.png"), error = FALSE)
 ```
 
-
 ## September 30
 
 ### STRING PPI networks + Hierarchical clustering
 
 Question: Do the clusters make sense? Are the large clusters too loose or the small clusters too tight?
 
-- Large clusters too loose such that can be separated to a few smaller cluster?
+-   Large clusters too loose such that can be separated to a few smaller cluster?
 
 I looked at the top two largest clusters: Module 1 with 214 genes, and Module 2 with 188 genes.
 
@@ -752,7 +703,7 @@ I looked at the top two largest clusters: Module 1 with 214 genes, and Module 2 
 knitr::include_graphics(c("asset/0930_stringPPI_large_module.png"), error = FALSE)
 ```
 
-- Small clusters too tight such that can be merged into less bigger cluster?
+-   Small clusters too tight such that can be merged into less bigger cluster?
 
 I looked at the last three smallest clusters: Module 194, 193, 192, with 23, 26, 26 genes, correspondingly.
 
@@ -760,16 +711,15 @@ I looked at the last three smallest clusters: Module 194, 193, 192, with 23, 26,
 knitr::include_graphics(c("asset/0930_stringPPI_small_module.png"), error = FALSE)
 ```
 
-
 ## Septermber 23
 
 ### STRING PPI networks
 
 #### Data
 
-- Protein network data downloaded from [here](https://www.string-db.org/cgi/download?sessionId=b0t6ChKtUCa8).
+-   Protein network data downloaded from [here](https://www.string-db.org/cgi/download?sessionId=b0t6ChKtUCa8).
 
-- Out of 12132 DGN genes, 11911 genes in the data included in STRING network, with 3076398 edges.
+-   Out of 12132 DGN genes, 11911 genes in the data included in STRING network, with 3076398 edges.
 
 #### Clustering
 
@@ -777,31 +727,29 @@ A [paper](https://academic.oup.com/bioinformatics/article/30/10/1343/266738) rev
 
 > Clustering approaches to PPI networks can be broadly categorized as **topology-free** and **graph-based** ones. Topology-free approaches use traditional clustering techniques using notions of distance between proteins that do not take into account the topology of the network. Graph-based clustering approaches consider instead the topology of the network, and usually rely on specialized clustering techniques.
 
-1. MCODE & MCL
+1.  MCODE & MCL
 
     Too many genes for MCODE, I waited 1h and there was no result coming out.
 
-2. Hierarchical clustering from clustermaker & R
+2.  Hierarchical clustering from clustermaker & R
 
     Hierarchical clustering in the Cytoscape plug-in, clustermaker, can't handle so many genes. So I tried to do hierarchical clustering in R.
-    
+
     Specifically, I used the "PPI scores" between two genes as the similary measurement for computing distances. Those gene pairs without edges (no PPI interaction) have 0 scores and 1 distance. Genes with itself have 1 scores and 0 distance (diagonals of distance matrix). Then I used the `hclust` in R to construct the hierarchical tree, and the dynamic tree cut `cutreeDynamic` for branch cutting, as used in WGCNA.
-    
-    As a result, 11911 genes consist of 198 modules, with module size ranging from 210 ~ 26.
+
+    As a result, 11911 genes consist of 198 modules, with module size ranging from 210 \~ 26.
 
 ### HumanBase predicted tissue-specific interactions
 
 #### Data
 
-- Blood tissue interactions downloaded from [here](https://hb.flatironinstitute.org/download).
-
+-   Blood tissue interactions downloaded from [here](https://hb.flatironinstitute.org/download).
 
 #### Clustering
 
-1. functional module detection
+1.  functional module detection
 
-2. MCODE (graph-based clustering, since only have edge info)
-
+2.  MCODE (graph-based clustering, since only have edge info)
 
 ## September 02, September 07, September 10
 
@@ -810,7 +758,6 @@ A [paper](https://academic.oup.com/bioinformatics/article/30/10/1343/266738) rev
 Out of 10461 genes, (after filtering based on meta info, protain and lincRNA, low mappability), do additional gene filtering if genes have too many cross-map genes (e.g. use 1K as the threshold). 4314 genes are removed.
 
 As a result, 6147 genes are remained and are grouped in 95 modules.
-
 
 ### Computation time
 
@@ -834,39 +781,37 @@ knitr::include_graphics(c("asset/0907_SNP_remain.png"), error = FALSE)
 
 We can see, if we filter SNPs instead, over half of the genome will be removed from the p-value analysis. We could miss a lot of signals.
 
-
 ### Keep cross mappable genes in the filtering step
 
-1. Genes and modules containing cross mappable genes
+1.  Genes and modules containing cross mappable genes
 
-+-----------------------+------------------------+
-| All genes:            | 13634  |
-+-----------------------+------------------------+
-| With meta:            | 12585  |
-+-----------------------+------------------------+
-| Final use:            | 10461  |
-+-----------------------+------------------------+
-| All removed:          | 3173   |
-+-----------------------+------------------------+
-| including:            |- meta: 1049 |
-|                       |- auto: 1 |
-|                       |- prote&linc: 453|
-|                       |- low_map: 1798 |
-|                       |- cross_map: 0 |
-+-----------------------+------------------------+
-| Number of modules:    | 158                    |
-+-----------------------+------------------------+
-
++----------------------+-----------------------+
+| All genes:           | 13634                 |
++----------------------+-----------------------+
+| With meta:           | 12585                 |
++----------------------+-----------------------+
+| Final use:           | 10461                 |
++----------------------+-----------------------+
+| All removed:         | 3173                  |
++----------------------+-----------------------+
+| including:           | -   meta: 1049        |
+|                      | -   auto: 1           |
+|                      | -   prote&linc: 453   |
+|                      | -   low_map: 1798     |
+|                      | -   cross_map: 0      |
++----------------------+-----------------------+
+| Number of modules:   | 158                   |
++----------------------+-----------------------+
 
 ```{r eval=FALSE, out.width="50%", out.height="20%", fig.cap="Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.", fig.show="hold", fig.align="center"}
 knitr::include_graphics(c("asset/0902_plot_module_size.png", "asset/0902_plot_module_size_cross_within_module.png"), error = FALSE)
 ```
 
-![](asset/0902_plot_module_size.png){width=30%}![](asset/0902_plot_module_size_cross_within_module.png){width=30%}
+![](asset/0902_plot_module_size.png){width="30%"}![](asset/0902_plot_module_size_cross_within_module.png){width="30%"}
 
 Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.
 
-2. Run PCO with cross mappable genes
+2.  Run PCO with cross mappable genes
 
 ```{r fig.cap="Figure. Illustration of PCO with cross mappable genes.", out.width="70%"}
 knitr::include_graphics(c("asset/0902_PCO_keep_crossmap.jpeg"), error = FALSE)
@@ -874,7 +819,7 @@ knitr::include_graphics(c("asset/0902_PCO_keep_crossmap.jpeg"), error = FALSE)
 
 Problem: Computational infeasible
 
-- In phase 1, for each SNP, filter out genes within the module that are cross mappable with any of its cis- genes. Not fast, as need to search pairs of (cis- gene, module gene) in the cross-mappability file with 23,727,385 cross-mappable gene pairs.
+-   In phase 1, for each SNP, filter out genes within the module that are cross mappable with any of its cis- genes. Not fast, as need to search pairs of (cis- gene, module gene) in the cross-mappability file with 23,727,385 cross-mappable gene pairs.
 
 The code I use,
 
@@ -891,7 +836,6 @@ Time elapsed,
 knitr::include_graphics(c("asset/0902_time_cross_map.png"), error = FALSE)
 ```
 
-
 ```{r eval=FALSE}
 require(ggplot2)
 
@@ -906,9 +850,7 @@ ggplot(df_time, aes(x = num_of_SNP, y = time)) +
   theme_bw() + xlim(0, 10)
 ```
 
-- In phase 2, each SNP could correspond to modules with different gene combinations, thus diff. $\Sigma$ for with-in module correlation and $\Sigma^0$, which is the estimated correlation of six tests involved in PCO using 2000 simulations. Thus, computing $\Sigma^0$ for each SNP should take a long time.
-
-
+-   In phase 2, each SNP could correspond to modules with different gene combinations, thus diff. $\Sigma$ for with-in module correlation and $\Sigma^0$, which is the estimated correlation of six tests involved in PCO using 2000 simulations. Thus, computing $\Sigma^0$ for each SNP should take a long time.
 
 ## July 08
 
@@ -928,11 +870,9 @@ df <- data.frame("FDR level" = c(0.05, 0.1),
 knitr::kable(df)
 ```
 
-
 ### Correlation between meta-ed gene zscores from eQTLGen
 
-Check document [here](asset/0708-Correlation between meta-ed gene zscores from eQTLGen.pdf).
-
+Check document [here](asset/0708-Correlation%20between%20meta-ed%20gene%20zscores%20from%20eQTLGen.pdf).
 
 ## July 06
 
@@ -942,24 +882,23 @@ I inspected three modules. Check [here](asset/0706_Sigma_effect_on_PCO.pdf) for 
 
 For individual and clearer figures, check [here](asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.origp.png), [here](asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module20.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.log10.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.origp.png), [here](asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module73.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.log10.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.origp.png), [here](asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.log10.png).
 
-
 ## June 29
 
 ### "Try using zscores to build sigma, plot of number of SNPs with low zscores"
 
-1. plot of number of SNPs with low zscores
+1.  plot of number of SNPs with low zscores
 
 In this section, I am going to check how the estimated Sigma $\hat{\Sigma}_{K}$ (correlation matrix of zscores/residule expression across genes) can affect PCO's pvalues. Use eQTLGen zscores. Consider two $\hat{\Sigma}$'s. (1) $\hat{\Sigma}_{DGN}$, computed by $cor(\tilde{Y}_{n \times K}^{DGN})$, where $\tilde{Y}$ is the residual expression data from DGN, n is sample size, K is gene module size. (2) $\hat{\Sigma}_{nullz}$, computed by $cor(\tilde{Z}_{m \times K}^{eQTLGen})$, where z is genome-wide independent null zscores from eQTLGen, m is the number of null SNPs (m is in fact much less than genome-wide, but should be sufficient?).
 
 Since for each null SNP, we should have its zscores on all genes (or at least all genes in the module we consider), but eQTLGen doesn't provide zscores for all genome-wide SNPs (only disease-related variants for trans-eQTLs and close-to-gene variants for cis-eQTLs). Therefore, I will first extract the common SNPs for each module. Main steps include:
 
-- Combine the zscores of all the significant/non-significant gene-SNP pairs in both eQTLGen cis-eQTL and trans-eQTL results.
+-   Combine the zscores of all the significant/non-significant gene-SNP pairs in both eQTLGen cis-eQTL and trans-eQTL results.
 
-- For each module, extract the common SNPs that have zscores available for all genes in the module.
+-   For each module, extract the common SNPs that have zscores available for all genes in the module.
 
-- For each module, further extract the common SNPs that are "NULL SNPs". A snp for a module is defined as a "null snp" if its z-scores for all genes in this module are below some z-score cutoff (i.e. all z-scores are small z's").
+-   For each module, further extract the common SNPs that are "NULL SNPs". A snp for a module is defined as a "null snp" if its z-scores for all genes in this module are below some z-score cutoff (i.e. all z-scores are small z's").
 
-- Among these common null SNPs, check how many of them are independent. (Use DGN genotype 'plink --indep-pairwise 50 5 0.2' ??? in this case, some SNPs not included in DGN are also considered as "independent. ref panel including all eQTLGen snps?)
+-   Among these common null SNPs, check how many of them are independent. (Use DGN genotype 'plink --indep-pairwise 50 5 0.2' ??? in this case, some SNPs not included in DGN are also considered as "independent. ref panel including all eQTLGen snps?)
 
 ```{r}
 knitr::include_graphics(c("asset/0629_num_nullSNP.png"), error = FALSE)
@@ -969,22 +908,21 @@ Here I explain the above figure. x-axis is for each module (75), y-axis is for n
 
 #### Observations
 
-1. For larger gene module, the common null SNPs (unique and independent) are fewer.
+1.  For larger gene module, the common null SNPs (unique and independent) are fewer.
 
-2. The average number of the unique null SNPs is ~8000 (under pvalue of z > 0.001). The independent null SNPs is ~4000.
+2.  The average number of the unique null SNPs is \~8000 (under pvalue of z > 0.001). The independent null SNPs is \~4000.
 
-3. Since we were particularly interested at eQTLGen's module1, (as all eQTLGen trans-variants are significant for module1,) next I will focus on module1. I use the 2282 independent null SNPs (under pvalue of z > 0.001) for module1 to calculate $\hat{\Sigma}_{nullz}(module1)$.
+3.  Since we were particularly interested at eQTLGen's module1, (as all eQTLGen trans-variants are significant for module1,) next I will focus on module1. I use the 2282 independent null SNPs (under pvalue of z > 0.001) for module1 to calculate $\hat{\Sigma}_{nullz}(module1)$.
 
 ### Build Sigma $\hat{\Sigma}_{DGN}$ and $\hat{\Sigma}_{nullz}$ and check PCO pvalues.
 
 eQTLGen's module1. Run PCO based on two Sigmas, $\hat{\Sigma}_{DGN}$ and $\hat{\Sigma}_{nullz}$ built on 2282 independent null SNPs. Calculate pvalues of 9918 SNPs across chromosomes.
 
-
 ```{r}
 knitr::include_graphics(c("asset/0629_effect.of.Sigma.on.PCO.pvalue.module1.png"), error = FALSE)
 ```
 
-In the above figure, x-axis is for snp across chromosomes, y-axis is for log(p) for the module1, color is for different $\hat{\Sigma}$, grey dashed line is the Bonferroni pvalue threshold (~1e-8).
+In the above figure, x-axis is for snp across chromosomes, y-axis is for log(p) for the module1, color is for different $\hat{\Sigma}$, grey dashed line is the Bonferroni pvalue threshold (\~1e-8).
 
 ```{r}
 knitr::include_graphics(c("asset/0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png"), error = FALSE)
@@ -994,9 +932,7 @@ The above figure gives QQ-plot for all pvalues across 22 chr's of module1.
 
 #### Observations
 
-1. Using $\hat{\Sigma}_{nullz}$ gives larger PCO pvalues, than using $\hat{\Sigma}_{DGN}$. Number of signals decreases. Under Bonferroni pvalue threshold (~1e-8), when using $\hat{\Sigma}_{nullz}$, there are 790 out of 9918 SNPs are significant, compared to 9794 significant SNPs using $\hat{\Sigma}_{DGN}$.
-
-
+1.  Using $\hat{\Sigma}_{nullz}$ gives larger PCO pvalues, than using $\hat{\Sigma}_{DGN}$. Number of signals decreases. Under Bonferroni pvalue threshold (\~1e-8), when using $\hat{\Sigma}_{nullz}$, there are 790 out of 9918 SNPs are significant, compared to 9794 significant SNPs using $\hat{\Sigma}_{DGN}$.
 
 ## June 25
 
@@ -1014,17 +950,17 @@ res = data.frame("Dataset" = c("eQTGen", "eQTGen", "eQTLGen_trans-PCO", "eQTLGen
 knitr::kable(res)
 ```
 
-- The eQTGen's original result [here](https://www.eqtlgen.org/trans-eqtls.html) gives 59786 (gene, trans-eQTL) pairs under FDR $<0.05$, corresponding to 6298 unique genes and 3853 unique SNPs.
+-   The eQTGen's original result [here](https://www.eqtlgen.org/trans-eqtls.html) gives 59786 (gene, trans-eQTL) pairs under FDR $<0.05$, corresponding to 6298 unique genes and 3853 unique SNPs.
 
-- After some filtering, to make sure the eQTGen trans-eQTLs and genes are included in out trans-PCO result using eQTLGen summary stats. **There are 20394 (gene, trans-eQTL) pairs left, corresponding to 1857 unique genes and 2469 unique SNPs.**
+-   After some filtering, to make sure the eQTGen trans-eQTLs and genes are included in out trans-PCO result using eQTLGen summary stats. **There are 20394 (gene, trans-eQTL) pairs left, corresponding to 1857 unique genes and 2469 unique SNPs.**
 
-- Orignal eQTLGen_trans-PCO result (under qvalue FDR correction): 406729 (module, trans-eQTL) pairs, corresponding to all 75 unique modules and 9918 unique SNPs.
+-   Orignal eQTLGen_trans-PCO result (under qvalue FDR correction): 406729 (module, trans-eQTL) pairs, corresponding to all 75 unique modules and 9918 unique SNPs.
 
-- Under Bonferroni correction (p<6.721785e-08): **55634, 74, 9915**.
+-   Under Bonferroni correction (p\<6.721785e-08): **55634, 74, 9915**.
 
 Next, I will check how eQTGen signals are replicated in eQTLGen_trans-PCO results (see bold text above). The basic idea is, for an eQTGen trans-eQTL, find its trans-target genes, then look at how these genes are distributed in each gene modules we used for eQTLGen_trans-PCO, and whether the corresponding (module, trans-eQTL) are identified by eQTLGen_trans-PCO. Specifically, I will check two things.
 
-1. For a trans-eQTL whose trans-target genes are included in one of our PCO module, is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (Power)
+1.  For a trans-eQTL whose trans-target genes are included in one of our PCO module, is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (Power)
 
     Since in previous analysis, the intuition is PCO tends to pick modules where there are multiple trans-target genes for a SNP. Therefore, in the below figure, I picked out all the eQTGen trans-eQTLs that have >2 target genes and plotted them on x-axis. The target genes are distributed on the Y-axis for each PCO module. Number/color is for #target genes. These (module, SNP) pairs should be significant in eQTLGen_trans-PCO. I circled out (red) those (module, SNP) pairs that are missed by eQTLGen_trans-PCO. As a result, 11 (module, SNP) (11 unique SNPs) are missed.
 
@@ -1034,7 +970,7 @@ knitr::include_graphics(c("asset/0625_power.png"), error = FALSE)
 
 Check [here](asset/0625_power.png) for clearer version.
 
-2. For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)
+2.  For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)
 
     Similar plot, except Number/color is SNP with 0, 1, or 2 target genes in each module. These (module, SNP) pairs are less likely to be identified by eQTLGen_trans-PCO. Yet, I circled out (green) those (module, SNP) pairs that are still identified by eQTLGen_trans-PCO.
 
@@ -1046,25 +982,23 @@ Check [here](asset/0625_TIE.png) for clearer version.
 
 #### Observation
 
-1. Almost all eQTGen trans-eQTLs with >2 target genes and their corresponding module are identified by eQTLGen_trans-PCO. This may suggest a good power of eQTLGen_trans-PCO.
+1.  Almost all eQTGen trans-eQTLs with >2 target genes and their corresponding module are identified by eQTLGen_trans-PCO. This may suggest a good power of eQTLGen_trans-PCO.
 
-2. However, the false positiva rate may be inflated, as a large amount of SNPs that has no target genes in the modules are also identified. (**Maybe although none of the genes in the module are target genes for the SNPs, the genes may be cross-mappable with the SNP's other traget genes that are filter out?**)
+2.  However, the false positiva rate may be inflated, as a large amount of SNPs that has no target genes in the modules are also identified. (**Maybe although none of the genes in the module are target genes for the SNPs, the genes may be cross-mappable with the SNP's other traget genes that are filter out?**)
 
 ### How does zero values affect qvalue?
 
-Short answer: 
+Short answer:
 
 ## June 14
 
-### Why there are so many eQTLGen signals using PCO_${\lambda<0.1}$?
+### Why there are so many eQTLGen signals using PCO\_${\lambda<0.1}$?
 
-Check the QQ-plot of the observed pvalues from eQTLGen using PCO_${\lambda<0.1}$ (9918 unique SNPs, all eQTLGen variants) and PCO_${\lambda<1}$ (909 unique SNPs).
-
+Check the QQ-plot of the observed pvalues from eQTLGen using PCO\_${\lambda<0.1}$ (9918 unique SNPs, all eQTLGen variants) and PCO\_${\lambda<1}$ (909 unique SNPs).
 
 ```{r}
 knitr::include_graphics("asset/0614_qqplot.p_obs.eQTLGen.png", error = FALSE)
 ```
-
 
 ## June 11
 
@@ -1072,10 +1006,9 @@ knitr::include_graphics("asset/0614_qqplot.p_obs.eQTLGen.png", error = FALSE)
 
 In this section, I removed trans-eGenes from Battle's result that are not included in our analysis for being cross-mappable or poorly mapped. I do this to makes sure univariate and multivariate are based on the same set of genes. I go through the same analysis as below.
 
-- Summary of the new version Battle trans-eQTL signals
+-   Summary of the new version Battle trans-eQTL signals
 
 After filter our some trans-eGenes, there are **157** (v.s. 736) significant (gene, SNP) pairs left, corresponding to 84 unique trans-eQTLs and 47 unique trans-eGenes.
-
 
 ```{r message=FALSE}
 require(data.table)
@@ -1103,7 +1036,7 @@ table(Battle_sig_sum$N_transeGene)
 
 We have identified 313 unique trans-eQTLs, among which 24 are also detected by Battle's univariate method. The above table gives which Battle's signals are replicated by trans-PCO.
 
-Among 84 Battle's trans-eQTLs, 24 (~28.57%) are also detected by trans-PCO. For 9 signals with more than one trans-target genes included in our analysis, all of them are detected by trans-PCO. Trans-PCO also detected other 15 signals with only one trans-target gene used in our analysis. For the other 60 univariate signals that are missed by trans-PCO, they have only one trans-target gene included in trans-PCO.
+Among 84 Battle's trans-eQTLs, 24 (\~28.57%) are also detected by trans-PCO. For 9 signals with more than one trans-target genes included in our analysis, all of them are detected by trans-PCO. Trans-PCO also detected other 15 signals with only one trans-target gene used in our analysis. For the other 60 univariate signals that are missed by trans-PCO, they have only one trans-target gene included in trans-PCO.
 
 ```{r}
 Battle_sig_sum[, -'trans_eGene']
@@ -1111,7 +1044,7 @@ Battle_sig_sum[, -'trans_eGene']
 
 ### Compare with 'DGN_transeQTL_battle2014'
 
-- Summary of Battle trans-eQTL signals
+-   Summary of Battle trans-eQTL signals
 
 They gave 736 significant (gene, SNP) pairs, corresponding to 350 unique trans-eQTLs and 138 unique trans-eGenes.
 
@@ -1142,7 +1075,7 @@ Let's take a look at the trans-eQTLs with more than 2 target genes. We can see t
 Battle_sig_sum[Battle_sig_sum$N_transeGene>2, -'trans_eGene']
 ```
 
-- As for our results from trans-PCO
+-   As for our results from trans-PCO
 
 We have identified 313 unique trans-eQTLs, among which 24 are also detected by Battle's univariate method. The above table gives which Battle's signals are replicated by trans-PCO.
 
@@ -1152,20 +1085,19 @@ Table of the number of target genes for replicated trans-eQTLs.
 table(Battle_sig_sum[Battle_sig_sum$if_transPCO, N_transeGene])
 ```
 
-1. Signals detected by univariate but missed by trans-PCO.
+1.  Signals detected by univariate but missed by trans-PCO.
 
     Since trans-PCO tends to identify SNPs that have effects on multiple genes, I will focus on the univariate trans-eQTLs that correspond to multiple genes ($>2$). For this type of signals, there are 33 trans-eQTLs in total, among which 9 are detected by trans-PCO. For the rest of 24 missed trans-eQTLs, there are basically three types: (1) 21 near the region "3:101043565", (2) 1 at "7:50435777", (3) 2 at "17:33875262" and "17:33875262".
 
-    (1) Even though the 20 missed trans-eQTLs correspond to multiple genes, ranging from 5 ~ 24, they are still missed by trans-PCO. So I checked their trans-target genes, and it turns out that all of the target genes are filtered out at the beginning of our analysis for being cross-mappable or poorly mapped.
-    
+    (1) Even though the 20 missed trans-eQTLs correspond to multiple genes, ranging from 5 \~ 24, they are still missed by trans-PCO. So I checked their trans-target genes, and it turns out that all of the target genes are filtered out at the beginning of our analysis for being cross-mappable or poorly mapped.
+
     (2) As for the rest of three trans-eQTLs that are missed by trans-PCO, only one of their 3 trans-target genes are included in our analysis.
-    
+
 #### Take-aways
 
-1. Trans-PCO tends to be more likely to detect trans-eQTLs with effects on multiple target genes.
+1.  Trans-PCO tends to be more likely to detect trans-eQTLs with effects on multiple target genes.
 
-2. Some signals could be missed at the step of filtering out genes.
-
+2.  Some signals could be missed at the step of filtering out genes.
 
 ## May 26
 
@@ -1173,22 +1105,21 @@ table(Battle_sig_sum[Battle_sig_sum$if_transPCO, N_transeGene])
 
 Updated the way to define cis-eQTLs. Previously, cis-eQTL signals are gene-based (from Pheonix using fastQTL). In this section, I compare trans signals with SNP-based cis-eQTLs from two datasets, i.e. GTEx_v7 (whole blood) and DGN.
 
-- GTEx_v7. [Here](https://www.gtexportal.org/home/datasets) provides all significant variant-gene associations.
+-   GTEx_v7. [Here](https://www.gtexportal.org/home/datasets) provides all significant variant-gene associations.
 
-- DGN. Two steps to obtain SNP-based significant associations.
-  1. Gene-based associations. (eGenes using fastQTL, result from Pheonix)
-  
-  2. Find all cis-eQTLs for each gene.
-  
-      See "4.2 cis-eQTL mapping" described [here](https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf). (p.s. I checked GTEx source code and turns out that [the actual code GTEx used](https://github.com/francois-a/fastqtl/blob/master/R/calculateSignificanceFastQTL.R) is a bit different. See below for key lines.)
+-   DGN. Two steps to obtain SNP-based significant associations.
+
+    1.  Gene-based associations. (eGenes using fastQTL, result from Pheonix)
+
+    2.  Find all cis-eQTLs for each gene.
+
+        See "4.2 cis-eQTL mapping" described [here](https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf). (p.s. I checked GTEx source code and turns out that [the actual code GTEx used](https://github.com/francois-a/fastqtl/blob/master/R/calculateSignificanceFastQTL.R) is a bit different. See below for key lines.)
 
 ```{r eval=FALSE, echo=TRUE}
 pt = mean(c(max(eGene$bpval), min(eGene$bpval)))
 eGene$pval_nominal_threshold = signif(qbeta(pt,
                                             eGene$shape1, eGene$shape2, ncp=0, lower.tail=TRUE, log.p=FALSE), 6)
 ```
-
-
 
 ```{r}
 res = data.frame("Dataset" = c("DGN", "eQTLGen_DGN"),
@@ -1204,7 +1135,6 @@ res = data.frame("Dataset" = c("DGN", "eQTLGen_DGN"),
 knitr::kable(res)
 ```
 
-
 **A diagram version:**
 
 ```{r fig.cap="Are trans-eQTLs cis-e/sQTLs?"}
@@ -1213,21 +1143,19 @@ knitr::include_graphics("asset/0526-1.png", error = FALSE)
 
 **Observations:**
 
-- For DGN, among 313 trans signals, 156 (~49.8%) are also cis-eQTLs, corresponding to 39 eGenes, including:
+-   For DGN, among 313 trans signals, 156 (\~49.8%) are also cis-eQTLs, corresponding to 39 eGenes, including:
 
 *AC016753.7, BECN1, C17orf50, C2orf68, CFL2, CTD-2562J15.6, ERN1, FAM177A1, FIGNL1, FKRP, GGCX, HABP4, HSD17B1P1, ICAM2, KIAA0391, MAT2A, MLX, NEK6, NFE2, NFKBIA, OR2W3, PARP2, PEX12, PPP2R3C, PRKD2, PSMC3IP, RETSAT, RNF181, RP11-1094M14.8, RP11-69M1.4, RP11-85K15.2, SLC1A5, SLC2A3, SLFN12L, SYMPK, TMEM150A, TTC5, VAMP8, ZNF782*
 
-- For DGN, 101 (~32.3%) out of 313 trans signals are cis-sQTLs, corresponding to 71 introns. 26 trans-eQTLs are only sQTLs but not eQTLs. These signals are located on chromosome 15 and 19.
+-   For DGN, 101 (\~32.3%) out of 313 trans signals are cis-sQTLs, corresponding to 71 introns. 26 trans-eQTLs are only sQTLs but not eQTLs. These signals are located on chromosome 15 and 19.
 
-- Among 313 trans signals, 182 (~58.1%) are either cis-eQTLs or cis-sQTLs.
-
+-   Among 313 trans signals, 182 (\~58.1%) are either cis-eQTLs or cis-sQTLs.
 
 ## May 19
 
 ### How many trans-eQTLs detected in DGN/GTEx whole blood are replicated in eQTLGen?
 
 Replication of DGN signals in eQTLGen. Based on updated results, i.e. smaller and more gene modules & PCO$_{\lambda>0.1}$.
-
 
 ```{r eval=FALSE}
 res = data.frame("Dataset" = c("eQTLGen", "eQTLGen_DGN", "DGN"),
@@ -1240,11 +1168,9 @@ res = data.frame("Dataset" = c("eQTLGen", "eQTLGen_DGN", "DGN"),
 knitr::kable(res)
 ```
 
-
-
 ### Are trans-eQTLs cis-eQTLs?
 
-1. Dataset: DGN
+1.  Dataset: DGN
 
 ```{r}
 res = data.frame("Dataset" = c("DGN", "eQTLGen_DGN"),
@@ -1262,139 +1188,129 @@ knitr::kable(res)
 
 1.1 DGN
 
-- Among 313 trans signals, 7 are also (gene-based) cis-eQTLs, corresponding to 5~7 independent SNPs. The cis-eGenes include **SLC2A3, NFE2, KIAA0391, NFKBIA, ERN1, AC016753.7, MAT2A**.
+-   Among 313 trans signals, 7 are also (gene-based) cis-eQTLs, corresponding to 5\~7 independent SNPs. The cis-eGenes include **SLC2A3, NFE2, KIAA0391, NFKBIA, ERN1, AC016753.7, MAT2A**.
 
-- Among 313 unique trans signals, **229 (~73%)** have a neareset gene that are eGenes (with cis-eQTLs). Among 28 independent trans signals, **19 (~68%)** have a neareset gene that are eGenes (with cis-eQTLs).
+-   Among 313 unique trans signals, **229 (\~73%)** have a neareset gene that are eGenes (with cis-eQTLs). Among 28 independent trans signals, **19 (\~68%)** have a neareset gene that are eGenes (with cis-eQTLs).
 
-- Among 313 trans signals, 9 are also cis-sQTLs, corresponding to 6 independent SNPs.
+-   Among 313 trans signals, 9 are also cis-sQTLs, corresponding to 6 independent SNPs.
 
 1.2 eQTLGen_DGN
 
-- Among 784 trans signals, 17 are also (gene-based) cis-eQTLs, corresponding to 9 independent SNPs. The cis-eGenes include **AC016753.7, CPEB4, KIAA0391, MAT2A, MRFAP1, NFKBIA, PAQR6, PWP1, RNF181, RP11-539L10.2, RP11-69M1.4, S100P, SENP7, SLC25A44, SLC2A3, SMG5, TMEM79, ZNF782**.
+-   Among 784 trans signals, 17 are also (gene-based) cis-eQTLs, corresponding to 9 independent SNPs. The cis-eGenes include **AC016753.7, CPEB4, KIAA0391, MAT2A, MRFAP1, NFKBIA, PAQR6, PWP1, RNF181, RP11-539L10.2, RP11-69M1.4, S100P, SENP7, SLC25A44, SLC2A3, SMG5, TMEM79, ZNF782**.
 
-- Among 784 unique trans signals, **590 (~75%)** have a neareset gene that are eGenes (with cis-eQTLs). Among 50 independent trans signals, **29 (~58%)** have a neareset gene that are eGenes (with cis-eQTLs).
+-   Among 784 unique trans signals, **590 (\~75%)** have a neareset gene that are eGenes (with cis-eQTLs). Among 50 independent trans signals, **29 (\~58%)** have a neareset gene that are eGenes (with cis-eQTLs).
 
-- Among 784 trans signals, 30 are also cis-sQTLs, corresponding to 10 independent SNPs.
+-   Among 784 trans signals, 30 are also cis-sQTLs, corresponding to 10 independent SNPs.
 
+2.  Dataset: TCGA
 
-2. Dataset: TCGA
-
-
-3. eQTLGen?
+3.  eQTLGen?
 
 ## March 8
 
 ### Muscle
 
-+ Less modules, PCO$_{\{\lambda: \lambda>0.1\}}$. 1 independent signal, large p.
+-   Less modules, PCO$_{\{\lambda: \lambda>0.1\}}$. 1 independent signal, large p.
 
-+ More modules, PCO$_{\{\lambda: \lambda>0.1\}}$. 5 independent signal, small p.
+-   More modules, PCO$_{\{\lambda: \lambda>0.1\}}$. 5 independent signal, small p.
 
-+ More modules, PCO$_{\{\lambda: \lambda>1\}}$. 5 independent signal, relatively large p.
-
+-   More modules, PCO$_{\{\lambda: \lambda>1\}}$. 5 independent signal, relatively large p.
 
 ## March 1
 
 ### Real data analysis by PCO using more $\lambda$'s
 
-Dataset: Muscle_Skeletal. 
+Dataset: Muscle_Skeletal.
 
 Fewer (independent) signals. $PCO_{\{\lambda: \lambda>0.1\}}$ (1 signal) v.s. $PCO_{\{\lambda: \lambda>1\}}$ (3 signals).
 
 ### proteomics data
 
-See the google doc [here][proteomics data].
-
-[proteomics data]: https://docs.google.com/spreadsheets/d/1PizRyY3VnvTHxu3PIM2_2sLbrj0Q_mxzRC9TrIm7vi4/edit?usp=sharing
-
+See the google doc [here](https://docs.google.com/spreadsheets/d/1PizRyY3VnvTHxu3PIM2_2sLbrj0Q_mxzRC9TrIm7vi4/edit?usp=sharing).
 
 ### Other stuff
 
-+ RCC account storage
-
+-   RCC account storage
 
 ## Feb 23
 
 ## Updated simulation
 
-1. Adjusted variance of effects
+1.  Adjusted variance of effects
 
-  + tests
-  
-    + Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>0.1\}}\lambda_k u_k u_k^T) Z$
-  
-    + PCO: Use $\{\lambda_k: \lambda_k>0.1\}$.
+-   tests
 
-  + scenerios ($K=100,K=105$)
+    -   Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>0.1\}}\lambda_k u_k u_k^T) Z$
 
-    + N: var.b = 0.003; caus = 30%; N.seq = c(200, 400, 600, 800, 1000)
-  
-    + caus: var.b = 0.003; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)
-  
-    + caus_fix: var.b.fix = 0.1; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)
+    -   PCO: Use $\{\lambda_k: \lambda_k>0.1\}$.
 
+-   scenerios ($K=100,K=105$)
 
-2. Run for other $\Sigma$'s. $K=100,K=105$
+    -   N: var.b = 0.003; caus = 30%; N.seq = c(200, 400, 600, 800, 1000)
 
-3. FDR level
+    -   caus: var.b = 0.003; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)
+
+    -   caus_fix: var.b.fix = 0.1; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)
+
+2.  Run for other $\Sigma$'s. $K=100,K=105$
+
+3.  FDR level
 
 The minimum null pvalue of PCO is $\ge 10^{-9}$, similar as the significance threshold we use here $10^{-9}$.
 
-4. Results
+4.  Results
 
 ```{r fig.cap="power under Bonferroni corretion cutoff"}
 knitr::include_graphics(c("asset/0223_power.lambda0.1.K100.png"), error = FALSE)
 ```
 
-
 ```{r fig.cap="Another Sigma (K=105)"}
 knitr::include_graphics(c("asset/0223_power.lambda0.1.K105.png"), error = FALSE)
 ```
-
 
 ## Feb 16
 
 ### simulation
 
-+ tests
-    
-  + Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>1\}}\lambda_k u_k u_k^T) Z$
-  
-  + PC1;
-  
-  + minp = $min\{p_1, \dots, p_K \} \times K$
-  
-  + PCO: Use $\{\lambda_k: \lambda_k>1\}$.
-  
-+ Multiple testing
+-   tests
 
-  The significance threshold is set based on the Bofferroni correction as the $\frac{0.05}{50\times10^6} = 10^{-9}$ for univariate test and PC-based tests.
-  
-+ scenerios ($K=100$)
+    -   Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>1\}}\lambda_k u_k u_k^T) Z$
 
-  + N: var.b = 0.01; caus = 100 (100%); N.seq = c(200, 400, 600, 800, 1000)
-  
-  + caus: var.b = 0.02; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)
-  
-  + caus_fix: var.b.fix = 0.2; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)
+    -   PC1;
 
-+ results
+    -   minp = $min\{p_1, \dots, p_K \} \times K$
+
+    -   PCO: Use $\{\lambda_k: \lambda_k>1\}$.
+
+-   Multiple testing
+
+    The significance threshold is set based on the Bofferroni correction as the $\frac{0.05}{50\times10^6} = 10^{-9}$ for univariate test and PC-based tests.
+
+-   scenerios ($K=100$)
+
+    -   N: var.b = 0.01; caus = 100 (100%); N.seq = c(200, 400, 600, 800, 1000)
+
+    -   caus: var.b = 0.02; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)
+
+    -   caus_fix: var.b.fix = 0.2; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)
+
+-   results
 
 ```{r fig.cap="power under Bonferroni corretion cutoff"}
 knitr::include_graphics(c("asset/0216_power.lambda1.png"), error = FALSE)
 ```
 
-+ Try other tests
-    
-  + Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>0.1\}}\lambda_k u_k u_k^T) Z$
-  
-  + PCO: Use $\{\lambda_k: \lambda_k>0.1\}$.
+-   Try other tests
+
+    -   Oracle: $\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k>0.1\}}\lambda_k u_k u_k^T) Z$
+
+    -   PCO: Use $\{\lambda_k: \lambda_k>0.1\}$.
 
 ```{r fig.cap="power under Bonferroni corretion cutoff"}
 knitr::include_graphics(c("asset/0216_power.lambda0.1.png"), error = FALSE)
 ```
 
-+ For talk
+-   For talk
 
 (This figure should be updated as for the case of 'u1', the threshold is falsely set as 0.05, which should be $10^{-9}$.)
 
@@ -1402,25 +1318,24 @@ knitr::include_graphics(c("asset/0216_power.lambda0.1.png"), error = FALSE)
 knitr::include_graphics(c("asset/0216_talk.png"), error = FALSE)
 ```
 
-
 ## Jan 26
 
 ### simulation
 
-+ Methods: Oracle, PC1, PCO, MinP, minp.
+-   Methods: Oracle, PC1, PCO, MinP, minp.
 
-+ Models: $z \sim N(\sqrt{N} \beta, \Sigma)$. $\beta \sim N(0, \sigma_{b}^2 I_{K \times K})$.
+-   Models: $z \sim N(\sqrt{N} \beta, \Sigma)$. $\beta \sim N(0, \sigma_{b}^2 I_{K \times K})$.
 
-1. various sample size $N$. 200, 400, 600, 800, 1000.
+1.  various sample size $N$. 200, 400, 600, 800, 1000.
 
-2. various $\sigma_{b}^2$. 0.005, 0.01, 0.05, 0.1, 0.2.
+2.  various $\sigma_{b}^2$. 0.005, 0.01, 0.05, 0.1, 0.2.
 
-3. various causality percentage. ???
+3.  various causality percentage. ???
 
-+ simulation.
-  
-  Generate $10^4$ zscores under each model. $10^4$ simulations.
-  
+-   simulation.
+
+    Generate $10^4$ zscores under each model. $10^4$ simulations.
+
 The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?
 
 ```{r fig.cap="power under cutoff 0.05"}
@@ -1447,10 +1362,9 @@ We can observe (1) When increasing FDR levels, number of signals only increase a
 knitr::include_graphics(c("asset/0126_signalsv.s.FDR.Muscle.png", "asset/0126_signalsv.s.FDR.DGN.png"), error = FALSE)
 ```
 
-
 ### Smaller gene modules, more signals?
 
-I changed the parameter `deepSplit`  in function `cutreeDynamic` from package WGCNA to get modules with smaller size. I run it on the Muscle tissue from GTEx (see `GTEx_v8.Muscle_Skeletal.WGCNA` in the GTEx results table). Compared to `GTEx_v8.Muscle_Skeletal`, though more modules (32 v.s. 18), they have same independent signals (3), located on chr5, chr10, and chr22.
+I changed the parameter `deepSplit` in function `cutreeDynamic` from package WGCNA to get modules with smaller size. I run it on the Muscle tissue from GTEx (see `GTEx_v8.Muscle_Skeletal.WGCNA` in the GTEx results table). Compared to `GTEx_v8.Muscle_Skeletal`, though more modules (32 v.s. 18), they have same independent signals (3), located on chr5, chr10, and chr22.
 
 The corresponding modules of these signals from small and large WGCNA share a large proportion of genes.
 
@@ -1473,25 +1387,24 @@ From the pvalue plot, it looks like 'WGCNA.min10_deep4' gives smaller clusters a
 knitr::include_graphics(c("asset/0126_modules.png", "asset/0126_Muscle_Skeleta.p.funcExplorer.png"), error = FALSE)
 ```
 
-
 ## Jan 05, Jan 19
 
 ### Simulation
 
 The simulations here aim to compare the power of PC-based tests including PC1 (using only the primary PC) and PCO (using combined PC's), and non-PC based test MinP. The simulations consist of two parts: (1) verify that type 1 error is well controlled; (2) compare power of tests. At this time, I simply assume there is no LD among SNPs, i.e. tests are independent.
 
-1. Verify that type 1 error is well controlled.
+1.  Verify that type 1 error is well controlled.
 
-  Since the tests are assumed to be independent, the null pvalues should be uniformly distributed. To verify that, I estimate the null pvalues by empirical p's obtained from the following steps.
-  
-  Step1. Generate $z_0 \sim N(0, \Sigma) | H_0$.
-  
-  Step2. Run tests including PC1, PCO, MinP for $10^6$ times and obtain $10^6$ p's for each test.
-  
-  Step3. Compute the empirical T1E at significance $\alpha$ by $\frac{I\{p<\alpha\}}{10^6}$. Draw qqplot of $-log_{10}p$.
-  
-  The correlation matrix $\Sigma$ is the correlation of genes in module15 of GTEx dataset Muscle_Skeletal (Sigma.Muscle_Skeletal.module15.chr7.rds).
-  
+Since the tests are assumed to be independent, the null pvalues should be uniformly distributed. To verify that, I estimate the null pvalues by empirical p's obtained from the following steps.
+
+Step1. Generate $z_0 \sim N(0, \Sigma) | H_0$.
+
+Step2. Run tests including PC1, PCO, MinP for $10^6$ times and obtain $10^6$ p's for each test.
+
+Step3. Compute the empirical T1E at significance $\alpha$ by $\frac{I\{p<\alpha\}}{10^6}$. Draw qqplot of $-log_{10}p$.
+
+The correlation matrix $\Sigma$ is the correlation of genes in module15 of GTEx dataset Muscle_Skeletal (Sigma.Muscle_Skeletal.module15.chr7.rds).
+
 ```{r warning=FALSE}
 res = read.table("data/simulation.null.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = TRUE)
 res[is.na(res)] = " "
@@ -1503,16 +1416,15 @@ knitr::kable(res)
 knitr::include_graphics("asset/0119_qqplot.simulation.null.png", error = FALSE)
 ```
 
+2.  Compare power of tests.
 
-2. Compare power of tests.
+To compare the power of non-/PC-based tests, I will run the oracle test in addition to PC1, PCO, and MinP to benchmark the power. It's mentioned in the PCO paper that given a fixed correlation relationship among the phenotypes, the power of a test depends on the relationship bewteen the true effects ($\beta$) and the phenotype correlation ($\Sigma$). Therefore, to see which tests perform well in what cases, I will consider different models, including (1) $\beta=10 u_1$; (2) $\beta=4 u_k$; (3) $\beta=1.5 u_K$; (4) $\beta=rnorm(K)$; (5) $\beta=rnorm(0.7K)$; (6) $\beta=rnorm(0.3K)$.
 
-  To compare the power of non-/PC-based tests, I will run the oracle test in addition to PC1, PCO, and MinP to benchmark the power. It's mentioned in the PCO paper that given a fixed correlation relationship among the phenotypes, the power of a test depends on the relationship bewteen the true effects ($\beta$) and the phenotype correlation ($\Sigma$). Therefore, to see which tests perform well in what cases, I will consider different models, including (1) $\beta=10 u_1$; (2) $\beta=4 u_k$; (3) $\beta=1.5 u_K$; (4) $\beta=rnorm(K)$; (5) $\beta=rnorm(0.7K)$; (6) $\beta=rnorm(0.3K)$.
-  
-  Step1. Generate $z_0 \sim N(\beta, \Sigma) | H_1$.
-  
-  Step2. Run tests including Oracle, PC1, PCO, MinP for $10^6$ times and obtain $10^6$ p's for each test.
-  
-  Step3. Compute the power at significance $\alpha$ by $\frac{I\{p<\alpha\}}{10^6}$.
+Step1. Generate $z_0 \sim N(\beta, \Sigma) | H_1$.
+
+Step2. Run tests including Oracle, PC1, PCO, MinP for $10^6$ times and obtain $10^6$ p's for each test.
+
+Step3. Compute the power at significance $\alpha$ by $\frac{I\{p<\alpha\}}{10^6}$.
 
 ```{r warning=FALSE}
 res = read.table("data/simulation.alt.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = TRUE)
@@ -1520,7 +1432,6 @@ res[is.na(res)] = " "
 knitr::kable(res)
 
 ```
-
 
 ### GTEx
 
@@ -1534,21 +1445,20 @@ res[is.na(res)] = " "
 knitr::kable(res)
 ```
 
-
 ```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial", "Muscle_Skeletal.cross"), out.width="70%", out.height="70%"}
 knitr::include_graphics(c("asset/0119_DGN.p.png", "asset/0119_DGN_new.p.png", "asset/0119_Whole_Blood.p.png", "asset/0119_Muscle_Skeletal.p.png", "asset/0119_Skin_Sun_Exposed_Lower_leg.p.png", "asset/0119_Artery_Tibial.p.png", "asset/0119_Muscle_Skeletal.cross.p.png"), error = FALSE)
 ```
 
 #### Remarks
 
-1. The dataset "DGN_new" represents DGN through the standard filtering (see "Gene filter" on Dec 10).
+1.  The dataset "DGN_new" represents DGN through the standard filtering (see "Gene filter" on Dec 10).
 
-2. GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).
+2.  GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).
 
-3. The dataset "GTEx_v8.Muscle_Skeletal.cross" uses Muscle_Skeletal samples from GTEx_v8 (similar as GTEx_v8.Muscle_Skeletal), but without removing cross-mapped genes before constructing gene modules. Therefore, there are 13890 genes (v.s. 5430 in GTEx_v8.Muscle_Skeletal) in total which result in 39 modules (v.s. 18 in GTEx_v8.Muscle_Skeletal). We do this step because we observed that there are relatively few signals using our original pipeline and we wonder if the reason to this observation is us filtering too many genes in the first step and leaving too few signals. To check on this, we put the "filtering" to the last step, i.e. including potentially cross-mapped genes into the analysis and generate significant variant-module pairs. We then exclude those where target eGene in the module is cross-mappable with any gene within 1Mb of the variant. Hopefully we could have more signals.
+3.  The dataset "GTEx_v8.Muscle_Skeletal.cross" uses Muscle_Skeletal samples from GTEx_v8 (similar as GTEx_v8.Muscle_Skeletal), but without removing cross-mapped genes before constructing gene modules. Therefore, there are 13890 genes (v.s. 5430 in GTEx_v8.Muscle_Skeletal) in total which result in 39 modules (v.s. 18 in GTEx_v8.Muscle_Skeletal). We do this step because we observed that there are relatively few signals using our original pipeline and we wonder if the reason to this observation is us filtering too many genes in the first step and leaving too few signals. To check on this, we put the "filtering" to the last step, i.e. including potentially cross-mapped genes into the analysis and generate significant variant-module pairs. We then exclude those where target eGene in the module is cross-mappable with any gene within 1Mb of the variant. Hopefully we could have more signals.
 
     However, though the increased genes and modules, the number of identified signals (43) is similar as that using the original pipeline (38). Next, I will look into these signals.
-    
+
 ```{r warning=FALSE}
 res = read.table("data/signals.GTEx_v8.Muscle_Skeletal.txt", check.names = F, stringsAsFactors = F, quote = NULL, sep = "\t", header = FALSE, col.names = c('variant-module', "p", "q"))
 res$p = as.character(format(res$p, scientific = TRUE, digits = 3)); res$q = as.character(format(res$q, scientific = TRUE, digits = 3))
@@ -1563,47 +1473,40 @@ knitr::kable(res, caption = 'GTEx_v8.Muscle_Skeletal.cross')
 ```
 
     For GTEx_v8.Muscle_Skeletal, there are 38 variant-module pairs, corresponding to 2 module (module 15, module4) and 3 independent loci on (chr5, chr10, chr22). GTEx_v8.Muscle_Skeletal.cross has 43 variant-module pairs, corresponding to 1 module (module 8) and 4 independent loci on (chr1, chr5, chr16).
-    
-    The signal on chr5 is significant for both module 15 (114 genes) and module 8 (394 genes) in two datasets, which have 82 shared genes. Take SNP [rs2706381][rs2706381 GTEx ref] (chr5:132474927) for example. It is ["in cis with IRF1 ($P \le 2\times10^{-10}$; Fig. 6c), a transcription factor that facilitates regulation of the interferon-induced immune response"][rs2706381 GTEx ref]. It is also ["associated in trans with PSME1 ($P \le 1.1\times10^{-11}$) and PARP10 ($P \le 7.8\times10^{-10}$)"][rs2706381 GTEx ref]. These two genes are included in module 15. The reference also gives additional results to "suggest that cis-regulatory loci affecting IRF1 are regulators of interferon-responsive inflammatory processes involving genes including PSME1 and PARP10, with implications for complex traits specific to muscle tissue".
-    
-    I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list [here](asset/0119_gene.GTEx_v8.Muscle_Skeletal.module15.txt).
-    
-    SNP 10:48930105. module 15.
-    
-    module4:22:23508295
-    
-    + Check if the signals' nearby genes are cross-mapped with genes in their corresponding module. The signal on chr5 corresponding to module8 has 20 genes +/- 500Kb away from its TSS. Many of them are crosspable with genes in the module 8. The number of of genes in the module crossmapped with each of the 20 genes are: `1, 144, 0, 62, 54, 0, 63, 4, 0, 0, 0, 59, 145, 0, 0, 128, 0, 23, 53`, where the nearest gene is crossmappable with 1 gene in the module.
-    
-  + The other signals on chr1, chr16, and chr5:47210790 don't have any nearby genes around its TSS.
 
-  + See the following plot for number of cross-mapped genes in each module.
-    
+    The signal on chr5 is significant for both module 15 (114 genes) and module 8 (394 genes) in two datasets, which have 82 shared genes. Take SNP [rs2706381][rs2706381 GTEx ref] (chr5:132474927) for example. It is ["in cis with IRF1 ($P \le 2\times10^{-10}$; Fig. 6c), a transcription factor that facilitates regulation of the interferon-induced immune response"][rs2706381 GTEx ref]. It is also ["associated in trans with PSME1 ($P \le 1.1\times10^{-11}$) and PARP10 ($P \le 7.8\times10^{-10}$)"][rs2706381 GTEx ref]. These two genes are included in module 15. The reference also gives additional results to "suggest that cis-regulatory loci affecting IRF1 are regulators of interferon-responsive inflammatory processes involving genes including PSME1 and PARP10, with implications for complex traits specific to muscle tissue".
+
+    I also looked at the enrichment of the genes in module 15. These genes are mainly enriched in immunity-related terms and tuberculosis. To reproduce, use the gene list [here](asset/0119_gene.GTEx_v8.Muscle_Skeletal.module15.txt).
+
+    SNP 10:48930105. module 15.
+
+    module4:22:23508295
+
+    + Check if the signals' nearby genes are cross-mapped with genes in their corresponding module. The signal on chr5 corresponding to module8 has 20 genes +/- 500Kb away from its TSS. Many of them are crosspable with genes in the module 8. The number of of genes in the module crossmapped with each of the 20 genes are: `1, 144, 0, 62, 54, 0, 63, 4, 0, 0, 0, 59, 145, 0, 0, 128, 0, 23, 53`, where the nearest gene is crossmappable with 1 gene in the module.
+
+-   The other signals on chr1, chr16, and chr5:47210790 don't have any nearby genes around its TSS.
+
+-   See the following plot for number of cross-mapped genes in each module.
+
 ```{r}
 knitr::include_graphics('asset/0119_nCross.png', error = FALSE)
 ```
 
-
-[rs2706381 GTEx ref]: https://www.nature.com/articles/nature24277#Sec9
-
-
 ### New TCGA by the standard filtering
-
 
 ### eQTLGen
 
-
-1. eQTLGen description
+1.  eQTLGen description
 
     *This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.*
 
     After gene filter steps described in `Dec 10`, there are 4963 genes left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are also included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules. These 3642 genes result in 19 gene modules.
 
-2. Replication of DGN signals in eQTLGen
+2.  Replication of DGN signals in eQTLGen
 
     The table below gives the signals found in eQTLGen and DGN.
 
     The first two rows give results based on eQTLGen zscores, with row 1 using `qvalue` for FDR correction (threshold $0.05$) and row 2 using $\frac{0.05}{\#DGN signals}$ as significance threshold. The third row is based on the same gene modules and SNPs but tensorQTL zscores using DGN expression data. The FDR correction uses the empirical distribution of pvalues from the combined chr's and modules (10 permutations).
-
 
 ```{r}
 res = data.frame("Dataset" = c("eQTLGen", "eQTLGen", "eQTLGen_DGN"),
@@ -1616,29 +1519,17 @@ res = data.frame("Dataset" = c("eQTLGen", "eQTLGen", "eQTLGen_DGN"),
 knitr::kable(res)
 ```
 
-
 Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 16 replicated signals consists of 6 independent SNPs, including (based on GRCh37),
 
-+ [rs12485738] : 3:56865776, intron variant of *ARHGEF3*.
-+ [rs643381] :  6:139839423. ([rs590856], 6:139844429).
-+ [rs149007767] 7:50370254: , intron variant of *IKZF1*.
-+ [rs12718597] : 7:50428428, intron variant of *IKZF1*.
-+ [rs35979828] : 12:54685880, 500B downstream variant of *NFE2*.
-+ [rs7210990] : 17:16170764, intron variant of *PIGL*.
+-   [rs12485738](https://www.ncbi.nlm.nih.gov/snp/rs12485738) : 3:56865776, intron variant of *ARHGEF3*.
+-   [rs643381](https://www.ncbi.nlm.nih.gov/snp/rs643381) : 6:139839423. ([rs590856](https://www.ncbi.nlm.nih.gov/snp/rs590856), 6:139844429).
+-   [rs149007767](https://www.ncbi.nlm.nih.gov/snp/rs149007767) 7:50370254: , intron variant of *IKZF1*.
+-   [rs12718597](https://www.ncbi.nlm.nih.gov/snp/rs12718597) : 7:50428428, intron variant of *IKZF1*.
+-   [rs35979828](https://www.ncbi.nlm.nih.gov/snp/rs35979828) : 12:54685880, 500B downstream variant of *NFE2*.
+-   [rs7210990](https://www.ncbi.nlm.nih.gov/snp/rs7210990) : 17:16170764, intron variant of *PIGL*.
 
-[rs12485738]: https://www.ncbi.nlm.nih.gov/snp/rs12485738
-[rs643381]: https://www.ncbi.nlm.nih.gov/snp/rs643381
-[rs590856]: https://www.ncbi.nlm.nih.gov/snp/rs590856
-[rs149007767]: https://www.ncbi.nlm.nih.gov/snp/rs149007767
-[rs12718597]: https://www.ncbi.nlm.nih.gov/snp/rs12718597
-[rs35979828]: https://www.ncbi.nlm.nih.gov/snp/rs35979828
-[rs7210990]: https://www.ncbi.nlm.nih.gov/snp/rs7210990
-
-
-3. Replication of DGN signals in eQTLGen
+3.  Replication of DGN signals in eQTLGen
 
 ```{r fig.cap=c("DGN", "DGN_new", "Whole_Blood", "Muscle_Skeletal", "Skin_Sun_Exposed_Lower_leg", "Artery_Tibial", "Muscle_Skeletal.cross"), out.width="70%", out.height="70%"}
 knitr::include_graphics("asset/0119_eQTLGen_DGN_venn.jpeg", error = FALSE)
 ```
-
-
