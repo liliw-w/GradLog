@@ -23,7 +23,7 @@ blockquote {
 
 ## Dec 20
 
-### 1. What is gene *SENP7*?
+### 1. What is gene *SENP7*?{#what_is_gene_SENP7}
 
 In [earlier section](#coloc-region-between-module-and-immune-trait), we observed that, there are 4 modules that have coloc regions with the three immune traits crohn's disease, Inflammaroty bowel disease, Allergic diseases.
 
