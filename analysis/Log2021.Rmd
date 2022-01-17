@@ -68,6 +68,7 @@ df <- cbind(df, "coloc prop" = df[["#dark green regions"]]/df[["#light green reg
 knitr::kable(df)
 ```
 
+[Note: I added module44 on the above table.]{.ul}
 
 \*light green regions: regions with lead module-QTL pvalue\<1e-8.
 
@@ -79,7 +80,7 @@ Fig: Colocalized regions summary of crohn's disease, Inflammaroty bowel disease,
 
 ![](asset/1213_cd.coloc.Pval.region.summary.png){width="32%"} ![](asset/1213_ibd.coloc.Pval.region.summary.png){width="32%"} ![](asset/1213_Allergy.coloc.Pval.region.summary.png){width="32%"}
 
-**For MS, there is only one dark green region, module44:7:50308527. This region has 69 SNPs, and corresponds to module 44 and chr 7.**
+[**For MS, there is only one dark green region, module44:7:50308527. This region has 69 SNPs, and corresponds to module 44 and chr 7.**]{.ul}
 
 
 #### Observations
@@ -98,7 +99,8 @@ df <- data.frame("module" = paste0("module", c(25, 51, 153, 156, 44)),
 knitr::kable(df)
 ```
 
-(Note: I added module44 on the above table, but not for the below module enrichment.)
+[Note: I added module44 on the above table.]{.ul}
+
 
 -   Module enrichment, relevant to immune?
 
@@ -112,7 +114,7 @@ knitr::kable(df)
 
     **Question: These four modules contain many zinc finger genes.**
     
-    - **For MS, module 44's contained genes and enrichment result see [here](https://biit.cs.ut.ee/gplink/l/t6CyzBjcS9).**
+    - [**For MS, module 44's contained genes and enrichment result see [here](https://biit.cs.ut.ee/gplink/l/t6CyzBjcS9).**]{.ul}
 
 
 -   SNP variants
@@ -121,7 +123,7 @@ knitr::kable(df)
 
     For the 20 lead SNPs, they are, Intron Variant of gene *SENP7*, *IMPG2*, *CEP97*, Non Coding Transcript Variant/2KB Upstream Variant of gene *SENP7*, or 500B Downstream Variant of gene *FAM172BP*.
     
-    - **For MS, cis- genes?**
+    - [**For MS, cis- genes?**]{.ul}
     
       The lead SNP of region module44:7:50308527 is close to gene [*IKZF1*](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A50295000%2D50472798&hgsid=1260587557_latSAw7QoV0gBDVTJRA2kKabpth8).
 
