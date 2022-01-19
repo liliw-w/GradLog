@@ -6,6 +6,7 @@ output:
               toc_depth: 4
 editor_options:
   chunk_output_type: console
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -21,13 +22,103 @@ blockquote {
 }
 ```
 
+## Jan 19
+
+### 1. Comprehensive analysis of coloc regions of trait MS
+
+#### Add MS's result to previous coloc analysis (dark green coloc regions)
+
+See [earlier section](Log2021.html#coloc-region-between-module-and-immune-trait).
+
+#### dark blue coloc regions
+
+There are 4 dark blue coloc regions, i.e. coloc regions with module-QTL lead pvalue \< 1e-5.
+
+```{r}
+df <- data.frame("Region" = c("module121:19:10423815", "module108:7:50308811", "module50:7:149331042", "module44:7:50308527"),
+                 "nSNPs" = c(140, 122, 265, 69),
+                 "Pval" = c(1.5e-06, 1.6e-06, 2e-06, 0),
+                 "PP4" = c(0.98, 0.98, 0.94, 0.89),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(df)
+```
+
+In [earlier section](#make-a-story-out-of-trans-signals), the region "module108:7:50308811" coloc with MS is included in these dark blue regions.
+
+### 2. More traits, from UKBB
+
+#### Extracted traits
+
+1.  How?
+
+I extracted specific traits from ukbb traits manifest file, based on:
+
+- Traits from eQTLGen traits
+- Traits from Mu et al paper
+- Powerful (and interesting) ukbb GWASs
+
+  Sorted by case number of EUR `n_cases_EUR`.
+
+2.  What traits?
+
+- 26 ukbb GWASs in total, including height, BMI, Cholesterol, Hypertension, Asthma, Type 2 diabetes etc.
+
+- Exclude height, as not GWASed for EUR.
+
+- Use height sum stat from [another meta analysis](height_BMI_meta_data_source) instead. It also has another BMI sum stat.
+
+  Meta analyze inds from GIANT and ukbb.
+  
+  > Meta-analysis of genome-wide association studies for height and body mass index in ~700,000 individuals of European ancestry.
+
+- Thus, as a result, 27 GWASs. 22 unique traits.
+
+
+[height_BMI_meta_data_source]: https://portals.broadinstitute.org/collaboration/giant/index.php/GIANT_consortium_data_files#BMI_and_Height_GIANT_and_UK_BioBank_Meta-analysis_Summary_Statistics
+
+
+3.  Visualize the sample sizes of selected traits
+
+```{r fig.cap="", out.width="100%"}
+knitr::include_graphics(c("asset/2022/0119_phenotype_sub_N.png"), error = FALSE)
+```
+
+
+#### coloc results
+
+1.  Visualize
+
+See [figure](asset/2022/0119_selected_ukbb_all.traits.coloc.region.summary.png).
+
+```{r fig.cap="", out.width="100%"}
+knitr::include_graphics(c("asset/2022/0119_selected_ukbb_all.traits.coloc.region.summary.png"), error = FALSE)
+```
+
+For detailed numbers, see [file](asset/2022/0119_selected_ukbb_coloc_region_prop.txt).
+
+
+2. In-depth visualization for selected traits (dark blue regions)
+
+[BMI](asset/2022/0119_BMI_coloc.region.summary.png)
+
+[BMI](asset/2022/0119_BMI-2_coloc.region.summary.png)
+
+[Cholesterol](asset/2022/0119_Cholesterol_coloc.region.summary.png)
+
+[HDL-cholesterol](asset/2022/0119_HDL-cholesterol_coloc.region.summary.png)
+
+[Hayfever,-allergic-rhinitis-or-eczema](asset/2022/0119_Hayfever,-allergic-rhinitis-or-eczema_coloc.region.summary.png)
+
+[Hypertension](asset/2022/0119_Hypertension_coloc.region.summary.png)
+
+
 ## Jan 12
 
-### 1. Make a story out of the trans- signals
+### 1. Make a story out of the trans- signals {#make-a-story-out-of-trans-signals}
 
 #### More concrete examples
 
-1. Trait, gene, trans- signal
+1.  Trait, gene, trans- signal
 
 SLE signals in Fig. 5.
 
@@ -37,36 +128,31 @@ SLE signals in Fig. 5.
 knitr::include_graphics(c("asset/2022/0112_Systemic lupus erythematosus_tile.png"), error = FALSE)
 ```
 
+2.  additional examples of trans-eQTL variants associated with traits
 
+-   ZNF131 locus, age of menarche
 
-2. additional examples of trans-eQTL variants associated with traits
+    Supplementary Figure 11A, rs1532331
 
-- ZNF131 locus, age of menarche
+-   FADS1/FADS2 locus, lipid levels
 
-  Supplementary Figure 11A, rs1532331
-  
-- FADS1/FADS2 locus, lipid levels
+    Supplementary Figure 11B, rs174574
 
-  Supplementary Figure 11B, rs174574
+-   IFIH1 locus, inflammatory bowel disease and SLE
 
-- IFIH1 locus, inflammatory bowel disease and SLE
+    Supplementary Figure 11C, rs1990760
 
-  Supplementary Figure 11C, rs1990760
+-   GSDMB locus, asthma
 
-- GSDMB locus, asthma
+    Supplementary Figure 11D, rs7216389
 
-  Supplementary Figure 11D, rs7216389
+-   CLOCK locus, height
 
-- CLOCK locus, height
+    Supplementary Figure 11E, rs1311351834
 
-  Supplementary Figure 11E, rs1311351834
+3.  eQTSs genes GO enrichment
 
-
-3. eQTSs genes GO enrichment
-
-4. eQTSs genes associated with HDL
-
-
+4.  eQTSs genes associated with HDL
 
 ## Jan 05
 
@@ -76,87 +162,74 @@ knitr::include_graphics(c("asset/2022/0112_Systemic lupus erythematosus_tile.png
 
 Observations from the paper:
 
-- Meta-analysis using up to **31,684 blood samples** from 37 eQTLGen Consortium cohorts.
+-   Meta-analysis using up to **31,684 blood samples** from 37 eQTLGen Consortium cohorts.
 
-- For trans, they focused on **10,317 trait-associated SNPs**.
-
+-   For trans, they focused on **10,317 trait-associated SNPs**.
 
 The paper linked trans-eQTLs with traits in two ways to find the potential driver genes for traits.
 
-1. trans-eQTL analysis
+1.  trans-eQTL analysis
 
-- One-third of trait-associated variants have distal effects.
+-   One-third of trait-associated variants have distal effects.
 
-  Identified 59,786 trans-eQTL, representing 3,853 SNPs (**37% of tested GWAS SNPs**) and 6,298 genes (32% of tested genes).
+    Identified 59,786 trans-eQTL, representing 3,853 SNPs (**37% of tested GWAS SNPs**) and 6,298 genes (32% of tested genes).
 
-  > The largest previous trans-eQTL meta-analysis in blood (N = 5,311) identified trans-eQTL for **8% of tested SNPs**.
+    > The largest previous trans-eQTL meta-analysis in blood (N = 5,311) identified trans-eQTL for **8% of tested SNPs**.
 
+-   Identify genes that are coordinately affected by **multiple independent trait-associated SNPs**.
 
-- Identify genes that are coordinately affected by **multiple independent trait-associated SNPs**.
-
-  Identified **47 GWAS traits** for which at least four independent variants affected the same gene in trans (Supplementary Tables 10). Examples genes affected by at least three SLE-associated genetic variants.
-
+    Identified **47 GWAS traits** for which at least four independent variants affected the same gene in trans (Supplementary Tables 10). Examples genes affected by at least three SLE-associated genetic variants.
 
 But, Individual trans-eQTL effects too weak to detect. Another way to look for the potential driver genes for traits and the "core" genes:
 
-2. eQTSs (associations between PGSs and gene expression, Fig. 6a, 6b)
+2.  eQTSs (associations between PGSs and gene expression, Fig. 6a, 6b)
 
-- Individual trait-associated SNPs are combined into a PGS that is associated with gene expression.
+-   Individual trait-associated SNPs are combined into a PGS that is associated with gene expression.
 
-- when the PGS for a trait correlates with the expression of a gene, trans-eQTL effects of individual risk variants converge on that gene, and it can be prioritized as a putative driver of the disease.
+-   when the PGS for a trait correlates with the expression of a gene, trans-eQTL effects of individual risk variants converge on that gene, and it can be prioritized as a putative driver of the disease.
 
-- 1,263 traits in total. 18,210 eQTSs representing 689 unique traits (**55% of tested traits**) and 2,568 genes (**13% of tested genes**).
+-   1,263 traits in total. 18,210 eQTSs representing 689 unique traits (**55% of tested traits**) and 2,568 genes (**13% of tested genes**).
 
-- Of these genes, 719 (**28%**) were not identified in the trans-eQTL analysis.
+-   Of these genes, 719 (**28%**) were not identified in the trans-eQTL analysis.
 
 **Therefore, all 3,853 trans-eQTLs eQTLGen identified are GWAS hits.**
 
-
 #### Question: if so, can we replicate them?
 
-Among 10,317 trait-associated SNPs, 9,056 (~89%) are included in DGN SNPs. Among 3,853 eQTLGen trans- eQTLs, **27 (~0.7%) are replicated in DGN signals (1,863, $p<1e-8$)**.
+Among 10,317 trait-associated SNPs, 9,056 (\~89%) are included in DGN SNPs. Among 3,853 eQTLGen trans- eQTLs, **27 (\~0.7%) are replicated in DGN signals (1,863,** $p<1e-8$).
 
 In the paper, another trans- study was mentioned,
 
 > The largest previous trans-eQTL meta-analysis in blood (N = 5,311) identified trans-eQTL for **8% of tested SNPs**.
 
-
 ### 2. gene *SENP7*
 
 #### the cross mappability of SENP7 and the genes in the trans modules
 
-As noted in [earlier section](Log2021.html), we observed,
+As noted in [earlier section](Log2021.html#what_is_gene_SENP7), we observed,
 
-- *SENP7* is the neasrest gene of the lead SNPs of coloc regions.
-- Gene *ZNF90P1* is located within *SENP7*.
-- Modules 25, 51, 153, 156 have coloc regions with immune traits and consist of many zinc finger genes.
+-   *SENP7* is the neasrest gene of the lead SNPs of coloc regions.
+-   Gene *ZNF90P1* is located within *SENP7*.
+-   Modules 25, 51, 153, 156 have coloc regions with immune traits and consist of many zinc finger genes.
 
 Therefore, we wanted to know,
 
-1. Does gene *ZNF90P1* have expression data?
+1.  Does gene *ZNF90P1* have expression data?
 
 I looked at the expression matrix of 13634 genes. *ZNF90P1* doesn't have expression data in this matrix.
 
-2. What is the cross mappability between *SENP7* and the zinc finger genes in the modules?
+2.  What is the cross mappability between *SENP7* and the zinc finger genes in the modules?
 
-See files for the cross mappability for [module 25][module 25 cross map with gene SENP7], [module 51][module 51 cross map with gene SENP7], [module 153][module 153 cross map with gene SENP7], [module 156][module 156 cross map with gene SENP7].
-
-[module 25 cross map with gene SENP7]: asset/2022/0105_SENP7_module25_size123_crossMap.txt
-[module 51 cross map with gene SENP7]: asset/2022/0105_SENP7_module51_size61_crossMap.txt
-[module 153 cross map with gene SENP7]: asset/2022/0105_SENP7_module153_size15_crossMap.txt
-[module 156 cross map with gene SENP7]: asset/2022/0105_SENP7_module156_size13_crossMap.txt
+See files for the cross mappability for [module 25](asset/2022/0105_SENP7_module25_size123_crossMap.txt), [module 51](asset/2022/0105_SENP7_module51_size61_crossMap.txt), [module 153](asset/2022/0105_SENP7_module153_size15_crossMap.txt), [module 156](asset/2022/0105_SENP7_module156_size13_crossMap.txt).
 
 The columns include: "score" for cross mappability score, "score_map1" for mappability score of gene1, "score_map2" for mappability score of gene2.
 
-3. For the genes in the trans modules,
+3.  For the genes in the trans modules,
 
 See a previous [file here](asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx).
 
-
 #### highlighting SENP7 as a trans-meQTL
 
-https://www-nature-com.proxy.uchicago.edu/articles/s41588-021-00969-x Another paper highlighting SENP7 as a trans-meQTL.
-
+<https://www-nature-com.proxy.uchicago.edu/articles/s41588-021-00969-x> Another paper highlighting SENP7 as a trans-meQTL.
 
 ### 3. pQTL resource
-
