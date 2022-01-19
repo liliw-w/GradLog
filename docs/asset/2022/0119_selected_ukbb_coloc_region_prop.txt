@@ -1,0 +1,26 @@
+Phenocode	trait	nRegion	nRegionColoc	nRegionPval	nRegionPvalColoc	propColoc	propPvalColoc
+23104	Body-mass-index-(BMI)	450	34	52	7	0.0755555555555556	0.134615384615385
+21001	Body-mass-index-(BMI)	438	39	50	7	0.089041095890411	0.14
+30760	HDL-cholesterol	359	37	31	2	0.103064066852368	0.0645161290322581
+6152_9	Hayfever,-allergic-rhinitis-or-eczema	166	14	33	1	0.0843373493975904	0.0303030303030303
+30690	Cholesterol	153	25	6	1	0.163398692810458	0.166666666666667
+401	Hypertension	95	15	2	1	0.157894736842105	0.5
+6152_8	Asthma	88	5	5	0	0.0568181818181818	0
+3761	Age-hay-fever,-rhinitis-or-eczema-diagnosed	83	4	27	0	0.0481927710843374	0
+411.4	Coronary-atherosclerosis	61	10	3	0	0.163934426229508	0
+495	Asthma	57	2	3	0	0.0350877192982456	0
+714	Rheumatoid-arthritis-and-other-inflammatory-polyarthropathies	57	0	25	0	0	0
+555	Inflammatory-bowel-disease-and-other-gastroenteritis-and-colitis	54	1	24	0	0.0185185185185185	0
+714.1	Rheumatoid-arthritis	53	0	24	0	0	0
+250.2	Type-2-diabetes	47	4	4	0	0.0851063829787234	0
+185	Cancer-of-prostate	46	1	3	0	0.0217391304347826	0
+172	Skin-cancer	28	2	2	0	0.0714285714285714	0
+695.42	Systemic-lupus-erythematosus	20	0	1	0	0	0
+335	Multiple-sclerosis	19	2	1	0	0.105263157894737	0
+555.2	Ulcerative-colitis	17	0	1	0	0	0
+20126_0	No-Bipolar-or-Depression	16	0	1	0	0	0
+278	Overweight,-obesity-and-other-hyperalimentation	11	4	0	0	0.363636363636364	
+174	Breast-cancer	9	1	0	0	0.111111111111111	
+332	Parkinson's-disease	6	3	0	0	0.5	
+300	Anxiety-disorders	3	0	0	0	0	
+290.11	Alzheimer's-disease	1	0	0	0	0	
