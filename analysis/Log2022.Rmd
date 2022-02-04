@@ -22,6 +22,38 @@ blockquote {
 }
 ```
 
+## Jan 26
+
+### 1. Update coloc figures with less stringent pvalue threshold
+
+Previously, we defined the green regions with module-QTL $p<1e-8$. This threshold is not premutation based. I looked at the permutation-based p threshold, and it is $\approx 3e-8$. We'd like to use a less stringent threshold, so I chose $p<1e-7$ to define the green regions.
+
+In total, we considered three (four) types of coloc. Coloc with (1) 29 blood related traits from ukbb, (2) 11 immune traits, (3) 27 more traits from ukbb. (The 4-th type is coloc with cis genes.)
+
+I updated the figures and tables.
+
+- figures
+
+[29 blood related traits from ukbb](../docs/asset/2022/0126_ukbb_coloc_blood_traits_all.traits.coloc.region.summary.pvalThre-1e-07.png); [earlier result with 1e-8 thre](../docs/asset/1115_all.traits.coloc.region.summary.png)
+
+[11 immune traits](../docs/asset/2022/0126_immune_traits_all.traits.coloc.region.summary.pvalThre-1e-07.png); [earlier result with 1e-8 thre](../docs/asset/1129_all.traits.coloc.region.summary.png)
+
+[27 more traits from ukbb](../docs/asset/2022/0126_ukbb_coloc_more_traits_all.traits.coloc.region.summary.pvalThre-1e-07.png); [earlier result with 1e-8 thre](../docs/asset/2022/0119_selected_ukbb_all.traits.coloc.region.summary.png)
+
+
+- tables with detailed numerical results
+
+[29 blood related traits from ukbb](../docs/asset/2022/0126_ukbb_coloc_blood_traits_coloc_region_prop_pvalThre-1e-07.txt)
+
+[11 immune traits](../docs/asset/2022/0126_immune_traits_coloc_region_prop_pvalThre-1e-07.txt)
+
+[27 more traits from ukbb](../docs/asset/2022/0126_ukbb_coloc_more_traits_coloc_region_prop_pvalThre-1e-07.txt)
+
+
+### 2. Other types of modules coloc with traits
+
+
+
 ## Jan 19
 
 ### 1. Comprehensive analysis of coloc regions of trait MS
@@ -84,7 +116,7 @@ knitr::include_graphics(c("asset/2022/0119_phenotype_sub_N.png"), error = FALSE)
 ```
 
 
-#### coloc results
+#### coloc results {More-traits-from-UKBB}
 
 1.  Visualize
 
