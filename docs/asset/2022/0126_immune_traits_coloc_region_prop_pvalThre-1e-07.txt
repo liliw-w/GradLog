@@ -1,0 +1,13 @@
+Phenocode	trait	nRegion	nRegionColoc	nRegionPval	nRegionPvalColoc	propColoc	propPvalColoc
+cd	Crohns' disease	142	39	64	24	0.274647887323944	0.375
+ibd	Inflammaroty bowel disease	150	30	60	19	0.2	0.316666666666667
+Allergy	Allergic disases (asthma, hay fever and eczema)	132	18	57	11	0.136363636363636	0.192982456140351
+AE	Allergy and eczema	182	14	50	1	0.0769230769230769	0.02
+MS	Multiple sclerosis	73	4	21	1	0.0547945205479452	0.0476190476190476
+sle	Systemic lupus erythematosus	46	6	2	0	0.130434782608696	0
+IBD	Inflammaroty bowel disease	59	5	8	0	0.0847457627118644	0
+RA_GWASmeta_European	Rheumatoid arthritis	43	4	7	0	0.0930232558139535	0
+CD	Crohns' disease	78	2	32	0	0.0256410256410256	0
+uc	Ulcerative colitis	55	2	7	0	0.0363636363636364	0
+ASTHMA	Adult-onset Asthma	40	2	7	0	0.05	0
+UC	Ulcerative colitis	39	2	5	0	0.0512820512820513	0
