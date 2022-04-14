@@ -22,6 +22,229 @@ blockquote {
 }
 ```
 
+## Apr 13
+
+### 1. Run PCO on eQTLGen
+
+#### Why?
+
+- To see if new signals in eQTLGen with much larger sample size.
+  
+- To see the replcation of DGN signals in eQTLGen.
+
+#### How to run PCO on eQTLGen z's?
+
+- Determine modules - 166 DGN modules.
+  
+- Sum stat of each SNP on genes in the module.
+
+#### Problem
+
+- $\Sigma$: no raw expression data for estimating $\Sigma$.
+  
+- eQTLGen sum stats from meta analysis, didn't remove mappability reads.
+
+#### Solution
+
+- Use eQTLGen NULL z's to estimate $\Sigma$. By definition.
+  
+- Remove genes in module that are cross-map with cis-genes of the SNP of interest (SNP-wise PCO).
+
+#### Observation
+
+- signals claimed by Bonferroni correction, i.e. $0.05/166/9918$
+  
+- p-values distribution
+
+```{r out.width="50%", fig.cap="Figure: Distribution of p-values.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0413_p_hist.png", "asset/2022/0413_p_qq.png"), error = FALSE)
+```
+
+
+- Signals distribution for each (module, chr), module, and chr.
+
+```{r out.width="100%", fig.cap="Figure: Signal distribution for pair of (module, chr).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0413_signal_module_chr.png"), error = FALSE)
+```
+
+
+```{r out.width="50%", fig.cap="Figure: Signal distribution on each module and chr.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0413_signal_module.png", "asset/2022/0413_signal_chr.png"), error = FALSE)
+```
+
+
+### 2. Simulation - Are eQTLGen PCO signals of large modules inflated?
+
+#### Problem
+
+We see from the above figure the trend, which is larges modules have more signals. There can be two possible reasons,
+
+  - Those are true signals, as larger modules with more genes could have more trans-eQTLd.
+  
+  - Those are inflated signals (false positives).
+
+
+#### I looked into the second reason
+
+Why is it possible? Because at the very beginning, we first used the correlation matrix of gene samples from DGN to estiamte $\Sigma$ and use it as $\hat\Sigma$ for eQTLGen. And we observed all 9918 SNPs are significant, and SNPs' p-values for each module are almost all 0. That seemed unreasonable.
+
+And we found that may be because of the use of inaccurate $\hat\Sigma$. So we decided to use $\hat\Sigma$ from $cor(Z^{NULL})$ of eQTLGen's own null sum stat.
+
+We learned that inaccurate $\hat\Sigma$ could inflate signals.
+
+And using $cor(Z^{NULL})$ can also lead to inaccurate $\hat\Sigma$ is because for a module of $K$ genes, we need to estimate a $K \times K$ matrix, using $Z^{NULL}$ of dimension $m \times K$ with $m$ NULL SNPs of these genes from eQTLGen.
+
+This can be problematic for large modules with large $K$, because
+
+- There are fewer SNPs with null sum stat for all $K$ genes in the module, i.e. smaller $m$.
+  
+- If $m$ is not larger enough than $K$, $\hat\Sigma$ by $cor(Z^{NULL})$ is inaccurate.
+  
+- There can be lots of extremely small p-values. Inflate PCO signals.
+
+
+#### Observation
+
+We did observe a decreasing number of null SNPs for larger modules.
+
+```{r out.width="100%", fig.cap="Figure: We did observe a decreasing number of null SNPs for larger modules.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0413_signal_moduleplot_nullSNP_module_size_pthre1e-04.png"), error = FALSE)
+```
+
+[m/K ratio]()
+
+
+#### Does $\hat\Sigma$ by $cor(Z^{NULL})$ lead to inflated PCO signals?
+
+We want to check if $\hat\Sigma$ by $cor(Z^{NULL})$ really lead to extremely small pvalues and inflated PCO signals.
+
+- How to check?
+    
+  We use simulations. Specifically,
+  
+  1. Choose a real module from DGN.
+  2. Generate sum stat (Z) of NULL SNPs from the real $\Sigma$.
+  3. Use these NULL SNPs to estimate a $\hat\Sigma$.
+  4. Run PCO on another set of NULL SNPs using the true $\Sigma$ and $\hat\Sigma$ by $cor(Z^{NULL})$.
+  5. Compare their p-values.
+
+  The p-values using true $\Sigma$ should represent the true case. By comparing p-values using $\hat\Sigma$ to it, we should be able to see if $P_{\hat\Sigma}$ have extreme values.
+
+
+- Simulation setting
+  
+  1. I looked at multiple modules with various module size, including module 1-11, 15, 20, 30, 40, 50, 60, 70, 90, 100, 150, 166.
+  
+  2. I looked at various $m/K$ ratios for estimating $\hat\Sigma$, including 1, 5, 10, 50, 100, 150.
+
+
+```{r out.width="100%", fig.cap="Figure: Histogram of p-values using various Sigma's.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0413_plot_hist_Sigma_DGN_module1.png"), error = FALSE)
+```
+
+```{r out.width="70%", fig.cap="Figure: QQ-plot of p-values using various Sigma's.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0413_plot_qq_Sigma_DGN_module1.png"), error = FALSE)
+```
+
+
+#### Observation
+
+- P-values looked similar to the true case when ratio $>50$.
+
+- The ratio has smaller inflation effects on smaller modules, e.g. p-values of module 166 using $\Sigma$ of ratio 20 are closer to that of module 1 using $\Sigma$ of same ratio.
+
+- In eQTLGen analysis, ??? modules have $m/K$ ratio $>50$.
+
+
+
+
+### 3. In DGN, larger module, more signals?
+
+We wonder if this trend also exists in DGN data.
+
+$\hat\Sigma$: module size v.s. sample size
+
+
+### 4. Remaining questions
+
+- Inaccurate $\hat\Sigma$ leads to false negatives? in DGN?
+
+
+
+## Mar 30
+
+1. eQTLGen analysis
+
+
+
+## Mar 25
+1. Signal SNPs genomic location annotation
+
+- torus: GTEx
+
+- snpEff
+
+
+
+
+## Mar 02
+
+### 1. About "replication of signals in eQTLGen"
+
+In the abstract of The Biology of Genome conference, you added something as
+
+> The trans-eQTLs are highly replicable, and all were replicated in the eQTLGen.
+
+At first, I thought you were referring to the replication of the identified trans-eQTLs in eQTLGen. But I didn't remember we had this observation. So I wondered where this impression came from.
+
+I think maybe because [previous section](Log2021.html#1_Are_the_dark_green_signals_eQTLGen_signals). I looked at what are those lead-SNPs of the colocalized regions (dark green regions). Specifically, are those dark green signals eQTLGen signals (cis- or trans- signals)?
+
+I observed that, out of 74 unique lead SNPs of colocalized regions for all blood-related traits, 65 are included in eQTLGen SNPs. And 63 are eQTLGen cis- or trans- signals.
+
+
+### 2. preious eQTGen signals using trans-PCO
+
+```{r}
+df <- data.frame("Sigma" = c("DGN", "DGN", "DGN", "DGN", "nullz"),
+                 "#modules" = c("less", "less", "more", "more", "more"),
+                 "PCO_lambda_thre" = c(1, 0.1, 1, 0.1, 0.1),
+                 "#signals" = c("~367", "9918", "~460", "9905", NA),
+                 stringsAsFactors = FALSE, check.names = FALSE)
+knitr::kable(df)
+```
+
+1. At first, we used $\text{PCO}_{\lambda<1}$ and observed hundreds of eQTLGen SNPs that are significant trans-eQTL signals.
+
+2. We decided to choose $\text{PCO}_{\lambda<0.1}$ over $\text{PCO}_{\lambda<1}$.
+
+3. Then we observed almost all 9918 eQTLGen SNPs are trans-eQTL signals. We doubted some signals are false positives.
+
+[Replication_of_eQTLGen_results_in_trans-PCO_of_eQTLGen_summary_stats](Log2021.html#Replication_of_eQTLGen_results_in_trans-PCO_of_eQTLGen_summary_stats)
+
+[Why_there_are_so_many_eQTLGen_signals](Log2021.html#Why_there_are_so_many_eQTLGen_signals_using_PCO_({lambda01}))
+
+4. We thought false positives occurred because we used $\Sigma$ of DGN for estimating $\hat{\Sigma}$ of eQTLGen. So we [tried using null zscores from eQTLGen to build sigma](Log2021.html#Build_Sigma_(hat{Sigma}_{DGN})_and_(hat{Sigma}_{nullz})_and_check_PCO_pvalues). We observed a significant drop of pvalues.
+
+
+
+
+## Feb 16
+
+### 1. Simulation
+
+- Re-run simulation using $\Sigma$ from the updated 166 modules of DGN_no_filter_on_mappability.
+
+- QQ plot of null distribution.
+
+  Figures are stored on server.
+  
+  [qq plot](/scratch/midway2/liliw1/simulation_lambda0.1/new_Sigma/qqplot_null.png)
+  [qqplot with histogram](/scratch/midway2/liliw1/simulation_lambda0.1/new_Sigma/qqplot_null_with_hist.png)
+
+- Power plot.
+
+
+
 ## Jan 26
 
 ### 1. Update coloc figures with less stringent pvalue threshold
