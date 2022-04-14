@@ -421,7 +421,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-02-04
+<strong>Last updated:</strong> 2022-04-14
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -512,16 +512,16 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree089c60942bfc4e7416bbc5bcf73accd65aeef082targetblank089c609a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/089c60942bfc4e7416bbc5bcf73accd65aeef082" target="_blank">089c609</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree424015b9c6ebab80f3ade02c9c2f48f5c173bba3targetblank424015ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/424015b9c6ebab80f3ade02c9c2f48f5c173bba3" target="_blank">424015b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree089c60942bfc4e7416bbc5bcf73accd65aeef082targetblank089c609a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree424015b9c6ebab80f3ade02c9c2f48f5c173bba3targetblank424015ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/089c60942bfc4e7416bbc5bcf73accd65aeef082" target="_blank">089c609</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/424015b9c6ebab80f3ade02c9c2f48f5c173bba3" target="_blank">424015b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -536,9 +536,6 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
-
-Untracked files:
-    Untracked:  analysis/references.bib
 
 </code></pre>
 <p>
@@ -577,6 +574,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/424015b9c6ebab80f3ade02c9c2f48f5c173bba3/analysis/Log2022.Rmd" target="_blank">424015b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+<td>
+add new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/72025bf9b9f91c57745d7910e076d79a5fc2ee18/docs/Log2022.html" target="_blank">72025bf</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-02-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -762,6 +793,550 @@ blockquote {
     border-left: 5px solid #eee;
 }
 </style>
+<div id="apr-13" class="section level2">
+<h2>Apr 13</h2>
+<div id="run-pco-on-eqtlgen" class="section level3">
+<h3>1. Run PCO on eQTLGen</h3>
+<div id="why" class="section level4">
+<h4>Why?</h4>
+<ul>
+<li><p>To see if new signals in eQTLGen with much larger sample size.</p></li>
+<li><p>To see the replcation of DGN signals in eQTLGen.</p></li>
+</ul>
+</div>
+<div id="how-to-run-pco-on-eqtlgen-zs" class="section level4">
+<h4>How to run PCO on eQTLGen z’s?</h4>
+<ul>
+<li><p>Determine modules - 166 DGN modules.</p></li>
+<li><p>Sum stat of each SNP on genes in the module.</p></li>
+</ul>
+</div>
+<div id="problem" class="section level4">
+<h4>Problem</h4>
+<ul>
+<li><p><span class="math inline">\(\Sigma\)</span>: no raw expression data for estimating <span class="math inline">\(\Sigma\)</span>.</p></li>
+<li><p>eQTLGen sum stats from meta analysis, didn’t remove mappability reads.</p></li>
+</ul>
+</div>
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<ul>
+<li><p>Use eQTLGen NULL z’s to estimate <span class="math inline">\(\Sigma\)</span>. By definition.</p></li>
+<li><p>Remove genes in module that are cross-map with cis-genes of the SNP of interest (SNP-wise PCO).</p></li>
+</ul>
+</div>
+<div id="observation" class="section level4">
+<h4>Observation</h4>
+<ul>
+<li><p>signals claimed by Bonferroni correction, i.e. <span class="math inline">\(0.05/166/9918\)</span></p></li>
+<li><p>p-values distribution</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2022/0413_p_hist.png" alt="Figure: Distribution of p-values." width="50%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_p_hist">
+Past versions of 0413_p_hist.png
+</button>
+</p>
+<div id="fig-0413_p_hist" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_p_hist.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2022/0413_p_qq.png" alt="Figure: Distribution of p-values." width="50%" />
+<p class="caption">
+Figure: Distribution of p-values.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_p_qq">
+Past versions of 0413_p_qq.png
+</button>
+</p>
+<div id="fig-0413_p_qq" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_p_qq.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Signals distribution for each (module, chr), module, and chr.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0413_signal_module_chr.png" alt="Figure: Signal distribution for pair of (module, chr)." width="100%" />
+<p class="caption">
+Figure: Signal distribution for pair of (module, chr).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_signal_module_chr">
+Past versions of 0413_signal_module_chr.png
+</button>
+</p>
+<div id="fig-0413_signal_module_chr" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_signal_module_chr.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2022/0413_signal_module.png" alt="Figure: Signal distribution on each module and chr." width="50%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_signal_module">
+Past versions of 0413_signal_module.png
+</button>
+</p>
+<div id="fig-0413_signal_module" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_signal_module.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2022/0413_signal_chr.png" alt="Figure: Signal distribution on each module and chr." width="50%" />
+<p class="caption">
+Figure: Signal distribution on each module and chr.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_signal_chr">
+Past versions of 0413_signal_chr.png
+</button>
+</p>
+<div id="fig-0413_signal_chr" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_signal_chr.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="simulation---are-eqtlgen-pco-signals-of-large-modules-inflated" class="section level3">
+<h3>2. Simulation - Are eQTLGen PCO signals of large modules inflated?</h3>
+<div id="problem-1" class="section level4">
+<h4>Problem</h4>
+<p>We see from the above figure the trend, which is larges modules have more signals. There can be two possible reasons,</p>
+<ul>
+<li><p>Those are true signals, as larger modules with more genes could have more trans-eQTLd.</p></li>
+<li><p>Those are inflated signals (false positives).</p></li>
+</ul>
+</div>
+<div id="i-looked-into-the-second-reason" class="section level4">
+<h4>I looked into the second reason</h4>
+<p>Why is it possible? Because at the very beginning, we first used the correlation matrix of gene samples from DGN to estiamte <span class="math inline">\(\Sigma\)</span> and use it as <span class="math inline">\(\hat\Sigma\)</span> for eQTLGen. And we observed all 9918 SNPs are significant, and SNPs’ p-values for each module are almost all 0. That seemed unreasonable.</p>
+<p>And we found that may be because of the use of inaccurate <span class="math inline">\(\hat\Sigma\)</span>. So we decided to use <span class="math inline">\(\hat\Sigma\)</span> from <span class="math inline">\(cor(Z^{NULL})\)</span> of eQTLGen’s own null sum stat.</p>
+<p>We learned that inaccurate <span class="math inline">\(\hat\Sigma\)</span> could inflate signals.</p>
+<p>And using <span class="math inline">\(cor(Z^{NULL})\)</span> can also lead to inaccurate <span class="math inline">\(\hat\Sigma\)</span> is because for a module of <span class="math inline">\(K\)</span> genes, we need to estimate a <span class="math inline">\(K \times K\)</span> matrix, using <span class="math inline">\(Z^{NULL}\)</span> of dimension <span class="math inline">\(m \times K\)</span> with <span class="math inline">\(m\)</span> NULL SNPs of these genes from eQTLGen.</p>
+<p>This can be problematic for large modules with large <span class="math inline">\(K\)</span>, because</p>
+<ul>
+<li><p>There are fewer SNPs with null sum stat for all <span class="math inline">\(K\)</span> genes in the module, i.e. smaller <span class="math inline">\(m\)</span>.</p></li>
+<li><p>If <span class="math inline">\(m\)</span> is not larger enough than <span class="math inline">\(K\)</span>, <span class="math inline">\(\hat\Sigma\)</span> by <span class="math inline">\(cor(Z^{NULL})\)</span> is inaccurate.</p></li>
+<li><p>There can be lots of extremely small p-values. Inflate PCO signals.</p></li>
+</ul>
+</div>
+<div id="observation-1" class="section level4">
+<h4>Observation</h4>
+<p>We did observe a decreasing number of null SNPs for larger modules.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0413_signal_moduleplot_nullSNP_module_size_pthre1e-04.png" alt="Figure: We did observe a decreasing number of null SNPs for larger modules." width="100%" />
+<p class="caption">
+Figure: We did observe a decreasing number of null SNPs for larger modules.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_signal_moduleplot_nullSNP_module_size_pthre1e-04">
+Past versions of 0413_signal_moduleplot_nullSNP_module_size_pthre1e-04.png
+</button>
+</p>
+<div id="fig-0413_signal_moduleplot_nullSNP_module_size_pthre1e-04" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_signal_moduleplot_nullSNP_module_size_pthre1e-04.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><a href="">m/K ratio</a></p>
+</div>
+<div id="does-hatsigma-by-corznull-lead-to-inflated-pco-signals" class="section level4">
+<h4>Does <span class="math inline">\(\hat\Sigma\)</span> by <span class="math inline">\(cor(Z^{NULL})\)</span> lead to inflated PCO signals?</h4>
+<p>We want to check if <span class="math inline">\(\hat\Sigma\)</span> by <span class="math inline">\(cor(Z^{NULL})\)</span> really lead to extremely small pvalues and inflated PCO signals.</p>
+<ul>
+<li><p>How to check?</p>
+<p>We use simulations. Specifically,</p>
+<ol style="list-style-type: decimal">
+<li>Choose a real module from DGN.</li>
+<li>Generate sum stat (Z) of NULL SNPs from the real <span class="math inline">\(\Sigma\)</span>.</li>
+<li>Use these NULL SNPs to estimate a <span class="math inline">\(\hat\Sigma\)</span>.</li>
+<li>Run PCO on another set of NULL SNPs using the true <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\hat\Sigma\)</span> by <span class="math inline">\(cor(Z^{NULL})\)</span>.</li>
+<li>Compare their p-values.</li>
+</ol>
+<p>The p-values using true <span class="math inline">\(\Sigma\)</span> should represent the true case. By comparing p-values using <span class="math inline">\(\hat\Sigma\)</span> to it, we should be able to see if <span class="math inline">\(P_{\hat\Sigma}\)</span> have extreme values.</p></li>
+<li><p>Simulation setting</p>
+<ol style="list-style-type: decimal">
+<li><p>I looked at multiple modules with various module size, including module 1-11, 15, 20, 30, 40, 50, 60, 70, 90, 100, 150, 166.</p></li>
+<li><p>I looked at various <span class="math inline">\(m/K\)</span> ratios for estimating <span class="math inline">\(\hat\Sigma\)</span>, including 1, 5, 10, 50, 100, 150.</p></li>
+</ol></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0413_plot_hist_Sigma_DGN_module1.png" alt="Figure: Histogram of p-values using various Sigma's." width="100%" />
+<p class="caption">
+Figure: Histogram of p-values using various Sigma’s.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_plot_hist_Sigma_DGN_module1">
+Past versions of 0413_plot_hist_Sigma_DGN_module1.png
+</button>
+</p>
+<div id="fig-0413_plot_hist_Sigma_DGN_module1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_plot_hist_Sigma_DGN_module1.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0413_plot_qq_Sigma_DGN_module1.png" alt="Figure: QQ-plot of p-values using various Sigma's." width="70%" />
+<p class="caption">
+Figure: QQ-plot of p-values using various Sigma’s.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0413_plot_qq_Sigma_DGN_module1">
+Past versions of 0413_plot_qq_Sigma_DGN_module1.png
+</button>
+</p>
+<div id="fig-0413_plot_qq_Sigma_DGN_module1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_plot_qq_Sigma_DGN_module1.png" target="_blank">ec19552</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="observation-2" class="section level4">
+<h4>Observation</h4>
+<ul>
+<li><p>P-values looked similar to the true case when ratio <span class="math inline">\(&gt;50\)</span>.</p></li>
+<li><p>The ratio has smaller inflation effects on smaller modules, e.g. p-values of module 166 using <span class="math inline">\(\Sigma\)</span> of ratio 20 are closer to that of module 1 using <span class="math inline">\(\Sigma\)</span> of same ratio.</p></li>
+<li><p>In eQTLGen analysis, ??? modules have <span class="math inline">\(m/K\)</span> ratio <span class="math inline">\(&gt;50\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div id="in-dgn-larger-module-more-signals" class="section level3">
+<h3>3. In DGN, larger module, more signals?</h3>
+<p>We wonder if this trend also exists in DGN data.</p>
+<p><span class="math inline">\(\hat\Sigma\)</span>: module size v.s. sample size</p>
+</div>
+<div id="remaining-questions" class="section level3">
+<h3>4. Remaining questions</h3>
+<ul>
+<li>Inaccurate <span class="math inline">\(\hat\Sigma\)</span> leads to false negatives? in DGN?</li>
+</ul>
+</div>
+</div>
+<div id="mar-30" class="section level2">
+<h2>Mar 30</h2>
+<ol style="list-style-type: decimal">
+<li>eQTLGen analysis</li>
+</ol>
+</div>
+<div id="mar-25" class="section level2">
+<h2>Mar 25</h2>
+<ol style="list-style-type: decimal">
+<li>Signal SNPs genomic location annotation</li>
+</ol>
+<ul>
+<li><p>torus: GTEx</p></li>
+<li><p>snpEff</p></li>
+</ul>
+</div>
+<div id="mar-02" class="section level2">
+<h2>Mar 02</h2>
+<div id="about-replication-of-signals-in-eqtlgen" class="section level3">
+<h3>1. About “replication of signals in eQTLGen”</h3>
+<p>In the abstract of The Biology of Genome conference, you added something as</p>
+<blockquote>
+<p>The trans-eQTLs are highly replicable, and all were replicated in the eQTLGen.</p>
+</blockquote>
+<p>At first, I thought you were referring to the replication of the identified trans-eQTLs in eQTLGen. But I didn’t remember we had this observation. So I wondered where this impression came from.</p>
+<p>I think maybe because <a href="Log2021.html#1_Are_the_dark_green_signals_eQTLGen_signals">previous section</a>. I looked at what are those lead-SNPs of the colocalized regions (dark green regions). Specifically, are those dark green signals eQTLGen signals (cis- or trans- signals)?</p>
+<p>I observed that, out of 74 unique lead SNPs of colocalized regions for all blood-related traits, 65 are included in eQTLGen SNPs. And 63 are eQTLGen cis- or trans- signals.</p>
+</div>
+<div id="preious-eqtgen-signals-using-trans-pco" class="section level3">
+<h3>2. preious eQTGen signals using trans-PCO</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Sigma</th>
+<th align="left">#modules</th>
+<th align="right">PCO_lambda_thre</th>
+<th align="left">#signals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DGN</td>
+<td align="left">less</td>
+<td align="right">1.0</td>
+<td align="left">~367</td>
+</tr>
+<tr class="even">
+<td align="left">DGN</td>
+<td align="left">less</td>
+<td align="right">0.1</td>
+<td align="left">9918</td>
+</tr>
+<tr class="odd">
+<td align="left">DGN</td>
+<td align="left">more</td>
+<td align="right">1.0</td>
+<td align="left">~460</td>
+</tr>
+<tr class="even">
+<td align="left">DGN</td>
+<td align="left">more</td>
+<td align="right">0.1</td>
+<td align="left">9905</td>
+</tr>
+<tr class="odd">
+<td align="left">nullz</td>
+<td align="left">more</td>
+<td align="right">0.1</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><p>At first, we used <span class="math inline">\(\text{PCO}_{\lambda&lt;1}\)</span> and observed hundreds of eQTLGen SNPs that are significant trans-eQTL signals.</p></li>
+<li><p>We decided to choose <span class="math inline">\(\text{PCO}_{\lambda&lt;0.1}\)</span> over <span class="math inline">\(\text{PCO}_{\lambda&lt;1}\)</span>.</p></li>
+<li><p>Then we observed almost all 9918 eQTLGen SNPs are trans-eQTL signals. We doubted some signals are false positives.</p></li>
+</ol>
+<p><a href="Log2021.html#Replication_of_eQTLGen_results_in_trans-PCO_of_eQTLGen_summary_stats">Replication_of_eQTLGen_results_in_trans-PCO_of_eQTLGen_summary_stats</a></p>
+<p><a href="Log2021.html#Why_there_are_so_many_eQTLGen_signals_using_PCO_(%7Blambda01%7D)">Why_there_are_so_many_eQTLGen_signals</a></p>
+<ol start="4" style="list-style-type: decimal">
+<li>We thought false positives occurred because we used <span class="math inline">\(\Sigma\)</span> of DGN for estimating <span class="math inline">\(\hat{\Sigma}\)</span> of eQTLGen. So we <a href="Log2021.html#Build_Sigma_(hat%7BSigma%7D_%7BDGN%7D)_and_(hat%7BSigma%7D_%7Bnullz%7D)_and_check_PCO_pvalues">tried using null zscores from eQTLGen to build sigma</a>. We observed a significant drop of pvalues.</li>
+</ol>
+</div>
+</div>
+<div id="feb-16" class="section level2">
+<h2>Feb 16</h2>
+<div id="simulation" class="section level3">
+<h3>1. Simulation</h3>
+<ul>
+<li><p>Re-run simulation using <span class="math inline">\(\Sigma\)</span> from the updated 166 modules of DGN_no_filter_on_mappability.</p></li>
+<li><p>QQ plot of null distribution.</p>
+<p>Figures are stored on server.</p>
+<p><a href="/scratch/midway2/liliw1/simulation_lambda0.1/new_Sigma/qqplot_null.png">qq plot</a> <a href="/scratch/midway2/liliw1/simulation_lambda0.1/new_Sigma/qqplot_null_with_hist.png">qqplot with histogram</a></p></li>
+<li><p>Power plot.</p></li>
+</ul>
+</div>
+</div>
 <div id="jan-26" class="section level2">
 <h2>Jan 26</h2>
 <div id="update-coloc-figures-with-less-stringent-pvalue-threshold" class="section level3">
@@ -1140,15 +1715,17 @@ other attached packages:
 [1] workflowr_1.7.0
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.8       rstudioapi_0.13  knitr_1.37       whisker_0.4     
- [5] magrittr_2.0.2   getPass_0.2-2    R6_2.5.1         rlang_1.0.0     
- [9] fastmap_1.1.0    highr_0.9        stringr_1.4.0    httr_1.4.2      
-[13] tools_4.1.2      xfun_0.29        cli_3.1.1        jquerylib_0.1.4 
-[17] git2r_0.29.0     htmltools_0.5.2  yaml_2.2.2       digest_0.6.29   
-[21] rprojroot_2.0.2  processx_3.5.2   callr_3.7.0      later_1.3.0     
-[25] promises_1.2.0.1 fs_1.5.2         ps_1.6.0         glue_1.6.1      
-[29] evaluate_0.14    rmarkdown_2.11   stringi_1.7.6    compiler_4.1.2  
-[33] httpuv_1.6.5    </code></pre>
+ [1] Rcpp_1.0.8       highr_0.9        compiler_4.1.2   pillar_1.7.0    
+ [5] later_1.3.0      git2r_0.29.0     jquerylib_0.1.4  tools_4.1.2     
+ [9] getPass_0.2-2    digest_0.6.29    evaluate_0.14    tibble_3.1.6    
+[13] lifecycle_1.0.1  pkgconfig_2.0.3  rlang_1.0.0      cli_3.1.1       
+[17] rstudioapi_0.13  yaml_2.2.2       xfun_0.29        fastmap_1.1.0   
+[21] httr_1.4.2       stringr_1.4.0    knitr_1.37       fs_1.5.2        
+[25] vctrs_0.3.8      rprojroot_2.0.2  glue_1.6.1       R6_2.5.1        
+[29] processx_3.5.2   fansi_1.0.2      rmarkdown_2.11   callr_3.7.0     
+[33] magrittr_2.0.2   whisker_0.4      ps_1.6.0         promises_1.2.0.1
+[37] htmltools_0.5.2  ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2      
+[41] stringi_1.7.6    crayon_1.4.2    </code></pre>
 </div>
 </div>
 </div>
