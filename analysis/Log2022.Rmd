@@ -23,6 +23,72 @@ blockquote {
 ```
 
 
+## Apr 20
+
+### 0. Updated figures
+
+- The ratio of number of NULL SNPs used to estimate $\Sigma$ over the module size for each module
+
+![](asset/2022/0420_plot_nullSNP_module_size_pthre1e-04_ratio.png)
+
+As a result, I choose to use ratio 50 as the threshold for selecting modules to further look at for signals.
+
+- Updated signal distribution
+
+![signal distribution on modules and chrs](asset/2022/0420_signal_module_chr_rm_infl_ratio_50.png)
+
+![signal distribution on modules](asset/2022/0420_signal_module_rm_infl_ratio_50.png)
+![signal distribution on chrs](asset/2022/0420_signal_chr_rm_infl_ratio_50.png){width=50%}
+
+
+### 1. Some numbers of eQTLGen signals
+
+- Out of 166 modules, 129 modules are left after removing modules with the ratio of number of NULL SNPs used to estimate $\Sigma$ over the module size is smaller than 50.
+
+- There are 8116 significant (trans-eQTL, module) pairs under Bonferroni $p<0.05/9918/129$.
+
+- Out of 129 modules, 122 have at least one trans-eQTL from ~10k eQTLGen SNPs.
+
+- There are 2161 eQTLGen SNPs that are significant trans-eQTLs for at least one module.
+
+
+
+### 2. Overlaps between trans and cis-e/sQTLs
+
+- Overlap of ~10k eQTLGen SNPs and DGN SNPs?
+
+
+- Are trans-eQTLs cis-e/sQTLs in DGN?
+
+  1. 1240 trans-eQTLs (out of 2161 ) are also cis-eQTLs, corresponding to 1302 cis-eQTL-Genes.
+  
+  2. 930 trans-eQTLs (out of 2161 ) are also cis-sQTLs, corresponding to 2807 cis-sQTL-Genes.
+
+
+![venn](asset/2022/0420_trans_cis_venn.png){width=45%} ![upset](asset/2022/0420_trans_cis_upset.png){width=45%}
+
+
+- Are trans-eQTLs cis-e/sQTLs in eQTLGen?
+
+
+### 3. eQTLGen replication
+
+- DGN replication in eQTLGen
+
+
+- eQTLGen replciation in DGN
+
+  1. Summary
+  
+  2. Interesting signals, in terms of those signals not in DGN, but in eQTLGen, due to more powerful eQTLGen sum stat?
+
+
+### 4. cis- genes
+
+
+
+
+
 ## Apr 13
 
 ### 1. Run PCO on eQTLGen
