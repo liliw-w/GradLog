@@ -96,7 +96,7 @@ The p-values of these signals in eQTLGen range: ( 0 , 8.163248e-12 ).
     
     Based on these overlaps, the updated p-values threshold for defining replication is: 1.319784e-05, under FDR level 0.1.
     
-    **As a result, out of 7577 eQTLGen signals, 69 are replicated in eQTLGen.**
+    **As a result, out of 7577 eQTLGen signals, 69 are replicated in DGN.**
     
     The p-values of these signals in DGN range: ( 0 , 1.315094e-05 ).
   
