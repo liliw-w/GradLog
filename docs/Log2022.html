@@ -421,7 +421,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-04-25
+<strong>Last updated:</strong> 2022-04-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -512,16 +512,16 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9d92b99b9d5aa7746f02630955a7a8f23ed02853targetblank9d92b99a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/9d92b99b9d5aa7746f02630955a7a8f23ed02853" target="_blank">9d92b99</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0626baa5c59dfa308ff90956f7c13b0c65f80d1ftargetblank0626baaa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/0626baa5c59dfa308ff90956f7c13b0c65f80d1f" target="_blank">0626baa</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9d92b99b9d5aa7746f02630955a7a8f23ed02853targetblank9d92b99a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0626baa5c59dfa308ff90956f7c13b0c65f80d1ftargetblank0626baaa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/9d92b99b9d5aa7746f02630955a7a8f23ed02853" target="_blank">9d92b99</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/0626baa5c59dfa308ff90956f7c13b0c65f80d1f" target="_blank">0626baa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -536,6 +536,10 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    output/.DS_Store
+
+Untracked files:
+    Untracked:  lab_meet_0427.Rmd
+    Untracked:  lab_meet_0427.html
 
 </code></pre>
 <p>
@@ -574,6 +578,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0626baa5c59dfa308ff90956f7c13b0c65f80d1f/analysis/Log2022.Rmd" target="_blank">0626baa</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-27
+</td>
+<td>
+add a new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/59c3d71239d38efbc42825c93788c13f500bed6a/docs/Log2022.html" target="_blank">59c3d71</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -895,8 +933,8 @@ blockquote {
     border-left: 5px solid #eee;
 }
 </style>
-<div id="apr-20" class="section level2">
-<h2>Apr 20</h2>
+<div id="apr-20-apr-27" class="section level2">
+<h2>Apr 20 &amp; Apr 27</h2>
 <div id="updated-figures" class="section level3">
 <h3>0. Updated figures</h3>
 <ul>
@@ -924,32 +962,131 @@ blockquote {
 </div>
 <div id="overlaps-between-trans-and-cis-esqtls" class="section level3">
 <h3>2. Overlaps between trans and cis-e/sQTLs</h3>
-<ul>
-<li><p>Overlap of ~10k eQTLGen SNPs and DGN SNPs?</p></li>
-<li><p>Are trans-eQTLs cis-e/sQTLs in DGN?</p>
+<div id="overlap-of-10k-eqtlgen-snps-and-dgn-snps" class="section level4">
+<h4>Overlap of ~10k eQTLGen SNPs and DGN SNPs?</h4>
+</div>
+<div id="are-trans-eqtls-cis-esqtls-in-dgn" class="section level4">
+<h4>Are trans-eQTLs cis-e/sQTLs in DGN?</h4>
 <ol style="list-style-type: decimal">
 <li><p>1240 trans-eQTLs (out of 2161 ) are also cis-eQTLs, corresponding to 1302 cis-eQTL-Genes.</p></li>
 <li><p>930 trans-eQTLs (out of 2161 ) are also cis-sQTLs, corresponding to 2807 cis-sQTL-Genes.</p></li>
-</ol></li>
-</ul>
+</ol>
 <p><img src="asset/2022/0420_trans_cis_venn.png" style="width:45.0%" alt="venn" /> <img src="asset/2022/0420_trans_cis_upset.png" style="width:45.0%" alt="upset" /></p>
-<ul>
-<li>Are trans-eQTLs cis-e/sQTLs in eQTLGen?</li>
-</ul>
+</div>
+<div id="are-trans-eqtls-cis-esqtls-in-eqtlgen" class="section level4">
+<h4>Are trans-eQTLs cis-e/sQTLs in eQTLGen?</h4>
+</div>
 </div>
 <div id="eqtlgen-replication" class="section level3">
 <h3>3. eQTLGen replication</h3>
+<div id="how" class="section level4">
+<h4>How?</h4>
+</div>
+<div id="dgn-replication-in-eqtlgen" class="section level4">
+<h4>DGN replication in eQTLGen</h4>
+<p>Out of 3899 DGN (SNP, module) signal pairs, 38 of them are also analyzed in eQTLGen.</p>
+<p>Based on these overlaps, the updated p-values threshold for defining replication is: 0.002631579 , under FDR level 0.1.</p>
+<p><strong>As a result, out of 38 DGN signals, 38 are replicated in eQTLGen.</strong></p>
+<p>The p-values of these signals in eQTLGen range: ( 0 , 8.163248e-12 ).</p>
+</div>
+<div id="eqtlgen-replciation-in-dgn" class="section level4">
+<h4>eQTLGen replciation in DGN</h4>
 <ul>
-<li><p>DGN replication in eQTLGen</p></li>
-<li><p>eQTLGen replciation in DGN</p>
+<li><p>Summary</p>
+<p>Out of 8116 eQTLGen (SNP, module) signal pairs, 7577 of them are also analyzed in DGN.</p>
+<p>Based on these overlaps, the updated p-values threshold for defining replication is: 1.319784e-05, under FDR level 0.1.</p>
+<p><strong>As a result, out of 7577 eQTLGen signals, 69 are replicated in eQTLGen.</strong></p>
+<p>The p-values of these signals in DGN range: ( 0 , 1.315094e-05 ).</p></li>
+<li><p>Interesting signals, in terms of those in eQTLGen but not in DGN. Particularly, those with extremely small eQTLGen p but extremely large DGN p, <span class="math inline">\(p_{eQTLGen}=0, p_{DGN}=1\)</span>.</p></li>
+</ul>
 <ol style="list-style-type: decimal">
-<li><p>Summary</p></li>
-<li><p>Interesting signals, in terms of those signals not in DGN, but in eQTLGen, due to more powerful eQTLGen sum stat?</p></li>
-</ol></li>
+<li>p value comparison in eqtlgen and dgn, for replicated and not replicated signals</li>
+</ol>
+<p>I looked at the pvalue differences for eqtlgen and dgn. And found that SNPs that were not replicated mostly have extremely small eQTLGen p and extremely large DGN p.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0427_rep_eqtlgen_in_dgn_p.png" alt="Figure: -log10(trans-PCO P) of eQTLGen and DGN for replicated and not replicated signals." width="70%" />
+<p class="caption">
+Figure: -log10(trans-PCO P) of eQTLGen and DGN for replicated and not replicated signals.
+</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>p value differences across modules</li>
+</ol>
+<p>I further looked at the p value differences between eqtlgen and dgn across modules, to see if larger modules have larger p difference? in case eQTLGen large modules have inflated signals.</p>
+<p>I didn’t see an association between the p-value difference and module size.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0427_rep_eqtlgen_in_dgn_p_diff.png" alt="Figure: log10 of p difference between eQTLGen and DGN across modules for replicated and not replicated signals." width="70%" />
+<p class="caption">
+Figure: log10 of p difference between eQTLGen and DGN across modules for replicated and not replicated signals.
+</p>
+</div>
+<p>Next, I will pick some interesting signals in terms of those in eQTLGen but not in DGN.</p>
+</div>
+<div id="interesting-signal-example-1---loci-near-gene-ikzf1" class="section level4">
+<h4>Interesting signal Example 1 - loci near gene <em>IKZF1</em></h4>
+<p>This loci is on Chr7, pos <code>^50\\d{6}$</code>. The nearby gene <em>IKZF1</em> is a TF.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0427_eg_snp_near_IKZF1.png" alt="Figure: P values for SNPs near loci IKZF1 and their corresponding modules, for eQTLGen and DGN. SNPs ordered by freq." width="100%" />
+<p class="caption">
+Figure: P values for SNPs near loci IKZF1 and their corresponding modules, for eQTLGen and DGN. SNPs ordered by freq.
+</p>
+</div>
+<p>In DGN, SNPs in this loci are also identified as signals for a few modules.</p>
+</div>
+<div id="interesting-signal-example-2---loci-near-gene-irf1" class="section level4">
+<h4>Interesting signal Example 2 - loci near gene <em>IRF1</em></h4>
+<p>This loci is on Chr5, pos <code>^131\\d{6}$</code>. The nearby gene <em>IRF1</em> is a TF.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0427_eg_snp_near_IRF1.png" alt="Figure: P values for SNPs near loci IRF1 and their corresponding modules, for eQTLGen and DGN. Modules ordered by freq." width="60%" />
+<p class="caption">
+Figure: P values for SNPs near loci IRF1 and their corresponding modules, for eQTLGen and DGN. Modules ordered by freq.
+</p>
+</div>
+<p>In DGN, this whole loci is missed.</p>
+</div>
+<div id="interesting-signal-example-3---two-snps-356849749-and-356865776-near-gene-arhgef3" class="section level4">
+<h4>Interesting signal Example 3 - Two SNPs <code>3:56849749</code> and <code>3:56865776</code> near gene <em>ARHGEF3</em></h4>
+<p>Their p-value is 0 in eQTLGen and 1 in DGN for 53 modules.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0427_eg_snp_near_ARHGEF3.png" alt="Figure: Two SNPs that are signals in eQTLGen but not in DGN. And their corresponding modules." width="80%" />
+<p class="caption">
+Figure: Two SNPs that are signals in eQTLGen but not in DGN. And their corresponding modules.
+</p>
+</div>
+<p>However, in DGN, these two SNPs are identified as signals for module 4. Specifically, for <code>module4:3:56849749</code> and <code>module4:3:56865776</code>, p is 0. In fact, many other SNPs in the loci around these two SNPs are also DGN signals and they all correspond to module 4.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0427_eg_snp_near_ARHGEF3_module4_DGN.png" alt="Figure: DGN p values of signals for module 4 in loci ARHGEF3" width="80%" />
+<p class="caption">
+Figure: DGN p values of signals for module 4 in loci ARHGEF3
+</p>
+</div>
+<ul>
+<li><p>Module 4 was removed from eQTLGen analysis due to its low ratio of <span class="math inline">\(\frac{\#NULL\ SNPs}{Module\ size}\)</span>.</p></li>
+<li><p>Those additional SNPs in the loci are not included in eQTLGen ~10k SNPs.</p></li>
 </ul>
 </div>
+</div>
+<div id="many-signals-on-chr6" class="section level3">
+<h3>4. Many signals on Chr6</h3>
+<p>Signals near HLA region.</p>
+</div>
 <div id="cis--genes" class="section level3">
-<h3>4. cis- genes</h3>
+<h3>5. cis- genes</h3>
+<div id="how-1" class="section level4">
+<h4>How?</h4>
+<ol style="list-style-type: decimal">
+<li><p>Protein coding &amp; lincRNA genes</p></li>
+<li><p>Three types of “near genes”: nearest, genes within 1e+5, genes within 1e+6.</p></li>
+</ol>
+</div>
+<div id="result-file" class="section level4">
+<h4>Result file</h4>
+<p>See file <code>/scratch/midway2/liliw1/eQTGen_est_Sigma/postanalysis/signal_rm_infl_ratio_50.txt_cis_genes.txt</code>.</p>
+</div>
+<div id="enrichment-of-the-nearest-genes" class="section level4">
+<h4>Enrichment of the nearest genes</h4>
+<p>See <a href="https://biit.cs.ut.ee/gplink/l/1y5o1qk9Qk">g:Profiler enrich here</a>.</p>
+</div>
 </div>
 </div>
 <div id="apr-13" class="section level2">
@@ -1016,6 +1153,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/e3006f60bf8cb2e98161fdc7a4ab0ecc8c3d1843/docs/asset/2022/0413_p_hist.png" target="_blank">e3006f6</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-25
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_p_hist.png" target="_blank">ec19552</a>
 </td>
 <td>
@@ -1056,6 +1204,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/e3006f60bf8cb2e98161fdc7a4ab0ecc8c3d1843/docs/asset/2022/0413_p_qq.png" target="_blank">e3006f6</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-25
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_p_qq.png" target="_blank">ec19552</a>
@@ -1104,6 +1263,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/e3006f60bf8cb2e98161fdc7a4ab0ecc8c3d1843/docs/asset/2022/0413_signal_module_chr.png" target="_blank">e3006f6</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-25
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_signal_module_chr.png" target="_blank">ec19552</a>
 </td>
 <td>
@@ -1141,6 +1311,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/e3006f60bf8cb2e98161fdc7a4ab0ecc8c3d1843/docs/asset/2022/0413_signal_module.png" target="_blank">e3006f6</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-25
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_signal_module.png" target="_blank">ec19552</a>
@@ -1183,6 +1364,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/e3006f60bf8cb2e98161fdc7a4ab0ecc8c3d1843/docs/asset/2022/0413_signal_chr.png" target="_blank">e3006f6</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-04-25
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/liliw-w/GradLog/blob/ec19552d32833de8ff0ec04b2ee88705690f0aa3/docs/asset/2022/0413_signal_chr.png" target="_blank">ec19552</a>
