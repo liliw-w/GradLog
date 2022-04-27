@@ -23,7 +23,7 @@ blockquote {
 ```
 
 
-## Apr 20
+## Apr 20 & Apr 27
 
 ### 0. Updated figures
 
@@ -55,10 +55,10 @@ As a result, I choose to use ratio 50 as the threshold for selecting modules to 
 
 ### 2. Overlaps between trans and cis-e/sQTLs
 
-- Overlap of ~10k eQTLGen SNPs and DGN SNPs?
+#### Overlap of ~10k eQTLGen SNPs and DGN SNPs?
 
 
-- Are trans-eQTLs cis-e/sQTLs in DGN?
+#### Are trans-eQTLs cis-e/sQTLs in DGN?
 
   1. 1240 trans-eQTLs (out of 2161 ) are also cis-eQTLs, corresponding to 1302 cis-eQTL-Genes.
   
@@ -68,22 +68,127 @@ As a result, I choose to use ratio 50 as the threshold for selecting modules to 
 ![venn](asset/2022/0420_trans_cis_venn.png){width=45%} ![upset](asset/2022/0420_trans_cis_upset.png){width=45%}
 
 
-- Are trans-eQTLs cis-e/sQTLs in eQTLGen?
+#### Are trans-eQTLs cis-e/sQTLs in eQTLGen?
+
 
 
 ### 3. eQTLGen replication
 
-- DGN replication in eQTLGen
+#### How?
 
 
-- eQTLGen replciation in DGN
+#### DGN replication in eQTLGen
 
-  1. Summary
+Out of 3899 DGN (SNP, module) signal pairs, 38 of them are also analyzed in eQTLGen.
+
+Based on these overlaps, the updated p-values threshold for defining replication is: 0.002631579 , under FDR level 0.1.
+
+**As a result, out of 38 DGN signals, 38 are replicated in eQTLGen.**
+
+The p-values of these signals in eQTLGen range: ( 0 , 8.163248e-12 ). 
+
+
+#### eQTLGen replciation in DGN
+
+  - Summary
   
-  2. Interesting signals, in terms of those signals not in DGN, but in eQTLGen, due to more powerful eQTLGen sum stat?
+    Out of 8116 eQTLGen (SNP, module) signal pairs, 7577 of them are also analyzed in DGN.
+    
+    Based on these overlaps, the updated p-values threshold for defining replication is: 1.319784e-05, under FDR level 0.1.
+    
+    **As a result, out of 7577 eQTLGen signals, 69 are replicated in eQTLGen.**
+    
+    The p-values of these signals in DGN range: ( 0 , 1.315094e-05 ).
+  
+  - Interesting signals, in terms of those in eQTLGen but not in DGN. Particularly, those with extremely small eQTLGen p but extremely large DGN p, $p_{eQTLGen}=0, p_{DGN}=1$.
+  
+  1. p value comparison in eqtlgen and dgn, for replicated and not replicated signals
+  
+  I looked at the pvalue differences for eqtlgen and dgn. And found that SNPs that were not replicated mostly have extremely small eQTLGen p and extremely large DGN p.
+
+```{r out.width="70%", fig.cap="Figure: -log10(trans-PCO P) of eQTLGen and DGN for replicated and not replicated signals.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0427_rep_eqtlgen_in_dgn_p.png"), error = FALSE)
+```
+
+  2. p value differences across modules
+  
+  I further looked at the p value differences between eqtlgen and dgn across modules, to see if larger modules have larger p difference? in case eQTLGen large modules have inflated signals.
+  
+  I didn't see an association between the p-value difference and module size.
+
+  
+```{r out.width="70%", fig.cap="Figure: log10 of p difference between eQTLGen and DGN across modules for replicated and not replicated signals.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0427_rep_eqtlgen_in_dgn_p_diff.png"), error = FALSE)
+```
 
 
-### 4. cis- genes
+Next, I will pick some interesting signals in terms of those in eQTLGen but not in DGN.
+
+#### Interesting signal Example 1 - loci near gene *IKZF1*
+  
+  This loci is on Chr7, pos `^50\\d{6}$`. The nearby gene *IKZF1* is a TF.
+  
+```{r out.width="100%", fig.cap="Figure: P values for SNPs near loci IKZF1 and their corresponding modules, for eQTLGen and DGN. SNPs ordered by freq.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0427_eg_snp_near_IKZF1.png"), error = FALSE)
+```
+
+  In DGN, SNPs in this loci are also identified as signals for a few modules.
+
+
+#### Interesting signal Example 2 - loci near gene *IRF1*
+  
+  This loci is on Chr5, pos `^131\\d{6}$`. The nearby gene *IRF1* is a TF.
+
+```{r out.width="60%", fig.cap="Figure: P values for SNPs near loci IRF1 and their corresponding modules, for eQTLGen and DGN. Modules ordered by freq.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0427_eg_snp_near_IRF1.png"), error = FALSE)
+```
+
+  In DGN, this whole loci is missed.
+  
+
+#### Interesting signal Example 3 - Two SNPs `3:56849749` and `3:56865776` near gene *ARHGEF3*
+  
+  Their p-value is 0 in eQTLGen and 1 in DGN for 53 modules.
+  
+```{r out.width="80%", fig.cap="Figure: Two SNPs that are signals in eQTLGen but not in DGN. And their corresponding modules.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0427_eg_snp_near_ARHGEF3.png"), error = FALSE)
+```
+
+  However, in DGN, these two SNPs are identified as signals for module 4. Specifically, for `module4:3:56849749` and `module4:3:56865776`, p is 0. In fact, many other SNPs in the loci around these two SNPs are also DGN signals and they all correspond to module 4.
+
+
+```{r out.width="80%", fig.cap="Figure: DGN p values of signals for module 4 in loci ARHGEF3", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0427_eg_snp_near_ARHGEF3_module4_DGN.png"), error = FALSE)
+```
+
+  - Module 4 was removed from eQTLGen analysis due to its low ratio of $\frac{\#NULL\ SNPs}{Module\ size}$.
+  
+  - Those additional SNPs in the loci are not included in eQTLGen ~10k SNPs.
+
+
+### 4. Many signals on Chr6
+
+Signals near HLA region.
+
+
+
+### 5. cis- genes
+
+#### How?
+
+1. Protein coding & lincRNA genes
+
+2. Three types of "near genes": nearest, genes within 1e+5, genes within 1e+6.
+
+
+#### Result file
+
+See file `/scratch/midway2/liliw1/eQTGen_est_Sigma/postanalysis/signal_rm_infl_ratio_50.txt_cis_genes.txt`.
+
+
+#### Enrichment of the nearest genes
+
+See [g:Profiler enrich here](https://biit.cs.ut.ee/gplink/l/1y5o1qk9Qk).
 
 
 
