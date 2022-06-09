@@ -23,6 +23,181 @@ blockquote {
 ```
 
 
+## May 27
+
+### 1. A few numbers filled up in manuscript
+
+- 64% of trans-eQTLs colocalize with GWAS signals of blood traits and autoimmune diseases.
+
+- 62% of trans-eQTLs colocalize with GWAS signals of blood traits.
+
+- 11% of trans-eQTLs colocalize with GWAS signals of autoimmune diseases.
+
+
+### 2. Module v.s. GWAS heritability
+
+Yang:
+
+> Test whether gene modules show enrichment in specific GWAS h2g? Especially GWAS with a coloc trans-eQTL.
+
+Xuanyao:
+
+> The colocalized trans-eQTL gene modules showed significant heritability enrichment in the colocalized complex trait.
+
+> Just to reiterate our analysis: for each co-localized gene module, we will take all trans genes in the module, get their gene regions+500bp buffer  to each end. We will combine all gene regions into a single annotation by using LDSC. Then we run LDSC baseline model+the gene annotation on co-localized traits.
+
+
+#### understand LDSC
+
+- Goal: Partition the heritability of BMI by functional category, using the baseline model.
+
+- Computation goal: estimate $\tau_C$ via the multiple regression of $\chi^2$ statistics against $l(j, C)$.
+
+- Define the enrichment of a category to be the proportion of SNP heritability in the category divided by the proportion of SNPs in that category.
+
+- Functional categories
+
+  - full baseline model' from 24 publicly available main annotations.
+  
+  - For each of these 24 categories, we added a 500-bp window around the category as an additional category to keep our heritability estimates from being inflated by heritability in flanking regions.
+  
+  - In total, *53* functional categories, derived from 24 main annotations.
+
+
+#### download LDSC
+
+
+#### prepare inputs
+
+0. Define functional categories
+
+- `baseline.@.annot.gz` (updated with new annot)
+  SNP v.s. category, if in category
+
+1. LD scores (baseline model LD scores)
+
+- `baseline.@.l2.ldscore.gz` (updated with new annot)
+  SNP v.s. category, ldscore
+
+- `baseline.@.l2.M_5_50` (updated with new annot)
+  for each category, the number of SNPs with MAF>5%
+
+2. regression weights
+
+3. allele frequencies
+
+4. GWAS summary statistics
+
+
+#### run LDSC
+
+0. run partitioned LD scores for new defined functional category and update baseline inputs
+
+- Get annotation file: `{prefix}.${chr}.annot.gz` (same order of SNPs as in `.bim`)
+  
+  Use `make_annot.py` script to compute annot files from a gene set.
+
+```{bash eval=FALSE}
+python make_annot.py \
+
+    # a gene set file with the names of the genes in your gene set, one line per gene name.
+		--gene-set-file GTEx_Cortex.GeneSet \
+		
+		# a gene coordinate file, with columns GENE, CHR, START, and END
+		--gene-coord-file ENSG_coord.txt \
+		
+		# The annotation will include all SNPs within this many base pairs of the transcribed region.
+		--windowsize 100000 \
+		
+		# the plink bim file of the dataset you will use to compute LD scores.
+		--bimfile 1000G.EUR.QC.22.bim \
+		
+		# the name of the annot file to output
+		--annot-file GTEx_Cortex.annot.gz
+```
+
+
+- calculate LD scores: `${prefix}.${chr}.l2.ldscore`, `{prefix}.${chr}.l2.M_5_50`
+
+```{bash eval=FALSE}
+python ldsc.py\
+		--l2\ 
+		--bfile 1000G.EUR.QC.22\ 
+		--ld-wind-cm 1\ 
+		--annot GTEx_Cortex.annot.gz\ 
+		--thin-annot
+		--out GTEx_Cortex\
+		
+		# only print LD Scores for the SNPs listed (one ID per row)
+		--print-snps hm.22.snp
+```
+
+
+- Update `baseline.@.annot.gz`
+
+- Update `baseline.@.l2.ldscore.gz`, calculate ldscores of SNPs for self-defined category
+
+- Update `baseline.@.l2.M_5_50`, calculate baseline.@.l2.M_5_50 for self-defined category
+
+
+1. run `munge_sumstats.py` to convert GWAS sum stat file to `.sumstats` format
+
+> We recommend only keeping HapMap3 SNPs; to do this, you can download a list of HapMap3 SNPs on LDSC page.
+
+```{bash eval=FALSE}
+python munge_sumstats.py
+
+--sumstats GIANT_BMI_Speliotes2010_publicrelease_HapMapCeuFreq.txt\
+# recommend only keeping HapMap3 SNPs
+--merge-alleles w_hm3.snplist \
+--out BMI\
+--a1-inc
+```
+
+
+2. run `ldsc.py`
+
+```{bash eval=FALSE}
+python ldsc.py
+  # 0. Define functional categories
+	--overlap-annot\
+	
+	# 1. LD scores (baseline model LD scores)
+	--ref-ld-chr baseline.\
+	
+	# 2. regression weights
+	--w-ld-chr weights.\
+	
+	# 3. allele frequencies
+	--frqfile-chr 1000G.mac5eur.\
+	
+	# 4. GWAS summary statistics
+	--h2 BMI.sumstats.gz\
+	
+	# output
+	--out BMI_baseline
+```
+
+
+### HapMap3 SNPs
+
+- For GWAS SNPs, "recommend only keeping HapMap3 SNPs".
+
+- `--w-ld-chr` flag gives the location of the LD scores used for regression weights. It should be a non-partitioned .l2.ldscore.gz file that was computed using the regression SNPs. We recommend using HapMap3 SNPs, excluding the HLA region, as default regression SNPs.
+
+
+#### Concerns
+
+1. Too few genes in a gene set (module)?
+
+Can lead to negative correlation between MAF and L2.
+
+e.g. module 66, 42 genes.
+
+In LDSC tutorial of partitioned ldsc, they have >2400 genes in the example set.
+
+
+
 ## Apr 20 & Apr 27
 
 ### 0. Updated figures
