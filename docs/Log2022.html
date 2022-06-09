@@ -556,15 +556,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0db9d7426b737c2a9901a671045b1a2e73485d3atargetblank0db9d74a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree397fb52e1b7304df8501600cd1fcc959f3426336targetblank397fb52a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/0db9d7426b737c2a9901a671045b1a2e73485d3a" target="_blank">0db9d74</a>
+<a href="https://github.com/liliw-w/GradLog/tree/397fb52e1b7304df8501600cd1fcc959f3426336" target="_blank">397fb52</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0db9d7426b737c2a9901a671045b1a2e73485d3atargetblank0db9d74a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree397fb52e1b7304df8501600cd1fcc959f3426336targetblank397fb52a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -574,7 +574,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/0db9d7426b737c2a9901a671045b1a2e73485d3a" target="_blank">0db9d74</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/397fb52e1b7304df8501600cd1fcc959f3426336" target="_blank">397fb52</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -647,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/397fb52e1b7304df8501600cd1fcc959f3426336/analysis/Log2022.Rmd" target="_blank">397fb52</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-06-08
+</td>
+<td>
+add a new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/21ae027be39b4c1ff7c145334aef15997e0b1dce/docs/Log2022.html" target="_blank">21ae027</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-06-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1070,6 +1104,83 @@ blockquote {
     border-left: 5px solid #eee;
 }
 </style>
+<div id="jun-08" class="section level2">
+<h2>Jun 08</h2>
+<div id="blood-trait-ldsc" class="section level3">
+<h3>1. blood trait ldsc</h3>
+<p>PENDING.</p>
+</div>
+<div id="autoimmune-disease-ldsc" class="section level3">
+<h3>2. autoimmune disease ldsc</h3>
+<div id="coloc" class="section level4">
+<h4>coloc</h4>
+<p>Before we look at the partitioned <span
+class="math inline">\(h^2\)</span> of colocalized module in autoimmune
+diseases, see below for the coloc regions of diseases and modules. Five
+diseases have coloc regions, corresponding to 8 modules. Number in each
+cell is the number of coloc regions.</p>
+<p><img src="asset/2022/0608_immune_coloc_modules.png"
+style="width:50.0%" /></p>
+</div>
+<div id="the-enrichment" class="section level4">
+<h4>The enrichment</h4>
+<ul>
+<li><p>Since there are only a few modules coloc with a disease, I ran
+S-LDSC only on these coloc modules for each disease. Except Crohns’
+disease (cd), I ran all 166 modules, bc this gwas has the highest coloc
+proportion.</p>
+<p>Note: S-LDSC throws an error running on module 156 (haven’t figured
+out why). So module 156 were not analyzed.</p></li>
+<li><p>Enrichment: (low resolution figures to save storage space. High
+resolution figures on RCC)</p></li>
+</ul>
+<p><img src="asset/2022/0608_T_28067908_cd_all_modules.results.png"
+style="width:50.0%" /></p>
+<p><img src="asset/2022/0608_T_28067908_ibd_all_modules.results.png"
+style="width:45.0%" /> <img
+src="asset/2022/0608_T_29083406_Allergy_all_modules.results.png"
+style="width:45.0%" /></p>
+<ul>
+<li>Observation:</li>
+</ul>
+<p>Among those coloc modules, only module 100 has enriched h2, for
+Crohns’ disease and ibd. So, I looked at module 100.</p>
+</div>
+<div id="module-100" class="section level4">
+<h4>Module 100</h4>
+<p>trans-eQTLs of module 100 include two loci:</p>
+<p><img src="asset/2022/0608_M100_signals.png"
+style="width:50.0%" /></p>
+<ol style="list-style-type: decimal">
+<li><code>4:123205143</code></li>
+</ol>
+<ul>
+<li><p>See loci location and nearby genes <a
+href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr4%3A122352294%2D124046923&amp;hgsid=1373866789_g0iFr0hp4gIFQHP8VwAKAXnEDSpE">here</a>.</p></li>
+<li><p>Near genes: KIAA1109, ADAD1, IL2, IL21.</p></li>
+<li><p>This loci’s relation with immune traits?</p>
+<p>Looks like this loci has been found to be associated with autoimmune
+diseases back in 2007. Relevant stories include <a
+href="https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/S0002929707637768">ref
+1</a>, <a
+href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C14&amp;q=KIAA1109&amp;btnG=">more
+stories</a>.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><code>5:82996199</code></li>
+</ol>
+<ul>
+<li><p>See loci location and nearby genes <a
+href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr5%3A82756735%2D83104320&amp;hgsid=1373866789_g0iFr0hp4gIFQHP8VwAKAXnEDSpE">here</a>.</p></li>
+<li><p>Near gene: HAPLN1.</p></li>
+<li><p>This loci’s relation with autoimmune diseases?</p>
+<p>I didn’t find direct link bewteen HAPLN1 and autoimmune diseases. But
+this gene is relevant with NF-KB activity, see <a
+href="https://www-jbc-org.proxy.uchicago.edu/article/S0021-9258(20)31707-5/fulltext">ref</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="may-27" class="section level2">
 <h2>May 27</h2>
 <div id="a-few-numbers-filled-up-in-manuscript" class="section level3">
