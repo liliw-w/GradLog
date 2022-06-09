@@ -425,7 +425,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-06-08
+<strong>Last updated:</strong> 2022-06-09
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -556,15 +556,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree518a1c0b1cc18d00fc95c40d23493d1a1eb4b562targetblank518a1c0a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree06afdff95ba63f4c4921ca43985a159904248918targetblank06afdffa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/518a1c0b1cc18d00fc95c40d23493d1a1eb4b562" target="_blank">518a1c0</a>
+<a href="https://github.com/liliw-w/GradLog/tree/06afdff95ba63f4c4921ca43985a159904248918" target="_blank">06afdff</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree518a1c0b1cc18d00fc95c40d23493d1a1eb4b562targetblank518a1c0a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree06afdff95ba63f4c4921ca43985a159904248918targetblank06afdffa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -574,7 +574,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/518a1c0b1cc18d00fc95c40d23493d1a1eb4b562" target="_blank">518a1c0</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/06afdff95ba63f4c4921ca43985a159904248918" target="_blank">06afdff</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -647,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/06afdff95ba63f4c4921ca43985a159904248918/analysis/Log2022.Rmd" target="_blank">06afdff</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-06-09
+</td>
+<td>
+update error bar from se to 0.95 CI
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/0155a0fe37e0797776139bca94f1e814f140e216/docs/Log2022.html" target="_blank">0155a0f</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-06-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1177,13 +1211,17 @@ style="width:45.0%" /> <img
 src="asset/2022/0608_T_29083406_Allergy_all_modules.results.png"
 style="width:45.0%" /></p>
 <ul>
-<li><p>Observation:</p>
-<p>Among those coloc modules, only module 100 has enriched h2, for
-Crohns’ disease and ibd. So, I looked at module 100.</p>
-<p>(As for why the other modules don’t have enriched h2, maybe that’s
-because these modules are mostly zinc finger genes? as we discussed in
-<a href="Log2022.html#gene_SENP7">earlier section</a>.)</p></li>
+<li>Observation:</li>
 </ul>
+<ol style="list-style-type: decimal">
+<li><p>None of coloc modules have significant h2 enrich.</p></li>
+<li><p>But module 100 looks promising for Crohns’ disease
+(Enrichment=3.22, sd=1.83, p=0.23) and ibd (Enrichment=4.6, sd=2.45,
+p=0.14). So, I looked into it.</p></li>
+</ol>
+<p>(As for why the other modules don’t have enriched h2 at all, maybe
+that’s because these modules are mostly zinc finger genes? as we
+discussed in <a href="Log2022.html#gene_SENP7">earlier section</a>.)</p>
 </div>
 <div id="module-100" class="section level4">
 <h4>Module 100</h4>
