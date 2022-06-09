@@ -56,9 +56,11 @@ Before we look at the partitioned $h^2$ of colocalized module in autoimmune dise
 
 -   Observation:
 
-    Among those coloc modules, only module 100 has enriched h2, for Crohns' disease and ibd. So, I looked at module 100.
+  1. None of coloc modules have significant h2 enrich.
+    
+  2. But module 100 looks promising for Crohns' disease (Enrichment=3.22, sd=1.83, p=0.23) and ibd (Enrichment=4.6, sd=2.45, p=0.14). So, I looked into it.
   
-    (As for why the other modules don't have enriched h2, maybe that's because these modules are mostly zinc finger genes? as we discussed in [earlier section](Log2022.html#gene_SENP7).)
+  (As for why the other modules don't have enriched h2 at all, maybe that's because these modules are mostly zinc finger genes? as we discussed in [earlier section](Log2022.html#gene_SENP7).)
 
 
 #### Module 100
