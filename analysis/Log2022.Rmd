@@ -23,6 +23,67 @@ blockquote {
 ```
 
 
+## Jun 08
+
+### 1. blood trait ldsc
+
+PENDING.
+
+
+### 2. autoimmune disease ldsc
+
+#### coloc
+
+Before we look at the partitioned $h^2$ of colocalized module in autoimmune diseases, see below for the coloc regions of diseases and modules. Five diseases have coloc regions, corresponding to 8 modules. Number in each cell is the number of coloc regions.
+
+![](asset/2022/0608_immune_coloc_modules.png){width="50%"}
+
+#### The enrichment
+
+-   Since there are only a few modules coloc with a disease, I ran S-LDSC only on these coloc modules for each disease. Except Crohns' disease (cd), I ran all 166 modules, bc this gwas has the highest coloc proportion.
+
+    Note: S-LDSC throws an error running on module 156 (haven't figured out why). So module 156 were not analyzed.
+
+-   Enrichment: (low resolution figures to save storage space. High resolution figures on RCC)
+
+![](asset/2022/0608_T_28067908_cd_all_modules.results.png){width="50%"}
+
+![](asset/2022/0608_T_28067908_ibd_all_modules.results.png){width="45%"} ![](asset/2022/0608_T_29083406_Allergy_all_modules.results.png){width="45%"}
+
+
+-   Observation:
+
+Among those coloc modules, only module 100 has enriched h2, for Crohns' disease and ibd. So, I looked at module 100.
+
+
+#### Module 100
+
+trans-eQTLs of module 100 include two loci:
+
+![](asset/2022/0608_M100_signals.png){width="50%"}
+
+1.  `4:123205143`
+
+-   See loci location and nearby genes [here](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A122352294%2D124046923&hgsid=1373866789_g0iFr0hp4gIFQHP8VwAKAXnEDSpE).
+
+-   Near genes: KIAA1109, ADAD1, IL2, IL21.
+
+-   This loci's relation with immune traits?
+
+    Looks like this loci has been found to be associated with autoimmune diseases back in 2007. Relevant stories include [ref 1](https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/S0002929707637768), [more stories](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C14&q=KIAA1109&btnG=).
+
+2.  `5:82996199`
+
+-   See loci location and nearby genes [here](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr5%3A82756735%2D83104320&hgsid=1373866789_g0iFr0hp4gIFQHP8VwAKAXnEDSpE).
+
+-   Near gene: HAPLN1.
+
+-   This loci's relation with autoimmune diseases?
+
+    I didn't find direct link bewteen HAPLN1 and autoimmune diseases. But this gene is relevant with NF-KB activity, see [ref](https://www-jbc-org.proxy.uchicago.edu/article/S0021-9258(20)31707-5/fulltext).
+
+
+
 ## May 27
 
 ### 1. A few numbers filled up in manuscript
