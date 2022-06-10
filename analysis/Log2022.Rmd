@@ -29,6 +29,8 @@ blockquote {
 
 PENDING.
 
+**Update enrichment figure error bar from se to 95% CI.**
+
 
 ### 2. autoimmune disease ldsc
 
