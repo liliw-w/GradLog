@@ -13,8 +13,8 @@
 
 <title>Log2021</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14.2/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -38,7 +38,7 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
@@ -73,6 +73,8 @@ if (window.hljs) {
 
 
 
+<link rel="stylesheet" href="style.css" type="text/css" />
+
 
 
 <style type = "text/css">
@@ -95,6 +97,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -320,7 +325,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -333,7 +338,7 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Projects
      
     <span class="caret"></span>
@@ -381,7 +386,9 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -390,7 +397,9 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -399,17 +408,27 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-16
+<strong>Last updated:</strong> 2022-06-11
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>GradLog/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>GradLog/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -418,112 +437,156 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
 </p>
 </div>
 <div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201014code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201014)</code> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201014code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20201014)</code> </a>
 </p>
 </div>
-<div id="strongSeedstrongcodesetseed20201014code" class="panel-collapse collapse">
+<div id="strongSeedstrongcodesetseed20201014code"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>The command <code>set.seed(20201014)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+<p>The command <code>set.seed(20201014)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
 </p>
 </div>
-<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
 </p>
 </div>
 <div id="strongCachestrongnone" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
 </p>
 </div>
 <div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9e1307d0b2645a00c8945ad2ec73b6239053f9actargetblank9e1307da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/9e1307d0b2645a00c8945ad2ec73b6239053f9ac" target="_blank">9e1307d</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4be96854d4f33e6238c6026de728ffea1469d3fatargetblank4be9685a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/liliw-w/GradLog/tree/4be96854d4f33e6238c6026de728ffea1469d3fa" target="_blank">4be9685</a>
+</a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree9e1307d0b2645a00c8945ad2ec73b6239053f9actargetblank9e1307da" class="panel-collapse collapse">
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree4be96854d4f33e6238c6026de728ffea1469d3fatargetblank4be9685a"
+class="panel-collapse collapse">
 <div class="panel-body">
 <p>
-Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/9e1307d0b2645a00c8945ad2ec73b6239053f9ac" target="_blank">9e1307d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version
+<a href="https://github.com/liliw-w/GradLog/tree/4be96854d4f33e6238c6026de728ffea1469d3fa" target="_blank">4be9685</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
 </p>
 <p>
-Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .DS_Store
-    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/.DS_Store
-    Ignored:    analysis/test_log.Rmd
-    Ignored:    code/.DS_Store
-    Ignored:    data/.DS_Store
-    Ignored:    output/.DS_Store
 
 Untracked files:
-    Untracked:  analysis/references.bib
+    Untracked:  Log2020.Rmd
+    Untracked:  Trans.Rmd
 
 Unstaged changes:
-    Modified:   analysis/Log2022.Rmd
+    Deleted:    analysis/Log2020.Rmd
+    Deleted:    analysis/Trans.Rmd
 
 </code></pre>
 <p>
-Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
 </p>
 </div>
 </div>
@@ -534,7 +597,12 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/Log2021.Rmd</code>) and HTML (<code>docs/Log2021.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/Log2021.Rmd</code>) and HTML
+(<code>docs/Log2021.html</code>) files. If you’ve configured a remote
+Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -558,6 +626,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/c82dd26f86f5ee6780f4110703ac59beb57fa72c/docs/Log2021.html" target="_blank">c82dd26</a>
+</td>
+<td>
+llw
+</td>
+<td>
+2022-01-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1609,7 +1694,8 @@ Lili Wang
 2021-02-06
 </td>
 <td>
-wflow_publish(c("analysis/Log2021.Rmd", "docs/power.png", "docs/Muscle_Skeleta.p.funcExplorer.png"))
+wflow_publish(c("analysis/Log2021.Rmd", "docs/power.png",
+"docs/Muscle_Skeleta.p.funcExplorer.png"))
 </td>
 </tr>
 <tr>
@@ -1643,7 +1729,8 @@ Lili Wang
 2021-02-02
 </td>
 <td>
-wflow_publish(c("analysis/Log2021.Rmd", "docs/modules.png", "docs/Muscle_Skeleta.p.WGCNA.png",
+wflow_publish(c("analysis/Log2021.Rmd", "docs/modules.png",
+"docs/Muscle_Skeleta.p.WGCNA.png",
 </td>
 </tr>
 <tr>
@@ -2005,16 +2092,31 @@ blockquote {
 <h2>Dec 20</h2>
 <div id="what_is_gene_SENP7" class="section level3">
 <h3>1. What is gene <em>SENP7</em>?</h3>
-<p>In <a href="#coloc-region-between-module-and-immune-trait">earlier section</a>, we observed that, there are 4 modules that have coloc regions with the three immune traits crohn’s disease, Inflammaroty bowel disease, Allergic diseases.</p>
-<p>Genes of these modules are mostly zinc finger genes, and enriched in relevant terms.</p>
-<p>The lead SNPs of the coloc regions are close to several genes, including <em>SENP7</em>.</p>
-<p>So we wanted to see if <em>SENP7</em> is close to any zinc finger genes.</p>
+<p>In <a href="#coloc-region-between-module-and-immune-trait">earlier
+section</a>, we observed that, there are 4 modules that have coloc
+regions with the three immune traits crohn’s disease, Inflammaroty bowel
+disease, Allergic diseases.</p>
+<p>Genes of these modules are mostly zinc finger genes, and enriched in
+relevant terms.</p>
+<p>The lead SNPs of the coloc regions are close to several genes,
+including <em>SENP7</em>.</p>
+<p>So we wanted to see if <em>SENP7</em> is close to any zinc finger
+genes.</p>
 <ul>
 <li><p>Located on Chr 3. Protein coding gene.</p></li>
-<li><p>Closest to gene <a href="https://www.ncbi.nlm.nih.gov/gene/?term=ZNF90P1"><em>ZNF90P1</em></a>, a pseudogene. Its location on <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr3%3A101043118%2D101232085&amp;hgsid=1242828115_b2ZR5XmJBYJAa0EEIja9ez9peZeK">Genome browser</a>.</p></li>
-<li><p>Does <em>SENP7</em> have functions relevant to autoimmune disease? See <a href="https://www.nature.com/articles/s41467-018-05321-2">paper</a>.</p>
-<p>Inflammasome activity &lt;– <em>NLRP3</em> activation &lt;– SUMO-mediated regulation (SUMOylation) &lt;– SUMO-specific proteases <em>SENP7</em> promotes NLRP3 activation</p>
-<p>Also <a href="https://www.cell.com/cell-reports/pdf/S2211-1247(19)31499-8.pdf">paper</a>.</p></li>
+<li><p>Closest to gene <a
+href="https://www.ncbi.nlm.nih.gov/gene/?term=ZNF90P1"><em>ZNF90P1</em></a>,
+a pseudogene. Its location on <a
+href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr3%3A101043118%2D101232085&amp;hgsid=1242828115_b2ZR5XmJBYJAa0EEIja9ez9peZeK">Genome
+browser</a>.</p></li>
+<li><p>Does <em>SENP7</em> have functions relevant to autoimmune
+disease? See <a
+href="https://www.nature.com/articles/s41467-018-05321-2">paper</a>.</p>
+<p>Inflammasome activity &lt;– <em>NLRP3</em> activation &lt;–
+SUMO-mediated regulation (SUMOylation) &lt;– SUMO-specific proteases
+<em>SENP7</em> promotes NLRP3 activation</p>
+<p>Also <a
+href="https://www.cell.com/cell-reports/pdf/S2211-1247(19)31499-8.pdf">paper</a>.</p></li>
 </ul>
 </div>
 </div>
@@ -2023,19 +2125,33 @@ blockquote {
 <div id="add-trait-ms-to-coloc-analysis" class="section level3">
 <h3>1. Add trait MS to coloc analysis</h3>
 <ul>
-<li><p>Request summary statistic from <a href="https://imsgc.net/">link</a>.</p></li>
+<li><p>Request summary statistic from <a
+href="https://imsgc.net/">link</a>.</p></li>
 <li><p>Meta analysis from 15 GWASs.</p></li>
 </ul>
-<p>I added coloc results of MS to <a href="#Proportion-of-colocalized-regions-for-immune-traits">earlier section</a>.</p>
+<p>I added coloc results of MS to <a
+href="#Proportion-of-colocalized-regions-for-immune-traits">earlier
+section</a>.</p>
 </div>
-<div id="coloc-region-between-module-and-immune-trait" class="section level3">
-<h3>2. Look at the colocalized regions between trans and immune traits</h3>
+<div id="coloc-region-between-module-and-immune-trait"
+class="section level3">
+<h3>2. Look at the colocalized regions between trans and immune
+traits</h3>
 <div id="coloc-regions-overview" class="section level4">
 <h4>coloc regions overview</h4>
 <ul>
-<li>I specifically looked at the following three traits, as they have a relatively high proportion of coloc regions from <a href="#Proportion-of-colocalized-regions-for-immune-traits">earlier section</a>.</li>
+<li>I specifically looked at the following three traits, as they have a
+relatively high proportion of coloc regions from <a
+href="#Proportion-of-colocalized-regions-for-immune-traits">earlier
+section</a>.</li>
 </ul>
 <table>
+<colgroup>
+<col width="38%" />
+<col width="24%" />
+<col width="23%" />
+<col width="12%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">disease</th>
@@ -2072,21 +2188,37 @@ blockquote {
 </tbody>
 </table>
 <p><u>Note: I added module44 on the above table.</u></p>
-<p>*light green regions: regions with lead module-QTL pvalue&lt;1e-8.</p>
-<p>*dark green regions: coloc regions with lead module-QTL pvalue&lt;1e-8.</p>
+<p>*light green regions: regions with lead module-QTL
+pvalue&lt;1e-8.</p>
+<p>*dark green regions: coloc regions with lead module-QTL
+pvalue&lt;1e-8.</p>
 <ul>
 <li>What are those dark green regions in specific?</li>
 </ul>
-<p>Fig: Colocalized regions summary of crohn’s disease, Inflammaroty bowel disease, Allergic disases. <strong>Specifically for dark green regions</strong>, i.e. coloc regions with lead module-QTL pvalue&lt;1e-8.</p>
-<p><img src="asset/1213_cd.coloc.Pval.region.summary.png" style="width:32.0%" /> <img src="asset/1213_ibd.coloc.Pval.region.summary.png" style="width:32.0%" /> <img src="asset/1213_Allergy.coloc.Pval.region.summary.png" style="width:32.0%" /></p>
-<p><u><strong>For MS, there is only one dark green region, module44:7:50308527. This region has 69 SNPs, and corresponds to module 44 and chr 7.</strong></u></p>
+<p>Fig: Colocalized regions summary of crohn’s disease, Inflammaroty
+bowel disease, Allergic disases. <strong>Specifically for dark green
+regions</strong>, i.e. coloc regions with lead module-QTL
+pvalue&lt;1e-8.</p>
+<p><img src="asset/1213_cd.coloc.Pval.region.summary.png"
+style="width:32.0%" /> <img
+src="asset/1213_ibd.coloc.Pval.region.summary.png"
+style="width:32.0%" /> <img
+src="asset/1213_Allergy.coloc.Pval.region.summary.png"
+style="width:32.0%" /></p>
+<p><u><strong>For MS, there is only one dark green region,
+module44:7:50308527. This region has 69 SNPs, and corresponds to module
+44 and chr 7.</strong></u></p>
 </div>
 <div id="observations" class="section level4">
 <h4>Observations</h4>
-<p><img src="asset/1213_cd_ibd_Allergy_coloc_info.png" style="width:30.0%" /> <img src="asset/1213_cd_ibd_Allergy_coloc_region_overlap.png" style="width:25.0%" /></p>
+<p><img src="asset/1213_cd_ibd_Allergy_coloc_info.png"
+style="width:30.0%" /> <img
+src="asset/1213_cd_ibd_Allergy_coloc_region_overlap.png"
+style="width:25.0%" /></p>
 <ul>
 <li><p>These three traits share very similar coloc regions.</p>
-<p>See the above venn diagram. The coloc regions of three traits are largely overlapped.</p></li>
+<p>See the above venn diagram. The coloc regions of three traits are
+largely overlapped.</p></li>
 </ul>
 <table>
 <thead>
@@ -2128,23 +2260,38 @@ blockquote {
 <ul>
 <li><p>Module enrichment, relevant to immune?</p>
 <ul>
-<li><p>See <a href="https://biit.cs.ut.ee/gplink/l/VQIAZG_ZQT">enrichment results here</a>.</p></li>
-<li><p>See <a href="asset/1213_cd_ibd_Allergy_coloc_module_enrich.png">g:profiler enrichment overview</a>.</p></li>
-<li><p>See <a href="asset/1213_cd_ibd_Allergy_coloc_module_gprofiler_query.txt">g:profiler enrichment query file</a>.</p></li>
-<li><p>See <a href="asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx">David enrichment query file and gene descriptions</a>.</p></li>
+<li><p>See <a
+href="https://biit.cs.ut.ee/gplink/l/VQIAZG_ZQT">enrichment results
+here</a>.</p></li>
+<li><p>See <a
+href="asset/1213_cd_ibd_Allergy_coloc_module_enrich.png">g:profiler
+enrichment overview</a>.</p></li>
+<li><p>See <a
+href="asset/1213_cd_ibd_Allergy_coloc_module_gprofiler_query.txt">g:profiler
+enrichment query file</a>.</p></li>
+<li><p>See <a
+href="asset/1213_cd_ibd_Allergy_coloc_module_david_query.xlsx">David
+enrichment query file and gene descriptions</a>.</p></li>
 </ul>
-<p><strong>Question: These four modules contain many zinc finger genes.</strong></p>
+<p><strong>Question: These four modules contain many zinc finger
+genes.</strong></p>
 <ul>
-<li><u><strong>For MS, module 44’s contained genes and enrichment result see <a href="https://biit.cs.ut.ee/gplink/l/t6CyzBjcS9">here</a>.</strong></u></li>
+<li><u><strong>For MS, module 44’s contained genes and enrichment result
+see <a
+href="https://biit.cs.ut.ee/gplink/l/t6CyzBjcS9">here</a>.</strong></u></li>
 </ul></li>
 <li><p>SNP variants</p>
 <ul>
 <li>cis-genes?</li>
 </ul>
-<p>For the 20 lead SNPs, they are, Intron Variant of gene <em>SENP7</em>, <em>IMPG2</em>, <em>CEP97</em>, Non Coding Transcript Variant/2KB Upstream Variant of gene <em>SENP7</em>, or 500B Downstream Variant of gene <em>FAM172BP</em>.</p>
+<p>For the 20 lead SNPs, they are, Intron Variant of gene
+<em>SENP7</em>, <em>IMPG2</em>, <em>CEP97</em>, Non Coding Transcript
+Variant/2KB Upstream Variant of gene <em>SENP7</em>, or 500B Downstream
+Variant of gene <em>FAM172BP</em>.</p>
 <ul>
 <li><p><u><strong>For MS, cis- genes?</strong></u></p>
-<p>The lead SNP of region module44:7:50308527 is close to gene <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr7%3A50295000%2D50472798&amp;hgsid=1260587557_latSAw7QoV0gBDVTJRA2kKabpth8"><em>IKZF1</em></a>.</p></li>
+<p>The lead SNP of region module44:7:50308527 is close to gene <a
+href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr7%3A50295000%2D50472798&amp;hgsid=1260587557_latSAw7QoV0gBDVTJRA2kKabpth8"><em>IKZF1</em></a>.</p></li>
 </ul></li>
 </ul>
 </div>
@@ -2154,25 +2301,36 @@ blockquote {
 <h2>Nov 29, Dec 06</h2>
 <div id="out-130-regions-of-colocalization" class="section level3">
 <h3>0. out 130 regions, % of colocalization</h3>
-<p>I updated it to <a href="#coloc-between-cis--and-trans--signals">earlier section</a> -&gt; <code>Observations</code> -&gt; <code>Distribution of coloc regions</code>.</p>
+<p>I updated it to <a
+href="#coloc-between-cis--and-trans--signals">earlier section</a> -&gt;
+<code>Observations</code> -&gt;
+<code>Distribution of coloc regions</code>.</p>
 </div>
-<div id="other-blood-related-traits-immune-diseases" class="section level3">
+<div id="other-blood-related-traits-immune-diseases"
+class="section level3">
 <h3>1. Other blood related traits: immune diseases</h3>
-<p>Traits refer to <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#MOESM1">Paper</a>.</p>
+<p>Traits refer to <a
+href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#MOESM1">Paper</a>.</p>
 <p>72 GWAS of immune-related and non-immune traits.</p>
 <blockquote>
-<p>We compiled a set of 72 well-powered GWAS, including 14 for autoimmune diseases (11 unique disease types), 36 blood traits, and 22 other traits (Additional File 1: Table S4),</p>
+<p>We compiled a set of 72 well-powered GWAS, including 14 for
+autoimmune diseases (11 unique disease types), 36 blood traits, and 22
+other traits (Additional File 1: Table S4),</p>
 </blockquote>
 <blockquote>
-<p>72 publicly available GWAS summary statistics for 11 autoimmune diseases (14 studies).</p>
+<p>72 publicly available GWAS summary statistics for 11 autoimmune
+diseases (14 studies).</p>
 </blockquote>
 <div id="autoimmune-diseases-overview" class="section level4">
 <h4>14 autoimmune diseases overview</h4>
 <p>See <a href="../docs/asset/1129_72_traits_GWAS.xlsx">file</a>.</p>
 <ul>
 <li><p>There are 14 studies (datasets) for 11 immune diseases.</p></li>
-<li><p>For two studies (MS, ApD), the summary stat is only available upon request. (Update: we have requested sum stat for MS and added its coloc results here.)</p></li>
-<li><p>For one study (sle), the previous dataset is no longer available. So I downloaded the updated version (meta- v.s. EUR-).</p></li>
+<li><p>For two studies (MS, ApD), the summary stat is only available
+upon request. (Update: we have requested sum stat for MS and added its
+coloc results here.)</p></li>
+<li><p>For one study (sle), the previous dataset is no longer available.
+So I downloaded the updated version (meta- v.s. EUR-).</p></li>
 <li><p><strong>Many studies meta-analyze multiple datasets</strong></p>
 <ul>
 <li>Use meta sum stat for coloc?</li>
@@ -2180,9 +2338,12 @@ blockquote {
 </ul></li>
 </ul>
 </div>
-<div id="Proportion-of-colocalized-regions-for-immune-traits" class="section level4">
+<div id="Proportion-of-colocalized-regions-for-immune-traits"
+class="section level4">
 <h4>coloc proportion</h4>
-<p>The following figure is similar to <a href="#Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits">earlier section</a>, which gives regions and proportions of coloc regions.</p>
+<p>The following figure is similar to <a
+href="#Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits">earlier
+section</a>, which gives regions and proportions of coloc regions.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1129_all.traits.coloc.region.summary.png" alt="The proportion of colocalized regions for 11 auto-immune diseases." width="70%" />
 <p class="caption">
@@ -2226,29 +2387,54 @@ llw
 </table>
 </div>
 </div>
-<p>For a specific trait, the coloc regions’ summary and visualization are in folder <code>/scratch/midway2/liliw1/coloc/pmid*_*/plot</code>.</p>
+<p>For a specific trait, the coloc regions’ summary and visualization
+are in folder
+<code>/scratch/midway2/liliw1/coloc/pmid*_*/plot</code>.</p>
 </div>
 <div id="observations-1" class="section level4">
 <h4>Observations</h4>
 <ul>
-<li><p>These 11 immune diseases generally have less blue regions (GWAS regions with minimum QTL <span class="math inline">\(p&gt;10^{-5}\)</span>).</p></li>
-<li><p>Also less green regions (regions with very small module-QTL pvalues).</p></li>
-<li><p>Also lower proportion of coloc regions, out of blue and green regions. 8 diseases have 0 coloc regions.</p></li>
+<li><p>These 11 immune diseases generally have less blue regions (GWAS
+regions with minimum QTL <span
+class="math inline">\(p&gt;10^{-5}\)</span>).</p></li>
+<li><p>Also less green regions (regions with very small module-QTL
+pvalues).</p></li>
+<li><p>Also lower proportion of coloc regions, out of blue and green
+regions. 8 diseases have 0 coloc regions.</p></li>
 <li><p>Due to meta-analysis? Cell type complexity?</p></li>
 </ul>
 </div>
 </div>
-<div id="mr-under-assumption-of-textvarbeta-on-slack" class="section level3">
-<h3>2. MR under assumption of <span class="math inline">\(\text{var}{\beta}\)</span> (on slack)</h3>
+<div id="mr-under-assumption-of-textvarbeta-on-slack"
+class="section level3">
+<h3>2. MR under assumption of <span
+class="math inline">\(\text{var}{\beta}\)</span> (on slack)</h3>
 <div id="procedure" class="section level4">
 <h4>Procedure</h4>
-<p>For MR R package and code tutorial, see <a href="#Mendelian-Randomization-MR-among-SNPs-module-trait">earlier section</a>.</p>
-<p>Basically, we will need <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\text{se}({\beta})\)</span> for both module-QTLs and GWAS-QTLs. However, we don’t have estiamted <span class="math inline">\(\beta\)</span> for module-QTLs. What we have is just <span class="math inline">\(p\)</span>.</p>
+<p>For MR R package and code tutorial, see <a
+href="#Mendelian-Randomization-MR-among-SNPs-module-trait">earlier
+section</a>.</p>
+<p>Basically, we will need <span class="math inline">\(\beta\)</span>,
+<span class="math inline">\(\text{se}({\beta})\)</span> for both
+module-QTLs and GWAS-QTLs. However, we don’t have estiamted <span
+class="math inline">\(\beta\)</span> for module-QTLs. What we have is
+just <span class="math inline">\(p\)</span>.</p>
 <p>Therefore, on slack, assumptions to make TwoSampleMR work,</p>
 <ul>
-<li><p>(Strong assumption) set <span class="math inline">\(\beta=z\)</span>, <span class="math inline">\(\text{se}({\beta})=1\)</span>.</p></li>
-<li><p>(Strong assumption) Since we only have <span class="math inline">\(p\)</span>, we will only have absolute zscores. So one way to deal with this is to assume <span class="math inline">\(\beta_{SNP-module}\)</span> and <span class="math inline">\(\beta_{SNP-GWAS}\)</span> have the same sign (+), so that we only consider the consistency of effect magnitude.</p></li>
-<li><p>We look at each trans-eQTL region separately, rather than combine all trans-eQTL regions for a module, as what we do here is “like mediation analysis, SNP affect trait through this gene module”, “rather than to infer if the module is causal for the trait, the causality between module and trait”.</p></li>
+<li><p>(Strong assumption) set <span
+class="math inline">\(\beta=z\)</span>, <span
+class="math inline">\(\text{se}({\beta})=1\)</span>.</p></li>
+<li><p>(Strong assumption) Since we only have <span
+class="math inline">\(p\)</span>, we will only have absolute zscores. So
+one way to deal with this is to assume <span
+class="math inline">\(\beta_{SNP-module}\)</span> and <span
+class="math inline">\(\beta_{SNP-GWAS}\)</span> have the same sign (+),
+so that we only consider the consistency of effect magnitude.</p></li>
+<li><p>We look at each trans-eQTL region separately, rather than combine
+all trans-eQTL regions for a module, as what we do here is “like
+mediation analysis, SNP affect trait through this gene module”, “rather
+than to infer if the module is causal for the trait, the causality
+between module and trait”.</p></li>
 </ul>
 </div>
 <div id="results" class="section level4">
@@ -2259,20 +2445,28 @@ llw
 <div id="observations-2" class="section level4">
 <h4>Observations</h4>
 <ul>
-<li><p><span class="math inline">\(\beta_{SNP-module}\)</span> is much larger than <span class="math inline">\(\beta_{SNP-GWAS}\)</span>.</p></li>
-<li><p>Insufficient (1) or only a few (mostly 2, a few 3) independent SNPs (IV) used for MR, as we consider one region each time and the region is quite short (100k).</p></li>
+<li><p><span class="math inline">\(\beta_{SNP-module}\)</span> is much
+larger than <span
+class="math inline">\(\beta_{SNP-GWAS}\)</span>.</p></li>
+<li><p>Insufficient (1) or only a few (mostly 2, a few 3) independent
+SNPs (IV) used for MR, as we consider one region each time and the
+region is quite short (100k).</p></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="nov-23" class="section level2">
 <h2>Nov 23</h2>
-<div id="are-the-dark-green-signals-eqtlgen-signals" class="section level3">
+<div id="are-the-dark-green-signals-eqtlgen-signals"
+class="section level3">
 <h3>1. Are the dark green signals eQTLGen signals?</h3>
 <div id="procedure-1" class="section level4">
 <h4>Procedure</h4>
 <ul>
-<li><p>Check those dark green signals (colocalized regions): region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span>, <span class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
+<li><p>Check those dark green signals (colocalized regions): region lead
+SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span>,
+<span class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span
+class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
 <li><p>eQTLGen SNPs, cis- &amp; trans- signals.</p></li>
 </ul>
 </div>
@@ -2300,13 +2494,19 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 </div>
 <div id="look-at-module-15" class="section level3">
 <h3>2. Look at module 15</h3>
-<p>We wanted to look at module15, because in <a href="#Enrichment-of-colocalized-regions">earlier section</a>, we found that module15 correspond to multiple regions extensively colocalized with multiple ukbb traits, but we didn’t find any enrichment of the genes in module15.</p>
+<p>We wanted to look at module15, because in <a
+href="#Enrichment-of-colocalized-regions">earlier section</a>, we found
+that module15 correspond to multiple regions extensively colocalized
+with multiple ukbb traits, but we didn’t find any enrichment of the
+genes in module15.</p>
 <ul>
 <li><p>coloc region &amp; traits</p>
-<p>See <a href="../data/module15.coloc.traits.txt">file</a> for detailed traits and regions.</p></li>
+<p>See <a href="../data/module15.coloc.traits.txt">file</a> for detailed
+traits and regions.</p></li>
 </ul>
 <table style="width:100%;">
-<caption>The colocalization between the module and traits are from the following regions (marked by lead SNPs):</caption>
+<caption>The colocalization between the module and traits are from the
+following regions (marked by lead SNPs):</caption>
 <colgroup>
 <col width="9%" />
 <col width="3%" />
@@ -2330,7 +2530,9 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 <td align="left">module15:17:33867678</td>
 <td align="right">5</td>
 <td align="left">SLFN12L;SLFN14</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/100506736;https://www.ncbi.nlm.nih.gov/gene/342618" class="uri">https://www.ncbi.nlm.nih.gov/gene/100506736;https://www.ncbi.nlm.nih.gov/gene/342618</a></td>
+<td align="left"><a
+href="https://www.ncbi.nlm.nih.gov/gene/100506736;https://www.ncbi.nlm.nih.gov/gene/342618"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/100506736;https://www.ncbi.nlm.nih.gov/gene/342618</a></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -2338,7 +2540,8 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 <td align="left">module15:19:4502201</td>
 <td align="right">7</td>
 <td align="left">PLIN4</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/729359" class="uri">https://www.ncbi.nlm.nih.gov/gene/729359</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/729359"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/729359</a></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -2354,7 +2557,8 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 <td align="left">module15:2:8762414</td>
 <td align="right">14</td>
 <td align="left">ID2</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/3398" class="uri">https://www.ncbi.nlm.nih.gov/gene/3398</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/3398"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/3398</a></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -2362,22 +2566,28 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 <td align="left">module15:6:139840693</td>
 <td align="right">7</td>
 <td align="left">CITED2</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/10370" class="uri">https://www.ncbi.nlm.nih.gov/gene/10370</a></td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs592423?horizontal_tab=true#publications" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs592423?horizontal_tab=true#publications</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/10370"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/10370</a></td>
+<td align="left"><a
+href="https://www.ncbi.nlm.nih.gov/snp/rs592423?horizontal_tab=true#publications"
+class="uri">https://www.ncbi.nlm.nih.gov/snp/rs592423?horizontal_tab=true#publications</a></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">module15:7:50426097</td>
 <td align="right">10</td>
 <td align="left">IKZF1</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/10320" class="uri">https://www.ncbi.nlm.nih.gov/gene/10320</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/10320"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/10320</a></td>
 <td align="left"></td>
 <td align="left">intron</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>The coloc traits are from the follwing trait groups, mostly <code>Red blood cells</code>. (bc we have more Red blood cells traits?)</caption>
+<caption>The coloc traits are from the follwing trait groups, mostly
+<code>Red blood cells</code>. (bc we have more Red blood cells
+traits?)</caption>
 <thead>
 <tr class="header">
 <th align="left">GWAS Group</th>
@@ -2401,19 +2611,26 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 </table>
 <ul>
 <li><p>module15</p>
-<p>191 genes. <a href="https://biit.cs.ut.ee/gplink/l/4H3dKiAaRm">Enrichment in g:profiler</a></p></li>
+<p>191 genes. <a
+href="https://biit.cs.ut.ee/gplink/l/4H3dKiAaRm">Enrichment in
+g:profiler</a></p></li>
 </ul>
 <p>??? genes: number, enrichment in David</p>
 </div>
 <div id="look-at-module-4" class="section level3">
 <h3>3. Look at module 4</h3>
-<p>We wanted to look at module4, because in <a href="#Enrichment-of-colocalized-regions">earlier section</a>, we found that module4 correspond to multiple regions extensively colocalized with multiple ukbb traits.</p>
+<p>We wanted to look at module4, because in <a
+href="#Enrichment-of-colocalized-regions">earlier section</a>, we found
+that module4 correspond to multiple regions extensively colocalized with
+multiple ukbb traits.</p>
 <ul>
 <li><p>coloc region &amp; traits</p>
-<p>See <a href="../data/module4.coloc.traits.txt">file</a> for detailed traits and regions.</p></li>
+<p>See <a href="../data/module4.coloc.traits.txt">file</a> for detailed
+traits and regions.</p></li>
 </ul>
 <table>
-<caption>The colocalization between the module and traits are from the following regions (marked by lead SNPs):</caption>
+<caption>The colocalization between the module and traits are from the
+following regions (marked by lead SNPs):</caption>
 <colgroup>
 <col width="9%" />
 <col width="3%" />
@@ -2437,38 +2654,52 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 <td align="left">module4:1:248039451</td>
 <td align="right">15</td>
 <td align="left">OR2W3;TRIM58</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/343171;https://www.ncbi.nlm.nih.gov/gene/25893" class="uri">https://www.ncbi.nlm.nih.gov/gene/343171;https://www.ncbi.nlm.nih.gov/gene/25893</a></td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs3811444?horizontal_tab=true#publications" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs3811444?horizontal_tab=true#publications</a></td>
+<td align="left"><a
+href="https://www.ncbi.nlm.nih.gov/gene/343171;https://www.ncbi.nlm.nih.gov/gene/25893"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/343171;https://www.ncbi.nlm.nih.gov/gene/25893</a></td>
+<td align="left"><a
+href="https://www.ncbi.nlm.nih.gov/snp/rs3811444?horizontal_tab=true#publications"
+class="uri">https://www.ncbi.nlm.nih.gov/snp/rs3811444?horizontal_tab=true#publications</a></td>
 <td align="left">introns</td>
 </tr>
 <tr class="even">
 <td align="left">module4:3:56848999</td>
 <td align="right">3</td>
 <td align="left">ARHGEF3</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/50650" class="uri">https://www.ncbi.nlm.nih.gov/gene/50650</a></td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/50650"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/50650</a></td>
+<td align="left"><a
+href="https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true"
+class="uri">https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true</a></td>
 <td align="left">intron of ARHGEF3</td>
 </tr>
 <tr class="odd">
 <td align="left">module4:3:56901292</td>
 <td align="right">4</td>
 <td align="left">ARHGEF3</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/50650" class="uri">https://www.ncbi.nlm.nih.gov/gene/50650</a></td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/50650"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/50650</a></td>
+<td align="left"><a
+href="https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true"
+class="uri">https://www.ncbi.nlm.nih.gov/snp/rs6445826?horizontal_tab=true</a></td>
 <td align="left">intron of ARHGEF3</td>
 </tr>
 <tr class="even">
 <td align="left">module4:9:99118445</td>
 <td align="right">4</td>
 <td align="left">SLC35D2</td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/11046" class="uri">https://www.ncbi.nlm.nih.gov/gene/11046</a></td>
-<td align="left"><a href="https://www.ncbi.nlm.nih.gov/snp/rs11794772?horizontal_tab=true" class="uri">https://www.ncbi.nlm.nih.gov/snp/rs11794772?horizontal_tab=true</a></td>
+<td align="left"><a href="https://www.ncbi.nlm.nih.gov/gene/11046"
+class="uri">https://www.ncbi.nlm.nih.gov/gene/11046</a></td>
+<td align="left"><a
+href="https://www.ncbi.nlm.nih.gov/snp/rs11794772?horizontal_tab=true"
+class="uri">https://www.ncbi.nlm.nih.gov/snp/rs11794772?horizontal_tab=true</a></td>
 <td align="left">intron</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>The coloc traits are from the follwing trait groups, mostly <code>Red blood cells</code></caption>
+<caption>The coloc traits are from the follwing trait groups, mostly
+<code>Red blood cells</code></caption>
 <thead>
 <tr class="header">
 <th align="left">GWAS Group</th>
@@ -2496,15 +2727,23 @@ Out of 65 SNPs, 63 are eQTLGen cis- or trans- signals.</p></li>
 <div id="procedure-2" class="section level4">
 <h4>Procedure</h4>
 <ul>
-<li><p>130 regions, based on module-QTLs. With region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span> and with at least one cis- gene.</p></li>
-<li><p>I will test colocalization between module and a gene, if the genes’ 500k flanking region have (&gt;5) overlapped SNPs with the module region.</p></li>
-<li><p>Update the region by the overlapped SNPs of both module-QTLs and gene eQTLs.</p></li>
-<li><p>Exclude the region if the minimum eQTL <span class="math inline">\(p&gt;10^{-5}\)</span>.</p></li>
+<li><p>130 regions, based on module-QTLs. With region lead SNP’s
+module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span> and with at
+least one cis- gene.</p></li>
+<li><p>I will test colocalization between module and a gene, if the
+genes’ 500k flanking region have (&gt;5) overlapped SNPs with the module
+region.</p></li>
+<li><p>Update the region by the overlapped SNPs of both module-QTLs and
+gene eQTLs.</p></li>
+<li><p>Exclude the region if the minimum eQTL <span
+class="math inline">\(p&gt;10^{-5}\)</span>.</p></li>
 </ul>
 </div>
 <div id="basics" class="section level4">
 <h4>Basics</h4>
-<p>130 regions. With region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span> and with at least one cis- gene.</p>
+<p>130 regions. With region lead SNP’s module-QTL <span
+class="math inline">\(p&lt;10^{-8}\)</span> and with at least one cis-
+gene.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1123_region.cis.gene.png" alt="Fig A: region v.s. #cis genes. Fig B: region v.s. dis" width="70%" />
 <p class="caption">
@@ -2552,8 +2791,10 @@ liliw-w
 <div id="observations-4" class="section level4">
 <h4>Observations</h4>
 <ul>
-<li><p>As a result, there are 429 (region, module, gene) sets remained.</p></li>
-<li><p>Out of which, 89 regions are colocalized (PP.H4.abf &gt; 0.75).</p></li>
+<li><p>As a result, there are 429 (region, module, gene) sets
+remained.</p></li>
+<li><p>Out of which, 89 regions are colocalized (PP.H4.abf &gt;
+0.75).</p></li>
 <li><p>Distribution of coloc regions</p></li>
 </ul>
 <p><img src="asset/1123_cis_coloc.region.summary.png" width="50%" style="display: block; margin: auto;" /></p>
@@ -2597,7 +2838,9 @@ liliw-w
 <div class="figure" style="text-align: center">
 <img src="asset/1123_fig_bar_prop_cis.png" alt="Region v.s. #cis genes. Light blue is for the cis genes near the region. Dark blue is for the colocalized cis genes. There are 120 regions in total, out of which 54 have at least one colocalized cis- gene." width="50%" />
 <p class="caption">
-Region v.s. #cis genes. Light blue is for the cis genes near the region. Dark blue is for the colocalized cis genes. There are 120 regions in total, out of which 54 have at least one colocalized cis- gene.
+Region v.s. #cis genes. Light blue is for the cis genes near the region.
+Dark blue is for the colocalized cis genes. There are 120 regions in
+total, out of which 54 have at least one colocalized cis- gene.
 </p>
 </div>
 <p>
@@ -2637,29 +2880,46 @@ liliw-w
 </table>
 </div>
 </div>
-<p><strong>Note</strong>: Here there are 120 regions instead of 130 regions, because I excluded the cis- gene regions with <span class="math inline">\(min(p)&gt;10^{-5}\)</span> before I do the coloc.</p>
+<p><strong>Note</strong>: Here there are 120 regions instead of 130
+regions, because I excluded the cis- gene regions with <span
+class="math inline">\(min(p)&gt;10^{-5}\)</span> before I do the
+coloc.</p>
 <ul>
 <li>Colocalized region visualization</li>
 </ul>
-<p><img src="asset/1123_1.reg.module25:3:101011537.gene.SENP7.reg.coloc.png" style="width:45.0%" /> <img src="asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png" style="width:45.0%" /></p>
+<p><img
+src="asset/1123_1.reg.module25:3:101011537.gene.SENP7.reg.coloc.png"
+style="width:45.0%" /> <img
+src="asset/1123_2.reg.module66:12:54685880.gene.NFE2.reg.coloc.png"
+style="width:45.0%" /></p>
 </div>
 </div>
 </div>
 <div id="nov-15" class="section level2">
 <h2>Nov 15</h2>
-<div id="Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits" class="section level3">
-<h3>1. Proportion of colocalized regions for 29 blood related UKBB traits</h3>
+<div
+id="Proportion-of-colocalized-regions-for-29-blood-related-UKBB-traits"
+class="section level3">
+<h3>1. Proportion of colocalized regions for 29 blood related UKBB
+traits</h3>
 <div id="procedure-3" class="section level4">
 <h4>Procedure</h4>
 <ul>
-<li><p>Aim: to see how many regions have shared signals for both trait and module. (PP4 &gt; 0.75)</p></li>
+<li><p>Aim: to see how many regions have shared signals for both trait
+and module. (PP4 &gt; 0.75)</p></li>
 <li><p>I consider two types of regions:</p>
 <ol style="list-style-type: decimal">
-<li>One type as stated at last week. Based on module-QTLs and GWAS-QTLs with <span class="math inline">\(p&lt;10^{-5}\)</span>.</li>
-<li>Among the above regions, only use regions whose lead SNPs are module-QTLs signals. (Note, here I used the threshold <span class="math inline">\(p&lt;10^{-8}\)</span>, as I don’t have module-signals based on empirical null FDR correction yet.)</li>
+<li>One type as stated at last week. Based on module-QTLs and GWAS-QTLs
+with <span class="math inline">\(p&lt;10^{-5}\)</span>.</li>
+<li>Among the above regions, only use regions whose lead SNPs are
+module-QTLs signals. (Note, here I used the threshold <span
+class="math inline">\(p&lt;10^{-8}\)</span>, as I don’t have
+module-signals based on empirical null FDR correction yet.)</li>
 </ol></li>
 <li><p>Colocalized regions</p>
-<p>Defined as regions with <span class="math inline">\(\text{PP4} &gt; 0.75\)</span> and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
+<p>Defined as regions with <span class="math inline">\(\text{PP4} &gt;
+0.75\)</span> and <span class="math inline">\(\text{#SNPs in region} \ge
+5\)</span>.</p></li>
 </ul>
 </div>
 <div id="results-1" class="section level4">
@@ -2708,9 +2968,12 @@ liliw-w
 </div>
 </div>
 <ul>
-<li><p>This figure gives (1) the number of regions at the upper panel, (2) proportion of colocalized regions at the lower panel.</p></li>
-<li><p>Blue is for the frist type of regions. Green is for the second type of reigons, based on module-QTL signals.</p></li>
-<li><p>Dark color is for the colocalized regions, while light color is for the base regions.</p></li>
+<li><p>This figure gives (1) the number of regions at the upper panel,
+(2) proportion of colocalized regions at the lower panel.</p></li>
+<li><p>Blue is for the frist type of regions. Green is for the second
+type of reigons, based on module-QTL signals.</p></li>
+<li><p>Dark color is for the colocalized regions, while light color is
+for the base regions.</p></li>
 </ul>
 </div>
 </div>
@@ -2719,8 +2982,12 @@ liliw-w
 <div id="procedure-4" class="section level4">
 <h4>Procedure</h4>
 <ul>
-<li><p>colocalized regions: region lead SNP’s module-QTL <span class="math inline">\(p&lt;10^{-8}\)</span>, <span class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
-<li><p>Look at the enrichment of these colocalized regions, and the relationship with the corresponding trait.</p></li>
+<li><p>colocalized regions: region lead SNP’s module-QTL <span
+class="math inline">\(p&lt;10^{-8}\)</span>, <span
+class="math inline">\(\text{PP4} &gt; 0.75\)</span>, and <span
+class="math inline">\(\text{#SNPs in region} \ge 5\)</span>.</p></li>
+<li><p>Look at the enrichment of these colocalized regions, and the
+relationship with the corresponding trait.</p></li>
 </ul>
 </div>
 <div id="results-2" class="section level4">
@@ -2769,8 +3036,10 @@ liliw-w
 </div>
 </div>
 <ul>
-<li><p>The above figure shows, what are the modules that have colocalized regions with a trait.</p></li>
-<li><p>Similar traits should have similar colocalized module patterns.</p></li>
+<li><p>The above figure shows, what are the modules that have
+colocalized regions with a trait.</p></li>
+<li><p>Similar traits should have similar colocalized module
+patterns.</p></li>
 </ul>
 <table>
 <colgroup>
@@ -2792,64 +3061,97 @@ liliw-w
 <td align="right">30000</td>
 <td align="left">WBC</td>
 <td align="left">White blood cell count</td>
-<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/jWgRmfj9SM" class="uri">https://biit.cs.ut.ee/gplink/l/jWgRmfj9SM</a></td>
+<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/jWgRmfj9SM"
+class="uri">https://biit.cs.ut.ee/gplink/l/jWgRmfj9SM</a></td>
 </tr>
 <tr class="even">
 <td align="right">30140</td>
 <td align="left">NEUT</td>
 <td align="left">Neutrophill count</td>
-<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/Hs8Nsb99QV" class="uri">https://biit.cs.ut.ee/gplink/l/Hs8Nsb99QV</a></td>
+<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/Hs8Nsb99QV"
+class="uri">https://biit.cs.ut.ee/gplink/l/Hs8Nsb99QV</a></td>
 </tr>
 <tr class="odd">
 <td align="right">30200</td>
 <td align="left">NEUT_P</td>
 <td align="left">Neutrophill percentage</td>
-<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/NKfAXoO9Sp" class="uri">https://biit.cs.ut.ee/gplink/l/NKfAXoO9Sp</a></td>
+<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/NKfAXoO9Sp"
+class="uri">https://biit.cs.ut.ee/gplink/l/NKfAXoO9Sp</a></td>
 </tr>
 <tr class="even">
 <td align="right">30300</td>
 <td align="left">HLSR</td>
 <td align="left">High light scatter reticulocyte count</td>
-<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/VJWuuEEzTF" class="uri">https://biit.cs.ut.ee/gplink/l/VJWuuEEzTF</a></td>
+<td align="left"><a href="https://biit.cs.ut.ee/gplink/l/VJWuuEEzTF"
+class="uri">https://biit.cs.ut.ee/gplink/l/VJWuuEEzTF</a></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><p>This table gives the enrichment of the module genes for each trait.</p></li>
-<li><p>“module4” enriched in platelet activation. Many traits among these 29 blood-related traits are colocalized with “module4”.</p></li>
-<li><p>Although “module15” is extensively colocalized with many traits, it’s not enriched in any pathway.</p></li>
+<li><p>This table gives the enrichment of the module genes for each
+trait.</p></li>
+<li><p>“module4” enriched in platelet activation. Many traits among
+these 29 blood-related traits are colocalized with “module4”.</p></li>
+<li><p>Although “module15” is extensively colocalized with many traits,
+it’s not enriched in any pathway.</p></li>
 </ul>
 </div>
 </div>
-<div id="Mendelian-Randomization-MR-among-SNPs-module-trait" class="section level3">
+<div id="Mendelian-Randomization-MR-among-SNPs-module-trait"
+class="section level3">
 <h3>3. Mendelian Randomization (MR) among SNPs, module, trait</h3>
 <ul>
-<li><p>Use R package <a href="https://mrcieu.github.io/TwoSampleMR/#installation">TwoSampleMR</a>.</p></li>
-<li><p><strong>Problem</strong>: no <span class="math inline">\(\beta, \text{se}(\beta)\)</span> for module as exposure. Exposure file requirements see <a href="https://mrcieu.github.io/TwoSampleMR/articles/exposure.html">here</a>.</p></li>
-<li><p>Use <a href="https://www.nature.com/articles/ng.3538#Sec11">SMR</a>? No. As SMR is also <span class="math inline">\(\beta, \text{se}(\beta)\)</span> based. In addition to that, it only uses one SNP as instrument variable.</p>
+<li><p>Use R package <a
+href="https://mrcieu.github.io/TwoSampleMR/#installation">TwoSampleMR</a>.</p></li>
+<li><p><strong>Problem</strong>: no <span class="math inline">\(\beta,
+\text{se}(\beta)\)</span> for module as exposure. Exposure file
+requirements see <a
+href="https://mrcieu.github.io/TwoSampleMR/articles/exposure.html">here</a>.</p></li>
+<li><p>Use <a
+href="https://www.nature.com/articles/ng.3538#Sec11">SMR</a>? No. As SMR
+is also <span class="math inline">\(\beta, \text{se}(\beta)\)</span>
+based. In addition to that, it only uses one SNP as instrument
+variable.</p>
 <ul>
-<li>SMR only uses one SNP as instrument variable. “top associated cis-eQTL”.</li>
-<li>Distinguishing pleiotropy from linkage; test for pleiotropic association.</li>
+<li>SMR only uses one SNP as instrument variable. “top associated
+cis-eQTL”.</li>
+<li>Distinguishing pleiotropy from linkage; test for pleiotropic
+association.</li>
 </ul></li>
-<li><p>How people do MR? <a href="https://www.medrxiv.org/content/10.1101/2021.06.01.21258159v1.full-text">Paper-Yanyu</a></p>
+<li><p>How people do MR? <a
+href="https://www.medrxiv.org/content/10.1101/2021.06.01.21258159v1.full-text">Paper-Yanyu</a></p>
 <ol style="list-style-type: decimal">
-<li>the instrument variants were selected using LD clumping function (ld_clump) in the R package ieugwasr</li>
+<li>the instrument variants were selected using LD clumping function
+(ld_clump) in the R package ieugwasr</li>
 </ol></li>
 </ul>
 <blockquote>
-<p>We used the EUR super-population in 1000 Genomes data (1000 Genomes Project Consortium, 2015) as the LD reference panel and the data was downloaded from <a href="http://fileserve.mrcieu.ac.uk/ld/1kg.v3.tgz" class="uri">http://fileserve.mrcieu.ac.uk/ld/1kg.v3.tgz</a>. The LD clumping parameters were clump_kb = 10000 and clump_r2 = 0.001. The p-value parameter (clump_p) in the LD clumping was 10−5 for IDP GWAS and 5 × 10−8 for phenotype GWAS, which gave approximately independent and significant variant instruments.</p>
+<p>We used the EUR super-population in 1000 Genomes data (1000 Genomes
+Project Consortium, 2015) as the LD reference panel and the data was
+downloaded from <a href="http://fileserve.mrcieu.ac.uk/ld/1kg.v3.tgz"
+class="uri">http://fileserve.mrcieu.ac.uk/ld/1kg.v3.tgz</a>. The LD
+clumping parameters were clump_kb = 10000 and clump_r2 = 0.001. The
+p-value parameter (clump_p) in the LD clumping was 10−5 for IDP GWAS and
+5 × 10−8 for phenotype GWAS, which gave approximately independent and
+significant variant instruments.</p>
 </blockquote>
 <ol start="2" style="list-style-type: decimal">
 <li>The MR analysis was performed using the R package TwoSampleMR</li>
 </ol>
 <blockquote>
-<p>reported the MR results using three MR methods: i) inverse variance weighted MR (Burgess et al., 2013); ii) median-based estimator: weighted median (Bowden et al., 2016); iii) MR Egger analysis (Bowden et al., 2015), which corresponds to mr_ivw, mr_weighted_median, and mr_egger_regression in TwoSampleMR.</p>
+<p>reported the MR results using three MR methods: i) inverse variance
+weighted MR (Burgess et al., 2013); ii) median-based estimator: weighted
+median (Bowden et al., 2016); iii) MR Egger analysis (Bowden et al.,
+2015), which corresponds to mr_ivw, mr_weighted_median, and
+mr_egger_regression in TwoSampleMR.</p>
 </blockquote>
 <ol start="3" style="list-style-type: decimal">
-<li>further reported a meta-analyzed p-value summarizing the results of the three MR tests being performed</li>
+<li>further reported a meta-analyzed p-value summarizing the results of
+the three MR tests being performed</li>
 </ol>
 <blockquote>
-<p>The meta-analysis is based on an extension of ACAT method (Liu et al., 2019) that takes into account the direction of the effects.</p>
+<p>The meta-analysis is based on an extension of ACAT method (Liu et
+al., 2019) that takes into account the direction of the effects.</p>
 </blockquote>
 </div>
 </div>
@@ -2858,34 +3160,51 @@ liliw-w
 <div id="some-statistics" class="section level3">
 <h3>Some statistics</h3>
 <ul>
-<li><p>Out of 6,203,169 SNPs in DGN, 6,133,791 (~98.88%) are also included in UKBB GWAS SNPs, 69,378 snps are missed.</p></li>
-<li><p><del>Among 6,133,791 overlapped SNPs, 5,753,809 (~93.81%) are <a href="https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files"><code>high_quality</code></a> variants.</del></p></li>
+<li><p>Out of 6,203,169 SNPs in DGN, 6,133,791 (~98.88%) are also
+included in UKBB GWAS SNPs, 69,378 snps are missed.</p></li>
+<li><p><del>Among 6,133,791 overlapped SNPs, 5,753,809 (~93.81%) are <a
+href="https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files"><code>high_quality</code></a>
+variants.</del></p></li>
 </ul>
 </div>
 <div id="coloc-procedure" class="section level3">
 <h3>coloc procedure</h3>
 <ul>
-<li><p>To do coloc, I compare the pvalues of SNPs within a specific region from each module in DGN and a GWAS trait.</p>
+<li><p>To do coloc, I compare the pvalues of SNPs within a specific
+region from each module in DGN and a GWAS trait.</p>
 <ul>
-<li><p>For DGN, I use the pvalues from the procedure where I didn’t filter genes based on mappability. There are 166 modules.</p></li>
-<li><p>For GWAS, I use the summary statistics of EUR population.</p></li>
+<li><p>For DGN, I use the pvalues from the procedure where I didn’t
+filter genes based on mappability. There are 166 modules.</p></li>
+<li><p>For GWAS, I use the summary statistics of EUR
+population.</p></li>
 </ul></li>
 <li><p>Define Regions</p>
-<p>I define coloc regions based on DGN pvalues. For a module, I first sort the pvalues and pick the SNP with the smallest p. Then collect the SNPs in flanking regions within <strong>100kb</strong>. These SNPs consist of the first region. Then use the second smallest p and define a second region out of the remaining SNPs. I only consider the regions within which at least one SNP has ** <span class="math inline">\(p&lt;1e-5\)</span> **.</p></li>
+<p>I define coloc regions based on DGN pvalues. For a module, I first
+sort the pvalues and pick the SNP with the smallest p. Then collect the
+SNPs in flanking regions within <strong>100kb</strong>. These SNPs
+consist of the first region. Then use the second smallest p and define a
+second region out of the remaining SNPs. I only consider the regions
+within which at least one SNP has ** <span
+class="math inline">\(p&lt;1e-5\)</span> **.</p></li>
 <li><p>SNP filtering</p>
-<p>Based on the above preliminary regions, I updated the regions based on the following criterias:</p>
+<p>Based on the above preliminary regions, I updated the regions based
+on the following criterias:</p>
 <ul>
 <li>Remove SNPs not included in GWAS.</li>
 <li>Remove SNPs without rsid.</li>
 <li>Remove SNPs with low_confidence, no high_quality.</li>
 <li>Remove duplicated SNPs.</li>
-<li>Remove the regions within which all SNPs have GWAS ** <span class="math inline">\(p&gt;1e-5\)</span> **.</li>
-<li>Remove SNPs with GWAS <span class="math inline">\(se(\beta)=0\)</span>, for <code>coloc</code> purpose.</li>
+<li>Remove the regions within which all SNPs have GWAS ** <span
+class="math inline">\(p&gt;1e-5\)</span> **.</li>
+<li>Remove SNPs with GWAS <span
+class="math inline">\(se(\beta)=0\)</span>, for <code>coloc</code>
+purpose.</li>
 </ul></li>
 <li><p>Do coloc</p>
 <ul>
 <li>Use the simple coloc, <code>coloc.abf</code>.</li>
-<li>A region with <strong>PP4 &gt; 0.75</strong> is defined as being colocalized.</li>
+<li>A region with <strong>PP4 &gt; 0.75</strong> is defined as being
+colocalized.</li>
 </ul></li>
 </ul>
 </div>
@@ -3016,7 +3335,8 @@ liliw-w
 <div class="figure" style="text-align: center">
 <img src="asset/1108_pheno30100.coloc.region.summary.png" alt="An example of colocalized region visualization. Trait Mean platelet volume" width="70%" />
 <p class="caption">
-An example of colocalized region visualization. Trait Mean platelet volume
+An example of colocalized region visualization. Trait Mean platelet
+volume
 </p>
 </div>
 <p>
@@ -3057,7 +3377,8 @@ liliw-w
 </div>
 </div>
 <ol start="3" style="list-style-type: decimal">
-<li>Colocalized region visualization by <a href="https://github.com/boxiangliu/locuscomparer"><code>locuscomparer</code></a></li>
+<li>Colocalized region visualization by <a
+href="https://github.com/boxiangliu/locuscomparer"><code>locuscomparer</code></a></li>
 </ol>
 <div class="figure" style="text-align: center">
 <img src="asset/1108_pheno30080.module102:7:50427982.reg.coloc.png" alt="An example of colocalized region visualization." width="50%" />
@@ -3070,7 +3391,8 @@ An example of colocalized region visualization.
 Past versions of 1108_pheno30080.module102:7:50427982.reg.coloc.png
 </button>
 </p>
-<div id="fig-1108_pheno30080.module102:7:50427982.reg.coloc" class="collapse">
+<div id="fig-1108_pheno30080.module102:7:50427982.reg.coloc"
+class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3103,10 +3425,14 @@ liliw-w
 </div>
 </div>
 <ol start="4" style="list-style-type: decimal">
-<li><a href="https://www.biorxiv.org/content/10.1101/2021.04.07.438882v1.full">29 UKBB blood traits</a></li>
+<li><a
+href="https://www.biorxiv.org/content/10.1101/2021.04.07.438882v1.full">29
+UKBB blood traits</a></li>
 </ol>
 <blockquote>
-<p>For our study, we examined 29 blood trait GWASs in the UK Biobank, including traits from platelets, red blood cells, white blood cells and reticulocytes (Table S1A).</p>
+<p>For our study, we examined 29 blood trait GWASs in the UK Biobank,
+including traits from platelets, red blood cells, white blood cells and
+reticulocytes (Table S1A).</p>
 </blockquote>
 </div>
 </div>
@@ -3116,7 +3442,8 @@ liliw-w
 <h3>Colocalization</h3>
 <div id="enloc" class="section level4">
 <h4>enloc</h4>
-<p><a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006646">Paper</a>:</p>
+<p><a
+href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006646">Paper</a>:</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1101_enloc_theory.png" alt="enloc equation" width="80%" />
 <p class="caption">
@@ -3160,7 +3487,9 @@ liliw-w
 </table>
 </div>
 </div>
-<p><a href="https://github.com/xqwen/fastenloc/tree/master/tutorial">Code tutorial</a>:</p>
+<p><a
+href="https://github.com/xqwen/fastenloc/tree/master/tutorial">Code
+tutorial</a>:</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1101_enloc_code_pipeline.png" alt="enloc code workflow" width="80%" />
 <p class="caption">
@@ -3205,14 +3534,25 @@ liliw-w
 </div>
 </div>
 <ul>
-<li><p>Need to provide “expression file” for the first fine-mapping. But we don’t have this file in the case of a module being the “expression trait”.</p></li>
-<li><p>DAP can be applied to each LD block independently. <a href="https://academic.oup.com/bioinformatics/article/32/2/283/1743626">independent LD block</a> provided a working recipe to segment the full genome based on the population-specific LD structures.</p></li>
-<li><p>Example of using enloc for colocalization: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/">GTEx 2020</a>. Used for “cis-QTL-GWAS colocalization: ENLOC.”</p></li>
+<li><p>Need to provide “expression file” for the first fine-mapping. But
+we don’t have this file in the case of a module being the “expression
+trait”.</p></li>
+<li><p>DAP can be applied to each LD block independently. <a
+href="https://academic.oup.com/bioinformatics/article/32/2/283/1743626">independent
+LD block</a> provided a working recipe to segment the full genome based
+on the population-specific LD structures.</p></li>
+<li><p>Example of using enloc for colocalization: <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/">GTEx
+2020</a>. Used for “cis-QTL-GWAS colocalization: ENLOC.”</p></li>
 </ul>
 </div>
 <div id="coloc" class="section level4">
 <h4>coloc</h4>
-<p><a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004383">Paper-coloc single</a>, <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1009440">Paper-coloc multiple</a>:</p>
+<p><a
+href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004383">Paper-coloc
+single</a>, <a
+href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1009440">Paper-coloc
+multiple</a>:</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1101_coloc_theory.png" alt="coloc equation" width="30%" />
 <p class="caption">
@@ -3256,8 +3596,12 @@ liliw-w
 </table>
 </div>
 </div>
-<p><a href="https://chr1swallace.github.io/coloc/">Code tutorial</a>:</p>
-<p>First, segment the whole genome. Then fine-map each traits by <a href="https://stephenslab.github.io/susieR/articles/index.html"><code>susieR</code></a>, better than <code>coloc.abf</code> as it allows multiple causal variants. Finally, coloc.</p>
+<p><a href="https://chr1swallace.github.io/coloc/">Code
+tutorial</a>:</p>
+<p>First, segment the whole genome. Then fine-map each traits by <a
+href="https://stephenslab.github.io/susieR/articles/index.html"><code>susieR</code></a>,
+better than <code>coloc.abf</code> as it allows multiple causal
+variants. Finally, coloc.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1101_coloc_code_workflow.png" alt="coloc code workflow" width="80%" />
 <p class="caption">
@@ -3302,11 +3646,18 @@ liliw-w
 </div>
 </div>
 <ul>
-<li><p>Determine LD block? Independent LD block + small GWAS pvalue loci + small module pvalue loci</p></li>
+<li><p>Determine LD block? Independent LD block + small GWAS pvalue loci
++ small module pvalue loci</p></li>
 <li><p>Example of using coloc for colocalization:</p>
 <ul>
-<li><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#Sec11">Mu &amp; Li</a>): <code>coloc</code> + default prior.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/">GTEx 2020</a>: Used for “Colocalization of cis- and trans-QTLs.”, <code>coloc</code> + default prior. In addition, used for “Colocalization of neutrophil ieQTLs and GWAS traits”: <code>coloc</code> + <code>enloc</code> prior.</li>
+<li><a
+href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02334-x#Sec11">Mu
+&amp; Li</a>): <code>coloc</code> + default prior.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7737656/">GTEx
+2020</a>: Used for “Colocalization of cis- and trans-QTLs.”,
+<code>coloc</code> + default prior. In addition, used for
+“Colocalization of neutrophil ieQTLs and GWAS traits”:
+<code>coloc</code> + <code>enloc</code> prior.</li>
 </ul></li>
 </ul>
 </div>
@@ -3319,12 +3670,15 @@ liliw-w
 <h2>Oct 25</h2>
 <div id="pan-ukbb-website" class="section level3">
 <h3>Pan UKBB website</h3>
-<p>See website <a href="https://pan.ukbb.broadinstitute.org/">here</a>.</p>
-<p>Files website <a href="https://pan.ukbb.broadinstitute.org/docs/technical-overview">here</a>.</p>
+<p>See website <a
+href="https://pan.ukbb.broadinstitute.org/">here</a>.</p>
+<p>Files website <a
+href="https://pan.ukbb.broadinstitute.org/docs/technical-overview">here</a>.</p>
 <ul>
 <li>SNPs: 28,987,534 variants</li>
 <li>Trait:</li>
-<li>Population? meta? for (<span class="math inline">\(\beta, \text{se}, p, \text{low_confidence}\)</span>)</li>
+<li>Population? meta? for (<span class="math inline">\(\beta, \text{se},
+p, \text{low_confidence}\)</span>)</li>
 </ul>
 <div id="trait" class="section level4">
 <h4>Trait</h4>
@@ -3333,45 +3687,58 @@ liliw-w
 </ul>
 <p>blood related traits:</p>
 <ol style="list-style-type: decimal">
-<li>“Biological samples &gt; Assay results &gt; Blood assays &gt; Blood count”</li>
+<li>“Biological samples &gt; Assay results &gt; Blood assays &gt; Blood
+count”</li>
 </ol>
 <p>e.g. Platelet count, Monocyte percentage, el al</p>
 <ol start="2" style="list-style-type: decimal">
-<li>“Biological samples &gt; Assay results &gt; Blood assays &gt; Blood biochemistry”</li>
+<li>“Biological samples &gt; Assay results &gt; Blood assays &gt; Blood
+biochemistry”</li>
 </ol>
 <p>e.g. HDL cholesterol, Rheumatoid factor, et al</p>
 <ol start="3" style="list-style-type: decimal">
-<li><p>“UK Biobank Assessment Centre &gt; Physical measures &gt; Blood pressure”</p></li>
-<li><p>“Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism …”</p></li>
+<li><p>“UK Biobank Assessment Centre &gt; Physical measures &gt; Blood
+pressure”</p></li>
+<li><p>“Chapter III Diseases of the blood and blood-forming organs and
+certain disorders involving the immune mechanism …”</p></li>
 </ol>
 <p>e.g. anaemias, D57 Sickle-cell disorders, el al</p>
 <ul>
-<li><p><code>pheno_sex</code>: Use which one? “both_sexes”, “females”, “males”</p></li>
-<li><p><code>modifier</code>: <code>irnt</code> or <code>raw</code>?</p></li>
+<li><p><code>pheno_sex</code>: Use which one? “both_sexes”, “females”,
+“males”</p></li>
+<li><p><code>modifier</code>: <code>irnt</code> or
+<code>raw</code>?</p></li>
 </ul>
 </div>
 <div id="variants-filtering" class="section level4">
 <h4>Variants filtering</h4>
 <blockquote>
-<p>summary statistics with low-confidence statistics removed and only considering high-quality variants.</p>
+<p>summary statistics with low-confidence statistics removed and only
+considering high-quality variants.</p>
 </blockquote>
 <ul>
 <li><code>af</code>: allele frequency</li>
-<li><code>low_confidence</code>: criteria about allele count; includes some (non-exhaustive) basic quality control filters.</li>
-<li><code>high_quality</code>: A boolean corresponding to a high-quality variant based on these filters … on “Files website”.</li>
+<li><code>low_confidence</code>: criteria about allele count; includes
+some (non-exhaustive) basic quality control filters.</li>
+<li><code>high_quality</code>: A boolean corresponding to a high-quality
+variant based on these filters … on “Files website”.</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="october-07-october-18" class="section level2">
 <h2>October 07, October 18</h2>
-<div id="msigdb-gene-modules-incorporated-with-dgn-genes" class="section level3">
+<div id="msigdb-gene-modules-incorporated-with-dgn-genes"
+class="section level3">
 <h3>MSigDB gene modules, incorporated with DGN genes</h3>
-<p>MSigDB hallmark gene sets have 50 clusters, consisting of 4383 genes. 3276 genes are included in 12132 DGN genes (without removing cross-mappable genes).</p>
+<p>MSigDB hallmark gene sets have 50 clusters, consisting of 4383 genes.
+3276 genes are included in 12132 DGN genes (without removing
+cross-mappable genes).</p>
 <p>Run Trans-PCO on the MSigDB hallmark gene sets.</p>
 <div id="pvalues-distribution---qqplot" class="section level4">
 <h4>pvalues’ distribution - qqplot</h4>
-<p>Marked modules with significant signals by eye. See figure <a href="asset/1007_MSigDB_p_distribution.png">here</a>.</p>
+<p>Marked modules with significant signals by eye. See figure <a
+href="asset/1007_MSigDB_p_distribution.png">here</a>.</p>
 </div>
 <div id="signals-under-empirical-fdr" class="section level4">
 <h4>Signals under empirical FDR</h4>
@@ -3402,7 +3769,8 @@ liliw-w
 </tr>
 </tbody>
 </table>
-<p>cross-mapped genes in 50 gene sets? already removed cross-mapped reads?</p>
+<p>cross-mapped genes in 50 gene sets? already removed cross-mapped
+reads?</p>
 <ol start="2" style="list-style-type: decimal">
 <li>module (with annotation, size) v.s. chromosome signals</li>
 </ol>
@@ -3451,14 +3819,20 @@ liliw-w
 </div>
 </div>
 </div>
-<div id="string-ppi-interaction-network-clustered-by-hierarchical-clustering." class="section level3">
-<h3>STRING PPI interaction network, clustered by hierarchical clustering.</h3>
-<p>Out of 12132 DGN genes, 11911 genes in the data included in STRING PPI network. As a result of hierarchical clustering, 11911 genes consist of 198 modules, with module size ranging from 210 ~ 26.</p>
+<div
+id="string-ppi-interaction-network-clustered-by-hierarchical-clustering."
+class="section level3">
+<h3>STRING PPI interaction network, clustered by hierarchical
+clustering.</h3>
+<p>Out of 12132 DGN genes, 11911 genes in the data included in STRING
+PPI network. As a result of hierarchical clustering, 11911 genes consist
+of 198 modules, with module size ranging from 210 ~ 26.</p>
 <p>Run Trans-PCO on these modules.</p>
 <div id="pvalues-distribution---qqplot-1" class="section level4">
 <h4>pvalues’ distribution - qqplot</h4>
 <p>A selected set of modules.</p>
-<p>Marked modules with significant signals by eye. See figure <a href="">here</a>.</p>
+<p>Marked modules with significant signals by eye. See figure <a
+href="">here</a>.</p>
 </div>
 </div>
 <div id="dgn_no_filter_on_mappability" class="section level3">
@@ -3473,15 +3847,23 @@ liliw-w
 <h2>October 04</h2>
 <div id="molecular-signatures-database" class="section level3">
 <h3>Molecular Signatures Database</h3>
-<p>The <a href="http://www.gsea-msigdb.org/gsea/msigdb/index.jsp">MSigDB</a> gene sets are divided into <a href="http://www.gsea-msigdb.org/gsea/msigdb/collections.jsp">9 major collections</a>: the hallmark gene sets, and C1 - C8 gene sets.</p>
+<p>The <a
+href="http://www.gsea-msigdb.org/gsea/msigdb/index.jsp">MSigDB</a> gene
+sets are divided into <a
+href="http://www.gsea-msigdb.org/gsea/msigdb/collections.jsp">9 major
+collections</a>: the hallmark gene sets, and C1 - C8 gene sets.</p>
 </div>
 <div id="hallmark-gene-sets" class="section level3">
 <h3>Hallmark gene sets</h3>
 <blockquote>
-<p>What? Hallmark gene sets summarize and represent specific well-defined biological states or processes and display coherent expression.</p>
+<p>What? Hallmark gene sets summarize and represent specific
+well-defined biological states or processes and display coherent
+expression.</p>
 </blockquote>
 <blockquote>
-<p>How? These gene sets were generated by a computational methodology based on identifying gene set overlaps and retaining genes that display coordinate expression.</p>
+<p>How? These gene sets were generated by a computational methodology
+based on identifying gene set overlaps and retaining genes that display
+coordinate expression.</p>
 </blockquote>
 <div class="figure" style="text-align: center">
 <img src="asset/1004_hallmark_pipeline.jpeg" alt="Pipeline to obtain hallmark gene sets from other MSigDB gene sets." width="50%" />
@@ -3526,11 +3908,17 @@ liliw-w
 </table>
 </div>
 </div>
-<p>See <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/">paper here</a>.</p>
+<p>See <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/">paper
+here</a>.</p>
 <blockquote>
-<p>pros? The hallmarks reduce noise and redundancy of the original overlapping gene sets, from which a hallmark is derived (‘founder’ sets).</p>
+<p>pros? The hallmarks reduce noise and redundancy of the original
+overlapping gene sets, from which a hallmark is derived (‘founder’
+sets).</p>
 </blockquote>
-<p>Initial release. 50 hallmark gene sets. Comprise 4,022 original overlapping gene sets from 8,380 v4.0 MSigDB gene sets of collections C1 through C6.</p>
+<p>Initial release. 50 hallmark gene sets. Comprise 4,022 original
+overlapping gene sets from 8,380 v4.0 MSigDB gene sets of collections C1
+through C6.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1004_geneSet_size_h.all.v7.4.symbols.gmt.png" alt="50 hallmark gene sets size" width="50%" />
 <p class="caption">
@@ -3574,7 +3962,9 @@ liliw-w
 </table>
 </div>
 </div>
-<p>Summary of the hallmark gene sets: name, process category, description, number of founder sets and number of genes it contains. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/table/T1/?report=objectonly">Table.</a></p>
+<p>Summary of the hallmark gene sets: name, process category,
+description, number of founder sets and number of genes it contains. <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4707969/table/T1/?report=objectonly">Table.</a></p>
 <div class="figure" style="text-align: center">
 <img src="asset/1004_geneSet_overlap_h.all.v7.4.symbols.gmt.png" alt="Overlapped genes among 50 hallmark gene sets" width="80%" />
 <p class="caption">
@@ -3586,7 +3976,8 @@ Overlapped genes among 50 hallmark gene sets
 Past versions of 1004_geneSet_overlap_h.all.v7.4.symbols.gmt.png
 </button>
 </p>
-<div id="fig-1004_geneSet_overlap_h.all.v7.4.symbols.gmt" class="collapse">
+<div id="fig-1004_geneSet_overlap_h.all.v7.4.symbols.gmt"
+class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -3622,13 +4013,17 @@ liliw-w
 </div>
 <div id="september-30" class="section level2">
 <h2>September 30</h2>
-<div id="string-ppi-networks-hierarchical-clustering" class="section level3">
+<div id="string-ppi-networks-hierarchical-clustering"
+class="section level3">
 <h3>STRING PPI networks + Hierarchical clustering</h3>
-<p>Question: Do the clusters make sense? Are the large clusters too loose or the small clusters too tight?</p>
+<p>Question: Do the clusters make sense? Are the large clusters too
+loose or the small clusters too tight?</p>
 <ul>
-<li>Large clusters too loose such that can be separated to a few smaller cluster?</li>
+<li>Large clusters too loose such that can be separated to a few smaller
+cluster?</li>
 </ul>
-<p>I looked at the top two largest clusters: Module 1 with 214 genes, and Module 2 with 188 genes.</p>
+<p>I looked at the top two largest clusters: Module 1 with 214 genes,
+and Module 2 with 188 genes.</p>
 <p><img src="asset/0930_stringPPI_large_module.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0930_stringPPI_large_module">
@@ -3668,9 +4063,11 @@ liliw-w
 </div>
 </div>
 <ul>
-<li>Small clusters too tight such that can be merged into less bigger cluster?</li>
+<li>Small clusters too tight such that can be merged into less bigger
+cluster?</li>
 </ul>
-<p>I looked at the last three smallest clusters: Module 194, 193, 192, with 23, 26, 26 genes, correspondingly.</p>
+<p>I looked at the last three smallest clusters: Module 194, 193, 192,
+with 23, 26, 26 genes, correspondingly.</p>
 <p><img src="asset/0930_stringPPI_small_module.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0930_stringPPI_small_module">
@@ -3718,66 +4115,111 @@ liliw-w
 <div id="data" class="section level4">
 <h4>Data</h4>
 <ul>
-<li><p>Protein network data downloaded from <a href="https://www.string-db.org/cgi/download?sessionId=b0t6ChKtUCa8">here</a>.</p></li>
-<li><p>Out of 12132 DGN genes, 11911 genes in the data included in STRING network, with 3076398 edges.</p></li>
+<li><p>Protein network data downloaded from <a
+href="https://www.string-db.org/cgi/download?sessionId=b0t6ChKtUCa8">here</a>.</p></li>
+<li><p>Out of 12132 DGN genes, 11911 genes in the data included in
+STRING network, with 3076398 edges.</p></li>
 </ul>
 </div>
 <div id="clustering" class="section level4">
 <h4>Clustering</h4>
-<p>A <a href="https://academic.oup.com/bioinformatics/article/30/10/1343/266738">paper</a> reviews <a href="https://academic.oup.com/view-large/86243930">a list of PPI networks clustering methods</a>.</p>
+<p>A <a
+href="https://academic.oup.com/bioinformatics/article/30/10/1343/266738">paper</a>
+reviews <a href="https://academic.oup.com/view-large/86243930">a list of
+PPI networks clustering methods</a>.</p>
 <blockquote>
-<p>Clustering approaches to PPI networks can be broadly categorized as <strong>topology-free</strong> and <strong>graph-based</strong> ones. Topology-free approaches use traditional clustering techniques using notions of distance between proteins that do not take into account the topology of the network. Graph-based clustering approaches consider instead the topology of the network, and usually rely on specialized clustering techniques.</p>
+<p>Clustering approaches to PPI networks can be broadly categorized as
+<strong>topology-free</strong> and <strong>graph-based</strong> ones.
+Topology-free approaches use traditional clustering techniques using
+notions of distance between proteins that do not take into account the
+topology of the network. Graph-based clustering approaches consider
+instead the topology of the network, and usually rely on specialized
+clustering techniques.</p>
 </blockquote>
 <ol style="list-style-type: decimal">
 <li><p>MCODE &amp; MCL</p>
-<p>Too many genes for MCODE, I waited 1h and there was no result coming out.</p></li>
+<p>Too many genes for MCODE, I waited 1h and there was no result coming
+out.</p></li>
 <li><p>Hierarchical clustering from clustermaker &amp; R</p>
-<p>Hierarchical clustering in the Cytoscape plug-in, clustermaker, can’t handle so many genes. So I tried to do hierarchical clustering in R.</p>
-<p>Specifically, I used the “PPI scores” between two genes as the similary measurement for computing distances. Those gene pairs without edges (no PPI interaction) have 0 scores and 1 distance. Genes with itself have 1 scores and 0 distance (diagonals of distance matrix). Then I used the <code>hclust</code> in R to construct the hierarchical tree, and the dynamic tree cut <code>cutreeDynamic</code> for branch cutting, as used in WGCNA.</p>
-<p>As a result, 11911 genes consist of 198 modules, with module size ranging from 210 ~ 26.</p></li>
+<p>Hierarchical clustering in the Cytoscape plug-in, clustermaker, can’t
+handle so many genes. So I tried to do hierarchical clustering in R.</p>
+<p>Specifically, I used the “PPI scores” between two genes as the
+similary measurement for computing distances. Those gene pairs without
+edges (no PPI interaction) have 0 scores and 1 distance. Genes with
+itself have 1 scores and 0 distance (diagonals of distance matrix). Then
+I used the <code>hclust</code> in R to construct the hierarchical tree,
+and the dynamic tree cut <code>cutreeDynamic</code> for branch cutting,
+as used in WGCNA.</p>
+<p>As a result, 11911 genes consist of 198 modules, with module size
+ranging from 210 ~ 26.</p></li>
 </ol>
 </div>
 </div>
-<div id="humanbase-predicted-tissue-specific-interactions" class="section level3">
+<div id="humanbase-predicted-tissue-specific-interactions"
+class="section level3">
 <h3>HumanBase predicted tissue-specific interactions</h3>
 <div id="data-1" class="section level4">
 <h4>Data</h4>
 <ul>
-<li>Blood tissue interactions downloaded from <a href="https://hb.flatironinstitute.org/download">here</a>.</li>
+<li>Blood tissue interactions downloaded from <a
+href="https://hb.flatironinstitute.org/download">here</a>.</li>
 </ul>
 </div>
 <div id="clustering-1" class="section level4">
 <h4>Clustering</h4>
 <ol style="list-style-type: decimal">
 <li><p>functional module detection</p></li>
-<li><p>MCODE (graph-based clustering, since only have edge info)</p></li>
+<li><p>MCODE (graph-based clustering, since only have edge
+info)</p></li>
 </ol>
 </div>
 </div>
 </div>
 <div id="september-02-september-07-september-10" class="section level2">
 <h2>September 02, September 07, September 10</h2>
-<div id="pre-filter-cross-map-genes-before-grouping-genes-into-modules" class="section level3">
+<div id="pre-filter-cross-map-genes-before-grouping-genes-into-modules"
+class="section level3">
 <h3>Pre-filter cross-map genes before grouping genes into modules</h3>
-<p>Out of 10461 genes, (after filtering based on meta info, protain and lincRNA, low mappability), do additional gene filtering if genes have too many cross-map genes (e.g. use 1K as the threshold). 4314 genes are removed.</p>
-<p>As a result, 6147 genes are remained and are grouped in 95 modules.</p>
+<p>Out of 10461 genes, (after filtering based on meta info, protain and
+lincRNA, low mappability), do additional gene filtering if genes have
+too many cross-map genes (e.g. use 1K as the threshold). 4314 genes are
+removed.</p>
+<p>As a result, 6147 genes are remained and are grouped in 95
+modules.</p>
 </div>
 <div id="computation-time" class="section level3">
 <h3>Computation time</h3>
 <div id="problem" class="section level4">
 <h4>Problem</h4>
-<p>Last time, we ran into the problem that it is computational unfeasible if we want to run PCO without removing cross mappable genes in the previous step. See the illustration in the following figure.</p>
-<p>There are two main steps that need long computational time. (1) For each SNP, remove genes from the module that are cross mappable with cis- genes of the SNP. (2) In this case, we would have module containing different genes for SNPs with different cis- genes, thus different <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\Sigma^O\)</span>. Therefore, tremendously increase the computational time.</p>
+<p>Last time, we ran into the problem that it is computational
+unfeasible if we want to run PCO without removing cross mappable genes
+in the previous step. See the illustration in the following figure.</p>
+<p>There are two main steps that need long computational time. (1) For
+each SNP, remove genes from the module that are cross mappable with cis-
+genes of the SNP. (2) In this case, we would have module containing
+different genes for SNPs with different cis- genes, thus different <span
+class="math inline">\(\Sigma\)</span> and <span
+class="math inline">\(\Sigma^O\)</span>. Therefore, tremendously
+increase the computational time.</p>
 </div>
 <div id="try-solution-1-filtering-snps-instead" class="section level4">
 <h4>Try solution 1: filtering SNPs instead</h4>
-<p>One of the possible solutions we mentioned is, instead of filtering genes for each SNP, we can try filtering SNPs and keeping the module unchanged. That being said, if a SNP has cis- genes cross mappable with any genes in the module, then this SNP is removed from the following PCO analysis.</p>
-<p>In this way, there are two advantages. First, it’s faster to filter SNPs than genes. Second, we will have same module for all remained SNPs, thus same <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\Sigma^O\)</span>.</p>
-<p>So, next I check how many SNPs will be left after this filtering step.</p>
+<p>One of the possible solutions we mentioned is, instead of filtering
+genes for each SNP, we can try filtering SNPs and keeping the module
+unchanged. That being said, if a SNP has cis- genes cross mappable with
+any genes in the module, then this SNP is removed from the following PCO
+analysis.</p>
+<p>In this way, there are two advantages. First, it’s faster to filter
+SNPs than genes. Second, we will have same module for all remained SNPs,
+thus same <span class="math inline">\(\Sigma\)</span> and <span
+class="math inline">\(\Sigma^O\)</span>.</p>
+<p>So, next I check how many SNPs will be left after this filtering
+step.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/0907_SNP_remain.png" alt="Figure. SNP remained. The bar plot gives the number of SNPs, while the line plot gives the percentage of the remained SNPs on each chr." width="70%" />
 <p class="caption">
-Figure. SNP remained. The bar plot gives the number of SNPs, while the line plot gives the percentage of the remained SNPs on each chr.
+Figure. SNP remained. The bar plot gives the number of SNPs, while the
+line plot gives the percentage of the remained SNPs on each chr.
 </p>
 </div>
 <p>
@@ -3817,10 +4259,13 @@ liliw-w
 </table>
 </div>
 </div>
-<p>We can see, if we filter SNPs instead, over half of the genome will be removed from the p-value analysis. We could miss a lot of signals.</p>
+<p>We can see, if we filter SNPs instead, over half of the genome will
+be removed from the p-value analysis. We could miss a lot of
+signals.</p>
 </div>
 </div>
-<div id="keep-cross-mappable-genes-in-the-filtering-step" class="section level3">
+<div id="keep-cross-mappable-genes-in-the-filtering-step"
+class="section level3">
 <h3>Keep cross mappable genes in the filtering step</h3>
 <ol style="list-style-type: decimal">
 <li>Genes and modules containing cross mappable genes</li>
@@ -3863,8 +4308,13 @@ liliw-w
 </tr>
 </tbody>
 </table>
-<p><img src="asset/0902_plot_module_size.png" style="width:30.0%" /><img src="asset/0902_plot_module_size_cross_within_module.png" style="width:30.0%" /></p>
-<p>Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar for #cross mappable genes for each module. Left for genes cross mappable with any genes. Right for genes cross mappable with genes within the same module.</p>
+<p><img src="asset/0902_plot_module_size.png" style="width:30.0%" /><img
+src="asset/0902_plot_module_size_cross_within_module.png"
+style="width:30.0%" /></p>
+<p>Figure. Module v.s. #Genes. Bar height for module size. Red/blue bar
+for #cross mappable genes for each module. Left for genes cross mappable
+with any genes. Right for genes cross mappable with genes within the
+same module.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Run PCO with cross mappable genes</li>
 </ol>
@@ -3913,7 +4363,10 @@ liliw-w
 </div>
 <p>Problem: Computational infeasible</p>
 <ul>
-<li>In phase 1, for each SNP, filter out genes within the module that are cross mappable with any of its cis- genes. Not fast, as need to search pairs of (cis- gene, module gene) in the cross-mappability file with 23,727,385 cross-mappable gene pairs.</li>
+<li>In phase 1, for each SNP, filter out genes within the module that
+are cross mappable with any of its cis- genes. Not fast, as need to
+search pairs of (cis- gene, module gene) in the cross-mappability file
+with 23,727,385 cross-mappable gene pairs.</li>
 </ul>
 <p>The code I use,</p>
 <pre class="r"><code>if_cross &lt;- sapply(cis_Genes[1:10], function(x){
@@ -3924,7 +4377,8 @@ liliw-w
 <div class="figure" style="text-align: center">
 <img src="asset/0902_time_cross_map.png" alt="Figure. Time used for a SNP with ~40 cis- genes and a module with 15 genes." width="40%" />
 <p class="caption">
-Figure. Time used for a SNP with ~40 cis- genes and a module with 15 genes.
+Figure. Time used for a SNP with ~40 cis- genes and a module with 15
+genes.
 </p>
 </div>
 <p>
@@ -3965,7 +4419,13 @@ liliw-w
 </div>
 </div>
 <ul>
-<li>In phase 2, each SNP could correspond to modules with different gene combinations, thus diff. <span class="math inline">\(\Sigma\)</span> for with-in module correlation and <span class="math inline">\(\Sigma^0\)</span>, which is the estimated correlation of six tests involved in PCO using 2000 simulations. Thus, computing <span class="math inline">\(\Sigma^0\)</span> for each SNP should take a long time.</li>
+<li>In phase 2, each SNP could correspond to modules with different gene
+combinations, thus diff. <span class="math inline">\(\Sigma\)</span> for
+with-in module correlation and <span
+class="math inline">\(\Sigma^0\)</span>, which is the estimated
+correlation of six tests involved in PCO using 2000 simulations. Thus,
+computing <span class="math inline">\(\Sigma^0\)</span> for each SNP
+should take a long time.</li>
 </ul>
 </div>
 </div>
@@ -3973,7 +4433,9 @@ liliw-w
 <h2>July 08</h2>
 <div id="how-expression-pcs-affect-the-signals" class="section level3">
 <h3>How expression PCs affect the signals?</h3>
-<p>The following table gives the number of unique signals under various FDR levels for DGN regressing out expression PC as covariates (“DGN_wo_expPC”) and keeping expression PCs (“DGN_with_expPC”).</p>
+<p>The following table gives the number of unique signals under various
+FDR levels for DGN regressing out expression PC as covariates
+(“DGN_wo_expPC”) and keeping expression PCs (“DGN_with_expPC”).</p>
 <table>
 <colgroup>
 <col width="11%" />
@@ -4017,33 +4479,88 @@ liliw-w
 </tbody>
 </table>
 </div>
-<div id="correlation-between-meta-ed-gene-zscores-from-eqtlgen" class="section level3">
+<div id="correlation-between-meta-ed-gene-zscores-from-eqtlgen"
+class="section level3">
 <h3>Correlation between meta-ed gene zscores from eQTLGen</h3>
-<p>Check document <a href="asset/0708-Correlation%20between%20meta-ed%20gene%20zscores%20from%20eQTLGen.pdf">here</a>.</p>
+<p>Check document <a
+href="asset/0708-Correlation%20between%20meta-ed%20gene%20zscores%20from%20eQTLGen.pdf">here</a>.</p>
 </div>
 </div>
 <div id="july-06" class="section level2">
 <h2>July 06</h2>
-<div id="how-sigma-hatsigma_dgn_exp-and-hatsigma_nullz-affect-pco-pvalues-for-dgn" class="section level3">
-<h3>How Sigma <span class="math inline">\(\hat{\Sigma}_{DGN_exp}\)</span> and <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> affect PCO pvalues for DGN?</h3>
-<p>I inspected three modules. Check <a href="asset/0706_Sigma_effect_on_PCO.pdf">here</a> for the comparison.</p>
-<p>For individual and clearer figures, check <a href="asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png">here</a>, <a href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.origp.png">here</a>, <a href="asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module20.png">here</a>, <a href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.log10.png">here</a>, <a href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.origp.png">here</a>, <a href="asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module73.png">here</a>, <a href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.log10.png">here</a>, <a href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.origp.png">here</a>, <a href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.log10.png">here</a>.</p>
+<div
+id="how-sigma-hatsigma_dgn_exp-and-hatsigma_nullz-affect-pco-pvalues-for-dgn"
+class="section level3">
+<h3>How Sigma <span
+class="math inline">\(\hat{\Sigma}_{DGN_exp}\)</span> and <span
+class="math inline">\(\hat{\Sigma}_{nullz}\)</span> affect PCO pvalues
+for DGN?</h3>
+<p>I inspected three modules. Check <a
+href="asset/0706_Sigma_effect_on_PCO.pdf">here</a> for the
+comparison.</p>
+<p>For individual and clearer figures, check <a
+href="asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png">here</a>,
+<a
+href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.origp.png">here</a>,
+<a
+href="asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module20.png">here</a>,
+<a
+href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module1.log10.png">here</a>,
+<a
+href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.origp.png">here</a>,
+<a
+href="asset/0706_qqplot.effect.of.Sigma.on.PCO.pvalue.module73.png">here</a>,
+<a
+href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module20.log10.png">here</a>,
+<a
+href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.origp.png">here</a>,
+<a
+href="asset/0706_effect.of.Sigma.on.PCO.pvalue.module73.log10.png">here</a>.</p>
 </div>
 </div>
 <div id="june-29" class="section level2">
 <h2>June 29</h2>
-<div id="try-using-zscores-to-build-sigma-plot-of-number-of-snps-with-low-zscores" class="section level3">
-<h3>“Try using zscores to build sigma, plot of number of SNPs with low zscores”</h3>
+<div
+id="try-using-zscores-to-build-sigma-plot-of-number-of-snps-with-low-zscores"
+class="section level3">
+<h3>“Try using zscores to build sigma, plot of number of SNPs with low
+zscores”</h3>
 <ol style="list-style-type: decimal">
 <li>plot of number of SNPs with low zscores</li>
 </ol>
-<p>In this section, I am going to check how the estimated Sigma <span class="math inline">\(\hat{\Sigma}_{K}\)</span> (correlation matrix of zscores/residule expression across genes) can affect PCO’s pvalues. Use eQTLGen zscores. Consider two <span class="math inline">\(\hat{\Sigma}\)</span>’s. (1) <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>, computed by <span class="math inline">\(cor(\tilde{Y}_{n \times K}^{DGN})\)</span>, where <span class="math inline">\(\tilde{Y}\)</span> is the residual expression data from DGN, n is sample size, K is gene module size. (2) <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, computed by <span class="math inline">\(cor(\tilde{Z}_{m \times K}^{eQTLGen})\)</span>, where z is genome-wide independent null zscores from eQTLGen, m is the number of null SNPs (m is in fact much less than genome-wide, but should be sufficient?).</p>
-<p>Since for each null SNP, we should have its zscores on all genes (or at least all genes in the module we consider), but eQTLGen doesn’t provide zscores for all genome-wide SNPs (only disease-related variants for trans-eQTLs and close-to-gene variants for cis-eQTLs). Therefore, I will first extract the common SNPs for each module. Main steps include:</p>
+<p>In this section, I am going to check how the estimated Sigma <span
+class="math inline">\(\hat{\Sigma}_{K}\)</span> (correlation matrix of
+zscores/residule expression across genes) can affect PCO’s pvalues. Use
+eQTLGen zscores. Consider two <span
+class="math inline">\(\hat{\Sigma}\)</span>’s. (1) <span
+class="math inline">\(\hat{\Sigma}_{DGN}\)</span>, computed by <span
+class="math inline">\(cor(\tilde{Y}_{n \times K}^{DGN})\)</span>, where
+<span class="math inline">\(\tilde{Y}\)</span> is the residual
+expression data from DGN, n is sample size, K is gene module size. (2)
+<span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, computed by
+<span class="math inline">\(cor(\tilde{Z}_{m \times
+K}^{eQTLGen})\)</span>, where z is genome-wide independent null zscores
+from eQTLGen, m is the number of null SNPs (m is in fact much less than
+genome-wide, but should be sufficient?).</p>
+<p>Since for each null SNP, we should have its zscores on all genes (or
+at least all genes in the module we consider), but eQTLGen doesn’t
+provide zscores for all genome-wide SNPs (only disease-related variants
+for trans-eQTLs and close-to-gene variants for cis-eQTLs). Therefore, I
+will first extract the common SNPs for each module. Main steps
+include:</p>
 <ul>
-<li><p>Combine the zscores of all the significant/non-significant gene-SNP pairs in both eQTLGen cis-eQTL and trans-eQTL results.</p></li>
-<li><p>For each module, extract the common SNPs that have zscores available for all genes in the module.</p></li>
-<li><p>For each module, further extract the common SNPs that are “NULL SNPs”. A snp for a module is defined as a “null snp” if its z-scores for all genes in this module are below some z-score cutoff (i.e. all z-scores are small z’s”).</p></li>
-<li><p>Among these common null SNPs, check how many of them are independent. (Use DGN genotype ‘plink –indep-pairwise 50 5 0.2’ ??? in this case, some SNPs not included in DGN are also considered as “independent. ref panel including all eQTLGen snps?)</p></li>
+<li><p>Combine the zscores of all the significant/non-significant
+gene-SNP pairs in both eQTLGen cis-eQTL and trans-eQTL results.</p></li>
+<li><p>For each module, extract the common SNPs that have zscores
+available for all genes in the module.</p></li>
+<li><p>For each module, further extract the common SNPs that are “NULL
+SNPs”. A snp for a module is defined as a “null snp” if its z-scores for
+all genes in this module are below some z-score cutoff (i.e. all
+z-scores are small z’s”).</p></li>
+<li><p>Among these common null SNPs, check how many of them are
+independent. (Use DGN genotype ‘plink –indep-pairwise 50 5 0.2’ ??? in
+this case, some SNPs not included in DGN are also considered as
+“independent. ref panel including all eQTLGen snps?)</p></li>
 </ul>
 <p><img src="asset/0629_num_nullSNP.png" style="display: block; margin: auto;" /></p>
 <p>
@@ -4083,26 +4600,47 @@ liliw-w
 </table>
 </div>
 </div>
-<p>Here I explain the above figure. x-axis is for each module (75), y-axis is for number of SNPs under various scenarios that can be used for computing <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>. Color is for various z-scores cutoff for defining “NULL SNPs”. The cutoff is pvalue of z. Smaller cutoff, more insignificant z. Point shape is for unique SNPs and independent SNPs. The barplot in the lower panel gives the number of genes in each module.</p>
+<p>Here I explain the above figure. x-axis is for each module (75),
+y-axis is for number of SNPs under various scenarios that can be used
+for computing <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>.
+Color is for various z-scores cutoff for defining “NULL SNPs”. The
+cutoff is pvalue of z. Smaller cutoff, more insignificant z. Point shape
+is for unique SNPs and independent SNPs. The barplot in the lower panel
+gives the number of genes in each module.</p>
 <div id="observations-5" class="section level4">
 <h4>Observations</h4>
 <ol style="list-style-type: decimal">
-<li><p>For larger gene module, the common null SNPs (unique and independent) are fewer.</p></li>
-<li><p>The average number of the unique null SNPs is ~8000 (under pvalue of z &gt; 0.001). The independent null SNPs is ~4000.</p></li>
-<li><p>Since we were particularly interested at eQTLGen’s module1, (as all eQTLGen trans-variants are significant for module1,) next I will focus on module1. I use the 2282 independent null SNPs (under pvalue of z &gt; 0.001) for module1 to calculate <span class="math inline">\(\hat{\Sigma}_{nullz}(module1)\)</span>.</p></li>
+<li><p>For larger gene module, the common null SNPs (unique and
+independent) are fewer.</p></li>
+<li><p>The average number of the unique null SNPs is ~8000 (under pvalue
+of z &gt; 0.001). The independent null SNPs is ~4000.</p></li>
+<li><p>Since we were particularly interested at eQTLGen’s module1, (as
+all eQTLGen trans-variants are significant for module1,) next I will
+focus on module1. I use the 2282 independent null SNPs (under pvalue of
+z &gt; 0.001) for module1 to calculate <span
+class="math inline">\(\hat{\Sigma}_{nullz}(module1)\)</span>.</p></li>
 </ol>
 </div>
 </div>
-<div id="build-sigma-hatsigma_dgn-and-hatsigma_nullz-and-check-pco-pvalues." class="section level3">
-<h3>Build Sigma <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span> and <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> and check PCO pvalues.</h3>
-<p>eQTLGen’s module1. Run PCO based on two Sigmas, <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span> and <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> built on 2282 independent null SNPs. Calculate pvalues of 9918 SNPs across chromosomes.</p>
+<div
+id="build-sigma-hatsigma_dgn-and-hatsigma_nullz-and-check-pco-pvalues."
+class="section level3">
+<h3>Build Sigma <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>
+and <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> and check
+PCO pvalues.</h3>
+<p>eQTLGen’s module1. Run PCO based on two Sigmas, <span
+class="math inline">\(\hat{\Sigma}_{DGN}\)</span> and <span
+class="math inline">\(\hat{\Sigma}_{nullz}\)</span> built on 2282
+independent null SNPs. Calculate pvalues of 9918 SNPs across
+chromosomes.</p>
 <p><img src="asset/0629_effect.of.Sigma.on.PCO.pvalue.module1.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0629_effect.of.Sigma.on.PCO.pvalue.module1">
 Past versions of 0629_effect.of.Sigma.on.PCO.pvalue.module1.png
 </button>
 </p>
-<div id="fig-0629_effect.of.Sigma.on.PCO.pvalue.module1" class="collapse">
+<div id="fig-0629_effect.of.Sigma.on.PCO.pvalue.module1"
+class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -4134,14 +4672,18 @@ liliw-w
 </table>
 </div>
 </div>
-<p>In the above figure, x-axis is for snp across chromosomes, y-axis is for log(p) for the module1, color is for different <span class="math inline">\(\hat{\Sigma}\)</span>, grey dashed line is the Bonferroni pvalue threshold (~1e-8).</p>
+<p>In the above figure, x-axis is for snp across chromosomes, y-axis is
+for log(p) for the module1, color is for different <span
+class="math inline">\(\hat{\Sigma}\)</span>, grey dashed line is the
+Bonferroni pvalue threshold (~1e-8).</p>
 <p><img src="asset/0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1">
 Past versions of 0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1.png
 </button>
 </p>
-<div id="fig-0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1" class="collapse">
+<div id="fig-0629_qqplot.effect.of.Sigma.on.PCO.pvalue.module1"
+class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -4173,21 +4715,38 @@ liliw-w
 </table>
 </div>
 </div>
-<p>The above figure gives QQ-plot for all pvalues across 22 chr’s of module1.</p>
+<p>The above figure gives QQ-plot for all pvalues across 22 chr’s of
+module1.</p>
 <div id="observations-6" class="section level4">
 <h4>Observations</h4>
 <ol style="list-style-type: decimal">
-<li>Using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span> gives larger PCO pvalues, than using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>. Number of signals decreases. Under Bonferroni pvalue threshold (~1e-8), when using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, there are 790 out of 9918 SNPs are significant, compared to 9794 significant SNPs using <span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>.</li>
+<li>Using <span class="math inline">\(\hat{\Sigma}_{nullz}\)</span>
+gives larger PCO pvalues, than using <span
+class="math inline">\(\hat{\Sigma}_{DGN}\)</span>. Number of signals
+decreases. Under Bonferroni pvalue threshold (~1e-8), when using <span
+class="math inline">\(\hat{\Sigma}_{nullz}\)</span>, there are 790 out
+of 9918 SNPs are significant, compared to 9794 significant SNPs using
+<span class="math inline">\(\hat{\Sigma}_{DGN}\)</span>.</li>
 </ol>
 </div>
 </div>
 </div>
 <div id="june-25" class="section level2">
 <h2>June 25</h2>
-<div id="replication-of-eqtlgen-results-in-trans-pco-of-eqtlgen-summary-stats" class="section level3">
-<h3>Replication of eQTLGen results in trans-PCO of eQTLGen summary stats?</h3>
+<div
+id="replication-of-eqtlgen-results-in-trans-pco-of-eqtlgen-summary-stats"
+class="section level3">
+<h3>Replication of eQTLGen results in trans-PCO of eQTLGen summary
+stats?</h3>
 <p>I first give some data statistics here.</p>
 <table>
+<colgroup>
+<col width="20%" />
+<col width="12%" />
+<col width="30%" />
+<col width="24%" />
+<col width="13%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Dataset</th>
@@ -4229,15 +4788,41 @@ liliw-w
 </tbody>
 </table>
 <ul>
-<li><p>The eQTGen’s original result <a href="https://www.eqtlgen.org/trans-eqtls.html">here</a> gives 59786 (gene, trans-eQTL) pairs under FDR <span class="math inline">\(&lt;0.05\)</span>, corresponding to 6298 unique genes and 3853 unique SNPs.</p></li>
-<li><p>After some filtering, to make sure the eQTGen trans-eQTLs and genes are included in out trans-PCO result using eQTLGen summary stats. <strong>There are 20394 (gene, trans-eQTL) pairs left, corresponding to 1857 unique genes and 2469 unique SNPs.</strong></p></li>
-<li><p>Orignal eQTLGen_trans-PCO result (under qvalue FDR correction): 406729 (module, trans-eQTL) pairs, corresponding to all 75 unique modules and 9918 unique SNPs.</p></li>
-<li><p>Under Bonferroni correction (p&lt;6.721785e-08): <strong>55634, 74, 9915</strong>.</p></li>
+<li><p>The eQTGen’s original result <a
+href="https://www.eqtlgen.org/trans-eqtls.html">here</a> gives 59786
+(gene, trans-eQTL) pairs under FDR <span
+class="math inline">\(&lt;0.05\)</span>, corresponding to 6298 unique
+genes and 3853 unique SNPs.</p></li>
+<li><p>After some filtering, to make sure the eQTGen trans-eQTLs and
+genes are included in out trans-PCO result using eQTLGen summary stats.
+<strong>There are 20394 (gene, trans-eQTL) pairs left, corresponding to
+1857 unique genes and 2469 unique SNPs.</strong></p></li>
+<li><p>Orignal eQTLGen_trans-PCO result (under qvalue FDR correction):
+406729 (module, trans-eQTL) pairs, corresponding to all 75 unique
+modules and 9918 unique SNPs.</p></li>
+<li><p>Under Bonferroni correction (p&lt;6.721785e-08): <strong>55634,
+74, 9915</strong>.</p></li>
 </ul>
-<p>Next, I will check how eQTGen signals are replicated in eQTLGen_trans-PCO results (see bold text above). The basic idea is, for an eQTGen trans-eQTL, find its trans-target genes, then look at how these genes are distributed in each gene modules we used for eQTLGen_trans-PCO, and whether the corresponding (module, trans-eQTL) are identified by eQTLGen_trans-PCO. Specifically, I will check two things.</p>
+<p>Next, I will check how eQTGen signals are replicated in
+eQTLGen_trans-PCO results (see bold text above). The basic idea is, for
+an eQTGen trans-eQTL, find its trans-target genes, then look at how
+these genes are distributed in each gene modules we used for
+eQTLGen_trans-PCO, and whether the corresponding (module, trans-eQTL)
+are identified by eQTLGen_trans-PCO. Specifically, I will check two
+things.</p>
 <ol style="list-style-type: decimal">
-<li><p>For a trans-eQTL whose trans-target genes are included in one of our PCO module, is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (Power)</p>
-<p>Since in previous analysis, the intuition is PCO tends to pick modules where there are multiple trans-target genes for a SNP. Therefore, in the below figure, I picked out all the eQTGen trans-eQTLs that have &gt;2 target genes and plotted them on x-axis. The target genes are distributed on the Y-axis for each PCO module. Number/color is for #target genes. These (module, SNP) pairs should be significant in eQTLGen_trans-PCO. I circled out (red) those (module, SNP) pairs that are missed by eQTLGen_trans-PCO. As a result, 11 (module, SNP) (11 unique SNPs) are missed.</p></li>
+<li><p>For a trans-eQTL whose trans-target genes are included in one of
+our PCO module, is this (module, trans-eQTL) identified by
+eQTLGen_trans-PCO? (Power)</p>
+<p>Since in previous analysis, the intuition is PCO tends to pick
+modules where there are multiple trans-target genes for a SNP.
+Therefore, in the below figure, I picked out all the eQTGen trans-eQTLs
+that have &gt;2 target genes and plotted them on x-axis. The target
+genes are distributed on the Y-axis for each PCO module. Number/color is
+for #target genes. These (module, SNP) pairs should be significant in
+eQTLGen_trans-PCO. I circled out (red) those (module, SNP) pairs that
+are missed by eQTLGen_trans-PCO. As a result, 11 (module, SNP) (11
+unique SNPs) are missed.</p></li>
 </ol>
 <div class="figure" style="text-align: center">
 <img src="asset/0625_power.png" alt="Power"  />
@@ -4282,10 +4867,17 @@ liliw-w
 </table>
 </div>
 </div>
-<p>Check <a href="asset/0625_power.png">here</a> for clearer version.</p>
+<p>Check <a href="asset/0625_power.png">here</a> for clearer
+version.</p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>For a trans-eQTL whose trans-target genes are not included in any PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by eQTLGen_trans-PCO? (TIE)</p>
-<p>Similar plot, except Number/color is SNP with 0, 1, or 2 target genes in each module. These (module, SNP) pairs are less likely to be identified by eQTLGen_trans-PCO. Yet, I circled out (green) those (module, SNP) pairs that are still identified by eQTLGen_trans-PCO.</p></li>
+<li><p>For a trans-eQTL whose trans-target genes are not included in any
+PCO modules (or only 1 or 2), is this (module, trans-eQTL) identified by
+eQTLGen_trans-PCO? (TIE)</p>
+<p>Similar plot, except Number/color is SNP with 0, 1, or 2 target genes
+in each module. These (module, SNP) pairs are less likely to be
+identified by eQTLGen_trans-PCO. Yet, I circled out (green) those
+(module, SNP) pairs that are still identified by
+eQTLGen_trans-PCO.</p></li>
 </ol>
 <div class="figure" style="text-align: center">
 <img src="asset/0625_TIE.png" alt="TIE"  />
@@ -4334,8 +4926,14 @@ liliw-w
 <div id="observation" class="section level4">
 <h4>Observation</h4>
 <ol style="list-style-type: decimal">
-<li><p>Almost all eQTGen trans-eQTLs with &gt;2 target genes and their corresponding module are identified by eQTLGen_trans-PCO. This may suggest a good power of eQTLGen_trans-PCO.</p></li>
-<li><p>However, the false positiva rate may be inflated, as a large amount of SNPs that has no target genes in the modules are also identified. (<strong>Maybe although none of the genes in the module are target genes for the SNPs, the genes may be cross-mappable with the SNP’s other traget genes that are filter out?</strong>)</p></li>
+<li><p>Almost all eQTGen trans-eQTLs with &gt;2 target genes and their
+corresponding module are identified by eQTLGen_trans-PCO. This may
+suggest a good power of eQTLGen_trans-PCO.</p></li>
+<li><p>However, the false positiva rate may be inflated, as a large
+amount of SNPs that has no target genes in the modules are also
+identified. (<strong>Maybe although none of the genes in the module are
+target genes for the SNPs, the genes may be cross-mappable with the
+SNP’s other traget genes that are filter out?</strong>)</p></li>
 </ol>
 </div>
 </div>
@@ -4346,9 +4944,14 @@ liliw-w
 </div>
 <div id="june-14" class="section level2">
 <h2>June 14</h2>
-<div id="why-there-are-so-many-eqtlgen-signals-using-pco_lambda0.1" class="section level3">
-<h3>Why there are so many eQTLGen signals using PCO_<span class="math inline">\({\lambda&lt;0.1}\)</span>?</h3>
-<p>Check the QQ-plot of the observed pvalues from eQTLGen using PCO_<span class="math inline">\({\lambda&lt;0.1}\)</span> (9918 unique SNPs, all eQTLGen variants) and PCO_<span class="math inline">\({\lambda&lt;1}\)</span> (909 unique SNPs).</p>
+<div id="why-there-are-so-many-eqtlgen-signals-using-pco_lambda0.1"
+class="section level3">
+<h3>Why there are so many eQTLGen signals using PCO_<span
+class="math inline">\({\lambda&lt;0.1}\)</span>?</h3>
+<p>Check the QQ-plot of the observed pvalues from eQTLGen using
+PCO_<span class="math inline">\({\lambda&lt;0.1}\)</span> (9918 unique
+SNPs, all eQTLGen variants) and PCO_<span
+class="math inline">\({\lambda&lt;1}\)</span> (909 unique SNPs).</p>
 <p><img src="asset/0614_qqplot.p_obs.eQTLGen.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0614_qqplot.p_obs.eQTLGen">
@@ -4391,19 +4994,34 @@ liliw-w
 </div>
 <div id="june-11" class="section level2">
 <h2>June 11</h2>
-<div id="compare-with-truncated-dgn_transeqtl_battle2014" class="section level3">
+<div id="compare-with-truncated-dgn_transeqtl_battle2014"
+class="section level3">
 <h3>Compare with truncated ‘DGN_transeQTL_battle2014’</h3>
-<p>In this section, I removed trans-eGenes from Battle’s result that are not included in our analysis for being cross-mappable or poorly mapped. I do this to makes sure univariate and multivariate are based on the same set of genes. I go through the same analysis as below.</p>
+<p>In this section, I removed trans-eGenes from Battle’s result that are
+not included in our analysis for being cross-mappable or poorly mapped.
+I do this to makes sure univariate and multivariate are based on the
+same set of genes. I go through the same analysis as below.</p>
 <ul>
 <li>Summary of the new version Battle trans-eQTL signals</li>
 </ul>
-<p>After filter our some trans-eGenes, there are <strong>157</strong> (v.s. 736) significant (gene, SNP) pairs left, corresponding to 84 unique trans-eQTLs and 47 unique trans-eGenes.</p>
-<p>The following is a a table of the number of trans-target genes of these 84 unique trans-eQTLs.</p>
+<p>After filter our some trans-eGenes, there are <strong>157</strong>
+(v.s. 736) significant (gene, SNP) pairs left, corresponding to 84
+unique trans-eQTLs and 47 unique trans-eGenes.</p>
+<p>The following is a a table of the number of trans-target genes of
+these 84 unique trans-eQTLs.</p>
 <pre><code>
  1  2  3  4  5 15 16 29 
 75  1  1  3  1  1  1  1 </code></pre>
-<p>We have identified 313 unique trans-eQTLs, among which 24 are also detected by Battle’s univariate method. The above table gives which Battle’s signals are replicated by trans-PCO.</p>
-<p>Among 84 Battle’s trans-eQTLs, 24 (~28.57%) are also detected by trans-PCO. For 9 signals with more than one trans-target genes included in our analysis, all of them are detected by trans-PCO. Trans-PCO also detected other 15 signals with only one trans-target gene used in our analysis. For the other 60 univariate signals that are missed by trans-PCO, they have only one trans-target gene included in trans-PCO.</p>
+<p>We have identified 313 unique trans-eQTLs, among which 24 are also
+detected by Battle’s univariate method. The above table gives which
+Battle’s signals are replicated by trans-PCO.</p>
+<p>Among 84 Battle’s trans-eQTLs, 24 (~28.57%) are also detected by
+trans-PCO. For 9 signals with more than one trans-target genes included
+in our analysis, all of them are detected by trans-PCO. Trans-PCO also
+detected other 15 signals with only one trans-target gene used in our
+analysis. For the other 60 univariate signals that are missed by
+trans-PCO, they have only one trans-target gene included in
+trans-PCO.</p>
 <pre><code>            sig N_transeGene if_transPCO num_included
  1:  3:56849749           29        TRUE           29
  2:  3:56858686           16        TRUE           16
@@ -4496,12 +5114,18 @@ liliw-w
 <ul>
 <li>Summary of Battle trans-eQTL signals</li>
 </ul>
-<p>They gave 736 significant (gene, SNP) pairs, corresponding to 350 unique trans-eQTLs and 138 unique trans-eGenes.</p>
-<p>The following is a a table of the number of trans-target genes of these 350 unique trans-eQTLs. We can see most of the trans-eQTLs have only 1 or 2 trans-target genes (<span class="math inline">\(283+34=317, \approx 91\%\)</span>).</p>
+<p>They gave 736 significant (gene, SNP) pairs, corresponding to 350
+unique trans-eQTLs and 138 unique trans-eGenes.</p>
+<p>The following is a a table of the number of trans-target genes of
+these 350 unique trans-eQTLs. We can see most of the trans-eQTLs have
+only 1 or 2 trans-target genes (<span class="math inline">\(283+34=317,
+\approx 91\%\)</span>).</p>
 <pre><code>
   1   2   3   4   5   6   7   8  11  13  14  22  23  24  29  33  59 
 283  34   3   1  12   1   2   2   2   1   2   1   2   1   1   1   1 </code></pre>
-<p>Let’s take a look at the trans-eQTLs with more than 2 target genes. We can see these trans-eQTLs are mainly located around the regions 3:56849749, 3:101043565, 7:50366637, 17:33875262.</p>
+<p>Let’s take a look at the trans-eQTLs with more than 2 target genes.
+We can see these trans-eQTLs are mainly located around the regions
+3:56849749, 3:101043565, 7:50366637, 17:33875262.</p>
 <pre><code>            sig N_transeGene if_transPCO num_included
  1:  3:56849749           59        TRUE           29
  2:  3:56858686           33        TRUE           16
@@ -4540,24 +5164,40 @@ liliw-w
 <ul>
 <li>As for our results from trans-PCO</li>
 </ul>
-<p>We have identified 313 unique trans-eQTLs, among which 24 are also detected by Battle’s univariate method. The above table gives which Battle’s signals are replicated by trans-PCO.</p>
+<p>We have identified 313 unique trans-eQTLs, among which 24 are also
+detected by Battle’s univariate method. The above table gives which
+Battle’s signals are replicated by trans-PCO.</p>
 <p>Table of the number of target genes for replicated trans-eQTLs.</p>
 <pre><code>
  1  2  4  6  7  8 11 29 33 59 
 12  3  1  1  1  1  2  1  1  1 </code></pre>
 <ol style="list-style-type: decimal">
 <li><p>Signals detected by univariate but missed by trans-PCO.</p>
-<p>Since trans-PCO tends to identify SNPs that have effects on multiple genes, I will focus on the univariate trans-eQTLs that correspond to multiple genes (<span class="math inline">\(&gt;2\)</span>). For this type of signals, there are 33 trans-eQTLs in total, among which 9 are detected by trans-PCO. For the rest of 24 missed trans-eQTLs, there are basically three types: (1) 21 near the region “3:101043565”, (2) 1 at “7:50435777”, (3) 2 at “17:33875262” and “17:33875262”.</p>
+<p>Since trans-PCO tends to identify SNPs that have effects on multiple
+genes, I will focus on the univariate trans-eQTLs that correspond to
+multiple genes (<span class="math inline">\(&gt;2\)</span>). For this
+type of signals, there are 33 trans-eQTLs in total, among which 9 are
+detected by trans-PCO. For the rest of 24 missed trans-eQTLs, there are
+basically three types: (1) 21 near the region “3:101043565”, (2) 1 at
+“7:50435777”, (3) 2 at “17:33875262” and “17:33875262”.</p>
 <ol style="list-style-type: decimal">
-<li><p>Even though the 20 missed trans-eQTLs correspond to multiple genes, ranging from 5 ~ 24, they are still missed by trans-PCO. So I checked their trans-target genes, and it turns out that all of the target genes are filtered out at the beginning of our analysis for being cross-mappable or poorly mapped.</p></li>
-<li><p>As for the rest of three trans-eQTLs that are missed by trans-PCO, only one of their 3 trans-target genes are included in our analysis.</p></li>
+<li><p>Even though the 20 missed trans-eQTLs correspond to multiple
+genes, ranging from 5 ~ 24, they are still missed by trans-PCO. So I
+checked their trans-target genes, and it turns out that all of the
+target genes are filtered out at the beginning of our analysis for being
+cross-mappable or poorly mapped.</p></li>
+<li><p>As for the rest of three trans-eQTLs that are missed by
+trans-PCO, only one of their 3 trans-target genes are included in our
+analysis.</p></li>
 </ol></li>
 </ol>
 <div id="take-aways" class="section level4">
 <h4>Take-aways</h4>
 <ol style="list-style-type: decimal">
-<li><p>Trans-PCO tends to be more likely to detect trans-eQTLs with effects on multiple target genes.</p></li>
-<li><p>Some signals could be missed at the step of filtering out genes.</p></li>
+<li><p>Trans-PCO tends to be more likely to detect trans-eQTLs with
+effects on multiple target genes.</p></li>
+<li><p>Some signals could be missed at the step of filtering out
+genes.</p></li>
 </ol>
 </div>
 </div>
@@ -4566,14 +5206,25 @@ liliw-w
 <h2>May 26</h2>
 <div id="are-trans-eqtls-cis-eqtls" class="section level3">
 <h3>Are trans-eQTLs cis-eQTLs?</h3>
-<p>Updated the way to define cis-eQTLs. Previously, cis-eQTL signals are gene-based (from Pheonix using fastQTL). In this section, I compare trans signals with SNP-based cis-eQTLs from two datasets, i.e. GTEx_v7 (whole blood) and DGN.</p>
+<p>Updated the way to define cis-eQTLs. Previously, cis-eQTL signals are
+gene-based (from Pheonix using fastQTL). In this section, I compare
+trans signals with SNP-based cis-eQTLs from two datasets, i.e. GTEx_v7
+(whole blood) and DGN.</p>
 <ul>
-<li><p>GTEx_v7. <a href="https://www.gtexportal.org/home/datasets">Here</a> provides all significant variant-gene associations.</p></li>
+<li><p>GTEx_v7. <a
+href="https://www.gtexportal.org/home/datasets">Here</a> provides all
+significant variant-gene associations.</p></li>
 <li><p>DGN. Two steps to obtain SNP-based significant associations.</p>
 <ol style="list-style-type: decimal">
-<li><p>Gene-based associations. (eGenes using fastQTL, result from Pheonix)</p></li>
+<li><p>Gene-based associations. (eGenes using fastQTL, result from
+Pheonix)</p></li>
 <li><p>Find all cis-eQTLs for each gene.</p>
-<p>See “4.2 cis-eQTL mapping” described <a href="https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf">here</a>. (p.s. I checked GTEx source code and turns out that <a href="https://github.com/francois-a/fastqtl/blob/master/R/calculateSignificanceFastQTL.R">the actual code GTEx used</a> is a bit different. See below for key lines.)</p></li>
+<p>See “4.2 cis-eQTL mapping” described <a
+href="https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf">here</a>.
+(p.s. I checked GTEx source code and turns out that <a
+href="https://github.com/francois-a/fastqtl/blob/master/R/calculateSignificanceFastQTL.R">the
+actual code GTEx used</a> is a bit different. See below for key
+lines.)</p></li>
 </ol></li>
 </ul>
 <pre class="r"><code>pt = mean(c(max(eGene$bpval), min(eGene$bpval)))
@@ -4675,20 +5326,33 @@ liliw-w
 </div>
 <p><strong>Observations:</strong></p>
 <ul>
-<li>For DGN, among 313 trans signals, 156 (~49.8%) are also cis-eQTLs, corresponding to 39 eGenes, including:</li>
+<li>For DGN, among 313 trans signals, 156 (~49.8%) are also cis-eQTLs,
+corresponding to 39 eGenes, including:</li>
 </ul>
-<p><em>AC016753.7, BECN1, C17orf50, C2orf68, CFL2, CTD-2562J15.6, ERN1, FAM177A1, FIGNL1, FKRP, GGCX, HABP4, HSD17B1P1, ICAM2, KIAA0391, MAT2A, MLX, NEK6, NFE2, NFKBIA, OR2W3, PARP2, PEX12, PPP2R3C, PRKD2, PSMC3IP, RETSAT, RNF181, RP11-1094M14.8, RP11-69M1.4, RP11-85K15.2, SLC1A5, SLC2A3, SLFN12L, SYMPK, TMEM150A, TTC5, VAMP8, ZNF782</em></p>
+<p><em>AC016753.7, BECN1, C17orf50, C2orf68, CFL2, CTD-2562J15.6, ERN1,
+FAM177A1, FIGNL1, FKRP, GGCX, HABP4, HSD17B1P1, ICAM2, KIAA0391, MAT2A,
+MLX, NEK6, NFE2, NFKBIA, OR2W3, PARP2, PEX12, PPP2R3C, PRKD2, PSMC3IP,
+RETSAT, RNF181, RP11-1094M14.8, RP11-69M1.4, RP11-85K15.2, SLC1A5,
+SLC2A3, SLFN12L, SYMPK, TMEM150A, TTC5, VAMP8, ZNF782</em></p>
 <ul>
-<li><p>For DGN, 101 (~32.3%) out of 313 trans signals are cis-sQTLs, corresponding to 71 introns. 26 trans-eQTLs are only sQTLs but not eQTLs. These signals are located on chromosome 15 and 19.</p></li>
-<li><p>Among 313 trans signals, 182 (~58.1%) are either cis-eQTLs or cis-sQTLs.</p></li>
+<li><p>For DGN, 101 (~32.3%) out of 313 trans signals are cis-sQTLs,
+corresponding to 71 introns. 26 trans-eQTLs are only sQTLs but not
+eQTLs. These signals are located on chromosome 15 and 19.</p></li>
+<li><p>Among 313 trans signals, 182 (~58.1%) are either cis-eQTLs or
+cis-sQTLs.</p></li>
 </ul>
 </div>
 </div>
 <div id="may-19" class="section level2">
 <h2>May 19</h2>
-<div id="how-many-trans-eqtls-detected-in-dgngtex-whole-blood-are-replicated-in-eqtlgen" class="section level3">
-<h3>How many trans-eQTLs detected in DGN/GTEx whole blood are replicated in eQTLGen?</h3>
-<p>Replication of DGN signals in eQTLGen. Based on updated results, i.e. smaller and more gene modules &amp; PCO<span class="math inline">\(_{\lambda&gt;0.1}\)</span>.</p>
+<div
+id="how-many-trans-eqtls-detected-in-dgngtex-whole-blood-are-replicated-in-eqtlgen"
+class="section level3">
+<h3>How many trans-eQTLs detected in DGN/GTEx whole blood are replicated
+in eQTLGen?</h3>
+<p>Replication of DGN signals in eQTLGen. Based on updated results,
+i.e. smaller and more gene modules &amp; PCO<span
+class="math inline">\(_{\lambda&gt;0.1}\)</span>.</p>
 </div>
 <div id="are-trans-eqtls-cis-eqtls-1" class="section level3">
 <h3>Are trans-eQTLs cis-eQTLs?</h3>
@@ -4732,15 +5396,30 @@ liliw-w
 <p><strong>Observations:</strong></p>
 <p>1.1 DGN</p>
 <ul>
-<li><p>Among 313 trans signals, 7 are also (gene-based) cis-eQTLs, corresponding to 5~7 independent SNPs. The cis-eGenes include <strong>SLC2A3, NFE2, KIAA0391, NFKBIA, ERN1, AC016753.7, MAT2A</strong>.</p></li>
-<li><p>Among 313 unique trans signals, <strong>229 (~73%)</strong> have a neareset gene that are eGenes (with cis-eQTLs). Among 28 independent trans signals, <strong>19 (~68%)</strong> have a neareset gene that are eGenes (with cis-eQTLs).</p></li>
-<li><p>Among 313 trans signals, 9 are also cis-sQTLs, corresponding to 6 independent SNPs.</p></li>
+<li><p>Among 313 trans signals, 7 are also (gene-based) cis-eQTLs,
+corresponding to 5~7 independent SNPs. The cis-eGenes include
+<strong>SLC2A3, NFE2, KIAA0391, NFKBIA, ERN1, AC016753.7,
+MAT2A</strong>.</p></li>
+<li><p>Among 313 unique trans signals, <strong>229 (~73%)</strong> have
+a neareset gene that are eGenes (with cis-eQTLs). Among 28 independent
+trans signals, <strong>19 (~68%)</strong> have a neareset gene that are
+eGenes (with cis-eQTLs).</p></li>
+<li><p>Among 313 trans signals, 9 are also cis-sQTLs, corresponding to 6
+independent SNPs.</p></li>
 </ul>
 <p>1.2 eQTLGen_DGN</p>
 <ul>
-<li><p>Among 784 trans signals, 17 are also (gene-based) cis-eQTLs, corresponding to 9 independent SNPs. The cis-eGenes include <strong>AC016753.7, CPEB4, KIAA0391, MAT2A, MRFAP1, NFKBIA, PAQR6, PWP1, RNF181, RP11-539L10.2, RP11-69M1.4, S100P, SENP7, SLC25A44, SLC2A3, SMG5, TMEM79, ZNF782</strong>.</p></li>
-<li><p>Among 784 unique trans signals, <strong>590 (~75%)</strong> have a neareset gene that are eGenes (with cis-eQTLs). Among 50 independent trans signals, <strong>29 (~58%)</strong> have a neareset gene that are eGenes (with cis-eQTLs).</p></li>
-<li><p>Among 784 trans signals, 30 are also cis-sQTLs, corresponding to 10 independent SNPs.</p></li>
+<li><p>Among 784 trans signals, 17 are also (gene-based) cis-eQTLs,
+corresponding to 9 independent SNPs. The cis-eGenes include
+<strong>AC016753.7, CPEB4, KIAA0391, MAT2A, MRFAP1, NFKBIA, PAQR6, PWP1,
+RNF181, RP11-539L10.2, RP11-69M1.4, S100P, SENP7, SLC25A44, SLC2A3,
+SMG5, TMEM79, ZNF782</strong>.</p></li>
+<li><p>Among 784 unique trans signals, <strong>590 (~75%)</strong> have
+a neareset gene that are eGenes (with cis-eQTLs). Among 50 independent
+trans signals, <strong>29 (~58%)</strong> have a neareset gene that are
+eGenes (with cis-eQTLs).</p></li>
+<li><p>Among 784 trans signals, 30 are also cis-sQTLs, corresponding to
+10 independent SNPs.</p></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Dataset: TCGA</p></li>
@@ -4753,22 +5432,32 @@ liliw-w
 <div id="muscle" class="section level3">
 <h3>Muscle</h3>
 <ul>
-<li><p>Less modules, PCO<span class="math inline">\(_{\{\lambda: \lambda&gt;0.1\}}\)</span>. 1 independent signal, large p.</p></li>
-<li><p>More modules, PCO<span class="math inline">\(_{\{\lambda: \lambda&gt;0.1\}}\)</span>. 5 independent signal, small p.</p></li>
-<li><p>More modules, PCO<span class="math inline">\(_{\{\lambda: \lambda&gt;1\}}\)</span>. 5 independent signal, relatively large p.</p></li>
+<li><p>Less modules, PCO<span class="math inline">\(_{\{\lambda:
+\lambda&gt;0.1\}}\)</span>. 1 independent signal, large p.</p></li>
+<li><p>More modules, PCO<span class="math inline">\(_{\{\lambda:
+\lambda&gt;0.1\}}\)</span>. 5 independent signal, small p.</p></li>
+<li><p>More modules, PCO<span class="math inline">\(_{\{\lambda:
+\lambda&gt;1\}}\)</span>. 5 independent signal, relatively large
+p.</p></li>
 </ul>
 </div>
 </div>
 <div id="march-1" class="section level2">
 <h2>March 1</h2>
-<div id="real-data-analysis-by-pco-using-more-lambdas" class="section level3">
-<h3>Real data analysis by PCO using more <span class="math inline">\(\lambda\)</span>’s</h3>
+<div id="real-data-analysis-by-pco-using-more-lambdas"
+class="section level3">
+<h3>Real data analysis by PCO using more <span
+class="math inline">\(\lambda\)</span>’s</h3>
 <p>Dataset: Muscle_Skeletal.</p>
-<p>Fewer (independent) signals. <span class="math inline">\(PCO_{\{\lambda: \lambda&gt;0.1\}}\)</span> (1 signal) v.s. <span class="math inline">\(PCO_{\{\lambda: \lambda&gt;1\}}\)</span> (3 signals).</p>
+<p>Fewer (independent) signals. <span
+class="math inline">\(PCO_{\{\lambda: \lambda&gt;0.1\}}\)</span> (1
+signal) v.s. <span class="math inline">\(PCO_{\{\lambda:
+\lambda&gt;1\}}\)</span> (3 signals).</p>
 </div>
 <div id="proteomics-data" class="section level3">
 <h3>proteomics data</h3>
-<p>See the google doc <a href="https://docs.google.com/spreadsheets/d/1PizRyY3VnvTHxu3PIM2_2sLbrj0Q_mxzRC9TrIm7vi4/edit?usp=sharing">here</a>.</p>
+<p>See the google doc <a
+href="https://docs.google.com/spreadsheets/d/1PizRyY3VnvTHxu3PIM2_2sLbrj0Q_mxzRC9TrIm7vi4/edit?usp=sharing">here</a>.</p>
 </div>
 <div id="other-stuff" class="section level3">
 <h3>Other stuff</h3>
@@ -4788,21 +5477,30 @@ liliw-w
 <ul>
 <li><p>tests</p>
 <ul>
-<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k&gt;0.1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
-<li><p>PCO: Use <span class="math inline">\(\{\lambda_k: \lambda_k&gt;0.1\}\)</span>.</p></li>
+<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx
+\beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k:
+\lambda_k&gt;0.1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
+<li><p>PCO: Use <span class="math inline">\(\{\lambda_k:
+\lambda_k&gt;0.1\}\)</span>.</p></li>
 </ul></li>
 <li><p>scenerios (<span class="math inline">\(K=100,K=105\)</span>)</p>
 <ul>
-<li><p>N: var.b = 0.003; caus = 30%; N.seq = c(200, 400, 600, 800, 1000)</p></li>
-<li><p>caus: var.b = 0.003; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)</p></li>
-<li><p>caus_fix: var.b.fix = 0.1; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70, 100)</p></li>
+<li><p>N: var.b = 0.003; caus = 30%; N.seq = c(200, 400, 600, 800,
+1000)</p></li>
+<li><p>caus: var.b = 0.003; N = 500; caus.seq = c(1, 5, 10, 30, 50, 70,
+100)</p></li>
+<li><p>caus_fix: var.b.fix = 0.1; N = 500; caus.seq = c(1, 5, 10, 30,
+50, 70, 100)</p></li>
 </ul></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Run for other <span class="math inline">\(\Sigma\)</span>’s. <span class="math inline">\(K=100,K=105\)</span></p></li>
+<li><p>Run for other <span class="math inline">\(\Sigma\)</span>’s.
+<span class="math inline">\(K=100,K=105\)</span></p></li>
 <li><p>FDR level</p></li>
 </ol>
-<p>The minimum null pvalue of PCO is <span class="math inline">\(\ge 10^{-9}\)</span>, similar as the significance threshold we use here <span class="math inline">\(10^{-9}\)</span>.</p>
+<p>The minimum null pvalue of PCO is <span class="math inline">\(\ge
+10^{-9}\)</span>, similar as the significance threshold we use here
+<span class="math inline">\(10^{-9}\)</span>.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Results</li>
 </ol>
@@ -4900,18 +5598,27 @@ liliw-w
 <ul>
 <li><p>tests</p>
 <ul>
-<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k&gt;1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
+<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx
+\beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k:
+\lambda_k&gt;1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
 <li><p>PC1;</p></li>
-<li><p>minp = <span class="math inline">\(min\{p_1, \dots, p_K \} \times K\)</span></p></li>
-<li><p>PCO: Use <span class="math inline">\(\{\lambda_k: \lambda_k&gt;1\}\)</span>.</p></li>
+<li><p>minp = <span class="math inline">\(min\{p_1, \dots, p_K \} \times
+K\)</span></p></li>
+<li><p>PCO: Use <span class="math inline">\(\{\lambda_k:
+\lambda_k&gt;1\}\)</span>.</p></li>
 </ul></li>
 <li><p>Multiple testing</p>
-<p>The significance threshold is set based on the Bofferroni correction as the <span class="math inline">\(\frac{0.05}{50\times10^6} = 10^{-9}\)</span> for univariate test and PC-based tests.</p></li>
+<p>The significance threshold is set based on the Bofferroni correction
+as the <span class="math inline">\(\frac{0.05}{50\times10^6} =
+10^{-9}\)</span> for univariate test and PC-based tests.</p></li>
 <li><p>scenerios (<span class="math inline">\(K=100\)</span>)</p>
 <ul>
-<li><p>N: var.b = 0.01; caus = 100 (100%); N.seq = c(200, 400, 600, 800, 1000)</p></li>
-<li><p>caus: var.b = 0.02; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)</p></li>
-<li><p>caus_fix: var.b.fix = 0.2; N = 500; caus.seq = c(1, 10, 30, 50, 70, 100)</p></li>
+<li><p>N: var.b = 0.01; caus = 100 (100%); N.seq = c(200, 400, 600, 800,
+1000)</p></li>
+<li><p>caus: var.b = 0.02; N = 500; caus.seq = c(1, 10, 30, 50, 70,
+100)</p></li>
+<li><p>caus_fix: var.b.fix = 0.2; N = 500; caus.seq = c(1, 10, 30, 50,
+70, 100)</p></li>
 </ul></li>
 <li><p>results</p></li>
 </ul>
@@ -4961,8 +5668,11 @@ liliw-w
 <ul>
 <li><p>Try other tests</p>
 <ul>
-<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx \beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k: \lambda_k&gt;0.1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
-<li><p>PCO: Use <span class="math inline">\(\{\lambda_k: \lambda_k&gt;0.1\}\)</span>.</p></li>
+<li><p>Oracle: <span class="math inline">\(\beta^T \Sigma^{-1}Z \approx
+\beta^T \hat\Sigma^{-1}Z = \beta^T (\sum_{\{\lambda_k:
+\lambda_k&gt;0.1\}}\lambda_k u_k u_k^T) Z\)</span></p></li>
+<li><p>PCO: Use <span class="math inline">\(\{\lambda_k:
+\lambda_k&gt;0.1\}\)</span>.</p></li>
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
@@ -5011,7 +5721,9 @@ liliw-w
 <ul>
 <li>For talk</li>
 </ul>
-<p>(This figure should be updated as for the case of ‘u1’, the threshold is falsely set as 0.05, which should be <span class="math inline">\(10^{-9}\)</span>.)</p>
+<p>(This figure should be updated as for the case of ‘u1’, the threshold
+is falsely set as 0.05, which should be <span
+class="math inline">\(10^{-9}\)</span>.)</p>
 <div class="figure" style="text-align: center">
 <img src="asset/0216_talk.png" alt="PC1 v.s. PCO"  />
 <p class="caption">
@@ -5063,18 +5775,25 @@ liliw-w
 <h3>simulation</h3>
 <ul>
 <li><p>Methods: Oracle, PC1, PCO, MinP, minp.</p></li>
-<li><p>Models: <span class="math inline">\(z \sim N(\sqrt{N} \beta, \Sigma)\)</span>. <span class="math inline">\(\beta \sim N(0, \sigma_{b}^2 I_{K \times K})\)</span>.</p></li>
+<li><p>Models: <span class="math inline">\(z \sim N(\sqrt{N} \beta,
+\Sigma)\)</span>. <span class="math inline">\(\beta \sim N(0,
+\sigma_{b}^2 I_{K \times K})\)</span>.</p></li>
 </ul>
 <ol style="list-style-type: decimal">
-<li><p>various sample size <span class="math inline">\(N\)</span>. 200, 400, 600, 800, 1000.</p></li>
-<li><p>various <span class="math inline">\(\sigma_{b}^2\)</span>. 0.005, 0.01, 0.05, 0.1, 0.2.</p></li>
+<li><p>various sample size <span class="math inline">\(N\)</span>. 200,
+400, 600, 800, 1000.</p></li>
+<li><p>various <span class="math inline">\(\sigma_{b}^2\)</span>. 0.005,
+0.01, 0.05, 0.1, 0.2.</p></li>
 <li><p>various causality percentage. ???</p></li>
 </ol>
 <ul>
 <li><p>simulation.</p>
-<p>Generate <span class="math inline">\(10^4\)</span> zscores under each model. <span class="math inline">\(10^4\)</span> simulations.</p></li>
+<p>Generate <span class="math inline">\(10^4\)</span> zscores under each
+model. <span class="math inline">\(10^4\)</span> simulations.</p></li>
 </ul>
-<p>The following plot gives the boxplot, mean plot with standard deviation, and mean plot with standard error of the mean. Which one to use?</p>
+<p>The following plot gives the boxplot, mean plot with standard
+deviation, and mean plot with standard error of the mean. Which one to
+use?</p>
 <div class="figure" style="text-align: center">
 <img src="asset/0126_power_05.png" alt="power under cutoff 0.05"  />
 <p class="caption">
@@ -5205,11 +5924,23 @@ liliw-w
 </div>
 </div>
 </div>
-<div id="larger-fdr-level-signals-in-large-and-small-module" class="section level3">
+<div id="larger-fdr-level-signals-in-large-and-small-module"
+class="section level3">
 <h3>Larger FDR level, #signals in large and small module?</h3>
-<p>Here I will look at how the number of signals changes in the original large and current small modules when I increase the FDR level.</p>
-<p>The plot below is based on Muscle tissue from GTEx_v8. The x-axis is for various FDR levels, including 5%, 10%, 15%, and 20%. The y-axis is for the number of signals under these FDR levels. I plot three types of signals, i.e. module and SNP pairs (left subplot), unique SNPs (middle subplot), independent SNPs (right subplot). The two colors represent our previous WGCNA modules (red) and current smaller WGCNA modules (blue).</p>
-<p>We can observe (1) When increasing FDR levels, number of signals only increase a little bit, say 3-5 more signals. This means that the corrected pvalues are bipolar, i.e. either very small or very large. (2) Signals based on smaller modules are similar to that of previous standard modules.</p>
+<p>Here I will look at how the number of signals changes in the original
+large and current small modules when I increase the FDR level.</p>
+<p>The plot below is based on Muscle tissue from GTEx_v8. The x-axis is
+for various FDR levels, including 5%, 10%, 15%, and 20%. The y-axis is
+for the number of signals under these FDR levels. I plot three types of
+signals, i.e. module and SNP pairs (left subplot), unique SNPs (middle
+subplot), independent SNPs (right subplot). The two colors represent our
+previous WGCNA modules (red) and current smaller WGCNA modules
+(blue).</p>
+<p>We can observe (1) When increasing FDR levels, number of signals only
+increase a little bit, say 3-5 more signals. This means that the
+corrected pvalues are bipolar, i.e. either very small or very large. (2)
+Signals based on smaller modules are similar to that of previous
+standard modules.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/0126_signalsv.s.FDR.Muscle.png" alt="Muscle: #signals v.s.FDR"  />
 <p class="caption">
@@ -5299,9 +6030,22 @@ liliw-w
 </div>
 <div id="smaller-gene-modules-more-signals" class="section level3">
 <h3>Smaller gene modules, more signals?</h3>
-<p>I changed the parameter <code>deepSplit</code> in function <code>cutreeDynamic</code> from package WGCNA to get modules with smaller size. I run it on the Muscle tissue from GTEx (see <code>GTEx_v8.Muscle_Skeletal.WGCNA</code> in the GTEx results table). Compared to <code>GTEx_v8.Muscle_Skeletal</code>, though more modules (32 v.s. 18), they have same independent signals (3), located on chr5, chr10, and chr22.</p>
-<p>The corresponding modules of these signals from small and large WGCNA share a large proportion of genes.</p>
-<table>
+<p>I changed the parameter <code>deepSplit</code> in function
+<code>cutreeDynamic</code> from package WGCNA to get modules with
+smaller size. I run it on the Muscle tissue from GTEx (see
+<code>GTEx_v8.Muscle_Skeletal.WGCNA</code> in the GTEx results table).
+Compared to <code>GTEx_v8.Muscle_Skeletal</code>, though more modules
+(32 v.s. 18), they have same independent signals (3), located on chr5,
+chr10, and chr22.</p>
+<p>The corresponding modules of these signals from small and large WGCNA
+share a large proportion of genes.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="15%" />
+<col width="30%" />
+<col width="28%" />
+<col width="25%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">signal.Chr</th>
@@ -5331,9 +6075,19 @@ liliw-w
 </tr>
 </tbody>
 </table>
-<p>The above table is for clusters obtained by method ‘WGCNA.min20_deep2’ (big) and ‘WGCNA.min20_deep4’ (small). Next, I give more info about the clusters by more methods, i.e. #genes in modules (A), #unclassfied genes (B), and #modules (C) by the six methods. I also give the pvalue distribution corresponding to these clusters below.</p>
-<p>Generally, funcExplorer gives more modules, smaller module, and much more unclassified genes. Though the smaller modules, there aren’t many extreme pvalues. Say, the minimum p of all is about <span class="math inline">\(10^{-9}\)</span>, as compared to <span class="math inline">\(10^{-14}\)</span> by other methods.</p>
-<p>From the pvalue plot, it looks like ‘WGCNA.min10_deep4’ gives smaller clusters and some extreme pvalues. So next step I will run the whole pipleline for this setting.</p>
+<p>The above table is for clusters obtained by method
+‘WGCNA.min20_deep2’ (big) and ‘WGCNA.min20_deep4’ (small). Next, I give
+more info about the clusters by more methods, i.e. #genes in modules
+(A), #unclassfied genes (B), and #modules (C) by the six methods. I also
+give the pvalue distribution corresponding to these clusters below.</p>
+<p>Generally, funcExplorer gives more modules, smaller module, and much
+more unclassified genes. Though the smaller modules, there aren’t many
+extreme pvalues. Say, the minimum p of all is about <span
+class="math inline">\(10^{-9}\)</span>, as compared to <span
+class="math inline">\(10^{-14}\)</span> by other methods.</p>
+<p>From the pvalue plot, it looks like ‘WGCNA.min10_deep4’ gives smaller
+clusters and some extreme pvalues. So next step I will run the whole
+pipleline for this setting.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/0126_modules.png" alt="Modules v.s. methods/parameters"  />
 <p class="caption">
@@ -5426,15 +6180,30 @@ liliw-w
 <h2>Jan 05, Jan 19</h2>
 <div id="simulation-2" class="section level3">
 <h3>Simulation</h3>
-<p>The simulations here aim to compare the power of PC-based tests including PC1 (using only the primary PC) and PCO (using combined PC’s), and non-PC based test MinP. The simulations consist of two parts: (1) verify that type 1 error is well controlled; (2) compare power of tests. At this time, I simply assume there is no LD among SNPs, i.e. tests are independent.</p>
+<p>The simulations here aim to compare the power of PC-based tests
+including PC1 (using only the primary PC) and PCO (using combined PC’s),
+and non-PC based test MinP. The simulations consist of two parts: (1)
+verify that type 1 error is well controlled; (2) compare power of tests.
+At this time, I simply assume there is no LD among SNPs, i.e. tests are
+independent.</p>
 <ol style="list-style-type: decimal">
 <li>Verify that type 1 error is well controlled.</li>
 </ol>
-<p>Since the tests are assumed to be independent, the null pvalues should be uniformly distributed. To verify that, I estimate the null pvalues by empirical p’s obtained from the following steps.</p>
-<p>Step1. Generate <span class="math inline">\(z_0 \sim N(0, \Sigma) | H_0\)</span>.</p>
-<p>Step2. Run tests including PC1, PCO, MinP for <span class="math inline">\(10^6\)</span> times and obtain <span class="math inline">\(10^6\)</span> p’s for each test.</p>
-<p>Step3. Compute the empirical T1E at significance <span class="math inline">\(\alpha\)</span> by <span class="math inline">\(\frac{I\{p&lt;\alpha\}}{10^6}\)</span>. Draw qqplot of <span class="math inline">\(-log_{10}p\)</span>.</p>
-<p>The correlation matrix <span class="math inline">\(\Sigma\)</span> is the correlation of genes in module15 of GTEx dataset Muscle_Skeletal (Sigma.Muscle_Skeletal.module15.chr7.rds).</p>
+<p>Since the tests are assumed to be independent, the null pvalues
+should be uniformly distributed. To verify that, I estimate the null
+pvalues by empirical p’s obtained from the following steps.</p>
+<p>Step1. Generate <span class="math inline">\(z_0 \sim N(0, \Sigma) |
+H_0\)</span>.</p>
+<p>Step2. Run tests including PC1, PCO, MinP for <span
+class="math inline">\(10^6\)</span> times and obtain <span
+class="math inline">\(10^6\)</span> p’s for each test.</p>
+<p>Step3. Compute the empirical T1E at significance <span
+class="math inline">\(\alpha\)</span> by <span
+class="math inline">\(\frac{I\{p&lt;\alpha\}}{10^6}\)</span>. Draw
+qqplot of <span class="math inline">\(-log_{10}p\)</span>.</p>
+<p>The correlation matrix <span class="math inline">\(\Sigma\)</span> is
+the correlation of genes in module15 of GTEx dataset Muscle_Skeletal
+(Sigma.Muscle_Skeletal.module15.chr7.rds).</p>
 <table>
 <thead>
 <tr class="header">
@@ -5505,10 +6274,28 @@ liliw-w
 <ol start="2" style="list-style-type: decimal">
 <li>Compare power of tests.</li>
 </ol>
-<p>To compare the power of non-/PC-based tests, I will run the oracle test in addition to PC1, PCO, and MinP to benchmark the power. It’s mentioned in the PCO paper that given a fixed correlation relationship among the phenotypes, the power of a test depends on the relationship bewteen the true effects (<span class="math inline">\(\beta\)</span>) and the phenotype correlation (<span class="math inline">\(\Sigma\)</span>). Therefore, to see which tests perform well in what cases, I will consider different models, including (1) <span class="math inline">\(\beta=10 u_1\)</span>; (2) <span class="math inline">\(\beta=4 u_k\)</span>; (3) <span class="math inline">\(\beta=1.5 u_K\)</span>; (4) <span class="math inline">\(\beta=rnorm(K)\)</span>; (5) <span class="math inline">\(\beta=rnorm(0.7K)\)</span>; (6) <span class="math inline">\(\beta=rnorm(0.3K)\)</span>.</p>
-<p>Step1. Generate <span class="math inline">\(z_0 \sim N(\beta, \Sigma) | H_1\)</span>.</p>
-<p>Step2. Run tests including Oracle, PC1, PCO, MinP for <span class="math inline">\(10^6\)</span> times and obtain <span class="math inline">\(10^6\)</span> p’s for each test.</p>
-<p>Step3. Compute the power at significance <span class="math inline">\(\alpha\)</span> by <span class="math inline">\(\frac{I\{p&lt;\alpha\}}{10^6}\)</span>.</p>
+<p>To compare the power of non-/PC-based tests, I will run the oracle
+test in addition to PC1, PCO, and MinP to benchmark the power. It’s
+mentioned in the PCO paper that given a fixed correlation relationship
+among the phenotypes, the power of a test depends on the relationship
+bewteen the true effects (<span class="math inline">\(\beta\)</span>)
+and the phenotype correlation (<span
+class="math inline">\(\Sigma\)</span>). Therefore, to see which tests
+perform well in what cases, I will consider different models, including
+(1) <span class="math inline">\(\beta=10 u_1\)</span>; (2) <span
+class="math inline">\(\beta=4 u_k\)</span>; (3) <span
+class="math inline">\(\beta=1.5 u_K\)</span>; (4) <span
+class="math inline">\(\beta=rnorm(K)\)</span>; (5) <span
+class="math inline">\(\beta=rnorm(0.7K)\)</span>; (6) <span
+class="math inline">\(\beta=rnorm(0.3K)\)</span>.</p>
+<p>Step1. Generate <span class="math inline">\(z_0 \sim N(\beta, \Sigma)
+| H_1\)</span>.</p>
+<p>Step2. Run tests including Oracle, PC1, PCO, MinP for <span
+class="math inline">\(10^6\)</span> times and obtain <span
+class="math inline">\(10^6\)</span> p’s for each test.</p>
+<p>Step3. Compute the power at significance <span
+class="math inline">\(\alpha\)</span> by <span
+class="math inline">\(\frac{I\{p&lt;\alpha\}}{10^6}\)</span>.</p>
 <table>
 <thead>
 <tr class="header">
@@ -5569,7 +6356,8 @@ liliw-w
 <h3>GTEx</h3>
 <div id="results-4" class="section level4">
 <h4>Results</h4>
-<p>The table below summarizes all results I have so far, followed by figures of the distributions of pvalues in various datasets.</p>
+<p>The table below summarizes all results I have so far, followed by
+figures of the distributions of pvalues in various datasets.</p>
 <table style="width:100%;">
 <colgroup>
 <col width="21%" />
@@ -6076,10 +6864,26 @@ liliw-w
 <div id="remarks" class="section level4">
 <h4>Remarks</h4>
 <ol style="list-style-type: decimal">
-<li><p>The dataset “DGN_new” represents DGN through the standard filtering (see “Gene filter” on Dec 10).</p></li>
-<li><p>GTEx datasets generally have few significant signals and relatively large pvalues (compared to DGN).</p></li>
-<li><p>The dataset “GTEx_v8.Muscle_Skeletal.cross” uses Muscle_Skeletal samples from GTEx_v8 (similar as GTEx_v8.Muscle_Skeletal), but without removing cross-mapped genes before constructing gene modules. Therefore, there are 13890 genes (v.s. 5430 in GTEx_v8.Muscle_Skeletal) in total which result in 39 modules (v.s. 18 in GTEx_v8.Muscle_Skeletal). We do this step because we observed that there are relatively few signals using our original pipeline and we wonder if the reason to this observation is us filtering too many genes in the first step and leaving too few signals. To check on this, we put the “filtering” to the last step, i.e. including potentially cross-mapped genes into the analysis and generate significant variant-module pairs. We then exclude those where target eGene in the module is cross-mappable with any gene within 1Mb of the variant. Hopefully we could have more signals.</p>
-<p>However, though the increased genes and modules, the number of identified signals (43) is similar as that using the original pipeline (38). Next, I will look into these signals.</p></li>
+<li><p>The dataset “DGN_new” represents DGN through the standard
+filtering (see “Gene filter” on Dec 10).</p></li>
+<li><p>GTEx datasets generally have few significant signals and
+relatively large pvalues (compared to DGN).</p></li>
+<li><p>The dataset “GTEx_v8.Muscle_Skeletal.cross” uses Muscle_Skeletal
+samples from GTEx_v8 (similar as GTEx_v8.Muscle_Skeletal), but without
+removing cross-mapped genes before constructing gene modules. Therefore,
+there are 13890 genes (v.s. 5430 in GTEx_v8.Muscle_Skeletal) in total
+which result in 39 modules (v.s. 18 in GTEx_v8.Muscle_Skeletal). We do
+this step because we observed that there are relatively few signals
+using our original pipeline and we wonder if the reason to this
+observation is us filtering too many genes in the first step and leaving
+too few signals. To check on this, we put the “filtering” to the last
+step, i.e. including potentially cross-mapped genes into the analysis
+and generate significant variant-module pairs. We then exclude those
+where target eGene in the module is cross-mappable with any gene within
+1Mb of the variant. Hopefully we could have more signals.</p>
+<p>However, though the increased genes and modules, the number of
+identified signals (43) is similar as that using the original pipeline
+(38). Next, I will look into these signals.</p></li>
 </ol>
 <table>
 <caption>GTEx_v8.Muscle_Skeletal</caption>
@@ -6522,8 +7326,10 @@ module4:22:23508295
 
 + Check if the signals&#39; nearby genes are cross-mapped with genes in their corresponding module. The signal on chr5 corresponding to module8 has 20 genes +/- 500Kb away from its TSS. Many of them are crosspable with genes in the module 8. The number of of genes in the module crossmapped with each of the 20 genes are: `1, 144, 0, 62, 54, 0, 63, 4, 0, 0, 0, 59, 145, 0, 0, 128, 0, 23, 53`, where the nearest gene is crossmappable with 1 gene in the module.</code></pre>
 <ul>
-<li><p>The other signals on chr1, chr16, and chr5:47210790 don’t have any nearby genes around its TSS.</p></li>
-<li><p>See the following plot for number of cross-mapped genes in each module.</p></li>
+<li><p>The other signals on chr1, chr16, and chr5:47210790 don’t have
+any nearby genes around its TSS.</p></li>
+<li><p>See the following plot for number of cross-mapped genes in each
+module.</p></li>
 </ul>
 <p><img src="asset/0119_nCross.png" style="display: block; margin: auto;" /></p>
 <p>
@@ -6572,13 +7378,35 @@ liliw-w
 <h3>eQTLGen</h3>
 <ol style="list-style-type: decimal">
 <li><p>eQTLGen description</p>
-<p><em>This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.</em></p>
-<p>After gene filter steps described in <code>Dec 10</code>, there are 4963 genes left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are also included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules. These 3642 genes result in 19 gene modules.</p></li>
+<p><em>This full dataset includes 19942 genes that showed expression in
+blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS
+Catalog.</em></p>
+<p>After gene filter steps described in <code>Dec 10</code>, there are
+4963 genes left. Applying the same filtering to 13634 DGN genes, there
+are 3695 genes left, among which 3642 are also included in eQTLGen. So,
+I will use these genes to do the downstream analysis, e.g. constructing
+co-expressed gene modules. These 3642 genes result in 19 gene
+modules.</p></li>
 <li><p>Replication of DGN signals in eQTLGen</p>
 <p>The table below gives the signals found in eQTLGen and DGN.</p>
-<p>The first two rows give results based on eQTLGen zscores, with row 1 using <code>qvalue</code> for FDR correction (threshold <span class="math inline">\(0.05\)</span>) and row 2 using <span class="math inline">\(\frac{0.05}{\#DGN signals}\)</span> as significance threshold. The third row is based on the same gene modules and SNPs but tensorQTL zscores using DGN expression data. The FDR correction uses the empirical distribution of pvalues from the combined chr’s and modules (10 permutations).</p></li>
+<p>The first two rows give results based on eQTLGen zscores, with row 1
+using <code>qvalue</code> for FDR correction (threshold <span
+class="math inline">\(0.05\)</span>) and row 2 using <span
+class="math inline">\(\frac{0.05}{\#DGN signals}\)</span> as
+significance threshold. The third row is based on the same gene modules
+and SNPs but tensorQTL zscores using DGN expression data. The FDR
+correction uses the empirical distribution of pvalues from the combined
+chr’s and modules (10 permutations).</p></li>
 </ol>
 <table>
+<colgroup>
+<col width="13%" />
+<col width="32%" />
+<col width="9%" />
+<col width="15%" />
+<col width="11%" />
+<col width="17%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Dataset</th>
@@ -6616,14 +7444,25 @@ liliw-w
 </tr>
 </tbody>
 </table>
-<p>Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen signals. These 16 replicated signals consists of 6 independent SNPs, including (based on GRCh37),</p>
+<p>Among 374 eQTLGen_DGN signals, 16 are replicated in 762 eQTLGen
+signals. These 16 replicated signals consists of 6 independent SNPs,
+including (based on GRCh37),</p>
 <ul>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12485738">rs12485738</a> : 3:56865776, intron variant of <em>ARHGEF3</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs643381">rs643381</a> : 6:139839423. (<a href="https://www.ncbi.nlm.nih.gov/snp/rs590856">rs590856</a>, 6:139844429).</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs149007767">rs149007767</a> 7:50370254: , intron variant of <em>IKZF1</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12718597">rs12718597</a> : 7:50428428, intron variant of <em>IKZF1</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs35979828">rs35979828</a> : 12:54685880, 500B downstream variant of <em>NFE2</em>.</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs7210990">rs7210990</a> : 17:16170764, intron variant of <em>PIGL</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12485738">rs12485738</a>
+: 3:56865776, intron variant of <em>ARHGEF3</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs643381">rs643381</a> :
+6:139839423. (<a
+href="https://www.ncbi.nlm.nih.gov/snp/rs590856">rs590856</a>,
+6:139844429).</li>
+<li><a
+href="https://www.ncbi.nlm.nih.gov/snp/rs149007767">rs149007767</a>
+7:50370254: , intron variant of <em>IKZF1</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs12718597">rs12718597</a>
+: 7:50428428, intron variant of <em>IKZF1</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs35979828">rs35979828</a>
+: 12:54685880, 500B downstream variant of <em>NFE2</em>.</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/snp/rs7210990">rs7210990</a> :
+17:16170764, intron variant of <em>PIGL</em>.</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
 <li>Replication of DGN signals in eQTLGen</li>
@@ -6674,16 +7513,17 @@ liliw-w
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
-<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<pre><code>R version 4.1.0 (2021-05-18)
+<pre><code>R version 4.1.2 (2021-11-01)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Big Sur 10.16
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
 LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 
 locale:
@@ -6693,19 +7533,21 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] data.table_1.14.0 workflowr_1.6.2  
+[1] data.table_1.14.2 workflowr_1.7.0  
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.7       whisker_0.4      knitr_1.33       magrittr_2.0.1  
- [5] R6_2.5.1         rlang_0.4.12     fastmap_1.1.0    fansi_0.5.0     
- [9] highr_0.9        stringr_1.4.0    tools_4.1.0      xfun_0.23       
-[13] utf8_1.2.2       git2r_0.28.0     jquerylib_0.1.4  htmltools_0.5.2 
-[17] ellipsis_0.3.2   rprojroot_2.0.2  yaml_2.2.1       digest_0.6.29   
-[21] tibble_3.1.6     lifecycle_1.0.1  crayon_1.4.2     later_1.3.0     
-[25] sass_0.4.0       vctrs_0.3.8      promises_1.2.0.1 fs_1.5.2        
-[29] glue_1.6.0       evaluate_0.14    rmarkdown_2.10   stringi_1.7.6   
-[33] bslib_0.3.1      compiler_4.1.0   pillar_1.6.4     jsonlite_1.7.2  
-[37] httpuv_1.6.4     pkgconfig_2.0.3 </code></pre>
+ [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
+ [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
+ [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
+[13] evaluate_0.15    tibble_3.1.6     lifecycle_1.0.1  pkgconfig_2.0.3 
+[17] rlang_1.0.2      cli_3.1.1        rstudioapi_0.13  yaml_2.3.5      
+[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.4.0   
+[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.3.8     
+[29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
+[33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
+[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.2 
+[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.6   
+[45] cachem_1.0.6     crayon_1.4.2    </code></pre>
 </div>
 </div>
 </div>
@@ -6713,7 +7555,7 @@ loaded via a namespace (and not attached):
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->
