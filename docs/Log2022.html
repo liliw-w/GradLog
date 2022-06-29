@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-06-11
+<strong>Last updated:</strong> 2022-06-29
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree41a531bf06460b1055ba55bdde47675fdbfeba05targetblank41a531ba">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeba5c42bc41e8ce0ba72092d5e5693061d733e69etargetblankba5c42ba">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/41a531bf06460b1055ba55bdde47675fdbfeba05" target="_blank">41a531b</a>
+<a href="https://github.com/liliw-w/GradLog/tree/ba5c42bc41e8ce0ba72092d5e5693061d733e69e" target="_blank">ba5c42b</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree41a531bf06460b1055ba55bdde47675fdbfeba05targetblank41a531ba"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeba5c42bc41e8ce0ba72092d5e5693061d733e69etargetblankba5c42ba"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/41a531bf06460b1055ba55bdde47675fdbfeba05" target="_blank">41a531b</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/ba5c42bc41e8ce0ba72092d5e5693061d733e69e" target="_blank">ba5c42b</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -595,8 +595,16 @@ were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
+
+Untracked files:
+    Untracked:  analysis/images/
+    Untracked:  analysis/week_log.Rmd
+
+Unstaged changes:
+    Deleted:    README.html
 
 </code></pre>
 <p>
@@ -642,6 +650,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ba5c42bc41e8ce0ba72092d5e5693061d733e69e/analysis/Log2022.Rmd" target="_blank">ba5c42b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-06-29
+</td>
+<td>
+Add new weeks
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/07720fcb6be6466440965eb9e93c92dd290b9af8/docs/Log2022.html" target="_blank">07720fc</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-06-11
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1252,13 +1294,277 @@ blockquote {
     border-left: 5px solid #eee;
 }
 </style>
+<p><strong>If any figures don’t show, try opening in
+Safari.</strong></p>
+<div id="june-29" class="section level2">
+<h2>June 29</h2>
+<div id="coloc-between-trans--and-cis-qtls" class="section level3">
+<h3>1. coloc between trans- and cis-QTLs</h3>
+<div id="with-cis-sqtls" class="section level4">
+<h4>With cis-sQTLs</h4>
+<ul>
+<li><p>255 trans- regions in total.</p></li>
+<li><p>163 candidate coloc regions, i.e. regions which have at least one
+intron with min p &lt; 1e-5. (Light green regions).</p></li>
+<li><p>66 regions are coloced with at least one intron. (Dark green
+regions).</p></li>
+</ul>
+</div>
+<div id="with-cis-eqtls-updates" class="section level4">
+<h4>With cis-eQTLs (updates)</h4>
+<p>When I was looking into coloc with cis-s, I found some results were
+weird about the coloc numbers with cis-e. So I re-analyzed cis-e coloc
+with trans. Numbers are updated as below.</p>
+<ul>
+<li><p>255</p></li>
+<li><p>120 –&gt; <strong>222</strong></p></li>
+<li><p>54 –&gt; <strong>93</strong></p></li>
+</ul>
+</div>
+<div id="with-either-cis-e-or-cis-s" class="section level4">
+<h4>With either cis-e or cis-s</h4>
+<ul>
+<li><p>255</p></li>
+<li><p>222</p></li>
+<li><p>104</p></li>
+</ul>
+</div>
+<div id="upset-plot" class="section level4">
+<h4>Upset plot</h4>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0629_coloc_trans_cis_upset.pdf" alt="Figure: coloc between trans and cis loci." width="40%" />
+<p class="caption">
+Figure: coloc between trans and cis loci.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="june-15-june-22" class="section level2">
+<h2>June 15 &amp; June 22</h2>
+<div id="eqtlgen-specific-signals" class="section level3">
+<h3>1. eQTLGen specific signals</h3>
+<div id="specific-snp-module-pairs" class="section level4">
+<h4>Specific (SNP, module) pairs</h4>
+<ul>
+<li><p>Observations</p>
+<p>Out of 7577 eQTLGen (SNP, module) signal pairs that were also
+analyzed by DGN,</p>
+<p><strong>184, 240, 262, 286</strong> pairs are near at least one DGN
+signal within same loci of distance:</p>
+<p><strong>1e+05, 2e+05, 5e+05, 1e+06</strong> bp, respectively.</p>
+<p><strong>6876</strong> pairs are not close to any DGN
+signals.</p></li>
+<li><p>Result file:</p>
+<p><code>/project2/xuanyao/llw/eQTLGen_est_Sigma/postanalysis/eqtlgen_spec_pair_to_dgn.txt</code></p>
+<ul>
+<li><p>Why so many Inf distances?</p>
+<p>Inf distance means no DGN signal SNPs on the same chr as eQTLGen
+(SNP, module).</p>
+<p>In fact, overlapped SNPs, but not right module.</p></li>
+</ul></li>
+<li><p>Example</p>
+<p>I obversed a lot of SNPs (and corresponding modules) that are signals
+in eQTLGen, but not in DGN.</p>
+<p>Among those, one interesting loci SNP: 3:56849749. This loci is near
+gene <em>ARHGEF3</em>, and it has been detected in DGN (for module 4).
+However, in eQTLGen, it is a signal for a few more modules missed in
+DGN.</p>
+<p>Therefore, I looked at z-scores of this SNP and those
+eQTLGen-specific modules, in both QTLGen and DGN. The goal is to see if
+eQTLGen-z’s are generally more significant than DGN-z’s. If so, then it
+indicates larger sample size of eQTLGen improves detection power.</p>
+<ul>
+<li><p>Figure of z distributions</p>
+<p><a href="asset/2022/0615_z_eqtlgen_dgn_snp3_56849749.pdf">See
+here</a></p>
+<p>Add summary stats of distribution difference?</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="specific-snps" class="section level4">
+<h4>Specific SNPs</h4>
+<ul>
+<li><p>Observations</p>
+<p>Out of 1975 eQTLGen signal SNPs that were also analyzed by DGN,</p>
+<p><strong>166 236 303 430</strong> are near at least one DGN signal
+within same loci of distance:</p>
+<p><strong>1e+05 2e+05 5e+05 1e+06</strong> bp, respectively.</p></li>
+<li><p>Result file:</p>
+<p><code>/project2/xuanyao/llw/eQTLGen_est_Sigma/postanalysis/eqtlgen_spec_snp_to_dgn.txt</code></p>
+<ul>
+<li><p>No Inf distances?</p>
+<p>which means all eQTLGen SNPs have at least one DGN signal SNP on the
+same chr.</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="compare-z-of-pc1-and-pco-signals" class="section level3">
+<h3>2. Compare z of PC1 and PCO signals</h3>
+<div id="goal" class="section level4">
+<h4>Goal</h4>
+<p>Given that signals detected by PC1 are more than what we expected
+from simulations, we want to know why PC1 can get so many signals than
+in simulations and look into what are these signals.</p>
+<p>PC1 is powerful when <span class="math inline">\(\beta\)</span>’s
+align with the first eigen vector of the expression matrix. <strong>How
+did we come to the conclusion that PC1-detected signals should have
+large effects?</strong></p>
+<p>Therefore, I looked at z-scores of signals detected by PC1 and
+trans-PCO.</p>
+</div>
+<div id="signals-review" class="section level4">
+<h4>Signals review</h4>
+<ul>
+<li><p>PCO signals: 3899</p></li>
+<li><p>PC1 signals: 1483, 1464 (98.72% are PCO signals).</p></li>
+</ul>
+</div>
+<div id="comparison-procedure" class="section level4">
+<h4>Comparison procedure</h4>
+<p>For a pair of (SNP, module) signal, I plotted <span
+class="math inline">\(|Z|\)</span>’s of the SNP across genes in this
+module. I divided (SNP, module) signals into three categories:</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>pair detected only on trans-PCO</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>pair detected by both trans-PCO and PC1</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>pair detected by only PC1.</li>
+</ol></li>
+</ul>
+<p>To compare z-score distribution of these three types of signals, I
+used (1) cdf and (2) pdf of</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>abs z-scores of one SNP across genes in module</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>the maximum abs z-scores for each (SNP, module) pair.</li>
+</ol></li>
+</ul>
+<p><strong>Note: I first plotted cdf of min z as we discussed. But for
+signal category (2) and (3), points for estimating cdf are only a few,
+making cdf estimation inaccurate. So, I also tried other three ways to
+compare z-distribution.</strong></p>
+<p>The above comparison is for individual modules. I also compared the
+max abs z of each (SNP, module) pair across all modules.</p>
+</div>
+<div id="comparison-figures" class="section level4">
+<h4>Comparison figures</h4>
+<ul>
+<li><p>See all figures in
+<code>/scratch/midway2/liliw1/compare_z/pc1</code>.</p></li>
+<li><p>Max abs z comparison of all modules, (<strong>If you can’t see
+figures below, try opening this site in safari</strong>)</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0615_M_all_maxz_cdf.pdf" alt="Figure: cdf and pdf of max abs for all signal (SNP, module)." width="40%" /><img src="asset/2022/0615_M_all_maxz_pdf.pdf" alt="Figure: cdf and pdf of max abs for all signal (SNP, module)." width="40%" />
+<p class="caption">
+Figure: cdf and pdf of max abs for all signal (SNP, module).
+</p>
+</div>
+<ul>
+<li>I also looked at min abs z comparison for all modules.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0615_M_all_minz_cdf.pdf" alt="Figure: cdf and pdf of min abs z for all signal (SNP, module)." width="40%" /><img src="asset/2022/0615_M_all_minz_pdf.pdf" alt="Figure: cdf and pdf of min abs z for all signal (SNP, module)." width="40%" />
+<p class="caption">
+Figure: cdf and pdf of min abs z for all signal (SNP, module).
+</p>
+</div>
+</div>
+<div id="observations" class="section level4">
+<h4>Observations</h4>
+<ul>
+<li><p>PCO only signals have smaller max abs z than signals detected by
+both PCO and PC1.</p></li>
+<li><p>PC1 only signals have smaller max abs z and larger min abs z than
+PCO only and both signals.</p>
+<ul>
+<li>19 PC1 only signals have similar PCO p-values. And mostly have pco
+corrected p &lt; 15%. See <a
+href="asset/2022/0615_pc1_sig_mis_pco.txt">file of PC1 signals missed by
+PCO</a>.</li>
+</ul></li>
+</ul>
+<p><strong>Update following numbers!!!</strong></p>
+<ul>
+<li><p>Z(PCO) &lt; Z(both)</p>
+<p>Module 1, 32, 51, 57, 66, 108, 121, 134, 154, 155, 158</p></li>
+<li><p>No difference</p>
+<p>Module 4, 35, 47, 74, 90, 100, 113, 140, 150</p></li>
+<li><p>Z(PCO) &gt; Z(both)?</p>
+<p>Module 27, 42, 65, 156</p></li>
+<li><p>No accurate cdf estimation due to too few signals.</p>
+<p>Module 11, 13, 21, 30, 31, 32, 57, 65, 66, 87, 90, 100, 106, 108,
+117, 121, 134, 142, 144, 147, 149, 150, 164, 155, 158</p></li>
+</ul>
+<p>Note: Module 142: Z(PCO) &lt; Z(PC1)? PC1 only signal with large z
+but missed by PCO?</p>
+</div>
+</div>
+<div id="compare-z-of-uni-variate-and-multi-variate-signals"
+class="section level3">
+<h3>3. Compare z of uni-variate and multi-variate signals</h3>
+<div id="goal-1" class="section level4">
+<h4>Goal</h4>
+</div>
+<div id="signal-review" class="section level4">
+<h4>Signal review</h4>
+</div>
+<div id="procedure" class="section level4">
+<h4>Procedure</h4>
+</div>
+<div id="figures-and-observations" class="section level4">
+<h4>Figures and observations</h4>
+</div>
+</div>
+</div>
 <div id="jun-08" class="section level2">
 <h2>Jun 08</h2>
-<div id="blood-trait-ldsc" class="section level3">
-<h3>1. blood trait ldsc</h3>
-<p>PENDING.</p>
-<p><strong>Update enrichment figure error bar from se to 95%
-CI.</strong></p>
+<div id="blood-trait-s-ldsc" class="section level3">
+<h3>1. blood trait S-LDSC</h3>
+<div id="goal-2" class="section level4">
+<h4>Goal</h4>
+<p>Test whether colocalized trans-eQTL gene modules show significant
+heritability enrichment in the colocalized complex trait. By S-LDSC.</p>
+<p>In this section, I looked at 29 blood traits.</p>
+</div>
+<div id="how" class="section level4">
+<h4>How?</h4>
+<p>See <a href="#how_to_run_s_ldsc">previous section</a>.</p>
+</div>
+<div id="s-ldsc-results-on-partitioned-h2-of-module-4"
+class="section level4">
+<h4>S-LDSC results on partitioned h2 of module 4</h4>
+<p>I show here results of module 4 for 29 traits as an example. Why
+module 4 interesting? Because it has interesting trans-eQTLs coloc with
+interesting traits. And it’s an example in the manuscript.</p>
+<p>The figure is large, so I won’t show it here, but <a
+href="asset/2022/0608_M4_all_traits.results.pdf">see file here</a>.</p>
+<ul>
+<li>x-axis: enrichment</li>
+<li>y-axis: 29 blood traits</li>
+<li>error bar: enrichment 95% CI</li>
+<li>color: trait types</li>
+<li>green diamond: there is coloc between module 4 and corresponding
+trait</li>
+</ul>
+<p>Compared to figures I sent on slack, here I <strong>updated
+enrichment figure error bar from se to 95% CI.</strong></p>
+</div>
+<div id="observations-1" class="section level4">
+<h4>Observations</h4>
+<ul>
+<li>Module 4 has enriched h2 in platelet-relevant traits. Consistent
+with trans-eQTLs loci, module enrichment, and coloc results.</li>
+</ul>
+</div>
 </div>
 <div id="autoimmune-disease-ldsc" class="section level3">
 <h3>2. autoimmune disease ldsc</h3>
@@ -1424,7 +1730,7 @@ each category, the number of SNPs with MAF&gt;5%</p></li>
 <li><p>GWAS summary statistics</p></li>
 </ol>
 </div>
-<div id="run-ldsc" class="section level4">
+<div id="how_to_run_s_ldsc" class="section level4">
 <h4>run LDSC</h4>
 <ol start="0" style="list-style-type: decimal">
 <li>run partitioned LD scores for new defined functional category and
@@ -1544,7 +1850,7 @@ style="width:45.0%" alt="upset" /></p>
 </div>
 <div id="eqtlgen-replication" class="section level3">
 <h3>3. eQTLGen replication</h3>
-<div id="how" class="section level4">
+<div id="how-1" class="section level4">
 <h4>How?</h4>
 </div>
 <div id="dgn-replication-in-eqtlgen" class="section level4">
@@ -1897,7 +2203,7 @@ size}\)</span>.</p></li>
 </div>
 <div id="cis--genes" class="section level3">
 <h3>5. cis- genes</h3>
-<div id="how-1" class="section level4">
+<div id="how-2" class="section level4">
 <h4>How?</h4>
 <ol style="list-style-type: decimal">
 <li><p>Protein coding &amp; lincRNA genes</p></li>
