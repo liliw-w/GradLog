@@ -22,14 +22,244 @@ blockquote {
 }
 ```
 
+**If any figures don't show, try opening in Safari.**
+
+
+## June 29
+
+### 1. coloc between trans- and cis-QTLs
+
+#### With cis-sQTLs
+
+- 255 trans- regions in total.
+
+- 163 candidate coloc regions, i.e. regions which have at least one intron with min p < 1e-5. (Light green regions).
+
+- 66 regions are coloced with at least one intron. (Dark green regions).
+
+
+#### With cis-eQTLs (updates)
+
+When I was looking into coloc with cis-s, I found some results were weird about the coloc numbers with cis-e. So I re-analyzed cis-e coloc with trans. Numbers are updated as below.
+
+- 255
+
+- 120 --> **222**
+
+- 54 --> **93**
+
+#### With either cis-e or cis-s
+
+- 255
+
+- 222
+
+- 104
+
+#### Upset plot
+
+```{r out.width="40%", fig.cap="Figure: coloc between trans and cis loci.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0629_coloc_trans_cis_upset.pdf"), error = FALSE)
+```
+
+
+
+
+## June 15 & June 22
+
+### 1. eQTLGen specific signals
+
+#### Specific (SNP, module) pairs
+
+-   Observations
+
+    Out of 7577 eQTLGen (SNP, module) signal pairs that were also analyzed by DGN,
+
+    **184, 240, 262, 286** pairs are near at least one DGN signal within same loci of distance:
+
+    **1e+05, 2e+05, 5e+05, 1e+06** bp, respectively.
+
+    **6876** pairs are not close to any DGN signals.
+
+-   Result file:
+
+    `/project2/xuanyao/llw/eQTLGen_est_Sigma/postanalysis/eqtlgen_spec_pair_to_dgn.txt`
+
+    -   Why so many Inf distances?
+
+        Inf distance means no DGN signal SNPs on the same chr as eQTLGen (SNP, module).
+
+        In fact, overlapped SNPs, but not right module.
+
+-   Example
+
+    I obversed a lot of SNPs (and corresponding modules) that are signals in eQTLGen, but not in DGN.
+
+    Among those, one interesting loci SNP: 3:56849749. This loci is near gene *ARHGEF3*, and it has been detected in DGN (for module 4). However, in eQTLGen, it is a signal for a few more modules missed in DGN.
+
+    Therefore, I looked at z-scores of this SNP and those eQTLGen-specific modules, in both QTLGen and DGN. The goal is to see if eQTLGen-z's are generally more significant than DGN-z's. If so, then it indicates larger sample size of eQTLGen improves detection power.
+
+    -   Figure of z distributions
+
+        [See here](asset/2022/0615_z_eqtlgen_dgn_snp3_56849749.pdf)
+
+        Add summary stats of distribution difference?
+
+#### Specific SNPs
+
+-   Observations
+
+    Out of 1975 eQTLGen signal SNPs that were also analyzed by DGN,
+
+    **166 236 303 430** are near at least one DGN signal within same loci of distance:
+
+    **1e+05 2e+05 5e+05 1e+06** bp, respectively.
+
+-   Result file:
+
+    `/project2/xuanyao/llw/eQTLGen_est_Sigma/postanalysis/eqtlgen_spec_snp_to_dgn.txt`
+
+    -   No Inf distances?
+
+        which means all eQTLGen SNPs have at least one DGN signal SNP on the same chr.
+
+### 2. Compare z of PC1 and PCO signals
+
+#### Goal
+
+Given that signals detected by PC1 are more than what we expected from simulations, we want to know why PC1 can get so many signals than in simulations and look into what are these signals.
+
+PC1 is powerful when $\beta$'s align with the first eigen vector of the expression matrix. **How did we come to the conclusion that PC1-detected signals should have large effects?**
+
+Therefore, I looked at z-scores of signals detected by PC1 and trans-PCO.
+
+#### Signals review
+
+-   PCO signals: 3899
+
+-   PC1 signals: 1483, 1464 (98.72% are PCO signals).
+
+#### Comparison procedure
+
+For a pair of (SNP, module) signal, I plotted $|Z|$'s of the SNP across genes in this module. I divided (SNP, module) signals into three categories:
+
+-   
+
+    (1) pair detected only on trans-PCO
+
+-   
+
+    (2) pair detected by both trans-PCO and PC1
+
+-   
+
+    (3) pair detected by only PC1.
+
+To compare z-score distribution of these three types of signals, I used (1) cdf and (2) pdf of
+
+-   
+
+    (1) abs z-scores of one SNP across genes in module
+
+-   
+
+    (2) the maximum abs z-scores for each (SNP, module) pair.
+
+**Note: I first plotted cdf of min z as we discussed. But for signal category (2) and (3), points for estimating cdf are only a few, making cdf estimation inaccurate. So, I also tried other three ways to compare z-distribution.**
+
+The above comparison is for individual modules. I also compared the max abs z of each (SNP, module) pair across all modules.
+
+#### Comparison figures
+
+-   See all figures in `/scratch/midway2/liliw1/compare_z/pc1`.
+
+  - Max abs z comparison of all modules, (**If you can't see figures below, try opening this site in safari**)
+
+```{r out.width="40%", fig.cap="Figure: cdf and pdf of max abs for all signal (SNP, module).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0615_M_all_maxz_cdf.pdf", "asset/2022/0615_M_all_maxz_pdf.pdf"), error = FALSE)
+```
+
+  - I also looked at min abs z comparison for all modules.
+  
+```{r out.width="40%", fig.cap="Figure: cdf and pdf of min abs z for all signal (SNP, module).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0615_M_all_minz_cdf.pdf", "asset/2022/0615_M_all_minz_pdf.pdf"), error = FALSE)
+```
+
+
+#### Observations
+
+- PCO only signals have smaller max abs z than signals detected by both PCO and PC1.
+
+- PC1 only signals have smaller max abs z and larger min abs z than PCO only and both signals.
+
+  - 19 PC1 only signals have similar PCO p-values. And mostly have pco corrected p < 15%. See [file of PC1 signals missed by PCO](asset/2022/0615_pc1_sig_mis_pco.txt).
+
+
+**Update following numbers!!!**
+
+-   Z(PCO) \< Z(both)
+
+    Module 1, 32, 51, 57, 66, 108, 121, 134, 154, 155, 158
+
+-   No difference
+
+    Module 4, 35, 47, 74, 90, 100, 113, 140, 150
+
+-   Z(PCO) \> Z(both)?
+
+    Module 27, 42, 65, 156
+
+-   No accurate cdf estimation due to too few signals.
+
+    Module 11, 13, 21, 30, 31, 32, 57, 65, 66, 87, 90, 100, 106, 108, 117, 121, 134, 142, 144, 147, 149, 150, 164, 155, 158
+
+Note: Module 142: Z(PCO) \< Z(PC1)? PC1 only signal with large z but missed by PCO?
+
+### 3. Compare z of uni-variate and multi-variate signals
+
+#### Goal
+
+#### Signal review
+
+#### Procedure
+
+#### Figures and observations
+
+
 
 ## Jun 08
 
-### 1. blood trait ldsc
+### 1. blood trait S-LDSC
+#### Goal
 
-PENDING.
+Test whether colocalized trans-eQTL gene modules show significant heritability enrichment in the colocalized complex trait. By S-LDSC.
 
-**Update enrichment figure error bar from se to 95% CI.**
+In this section, I looked at 29 blood traits.
+
+#### How?
+
+See [previous section](#how_to_run_s_ldsc).
+
+
+#### S-LDSC results on partitioned h2 of module 4
+
+I show here results of module 4 for 29 traits as an example. Why module 4 interesting? Because it has interesting trans-eQTLs coloc with interesting traits. And it's an example in the manuscript.
+
+
+The figure is large, so I won't show it here, but [see file here](asset/2022/0608_M4_all_traits.results.pdf).
+
+- x-axis: enrichment
+- y-axis: 29 blood traits
+- error bar: enrichment 95% CI
+- color: trait types
+- green diamond: there is coloc between module 4 and corresponding trait
+
+Compared to figures I sent on slack, here I **updated enrichment figure error bar from se to 95% CI.**
+
+
+#### Observations
+
+- Module 4 has enriched h2 in platelet-relevant traits. Consistent with trans-eQTLs loci, module enrichment, and coloc results.
 
 
 ### 2. autoimmune disease ldsc
@@ -159,7 +389,7 @@ Xuanyao:
 4. GWAS summary statistics
 
 
-#### run LDSC
+#### run LDSC {#how_to_run_s_ldsc}
 
 0. run partitioned LD scores for new defined functional category and update baseline inputs
 
