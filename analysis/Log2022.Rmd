@@ -204,9 +204,11 @@ After updating the ratio to 100, those examples still hold.
 
 ### 4. h2 enrichment heatmap
 
-![coloc heatmap](asset/2022/ukbb_blood_immune_module.pdf){width="40%"}
 
-![h2 heatmap](asset/2022/h2_enrich_all.pdf){width="40%"}
+```{r out.width="60%", fig.cap="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/ukbb_blood_immune_module.pdf", "asset/2022/h2_enrich_all.pdf"), error = FALSE)
+```
+
 
 - Add other non-blood traits?
 
