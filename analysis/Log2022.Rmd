@@ -24,6 +24,194 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+## Aug 10
+
+### 1. How many trans-eQTL Loci are cis to the trans target gene module?
+
+#### How? and result files
+
+I used two ways:
+
+- If a signal's nearest gene (cis- genes within 1Mb) is (are) in its trans- target module.
+
+- What is the distance between a signal and genes in the module? Is distance to any gene within 1Mb of the signal?
+
+**Result file:**
+
+- `/project2/xuanyao/llw/DGN_no_filter_on_mappability/postanalysis/cis_genes_in_module.txt`
+
+- `/project2/xuanyao/llw/DGN_no_filter_on_mappability/postanalysis/dis_to_genes_in_module.txt`
+
+
+#### Numerical results
+
+Among 3899 (SNP, module) signal pairs in DGN,
+
+- **The nearest gene** (or at least one gene **within 1Mb**) of trans-eQTLs in **79 (372)** (SNP, module) pairs are in the trans- target module.
+
+- trans-eQTLs in **186 (372)** (SNP, module) pairs are within **100kb (1Mb)** of at least one gene in the trans- target module.
+
+
+
+### 2. Simulation when beta has same correlation as $\Sigma$
+
+#### Goal
+
+To see if PC1 has any power in this case.
+
+
+- Signals of previous simulations have large p-values (max ~0.05), under null distribution.
+
+- The simulated null distribution has large p-values (0.001% < 1e-5, 0.01% < 1e-4, 0.1% < 1e-3).
+
+- Signals in DGN have largest p-value ~1e-7.
+
+- Why simulated null distribution has large p-values?
+
+
+#### Procedure
+
+To look into how $cor(\beta)$ affects the power, I considered the following parameter settings,
+
+1. $cor(\beta)=\Sigma$, $caus=0.3$, $N=800$
+
+2. $cor(\beta)=\Sigma$, $caus=1$, $N=800$
+
+3. $cor(\beta)=I$, $caus=1$, $N=800$
+
+4. $cor(\beta)=I$, $caus=0.3$, $N=800$ (previous setting)
+
+
+#### Observation
+
+```{r out.width="60%", fig.cap="Figure: coloc between trans and cis loci.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0810_power_b_corr.pdf"), error = FALSE)
+```
+
+- PC1 still has low power.
+
+- Using $\Sigma$ as $cor(\beta)$ doesn't matter much to power under $caus=0.3$.
+
+- Using $\Sigma$ as $cor(\beta)$ increase power under $caus=1$.
+
+- Increased $caus$ doesn't matter much to power under independent $cor(\beta)$.
+
+- Increased $caus$ increase power under $cor(\beta)=\Sigma$.
+
+
+
+### 3. Cell type analysis
+
+Aggregate p-values, Bonferroni, signals. Except M1 & M2.
+
+Run `z.sh` for M1 & M2.
+
+
+
+### 4. Re-define coloc regions
+
+Previously, a region for coloc is defined to be a region of length 100kb centered at a lead SNP. As a result, for two coloc regions, their lead SNPs can be as closest as 50kb. In most cases (only one causal variant), it doesn't make much sense to see these two regions as two different regions.
+
+Therefore, I need to merge these kind of regions. How?
+
+I focus on the regions with significant coloc. If two regions' lead SNPs are within 200kb, then these regions are counted as one.
+
+See result file: `/project2/xuanyao/llw/coloc/ukbb_coloc_blood_traits/res_coloc_reg_merged.txt`
+
+
+## Aug 03
+
+### 1. Check enriched $h^2$ of all modules in all three autoimmune diseases
+
+To look at if there is h2 enrichment of any module in three autoimmune diseases (i.e. cd, ibd, allergy), I ran S-LDSC for all modules.
+
+See [h2 enrich for cd](asset/2022/T_28067908_cd_all_modules.results.pdf), [h2 enrich for ibd](asset/2022/T_28067908_ibd_all_modules.results.pdf), [h2 enrich for allergy](asset/2022/T_29083406_Allergy_all_modules.results.pdf).
+
+
+### 2. Run Trans-PCO in DGN with keeping cell type proportion and expression pc's
+
+This is a suggestion from the committee meeting. We observed a high proportion of trans-eQTLs and blood traits. We interpreted it as the enrichment of trans-eQTLs in cell type proportion.
+
+However, since we attempted to remove the cell type proportion as covariates, the above intepretion doesn't send a good message.
+
+So, the suggestion was to not remove cell type proportion at all, and see what happens. Therefore, I need to run trans-PCO without regression out cell type proportions (and expression PC's, since they are also relevant to cell type proportions), and see how the gene modules, signals, coloc with blood traits change.
+
+Progress: running trans-PCO on DGN.
+
+
+### 3. Update eQTLGen using ratio 100 (instead of 50)
+
+#### Numbers
+
+- 108 (previously, 130) modules are used for signal detection.
+
+- There are 5610 significant (trans-eQTL, module) pairs.
+
+- There are 101 modules that have at least one trans-eQTL.
+
+- There are 1697 eQTLGen SNPs that are significant trans-eQTL for at least one module.
+
+
+#### Signal figures
+
+Updates see `/project2/xuanyao/llw/eQTLGen_est_Sigma/plot`.
+
+
+#### Update: DGN replication in eQTLGen
+
+- Out of 3899 DGN (SNP, module) signal pairs, 33 of them are also analyzed in eQTLGen.
+
+- Out of 33 DGN signals, 33 are replicated in eQTLGen.
+
+
+#### Update: eQTLGen replication in DGN
+
+- Out of 5610 eQTLGen (SNP, module) signal pairs, 5230 of them are also analyzed in DGN.
+
+- Out of 5230 eQTLGen signals, 69 are replicated in DGN.
+
+
+**Add buffer region to DGN signals to see replication**
+
+- eQTLGen specific signal (SNP, module) pairs not in DGN
+
+  Out of 5230 eQTLGen (SNP, module) signal pairs that were also analyzed by DGN,
+  
+  145 190 212 236 are near at least one DGN signal within same loci of distance:
+  
+  1e+05 2e+05 5e+05 1e+06 bp, respectively.
+  
+  4672 are not close to any DGN signals.
+
+
+- eQTLGen specific signal SNPs not in DGN
+  
+  Out of 1558 eQTLGen signal SNPs that were also analyzed by DGN,
+  
+  153 216 263 378 are near at least one DGN signal within same loci of distance:
+  
+  1e+05 2e+05 5e+05 1e+06 respectively.
+  
+  0 are not close to any DGN signals.
+
+
+- Interesting examples detected in eQTLGen but missed in DGN
+
+In [earlier section](Log2022.html#eQTLGen_replciation_in_DGN) where I used ratio 50 to see the replications, I gave a few interesting examples of signals detected in eQTLGen but missed in DGN and have more significant z-scores.
+
+After updating the ratio to 100, those examples still hold.
+
+
+### 4. h2 enrichment heatmap
+
+![coloc heatmap](asset/2022/ukbb_blood_immune_module.pdf){width="40%"}
+
+![h2 heatmap](asset/2022/h2_enrich_all.pdf){width="40%"}
+
+- Add other non-blood traits?
+
+
+
 ## June 29 & July 06
 
 ### 1. coloc between trans- and cis-QTLs
@@ -304,7 +492,7 @@ knitr::include_graphics(c("asset/2022/0615_M_all_maxz_cdf.pdf", "asset/2022/0615
 
   - I also looked at min abs z comparison for all modules.
   
-```{r out.width="40%", fig.cap="Figure: cdf and pdf of min abs z for all signal (SNP, module).", fig.show='hold',fig.align='center'}
+```{r out.width="30%", fig.cap="Figure: cdf and pdf of min abs z for all signal (SNP, module).", fig.show='hold'}
 knitr::include_graphics(c("asset/2022/0615_M_all_minz_cdf.pdf", "asset/2022/0615_M_all_minz_pdf.pdf"), error = FALSE)
 ```
 
@@ -686,7 +874,7 @@ Based on these overlaps, the updated p-values threshold for defining replication
 The p-values of these signals in eQTLGen range: ( 0 , 8.163248e-12 ). 
 
 
-#### eQTLGen replciation in DGN
+#### eQTLGen replciation in DGN {#eQTLGen_replciation_in_DGN}
 
   - Summary
   
