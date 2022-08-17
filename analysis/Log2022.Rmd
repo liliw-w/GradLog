@@ -24,6 +24,59 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+## Aug 17
+
+### 1. Merged coloc regions
+
+#### How?
+
+- If two trans-eQTL regions under previous definition have close lead SNPs within 200kb, they are merged to one region. As a result, 255 regions were merged to 179 regions.
+
+- I counted a merged region as a coloc region if any of its sub-regions has coloc signals.
+
+- I calculated the coloc proportion as #coloc/(255 or 179), instead of using those "candidate regions" as denominator as calculated previously.
+
+- I looked at 29 blood related traits, autoimmune diseases, and some other traits (including height).
+
+
+#### Figures & Observations
+
+```{r out.width="100%", fig.cap="Figure: Coloc proportion of blood traits, autoimmune diseases, and other traits, based on 255 originally defined regions and 179 merged regions. Blue: original non-merged regions. Green: merged regions. Dark: coloc.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0817_coloc_region_prop_merged_blood_immu_other.pdf"), error = FALSE)
+```
+
+
+#### Other files:
+
+- Numerical results of the figure, see
+
+  - For blood, `/project2/xuanyao/llw/coloc/ukbb_coloc_blood_traits/data/coloc_region_prop_merged.txt`.
+  
+  - For autoimmune, `/project2/xuanyao/llw/coloc/immune_traits/pmid_all/coloc_region_prop_merged.txt`.
+  
+  - For other ukbb traits, `/project2/xuanyao/llw/coloc/ukbb_coloc_more_traits/all_trait/data/coloc_region_prop_merged.txt`.
+
+
+- Detailed coloc merged region for each trait, e.g. the original coloc region was merged to which region, see
+
+  - For blood, `/project2/xuanyao/llw/coloc/ukbb_coloc_blood_traits/data/pheno*.coloc_reg_w_merged.txt`.
+  
+  - For autoimmune, `/project2/xuanyao/llw/coloc/immune_traits/pmid*/data/coloc_reg_w_merged.txt`.
+  
+  - For other ukbb traits, `/project2/xuanyao/llw/coloc/ukbb_coloc_more_traits/ukbb*/data/coloc_reg_w_merged.txt`.
+
+
+For height, modules : M153, M156, M25, M51. Loci: 3:101044144. Similar for autoimmune traits.
+
+
+#### Other updated figures
+
+```{r out.width="50%", fig.cap="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0817_reg_module_trait.pdf", "asset/2022/0817_reg_module_trait_merged.pdf"), error = FALSE)
+```
+
+
+
 ## Aug 10
 
 ### 1. How many trans-eQTL Loci are cis to the trans target gene module?
