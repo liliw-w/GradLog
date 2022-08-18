@@ -24,6 +24,11 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+```{r out.width="10%", fig.cap="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/a.pdf", "asset/2022/b.pdf"), error = FALSE)
+```
+
+
 ## Aug 17
 
 ### 1. Merged coloc regions
@@ -71,7 +76,7 @@ For height, modules : M153, M156, M25, M51. Loci: 3:101044144. Similar for autoi
 
 #### Other updated figures
 
-```{r out.width="50%", fig.cap="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types.", fig.show='hold',fig.align='center'}
+```{r out.width="40%", fig.cap="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2022/0817_reg_module_trait.pdf", "asset/2022/0817_reg_module_trait_merged.pdf"), error = FALSE)
 ```
 
