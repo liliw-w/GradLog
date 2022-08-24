@@ -24,12 +24,7 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
-```{r out.width="10%", fig.cap="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types.", fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("asset/2022/a.pdf", "asset/2022/b.pdf"), error = FALSE)
-```
-
-
-## Aug 17
+## Aug 17 & Aug 24
 
 ### 1. Merged coloc regions
 
@@ -80,6 +75,59 @@ For height, modules : M153, M156, M25, M51. Loci: 3:101044144. Similar for autoi
 knitr::include_graphics(c("asset/2022/0817_reg_module_trait.pdf", "asset/2022/0817_reg_module_trait_merged.pdf"), error = FALSE)
 ```
 
+
+## 2. S-LDSC for "other traits"
+
+- All modules for all blood traits
+  
+  `/project2/xuanyao/llw/ldsc/h2_enrich_comb/M*_blood_traits.results`
+
+- All modules for all autoimmune diseases and all other traits
+
+  `/project2/xuanyao/llw/ldsc/h2_enrich_comb/T_*_all_modules.results`
+
+
+- Figures for all
+
+  - Module based (blood traits)
+  
+  `/project2/xuanyao/llw/ldsc/h2_enrich_comb/plots/M*_all_traits.results.pdf`
+  
+  - Trait based (autoimmune diseases & other traits)
+  
+  `/project2/xuanyao/llw/ldsc/plots/T_*_all_modules.results.pdf`
+  
+  - Enrich p v.s. module v.s. trait
+  
+  `/project2/xuanyao/llw/ldsc/plots/h2_enrich_all.pdf`
+
+
+```{r out.width="60%", fig.cap="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0824_h2_enrich_w_other.pdf"), error = FALSE)
+```
+
+
+## 3. Covariates
+
+- 117 modules
+
+Use $10^{-7}$ as signal cutoff,
+
+- 2058 (trans-eQTL, module) pairs
+
+- 46 modules
+
+- 1871 unique trans-eQTLs
+
+
+```{r out.width="60%", fig.cap="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0824_sig_m.pdf"), error = FALSE)
+```
+
+
+```{r out.width="60%", fig.cap="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0824_sig_chr.pdf"), error = FALSE)
+```
 
 
 ## Aug 10
