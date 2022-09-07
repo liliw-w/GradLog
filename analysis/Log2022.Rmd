@@ -24,6 +24,75 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+
+## Aug 30 & Sep 7
+
+### 1. eQTLGen trans-eQTLs signals under MSigDB modules
+
+
+#### MSigDB modules and overlap with eQTLGen genes
+
+- Numbers
+  
+  There are 19250 genes analyzed in eQTLGen for trans- associations.
+  
+  There are 7321 (uniquely 4383) genes in MSigDB.
+  
+  And there are 6114 (uniquely 3558) MSigDB genes overlapped with eQTLGen genes.
+
+
+- Figures
+
+```{r out.width="50%", fig.cap="Figure: LEFT: Each module has overlapped genes. How many modules do every gene belongs to? RIGHT: Size of MSigDB modules and how many are eQTLGen genes?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0830_nmodule_msigdb_gene.pdf", "asset/2022/0830_msigdb_module_eqtlgen.pdf"), error = FALSE)
+```
+
+
+#### Choose z cutoff to define null snps for estimating $\Sigma$
+
+```{r out.width="70%", fig.cap="Figure: Which z-score cutoff should be chosen for defining null SNPs to estimate Sigma?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0907_msigdb_num_nullSNP.pdf"), error = FALSE)
+```
+
+Use $10^{-4}$.
+
+
+#### Ratios
+
+```{r out.width="40%", fig.cap="Figure: LEFT: module size v.s. null SNPs that can be used for Sigma estimation. RIGHT: Ratio of these two numbers for each module.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0907_plot_nullSNP_module_size_pthre1e-04.pdf", "asset/2022/0907_plot_nullSNP_module_size_pthre1e-04_ratio.pdf"), error = FALSE)
+```
+
+
+#### Genes in a module used by each SNP
+
+Why? For a pair of (SNP, module),
+
+- Remove genes in the module on the same chr as the SNP.
+
+- Remove genes in the module cross-mappable with cis genes of the SNP.
+
+Therefore, each SNP may correspond to a different gene set for a same module.
+
+
+```{r out.width="50%", fig.cap="Figure: How many genes in a module were finally used for each SNP, after removing cis genes on the same chr and removing cross map genes with the SNP's cis genes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0907_num_gene_snp_used_M1.pdf"), error = FALSE)
+```
+
+
+#### Run trans-PCO on eQTLGen sum stats under MSigDB modules
+
+Running...
+
+
+
+### 2. Annotate cis genes of signals in DGN under MSigDB modules
+
+See `/project2/xuanyao/llw/MODULES/MSigDB/postanalysis/signal_cis_genes.txt`.
+
+File columns are same as in previous signal file of DGN under co-expressed modules. The first few columns are signal info: module, chr, pos, p-value, etc. The last few columns are the SNP's nearest gene and distance, cis- genes and distance (<1Mb).
+
+
 ## Aug 17 & Aug 24
 
 ### 1. Merged coloc regions
