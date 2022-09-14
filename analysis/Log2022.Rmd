@@ -24,6 +24,74 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+## Sep 14
+
+### 1. MSigDB modules in eQTLGen
+
+#### Fix error
+
+- Weird observation
+
+  Why for some modules, so many genes were removed due to being cis genes in the module (`num_gene_snp_used_M*.pdf`)? In contrast, for eQTLGen-DGN modules, not many genes were removed due to being cis to SNPs.
+
+
+- The error (code)
+
+  Wrong genes in splitted z matrices `z.module*.chr*.txt.gz`.
+
+
+#### Updates
+
+1. Re-split z matrices for (module, chr).
+
+2. Update sizes of various gene sets for each module (`num_gene_snp_used_M*.pdf`).
+
+```{r out.width="40%", fig.cap="Figure: Updated number of genes for a gene used for trans-PCO.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0914_num_gene_snp_used_M1.pdf", "asset/2022/0914_num_gene_snp_used_M50.pdf"), error = FALSE)
+```
+
+3. Re-run trans-PCO on the updated splitted z matrices.
+
+
+#### Signals
+
+
+
+### 2. Inflation simulation to choose modules
+
+As in [previous section](#eqtlgen_inflation_simulation), I looked at how $\hat{\Sigma}$ can lead to inflated signals given different ratios of $\frac{null \ snps}{module \ size}$. I simulated ratios 1, 5, 10, 50, 100, 150. As a result, we decided to use 50 as the ratio cutoff to select modules for final signal identification.
+
+However, in the case of MSigDB modules in eQTLGen, not many modules have ratios larger than 50. So, we were interested if any ratio between 10 and 50 can still lead to non-inflated signals, so that we can save more MSigDB modules for signal identification.
+
+#### Add ratios between 10 and 50
+
+Therefore, I added a few ratios between 10 and 50, *(10, 20, 30, 40, 50, 60, 70)*, to simulations to look at if there is any p-value inflations.
+
+
+#### Results and observations
+
+- Histogram and qq-plots
+
+```{r out.width="30%", fig.cap="Figure: QQ-plots of p-values under estimated sigmas of various ratios between 10 and 50.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0914_plot_qq_Sigma_DGN_module100.rds.pdf", "asset/2022/0914_plot_qq_Sigma_DGN_module150.rds.pdf", "asset/2022/0914_plot_qq_Sigma_DGN_module166.rds.pdf"), error = FALSE)
+```
+
+- Ratio 20 is too low. There are obvious inflations.
+
+
+#### Update ratio plot
+
+In [previous section](#msig_eqtlgen_module_ratio), I looked at the ratio of each MSigDB module, by the definition of $\frac{null \ snps}{eqtlgen \ genes \ in \ module}$.
+
+I looked at a more accurate definition of the actually ratio for each module, i.e. \frac{null \ snps}{eqtlgen \ genes \ in \ module with removed cis genes}$. Because for a (SNP, module), the actually used genes are module size - gene not in eqtlgen - remove cis genes - remove cross map gene. So I thought using this new definition can increase the ratio.
+
+
+```{r out.width="70%", fig.cap="Figure: Ratio used for each (module, chr). Each dot is ratio for a chr. Red dot is the ratio for each module by #null SNPs/#genes in module.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0914_plot_nullSNP_module_size_pthre1e-04_ratio_chr.pdf"), error = FALSE)
+```
+
+The ratio increases to some extent.
+
 
 ## Aug 30 & Sep 7
 
@@ -36,7 +104,7 @@ blockquote {
   
   There are 19250 genes analyzed in eQTLGen for trans- associations.
   
-  There are 7321 (uniquely 4383) genes in MSigDB.
+  There are 7321 (uniquely 4383 ) genes in MSigDB modules.
   
   And there are 6114 (uniquely 3558) MSigDB genes overlapped with eQTLGen genes.
 
@@ -57,7 +125,7 @@ knitr::include_graphics(c("asset/2022/0907_msigdb_num_nullSNP.pdf"), error = FAL
 Use $10^{-4}$.
 
 
-#### Ratios
+#### Ratios {#msig_eqtlgen_module_ratio}
 
 ```{r out.width="40%", fig.cap="Figure: LEFT: module size v.s. null SNPs that can be used for Sigma estimation. RIGHT: Ratio of these two numbers for each module.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2022/0907_plot_nullSNP_module_size_pthre1e-04.pdf", "asset/2022/0907_plot_nullSNP_module_size_pthre1e-04_ratio.pdf"), error = FALSE)
@@ -91,6 +159,86 @@ Running...
 See `/project2/xuanyao/llw/MODULES/MSigDB/postanalysis/signal_cis_genes.txt`.
 
 File columns are same as in previous signal file of DGN under co-expressed modules. The first few columns are signal info: module, chr, pos, p-value, etc. The last few columns are the SNP's nearest gene and distance, cis- genes and distance (<1Mb).
+
+
+### 3. Add annotations to modules and SNPs (MSigDB signals in DGN)
+
+#### Result file
+
+See `/project2/xuanyao/llw/MODULES/MSigDB/postanalysis/signal_cis_genes_w_annot.txt`.
+
+**Columns explanation**:
+
+- signal: module:snp signal
+
+- annot_module: MSigDB pathway annotation of the signal module
+
+- if_gwas_catalog: if the signal SNP is in gwas catalog SNP
+
+- gwas_catalog_trait: the signal SNP's corresponding associated trait(s) in gwas catalog
+
+- if_cis_gwas_catalog: if the signal SNP is cis (within 100kb) to any gwas catalog SNP
+
+- cis_gwas_catalog_trait: the cis SNPs' corresponding associated trait(s) in gwas catalog
+
+- module
+
+- SNP
+
+- chr
+
+- pos
+
+- p
+
+- q
+
+- nearest_gene: the nearest gene of the signal SNP
+
+- nearest_dis: the distance of the signal SNP to the nearest gene
+
+- near_genes: genes near (within 1Mb) the signal SNP
+
+- near_dis: the distance of the signal SNP to the near genes
+
+- rsid
+
+- gwas_catalog_report_gene: report gene of the corresponding gwas catalog SNP of the signal snp
+
+- gwas_catalog_mapped_gene: experimental mapped genes of the corresponding gwas catalog SNP of the signal snp
+
+- cis_rsid: rsid of gwas catalog cis snps
+
+- cis_dis_gwas_catalog: distance between the signal SNP and the gwas catalog cis snps
+
+- cis_gwas_catalog_report_gene: the report genes of the gwas catalog cis snps
+
+- cis_gwas_catalog_mapped_gene: the experimental mapped genes  of the gwas catalog cis snps
+
+
+#### Signal module annotation
+
+```{r out.width="80%", fig.cap="Figure: How many genes in a module were finally used for each SNP, after removing cis genes on the same chr and removing cross map genes with the SNP's cis genes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0907_signal_module_annot.pdf"), error = FALSE)
+```
+
+
+#### Signal SNP annotation by GWAS catalog SNPs (with disease)
+
+gwas catalog association features:
+
+- SNPs are based on hg38.
+
+- Association tests: SNP, haplotype, interaction.
+
+- merged rsid.
+
+- only show lead SNPs. So I also looked at if a singal SNP is cis to any gwas catalog SNPs. (Though to be rigorous, I should have checked if they are in LD. but for simplicity, for now I just checked the distance)
+
+
+965 (SNP, module) pairs. 220 are gwas catalog significant SNPs. All are within 100kb of gwas catalog significant SNPs.
+
+**??? look into the specific pathways v.s. disease/trait ???**
 
 
 ## Aug 17 & Aug 24
@@ -1249,7 +1397,7 @@ knitr::include_graphics(c("asset/2022/0413_signal_moduleplot_nullSNP_module_size
 [m/K ratio]()
 
 
-#### Does $\hat\Sigma$ by $cor(Z^{NULL})$ lead to inflated PCO signals?
+#### Does $\hat\Sigma$ by $cor(Z^{NULL})$ lead to inflated PCO signals? {#eqtlgen_inflation_simulation}
 
 We want to check if $\hat\Sigma$ by $cor(Z^{NULL})$ really lead to extremely small pvalues and inflated PCO signals.
 
