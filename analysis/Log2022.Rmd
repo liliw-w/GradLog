@@ -328,13 +328,13 @@ knitr::include_graphics(c("asset/2022/0824_h2_enrich_w_other.pdf"), error = FALS
 
 - 117 modules
 
-Use $0.1/10^6=10^{-7}$ as signal cutoff,
+Use $0.1/10^6/117=8.5e-10$ as signal cutoff,
 
-- 2058 (trans-eQTL, module) pairs
+- 1135 (trans-eQTL, module) pairs
 
-- 46 modules
+- 21 modules
 
-- 1871 unique trans-eQTLs
+- 1028 unique trans-eQTLs
 
 
 ```{r out.width="60%", fig.cap="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait.", fig.show='hold',fig.align='center'}
