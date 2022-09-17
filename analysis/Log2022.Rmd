@@ -24,6 +24,140 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+## Sep 21
+
+### 1. h2 enrichment of (module, trait) re-ordered by clustering
+
+#### How?
+
+- Use distance of -log10(p of h2 enrich) to cluster modules and traits.
+
+- Draw -log10(p of h2 enrich) as shades.
+
+- Annotate with trait types.
+
+
+#### Figures & observations
+
+```{r out.width="50%", fig.cap="Figure: LEFT: only coloc modules. RIGHT: all modules.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0921_h2_enrich_order_by_dist.pdf", "asset/2022/0921_h2_enrich_order_by_dist_all_modules.pdf"), error = FALSE)
+```
+
+
+### 2. eQTLGen with MSigDB modules
+
+#### Relative path
+
+**All results & figures for this section are in folder `/project2/xuanyao/llw/eQTLGen/MSigDB_est_Sigma/`.**
+
+
+#### ~~Signals before removing any modules based on ratio~~
+
+- ~~Signal file: `/project2/xuanyao/llw/eQTLGen/MSigDB_est_Sigma/postanalysis/signal.txt`~~
+
+- ~~Numbers: 72696 significant (snp, module) pairs, corresponding to 9309 trans-eQTLs and all 50 modules.~~
+
+- ~~Signal distribution~~
+
+  - ~~on modules, [figure](asset/2022/0921_signal_module.pdf)~~
+  
+  - ~~on chr's, [figure](asset/2022/0921_signal_chr.pdf)~~
+  
+  - ~~on (module, chr), [figure](asset/2022/0921_signal_module_chr.pdf)~~
+
+
+- ~~Observation~~
+
+  ~~Inflated signals for the first few large module. Thus, remove these modules based on their $\frac{null \ snps}{module \ size}$ ratios. See updated signals in next section.~~
+
+
+#### Signals after removing (module, chr) with ratio < 50
+
+In [previous section](#ratio_of_module_and_chr), I gave $\frac{null \ snps}{module \ size}$ ratio for each pair of (module, chr). So here, I remove a (module, chr) from signals if its ratio < 50.
+
+
+- How many (module, chr) are saved compared to only module-based ratio?
+
+  - module-based ratio: 11 modules, 242 (module, chr) in total.
+  
+  - chr-based ratio: 253 (module, chr) in total.
+  
+  - 11 more were saved.
+
+
+- Result files
+
+  - Signal file: `/project2/xuanyao/llw/eQTLGen/MSigDB_est_Sigma/postanalysis/signal_rm_infl_ratio_50_module_chr.txt`
+  
+  - Annotation files with module pathway, gwas catalog trait, cis- genes: `/project2/xuanyao/llw/eQTLGen/MSigDB_est_Sigma/postanalysis/signal_cis_genes_w_annot_rm_infl_ratio_50_module_chr.txt`
+
+
+- Numbers: 2134 significant (snp, module) pairs, corresponding to 988 trans-eQTLs and 15 modules.
+
+- Signal distribution
+
+  - on modules, [figure](asset/2022/0921_signal_module_rm_infl_ratio_50_module_chr.pdf)
+  
+  - on chr's, [figure](asset/2022/0921_signal_chr_rm_infl_ratio_50_module_chr.pdf)
+  
+  - on (module, chr), [figure](asset/2022/0921_signal_module_chr_rm_infl_ratio_50_module_chr.pdf)
+
+```{r out.width="30%", fig.cap="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0921_signal_module_rm_infl_ratio_50_module_chr.pdf", "asset/2022/0921_signal_chr_rm_infl_ratio_50_module_chr.pdf", "asset/2022/0921_signal_module_chr_rm_infl_ratio_50_module_chr.pdf"), error = FALSE)
+```
+
+
+- Observation
+
+  Looks like the additionally added module 37 has many signals, I suspect if these signals are inflated. So I also looked at signals after removing modules based on module-based ratios, as in [previous section](#msig_eqtlgen_module_ratio) and what we used in eQTLGen with co-expression modules.
+
+
+
+#### Signals after removing modules with ratio < 50
+
+- Result files
+
+  - Signal file: `/project2/xuanyao/llw/eQTLGen/MSigDB_est_Sigma/postanalysis/signal_rm_infl_ratio_50.txt`
+  
+  - Annotation files with module pathway, gwas catalog trait, cis- genes: `/project2/xuanyao/llw/eQTLGen/MSigDB_est_Sigma/postanalysis/signal_cis_genes_w_annot_rm_infl_ratio_50.txt`
+
+
+- Numbers: 1756 significant (snp, module) pairs, corresponding to 870 trans-eQTLs and 11 modules.
+
+- Signal distribution
+
+  - on modules, [figure](asset/2022/0921_signal_module_rm_infl_ratio_50.pdf)
+  
+  - on chr's, [figure](asset/2022/0921_signal_chr_rm_infl_ratio_50.pdf)
+  
+  - on (module, chr), [figure](asset/2022/0921_signal_module_chr_rm_infl_ratio_50.pdf)
+
+```{r out.width="30%", fig.cap="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0921_signal_module_rm_infl_ratio_50.pdf", "asset/2022/0921_signal_chr_rm_infl_ratio_50.pdf", "asset/2022/0921_signal_module_chr_rm_infl_ratio_50.pdf"), error = FALSE)
+```
+
+
+### 3. eQTLGen with co-expression modules
+
+#### Relative path
+
+**All results & figures for this section are in folder `/project2/xuanyao/llw/eQTLGen/DGN_est_Sigma/`.**
+
+
+#### Annotate trans-eQTLs with gwas catalog snps and traits
+
+- Result files
+
+  - Signal file: `/project2/xuanyao/llw/eQTLGen/DGN_est_Sigma/postanalysis/signal_rm_infl_ratio_50.txt`
+  
+  - Annotation files with module pathway, gwas catalog trait, cis- genes: `/project2/xuanyao/llw/eQTLGen/DGN_est_Sigma/postanalysis/signal_cis_genes_w_annot_rm_infl_ratio_50.txt`
+
+
+- Numbers: 8116 significant (snp, module) pairs, corresponding to 2161 trans-eQTLs and 122 modules.
+
+
+
+
 ## Sep 14
 
 ### 1. MSigDB modules in eQTLGen
