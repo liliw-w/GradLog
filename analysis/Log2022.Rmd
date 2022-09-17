@@ -79,7 +79,7 @@ knitr::include_graphics(c("asset/2022/0914_plot_qq_Sigma_DGN_module100.rds.pdf",
 - Ratio 20 is too low. There are obvious inflations.
 
 
-#### Update ratio plot
+#### Update ratio plot {#ratio_of_module_and_chr}
 
 In [previous section](#msig_eqtlgen_module_ratio), I looked at the ratio of each MSigDB module, by the definition of $\frac{null \ snps}{eqtlgen \ genes \ in \ module}$.
 
