@@ -24,6 +24,86 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+## Oct 5
+
+### 1. Coloc between trans-eQLTs of MSigDB modules and blood traits
+
+We observed something interesting on one of the MSigDB module: HALLMARK_HEME_METABOLISM (module 9). The trans signals corresponding to this pathway are near genes with relevant functions with the pathway in red blood cells.
+
+Therefore, we decided to look at the colocalization of HALLMARK_HEME_METABOLISM and red blood cell traits.
+
+So, I performed colocalization of trans-eQTLs of 50 MSigDB pathways and GWAS loci of 29 blood related traits.
+
+
+#### A few numbers
+
+- 50 MSigDB pathways
+
+- 29 blood related traits
+
+- 129 trans- regions and 112 merged regions
+  
+  There are 129 regions (with the region's lead SNP as a trans-eQTL) that were used to do coloc. After merging close lead SNPs of the regions, there are 112 merged regions left.
+
+
+#### Results
+
+- Proportion of regions & merged regions that coloc with each of traits
+
+```{r out.width="80%", fig.cap="Figure: Coloc proportion of trans loci of MSig pathways and blood traits, based on 129 originally defined regions and 112 merged regions. Blue: original non-merged regions. Green: merged regions. Dark: coloc.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/1005_coloc_region_prop_merged.pdf"), error = FALSE)
+```
+
+
+(merged) coloc prop for traits
+
+See numerical result: `/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_prop_merged.txt`.
+
+
+- Number of merged regions that have coloc for each pair of (pathway, trait)
+
+```{r out.width="80%", fig.cap="Figure: Number of coloc merged regions for all pairs of (pathway, trait). Colors: Traits of various types.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/1005_reg_module_trait_merged.pdf"), error = FALSE)
+```
+
+
+See numerical result for the specific coloc regions of (pathway, trait): `/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_all_merged_annot.txt`.
+
+A few important columns:
+
+  1. Region: the coloc region defined by the lead trans-eQTLs in that region and the correpsonding module
+  
+  2. module, module_annot: the coloc module and its MSig pathway annotation
+  
+  3. Phenocode, trait: the coloc trait
+  
+  4. PP.H4.abf: coloc PP4
+  
+  5. merged_region: the merged region that the region belong to
+  
+  6. merged_region_n: the number of regions in the merged region
+
+
+See file `/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_M9_HEME.txt` for the coloc regions of only HALLMARK_HEME_METABOLISM.
+
+
+
+- Number of (not merged) regions that have coloc for each pair of (pathway, trait)
+  
+  See [non-merged coloc regions](asset/2022/1005_reg_module_trait.pdf){width="45%"}.
+
+
+#### Observations
+
+- HALLMARK_HEME_METABOLISM (module9) and red blood cells traits share many coloc loci.
+
+- Particularly more than white blood cell traits.
+
+- HALLMARK_HEME_METABOLISM (module9) and platelet traits also share a few coloc regions.
+
+
+
+
 ## Sep 21
 
 ### 1. h2 enrichment of (module, trait) re-ordered by clustering
@@ -155,6 +235,48 @@ knitr::include_graphics(c("asset/2022/0921_signal_module_rm_infl_ratio_50.pdf", 
 
 - Numbers: 8116 significant (snp, module) pairs, corresponding to 2161 trans-eQTLs and 122 modules.
 
+
+
+### 4. Re-draw #signals for (module, chr)
+
+Make chr the chromosome position.
+
+P-value as point size.
+
+```{r out.width="70%", fig.cap="Figure: Signals for (chr, module). Y-axis is chromosome postiion. X-axis is module. Each point is a signal. Point size means -logP.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/0921_signal_module_chr_pos.pdf"), error = FALSE)
+```
+
+
+### 5. Figures for eQTLGen results with co-expression modules
+
+#### Signal figure
+
+- #signals for (chr, module)
+
+  `/project2/xuanyao/llw/eQTLGen/DGN_est_Sigma/plot/signal_module_chr_rm_infl_ratio_50.pdf`
+
+- -logp for (chr postion, module)
+
+  `/project2/xuanyao/llw/eQTLGen/DGN_est_Sigma/plot/signal_module_chr_rm_infl_ratio_50_chr_pos.pdf`
+
+
+#### Cis- gene manhattan figure
+
+
+### 6. trans- coloc with cis- genes
+
+Updated numbers on merged regions,
+
+- 255 trans- loci
+
+- 179 merged trans- loci
+
+- 51 merged trans- loci coloc with at least one gene’s eQTLs
+
+- 41 merged trans- loci coloc with at least one gene’s sQTLs
+
+- Overall, 60 merged trans- loci coloc with at least one gene’s eQTL or sQTLs
 
 
 
