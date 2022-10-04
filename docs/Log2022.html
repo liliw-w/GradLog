@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-09-17
+<strong>Last updated:</strong> 2022-10-04
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0d49cac50f5facf9177437d8ca9ef31bd9c5e2b1targetblank0d49caca">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6b293721f225095bef9142e95d56826dd2721abdtargetblank6b29372a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/0d49cac50f5facf9177437d8ca9ef31bd9c5e2b1" target="_blank">0d49cac</a>
+<a href="https://github.com/liliw-w/GradLog/tree/6b293721f225095bef9142e95d56826dd2721abd" target="_blank">6b29372</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0d49cac50f5facf9177437d8ca9ef31bd9c5e2b1targetblank0d49caca"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6b293721f225095bef9142e95d56826dd2721abdtargetblank6b29372a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/0d49cac50f5facf9177437d8ca9ef31bd9c5e2b1" target="_blank">0d49cac</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/6b293721f225095bef9142e95d56826dd2721abd" target="_blank">6b29372</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -602,6 +602,9 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/week_log.Rmd
+
+Unstaged changes:
+    Modified:   .gitignore
 
 </code></pre>
 <p>
@@ -647,6 +650,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/6b293721f225095bef9142e95d56826dd2721abd/analysis/Log2022.Rmd" target="_blank">6b29372</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-10-04
+</td>
+<td>
+Add a new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/0a2db0770accbe46e6e026cd7b42a88d93c91734/docs/Log2022.html" target="_blank">0a2db07</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-09-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1701,6 +1738,96 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="oct-5" class="section level2">
+<h2>Oct 5</h2>
+<div id="coloc-between-trans-eqlts-of-msigdb-modules-and-blood-traits"
+class="section level3">
+<h3>1. Coloc between trans-eQLTs of MSigDB modules and blood traits</h3>
+<p>We observed something interesting on one of the MSigDB module:
+HALLMARK_HEME_METABOLISM (module 9). The trans signals corresponding to
+this pathway are near genes with relevant functions with the pathway in
+red blood cells.</p>
+<p>Therefore, we decided to look at the colocalization of
+HALLMARK_HEME_METABOLISM and red blood cell traits.</p>
+<p>So, I performed colocalization of trans-eQTLs of 50 MSigDB pathways
+and GWAS loci of 29 blood related traits.</p>
+<div id="a-few-numbers" class="section level4">
+<h4>A few numbers</h4>
+<ul>
+<li><p>50 MSigDB pathways</p></li>
+<li><p>29 blood related traits</p></li>
+<li><p>129 trans- regions and 112 merged regions</p>
+<p>There are 129 regions (with the region’s lead SNP as a trans-eQTL)
+that were used to do coloc. After merging close lead SNPs of the
+regions, there are 112 merged regions left.</p></li>
+</ul>
+</div>
+<div id="results" class="section level4">
+<h4>Results</h4>
+<ul>
+<li>Proportion of regions &amp; merged regions that coloc with each of
+traits</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/1005_coloc_region_prop_merged.pdf" alt="Figure: Coloc proportion of trans loci of MSig pathways and blood traits, based on 129 originally defined regions and 112 merged regions. Blue: original non-merged regions. Green: merged regions. Dark: coloc." width="80%" />
+<p class="caption">
+Figure: Coloc proportion of trans loci of MSig pathways and blood
+traits, based on 129 originally defined regions and 112 merged regions.
+Blue: original non-merged regions. Green: merged regions. Dark: coloc.
+</p>
+</div>
+<p>(merged) coloc prop for traits</p>
+<p>See numerical result:
+<code>/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_prop_merged.txt</code>.</p>
+<ul>
+<li>Number of merged regions that have coloc for each pair of (pathway,
+trait)</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/1005_reg_module_trait_merged.pdf" alt="Figure: Number of coloc merged regions for all pairs of (pathway, trait). Colors: Traits of various types." width="80%" />
+<p class="caption">
+Figure: Number of coloc merged regions for all pairs of (pathway,
+trait). Colors: Traits of various types.
+</p>
+</div>
+<p>See numerical result for the specific coloc regions of (pathway,
+trait):
+<code>/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_all_merged_annot.txt</code>.</p>
+<p>A few important columns:</p>
+<ol style="list-style-type: decimal">
+<li><p>Region: the coloc region defined by the lead trans-eQTLs in that
+region and the correpsonding module</p></li>
+<li><p>module, module_annot: the coloc module and its MSig pathway
+annotation</p></li>
+<li><p>Phenocode, trait: the coloc trait</p></li>
+<li><p>PP.H4.abf: coloc PP4</p></li>
+<li><p>merged_region: the merged region that the region belong
+to</p></li>
+<li><p>merged_region_n: the number of regions in the merged
+region</p></li>
+</ol>
+<p>See file
+<code>/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_M9_HEME.txt</code>
+for the coloc regions of only HALLMARK_HEME_METABOLISM.</p>
+<ul>
+<li><p>Number of (not merged) regions that have coloc for each pair of
+(pathway, trait)</p>
+<p>See <a href="asset/2022/1005_reg_module_trait.pdf"
+width="45%">non-merged coloc regions</a>.</p></li>
+</ul>
+</div>
+<div id="observations" class="section level4">
+<h4>Observations</h4>
+<ul>
+<li><p>HALLMARK_HEME_METABOLISM (module9) and red blood cells traits
+share many coloc loci.</p></li>
+<li><p>Particularly more than white blood cell traits.</p></li>
+<li><p>HALLMARK_HEME_METABOLISM (module9) and platelet traits also share
+a few coloc regions.</p></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="sep-21" class="section level2">
 <h2>Sep 21</h2>
 <div id="h2-enrichment-of-module-trait-re-ordered-by-clustering"
@@ -2166,6 +2293,48 @@ genes:
 2161 trans-eQTLs and 122 modules.</p></li>
 </ul>
 </div>
+</div>
+<div id="re-draw-signals-for-module-chr" class="section level3">
+<h3>4. Re-draw #signals for (module, chr)</h3>
+<p>Make chr the chromosome position.</p>
+<p>P-value as point size.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/0921_signal_module_chr_pos.pdf" alt="Figure: Signals for (chr, module). Y-axis is chromosome postiion. X-axis is module. Each point is a signal. Point size means -logP." width="70%" />
+<p class="caption">
+Figure: Signals for (chr, module). Y-axis is chromosome postiion. X-axis
+is module. Each point is a signal. Point size means -logP.
+</p>
+</div>
+</div>
+<div id="figures-for-eqtlgen-results-with-co-expression-modules"
+class="section level3">
+<h3>5. Figures for eQTLGen results with co-expression modules</h3>
+<div id="signal-figure" class="section level4">
+<h4>Signal figure</h4>
+<ul>
+<li><p>#signals for (chr, module)</p>
+<p><code>/project2/xuanyao/llw/eQTLGen/DGN_est_Sigma/plot/signal_module_chr_rm_infl_ratio_50.pdf</code></p></li>
+<li><p>-logp for (chr postion, module)</p>
+<p><code>/project2/xuanyao/llw/eQTLGen/DGN_est_Sigma/plot/signal_module_chr_rm_infl_ratio_50_chr_pos.pdf</code></p></li>
+</ul>
+</div>
+<div id="cis--gene-manhattan-figure" class="section level4">
+<h4>Cis- gene manhattan figure</h4>
+</div>
+</div>
+<div id="trans--coloc-with-cis--genes" class="section level3">
+<h3>6. trans- coloc with cis- genes</h3>
+<p>Updated numbers on merged regions,</p>
+<ul>
+<li><p>255 trans- loci</p></li>
+<li><p>179 merged trans- loci</p></li>
+<li><p>51 merged trans- loci coloc with at least one gene’s
+eQTLs</p></li>
+<li><p>41 merged trans- loci coloc with at least one gene’s
+sQTLs</p></li>
+<li><p>Overall, 60 merged trans- loci coloc with at least one gene’s
+eQTL or sQTLs</p></li>
+</ul>
 </div>
 </div>
 <div id="sep-14" class="section level2">
@@ -3847,7 +4016,7 @@ liliw-w
 <p><em>KLF14</em> relates to T1D, an autoimmune disease. Check if its
 trans- target module is enriched in T1D related pathways.</p>
 </div>
-<div id="observations" class="section level4">
+<div id="observations-1" class="section level4">
 <h4>Observations</h4>
 <ul>
 <li><p>Signal is (7:130536491, module30).</p></li>
@@ -4320,7 +4489,7 @@ liliw-w
 </div>
 </div>
 </div>
-<div id="observations-1" class="section level4">
+<div id="observations-2" class="section level4">
 <h4>Observations</h4>
 <ul>
 <li><p>PCO only signals have smaller max abs z than signals detected by
@@ -4400,7 +4569,7 @@ trait</li>
 <p>Compared to figures I sent on slack, here I <strong>updated
 enrichment figure error bar from se to 95% CI.</strong></p>
 </div>
-<div id="observations-2" class="section level4">
+<div id="observations-3" class="section level4">
 <h4>Observations</h4>
 <ul>
 <li>Module 4 has enriched h2 in platelet-relevant traits. Consistent
