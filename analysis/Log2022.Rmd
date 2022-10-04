@@ -55,9 +55,9 @@ knitr::include_graphics(c("asset/2022/1005_coloc_region_prop_merged.pdf"), error
 ```
 
 
-(merged) coloc prop for traits
+**See numerical result**:
 
-See numerical result: `/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_prop_merged.txt`.
+`/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_prop_merged.txt`.
 
 
 - Number of merged regions that have coloc for each pair of (pathway, trait)
@@ -67,9 +67,12 @@ knitr::include_graphics(c("asset/2022/1005_reg_module_trait_merged.pdf"), error 
 ```
 
 
-See numerical result for the specific coloc regions of (pathway, trait): `/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_all_merged_annot.txt`.
+**See numerical result for the specific coloc regions of (pathway, trait):**
 
-A few important columns:
+`/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_all_merged_annot.txt`.
+
+
+**A few important columns**:
 
   1. Region: the coloc region defined by the lead trans-eQTLs in that region and the correpsonding module
   
@@ -84,7 +87,7 @@ A few important columns:
   6. merged_region_n: the number of regions in the merged region
 
 
-See file `/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_M9_HEME.txt` for the coloc regions of only HALLMARK_HEME_METABOLISM.
+See file `/project2/xuanyao/llw/MODULES/MSigDB/coloc_MSigDB/ukbb_all/coloc_region_summary_M9_HEME.txt` for the **coloc regions of only HALLMARK_HEME_METABOLISM**.
 
 
 
