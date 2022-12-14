@@ -1,0 +1,285 @@
+---
+title: "Log2023"
+output:
+  workflowr::wflow_html:
+              toc: true
+              toc_depth: 4
+editor_options:
+  chunk_output_type: console
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{css style settings, echo = FALSE}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 16px;
+    border-left: 5px solid #eee;
+}
+```
+
+**If any figures don't show, try opening in Safari.**
+
+# Dec 14
+
+## Quick Summary
+
+- Run ACAT to test associations between (SNP, adjacent peak group) for mark H3K27AC.
+
+
+## 1. cQTL of peaks with cis-window of 1Mb
+
+[Waiting for Carlos to run this step for me.]
+
+
+## 2. Adjacent peaks as peak groups
+
+### How?
+
+- Sliding window of length 500kb.
+
+- Start with a peak, extend from its start position to a 500kb window, include all peaks in this window as a peak group.
+
+- Slide to next peak.
+
+
+### Look into peak groups
+
+- Number of peak groups in total
+  
+  There are 100,858 peak groups in total. 
+  
+- Number of peaks in each group
+
+```{r out.width="30%", fig.cap="How many peaks are included in the preak groups? x-axis: the number of peaks. y-axis: the number of peaks groups with the corresponding number of peaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_14_peaks_in_group_H3K27AC.pdf"), error = FALSE)
+```
+
+- For peak groups with the same number of peaks, how many peaks have cQTLs? <u>**[Here I used the 100kb cis-cQTL]**</u>
+
+```{r out.width="30%", fig.cap="Similar figure as the above, except dividing the peak groups by the number of peaks in the group that have cQTLs. Color: the number of peaks in a peak group that have cQTLs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_14_peaks_in_group_w_cqtl_H3K27AC.pdf"), error = FALSE)
+```
+
+
+- Number of peaks with/without cQTLs in each group <u>**[Here I used the 100kb cis-cQTL]**</u>
+
+```{r out.width="30%", fig.cap="How many peaks within a peak group have cQTLs? x-axis: the number of peaks with cQTLs. y-axis: the number of peak groups that have corresponding cPeaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_14_peaks_w_cqtl_in_group_H3K27AC.pdf"), error = FALSE)
+```
+
+
+## 3. Test a SNP and a group of adjacent peaks by ACAT
+
+### How?
+
+- For each peak group, test its association across all overlapped SNPs (SNPs with cis-cQTL associations with all peaks in the group). <u>**[Here I used the 100kb cis-cQTL]**</u>
+
+
+- For (peak group, SNP), test by ACAT, a method to combine p-values.
+  
+  - As a comparison, I also calculated the adjusted minp, which $=min\{p_{snp, peak_1}, \dots, p_{snp, peak_k}\} \times k$, where $k$ is the number of peaks in the group.
+
+
+- For now, I only looked at the the peaks groups,
+  
+  - where none of the peaks have significant cis-cQTLs <u>**[Here I used the 100kb cis-cQTL]**</u>
+  
+  - which have more than 1 peak
+  
+  - of mark H3K27AC
+
+
+### Results
+
+- There are 25,853 peak groups considered for association test.
+
+- 3,450 peak groups have at least one overlapped SNPs. <u>**[Here I used the 100kb cis-cQTL]**</u>
+
+So, now I have ACAT p-values (and adjusted minp) for peak groups across their overlapped SNPs. I take the minimum p-value for a peak group across the overlapped SNPs as the top p-value for the peak group.
+
+- Look at the distribution of top p-values of peak groups.
+
+```{r out.width="30%", fig.cap="LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT: Distribution of the top p-value across peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_14_plt_top_p_peak_group_H3K27AC.pdf", "asset/2022/12_14_plt_top_p_peak_group_density_H3K27AC.pdf"), error = FALSE)
+```
+
+- Look at the distribution of top p-values of peak groups on the size of peak groups and chromosomes.
+
+```{r out.width="40%", fig.cap="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf", "asset/2022/12_14_plt_top_p_peak_group_on_chr_H3K27AC.pdf"), error = FALSE)
+```
+
+- More detailed p-values for (a SNP, a peak group) for a few peak groups with significant p_acat. See more [here](asset/2022/12_14_plt_p_peak_group_H3K27AC_G56480.pdf), [here](asset/2022/12_14_plt_p_peak_group_H3K27AC_G57648.pdf), [here](asset/2022/12_14_plt_p_peak_group_H3K27AC_G57649.pdf).
+
+```{r out.width="30%", fig.cap="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_14_plt_p_peak_group_H3K27AC_G57644.pdf"), error = FALSE)
+```
+
+### Observations
+
+- Looks like p-values by ACAT are similar to p-values by minp adjusted by Bonferroni correction.
+
+- The minimum p-values are ~1e-6.
+
+- Why no significant associations?
+  
+  - I only test ~3k peak groups that have overlapped SNPs within 100kb window. So these peak groups are very close. So, combining these peaks don't have much improvement.
+  
+  - If I include more peak groups (and more SNPs) that are not so close for association test, by extending 100kb cis window to 1Mb cis window, maybe there can be more significant p-values.)
+  
+  - Will update the numbers after Carlos sends me the 1Mb cQTL associations.
+
+
+
+# Dec 09
+
+## Quick Summary
+
+- Preliminary analysis on Carlos's hQTL results.
+
+
+## Carlos's analysis and results
+
+- A few questions
+  
+  - Sample size - H3K27AC (78/72), H3K4ME1 (77), H3K4ME3 (78), H3K36ME3 (95)
+  
+  - Why use genes as phenotype for H3K36ME3 but not peaks?
+  
+  - For mark H3K36ME3, peak names used for `Counts.txt`, but gene names used for the other files. A conversion file?
+  
+  - In file `NominalPass.txt.gz`, what's the nominal p-value cutoff?
+
+
+- Data of H3K27AC, H3K4ME1, H3K4ME3, and H3K36ME3 chromatin marks
+  
+  - ChIP-seq data for H3K27AC, H3K4ME1 and H3K4ME3 chromatin marks in 75 LCLs from Yoruba invididuals was publicly available from a study by Grubert et al (2015). 
+  
+  - We produced in this study the Cut&Tag data for the H3K36ME3 chromatin mark in 96 LCLs from Yoruba individuals. 
+
+
+- Pre-processing
+  
+  - We aligned the reads from all experiments to the GRCh38 human genome using HISAT. 
+  
+  - Peak calling for the ChIP-seq data was performed with MACS2 for H3K27AC and H3K4ME1 (narrow peaks), and for H3K4ME3 (broad peaks). 
+  
+  - For each individual, quantified ChIP-seq coverage for the three marks across the peaks using featureCounts. 
+  
+  - After filtering for low coverage and low variance, we were left with 100858 peaks for H3K27AC, 182749 peaks for H3K4ME1, and 55769 peaks for H3K4ME3. 
+  
+  - H3K36ME3 is a chromatin mark associated with transcription, and it doesn’t form clearly defined peaks like the other marks. For H3K36ME3, we quantified coverage across the top expressed 14000 protein coding genes with featureCounts. The set of top expressed genes was determined with mRNA expression in LCLs from Yoruba invidivuals in RNA-seq data from the Geuvadis consortium.
+
+
+- Normalization
+  
+  Each phenotype (peaks or genes) by individuals coverage table was normalized as follows: 
+  
+  - first, for each individual we normalized the raw peak or gene counts to counts per million (CPM). 
+  
+  - Second, for each phenotype we applied the standard normalization across all individuals. 
+  
+  - Finally, for each individual we applied the rank-based inverse normal transformation across all phenotypes. 
+
+
+- hQTL calling
+  
+  - hQTLs were called using QTLTools with permutation pass and nominal pass. We used a cis window of 100 kb, and the principal components as covariates.
+
+
+- Results
+  
+  In summary, for each of H3K27AC, H3K4ME1 and H3K4ME3 we have a set of peaks. For each of the four chromatin marks (including H3K36ME3), we have the following data:
+  
+  - **Raw counts**: Phenotype (peaks or gene) by individual table of raw counts.
+  
+  - **Normalized counts**: Phenotype by individual table of qqnorm data (normalization described above)
+  
+  - **Permutation pass (top hQTL-peak/gene association)**: Table with top hQTLs for each phenotype from QTLTools in permutation pass.
+  
+  - **Nominal pass (all hQTL-peak/gene associations within 100kb windows of the peak)**: Table with hQTLs results for each SNP within 100kb of each phenotype from QTLTools in permutation pass.
+
+
+
+
+
+## Strong tag enriched peaks
+
+### Look at peaks
+
+Questions of interest:
+
+- Length of merged peaks
+
+- Number of sub-peaks merged into large peaks
+
+- Distance between peaks
+
+
+
+### Look at pQTL effects
+
+Questions of interest:
+
+- What is the proportion of peaks with pQTLs?
+
+  - For mark H3K27AC , there are 105049 peaks in total. After preprocessing, 100858 peaks are left for QTL calling. **7380 peaks ( 0.07317218 ) have significant pQTLs**, under FDR < 0.05 .
+  
+  - For mark H3K4ME1 , there are 190250 peaks in total. After preprocessing, 182749 peaks are left for QTL calling. **4383 peaks ( 0.02398372 ) have significant pQTLs**, under FDR < 0.05 .
+  
+  - For mark H3K4ME3 , there are 58171 peaks in total. After preprocessing, 55769 peaks are left for QTL calling. **3246 peaks ( 0.05820438 ) have significant pQTLs**, under FDR < 0.05 .
+
+
+```{r out.width="30%", fig.cap="Significant peaks of mark H3K27AC.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/1209_dis_sig_peak_H3K27AC.pdf"), error = FALSE)
+```
+
+
+- Length of peaks with & w.o. pQTLs
+
+```{r out.width="50%", fig.cap="Peak length of mark H3K27AC.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/1209_dis_peak_len_H3K27AC.pdf"), error = FALSE)
+```
+
+
+**- Reads count of peaks with & w.o. pQTLs**
+**- Peak enrichment (weak v.s. strong) for peaks with & w.o. pQTLs**
+
+
+
+- What is the distribution of effect sizes for peaks (with pQTL & without pQTLs)?
+  
+  - Distribution of all effects
+  
+  - Distribution of all effects on the dimension of SNPs and peaks coordinates
+  
+  - Distribution of the most significant effect for each peaks across SNPs
+
+
+~~- Distribution of peaks with pQTL & without pQTLs?~~
+
+
+- Are peaks without pQTLs more likely to be peaks with merged sub-peaks? (Can combining multiple sub-peaks in a large peak improve power than considering the large peak as a whole?)
+
+**- Are peaks without pQTLs more adjacent than peaks with pQTLs? (Can combining multiple adjacent peaks improve power than using individual peaks?)**
+
+
+
+
+## Weak tag enriched peaks
+
+
+## What type of peaks should have improved QTL calling?
+
+## How to improve?
+
+1. Combine two peaks
+
+2. Combine sub-peaks for one peak
+
+
