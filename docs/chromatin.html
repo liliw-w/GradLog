@@ -11,7 +11,7 @@
 
 
 
-<title>Overview of Chromatin Accessibiloity</title>
+<title>Overview of Chromatin Accessibility</title>
 
 <script src="site_libs/header-attrs-2.14.2/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -401,7 +401,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Overview of Chromatin Accessibiloity</h1>
+<h1 class="title toc-ignore">Overview of Chromatin Accessibility</h1>
 
 </div>
 
@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-11-21
+<strong>Last updated:</strong> 2022-12-13
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree86b930d0cb530fbb52457ddf1204e34c6a96600dtargetblank86b930da">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb4a686861792d873ddecf9297235da455aad759dtargetblankb4a6868a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/86b930d0cb530fbb52457ddf1204e34c6a96600d" target="_blank">86b930d</a>
+<a href="https://github.com/liliw-w/GradLog/tree/b4a686861792d873ddecf9297235da455aad759d" target="_blank">b4a6868</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree86b930d0cb530fbb52457ddf1204e34c6a96600dtargetblank86b930da"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb4a686861792d873ddecf9297235da455aad759dtargetblankb4a6868a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/86b930d0cb530fbb52457ddf1204e34c6a96600d" target="_blank">86b930d</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/b4a686861792d873ddecf9297235da455aad759d" target="_blank">b4a6868</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -652,6 +652,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/b4a686861792d873ddecf9297235da455aad759d/analysis/chromatin.Rmd" target="_blank">b4a6868</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+<td>
+Chromatin review
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/34704ea6cbda8a773a5baca24a2add12393de8eb/docs/chromatin.html" target="_blank">34704ea</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-11-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/86b930d0cb530fbb52457ddf1204e34c6a96600d/analysis/chromatin.Rmd" target="_blank">86b930d</a>
 </td>
 <td>
@@ -683,8 +717,343 @@ blockquote {
 Safari.</strong></p>
 <div id="basics" class="section level1">
 <h1>Basics</h1>
-<div id="chromatin-accessibility" class="section level2">
-<h2>Chromatin accessibility</h2>
+<div id="chromatin-structure" class="section level2">
+<h2><a href="https://en.wikipedia.org/wiki/Chromatin">Chromatin
+structure</a></h2>
+<ul>
+<li><p><strong>Chromatin</strong> is a complex of DNA and protein found
+in eukaryotic cells.</p>
+<ul>
+<li><p>The primary function is to package long DNA molecules into more
+compact, denser structures.</p></li>
+<li><p>Histones prevent DNA from becoming tangled and protect it from
+DNA damage. In addition, histones play important roles in gene
+regulation and DNA replication.</p></li>
+</ul></li>
+<li><p>Three levels of chromatin organization &amp; The overall
+structure of the chromatin network further depends on the stage of the
+cell cycle.</p>
+<center>
+<div class="figure">
+<img src="asset/2023/Chromatin_Structures.png" style="width:120.0%"
+alt="" />
+<p class="caption">Chromatin Structures</p>
+</div>
+</center></li>
+<li><p>The basic unit is a <strong>nucleosome</strong>: histone wound by
+DNA.</p>
+<center>
+<div class="figure">
+<img src="asset/2023/Nucleosome_structure.png" style="width:80.0%"
+alt="" />
+<p class="caption">Nucleosome Structures</p>
+</div>
+</center>
+<ul>
+<li><p>The primary protein components of chromatin (DNA packaging
+protein) are <strong><a
+href="https://en.wikipedia.org/wiki/Histone#Histone_modification">histones</a></strong>.</p>
+<ul>
+<li>There are five major families of histones which are designated H1/H5
+(linker histones), H2A, H2B, H3, and H4 (core histones).</li>
+</ul></li>
+<li><p>An octamer of two sets of four histone cores (Histone H2A,
+Histone H2B, Histone H3, and Histone H4) bind to DNA and function as
+“anchors” around which the strands are wound.</p></li>
+<li><p>The tight wrapping of DNA around histones is to a large degree a
+result of electrostatic attraction between the positively charged
+histones and negatively charged phosphate backbone of DNA.</p></li>
+</ul></li>
+</ul>
+</div>
+<div
+id="chromatin-accessibilitycompaction---alter-the-local-chromatin-structure"
+class="section level2">
+<h2>Chromatin accessibility/compaction - Alter the local chromatin
+structure</h2>
+<div id="how-is-it-related-with-gene-regulation" class="section level3">
+<h3>How is it related with gene regulation?</h3>
+<ul>
+<li><p>By altering the level of chromatin compaction, e.g. structurally
+loose to allow access to RNA and DNA polymerases that transcribe and
+replicate the DNA.</p></li>
+<li><p>Open chromatin regions (OCRs) are nucleosome-depleted regions
+that can be bound by protein factors.</p></li>
+</ul>
+</div>
+<div id="change-chromatin-accessibility-by-histone-modification"
+class="section level3">
+<h3>Change chromatin accessibility by histone modification</h3>
+<ul>
+<li><p>The chromatin state, whether it’s open or closed, is controlled
+by epigenetic modifications (to the histone, or to the DNA
+itself).</p></li>
+<li><p>Histone proteins are the basic packers and arrangers of chromatin
+and can be modified by various post-translational modifications to
+<strong>alter chromatin packing</strong> and their interaction with DNA
+and nuclear proteins (histone modification).</p></li>
+<li><p>The H3 and H4 histones have long tails protruding from the
+nucleosome, which can be covalently modified at several places.
+<strong>Modifications of the tail include</strong>,</p>
+<ul>
+<li><p>methylation</p></li>
+<li><p>acetylation</p></li>
+<li><p>phosphorylation</p></li>
+<li><p>ubiquitination</p></li>
+<li><p>SUMOylation</p></li>
+<li><p>citrullination</p></li>
+<li><p>ADP-ribosylation</p></li>
+</ul>
+<p>(The core of the histones H2A and H2B can also be modified.)</p></li>
+<li><p>Combinations of modifications, known as <strong>histone
+marks</strong>. The common nomenclature of histone modifications is,</p>
+<ul>
+<li><p>The name of the histone (e.g., H3)</p></li>
+<li><p>The single-letter amino acid abbreviation (e.g., K for
+Lysine)</p></li>
+<li><p>the amino acid position in the protein</p></li>
+<li><p>The type of modification (Me: methyl, P: phosphate, Ac: acetyl,
+Ub: ubiquitin)</p></li>
+<li><p>The number of modifications (only Me is known to occur in more
+than one copy per residue. 1, 2 or 3 is mono-, di- or
+tri-methylation)</p></li>
+</ul>
+<p>So H3K4me1 denotes the monomethylation of the 4th residue (a lysine)
+from the start (i.e., the N-terminal) of the H3 protein.</p></li>
+<li><p>Example of histonen modifications</p>
+<ul>
+<li><p>Methylation of arginine or lysine residues</p>
+<p>Methylation can affect how other protein such as transcription
+factors interact with the nucleosomes.</p></li>
+<li><p>Acetylation of lysine</p>
+<p>Lysine acetylation eliminates a positive charge on lysine thereby
+weakening the electrostatic attraction between histone and DNA resulting
+in partial unwinding of the DNA making it more accessible for gene
+expression.</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div
+id="methods-to-profile-chromatin-accessibility-in-open-chromatin-regions"
+class="section level2">
+<h2>Methods to profile chromatin accessibility in open chromatin
+regions</h2>
+<ul>
+<li><p>chromatin accessibility assays that directly (DNase-seq,
+FAIRE-seq and ATAC-seq) isolate accessible locations of a
+genome</p></li>
+<li><p>in contrast to histone mark ChIP-seq, where such effects must be
+inferred by presence or absence of overlapping histone tail
+modifications.</p></li>
+</ul>
+<div id="atac-seq" class="section level3">
+<h3>ATAC-seq</h3>
+<p>(Assay for Transposable Accessible Chromatin sequencing) uses the Tn5
+transposase to integrate (synthetic) transposons into accessible regions
+of the genome consequentially highlighting the localisation of
+nucleosomes and transcription factors across the genome</p>
+</div>
+<div id="dnase-seq" class="section level3">
+<h3>DNase-seq</h3>
+<p>(DNase I hypersensitive sites Sequencing) uses the sensitivity of
+accessible regions in the genome to the DNase I enzyme to map open or
+accessible regions in the genome.</p>
+</div>
+<div id="chip-seq-to-assay-histone-modifications"
+class="section level3">
+<h3><a
+href="https://www.youtube.com/watch?v=nkWGmaYRues&amp;t=144s">ChIP-seq</a>
+to assay histone modifications</h3>
+<ul>
+<li><p>Identify the binding sites for any DNA-associated proteins of
+interest.</p>
+<ul>
+<li>Applied to the set of ChIP-able proteins and modifications, such as
+transcription factors, polymerases and transcriptional machinery,
+structural proteins, protein modifications, and DNA modifications.</li>
+</ul></li>
+<li><p>It is primarily used to determine how transcription factors and
+other chromatin-associated proteins influence phenotype-affecting
+mechanisms.</p></li>
+</ul>
+<p><strong>Types</strong></p>
+<ul>
+<li><p>TF ChIP-seq: sonication to fragment nucleosome, antibody against
+TF</p></li>
+<li><p>Histone mark ChIP-seq: sonication or MNase to fragment
+nucleosome, antibody against histone modification</p></li>
+</ul>
+<center>
+<div class="figure">
+<img src="asset/2023/chip_seq_histone_mark.png" style="width:50.0%"
+alt="" />
+<p class="caption">Chromatin Structures</p>
+</div>
+</center>
+</div>
+</div>
+</div>
+<div id="chromatin-accesibility-analysis" class="section level1">
+<h1>Chromatin accesibility analysis</h1>
+<div id="bulk-chromatin-accessibility-data" class="section level2">
+<h2>Bulk chromatin accessibility data</h2>
+<center>
+<div class="figure">
+<img src="asset/2023/common_task_bulk.png" style="width:80.0%" alt="" />
+<p class="caption">Overview of common tasks in the analysis of bulk
+chromatin accessibility data</p>
+</div>
+</center>
+</div>
+<div id="scatac-seq-data" class="section level2">
+<h2>scATAC-seq data</h2>
+<center>
+<div class="figure">
+<img src="asset/2023/common_task_sc.png" style="width:80.0%" alt="" />
+<p class="caption">Overview of common tasks in the analysis of
+scATAC-seq data</p>
+</div>
+</center>
+</div>
+</div>
+<div id="peak-calling-detect-regions-of-enrichment"
+class="section level1">
+<h1>Peak calling: detect regions of enrichment</h1>
+<center>
+<div class="figure">
+<img src="asset/2023/peak_calling.png" style="width:80.0%" alt="" />
+<p class="caption">Chromatin Structures</p>
+</div>
+</center>
+<ul>
+<li><p>The most widely used tool for peak calling is MACS2, which is
+also the default in the ENCODE ATAC-seq pipeline.</p></li>
+<li><p>Other general and method-specific peak callers exist, for
+example, ZINBA (general), HMMRATAC and Genrich (ATAC-seq), and F-seq and
+Hotspot (DNase-seq and ATAC-seq).</p></li>
+</ul>
+<div id="basics-1" class="section level2">
+<h2>Basics</h2>
+<ul>
+<li><p>3 prime end &amp; 5 prime end</p>
+<p>A nucleic acid strand is inherently directional, and the “5 prime
+end” has a free hydroxyl (or phosphate) on a 5’ carbon and the “3 prime
+end” has a free hydroxyl (or phosphate) on a 3’ carbon.</p></li>
+<li><p>tag</p>
+<p>a tag sequence read</p></li>
+<li><p>tag seq v.s. standard RNA-seq</p>
+<ul>
+<li><p>Standard RNA-seq: generate sequencing libraries for full-length
+mRNAs</p></li>
+<li><p>TagSeq: only generate a single fragment from the 3’/5’/paired end
+of each transcript (a tag read) and quantifies gene expression by tag
+abundance</p></li>
+</ul></li>
+<li><p>paired-end tag (ditags) &amp; single-end tag</p>
+<ul>
+<li><p>Paired-end tags (PET) are the short sequences at the 5’ and 3’
+ends of a DNA fragment, which are unique enough that they
+(theoretically) exist together only once in a genome, therefore making
+the sequence of the DNA in between them available upon search (if
+full-genome sequence data is available) or upon further sequencing
+(since tag sites are unique enough to serve as primer annealing
+sites).</p></li>
+<li><p>a PET “represents” a larger fragment of genomic</p></li>
+<li><p>Since the tag sequences are short, individual PETs are well
+suited for next-generation sequencing that has short read lengths and
+higher throughput.</p></li>
+<li><p>increased specificity when aligning back to the genome compared
+to single tags, which involves only one end of the DNA
+fragment.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="how-macs2-call-peaks-specifically" class="section level2">
+<h2>How MACS2 call peaks specifically?</h2>
+<p>[Ref: Shirley Liu, et al. Genome Biology, 2008.]</p>
+<div id="steps" class="section level3">
+<h3><a
+href="https://hbctraining.github.io/Intro-to-ChIPseq/lessons/05_peak_calling_macs.html">Steps</a></h3>
+<ul>
+<li><p>Determine the site length d</p>
+<blockquote>
+<p>The distance between the modes of the two peaks in the alignment is
+defined as ‘d’ and represents the estimated fragment length.</p>
+</blockquote></li>
+<li><p>Define sliding windows</p>
+<blockquote>
+<p>After MACS shifts every tag by d/2, it then slides across the genome
+using a window size of 2d to find candidate peaks.</p>
+</blockquote></li>
+<li><p>Identify windows with significant tag enrichment</p>
+<blockquote>
+<p>A region is considered to have a significant tag enrichment if the
+p-value &lt; 10e-5 (this can be changed from the default). This is a
+Poisson distribution p-value based on <span
+class="math inline">\(\lambda\)</span>.</p>
+</blockquote></li>
+<li><p>Merge overlapping peaks with enriched tags</p>
+<blockquote>
+<p>Overlapping enriched peaks are merged, and each tag position is
+extended ‘d’ bases from its center.</p>
+</blockquote></li>
+<li><p>Correct for multiple testing</p>
+<blockquote>
+<p>in MACS2, p-values are now corrected for multiple comparison using
+the Benjamini-Hochberg correction.</p>
+</blockquote></li>
+<li><p>MACS2 was originally designed for ChIP–seq data, specific
+parameters (for example, –nomodel) need to be used for peak calling in
+ATAC-seq or DNase-seq data.</p></li>
+<li><p>MACS2 is a model-based algorithm originally designed for ChIP–seq
+data analysis. It implements a dynamic Poisson distribution to capture
+local background biases in the genome and to effectively detect
+peaks</p></li>
+</ul>
+<pre><code>significantly enriched tags in the ChIP sample relative to the control, 
+
+although a small ChIP peak region often contains too few control tags to robustly estimate the background biases.</code></pre>
+<pre><code>ChIP-seq analysis algorithms have specialized in identifying one of two types of enrichment: broad domains (i.e. histone modifications that cover entire gene bodies) or narrow/sharp peaks (i.e. a transcription factor bound to an enhancer).</code></pre>
+<ul>
+<li><p>control samples: to estimate the background biases</p></li>
+<li><p>paired-end</p></li>
+<li><p>shift-extend (for single-end tag)</p></li>
+</ul>
+</div>
+<div
+id="construction-of-a-common-set-of-features-across-different-samples"
+class="section level3">
+<h3>Construction of a common set of features across different
+samples</h3>
+<p>To be able to compare samples with each other in downstream
+steps.</p>
+<ul>
+<li><p>Construct a consensus peak file</p>
+<ul>
+<li>comprises the set of peaks that are shared between samples, and in
+which the start and end location of overlapping peaks are adjusted
+(through the so-called merging of peaks) to thus yield one consensus
+peak</li>
+</ul></li>
+<li><p>A predefined set of regions</p></li>
+<li><p>A binned genome</p></li>
+<li><p>Peak calling is a computational method used to identify areas in
+the genome that have been enriched with aligned reads.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="thoughts" class="section level1">
+<h1>Thoughts</h1>
+<div id="peak-calling-using-macs2" class="section level2">
+<h2>Peak calling using MACS2</h2>
+<ol style="list-style-type: decimal">
+<li><p>How often that a called peak has multiple sub-peaks?</p></li>
+<li><p>Even when sub-peaks exist, how to determine the “sub-regions” to
+apply multivariate association?</p></li>
+<li><p>What’s the power improvement?</p></li>
+</ol>
 <div id="refs">
 
 </div>
