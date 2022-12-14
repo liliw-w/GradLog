@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Log2023</title>
+
+<script src="site_libs/header-attrs-2.14.2/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">GradLog</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Trans.html">Multi PC asso test for trans</a>
+    </li>
+    <li>
+      <a href="Log2020.html">Log2020</a>
+    </li>
+    <li>
+      <a href="Log2021.html">Log2021</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/liliw-w/GradLog">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Log2023</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2022-12-13
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>GradLog/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201014code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20201014)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201014code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201014)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef28308c60221d21a3fadd6691b79480fd5729a17targetblankf28308ca">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/liliw-w/GradLog/tree/f28308c60221d21a3fadd6691b79480fd5729a17" target="_blank">f28308c</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef28308c60221d21a3fadd6691b79480fd5729a17targetblankf28308ca"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/liliw-w/GradLog/tree/f28308c60221d21a3fadd6691b79480fd5729a17" target="_blank">f28308c</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/.DS_Store
+    Ignored:    analysis/.Rhistory
+
+Untracked files:
+    Untracked:  analysis/week_log.Rmd
+
+Unstaged changes:
+    Modified:   analysis/chromatin.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/Log2023_a_fresh_start.Rmd</code>)
+and HTML (<code>docs/Log2023_a_fresh_start.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/f28308c60221d21a3fadd6691b79480fd5729a17/analysis/Log2023_a_fresh_start.Rmd" target="_blank">f28308c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+<td>
+Add a new wekk
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<style type="text/css">
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 16px;
+    border-left: 5px solid #eee;
+}
+</style>
+<p><strong>If any figures don’t show, try opening in
+Safari.</strong></p>
+<div id="dec-14" class="section level1">
+<h1>Dec 14</h1>
+<div id="quick-summary" class="section level2">
+<h2>Quick Summary</h2>
+<ul>
+<li>Run ACAT to test associations between (SNP, adjacent peak group) for
+mark H3K27AC.</li>
+</ul>
+</div>
+<div id="cqtl-of-peaks-with-cis-window-of-1mb" class="section level2">
+<h2>1. cQTL of peaks with cis-window of 1Mb</h2>
+<p>[Waiting for Carlos to run this step for me.]</p>
+</div>
+<div id="adjacent-peaks-as-peak-groups" class="section level2">
+<h2>2. Adjacent peaks as peak groups</h2>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>Sliding window of length 500kb.</p></li>
+<li><p>Start with a peak, extend from its start position to a 500kb
+window, include all peaks in this window as a peak group.</p></li>
+<li><p>Slide to next peak.</p></li>
+</ul>
+</div>
+<div id="look-into-peak-groups" class="section level3">
+<h3>Look into peak groups</h3>
+<ul>
+<li><p>Number of peak groups in total</p>
+<p>There are 100,858 peak groups in total.</p></li>
+<li><p>Number of peaks in each group</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/12_14_peaks_in_group_H3K27AC.pdf" alt="How many peaks are included in the preak groups? x-axis: the number of peaks. y-axis: the number of peaks groups with the corresponding number of peaks." width="30%" />
+<p class="caption">
+How many peaks are included in the preak groups? x-axis: the number of
+peaks. y-axis: the number of peaks groups with the corresponding number
+of peaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_peaks_in_group_H3K27AC">
+Past versions of 12_14_peaks_in_group_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-12_14_peaks_in_group_H3K27AC" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_peaks_in_group_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>For peak groups with the same number of peaks, how many peaks have
+cQTLs? <u><strong>[Here I used the 100kb cis-cQTL]</strong></u></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/12_14_peaks_in_group_w_cqtl_H3K27AC.pdf" alt="Similar figure as the above, except dividing the peak groups by the number of peaks in the group that have cQTLs. Color: the number of peaks in a peak group that have cQTLs." width="30%" />
+<p class="caption">
+Similar figure as the above, except dividing the peak groups by the
+number of peaks in the group that have cQTLs. Color: the number of peaks
+in a peak group that have cQTLs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_peaks_in_group_w_cqtl_H3K27AC">
+Past versions of 12_14_peaks_in_group_w_cqtl_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-12_14_peaks_in_group_w_cqtl_H3K27AC" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_peaks_in_group_w_cqtl_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Number of peaks with/without cQTLs in each group <u><strong>[Here I
+used the 100kb cis-cQTL]</strong></u></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/12_14_peaks_w_cqtl_in_group_H3K27AC.pdf" alt="How many peaks within a peak group have cQTLs? x-axis: the number of peaks with cQTLs. y-axis: the number of peak groups that have corresponding cPeaks." width="30%" />
+<p class="caption">
+How many peaks within a peak group have cQTLs? x-axis: the number of
+peaks with cQTLs. y-axis: the number of peak groups that have
+corresponding cPeaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_peaks_w_cqtl_in_group_H3K27AC">
+Past versions of 12_14_peaks_w_cqtl_in_group_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-12_14_peaks_w_cqtl_in_group_H3K27AC" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_peaks_w_cqtl_in_group_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="test-a-snp-and-a-group-of-adjacent-peaks-by-acat"
+class="section level2">
+<h2>3. Test a SNP and a group of adjacent peaks by ACAT</h2>
+<div id="how-1" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>For each peak group, test its association across all overlapped
+SNPs (SNPs with cis-cQTL associations with all peaks in the group).
+<u><strong>[Here I used the 100kb cis-cQTL]</strong></u></p></li>
+<li><p>For (peak group, SNP), test by ACAT, a method to combine
+p-values.</p>
+<ul>
+<li>As a comparison, I also calculated the adjusted minp, which <span
+class="math inline">\(=min\{p_{snp, peak_1}, \dots, p_{snp, peak_k}\}
+\times k\)</span>, where <span class="math inline">\(k\)</span> is the
+number of peaks in the group.</li>
+</ul></li>
+<li><p>For now, I only looked at the the peaks groups,</p>
+<ul>
+<li><p>where none of the peaks have significant cis-cQTLs
+<u><strong>[Here I used the 100kb cis-cQTL]</strong></u></p></li>
+<li><p>which have more than 1 peak</p></li>
+<li><p>of mark H3K27AC</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<ul>
+<li><p>There are 25,853 peak groups considered for association
+test.</p></li>
+<li><p>3,450 peak groups have at least one overlapped SNPs.
+<u><strong>[Here I used the 100kb cis-cQTL]</strong></u></p></li>
+</ul>
+<p>So, now I have ACAT p-values (and adjusted minp) for peak groups
+across their overlapped SNPs. I take the minimum p-value for a peak
+group across the overlapped SNPs as the top p-value for the peak
+group.</p>
+<ul>
+<li>Look at the distribution of top p-values of peak groups.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2022/12_14_plt_top_p_peak_group_H3K27AC.pdf" alt="LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT: Distribution of the top p-value across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_plt_top_p_peak_group_H3K27AC">
+Past versions of 12_14_plt_top_p_peak_group_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-12_14_plt_top_p_peak_group_H3K27AC" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_plt_top_p_peak_group_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2022/12_14_plt_top_p_peak_group_density_H3K27AC.pdf" alt="LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT: Distribution of the top p-value across peak groups." width="30%" />
+<p class="caption">
+LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT:
+Distribution of the top p-value across peak groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_plt_top_p_peak_group_density_H3K27AC">
+Past versions of 12_14_plt_top_p_peak_group_density_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-12_14_plt_top_p_peak_group_density_H3K27AC"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_plt_top_p_peak_group_density_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Look at the distribution of top p-values of peak groups on the size
+of peak groups and chromosomes.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2022/12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC">
+Past versions of 12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2022/12_14_plt_top_p_peak_group_on_chr_H3K27AC.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" />
+<p class="caption">
+Distribution of the top p-value across peak groups on, LEFT: the groups
+with different number of peaks. RIGHT: chromosomes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_plt_top_p_peak_group_on_chr_H3K27AC">
+Past versions of 12_14_plt_top_p_peak_group_on_chr_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-12_14_plt_top_p_peak_group_on_chr_H3K27AC"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_plt_top_p_peak_group_on_chr_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>More detailed p-values for (a SNP, a peak group) for a few peak
+groups with significant p_acat. See more <a
+href="asset/2022/12_14_plt_p_peak_group_H3K27AC_G56480.pdf">here</a>, <a
+href="asset/2022/12_14_plt_p_peak_group_H3K27AC_G57648.pdf">here</a>, <a
+href="asset/2022/12_14_plt_p_peak_group_H3K27AC_G57649.pdf">here</a>.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/12_14_plt_p_peak_group_H3K27AC_G57644.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="30%" />
+<p class="caption">
+Distribution of the top p-value across peak groups on, LEFT: the groups
+with different number of peaks. RIGHT: chromosomes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_plt_p_peak_group_H3K27AC_G57644">
+Past versions of 12_14_plt_p_peak_group_H3K27AC_G57644.pdf
+</button>
+</p>
+<div id="fig-12_14_plt_p_peak_group_H3K27AC_G57644" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/12_14_plt_p_peak_group_H3K27AC_G57644.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="observations" class="section level3">
+<h3>Observations</h3>
+<ul>
+<li><p>Looks like p-values by ACAT are similar to p-values by minp
+adjusted by Bonferroni correction.</p></li>
+<li><p>The minimum p-values are ~1e-6.</p></li>
+<li><p>Why no significant associations?</p>
+<ul>
+<li><p>I only test ~3k peak groups that have overlapped SNPs within
+100kb window. So these peak groups are very close. So, combining these
+peaks don’t have much improvement.</p></li>
+<li><p>If I include more peak groups (and more SNPs) that are not so
+close for association test, by extending 100kb cis window to 1Mb cis
+window, maybe there can be more significant p-values.)</p></li>
+<li><p>Will update the numbers after Carlos sends me the 1Mb cQTL
+associations.</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="dec-09" class="section level1">
+<h1>Dec 09</h1>
+<div id="quick-summary-1" class="section level2">
+<h2>Quick Summary</h2>
+<ul>
+<li>Preliminary analysis on Carlos’s hQTL results.</li>
+</ul>
+</div>
+<div id="carloss-analysis-and-results" class="section level2">
+<h2>Carlos’s analysis and results</h2>
+<ul>
+<li><p>A few questions</p>
+<ul>
+<li><p>Sample size - H3K27AC (78/72), H3K4ME1 (77), H3K4ME3 (78),
+H3K36ME3 (95)</p></li>
+<li><p>Why use genes as phenotype for H3K36ME3 but not peaks?</p></li>
+<li><p>For mark H3K36ME3, peak names used for <code>Counts.txt</code>,
+but gene names used for the other files. A conversion file?</p></li>
+<li><p>In file <code>NominalPass.txt.gz</code>, what’s the nominal
+p-value cutoff?</p></li>
+</ul></li>
+<li><p>Data of H3K27AC, H3K4ME1, H3K4ME3, and H3K36ME3 chromatin
+marks</p>
+<ul>
+<li><p>ChIP-seq data for H3K27AC, H3K4ME1 and H3K4ME3 chromatin marks in
+75 LCLs from Yoruba invididuals was publicly available from a study by
+Grubert et al (2015).</p></li>
+<li><p>We produced in this study the Cut&amp;Tag data for the H3K36ME3
+chromatin mark in 96 LCLs from Yoruba individuals.</p></li>
+</ul></li>
+<li><p>Pre-processing</p>
+<ul>
+<li><p>We aligned the reads from all experiments to the GRCh38 human
+genome using HISAT.</p></li>
+<li><p>Peak calling for the ChIP-seq data was performed with MACS2 for
+H3K27AC and H3K4ME1 (narrow peaks), and for H3K4ME3 (broad
+peaks).</p></li>
+<li><p>For each individual, quantified ChIP-seq coverage for the three
+marks across the peaks using featureCounts.</p></li>
+<li><p>After filtering for low coverage and low variance, we were left
+with 100858 peaks for H3K27AC, 182749 peaks for H3K4ME1, and 55769 peaks
+for H3K4ME3.</p></li>
+<li><p>H3K36ME3 is a chromatin mark associated with transcription, and
+it doesn’t form clearly defined peaks like the other marks. For
+H3K36ME3, we quantified coverage across the top expressed 14000 protein
+coding genes with featureCounts. The set of top expressed genes was
+determined with mRNA expression in LCLs from Yoruba invidivuals in
+RNA-seq data from the Geuvadis consortium.</p></li>
+</ul></li>
+<li><p>Normalization</p>
+<p>Each phenotype (peaks or genes) by individuals coverage table was
+normalized as follows:</p>
+<ul>
+<li><p>first, for each individual we normalized the raw peak or gene
+counts to counts per million (CPM).</p></li>
+<li><p>Second, for each phenotype we applied the standard normalization
+across all individuals.</p></li>
+<li><p>Finally, for each individual we applied the rank-based inverse
+normal transformation across all phenotypes.</p></li>
+</ul></li>
+<li><p>hQTL calling</p>
+<ul>
+<li>hQTLs were called using QTLTools with permutation pass and nominal
+pass. We used a cis window of 100 kb, and the principal components as
+covariates.</li>
+</ul></li>
+<li><p>Results</p>
+<p>In summary, for each of H3K27AC, H3K4ME1 and H3K4ME3 we have a set of
+peaks. For each of the four chromatin marks (including H3K36ME3), we
+have the following data:</p>
+<ul>
+<li><p><strong>Raw counts</strong>: Phenotype (peaks or gene) by
+individual table of raw counts.</p></li>
+<li><p><strong>Normalized counts</strong>: Phenotype by individual table
+of qqnorm data (normalization described above)</p></li>
+<li><p><strong>Permutation pass (top hQTL-peak/gene
+association)</strong>: Table with top hQTLs for each phenotype from
+QTLTools in permutation pass.</p></li>
+<li><p><strong>Nominal pass (all hQTL-peak/gene associations within
+100kb windows of the peak)</strong>: Table with hQTLs results for each
+SNP within 100kb of each phenotype from QTLTools in permutation
+pass.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="strong-tag-enriched-peaks" class="section level2">
+<h2>Strong tag enriched peaks</h2>
+<div id="look-at-peaks" class="section level3">
+<h3>Look at peaks</h3>
+<p>Questions of interest:</p>
+<ul>
+<li><p>Length of merged peaks</p></li>
+<li><p>Number of sub-peaks merged into large peaks</p></li>
+<li><p>Distance between peaks</p></li>
+</ul>
+</div>
+<div id="look-at-pqtl-effects" class="section level3">
+<h3>Look at pQTL effects</h3>
+<p>Questions of interest:</p>
+<ul>
+<li><p>What is the proportion of peaks with pQTLs?</p>
+<ul>
+<li><p>For mark H3K27AC , there are 105049 peaks in total. After
+preprocessing, 100858 peaks are left for QTL calling. <strong>7380 peaks
+( 0.07317218 ) have significant pQTLs</strong>, under FDR &lt; 0.05
+.</p></li>
+<li><p>For mark H3K4ME1 , there are 190250 peaks in total. After
+preprocessing, 182749 peaks are left for QTL calling. <strong>4383 peaks
+( 0.02398372 ) have significant pQTLs</strong>, under FDR &lt; 0.05
+.</p></li>
+<li><p>For mark H3K4ME3 , there are 58171 peaks in total. After
+preprocessing, 55769 peaks are left for QTL calling. <strong>3246 peaks
+( 0.05820438 ) have significant pQTLs</strong>, under FDR &lt; 0.05
+.</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/1209_dis_sig_peak_H3K27AC.pdf" alt="Significant peaks of mark H3K27AC." width="30%" />
+<p class="caption">
+Significant peaks of mark H3K27AC.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1209_dis_sig_peak_H3K27AC">
+Past versions of 1209_dis_sig_peak_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-1209_dis_sig_peak_H3K27AC" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/1209_dis_sig_peak_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Length of peaks with &amp; w.o. pQTLs</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2022/1209_dis_peak_len_H3K27AC.pdf" alt="Peak length of mark H3K27AC." width="50%" />
+<p class="caption">
+Peak length of mark H3K27AC.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1209_dis_peak_len_H3K27AC">
+Past versions of 1209_dis_peak_len_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-1209_dis_peak_len_H3K27AC" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/271b94b3689648b94d0fc9f1460d6d0751b5b384/docs/asset/2022/1209_dis_peak_len_H3K27AC.pdf" target="_blank">271b94b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>- Reads count of peaks with &amp; w.o. pQTLs</strong>
+<strong>- Peak enrichment (weak v.s. strong) for peaks with &amp; w.o.
+pQTLs</strong></p>
+<ul>
+<li><p>What is the distribution of effect sizes for peaks (with pQTL
+&amp; without pQTLs)?</p>
+<ul>
+<li><p>Distribution of all effects</p></li>
+<li><p>Distribution of all effects on the dimension of SNPs and peaks
+coordinates</p></li>
+<li><p>Distribution of the most significant effect for each peaks across
+SNPs</p></li>
+</ul></li>
+</ul>
+<p><del>- Distribution of peaks with pQTL &amp; without pQTLs?</del></p>
+<ul>
+<li>Are peaks without pQTLs more likely to be peaks with merged
+sub-peaks? (Can combining multiple sub-peaks in a large peak improve
+power than considering the large peak as a whole?)</li>
+</ul>
+<p><strong>- Are peaks without pQTLs more adjacent than peaks with
+pQTLs? (Can combining multiple adjacent peaks improve power than using
+individual peaks?)</strong></p>
+</div>
+</div>
+<div id="weak-tag-enriched-peaks" class="section level2">
+<h2>Weak tag enriched peaks</h2>
+</div>
+<div id="what-type-of-peaks-should-have-improved-qtl-calling"
+class="section level2">
+<h2>What type of peaks should have improved QTL calling?</h2>
+</div>
+<div id="how-to-improve" class="section level2">
+<h2>How to improve?</h2>
+<ol style="list-style-type: decimal">
+<li><p>Combine two peaks</p></li>
+<li><p>Combine sub-peaks for one peak</p></li>
+</ol>
+<div id="refs">
+
+</div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] workflowr_1.7.0
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
+ [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
+ [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
+[13] evaluate_0.15    tibble_3.1.6     lifecycle_1.0.1  pkgconfig_2.0.3 
+[17] rlang_1.0.2      cli_3.1.1        rstudioapi_0.13  yaml_2.3.5      
+[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.4.0   
+[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.3.8     
+[29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
+[33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
+[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.2 
+[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.6   
+[45] cachem_1.0.6     crayon_1.4.2    </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
