@@ -24,6 +24,98 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+## Dec 21
+
+## Quick Summary
+
+- Ran associations (by ACAT) between SNPs and peak groups using cis-window 1Mb.
+
+- Looked at the distribution of p-values.
+
+
+
+## 1. Update: Test a SNP and a group of adjacent peaks by ACAT
+
+### Updates
+
+- For each peak group, test its association across all overlapped SNPs (SNPs with cis-cQTL associations with all peaks in the group). ~~<u>**[Here I used the 100kb cis-cQTL]**</u>~~ <u>**[Use 1Mb cis-cQTL]**</u>
+
+
+- For now, I only looked at the the peaks groups,
+  
+  - ~~where none of the peaks have significant cis-cQTLs <u>**[Here I used the 100kb cis-cQTL]**</u>~~ Run across all peak groups no matter how many significant cis-cQTLs they have.
+  
+  - which have more than 1 peak
+  
+  - of mark H3K27AC
+
+
+- Except peak groups on chr1.
+
+
+### Results
+
+- Look at the distribution of top p-values of peak groups.
+
+```{r out.width="30%", fig.cap="LEFT: Distribution of the top p-value (by ACAT and minp_adjusted) across peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_21_plt_top_p_peak_group_density_H3K27AC.pdf"), error = FALSE)
+```
+
+
+- Look at the distribution of top p-values of peak groups on the size of peak groups and chromosomes.
+
+```{r out.width="40%", fig.cap="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_21_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf", "asset/2022/12_21_plt_top_p_peak_group_on_chr_H3K27AC.pdf"), error = FALSE)
+```
+
+
+- Distribution of top p-values on chromosomal position.
+
+```{r out.width="60%", fig.cap="Distribution of the top p-value across peak groups on chromosomal position.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_21_plt_top_p_peak_group_manhattan_H3K27AC.pdf"), error = FALSE)
+```
+
+
+- Top p values of a peak group v.s. the number of peaks?
+
+```{r out.width="50%", fig.cap="Similar figure as the above, except dividing the peak groups by the number of peaks in the group. Color: the number of peaks in a peak group.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_21_plt_top_p_peak_group_peaks.pdf"), error = FALSE)
+```
+
+
+- Top p values of a peak group v.s. the number of peaks with cQTLs?
+
+  - .. and a more detailed zoom-in on chromosomal position given below
+
+```{r out.width="50%", fig.cap="Similar figure as the above, except dividing the peak groups by the number of peaks in the group that have cQTLs. Color: the number of peaks in a peak group that have cQTLs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_21_plt_top_p_peak_group_w_cqtl.pdf"), error = FALSE)
+```
+
+```{r out.width="70%", fig.cap="A more detailed zoom-in. Top p-values across peak groups on chromosomal position, grouped and colored by #peaks with uni-cQTLs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2022/12_21_plt_top_p_peak_group_manhattan_cqtl_H3K27AC.pdf"), error = FALSE)
+```
+
+
+- Compare the uni-cQTLs and multi-cQTLs of a peak group
+
+
+
+
+~~### Numbers
+
+Total peak groups: 100858
+
+Peak groups on chr1: 10038
+
+Peak groups on chr2-chr22: 90150 (90787, 90166)
+
+
+Peak groups with only 1 peak: 26458
+
+~~
+
+
+
 # Dec 14
 
 ## Quick Summary
@@ -77,7 +169,7 @@ knitr::include_graphics(c("asset/2022/12_14_peaks_w_cqtl_in_group_H3K27AC.pdf"),
 
 ### How?
 
-- For each peak group, test its association across all overlapped SNPs (SNPs with cis-cQTL associations with all peaks in the group). <u>**[Here I used the 100kb cis-cQTL]**</u>
+- For each peak group, test its association across all overlapped SNPs (SNPs with cis-cQTL associations with all peaks in the group). ~~<u>**[Here I used the 100kb cis-cQTL]**</u>~~ <u>**[Use 1Mb cis-cQTL]**</u>
 
 
 - For (peak group, SNP), test by ACAT, a method to combine p-values.
@@ -87,7 +179,7 @@ knitr::include_graphics(c("asset/2022/12_14_peaks_w_cqtl_in_group_H3K27AC.pdf"),
 
 - For now, I only looked at the the peaks groups,
   
-  - where none of the peaks have significant cis-cQTLs <u>**[Here I used the 100kb cis-cQTL]**</u>
+  - ~~where none of the peaks have significant cis-cQTLs <u>**[Here I used the 100kb cis-cQTL]**</u>~~ Run across all peak groups no matter how many significant cis-cQTLs they have.
   
   - which have more than 1 peak
   
