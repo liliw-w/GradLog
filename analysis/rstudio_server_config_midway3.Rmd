@@ -1,0 +1,86 @@
+---
+title: "Rstudio server config on Midway3"
+output:
+  workflowr::wflow_html:
+              toc: true
+              toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{css style settings, echo = FALSE}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 16px;
+    border-left: 5px solid #eee;
+}
+```
+
+**If any figures don't show, try opening in Safari.**
+
+# Facts
+
+- Rstudio server runs on lab partition (computational node), as `rstudio-server` is only available there.
+
+
+# Rstudio server - Global Options
+
+
+## Console
+
+- Check `Show syntax highlighting in console input`
+
+## Appearance
+
+- Editor font size: set it to 12
+
+- Editor theme: Clouds
+
+- Pane Layout: Top row: left - Source, right - Console. Bottom row: left - Environment, History, etc, right - Files, Plots, etc.
+
+## R Markdown
+
+- Check `Show documnet outline by default`
+
+- Show output perview in: Viewer Pane
+
+
+## Terminal
+
+- New terminals open with: zsh
+
+
+
+# Configure rstudio server terminal (zsh)
+
+In rstudio server: - Tools - Global Options - Terminal - New terminals open with - zsh
+
+
+The following config should be done in outside terminal not rstudio server internal terminal, where there is no network for downloading.
+
+1. Download Oh my zsh ([source](https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95))
+
+  `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+
+2. Enabling Plugins - zsh-autosuggestions, zsh-syntax-highlighting ([source](https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95))
+
+  `git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions`
+  
+  `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting`
+  
+  `nano ~/.zshrc`
+  
+  Edit `plugins=(git zsh-autosuggestions zsh-syntax-highlighting)`
+
+3. Change theme - in `~/.zshsc`, change `ZSH_THEME="strug"`
+
+4. Modify theme colors to what you like - `~/.oh-my-zsh/themes/strug.zsh-theme`
+
+
+# Transfer files from midway2 to midway3
+
+See instruction on how to use [Globus Online here](https://rcc.uchicago.edu/docs/data-transfer/index.html#globus-online)
+
