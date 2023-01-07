@@ -23,6 +23,8 @@ blockquote {
 
 # Facts
 
+- [Login page](https://cloud.rcc.uchicago.edu/rstudio_xuanyao/)
+
 - Rstudio server runs on lab partition (computational node), as `rstudio-server` is only available there.
 
 
