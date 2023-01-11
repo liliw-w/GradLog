@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-12-22
+<strong>Last updated:</strong> 2023-01-11
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreebf7aad20b6be25071e0a04bb971b7550ed02d8fftargetblankbf7aad2a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreebc0a2f7db3f7f82573f5f6297cebac528967c5c2targetblankbc0a2f7a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/bf7aad20b6be25071e0a04bb971b7550ed02d8ff" target="_blank">bf7aad2</a>
+<a href="https://github.com/liliw-w/GradLog/tree/bc0a2f7db3f7f82573f5f6297cebac528967c5c2" target="_blank">bc0a2f7</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreebf7aad20b6be25071e0a04bb971b7550ed02d8fftargetblankbf7aad2a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreebc0a2f7db3f7f82573f5f6297cebac528967c5c2targetblankbc0a2f7a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/bf7aad20b6be25071e0a04bb971b7550ed02d8ff" target="_blank">bf7aad2</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/bc0a2f7db3f7f82573f5f6297cebac528967c5c2" target="_blank">bc0a2f7</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -652,6 +652,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/bc0a2f7db3f7f82573f5f6297cebac528967c5c2/analysis/Log2023_a_fresh_start.Rmd" target="_blank">bc0a2f7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+<td>
+add a new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/92bc59e2447452c7e7f39e4c8ed4eeb3d58a319b/docs/Log2023_a_fresh_start.html" target="_blank">92bc59e</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-12-22
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/bf7aad20b6be25071e0a04bb971b7550ed02d8ff/analysis/Log2023_a_fresh_start.Rmd" target="_blank">bf7aad2</a>
 </td>
 <td>
@@ -715,10 +749,1280 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
-<div id="dec-21" class="section level2">
-<h2>Dec 21</h2>
-</div>
+<div id="jan-11" class="section level1">
+<h1>Jan 11</h1>
 <div id="quick-summary" class="section level2">
+<h2>Quick Summary</h2>
+<ul>
+<li><p>Make the pipeline automatic.</p></li>
+<li><p>Tested (SNP, peak group) by ACAT at 100kb, 250kb, 500kb window
+size.</p></li>
+<li><p>Compare multi-cQTLs across window sizes and <del>with
+uni-cQTLs</del>.</p></li>
+</ul>
+</div>
+<div
+id="define-peak-groups-under-different-window-sizes-and-test-snp-peak-group"
+class="section level2">
+<h2>1. Define peak groups under different window sizes and test (SNP,
+peak group)</h2>
+<p>Last time, I tested (SNP, peak group) of peak groups defined by 500kb
+window sizes using SNPs within 500kb of peak group.</p>
+<p>This time, I tried various window sizes, including 100kb, 250kb,
+500kb.</p>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>Peaks are considered as a peak group using a sliding window of
+sizes 100kb, 250kb, 500kb.</p></li>
+<li><p>Use 500kb as the cis distance to search for the cis-SNPs of each
+individual peaks in the group, then tested the overlapped SNPs across
+all peaks in the group. [Note: we discussed on slack to use 500kb as cis
+distance for all window sizes.]</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_11_choose_cis_dis.jpeg" alt="Figure: Choose cis distance for different window size." width="40%" />
+<p class="caption">
+Figure: Choose cis distance for different window size.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_choose_cis_dis">
+Past versions of 01_11_choose_cis_dis.jpeg
+</button>
+</p>
+<div id="fig-01_11_choose_cis_dis" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_choose_cis_dis.jpeg" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>ACAT test.</li>
+</ul>
+</div>
+<div id="numbers" class="section level3">
+<h3>Numbers</h3>
+<p>Use a table or histogram …</p>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<ul>
+<li>Number of peaks in groups</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/01_11_peaks_in_group_H3K27AC_window100kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_H3K27AC_window100kb">
+Past versions of 01_11_peaks_in_group_H3K27AC_window100kb.pdf
+</button>
+</p>
+<div id="fig-01_11_peaks_in_group_H3K27AC_window100kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_peaks_in_group_H3K27AC_window100kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/01_11_peaks_in_group_H3K27AC_window250kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_H3K27AC_window250kb">
+Past versions of 01_11_peaks_in_group_H3K27AC_window250kb.pdf
+</button>
+</p>
+<div id="fig-01_11_peaks_in_group_H3K27AC_window250kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_peaks_in_group_H3K27AC_window250kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/01_11_peaks_in_group_H3K27AC_window500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" />
+<p class="caption">
+Figure: Number of peaks in peak groups defined by different window
+sizes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_H3K27AC_window500kb">
+Past versions of 01_11_peaks_in_group_H3K27AC_window500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_peaks_in_group_H3K27AC_window500kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_peaks_in_group_H3K27AC_window500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Number of peaks in groups colored by cPeaks (uni)</p>
+<p>[Note: as we discussed on slack, I used the results of cPeaks within
+500kb cis distance.]</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb">
+Past versions of
+01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb">
+Past versions of
+01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" />
+<p class="caption">
+Figure: Number of peaks in peak groups defined by different window
+sizes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb">
+Past versions of
+01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Peak groups on chr</li>
+</ul>
+<p><a href="asset/2023/01_11_peaks_on_chr_H3K27AC_window100kb.pdf">100kb
+window</a></p>
+<p><a href="asset/2023/01_11_peaks_on_chr_H3K27AC_window250kb.pdf">250kb
+window</a></p>
+<p><a href="asset/2023/01_11_peaks_on_chr_H3K27AC_window250kb.pdf">500kb
+window</a></p>
+<ul>
+<li>Number of cPeaks in peak groups</li>
+</ul>
+<p><a
+href="asset/2023/01_11_peaks_w_cqtl_in_group_H3K27AC_window100kb_cpeak500kb.pdf">100kb
+window</a></p>
+<p><a
+href="asset/2023/01_11_peaks_w_cqtl_in_group_H3K27AC_window250kb_cpeak500kb.pdf">250kb
+window</a></p>
+<p><a
+href="asset/2023/01_11_peaks_w_cqtl_in_group_H3K27AC_window500kb_cpeak500kb.pdf">500kb
+window</a></p>
+<ul>
+<li>Distribution of the top p-value of a peak group</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<p class="caption">
+Figure: Distribution of top p-values across peak groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Top p of a peak group v.s. number of peaks in the group</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb">
+Past versions of
+01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb">
+Past versions of
+01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<p class="caption">
+Figure: Distribution of top p-values across peak groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb">
+Past versions of
+01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Top p of a peak group v.s. number of cPeaks in the group</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb">
+Past versions of
+01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb">
+Past versions of
+01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<p class="caption">
+Figure: Distribution of top p-values across peak groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb">
+Past versions of
+01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Top p of a peak group on chromosomal position</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="35%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="35%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="35%" />
+<p class="caption">
+Figure: Distribution of top p-values across peak groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Top p of a peak group on chromosomal position v.s number of cPeaks
+in the group</li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<p class="caption">
+Figure: Distribution of top p-values across peak groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb">
+Past versions of
+01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Top p of a peak group v.s chromosomes</li>
+</ul>
+<p><a
+href="asset/2023/01_11_plt_top_p_peak_group_on_chr_H3K27AC_window100kb_cis500kb.pdf">100kb
+window</a></p>
+<p><a
+href="asset/2023/plt_top_p_peak_group_on_chr_H3K27AC_window250kb_cis500kb.pdf">250kb
+window</a></p>
+<p><a
+href="asset/2023/01_11_plt_top_p_peak_group_on_chr_H3K27AC_window500kb_cis500kb.pdf">500kb
+window</a></p>
+<ul>
+<li>Top p of a peak group v.s. the number of peaks in the group</li>
+</ul>
+<p><a
+href="asset/2023/01_11_plt_top_p_peak_group_on_num_peaks_H3K27AC_window100kb_cis500kb.pdf">100kb
+window</a></p>
+<p><a
+href="asset/2023/01_11_plt_top_p_peak_group_on_num_peaks_H3K27AC_window250kb_cis500kb.pdf">250kb
+window</a></p>
+<p><a
+href="asset/2023/01_11_plt_top_p_peak_group_on_num_peaks_H3K27AC_window500kb_cis500kb.pdf">500kb
+window</a></p>
+</div>
+</div>
+<div id="compare-results-across-window-sizes" class="section level2">
+<h2>2. Compare results across window sizes</h2>
+<p>I compared the results of peak groups defined by different window
+sizes in terms of (1) cQTLs (2) peak groups.</p>
+<div id="top-p-value-distribution-across-window-sizes"
+class="section level3">
+<h3>Top p-value distribution across window sizes</h3>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_11_plt_top_p_window_size_H3K27AC_cis500kb.pdf" alt="Figure: Top p-vaue of a peak group across window sizes." width="50%" />
+<p class="caption">
+Figure: Top p-vaue of a peak group across window sizes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_window_size_H3K27AC_cis500kb">
+Past versions of 01_11_plt_top_p_window_size_H3K27AC_cis500kb.pdf
+</button>
+</p>
+<div id="fig-01_11_plt_top_p_window_size_H3K27AC_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_top_p_window_size_H3K27AC_cis500kb.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="number-of-significant-cqtls-across-window-sizes"
+class="section level3">
+<h3>Number of significant cQTLs across window sizes</h3>
+<ul>
+<li><p>How?</p>
+<ul>
+<li><p>Use 1e-10 as the uniform p-value cutoff across window
+sizes.</p></li>
+<li><p>Unique cQTLs for each group</p></li>
+</ul></li>
+</ul>
+<p>Define significant cQTLs under same cutoff, as (1) same number of
+peak groups, (2) same cis distance used to search for SNPs to be
+tested.</p>
+<ul>
+<li>But not same number of SNPs tested?</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10.pdf" alt="Figure: Number of cQTLs across window sizes." width="30%" />
+<p class="caption">
+Figure: Number of cQTLs across window sizes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10">
+Past versions of 01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10.pdf
+</button>
+</p>
+<div id="fig-01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cqtls-overlap-across-window-sizes" class="section level3">
+<h3>cQTLs overlap across window sizes</h3>
+<ul>
+<li>Use 1e-10 as the uniform p-value cutoff across window sizes.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10.pdf" alt="Figure: Overlaps among cQTLs of different window sizes." width="40%" />
+<p class="caption">
+Figure: Overlaps among cQTLs of different window sizes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10">
+Past versions of 01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10.pdf
+</button>
+</p>
+<div id="fig-01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Observations</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Most are shared.</p></li>
+<li><p>100kb some specific cQTLs?</p></li>
+</ol>
+<ul>
+<li><p>Missed cQTLs v.s. distance to their target peak groups</p>
+<p>Question to ask - Are the missed cQTLs those which are distant to
+their target peak groups, therefore, were not considered for association
+tests? Or is it because true higher power?</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10.pdf" alt="Figure: Window-size-specific cQTLs v.s. their distances to target peak groups." width="40%" />
+<p class="caption">
+Figure: Window-size-specific cQTLs v.s. their distances to target peak
+groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10">
+Past versions of
+01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10.pdf
+</button>
+</p>
+<div
+id="fig-01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3439b271ac6c04695864e0b1a540fff95f940472/docs/asset/2023/01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10.pdf" target="_blank">3439b27</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="in-terms-of-peak-groups" class="section level3">
+<h3>In terms of peak groups</h3>
+</div>
+</div>
+<div id="compare-multi-cqtls-with-uni-cqtls" class="section level2">
+<h2>3. Compare multi-cQTLs with uni-cQTLs</h2>
+<p><strong>Questions?</strong></p>
+</div>
+</div>
+<div id="dec-21" class="section level1">
+<h1>Dec 21</h1>
+<div id="quick-summary-1" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Ran associations (by ACAT) between SNPs and peak groups using
@@ -748,7 +2052,7 @@ have.</p></li>
 <li><p>Except peak groups on chr1.</p></li>
 </ul>
 </div>
-<div id="results" class="section level3">
+<div id="results-1" class="section level3">
 <h3>Results</h3>
 <ul>
 <li>Look at the distribution of top p-values of peak groups.</li>
@@ -1091,9 +2395,10 @@ liliw-w
 <p>~~</p>
 </div>
 </div>
+</div>
 <div id="dec-14" class="section level1">
 <h1>Dec 14</h1>
-<div id="quick-summary-1" class="section level2">
+<div id="quick-summary-2" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Run ACAT to test associations between (SNP, adjacent peak group) for
@@ -1106,7 +2411,7 @@ mark H3K27AC.</li>
 </div>
 <div id="adjacent-peaks-as-peak-groups" class="section level2">
 <h2>2. Adjacent peaks as peak groups</h2>
-<div id="how" class="section level3">
+<div id="how-1" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Sliding window of length 500kb.</p></li>
@@ -1270,7 +2575,7 @@ liliw-w
 <div id="test-a-snp-and-a-group-of-adjacent-peaks-by-acat"
 class="section level2">
 <h2>3. Test a SNP and a group of adjacent peaks by ACAT</h2>
-<div id="how-1" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>For each peak group, test its association across all overlapped
@@ -1296,7 +2601,7 @@ have.</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="results-1" class="section level3">
+<div id="results-2" class="section level3">
 <h3>Results</h3>
 <ul>
 <li><p>There are 25,853 peak groups considered for association
@@ -1557,7 +2862,7 @@ associations.</p></li>
 </div>
 <div id="dec-09" class="section level1">
 <h1>Dec 09</h1>
-<div id="quick-summary-2" class="section level2">
+<div id="quick-summary-3" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Preliminary analysis on Carlos’s hQTL results.</li>
