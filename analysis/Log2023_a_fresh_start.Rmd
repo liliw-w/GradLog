@@ -24,7 +24,198 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
-## Dec 21
+# Jan 11
+
+## Quick Summary
+
+- Make the pipeline automatic.
+
+- Tested (SNP, peak group) by ACAT at 100kb, 250kb, 500kb window size.
+
+- Compare multi-cQTLs across window sizes and ~~with uni-cQTLs~~.
+
+
+## 1. Define peak groups under different window sizes and test (SNP, peak group)
+
+Last time, I tested (SNP, peak group) of peak groups defined by 500kb window sizes using SNPs within 500kb of peak group.
+
+This time, I tried various window sizes, including 100kb, 250kb, 500kb.
+
+
+### How?
+
+- Peaks are considered as a peak group using a sliding window of sizes 100kb, 250kb, 500kb.
+
+- Use 500kb as the cis distance to search for the cis-SNPs of each individual peaks in the group, then tested the overlapped SNPs across all peaks in the group. [Note: we discussed on slack to use 500kb as cis distance for all window sizes.]
+
+
+```{r out.width="40%", fig.cap="Figure: Choose cis distance for different window size.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_choose_cis_dis.jpeg"), error = FALSE)
+```
+
+
+- ACAT test.
+
+
+### Numbers
+
+Use a table or histogram ...
+
+
+### Results
+
+- Number of peaks in groups
+
+```{r out.width="20%", fig.cap="Figure: Number of peaks in peak groups defined by different window sizes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_peaks_in_group_H3K27AC_window100kb.pdf", "asset/2023/01_11_peaks_in_group_H3K27AC_window250kb.pdf", "asset/2023/01_11_peaks_in_group_H3K27AC_window500kb.pdf"), error = FALSE)
+```
+
+
+- Number of peaks in groups colored by cPeaks (uni)
+
+  [Note: as we discussed on slack, I used the results of cPeaks within 500kb cis distance.]
+
+```{r out.width="30%", fig.cap="Figure: Number of peaks in peak groups defined by different window sizes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb.pdf", "asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb.pdf", "asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb.pdf"), error = FALSE)
+```
+
+
+- Peak groups on chr
+
+[100kb window](asset/2023/01_11_peaks_on_chr_H3K27AC_window100kb.pdf)
+
+[250kb window](asset/2023/01_11_peaks_on_chr_H3K27AC_window250kb.pdf)
+
+[500kb window](asset/2023/01_11_peaks_on_chr_H3K27AC_window250kb.pdf)
+
+
+- Number of cPeaks in peak groups
+
+[100kb window](asset/2023/01_11_peaks_w_cqtl_in_group_H3K27AC_window100kb_cpeak500kb.pdf)
+
+[250kb window](asset/2023/01_11_peaks_w_cqtl_in_group_H3K27AC_window250kb_cpeak500kb.pdf)
+
+[500kb window](asset/2023/01_11_peaks_w_cqtl_in_group_H3K27AC_window500kb_cpeak500kb.pdf)
+
+- Distribution of the top p-value of a peak group
+
+```{r out.width="30%", fig.cap="Figure: Distribution of top p-values across peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf"), error = FALSE)
+```
+
+- Top p of a peak group v.s. number of peaks in the group
+
+```{r out.width="30%", fig.cap="Figure: Distribution of top p-values across peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb.pdf"), error = FALSE)
+```
+
+
+- Top p of a peak group v.s. number of cPeaks in the group
+
+```{r out.width="30%", fig.cap="Figure: Distribution of top p-values across peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb.pdf"), error = FALSE)
+```
+
+- Top p of a peak group on chromosomal position
+
+```{r out.width="35%", fig.cap="Figure: Distribution of top p-values across peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb.pdf"), error = FALSE)
+```
+
+- Top p of a peak group on chromosomal position v.s number of cPeaks in the group
+
+```{r out.width="30%", fig.cap="Figure: Distribution of top p-values across peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb.pdf", "asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb.pdf"), error = FALSE)
+```
+
+- Top p of a peak group v.s chromosomes
+
+[100kb window](asset/2023/01_11_plt_top_p_peak_group_on_chr_H3K27AC_window100kb_cis500kb.pdf)
+
+[250kb window](asset/2023/plt_top_p_peak_group_on_chr_H3K27AC_window250kb_cis500kb.pdf)
+
+[500kb window](asset/2023/01_11_plt_top_p_peak_group_on_chr_H3K27AC_window500kb_cis500kb.pdf)
+
+
+- Top p of a peak group v.s. the number of peaks in the group
+
+[100kb window](asset/2023/01_11_plt_top_p_peak_group_on_num_peaks_H3K27AC_window100kb_cis500kb.pdf)
+
+[250kb window](asset/2023/01_11_plt_top_p_peak_group_on_num_peaks_H3K27AC_window250kb_cis500kb.pdf)
+
+[500kb window](asset/2023/01_11_plt_top_p_peak_group_on_num_peaks_H3K27AC_window500kb_cis500kb.pdf)
+
+
+## 2. Compare results across window sizes
+
+I compared the results of peak groups defined by different window sizes in terms of (1) cQTLs (2) peak groups.
+
+
+### Top p-value distribution across window sizes
+
+```{r out.width="50%", fig.cap="Figure: Top p-vaue of a peak group across window sizes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_top_p_window_size_H3K27AC_cis500kb.pdf"), error = FALSE)
+```
+
+
+### Number of significant cQTLs across window sizes
+
+- How?
+
+  - Use 1e-10 as the uniform p-value cutoff across window sizes.
+  
+  - Unique cQTLs for each group
+
+
+Define significant cQTLs under same cutoff, as (1) same number of peak groups, (2) same cis distance used to search for SNPs to be tested.
+
+- But not same number of SNPs tested?
+
+
+```{r out.width="30%", fig.cap="Figure: Number of cQTLs across window sizes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10.pdf"), error = FALSE)
+```
+
+
+### cQTLs overlap across window sizes
+
+- Use 1e-10 as the uniform p-value cutoff across window sizes.
+
+```{r out.width="40%", fig.cap="Figure: Overlaps among cQTLs of different window sizes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10.pdf"), error = FALSE)
+```
+
+
+- Observations
+
+1. Most are shared.
+
+2. 100kb some specific cQTLs?
+
+
+- Missed cQTLs v.s. distance to their target peak groups
+
+  Question to ask - Are the missed cQTLs those which are distant to their target peak groups, therefore, were not considered for association tests? Or is it because true higher power?
+
+```{r out.width="40%", fig.cap="Figure: Window-size-specific cQTLs v.s. their distances to target peak groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10.pdf"), error = FALSE)
+```
+
+
+### In terms of peak groups
+
+
+
+
+## 3. Compare multi-cQTLs with uni-cQTLs
+
+
+**Questions?**
+
+
+
+
+# Dec 21
 
 ## Quick Summary
 
