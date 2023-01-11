@@ -132,7 +132,7 @@ knitr::include_graphics(c("asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_
 
 [100kb window](asset/2023/01_11_plt_top_p_peak_group_on_chr_H3K27AC_window100kb_cis500kb.pdf)
 
-[250kb window](asset/2023/plt_top_p_peak_group_on_chr_H3K27AC_window250kb_cis500kb.pdf)
+[250kb window](asset/2023/01_11_plt_top_p_peak_group_on_chr_H3K27AC_window250kb_cis500kb.pdf)
 
 [500kb window](asset/2023/01_11_plt_top_p_peak_group_on_chr_H3K27AC_window500kb_cis500kb.pdf)
 
