@@ -24,6 +24,121 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# Jan 18
+
+## Quick Summary
+
+- Compare across window sizes
+
+- PC-based test on (SNP, peak group)
+
+
+
+## 1. Determine window size
+
+### Use all p not just top-p
+
+- Compare p using ACAT and minp
+
+```{r out.width="30%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf", "asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf", "asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf"), error = FALSE)
+```
+
+
+- Compare p by ACAT across window sizes (different total number of tests)
+
+```{r out.width="60%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_small_p_window_size_H3K27AC_cis500kb.pdf"), error = FALSE)
+```
+
+
+- Distribution of small p under same number of peaks in group & same number of cpeaks in group
+
+  small_p_thre <- 1e-8
+
+```{r out.width="40%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_small_p_same_peak_H3K27AC_cis500kb.pdf"), error = FALSE)
+```
+
+
+- Percentage of cPeaks in group with small p under same number of peaks in group & same number of cpeaks in group
+
+  small_p_thre <- 1e-8
+
+```{r out.width="40%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_small_p_perct_cpeak_same_peak_H3K27AC_cis500kb.pdf"), error = FALSE)
+```
+
+
+- Number of groups
+
+```{r out.width="40%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_small_p_group_same_peak_H3K27AC_cis500kb.pdf"), error = FALSE)
+```
+
+- Number of cis-SNPs
+
+```{r out.width="40%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_small_p_cis_snp_same_peak_H3K27AC_cis500kb.pdf"), error = FALSE)
+```
+
+
+## 2. Determine test
+
+### PC-based
+
+- phenotype
+
+- genotype
+
+- covaraites
+
+  H3K27AC: 14 PCs
+
+
+- Sigma
+  
+  Number of peaks v.s. number of samples (73)
+
+
+- $\lambda>0.1$
+
+
+- Available results
+  
+  Window size: 100kb, 250kb, 500kb.
+  
+  Chr: 21, 22.
+
+- Comparison of top p across three methods
+
+  - Scatter plot
+
+```{r out.width="30%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_top_p_pco_peak_group_H3K27AC_window500kb_cis500kb_chr21.pdf"), error = FALSE)
+```
+  
+  - Distribution of top p
+
+```{r out.width="30%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_top_p_pco_peak_group_density_H3K27AC_window500kb_cis500kb_chr21.pdf"), error = FALSE)
+```
+
+  - Top p v.s. group size
+
+```{r out.width="80%", fig.cap="Figure: .", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_18_plt_top_p_pco_peak_group_on_num_peaks_H3K27AC_window500kb_cis500kb_chr21.pdf"), error = FALSE)
+```
+
+
+### ACAT
+
+
+## 3. Compare multi-cQTLs with uni-cQTLs
+
+
+
+
 # Jan 11
 
 ## Quick Summary
