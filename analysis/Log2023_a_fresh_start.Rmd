@@ -24,6 +24,94 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+
+# Jan 25
+
+## Quick Summary
+
+- Test peak group defined by smaller window sizes using ACAT, minP, PCO.
+
+
+
+## 1. Try smaller window sizes
+
+### Why?
+
+We observed from last week's results that it seems that PCO's p move toward ACAT/minP p when window sizes decrease. Therefore, we wanted to check if that pattern persists under smaller window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.
+
+
+
+### How?
+
+- Window sizes
+  
+  10kb, 25kb, 50kb, 100kb, 260kb, 500kb.
+
+
+- Test groups with size > 1
+  
+  Smaller window sizes can have less groups tested.
+
+
+- Test overlapped cis-SNPs within 500kb of peaks
+
+
+- Available results
+  
+  window size - 10kb, 25kb, 50kb, 100kb, 260kb, 500kb.
+  
+  chr - 20, 21, 22.
+
+
+### Results
+
+- Compare methods under same window size
+
+```{r out.width="50%", fig.cap="Figure: Scatter plot of top p by three methods under same window size on chr21. x-axis: Each peak group. y-axis: -log10(P). Color show methods. Panel show window sizes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21.pdf"), error = FALSE)
+```
+
+
+```{r out.width="50%", fig.cap="Figure: Distribution density of top p by three methods under same window size on chr21. x-axis: -log10(P). y-axis: density of peak group with corresponding P. Color show methods. Panel show window sizes. Same total number of groups within each panel.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21.pdf"), error = FALSE)
+```
+
+  We observe that PCO seems to similar or even more small p's under smaller window sizes. The question is - Is it because PCO under small windows better or ACAT/minP worse?
+
+
+
+- Compare window sizes of same method
+
+(more complicated as different numbers of groups tested)
+  
+
+```{r out.width="50%", fig.cap="Figure: Distribution of top p across window sizes by same method on chr21. x-axis: -log10(P). y-axis: (A) density, (B) number of peak group with corresponding P. Color show window sizes. Panel show methods. (C) Different numbers of groups (size > 1) tested for window sizes in each panel.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21.pdf"), error = FALSE)
+```
+
+
+Q - Larger window, higher proportion of small p, for ACAT/minP not pco, why?
+
+
+- A fair way to compare window sizes?
+
+
+
+- Top p of matching groups by three methods across window sizes
+
+
+- Others
+
+  - Group size tested
+
+  - Number of cis-SNPs tested
+
+
+## 2. PCO + ACAT
+
+
+
+
 # Jan 18
 
 ## Quick Summary
@@ -131,11 +219,15 @@ knitr::include_graphics(c("asset/2023/01_18_plt_top_p_pco_peak_group_on_num_peak
 ```
 
 
-### ACAT
-
-
 ## 3. Compare multi-cQTLs with uni-cQTLs
 
+After discussion on slack, we decided **not to use uni-cQTLs as a comparison metric for now**. Reasons - 
+
+- Comparison with uni-cQTLs not necessary in the long run for biological interpretations.
+
+- Comparison with minp is sufficient for now
+
+- Other ways for comparison of multi-cQTLs on top of the # of significant SNPs
 
 
 
