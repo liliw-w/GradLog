@@ -37,8 +37,12 @@ blockquote {
 
 ### Why?
 
-We observed from last week's results that it seems that PCO's p move toward ACAT/minP p when window sizes decrease. Therefore, we wanted to check if that pattern persists under smaller window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.
+- We observed from last week's results that, it seems that PCO's p move toward ACAT/minP p when window sizes decrease.
 
+- Groups of smaller window sizes that have multiple peaks tend to have physically closer peaks, thus more shared genetic control.
+
+
+Therefore, we wanted to check if that pattern persists under smaller window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.
 
 
 ### How?
