@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-18
+<strong>Last updated:</strong> 2023-01-25
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree245fe228f05daceb01b1293b77c3cb5733f42c52targetblank245fe22a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeff0daa8357e5c2aa80f9bd5d2d6f1dc031658832targetblankff0daa8a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/245fe228f05daceb01b1293b77c3cb5733f42c52" target="_blank">245fe22</a>
+<a href="https://github.com/liliw-w/GradLog/tree/ff0daa8357e5c2aa80f9bd5d2d6f1dc031658832" target="_blank">ff0daa8</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree245fe228f05daceb01b1293b77c3cb5733f42c52targetblank245fe22a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeff0daa8357e5c2aa80f9bd5d2d6f1dc031658832targetblankff0daa8a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/245fe228f05daceb01b1293b77c3cb5733f42c52" target="_blank">245fe22</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/ff0daa8357e5c2aa80f9bd5d2d6f1dc031658832" target="_blank">ff0daa8</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -647,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ff0daa8357e5c2aa80f9bd5d2d6f1dc031658832/analysis/Log2023_a_fresh_start.Rmd" target="_blank">ff0daa8</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-25
+</td>
+<td>
+add a new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/4104dc026ba662ac6d89da7b243ac22b89c55cf0/docs/Log2023_a_fresh_start.html" target="_blank">4104dc0</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -817,9 +851,217 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="jan-25" class="section level1">
+<h1>Jan 25</h1>
+<div id="quick-summary" class="section level2">
+<h2>Quick Summary</h2>
+<ul>
+<li>Test peak group defined by smaller window sizes using ACAT, minP,
+PCO.</li>
+</ul>
+</div>
+<div id="try-smaller-window-sizes" class="section level2">
+<h2>1. Try smaller window sizes</h2>
+<div id="why" class="section level3">
+<h3>Why?</h3>
+<p>We observed from last week’s results that it seems that PCO’s p move
+toward ACAT/minP p when window sizes decrease. Therefore, we wanted to
+check if that pattern persists under smaller window sizes. So, I tried
+extreme window sizes, 10kb, 25kb, 50kb.</p>
+</div>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>Window sizes</p>
+<p>10kb, 25kb, 50kb, 100kb, 260kb, 500kb.</p></li>
+<li><p>Test groups with size &gt; 1</p>
+<p>Smaller window sizes can have less groups tested.</p></li>
+<li><p>Test overlapped cis-SNPs within 500kb of peaks</p></li>
+<li><p>Available results</p>
+<p>window size - 10kb, 25kb, 50kb, 100kb, 260kb, 500kb.</p>
+<p>chr - 20, 21, 22.</p></li>
+</ul>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<ul>
+<li>Compare methods under same window size</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21.pdf" alt="Figure: Scatter plot of top p by three methods under same window size on chr21. x-axis: Each peak group. y-axis: -log10(P). Color show methods. Panel show window sizes." width="50%" />
+<p class="caption">
+Figure: Scatter plot of top p by three methods under same window size on
+chr21. x-axis: Each peak group. y-axis: -log10(P). Color show methods.
+Panel show window sizes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21">
+Past versions of
+01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21.pdf
+</button>
+</p>
+<div
+id="fig-01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ff0daa8357e5c2aa80f9bd5d2d6f1dc031658832/docs/asset/2023/01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21.pdf" target="_blank">ff0daa8</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21.pdf" alt="Figure: Distribution density of top p by three methods under same window size on chr21. x-axis: -log10(P). y-axis: density of peak group with corresponding P. Color show methods. Panel show window sizes. Same total number of groups within each panel." width="50%" />
+<p class="caption">
+Figure: Distribution density of top p by three methods under same window
+size on chr21. x-axis: -log10(P). y-axis: density of peak group with
+corresponding P. Color show methods. Panel show window sizes. Same total
+number of groups within each panel.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21">
+Past versions of
+01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21.pdf
+</button>
+</p>
+<div
+id="fig-01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ff0daa8357e5c2aa80f9bd5d2d6f1dc031658832/docs/asset/2023/01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21.pdf" target="_blank">ff0daa8</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We observe that PCO seems to similar or even more small p’s under
+smaller window sizes. The question is - Is it because PCO under small
+windows better or ACAT/minP worse?</p>
+<ul>
+<li>Compare window sizes of same method</li>
+</ul>
+<p>(more complicated as different numbers of groups tested)</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21.pdf" alt="Figure: Distribution of top p across window sizes by same method on chr21. x-axis: -log10(P). y-axis: (A) density, (B) number of peak group with corresponding P. Color show window sizes. Panel show methods. (C) Different numbers of groups (size &gt; 1) tested for window sizes in each panel." width="50%" />
+<p class="caption">
+Figure: Distribution of top p across window sizes by same method on
+chr21. x-axis: -log10(P). y-axis: (A) density, (B) number of peak group
+with corresponding P. Color show window sizes. Panel show methods. (C)
+Different numbers of groups (size &gt; 1) tested for window sizes in
+each panel.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21">
+Past versions of
+01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21.pdf
+</button>
+</p>
+<div
+id="fig-01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/ff0daa8357e5c2aa80f9bd5d2d6f1dc031658832/docs/asset/2023/01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21.pdf" target="_blank">ff0daa8</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-01-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Q - Larger window, higher proportion of small p, for ACAT/minP not
+pco, why?</p>
+<ul>
+<li><p>A fair way to compare window sizes?</p></li>
+<li><p>Top p of matching groups by three methods across window
+sizes</p></li>
+<li><p>Others</p>
+<ul>
+<li><p>Group size tested</p></li>
+<li><p>Number of cis-SNPs tested</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="pco-acat" class="section level2">
+<h2>2. PCO + ACAT</h2>
+</div>
+</div>
 <div id="jan-18" class="section level1">
 <h1>Jan 18</h1>
-<div id="quick-summary" class="section level2">
+<div id="quick-summary-1" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Compare across window sizes</p></li>
@@ -1370,17 +1612,23 @@ liliw-w
 </div>
 </div>
 </div>
-<div id="acat" class="section level3">
-<h3>ACAT</h3>
-</div>
 </div>
 <div id="compare-multi-cqtls-with-uni-cqtls" class="section level2">
 <h2>3. Compare multi-cQTLs with uni-cQTLs</h2>
+<p>After discussion on slack, we decided <strong>not to use uni-cQTLs as
+a comparison metric for now</strong>. Reasons -</p>
+<ul>
+<li><p>Comparison with uni-cQTLs not necessary in the long run for
+biological interpretations.</p></li>
+<li><p>Comparison with minp is sufficient for now</p></li>
+<li><p>Other ways for comparison of multi-cQTLs on top of the # of
+significant SNPs</p></li>
+</ul>
 </div>
 </div>
 <div id="jan-11" class="section level1">
 <h1>Jan 11</h1>
-<div id="quick-summary-1" class="section level2">
+<div id="quick-summary-2" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Make the pipeline automatic.</p></li>
@@ -1399,7 +1647,7 @@ peak group)</h2>
 window sizes using SNPs within 500kb of peak group.</p>
 <p>This time, I tried various window sizes, including 100kb, 250kb,
 500kb.</p>
-<div id="how" class="section level3">
+<div id="how-1" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Peaks are considered as a peak group using a sliding window of
@@ -1460,7 +1708,7 @@ liliw-w
 <h3>Numbers</h3>
 <p>Use a table or histogram …</p>
 </div>
-<div id="results" class="section level3">
+<div id="results-1" class="section level3">
 <h3>Results</h3>
 <ul>
 <li>Number of peaks in groups</li>
@@ -2651,7 +2899,7 @@ liliw-w
 </div>
 <div id="dec-21" class="section level1">
 <h1>Dec 21</h1>
-<div id="quick-summary-2" class="section level2">
+<div id="quick-summary-3" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Ran associations (by ACAT) between SNPs and peak groups using
@@ -2681,7 +2929,7 @@ have.</p></li>
 <li><p>Except peak groups on chr1.</p></li>
 </ul>
 </div>
-<div id="results-1" class="section level3">
+<div id="results-2" class="section level3">
 <h3>Results</h3>
 <ul>
 <li>Look at the distribution of top p-values of peak groups.</li>
@@ -3027,7 +3275,7 @@ liliw-w
 </div>
 <div id="dec-14" class="section level1">
 <h1>Dec 14</h1>
-<div id="quick-summary-3" class="section level2">
+<div id="quick-summary-4" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Run ACAT to test associations between (SNP, adjacent peak group) for
@@ -3040,7 +3288,7 @@ mark H3K27AC.</li>
 </div>
 <div id="adjacent-peaks-as-peak-groups" class="section level2">
 <h2>2. Adjacent peaks as peak groups</h2>
-<div id="how-1" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Sliding window of length 500kb.</p></li>
@@ -3204,7 +3452,7 @@ liliw-w
 <div id="test-a-snp-and-a-group-of-adjacent-peaks-by-acat"
 class="section level2">
 <h2>3. Test a SNP and a group of adjacent peaks by ACAT</h2>
-<div id="how-2" class="section level3">
+<div id="how-3" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>For each peak group, test its association across all overlapped
@@ -3230,7 +3478,7 @@ have.</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="results-2" class="section level3">
+<div id="results-3" class="section level3">
 <h3>Results</h3>
 <ul>
 <li><p>There are 25,853 peak groups considered for association
@@ -3491,7 +3739,7 @@ associations.</p></li>
 </div>
 <div id="dec-09" class="section level1">
 <h1>Dec 09</h1>
-<div id="quick-summary-4" class="section level2">
+<div id="quick-summary-5" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Preliminary analysis on Carlos’s hQTL results.</li>
@@ -3764,14 +4012,14 @@ loaded via a namespace (and not attached):
  [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
  [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
  [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
-[13] evaluate_0.15    tibble_3.1.6     lifecycle_1.0.1  pkgconfig_2.0.3 
-[17] rlang_1.0.2      cli_3.1.1        rstudioapi_0.13  yaml_2.3.5      
-[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.4.0   
-[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.3.8     
+[13] evaluate_0.15    lifecycle_1.0.3  tibble_3.1.6     pkgconfig_2.0.3 
+[17] rlang_1.0.6      cli_3.6.0        rstudioapi_0.13  yaml_2.3.5      
+[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.5.0   
+[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.5.1     
 [29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
 [33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
-[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.2 
-[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.6   
+[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.4 
+[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
 [45] cachem_1.0.6     crayon_1.4.2    </code></pre>
 </div>
 </div>
