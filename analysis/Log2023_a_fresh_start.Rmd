@@ -24,6 +24,80 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# Feb 08
+
+## Quick summary
+
+- Tested (SNP, peak group) of groups defined by non-overlapping windows.
+
+
+## 1. Groups defined by non-overlapping windows
+
+### Why? (discussion on slack)
+
+We observed many improved associations of PCO than ACAT/MinP in [previous section](#p_distribution_across_methods_and_window_sizes). One potential issue is these improved associations could possibly come from a small set of associations, due to many repetitive peaks & SNPs by sliding window, which appears to be a large set of associations.
+
+So, we need to look into the case using non-overlapping windows, just to make sure the PCO improvement over minP is still there after avoiding repetitive counting of associations.
+
+
+- Four points we discussed in Tuesday's meeting
+  
+  - Why coloc style and MACS2 style not work in this case?
+    
+    Because these two generate noncontinuous genomic regions, whereas what we need is to divide the whole genome into non-overlapping chunks.
+  
+  - Why would simple useage of non-overlapping windows not make sense in final version results? 
+    
+    Because choosing the start and end of the dividing window seems arbitrary.
+  
+  - It only makes sense if we want to take a rough look at PCO v.s. ACAT/MinP to avoid repetitive counting of signals in preliminary results.
+  
+  - To get final results, we should go back to sliding window + MACS2 merge.
+    
+    Calculate p-value for groups by sliding window, then merge. Maybe then test again to obtain updated p for merged group?
+
+
+### How?
+
+- Define non-overlapping windows
+  
+  Dividing the genomic locations starting from 0 into non-overlapping windows of a given window size.
+
+
+### Results
+
+- Compare small p's of three methods - Overall summary figures
+  
+  - Panel B shows the advantage of PCO persists under window size 25kb or smaller.
+  
+```{r out.width="50%", fig.cap="Figure: To compare three methods under non-overlapping windows. Color: methods. Panel: window size. x-axis: -log10(small P), small P < 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/02_08_nonoverlap_window_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf"), error = FALSE)
+```
+
+
+- Compare small p's of three methods - Scatter plot
+  
+  **This is an important figure, but it's too large to show explicitly.**
+  
+  - For a pair of (SNP, group), PCO improves p-value than ACAT/MinP under window size 25kb or smaller.
+  
+  - For pair of (SNP, group) with p around 1e-5 by ACAT/MinP (i.e. the middle part), some pairs have improved p by PCO. (These pairs are likely the additionally identified signals by PCO.)
+  
+  - For pair of (SNP, group) with small p by ACAT/MinP (i.e. the right part) ...
+  
+  - PCO p in large, middle, and extreme small window sizes ...
+
+[Figure: To compare each (SNP, group) association by three methods under non-overlapping windows. x-axis: (SNP, group) associations, with small P < 1e-5. Point is a (SNP, group) association. y-axis: -log10(small P). Color: methods. Panel: window size. These p's are from all chr20-22.](asset/2023/02_08_nonoverlap_window_plt_small_p_methods_point_H3K27AC_window_all_cis500kb_chr20-22.pdf){width="50%"}
+
+
+- Compare small p's of window sizes
+  
+  - PCO better or ACAT/MinP worse?
+
+```{r out.width="50%", fig.cap="Figure: To compare window sizes under non-overlapping windows. Color: window sizes. (A) x-axis: -log10(small P), small P < 1e-5. y-axis: density of (SNP, peak group) associations with corresponding P. (B) x-axis: -log10(small P), small P < 1e-5. y-axis: number of (SNP, peak group) associations with corresponding P. (C) Numbers of tests across window sizes. These p's are from all chr20-22.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/02_08_nonoverlap_window_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf"), error = FALSE)
+```
+
 
 # Feb 01
 
@@ -94,7 +168,7 @@ blockquote {
   
   Chr - 20, 21, 22.
 
-### Results
+### Results {#p_distribution_across_methods_and_window_sizes}
 
 - Compare small p's of three methods
 
