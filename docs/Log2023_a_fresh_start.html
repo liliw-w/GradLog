@@ -409,7 +409,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -420,8 +420,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -430,13 +430,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-02-09
+<strong>Last updated:</strong> 2023-03-22
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -459,21 +459,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -564,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0feec1286c70b68058407e1b9c1249b33d8ed83ctargetblank0feec12a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree7588eb75a18aee67634d632523da454d2f4cdb30targetblank7588eb7a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/0feec1286c70b68058407e1b9c1249b33d8ed83c" target="_blank">0feec12</a>
+<a href="https://github.com/liliw-w/GradLog/tree/7588eb75a18aee67634d632523da454d2f4cdb30" target="_blank">7588eb7</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree0feec1286c70b68058407e1b9c1249b33d8ed83ctargetblank0feec12a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree7588eb75a18aee67634d632523da454d2f4cdb30targetblank7588eb7a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -582,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/0feec1286c70b68058407e1b9c1249b33d8ed83c" target="_blank">0feec12</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/7588eb75a18aee67634d632523da454d2f4cdb30" target="_blank">7588eb7</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -605,9 +602,6 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/week_log.Rmd
-
-Unstaged changes:
-    Modified:   analysis/Log2023_a_fresh_start.Rmd
 
 </code></pre>
 <p>
@@ -653,6 +647,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/7588eb75a18aee67634d632523da454d2f4cdb30/analysis/Log2023_a_fresh_start.Rmd" target="_blank">7588eb7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+<td>
+add a new week
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0a7c2b7d4d9ae8dab31b3d22aa23fa75e31717ee/analysis/Log2023_a_fresh_start.Rmd" target="_blank">0a7c2b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-02-09
+</td>
+<td>
+add a new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/0a7c2b7d4d9ae8dab31b3d22aa23fa75e31717ee/docs/Log2023_a_fresh_start.html" target="_blank">0a7c2b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-02-09
+</td>
+<td>
+add a new week
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -976,17 +1021,1012 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="mar-08-march-15" class="section level1">
+<h1>Mar 08 &amp; March 15</h1>
+<div id="quick-summary" class="section level2">
+<h2>Quick summary</h2>
+<ul>
+<li><p>Figured out Ben &amp; Carlos’s steps on their histone peak QTLs
+we used previously.</p></li>
+<li><p>Count-based QTL</p></li>
+</ul>
+</div>
+<div id="what-they-did-to-process-data-for-peak-qtls"
+class="section level2">
+<h2>1. What they did to process data for peak QTLs</h2>
+<p>To work on count based QTL mapping, I need to first figure out the
+exact steps Ben &amp; Carlos’s did to process the histone data and peak
+QTL mapping, in order to make consistent window-based and count-based
+QTL mapping. Below is a mindmap of steps, QC, normalization etc. of Ben
+&amp; Carlos did to generate peak QTLs.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_08_Histone_mark_reads.pdf" alt="Figure: What Ben &amp; Carlos did to process data." width="100%" />
+<p class="caption">
+Figure: What Ben &amp; Carlos did to process data.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_08_Histone_mark_reads">
+Past versions of 03_08_Histone_mark_reads.pdf
+</button>
+</p>
+<div id="fig-03_08_Histone_mark_reads" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_08_Histone_mark_reads.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="count-based---processing-data" class="section level2">
+<h2>2. Count based - Processing data</h2>
+<ul>
+<li><p>Why?</p></li>
+<li><p>How? A few things to be changed</p>
+<p>Make pre-processing data consistent with window-based, except -</p>
+<ul>
+<li><p>Redefine segments on genome as .saf rather than peak calling
+regions.</p></li>
+<li><p>Adaptations to QC</p>
+<ul>
+<li><p>Remove segments without any reads</p></li>
+<li><p>Remove segments without reads in 1-?% individuals (I tried 100%,
+50%)</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="split-chrs-by-segments" class="section level3">
+<h3>Split chr’s by segments</h3>
+<ul>
+<li><p>How?</p>
+<p>Split the chromosome from 0 to chromosome length by a segment size -
+1kb.</p></li>
+<li><p>Number of segments across chr</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_08_num_features.pdf" alt="Figure: Number of split segments compared to the called peaks." width="50%" />
+<p class="caption">
+Figure: Number of split segments compared to the called peaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_08_num_features">
+Past versions of 03_08_num_features.pdf
+</button>
+</p>
+<div id="fig-03_08_num_features" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_08_num_features.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="count-reads-within-each-seg" class="section level3">
+<h3>Count reads within each seg</h3>
+<ul>
+<li><p>4 histone marks (by ChIP-seq or CutAndTag) are all paired-end
+reads.</p></li>
+<li><p>Count by paired-end</p>
+<p><del>No <code>-p</code>. Reads instead of paired-end fragments will
+be counted.</del></p>
+<p>Use <code>-p</code>. <a
+href="https://support.bioconductor.org/p/67534/">Count fragment
+instead</a>.</p></li>
+<li><p>Ways to count a read overlapped with multiple features</p>
+<p>[At first, I didn’t think through this until I observed many
+unassigned reads due to Unassigned_Ambiguity.]</p>
+<ul>
+<li><p><del>Use <code>-p -O</code> to assign the read (1) to all
+overlapped features.</del> [FEATURECOUNTS PAPER SUGGESTION ON USING
+_O]</p></li>
+<li><p><del>Use <code>-p --largestOverlap</code> to assign the read (1)
+to the feature that has the largest number of overlapping
+bases.</del></p></li>
+<li><p><del>Use <code>-p --fraction -O</code> to assign a fractional
+count (1/y, where y is the total number of features overlapping with the
+read) to all overlapped features.</del></p></li>
+<li><p>Use <code>-p --read2pos 5</code>. Think a fragment as a whole,
+and take the left-most base.</p></li>
+<li><p><del>Use <code>--read2pos 5</code> to reduce the read to an end
+base (as said by Yang, left-most-read-base to count in bam file, take
+just one base, to avoid that one read in multiple regions) and count the
+reduced single base.</del></p></li>
+<li><p>Use <code>-p --read2pos 5 single_paired_read1_*.bam</code>. Use
+paired-end, but only uses read 1. Reduce the read to
+left-most-base.</p></li>
+</ul></li>
+</ul>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">flag</th>
+<th align="left">interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">-p</td>
+<td align="left">paired-end, ignore overlap count</td>
+</tr>
+<tr class="even">
+<td align="left">-p -O</td>
+<td align="left">paired-end, assign overlap count to all regions</td>
+</tr>
+<tr class="odd">
+<td align="left">-p –largestOverlap</td>
+<td align="left">paired-end, assign overlap count to region with largest
+overlap</td>
+</tr>
+<tr class="even">
+<td align="left">-p –read2pos 5</td>
+<td align="left">paired-end, reduce read to left-most-base</td>
+</tr>
+<tr class="odd">
+<td align="left">–read2pos 5</td>
+<td align="left">single-end, reduce read to left-most-base</td>
+</tr>
+<tr class="even">
+<td align="left">-p –read2pos 5 single_paired_read1_*.bam</td>
+<td align="left">paired-end, reduce read to left-most-base, but use only
+the first read</td>
+</tr>
+<tr class="odd">
+<td align="left">-p –read2pos 5 -O</td>
+<td align="left">paired-end, reduce read to left-most-base, assign
+overlap count to all regions</td>
+</tr>
+<tr class="even">
+<td align="left">-p –read2pos 5 –largestOverlap</td>
+<td align="left">paired-end, reduce read to left-most-base, assign to
+largest overlap</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_22_plt_count_mode.pdf" alt="Figure: (un)Assigned reads under various counting modes." width="50%" />
+<p class="caption">
+Figure: (un)Assigned reads under various counting modes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_22_plt_count_mode">
+Past versions of 03_22_plt_count_mode.pdf
+</button>
+</p>
+<div id="fig-03_22_plt_count_mode" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_22_plt_count_mode.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Observation</strong></p>
+<ul>
+<li><p>Unassigned reads under
+<code>-p --read2pos 5 single_paired_read1_*.bam</code>.</p>
+<ul>
+<li><p>These unassigned reads due to ambiguity are only for one
+individual.</p></li>
+<li><p>Weirdly, if I do read counting for only this individual, there is
+no unassigned reads.</p></li>
+<li><p>If I count read all individuals together and with <code>-R</code>
+to output the detailed (un)assignment of each read, there is no
+unassigned reads again. So I couldn’t check exactly which reads were
+unassigned for this individual.</p></li>
+<li><p>I used the above read counting results.</p></li>
+</ul></li>
+<li><p>Why both single-end and paired-end reads occur in one bam
+file?</p>
+<p>Paired-end sequencing. But those single-end reads are not aligned to
+ref genome.</p></li>
+</ul>
+<p><strong>A few numbers - raw counts</strong></p>
+<ul>
+<li><p>For current exploratory phase, I only run chromosome 20, which
+was split to 64,444 1kb-segments.</p>
+<ul>
+<li><p>62,910 (~97.62%) segments with at least one read in one
+individual.</p></li>
+<li><p>%individuals without any reads</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<p><img src="asset/2023/03_08_seg_count.pdf" alt="Figure: Raw counts across segments." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_08_seg_count">
+Past versions of 03_08_seg_count.pdf
+</button>
+</p>
+<div id="fig-03_08_seg_count" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_08_seg_count.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/03_08_seg_count_zoom.pdf" alt="Figure: Raw counts across segments." width="30%" />
+<p class="caption">
+Figure: Raw counts across segments.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_08_seg_count_zoom">
+Past versions of 03_08_seg_count_zoom.pdf
+</button>
+</p>
+<div id="fig-03_08_seg_count_zoom" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_08_seg_count_zoom.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_08_perct_ind.pdf" alt="Figure: % Individuals with nonzero raw counts." width="30%" />
+<p class="caption">
+Figure: % Individuals with nonzero raw counts.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_08_perct_ind">
+Past versions of 03_08_perct_ind.pdf
+</button>
+</p>
+<div id="fig-03_08_perct_ind" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_08_perct_ind.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>I feature count 2337 peaks on chr20, and compared the count
+summary with segment-version on chr20. A few potential questions needed
+further understanding -</p>
+<ul>
+<li><p>In featureCounts, unassigned reads due to Unassigned_Duplicate,
+Unassigned_NoFeatures, many Unassigned_Ambiguity.</p></li>
+<li><p>There are many Unassigned_Ambiguity, because reads can fall
+between adjacent segments. Solution: use <code>--read2pos</code> to
+count only the left-most-base.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="qc-normalization" class="section level3">
+<h3>QC &amp; Normalization</h3>
+<ul>
+<li><p>Filter segments by proportion of samples with non-zero reads -
+100%, 50%.</p></li>
+<li><p>Regular standardization &amp; qqnorm way v.s. leafcutter
+way.</p></li>
+</ul>
+</div>
+<div id="covariates" class="section level3">
+<h3>Covariates</h3>
+<p>Temporary workaround - Use PC’s of peaks.</p>
+</div>
+<div id="qtltools" class="section level3">
+<h3>QTLTools</h3>
+<p>Chr20 for now. All cis-SNPs around 500kb of each segment.</p>
+</div>
+</div>
+<div id="count-based---perform-pco-pick-one-region"
+class="section level2">
+<h2>3. Count based - Perform PCO (pick one region)</h2>
+<div id="define-segment-groups" class="section level3">
+<h3>Define segment groups</h3>
+<ul>
+<li><p>Window size - 10kb</p></li>
+<li><p>Segment size - 1kb</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_22_plt_seg_group_size.pdf" alt="Figure: Segment group size under 10kb window size across prop_nonzero (1, 0.5)." width="50%" />
+<p class="caption">
+Figure: Segment group size under 10kb window size across prop_nonzero
+(1, 0.5).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_22_plt_seg_group_size">
+Past versions of 03_22_plt_seg_group_size.pdf
+</button>
+</p>
+<div id="fig-03_22_plt_seg_group_size" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_22_plt_seg_group_size.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Observations</strong> -</p>
+<ul>
+<li><p>#groups used for PCO (remove those groups with 1 seg)</p></li>
+<li><p>group size v.s. sample size (72)</p>
+<p>Group size controlled under 10, for seg_size = 1kb,
+window_size=10kb</p></li>
+<li><p>Is 1kb too wide for segment size?</p></li>
+</ul>
+</div>
+<div id="perform-pco" class="section level3">
+<h3>Perform PCO</h3>
+<ul>
+<li>P for across prop_nonzero (1, 0.5) &amp; compare to peak group.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_22_plt_smallp.pdf" alt="Figure: Comparison of small p of segment group size under 10kb window size across prop_nonzero (1, 0.5)." width="50%" />
+<p class="caption">
+Figure: Comparison of small p of segment group size under 10kb window
+size across prop_nonzero (1, 0.5).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_22_plt_smallp">
+Past versions of 03_22_plt_smallp.pdf
+</button>
+</p>
+<div id="fig-03_22_plt_smallp" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/03_22_plt_smallp.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="feb-24-feb-29" class="section level1">
+<h1>Feb 24 &amp; Feb 29</h1>
+<div id="quick-summary-1" class="section level2">
+<h2>Quick summary</h2>
+<ul>
+<li><p>Locus zoom of a region to visualize PCO and MinP
+associations</p></li>
+<li><p>Genome track by genotype</p></li>
+</ul>
+</div>
+<div id="compare-ps-of-specific-association-pairs-by-minp-and-pco"
+class="section level2">
+<h2>1. Compare p’s of specific association pairs by MinP and PCO</h2>
+<p>Change the way of visualization -</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare MinP and PCO." width="50%" />
+<p class="caption">
+Figure: To compare MinP and PCO.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22">
+Past versions of
+02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22.pdf
+</button>
+</p>
+<div
+id="fig-02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="locus-zoom-of-a-peak-group-cis-region" class="section level2">
+<h2>2. Locus zoom of (a peak group, cis region)</h2>
+<div id="why" class="section level3">
+<h3>Why?</h3>
+<p>Significant PCO associations, weak ACAT associations.</p>
+<p>For follow up analysis, e.g. coloc with traits.</p>
+<p>But since we are not comparing to ACAT associations, is this analysis
+still necessary? (Does it really make sense to compare with MinP?)</p>
+<p>For coloc purpose, improve detection of mediate effects. How does it
+help with coloc power? or anything else?</p>
+</div>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<p>For a peak group, cis region. Two methods: PCO &amp; MinP.</p>
+<ul>
+<li><p>Issues</p>
+<ul>
+<li><p><del><code>locuscomparer</code> not available to install on
+midway3.</del></p></li>
+<li><p><del>Convert SNP position to rsid.</del></p></li>
+<li><p><strong>~20% SNPs no rsid?</strong></p></li>
+</ul></li>
+</ul>
+</div>
+<div id="example-regions" class="section level3">
+<h3>Example regions</h3>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_.pdf" alt="Figure: Locus compare MinP and PCO." width="30%" />
+<p class="caption">
+Figure: Locus compare MinP and PCO.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_">
+Past versions of 02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_.pdf
+</button>
+</p>
+<div id="fig-02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>To select regions we want?</li>
+</ul>
+</div>
+</div>
+<div id="genometracks-by-genotype" class="section level2">
+<h2>3. Genometracks by genotype</h2>
+<div id="issues-i-ran-into" class="section level3">
+<h3>Issues I ran into</h3>
+<ul>
+<li><p>Use the new main function</p></li>
+<li><p>Use the wrong flag - unknown snp led to wrong genotype
+group</p></li>
+<li><p>Use the correct template</p>
+<p><code>GeneralPurposeColoredByGenotype.ini</code></p>
+<p><code>GeneralPurposeColoredByGenotypeWithPerIndCoverage.ini</code></p></li>
+<li><p>Correct template</p>
+<p>Change to the correct template.</p>
+<p>Minor - change the y max value to
+<code>PerGroupMaxPerInd</code></p></li>
+</ul>
+</div>
+<div id="example-regions-1" class="section level3">
+<h3>Example regions</h3>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/1.pdf" alt="Figure: Genome tracks." width="50%" />
+<p class="caption">
+Figure: Genome tracks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1">
+Past versions of 1.pdf
+</button>
+</p>
+<div id="fig-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/1.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><a href="asset/2023/1.pdf">Format 1</a></p>
+<p><a href="asset/2023/2.pdf">Format 2</a></p>
+<ul>
+<li>To select regions we want?</li>
+</ul>
+</div>
+</div>
+<div id="ideas-from-reading" class="section level2">
+<h2>4. Ideas from reading</h2>
+<ul>
+<li><p>Define sliding windows with skip</p>
+<p><a href="https://doi.org/10.1038/ng.2671"
+class="uri">https://doi.org/10.1038/ng.2671</a> NA Something I learned
+that can be used in my cQTL work - Define sliding windows with skip by
+sliding the window based on both (1) sliding across at least one peak
+(the current way), (2) skip a gap window. Adding a gap sliding distance
+can decrease the degree of overlapping between two adjacent peak groups
+and reduce the number of tests. Or to be more precisely, use an overlap
+fraction.</p></li>
+<li><p>The idea of using overlap fraction to merge our significant peak
+groups.</p></li>
+</ul>
+</div>
+</div>
+<div id="feb-17" class="section level1">
+<h1>Feb 17</h1>
+<div id="quick-summary-2" class="section level2">
+<h2>Quick summary</h2>
+<ul>
+<li><p>Evaluate PCO_ACAT</p></li>
+<li><p>Apply PCO_ACAT to all chr’s and window sizes of sliding windows
+with the goal to analyze data</p></li>
+<li><p>Thoughts &amp; insights on previous results after reading ACAT
+more carefully</p></li>
+</ul>
+</div>
+<div id="evaluate-pco_acat" class="section level2">
+<h2>1. Evaluate PCO_ACAT</h2>
+<p>On non-overlapping windows as described in <a
+href="#non_overlapping_window">previous progress</a>.</p>
+<div id="v.s.-pco" class="section level3">
+<h3>v.s. PCO</h3>
+<p>with the goal to see if PCO_ACAT works.</p>
+<ul>
+<li>Compare P value distribution</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare PCO and PCO_ACAT. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" />
+<p class="caption">
+Figure: To compare PCO and PCO_ACAT. Color: methods. Panel: window size.
+x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of
+(SNP, peak group),(C) Density of (SNP, peak group) with corresponding P.
+These p’s are from all chr20-22.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22">
+Past versions of
+02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf
+</button>
+</p>
+<div
+id="fig-02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>A more rigorous way to compare distributions?</p></li>
+<li><p>Compare small p’s of window sizes</p></li>
+</ul>
+<p><a
+href="asset/2023/02_15_plt_compare_small_p_pco_acat_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf"
+width="50%">Figure: To compare window sizes. Color: window sizes. (A)
+x-axis: -log10(small P), small P &lt; 1e-5. y-axis: density of (SNP,
+peak group) associations with corresponding P. (B) x-axis: -log10(small
+P), small P &lt; 1e-5. y-axis: number of (SNP, peak group) associations
+with corresponding P. (C) Numbers of tests across window sizes. These
+p’s are from all chr20-22.</a></p>
+<ul>
+<li>Compare specific association pairs</li>
+</ul>
+<p><a
+href="asset/2023/02_15_plt_compare_small_p_pco_acat_methods_point_H3K27AC_window_all_cis500kb_chr20-22.pdf"
+width="50%">Figure: To compare each (SNP, group) association by three
+methods under non-overlapping windows. x-axis: (SNP, group)
+associations, with small P &lt; 1e-5. Point is a (SNP, group)
+association. y-axis: -log10(small P). Color: methods. Panel: window
+size. These p’s are from all chr20-22.</a></p>
+<ul>
+<li>Computation time</li>
+</ul>
+</div>
+<div id="v.s.-acatminp" class="section level3">
+<h3>v.s. ACAT/MinP</h3>
+<p>with the goal to see if there is any improvement by PC-based
+method.</p>
+<ul>
+<li>Compare P value distribution</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare PCO_ACAT and ACAT?MinP. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" />
+<p class="caption">
+Figure: To compare PCO_ACAT and ACAT?MinP. Color: methods. Panel: window
+size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number
+of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding
+P. These p’s are from all chr20-22.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22">
+Past versions of
+02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf
+</button>
+</p>
+<div
+id="fig-02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/1fe0e18bdd092c47b65b91a134b1378bdaa7d9ab/docs/asset/2023/02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" target="_blank">1fe0e18</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Compare small p’s of window sizes</li>
+</ul>
+<p><a
+href="asset/2023/02_15_plt_small_p_pco_acat_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf"
+width="50%">Figure: To compare window sizes. Color: window sizes. (A)
+x-axis: -log10(small P), small P &lt; 1e-5. y-axis: density of (SNP,
+peak group) associations with corresponding P. (B) x-axis: -log10(small
+P), small P &lt; 1e-5. y-axis: number of (SNP, peak group) associations
+with corresponding P. (C) Numbers of tests across window sizes. These
+p’s are from all chr20-22.</a></p>
+<ul>
+<li>Compare specific association pairs</li>
+</ul>
+<p><a
+href="asset/2023/02_15_plt_small_p_pco_acat_methods_point_H3K27AC_window_all_cis500kb_chr20-22.pdf"
+width="50%">Figure: To compare each (SNP, group) association by three
+methods under non-overlapping windows. x-axis: (SNP, group)
+associations, with small P &lt; 1e-5. Point is a (SNP, group)
+association. y-axis: -log10(small P). Color: methods. Panel: window
+size. These p’s are from all chr20-22.</a></p>
+<ul>
+<li>Computation time</li>
+</ul>
+</div>
+</div>
+<div
+id="apply-to-all-chrs-and-window-sizes-of-non-overlapping-sliding-windows-to-analyze-data"
+class="section level2">
+<h2>2. Apply to all chr’s and window sizes of
+(<del>non-overlapping</del> / sliding windows) to analyze data</h2>
+<ul>
+<li><p>Done.</p></li>
+<li><p>Computation time</p>
+<p>For <span class="math inline">\(22\times9\times2\)</span> …</p></li>
+</ul>
+</div>
+<div id="thoughts-insgihts-after-read-acat-more-carefully"
+class="section level2">
+<h2>3. Thoughts &amp; insgihts after read ACAT more carefully</h2>
+<p>Thoughts on previous results/observations/questions/concerns -</p>
+<ul>
+<li><p>Why did we observe similar p value distribution by ACAT and MinP
+(corrected by Bonferroni)</p>
+<p>As we discussed in ACAT paper JC, ACAT can be dominated by the very
+small p values.</p>
+<p>MinP corrected by Bonferroni and MinP with p values calculated by
+computational heavy permutation are similar.</p></li>
+<li><p>Why did we observe less improvements by PCO than ACAT/MinP than
+expected?</p>
+<ul>
+<li><p>ACAT/MinP is not a good/common standard to compare with (as said
+by Yang), as (1) it is already powerful, (2) it is not what we wanted to
+improve on.</p></li>
+<li><p>We should compare with univariate methods, which is commonly used
+and less improved and less powerful.</p></li>
+<li><p>Not to compare the number of SNPs, as not significant biological
+meaning and hard to implement. Instead, we can use other ways, e.g. if
+improved coloc signals with traits, etc.</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
 <div id="feb-08" class="section level1">
 <h1>Feb 08</h1>
-<div id="quick-summary" class="section level2">
+<div id="quick-summary-3" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li>Tested (SNP, peak group) of groups defined by non-overlapping
 windows.</li>
 </ul>
 </div>
-<div id="groups-defined-by-non-overlapping-windows"
-class="section level2">
+<div id="non_overlapping_window" class="section level2">
 <h2>1. Groups defined by non-overlapping windows</h2>
 <div id="why-discussion-on-slack" class="section level3">
 <h3>Why? (discussion on slack)</h3>
@@ -1020,7 +2060,7 @@ then test again to obtain updated p for merged group?</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="how" class="section level3">
+<div id="how-1" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Define non-overlapping windows</p>
@@ -1045,6 +2085,46 @@ methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5.
 y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak
 group) with corresponding P. These p’s are from all chr20-22.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_08_nonoverlap_window_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22">
+Past versions of
+02_08_nonoverlap_window_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf
+</button>
+</p>
+<div
+id="fig-02_08_nonoverlap_window_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0a7c2b7d4d9ae8dab31b3d22aa23fa75e31717ee/docs/asset/2023/02_08_nonoverlap_window_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" target="_blank">0a7c2b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-02-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>Compare small p’s of three methods - Scatter plot</p>
@@ -1085,12 +2165,52 @@ group) associations with corresponding P. (C) Numbers of tests across
 window sizes. These p’s are from all chr20-22.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_08_nonoverlap_window_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22">
+Past versions of
+02_08_nonoverlap_window_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf
+</button>
+</p>
+<div
+id="fig-02_08_nonoverlap_window_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0a7c2b7d4d9ae8dab31b3d22aa23fa75e31717ee/docs/asset/2023/02_08_nonoverlap_window_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf" target="_blank">0a7c2b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-02-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="feb-01" class="section level1">
 <h1>Feb 01</h1>
-<div id="quick-summary-1" class="section level2">
+<div id="quick-summary-4" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Compare small p, instead of top p, across three methods &amp;
@@ -1104,10 +2224,10 @@ id="compare-methods-and-window-sizes-using-small-p-rather-than-top-p"
 class="section level2">
 <h2>1. Compare methods and window sizes using small p rather than top
 p</h2>
-<div id="why" class="section level3">
+<div id="why-1" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-1" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -1145,10 +2265,10 @@ window.</p></li>
 </div>
 <div id="try-even-more-extreme-window-sizes" class="section level2">
 <h2>2. Try even more extreme window sizes</h2>
-<div id="why-1" class="section level3">
+<div id="why-2" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-2" class="section level3">
+<div id="how-3" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -1551,7 +2671,7 @@ liliw-w
 </div>
 <div id="jan-25" class="section level1">
 <h1>Jan 25</h1>
-<div id="quick-summary-2" class="section level2">
+<div id="quick-summary-5" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Test peak group defined by smaller window sizes using ACAT, minP,
@@ -1560,7 +2680,7 @@ PCO.</li>
 </div>
 <div id="try-smaller-window-sizes" class="section level2">
 <h2>1. Try smaller window sizes</h2>
-<div id="why-2" class="section level3">
+<div id="why-3" class="section level3">
 <h3>Why?</h3>
 <ul>
 <li><p>We observed from last week’s results that, it seems that PCO’s p
@@ -1571,7 +2691,7 @@ have physically closer peaks, thus more shared genetic control.</p></li>
 <p>Therefore, we wanted to check if that pattern persists under smaller
 window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.</p>
 </div>
-<div id="how-3" class="section level3">
+<div id="how-4" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Window sizes</p>
@@ -1763,7 +2883,7 @@ sizes</p></li>
 </div>
 <div id="jan-18" class="section level1">
 <h1>Jan 18</h1>
-<div id="quick-summary-3" class="section level2">
+<div id="quick-summary-6" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Compare across window sizes</p></li>
@@ -2330,7 +3450,7 @@ significant SNPs</p></li>
 </div>
 <div id="jan-11" class="section level1">
 <h1>Jan 11</h1>
-<div id="quick-summary-4" class="section level2">
+<div id="quick-summary-7" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Make the pipeline automatic.</p></li>
@@ -2349,7 +3469,7 @@ peak group)</h2>
 window sizes using SNPs within 500kb of peak group.</p>
 <p>This time, I tried various window sizes, including 100kb, 250kb,
 500kb.</p>
-<div id="how-4" class="section level3">
+<div id="how-5" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Peaks are considered as a peak group using a sliding window of
@@ -3601,7 +4721,7 @@ liliw-w
 </div>
 <div id="dec-21" class="section level1">
 <h1>Dec 21</h1>
-<div id="quick-summary-5" class="section level2">
+<div id="quick-summary-8" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Ran associations (by ACAT) between SNPs and peak groups using
@@ -3977,7 +5097,7 @@ liliw-w
 </div>
 <div id="dec-14" class="section level1">
 <h1>Dec 14</h1>
-<div id="quick-summary-6" class="section level2">
+<div id="quick-summary-9" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Run ACAT to test associations between (SNP, adjacent peak group) for
@@ -3990,7 +5110,7 @@ mark H3K27AC.</li>
 </div>
 <div id="adjacent-peaks-as-peak-groups" class="section level2">
 <h2>2. Adjacent peaks as peak groups</h2>
-<div id="how-5" class="section level3">
+<div id="how-6" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Sliding window of length 500kb.</p></li>
@@ -4154,7 +5274,7 @@ liliw-w
 <div id="test-a-snp-and-a-group-of-adjacent-peaks-by-acat"
 class="section level2">
 <h2>3. Test a SNP and a group of adjacent peaks by ACAT</h2>
-<div id="how-6" class="section level3">
+<div id="how-7" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>For each peak group, test its association across all overlapped
@@ -4441,7 +5561,7 @@ associations.</p></li>
 </div>
 <div id="dec-09" class="section level1">
 <h1>Dec 09</h1>
-<div id="quick-summary-7" class="section level2">
+<div id="quick-summary-10" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Preliminary analysis on Carlos’s hQTL results.</li>
@@ -4707,18 +5827,22 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] workflowr_1.7.0
+
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.8       pillar_1.7.0     compiler_4.1.2   bslib_0.3.1.9000
- [5] later_1.3.0      jquerylib_0.1.4  git2r_0.29.0     highr_0.9       
- [9] workflowr_1.7.0  tools_4.1.2      digest_0.6.29    jsonlite_1.8.0  
+ [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
+ [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
+ [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
 [13] evaluate_0.15    lifecycle_1.0.3  tibble_3.1.6     pkgconfig_2.0.3 
 [17] rlang_1.0.6      cli_3.6.0        rstudioapi_0.13  yaml_2.3.5      
-[21] xfun_0.31        fastmap_1.1.0    stringr_1.5.0    knitr_1.39      
-[25] fs_1.5.2         vctrs_0.5.1      sass_0.4.1       rprojroot_2.0.2 
-[29] glue_1.6.2       R6_2.5.1         fansi_1.0.2      rmarkdown_2.14.2
-[33] magrittr_2.0.3   whisker_0.4      promises_1.2.0.1 ellipsis_0.3.2  
-[37] htmltools_0.5.4  httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
-[41] cachem_1.0.6     crayon_1.4.2    </code></pre>
+[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.5.0   
+[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.5.1     
+[29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
+[33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
+[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.4 
+[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
+[45] cachem_1.0.6     crayon_1.4.2    </code></pre>
 </div>
 </div>
 </div>
