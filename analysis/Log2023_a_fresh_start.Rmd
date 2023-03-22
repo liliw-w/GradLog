@@ -24,6 +24,431 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+
+
+# Mar 08 & March 15
+
+## Quick summary
+
+- Figured out Ben & Carlos's steps on their histone peak QTLs we used previously.
+
+- Count-based QTL
+
+
+## 1. What they did to process data for peak QTLs
+
+To work on count based QTL mapping, I need to first figure out the exact steps Ben & Carlos's did to process the histone data and peak QTL mapping, in order to make consistent window-based and count-based QTL mapping. Below is a mindmap of steps, QC, normalization etc. of Ben & Carlos did to generate peak QTLs.
+
+```{r out.width="100%", fig.cap="Figure: What Ben & Carlos did to process data.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_08_Histone_mark_reads.pdf"), error = FALSE)
+```
+
+
+## 2. Count based - Processing data
+
+- Why?
+
+- How? A few things to be changed
+  
+  Make pre-processing data consistent with window-based, except -
+  
+  - Redefine segments on genome as .saf rather than peak calling regions.
+  
+  - Adaptations to QC
+    
+    - Remove segments without any reads
+    
+    - Remove segments without reads in 1-?% individuals (I tried 100%, 50%)
+
+
+### Split chr's by segments
+
+- How?
+  
+  Split the chromosome from 0 to chromosome length by a segment size - 1kb.
+
+- Number of segments across chr
+
+```{r out.width="50%", fig.cap="Figure: Number of split segments compared to the called peaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_08_num_features.pdf"), error = FALSE)
+```
+
+
+### Count reads within each seg
+
+- 4 histone marks (by ChIP-seq or CutAndTag) are all paired-end reads.
+
+
+- Count by paired-end
+  
+  ~~No `-p`. Reads instead of paired-end fragments will be counted.~~
+  
+  Use `-p`. [Count fragment instead](https://support.bioconductor.org/p/67534/).
+
+
+- Ways to count a read overlapped with multiple features
+  
+  [At first, I didn't think through this until I observed many unassigned reads due to Unassigned_Ambiguity.]
+  
+  - ~~Use `-p -O` to assign the read (1) to all overlapped features.~~ [FEATURECOUNTS PAPER SUGGESTION ON USING _O]
+
+  - ~~Use `-p --largestOverlap` to assign the read (1) to the feature that has the largest number of overlapping bases.~~
+  
+  - ~~Use `-p --fraction -O` to assign a fractional count (1/y, where y is the total number of features overlapping with the read) to all overlapped features.~~
+  
+  - Use `-p --read2pos 5`. Think a fragment as a whole, and take the left-most base.
+  
+  - ~~Use `--read2pos 5` to reduce the read to an end base (as said by Yang, left-most-read-base to count in bam file, take just one base, to avoid that one read in multiple regions) and count the reduced single base.~~
+  
+  - Use `-p --read2pos 5 single_paired_read1_*.bam`. Use paired-end, but only uses read 1. Reduce the read to left-most-base.
+
+
+```{r}
+feature_counts_mode <- data.frame(
+  "flag" = c(
+    "-p",
+    "-p -O",
+    "-p --largestOverlap", 
+    "-p --read2pos 5", 
+    "--read2pos 5", 
+    "-p --read2pos 5 single_paired_read1_*.bam",
+    
+    "-p --read2pos 5 -O",
+    "-p --read2pos 5 --largestOverlap"
+  ),
+  "interpretation" = c(
+    "paired-end, ignore overlap count",
+    "paired-end, assign overlap count to all regions",
+    "paired-end, assign overlap count to region with largest overlap",
+    "paired-end, reduce read to left-most-base",
+    "single-end, reduce read to left-most-base",
+    "paired-end, reduce read to left-most-base, but use only the first read",
+    
+    "paired-end, reduce read to left-most-base, assign overlap count to all regions",
+    "paired-end, reduce read to left-most-base, assign to largest overlap"
+  )
+)
+
+knitr::kable(feature_counts_mode)
+```
+
+
+```{r out.width="50%", fig.cap="Figure: (un)Assigned reads under various counting modes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_22_plt_count_mode.pdf"), error = FALSE)
+```
+
+
+**Observation**
+
+- Unassigned reads under `-p --read2pos 5 single_paired_read1_*.bam`.
+  
+  - These unassigned reads due to ambiguity are only for one individual.
+  
+  - Weirdly, if I do read counting for only this individual, there is no unassigned reads.
+  
+  - If I count read all individuals together and with `-R` to output the detailed (un)assignment of each read, there is no unassigned reads again. So I couldn't check exactly which reads were unassigned for this individual.
+  
+  - I used the above read counting results.
+
+
+
+- Why both single-end and paired-end reads occur in one bam file?
+  
+  Paired-end sequencing. But those single-end reads are not aligned to ref genome.
+
+
+
+
+**A few numbers - raw counts**
+
+- For current exploratory phase, I only run chromosome 20, which was split to 64,444 1kb-segments.
+  
+  - 62,910 (~97.62%) segments with at least one read in one individual.
+  
+  - %individuals without any reads
+
+
+```{r out.width="30%", fig.cap="Figure: Raw counts across segments.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_08_seg_count.pdf", "asset/2023/03_08_seg_count_zoom.pdf"), error = FALSE)
+```
+
+
+```{r out.width="30%", fig.cap="Figure: % Individuals with nonzero raw counts.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_08_perct_ind.pdf"), error = FALSE)
+```
+
+
+- I feature count 2337 peaks on chr20, and compared the count summary with segment-version on chr20. A few potential questions needed further understanding -
+
+  - In featureCounts, unassigned reads due to Unassigned_Duplicate, Unassigned_NoFeatures, many Unassigned_Ambiguity.
+  
+  - There are many Unassigned_Ambiguity, because reads can fall between adjacent segments. Solution: use `--read2pos` to count only the left-most-base.
+
+
+
+
+### QC & Normalization
+
+- Filter segments by proportion of samples with non-zero reads - 100%, 50%.
+
+- Regular standardization & qqnorm way v.s. leafcutter way.
+
+
+### Covariates
+
+Temporary workaround - Use PC's of peaks.
+
+
+### QTLTools
+
+Chr20 for now. All cis-SNPs around 500kb of each segment.
+
+
+
+## 3. Count based - Perform PCO (pick one region)
+
+### Define segment groups
+
+- Window size - 10kb
+
+- Segment size - 1kb
+
+
+```{r out.width="50%", fig.cap="Figure: Segment group size under 10kb window size across prop_nonzero (1, 0.5).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_22_plt_seg_group_size.pdf"), error = FALSE)
+```
+
+
+**Observations** -
+
+- #groups used for PCO (remove those groups with 1 seg)
+
+- group size v.s. sample size (72)
+  
+  Group size controlled under 10, for seg_size = 1kb, window_size=10kb
+
+
+- Is 1kb too wide for segment size?
+
+
+### Perform PCO
+
+- P for across prop_nonzero (1, 0.5) & compare to peak group.
+
+
+```{r out.width="50%", fig.cap="Figure: Comparison of small p of segment group size under 10kb window size across prop_nonzero (1, 0.5).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_22_plt_smallp.pdf"), error = FALSE)
+```
+
+
+
+# Feb 24 & Feb 29
+
+## Quick summary
+
+- Locus zoom of a region to visualize PCO and MinP associations
+
+- Genome track by genotype
+
+
+
+## 1. Compare p's of specific association pairs by MinP and PCO
+
+Change the way of visualization -
+
+```{r out.width="50%", fig.cap="Figure: To compare MinP and PCO.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22.pdf"), error = FALSE)
+```
+
+
+
+## 2. Locus zoom of (a peak group, cis region)
+
+### Why?
+
+Significant PCO associations, weak ACAT associations.
+
+For follow up analysis, e.g. coloc with traits.
+
+
+But since we are not comparing to ACAT associations, is this analysis still necessary? (Does it really make sense to compare with MinP?)
+
+For coloc purpose, improve detection of mediate effects. How does it help with coloc power? or anything else?
+
+
+
+### How?
+
+For a peak group, cis region. Two methods: PCO & MinP.
+
+
+- Issues
+  
+  - ~~`locuscomparer` not available to install on midway3.~~
+  
+  - ~~Convert SNP position to rsid.~~
+  
+  - **~20% SNPs no rsid?**
+
+
+
+### Example regions
+
+```{r out.width="30%", fig.cap="Figure: Locus compare MinP and PCO.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_.pdf"), error = FALSE)
+```
+
+
+- To select regions we want?
+
+
+## 3. Genometracks by genotype
+
+### Issues I ran into
+
+- Use the new main function
+
+- Use the wrong flag - unknown snp led to wrong genotype group
+
+- Use the correct template
+  
+  `GeneralPurposeColoredByGenotype.ini`
+  
+  `GeneralPurposeColoredByGenotypeWithPerIndCoverage.ini`
+
+- Correct template
+  
+  Change to the correct template.
+  
+  Minor - change the y max value to `PerGroupMaxPerInd`
+
+
+### Example regions
+
+```{r out.width="50%", fig.cap="Figure: Genome tracks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/1.pdf"), error = FALSE)
+```
+
+[Format 1](asset/2023/1.pdf)
+
+[Format 2](asset/2023/2.pdf)
+
+
+- To select regions we want?
+
+
+
+## 4. Ideas from reading
+
+- Define sliding windows with skip
+  
+  https://doi.org/10.1038/ng.2671 NA Something I learned that can be used in my cQTL work - Define sliding windows with skip by sliding the window based on both (1) sliding across at least one peak (the current way), (2) skip a gap window. Adding a gap sliding distance can decrease the degree of overlapping between two adjacent peak groups and reduce the number of tests. Or to be more precisely, use an overlap fraction.
+
+- The idea of using overlap fraction to merge our significant peak groups.
+
+
+
+
+# Feb 17
+
+## Quick summary
+
+- Evaluate PCO_ACAT
+
+-  Apply PCO_ACAT to all chr's and window sizes of sliding windows with the goal to analyze data
+
+- Thoughts & insights on previous results after reading ACAT more carefully
+
+
+
+## 1. Evaluate PCO_ACAT
+
+On non-overlapping windows as described in [previous progress](#non_overlapping_window).
+
+
+### v.s. PCO
+
+with the goal to see if PCO_ACAT works.
+  
+  - Compare P value distribution
+  
+```{r out.width="50%", fig.cap="Figure: To compare PCO and PCO_ACAT. Color: methods. Panel: window size. x-axis: -log10(small P), small P < 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf"), error = FALSE)
+```
+
+  - A more rigorous way to compare distributions?
+  
+  - Compare small p's of window sizes
+  
+  [Figure: To compare window sizes. Color: window sizes. (A) x-axis: -log10(small P), small P < 1e-5. y-axis: density of (SNP, peak group) associations with corresponding P. (B) x-axis: -log10(small P), small P < 1e-5. y-axis: number of (SNP, peak group) associations with corresponding P. (C) Numbers of tests across window sizes. These p's are from all chr20-22.](asset/2023/02_15_plt_compare_small_p_pco_acat_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf){width="50%"}
+
+  
+  - Compare specific association pairs
+  
+  [Figure: To compare each (SNP, group) association by three methods under non-overlapping windows. x-axis: (SNP, group) associations, with small P < 1e-5. Point is a (SNP, group) association. y-axis: -log10(small P). Color: methods. Panel: window size. These p's are from all chr20-22.](asset/2023/02_15_plt_compare_small_p_pco_acat_methods_point_H3K27AC_window_all_cis500kb_chr20-22.pdf){width="50%"}
+
+  
+  - Computation time
+
+
+
+### v.s. ACAT/MinP
+
+with the goal to see if there is any improvement by PC-based method.
+
+  - Compare P value distribution
+  
+```{r out.width="50%", fig.cap="Figure: To compare PCO_ACAT and ACAT?MinP. Color: methods. Panel: window size. x-axis: -log10(small P), small P < 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf"), error = FALSE)
+```
+
+
+  - Compare small p's of window sizes
+  
+  [Figure: To compare window sizes. Color: window sizes. (A) x-axis: -log10(small P), small P < 1e-5. y-axis: density of (SNP, peak group) associations with corresponding P. (B) x-axis: -log10(small P), small P < 1e-5. y-axis: number of (SNP, peak group) associations with corresponding P. (C) Numbers of tests across window sizes. These p's are from all chr20-22.](asset/2023/02_15_plt_small_p_pco_acat_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf){width="50%"}
+
+  
+  - Compare specific association pairs
+  
+  [Figure: To compare each (SNP, group) association by three methods under non-overlapping windows. x-axis: (SNP, group) associations, with small P < 1e-5. Point is a (SNP, group) association. y-axis: -log10(small P). Color: methods. Panel: window size. These p's are from all chr20-22.](asset/2023/02_15_plt_small_p_pco_acat_methods_point_H3K27AC_window_all_cis500kb_chr20-22.pdf){width="50%"}
+
+  
+  - Computation time
+
+
+
+## 2. Apply to all chr's and window sizes of (~~non-overlapping~~ / sliding windows) to analyze data
+
+- Done.
+
+- Computation time
+  
+  For $22\times9\times2$ ...
+
+
+
+## 3. Thoughts & insgihts after read ACAT more carefully
+
+Thoughts on previous results/observations/questions/concerns -
+
+- Why did we observe similar p value distribution by ACAT and MinP (corrected by Bonferroni)
+  
+  As we discussed in ACAT paper JC, ACAT can be dominated by the very small p values.
+  
+  MinP corrected by Bonferroni and MinP with p values calculated by computational heavy permutation are similar.
+
+
+- Why did we observe less improvements by PCO than ACAT/MinP than expected?
+  
+  - ACAT/MinP is not a good/common standard to compare with (as said by Yang), as (1) it is already powerful, (2) it is not what we wanted to improve on.
+  
+  - We should compare with univariate methods, which is commonly used and less improved and less powerful.
+  
+  - Not to compare the number of SNPs, as not significant biological meaning and hard to implement. Instead, we can use other ways, e.g. if improved coloc signals with traits, etc.
+
+
+
+
 # Feb 08
 
 ## Quick summary
@@ -31,7 +456,7 @@ blockquote {
 - Tested (SNP, peak group) of groups defined by non-overlapping windows.
 
 
-## 1. Groups defined by non-overlapping windows
+## 1. Groups defined by non-overlapping windows {#non_overlapping_window}
 
 ### Why? (discussion on slack)
 
