@@ -189,6 +189,8 @@ knitr::include_graphics(c("asset/2023/03_08_perct_ind.pdf"), error = FALSE)
 
 ### QC & Normalization
 
+- Remove segments without any reads for any individuals.
+
 - Filter segments by proportion of samples with non-zero reads - 100%, 50%.
 
 - Regular standardization & qqnorm way v.s. leafcutter way.
@@ -234,6 +236,10 @@ knitr::include_graphics(c("asset/2023/03_22_plt_seg_group_size.pdf"), error = FA
 ### Perform PCO
 
 - P for across prop_nonzero (1, 0.5) & compare to peak group.
+
+- I expect seg_pco to be similar to peak_pco, as these results are from mark H3K27ac with narrow peaks.
+  
+  - I expect seg_pco to be powerful for marks with broad peaks.
 
 
 ```{r out.width="50%", fig.cap="Figure: Comparison of small p of segment group size under 10kb window size across prop_nonzero (1, 0.5).", fig.show='hold',fig.align='center'}
