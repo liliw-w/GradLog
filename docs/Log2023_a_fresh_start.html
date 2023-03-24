@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-03-22
+<strong>Last updated:</strong> 2023-03-24
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree88593d492a7edee3dcdf85e9550875db6e27cec2targetblank88593d4a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree3094ce997a05a84325f063673ce9eea4cdebacf7targetblank3094ce9a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/88593d492a7edee3dcdf85e9550875db6e27cec2" target="_blank">88593d4</a>
+<a href="https://github.com/liliw-w/GradLog/tree/3094ce997a05a84325f063673ce9eea4cdebacf7" target="_blank">3094ce9</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree88593d492a7edee3dcdf85e9550875db6e27cec2targetblank88593d4a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree3094ce997a05a84325f063673ce9eea4cdebacf7targetblank3094ce9a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/88593d492a7edee3dcdf85e9550875db6e27cec2" target="_blank">88593d4</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/3094ce997a05a84325f063673ce9eea4cdebacf7" target="_blank">3094ce9</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -647,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/3094ce997a05a84325f063673ce9eea4cdebacf7/analysis/Log2023_a_fresh_start.Rmd" target="_blank">3094ce9</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-24
+</td>
+<td>
+add more details
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/f5a165be0df7f78fcb8cbf9c5eb49cb71bb9797c/docs/Log2023_a_fresh_start.html" target="_blank">f5a165b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-22
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1484,6 +1518,7 @@ count only the left-most-base.</p></li>
 <div id="qc-normalization" class="section level3">
 <h3>QC &amp; Normalization</h3>
 <ul>
+<li><p>Remove segments without any reads for any individuals.</p></li>
 <li><p>Filter segments by proportion of samples with non-zero reads -
 100%, 50%.</p></li>
 <li><p>Regular standardization &amp; qqnorm way v.s. leafcutter
@@ -1564,7 +1599,13 @@ window_size=10kb</p></li>
 <div id="perform-pco" class="section level3">
 <h3>Perform PCO</h3>
 <ul>
-<li>P for across prop_nonzero (1, 0.5) &amp; compare to peak group.</li>
+<li><p>P for across prop_nonzero (1, 0.5) &amp; compare to peak
+group.</p></li>
+<li><p>I expect seg_pco to be similar to peak_pco, as these results are
+from mark H3K27ac with narrow peaks.</p>
+<ul>
+<li>I expect seg_pco to be powerful for marks with broad peaks.</li>
+</ul></li>
 </ul>
 <div class="figure" style="text-align: center">
 <img src="asset/2023/03_22_plt_smallp.pdf" alt="Figure: Comparison of small p of segment group size under 10kb window size across prop_nonzero (1, 0.5)." width="50%" />
