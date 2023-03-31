@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-03-24
+<strong>Last updated:</strong> 2023-03-31
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree3094ce997a05a84325f063673ce9eea4cdebacf7targetblank3094ce9a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0targetblank39fcfada">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/3094ce997a05a84325f063673ce9eea4cdebacf7" target="_blank">3094ce9</a>
+<a href="https://github.com/liliw-w/GradLog/tree/39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0" target="_blank">39fcfad</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree3094ce997a05a84325f063673ce9eea4cdebacf7targetblank3094ce9a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0targetblank39fcfada"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/3094ce997a05a84325f063673ce9eea4cdebacf7" target="_blank">3094ce9</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0" target="_blank">39fcfad</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -602,6 +602,9 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/week_log.Rmd
+
+Unstaged changes:
+    Modified:   analysis/references.bib
 
 </code></pre>
 <p>
@@ -647,6 +650,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0/analysis/Log2023_a_fresh_start.Rmd" target="_blank">39fcfad</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-31
+</td>
+<td>
+add a new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/d788d08437895f9b1518f27657847a581477dc66/docs/Log2023_a_fresh_start.html" target="_blank">d788d08</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1089,9 +1126,156 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="mar-29" class="section level1">
+<h1>Mar 29</h1>
+<div id="quick-summary" class="section level2">
+<h2>Quick summary</h2>
+</div>
+<div id="re-thinking-of-segment-based-idea" class="section level2">
+<h2>Re-thinking of segment-based idea</h2>
+<div id="segment-based-for-narrow-peaks" class="section level3">
+<h3>Segment-based for narrow peaks</h3>
+<ul>
+<li><p>Goal: to skip peak calling</p></li>
+<li><p>Illustration figure - ideal case</p>
+<p>We want segment size to be peak-width to include multiple peaks
+together.</p></li>
+</ul>
+</div>
+<div id="segment-based-for-braod-peaks" class="section level3">
+<h3>Segment-based for braod peaks</h3>
+<ul>
+<li><p>Goal: to compensate peak calling</p></li>
+<li><p>Illustration figure - ideal case</p>
+<p>We want segment size to be smaller than peak-width to split a broad
+peak to multiple segments.</p></li>
+</ul>
+</div>
+</div>
+<div id="add-cpm-filtering-on-segments" class="section level2">
+<h2>Add cpm filtering on segments</h2>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<p>Average log2 CPM for each segment across samples. Mean of average
+log2 CPM. Add a factor.</p>
+</div>
+<div id="under-cpm-filtering-cutoff-check-segment-numbers"
+class="section level3">
+<h3>Under CPM filtering cutoff, check segment numbers</h3>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_29_plt_seg_avgcpmfct.pdf" alt="Figure: How many segments are retained after removing segments based on average log2 CPM?" width="50%" />
+<p class="caption">
+Figure: How many segments are retained after removing segments based on
+average log2 CPM?
+</p>
+</div>
+</div>
+<div id="under-cpm-filtering-cutoff-check-group-size"
+class="section level3">
+<h3>Under CPM filtering cutoff, check group size</h3>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_29_plt_seg_group_size_avgcpmfct.pdf" alt="Figure: Segment group size across various factors of average log2 CPM." width="50%" />
+<p class="caption">
+Figure: Segment group size across various factors of average log2 CPM.
+</p>
+</div>
+</div>
+<div id="run-all-thing" class="section level3">
+<h3>Run all thing</h3>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_29_compare_p_avgcpmfct.pdf" alt="Figure: P value distribution under various factors of average log2 CPM. Only show small P &lt; 1e-5" width="50%" />
+<p class="caption">
+Figure: P value distribution under various factors of average log2 CPM.
+Only show small P &lt; 1e-5
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf" alt="Figure: QQ-plot of P values under various factors of average log2 CPM. I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<p class="caption">
+Figure: QQ-plot of P values under various factors of average log2 CPM. I
+sorted all P values but here I only show P &lt; 1e-7
+</p>
+</div>
+<p><strong>Observation</strong></p>
+<ul>
+<li><p>Use factor 3, in terms of,</p>
+<ul>
+<li><p>Absolute number of small p values. Compare to factor 4 and
+2.</p></li>
+<li><p>Density of small p values. Compare to factor 4 and 2.</p></li>
+<li><p>Computation speed.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="issues" class="section level3">
+<h3>Issues</h3>
+<p>I can’t do the following to-do as mentioned last time,</p>
+<ul>
+<li><p>cdf and histogram of all pvalues</p>
+<p>Looks exactly same and highly overlapped under various factors of
+average log2 CPM. Because most p values are large, so those small p
+values are only a few and their differences don’t matter much when
+plotting all p values.</p></li>
+<li><p>scatter plot</p>
+<p>Impossible to plot all p values on a scatter plot. Instead, I plotted
+the QQ plot of all pvalues. Not sure if it is equal.</p></li>
+</ul>
+</div>
+</div>
+<div id="use-different-segment-size" class="section level2">
+<h2>Use different segment size</h2>
+<ul>
+<li><p>Check if -p -reduce read1.bam<code>has same alignment as</code>
+-p -reduce -O`</p></li>
+<li><p>Try size options, large or small, for current narrow peaks or
+future wide peaks. Check segment numbers, group size.</p></li>
+<li><p>Run all thing</p></li>
+</ul>
+</div>
+<div id="ideas-from-reading" class="section level2">
+<h2>Ideas from reading</h2>
+<div id="kb-is-not-wide-as-segment-size-for-broad-peaks"
+class="section level3">
+<h3>1kb is not wide as segment size for broad peaks</h3>
+<ul>
+<li><p>From literature, they typically use 1kb as bin size for broad
+peaks.</p></li>
+<li><p>We don’t need higher resolution for wide domain/peak so we
+actually want the segment to be wide.</p></li>
+<li><p>If we apply this idea to narrow peaks - cut the peak to segments
+instead of joint multiple peaks, we need narrower segment.</p></li>
+</ul>
+</div>
+<div id="why-avoid-peak-calling-lun2016" class="section level3">
+<h3>Why avoid peak calling? <span class="citation">(Lun and Smyth
+2016)</span></h3>
+<ul>
+<li>It can be problematic even for narrow peaks.</li>
+</ul>
+<blockquote>
+<p>To avoid the biases and loss of resolution associated with peak
+calling, the software packages USeq (<a href="javascript:;">13</a>),
+diffReps (<a href="javascript:;">14</a>) and PePr (<a
+href="javascript:;">15</a>) have implemented windowing strategies.</p>
+</blockquote>
+<ul>
+<li><p>Peak calling followed by other analysis, e.g. DB, can loss error
+control. So use a sliding window (de novo detection) instead.</p>
+<ul>
+<li>Window-based strategy has well controlled error rates - unlike peaks
+(peak calling and DB on the same dataset), windows are defined
+independently from the data.</li>
+</ul></li>
+<li><p>In my case, add - peak calling for broad peaks</p></li>
+<li><p>In my case, add - no need to learn peak calling</p></li>
+</ul>
+<p>s</p>
+</div>
+</div>
+</div>
 <div id="mar-08-march-15-march-22" class="section level1">
 <h1>Mar 08 &amp; March 15 &amp; March 22</h1>
-<div id="quick-summary" class="section level2">
+<div id="quick-summary-1" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Figured out Ben &amp; Carlos’s steps on their histone peak QTLs
@@ -1656,7 +1840,7 @@ liliw-w
 </div>
 <div id="feb-24-feb-29" class="section level1">
 <h1>Feb 24 &amp; Feb 29</h1>
-<div id="quick-summary-1" class="section level2">
+<div id="quick-summary-2" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Locus zoom of a region to visualize PCO and MinP
@@ -1726,7 +1910,7 @@ still necessary? (Does it really make sense to compare with MinP?)</p>
 <p>For coloc purpose, improve detection of mediate effects. How does it
 help with coloc power? or anything else?</p>
 </div>
-<div id="how" class="section level3">
+<div id="how-1" class="section level3">
 <h3>How?</h3>
 <p>For a peak group, cis region. Two methods: PCO &amp; MinP.</p>
 <ul>
@@ -1859,7 +2043,7 @@ liliw-w
 </ul>
 </div>
 </div>
-<div id="ideas-from-reading" class="section level2">
+<div id="ideas-from-reading-1" class="section level2">
 <h2>4. Ideas from reading</h2>
 <ul>
 <li><p>Define sliding windows with skip</p>
@@ -1878,7 +2062,7 @@ groups.</p></li>
 </div>
 <div id="feb-17" class="section level1">
 <h1>Feb 17</h1>
-<div id="quick-summary-2" class="section level2">
+<div id="quick-summary-3" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Evaluate PCO_ACAT</p></li>
@@ -2094,7 +2278,7 @@ improved coloc signals with traits, etc.</p></li>
 </div>
 <div id="feb-08" class="section level1">
 <h1>Feb 08</h1>
-<div id="quick-summary-3" class="section level2">
+<div id="quick-summary-4" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li>Tested (SNP, peak group) of groups defined by non-overlapping
@@ -2135,7 +2319,7 @@ then test again to obtain updated p for merged group?</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="how-1" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Define non-overlapping windows</p>
@@ -2285,7 +2469,7 @@ liliw-w
 </div>
 <div id="feb-01" class="section level1">
 <h1>Feb 01</h1>
-<div id="quick-summary-4" class="section level2">
+<div id="quick-summary-5" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Compare small p, instead of top p, across three methods &amp;
@@ -2302,7 +2486,7 @@ p</h2>
 <div id="why-1" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-2" class="section level3">
+<div id="how-3" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -2343,7 +2527,7 @@ window.</p></li>
 <div id="why-2" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-3" class="section level3">
+<div id="how-4" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -2746,7 +2930,7 @@ liliw-w
 </div>
 <div id="jan-25" class="section level1">
 <h1>Jan 25</h1>
-<div id="quick-summary-5" class="section level2">
+<div id="quick-summary-6" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Test peak group defined by smaller window sizes using ACAT, minP,
@@ -2766,7 +2950,7 @@ have physically closer peaks, thus more shared genetic control.</p></li>
 <p>Therefore, we wanted to check if that pattern persists under smaller
 window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.</p>
 </div>
-<div id="how-4" class="section level3">
+<div id="how-5" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Window sizes</p>
@@ -2958,7 +3142,7 @@ sizes</p></li>
 </div>
 <div id="jan-18" class="section level1">
 <h1>Jan 18</h1>
-<div id="quick-summary-6" class="section level2">
+<div id="quick-summary-7" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Compare across window sizes</p></li>
@@ -3525,7 +3709,7 @@ significant SNPs</p></li>
 </div>
 <div id="jan-11" class="section level1">
 <h1>Jan 11</h1>
-<div id="quick-summary-7" class="section level2">
+<div id="quick-summary-8" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Make the pipeline automatic.</p></li>
@@ -3544,7 +3728,7 @@ peak group)</h2>
 window sizes using SNPs within 500kb of peak group.</p>
 <p>This time, I tried various window sizes, including 100kb, 250kb,
 500kb.</p>
-<div id="how-5" class="section level3">
+<div id="how-6" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Peaks are considered as a peak group using a sliding window of
@@ -4796,7 +4980,7 @@ liliw-w
 </div>
 <div id="dec-21" class="section level1">
 <h1>Dec 21</h1>
-<div id="quick-summary-8" class="section level2">
+<div id="quick-summary-9" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Ran associations (by ACAT) between SNPs and peak groups using
@@ -5172,7 +5356,7 @@ liliw-w
 </div>
 <div id="dec-14" class="section level1">
 <h1>Dec 14</h1>
-<div id="quick-summary-9" class="section level2">
+<div id="quick-summary-10" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Run ACAT to test associations between (SNP, adjacent peak group) for
@@ -5185,7 +5369,7 @@ mark H3K27AC.</li>
 </div>
 <div id="adjacent-peaks-as-peak-groups" class="section level2">
 <h2>2. Adjacent peaks as peak groups</h2>
-<div id="how-6" class="section level3">
+<div id="how-7" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Sliding window of length 500kb.</p></li>
@@ -5349,7 +5533,7 @@ liliw-w
 <div id="test-a-snp-and-a-group-of-adjacent-peaks-by-acat"
 class="section level2">
 <h2>3. Test a SNP and a group of adjacent peaks by ACAT</h2>
-<div id="how-7" class="section level3">
+<div id="how-8" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>For each peak group, test its association across all overlapped
@@ -5636,7 +5820,7 @@ associations.</p></li>
 </div>
 <div id="dec-09" class="section level1">
 <h1>Dec 09</h1>
-<div id="quick-summary-10" class="section level2">
+<div id="quick-summary-11" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Preliminary analysis on Carlos’s hQTL results.</li>
@@ -5877,8 +6061,13 @@ class="section level2">
 <li><p>Combine two peaks</p></li>
 <li><p>Combine sub-peaks for one peak</p></li>
 </ol>
-<div id="refs">
-
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-lun2016" class="csl-entry">
+Lun, Aaron T. L., and Gordon K. Smyth. 2016. <span>“Csaw: A Bioconductor
+Package for Differential Binding Analysis of ChIP-Seq Data Using Sliding
+Windows.”</span> <em>Nucleic Acids Research</em> 44 (5): e45. <a
+href="https://doi.org/10.1093/nar/gkv1191">https://doi.org/10.1093/nar/gkv1191</a>.
+</div>
 </div>
 <br>
 <p>
