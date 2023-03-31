@@ -25,6 +25,123 @@ blockquote {
 **If any figures don't show, try opening in Safari.**
 
 
+# Mar 29
+
+## Quick summary
+
+## Re-thinking of segment-based idea
+
+### Segment-based for narrow peaks
+
+-   Goal: to skip peak calling
+
+-   Illustration figure - ideal case
+
+    We want segment size to be peak-width to include multiple peaks together.
+
+### Segment-based for braod peaks
+
+-   Goal: to compensate peak calling
+
+-   Illustration figure - ideal case
+
+    We want segment size to be smaller than peak-width to split a broad peak to multiple segments.
+
+
+
+## Add cpm filtering on segments
+
+### How?
+  
+  Average log2 CPM for each segment across samples. Mean of average log2 CPM. Add a factor.
+
+
+### Under CPM filtering cutoff, check segment numbers
+
+```{r out.width="50%", fig.cap="Figure: How many segments are retained after removing segments based on average log2 CPM?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_29_plt_seg_avgcpmfct.pdf"), error = FALSE)
+```
+
+### Under CPM filtering cutoff, check group size
+
+```{r out.width="50%", fig.cap="Figure: Segment group size across various factors of average log2 CPM.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_29_plt_seg_group_size_avgcpmfct.pdf"), error = FALSE)
+```
+
+
+### Run all thing
+
+```{r out.width="50%", fig.cap="Figure: P value distribution under various factors of average log2 CPM. Only show small P < 1e-5", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_29_compare_p_avgcpmfct.pdf"), error = FALSE)
+```
+
+```{r out.width="50%", fig.cap="Figure: QQ-plot of P values under various factors of average log2 CPM. I sorted all P values but here I only show P < 1e-7", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf"), error = FALSE)
+```
+
+
+**Observation**
+
+- Use factor 3, in terms of,
+  
+  - Absolute number of small p values. Compare to factor 4 and 2.
+  
+  - Density of small p values. Compare to factor 4 and 2.
+  
+  - Computation speed.
+
+
+### Issues
+
+I can't do the following to-do as mentioned last time,
+
+- cdf and histogram of all pvalues
+  
+  Looks exactly same and highly overlapped under various factors of average log2 CPM. Because most p values are large, so those small p values are only a few and their differences don't matter much when plotting all p values.
+
+- scatter plot
+  
+  Impossible to plot all p values on a scatter plot. Instead, I plotted the QQ plot of all pvalues. Not sure if it is equal.
+
+
+
+## Use different segment size
+
+- Check if -p -reduce read1.bam` has same alignment as` -p -reduce -O`
+
+
+-   Try size options, large or small, for current narrow peaks or future wide peaks. Check segment numbers, group size.
+
+-   Run all thing
+
+
+
+## Ideas from reading
+
+### 1kb is not wide as segment size for broad peaks
+
+-   From literature, they typically use 1kb as bin size for broad peaks.
+
+-   We don't need higher resolution for wide domain/peak so we actually want the segment to be wide.
+
+-   If we apply this idea to narrow peaks - cut the peak to segments instead of joint multiple peaks, we need narrower segment.
+
+### Why avoid peak calling? [@lun2016]
+
+-   It can be problematic even for narrow peaks.
+
+> To avoid the biases and loss of resolution associated with peak calling, the software packages USeq ([13](javascript:;)), diffReps ([14](javascript:;)) and PePr ([15](javascript:;)) have implemented windowing strategies.
+
+-   Peak calling followed by other analysis, e.g. DB, can loss error control. So use a sliding window (de novo detection) instead.
+
+    -   Window-based strategy has well controlled error rates - unlike peaks (peak calling and DB on the same dataset), windows are defined independently from the data.
+
+-   In my case, add - peak calling for broad peaks
+
+-   In my case, add - no need to learn peak calling
+
+s
+
 
 # Mar 08 & March 15 & March 22
 
