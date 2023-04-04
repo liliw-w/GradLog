@@ -29,7 +29,10 @@ blockquote {
 
 ## Quick summary
 
-## Re-thinking of segment-based idea
+- Re-do segment-based by adding cpm filtering on segments.
+
+
+## 1. Re-thinking of segment-based idea
 
 ### Segment-based for narrow peaks
 
@@ -49,7 +52,7 @@ blockquote {
 
 
 
-## Add cpm filtering on segments
+## 2. Add cpm filtering on segments and re-do segment-based
 
 ### How?
   
@@ -71,9 +74,12 @@ knitr::include_graphics(c("asset/2023/03_29_plt_seg_group_size_avgcpmfct.pdf"), 
 
 ### Run all thing
 
-```{r out.width="50%", fig.cap="Figure: P value distribution under various factors of average log2 CPM. Only show small P < 1e-5", fig.show='hold',fig.align='center'}
+```{r out.width="50%", fig.cap="Figure: P value distribution under various factors of average log2 CPM. Only show small P < 1e-5. Lower panel shows the total number of tests under each scenario.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/03_29_compare_p_avgcpmfct.pdf"), error = FALSE)
 ```
+
+See histogram for peak-based and factor 2 and 3 [here](asset/2023/03_29_compare_p_avgcpmfct_sub.pdf).
+
 
 ```{r out.width="50%", fig.cap="Figure: QQ-plot of P values under various factors of average log2 CPM. I sorted all P values but here I only show P < 1e-7", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf"), error = FALSE)
@@ -91,6 +97,20 @@ knitr::include_graphics(c("asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf"), er
   - Computation speed.
 
 
+**Updated Observation**
+
+- Add segment-based using factor 1 and peak-based.
+
+- Peak-based is comparable to segment-based using factor 2 and 3, in terms of absolute number of small p values.
+
+- **But Peak-based is the best in terms of qq plot of all p values.**
+  
+  - This is due to though peak-based is comparable to segment-based using factor 2 and 3, it has much fewer tests.
+  
+  - Increase segment size?
+
+
+
 ### Issues
 
 I can't do the following to-do as mentioned last time,
@@ -105,18 +125,7 @@ I can't do the following to-do as mentioned last time,
 
 
 
-## Use different segment size
-
-- Check if -p -reduce read1.bam` has same alignment as` -p -reduce -O`
-
-
--   Try size options, large or small, for current narrow peaks or future wide peaks. Check segment numbers, group size.
-
--   Run all thing
-
-
-
-## Ideas from reading
+## 3. Ideas from reading
 
 ### 1kb is not wide as segment size for broad peaks
 
@@ -140,7 +149,6 @@ I can't do the following to-do as mentioned last time,
 
 -   In my case, add - no need to learn peak calling
 
-s
 
 
 # Mar 08 & March 15 & March 22
@@ -149,7 +157,7 @@ s
 
 - Figured out Ben & Carlos's steps on their histone peak QTLs we used previously.
 
-- Count-based QTL
+- Finish count-based / segment-based version of PCO.
 
 
 ## 1. What they did to process data for peak QTLs
@@ -324,7 +332,7 @@ Chr20 for now. All cis-SNPs around 500kb of each segment.
 
 
 
-## 3. Count based - Perform PCO (pick one region)
+## 3. Count based - Perform PCO
 
 ### Define segment groups
 

@@ -409,7 +409,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -420,8 +420,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -430,13 +430,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-03-31
+<strong>Last updated:</strong> 2023-04-04
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -459,18 +459,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -561,15 +564,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0targetblank39fcfada">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree62eee5eb9567a8122182642d297f577b714f53e1targetblank62eee5ea">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0" target="_blank">39fcfad</a>
+<a href="https://github.com/liliw-w/GradLog/tree/62eee5eb9567a8122182642d297f577b714f53e1" target="_blank">62eee5e</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0targetblank39fcfada"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree62eee5eb9567a8122182642d297f577b714f53e1targetblank62eee5ea"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +582,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/39fcfad90d7b7bbdbd5ddf5af0cc27c6d5978df0" target="_blank">39fcfad</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/62eee5eb9567a8122182642d297f577b714f53e1" target="_blank">62eee5e</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -604,7 +607,7 @@ Untracked files:
     Untracked:  analysis/week_log.Rmd
 
 Unstaged changes:
-    Modified:   analysis/references.bib
+    Modified:   analysis/Log2023_a_fresh_start.Rmd
 
 </code></pre>
 <p>
@@ -650,6 +653,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/0ee57c6050ffb139cb1e309383524bc47271b389/docs/Log2023_a_fresh_start.html" target="_blank">0ee57c6</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-31
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1130,9 +1150,12 @@ Safari.</strong></p>
 <h1>Mar 29</h1>
 <div id="quick-summary" class="section level2">
 <h2>Quick summary</h2>
+<ul>
+<li>Re-do segment-based by adding cpm filtering on segments.</li>
+</ul>
 </div>
 <div id="re-thinking-of-segment-based-idea" class="section level2">
-<h2>Re-thinking of segment-based idea</h2>
+<h2>1. Re-thinking of segment-based idea</h2>
 <div id="segment-based-for-narrow-peaks" class="section level3">
 <h3>Segment-based for narrow peaks</h3>
 <ul>
@@ -1152,8 +1175,9 @@ peak to multiple segments.</p></li>
 </ul>
 </div>
 </div>
-<div id="add-cpm-filtering-on-segments" class="section level2">
-<h2>Add cpm filtering on segments</h2>
+<div id="add-cpm-filtering-on-segments-and-re-do-segment-based"
+class="section level2">
+<h2>2. Add cpm filtering on segments and re-do segment-based</h2>
 <div id="how" class="section level3">
 <h3>How?</h3>
 <p>Average log2 CPM for each segment across samples. Mean of average
@@ -1169,6 +1193,43 @@ Figure: How many segments are retained after removing segments based on
 average log2 CPM?
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_29_plt_seg_avgcpmfct">
+Past versions of 03_29_plt_seg_avgcpmfct.pdf
+</button>
+</p>
+<div id="fig-03_29_plt_seg_avgcpmfct" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/dfa6c34e5fdd493c43adce286558f43ad9da8de2/docs/asset/2023/03_29_plt_seg_avgcpmfct.pdf" target="_blank">dfa6c34</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="under-cpm-filtering-cutoff-check-group-size"
 class="section level3">
@@ -1179,22 +1240,136 @@ class="section level3">
 Figure: Segment group size across various factors of average log2 CPM.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_29_plt_seg_group_size_avgcpmfct">
+Past versions of 03_29_plt_seg_group_size_avgcpmfct.pdf
+</button>
+</p>
+<div id="fig-03_29_plt_seg_group_size_avgcpmfct" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/dfa6c34e5fdd493c43adce286558f43ad9da8de2/docs/asset/2023/03_29_plt_seg_group_size_avgcpmfct.pdf" target="_blank">dfa6c34</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="run-all-thing" class="section level3">
 <h3>Run all thing</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_29_compare_p_avgcpmfct.pdf" alt="Figure: P value distribution under various factors of average log2 CPM. Only show small P &lt; 1e-5" width="50%" />
+<img src="asset/2023/03_29_compare_p_avgcpmfct.pdf" alt="Figure: P value distribution under various factors of average log2 CPM. Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
 <p class="caption">
 Figure: P value distribution under various factors of average log2 CPM.
-Only show small P &lt; 1e-5
+Only show small P &lt; 1e-5. Lower panel shows the total number of tests
+under each scenario.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_29_compare_p_avgcpmfct">
+Past versions of 03_29_compare_p_avgcpmfct.pdf
+</button>
+</p>
+<div id="fig-03_29_compare_p_avgcpmfct" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/dfa6c34e5fdd493c43adce286558f43ad9da8de2/docs/asset/2023/03_29_compare_p_avgcpmfct.pdf" target="_blank">dfa6c34</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>See histogram for peak-based and factor 2 and 3 <a
+href="asset/2023/03_29_compare_p_avgcpmfct_sub.pdf">here</a>.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf" alt="Figure: QQ-plot of P values under various factors of average log2 CPM. I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
 <p class="caption">
 Figure: QQ-plot of P values under various factors of average log2 CPM. I
 sorted all P values but here I only show P &lt; 1e-7
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_29_compare_p_avgcpmfct_qqplot">
+Past versions of 03_29_compare_p_avgcpmfct_qqplot.pdf
+</button>
+</p>
+<div id="fig-03_29_compare_p_avgcpmfct_qqplot" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/dfa6c34e5fdd493c43adce286558f43ad9da8de2/docs/asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf" target="_blank">dfa6c34</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <p><strong>Observation</strong></p>
 <ul>
@@ -1204,6 +1379,19 @@ sorted all P values but here I only show P &lt; 1e-7
 2.</p></li>
 <li><p>Density of small p values. Compare to factor 4 and 2.</p></li>
 <li><p>Computation speed.</p></li>
+</ul></li>
+</ul>
+<p><strong>Updated Observation</strong></p>
+<ul>
+<li><p>Add segment-based using factor 1 and peak-based.</p></li>
+<li><p>Peak-based is comparable to segment-based using factor 2 and 3,
+in terms of absolute number of small p values.</p></li>
+<li><p><strong>But Peak-based is the best in terms of qq plot of all p
+values.</strong></p>
+<ul>
+<li><p>This is due to though peak-based is comparable to segment-based
+using factor 2 and 3, it has much fewer tests.</p></li>
+<li><p>Increase segment size?</p></li>
 </ul></li>
 </ul>
 </div>
@@ -1222,18 +1410,8 @@ the QQ plot of all pvalues. Not sure if it is equal.</p></li>
 </ul>
 </div>
 </div>
-<div id="use-different-segment-size" class="section level2">
-<h2>Use different segment size</h2>
-<ul>
-<li><p>Check if -p -reduce read1.bam<code>has same alignment as</code>
--p -reduce -O`</p></li>
-<li><p>Try size options, large or small, for current narrow peaks or
-future wide peaks. Check segment numbers, group size.</p></li>
-<li><p>Run all thing</p></li>
-</ul>
-</div>
 <div id="ideas-from-reading" class="section level2">
-<h2>Ideas from reading</h2>
+<h2>3. Ideas from reading</h2>
 <div id="kb-is-not-wide-as-segment-size-for-broad-peaks"
 class="section level3">
 <h3>1kb is not wide as segment size for broad peaks</h3>
@@ -1269,7 +1447,6 @@ independently from the data.</li>
 <li><p>In my case, add - peak calling for broad peaks</p></li>
 <li><p>In my case, add - no need to learn peak calling</p></li>
 </ul>
-<p>s</p>
 </div>
 </div>
 </div>
@@ -1280,7 +1457,7 @@ independently from the data.</li>
 <ul>
 <li><p>Figured out Ben &amp; Carlos’s steps on their histone peak QTLs
 we used previously.</p></li>
-<li><p>Count-based QTL</p></li>
+<li><p>Finish count-based / segment-based version of PCO.</p></li>
 </ul>
 </div>
 <div id="what-they-did-to-process-data-for-peak-qtls"
@@ -1718,9 +1895,8 @@ way.</p></li>
 <p>Chr20 for now. All cis-SNPs around 500kb of each segment.</p>
 </div>
 </div>
-<div id="count-based---perform-pco-pick-one-region"
-class="section level2">
-<h2>3. Count based - Perform PCO (pick one region)</h2>
+<div id="count-based---perform-pco" class="section level2">
+<h2>3. Count based - Perform PCO</h2>
 <div id="define-segment-groups" class="section level3">
 <h3>Define segment groups</h3>
 <ul>
@@ -6091,22 +6267,18 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
-other attached packages:
-[1] workflowr_1.7.0
-
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
- [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
- [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
+ [1] Rcpp_1.0.8       pillar_1.7.0     compiler_4.1.2   bslib_0.3.1.9000
+ [5] later_1.3.0      jquerylib_0.1.4  git2r_0.29.0     highr_0.9       
+ [9] workflowr_1.7.0  tools_4.1.2      digest_0.6.29    jsonlite_1.8.0  
 [13] evaluate_0.15    lifecycle_1.0.3  tibble_3.1.6     pkgconfig_2.0.3 
 [17] rlang_1.0.6      cli_3.6.0        rstudioapi_0.13  yaml_2.3.5      
-[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.5.0   
-[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.5.1     
-[29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
-[33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
-[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.4 
-[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
-[45] cachem_1.0.6     crayon_1.4.2    </code></pre>
+[21] xfun_0.31        fastmap_1.1.0    stringr_1.5.0    knitr_1.39      
+[25] fs_1.5.2         vctrs_0.5.1      sass_0.4.1       rprojroot_2.0.2 
+[29] glue_1.6.2       R6_2.5.1         fansi_1.0.2      rmarkdown_2.14.2
+[33] magrittr_2.0.3   whisker_0.4      promises_1.2.0.1 ellipsis_0.3.2  
+[37] htmltools_0.5.4  httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
+[41] cachem_1.0.6     crayon_1.4.2    </code></pre>
 </div>
 </div>
 </div>
