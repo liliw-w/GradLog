@@ -10,8 +10,9 @@ bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, out.width = "50%")
 ```
+
 
 ```{css style settings, echo = FALSE}
 blockquote {
@@ -23,6 +24,236 @@ blockquote {
 ```
 
 **If any figures don't show, try opening in Safari.**
+
+# Apr 05 & Apr 12
+
+## Quick summary
+
+- Updated figures and observations from last time, adding factor 1 and peak-based.
+
+- Re-do segment-based by changing peak filtering from using average log2 CPM as cutoff to using log2 average CPM.
+
+
+
+
+## 1. Re-do peak filtering using average CPM, not log2 based
+
+cutoff to be log2 ave cpm, instead of ave log2 cpm as last time.
+
+Use median across segments instead of mean, as large variation expected across segments. [Use mean of one seg across individuals, as similar count expected for individuals.]
+
+
+- Should be adding the factor instead of multiplying. More stringent cutoff and less segments.
+
+
+- Under CPM filtering cutoff, check segment numbers
+
+```{r out.width="50%", fig.cap="Figure: How many segments are retained after removing segments based on average log2 CPM?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_plt_seg_avgcpmfct.pdf"), error = FALSE)
+```
+
+- Under CPM filtering cutoff, check group size
+
+```{r out.width="50%", fig.cap="Figure: Segment group size across various factors of average log2 CPM.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_plt_seg_group_size_avgcpmfct.pdf"), error = FALSE)
+```
+
+
+- Run all thing - Check p
+
+```{r out.width="50%", fig.cap="Figure: P value distribution under various factors of log2 average CPM. Only show small P < 1e-5. Lower panel shows the total number of tests under each scenario.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_compare_p_avgcpmfct.pdf"), error = FALSE)
+```
+
+
+```{r out.width="50%", fig.cap="Figure: QQ-plot of P values under various factors of log2 average CPM. I sorted all P values but here I only show P < 1e-7", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_compare_p_avgcpmfct_qqplot.pdf"), error = FALSE)
+```
+
+
+**Observation**
+
+- I tried using mean of ave cpm as cutoff, too many segs were removed.
+
+- More segments left.
+
+- Use 2 or 3 to be comparable or better than peak based.
+
+- Computation time on chr20: using 2 takes ~2h, 3 takes ~1h.
+
+- P values under these factors not differ much, not as results from last time, because the number of tests do not differ much ...
+
+- **Again, peak-based is the best in terms of QQ-plot, due to much less number of tests. Increase segment size?**
+
+
+
+### csaw paper on filtering windows
+
+- Check csaw's user guide for the histogram of CPM with their cutoff and background cutoff. They retain very few windows. (Page 25)
+
+
+- Cutoff depends on mark binding site. Narrow v.s. Broad.
+
+> Smaller minimum fold changes are recommended for diffuse marks where the difference from background is less obvious.
+
+
+
+
+## 2. Use different segment size
+
+### How?
+
+Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size.
+
+Use factor 3 for all segment sizes.
+
+
+### Results
+
+- Check segment cpm distribution and numbers based on CPM filtering
+
+```{r fig.cap="Figure: Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size. With that, split chr20 into segments, and then apply cpm filtering using factor 3. (A) Log2(average cpm) distribution across segments under various segment sizes. (B) The number of retained segments after filtering segments based on (median of average cpm) times various factors.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_plt_seg_segsize.pdf"), error = FALSE)
+```
+
+
+- Check size of segment groups
+
+```{r out.width="50%", fig.cap="Figure: Segment group size across various segment sizes after filtering segments using 3*median(average CPM).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_plt_seg_group_size_segsize.pdf"), error = FALSE)
+```
+
+
+- Check p
+
+```{r fig.cap="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P < 1e-5. Lower panel shows the total number of tests under each scenario.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_compare_p_segsize.pdf"), error = FALSE)
+```
+
+
+```{r fig.cap="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P < 1e-7", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_05_compare_p_segsize_qqplot.pdf"), error = FALSE)
+```
+
+
+
+### Try other CPM cutoff factors
+
+- Why? Use various cpm cutoff for various segment sizes. Larger segments, more reads, higher CPM, higher average CPM. If using the same cpm cutoff factor as smaller segments, the cutoff can be much higher and more segments would be filtered out.
+
+
+- Check size of segment groups
+
+```{r out.width="50%", fig.cap="Figure: Segment group size across various segment sizes after filtering segments using various CPM factor cutoffes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_12_plt_seg_group_size_avgcpmfct_segsize.pdf"), error = FALSE)
+```
+
+
+- Check p
+
+```{r fig.cap="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P < 1e-5. Lower panel shows the total number of tests under each scenario.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_12_compare_p_avgcpmfct_segsize.pdf"), error = FALSE)
+```
+
+
+```{r fig.cap="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P < 1e-7", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_12_compare_p_avgcpmfct_segsize_qqplot.pdf"), error = FALSE)
+```
+
+
+- **Observations**
+
+  - Segment size still smaller than peak width.
+  
+  - **Again, peak-based is the best in terms of QQ-plot, due to much less number of tests. Increase segment size?**
+
+
+
+
+- Solve questions written on the paper sheet - on read counting & cpm cutoff for various segment size.
+
+
+- Check if -p -reduce read1.bam` has same alignment as` -p -reduce -O`
+
+
+- Read counting is problematic.
+  
+  - seg1kb, different assigned reads for two run
+  
+  - `count_based/seg_chr/seg1kb_chr20.saf`
+  
+  - `count_based/featurecounts/3_Counts_paired_leftmost_onlyread1.txt` v.s `count_based/featurecounts/Counts_paired_leftmost_onlyread1_seg1kb_chr20.txt`
+
+
+-   Try size options, large or small, for current narrow peaks or future wide peaks. Check segment numbers, group size.
+
+
+
+
+## 3. Merge reads across segments
+
+See some intuitions from [reading below](#sum_reads_across_seg).
+
+
+### How?
+
+- Filter segments first.
+
+- The total read counts across segs in a window.
+
+- Same QC and normalizations.
+
+- cis - 500kb. Probably more test than PCO.
+
+2266 groups.
+
+
+### Comparison
+
+- Top p
+
+- #cis SNPs tested for each group
+
+
+```{r fig.cap="Figure: (A) Comparion of top p of each group for segment_multi and segment_sum. Top p was bonferroni corrected by the number of cis SNPs tested for the group. (B) Distribution of number of cis SNPs tested for each group.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_12_compare_multi_sum.pdf"), error = FALSE)
+```
+
+
+
+## 4. Ideas from reading
+
+### Sum of reads for a peak v.s. slice the peak by windows/segments [@lun2016] {#sum_reads_across_seg}
+
+If a region/peak is broad/diffuse, QTL effects on all parts of the peak are weak but consistent. Then summing of reads provides greater detection power for such regions, as large peaks can collect more read counts than small windows. And since each subinterval of the region has the same/positively correlated QTL effects, no benefit is gained from considering each subinterval separately with small windows.
+
+
+### When is window-based strategy powerful - some intuitions
+
+- When detecting complex DB events, use windowing to increase spatial resolution missed by peak calling -
+
+> csaw was more powerful than other methods at detecting complex DB events, especially those involving changes in the width of a binding event.
+
+> The relatively poor performance of peak-based methods can be attributed to the fact that each binding site is defined as a single peak by MACS or HOMER. 
+
+> csaw is able to tile small windows across the binding site. Each window corresponds a different subinterval of the binding site, such that the magnitude of any changes in part of the site can be faithfully captured by a window.
+
+In my case, also add a case of where intensity difference is low.
+
+**This is actually different than our case, where we wanted the window size to be approximately peak size, so that a window group would contain multiple peaks to be jointly tested. However, the idea of csaw is to split a general complex peak to sub-intervals, each of which are captured by windows for increased resolution.**
+
+- When the peak is narrow and easily identified, window-based strategy should have comparable power to peak calling.
+
+> sharp peaks were easily identified by the peak calling software. In this case, windowing did not provide any useful gain in spatial resolution. Nevertheless, csaw still returned the same performance curve as the best peak-based methods.
+
+**In our case, our idea should be more powerful than peak calling even when the peaks are well-defined, since we test multiple peaks jointly.**
+
+
+
+## Choose ways to cluster windows/segments into groups
+
+
+
 
 
 # Mar 29
