@@ -409,7 +409,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -420,8 +420,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -430,13 +430,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-04-04
+<strong>Last updated:</strong> 2023-04-12
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -459,21 +459,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -564,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree62eee5eb9567a8122182642d297f577b714f53e1targetblank62eee5ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6c19b31946a56d03a5ca6c1d620d05f9b14b848btargetblank6c19b31a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/62eee5eb9567a8122182642d297f577b714f53e1" target="_blank">62eee5e</a>
+<a href="https://github.com/liliw-w/GradLog/tree/6c19b31946a56d03a5ca6c1d620d05f9b14b848b" target="_blank">6c19b31</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree62eee5eb9567a8122182642d297f577b714f53e1targetblank62eee5ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6c19b31946a56d03a5ca6c1d620d05f9b14b848btargetblank6c19b31a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -582,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/62eee5eb9567a8122182642d297f577b714f53e1" target="_blank">62eee5e</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/6c19b31946a56d03a5ca6c1d620d05f9b14b848b" target="_blank">6c19b31</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -605,9 +602,6 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/week_log.Rmd
-
-Unstaged changes:
-    Modified:   analysis/Log2023_a_fresh_start.Rmd
 
 </code></pre>
 <p>
@@ -653,6 +647,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/6c19b31946a56d03a5ca6c1d620d05f9b14b848b/analysis/Log2023_a_fresh_start.Rmd" target="_blank">6c19b31</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+<td>
+Add new weeks
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a8ba9a35e0a05265e2ad801f12bada97b91ba752/analysis/Log2023_a_fresh_start.Rmd" target="_blank">a8ba9a3</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-04
+</td>
+<td>
+add results from using factor 1 and peak-based
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/a8ba9a35e0a05265e2ad801f12bada97b91ba752/docs/Log2023_a_fresh_start.html" target="_blank">a8ba9a3</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-04
+</td>
+<td>
+add results from using factor 1 and peak-based
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1146,9 +1191,742 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="apr-05-apr-12" class="section level1">
+<h1>Apr 05 &amp; Apr 12</h1>
+<div id="quick-summary" class="section level2">
+<h2>Quick summary</h2>
+<ul>
+<li><p>Updated figures and observations from last time, adding factor 1
+and peak-based.</p></li>
+<li><p>Re-do segment-based by changing peak filtering from using average
+log2 CPM as cutoff to using log2 average CPM.</p></li>
+</ul>
+</div>
+<div id="re-do-peak-filtering-using-average-cpm-not-log2-based"
+class="section level2">
+<h2>1. Re-do peak filtering using average CPM, not log2 based</h2>
+<p>cutoff to be log2 ave cpm, instead of ave log2 cpm as last time.</p>
+<p>Use median across segments instead of mean, as large variation
+expected across segments. [Use mean of one seg across individuals, as
+similar count expected for individuals.]</p>
+<ul>
+<li><p>Should be adding the factor instead of multiplying. More
+stringent cutoff and less segments.</p></li>
+<li><p>Under CPM filtering cutoff, check segment numbers</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_plt_seg_avgcpmfct.pdf" alt="Figure: How many segments are retained after removing segments based on average log2 CPM?" width="50%" />
+<p class="caption">
+Figure: How many segments are retained after removing segments based on
+average log2 CPM?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_plt_seg_avgcpmfct">
+Past versions of 04_05_plt_seg_avgcpmfct.pdf
+</button>
+</p>
+<div id="fig-04_05_plt_seg_avgcpmfct" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_plt_seg_avgcpmfct.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Under CPM filtering cutoff, check group size</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_plt_seg_group_size_avgcpmfct.pdf" alt="Figure: Segment group size across various factors of average log2 CPM." width="50%" />
+<p class="caption">
+Figure: Segment group size across various factors of average log2 CPM.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_plt_seg_group_size_avgcpmfct">
+Past versions of 04_05_plt_seg_group_size_avgcpmfct.pdf
+</button>
+</p>
+<div id="fig-04_05_plt_seg_group_size_avgcpmfct" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_plt_seg_group_size_avgcpmfct.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Run all thing - Check p</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_compare_p_avgcpmfct.pdf" alt="Figure: P value distribution under various factors of log2 average CPM. Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
+<p class="caption">
+Figure: P value distribution under various factors of log2 average CPM.
+Only show small P &lt; 1e-5. Lower panel shows the total number of tests
+under each scenario.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_compare_p_avgcpmfct">
+Past versions of 04_05_compare_p_avgcpmfct.pdf
+</button>
+</p>
+<div id="fig-04_05_compare_p_avgcpmfct" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_compare_p_avgcpmfct.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_compare_p_avgcpmfct_qqplot.pdf" alt="Figure: QQ-plot of P values under various factors of log2 average CPM. I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<p class="caption">
+Figure: QQ-plot of P values under various factors of log2 average CPM. I
+sorted all P values but here I only show P &lt; 1e-7
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_compare_p_avgcpmfct_qqplot">
+Past versions of 04_05_compare_p_avgcpmfct_qqplot.pdf
+</button>
+</p>
+<div id="fig-04_05_compare_p_avgcpmfct_qqplot" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_compare_p_avgcpmfct_qqplot.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Observation</strong></p>
+<ul>
+<li><p>I tried using mean of ave cpm as cutoff, too many segs were
+removed.</p></li>
+<li><p>More segments left.</p></li>
+<li><p>Use 2 or 3 to be comparable or better than peak based.</p></li>
+<li><p>Computation time on chr20: using 2 takes ~2h, 3 takes
+~1h.</p></li>
+<li><p>P values under these factors not differ much, not as results from
+last time, because the number of tests do not differ much …</p></li>
+<li><p><strong>Again, peak-based is the best in terms of QQ-plot, due to
+much less number of tests. Increase segment size?</strong></p></li>
+</ul>
+<div id="csaw-paper-on-filtering-windows" class="section level3">
+<h3>csaw paper on filtering windows</h3>
+<ul>
+<li><p>Check csaw’s user guide for the histogram of CPM with their
+cutoff and background cutoff. They retain very few windows. (Page
+25)</p></li>
+<li><p>Cutoff depends on mark binding site. Narrow v.s. Broad.</p></li>
+</ul>
+<blockquote>
+<p>Smaller minimum fold changes are recommended for diffuse marks where
+the difference from background is less obvious.</p>
+</blockquote>
+</div>
+</div>
+<div id="use-different-segment-size" class="section level2">
+<h2>2. Use different segment size</h2>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<p>Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size.</p>
+<p>Use factor 3 for all segment sizes.</p>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<ul>
+<li>Check segment cpm distribution and numbers based on CPM
+filtering</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_plt_seg_segsize.pdf" alt="Figure: Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size. With that, split chr20 into segments, and then apply cpm filtering using factor 3. (A) Log2(average cpm) distribution across segments under various segment sizes. (B) The number of retained segments after filtering segments based on (median of average cpm) times various factors." width="50%" />
+<p class="caption">
+Figure: Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size. With that,
+split chr20 into segments, and then apply cpm filtering using factor 3.
+(A) Log2(average cpm) distribution across segments under various segment
+sizes. (B) The number of retained segments after filtering segments
+based on (median of average cpm) times various factors.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_plt_seg_segsize">
+Past versions of 04_05_plt_seg_segsize.pdf
+</button>
+</p>
+<div id="fig-04_05_plt_seg_segsize" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_plt_seg_segsize.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Check size of segment groups</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_plt_seg_group_size_segsize.pdf" alt="Figure: Segment group size across various segment sizes after filtering segments using 3*median(average CPM)." width="50%" />
+<p class="caption">
+Figure: Segment group size across various segment sizes after filtering
+segments using 3*median(average CPM).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_plt_seg_group_size_segsize">
+Past versions of 04_05_plt_seg_group_size_segsize.pdf
+</button>
+</p>
+<div id="fig-04_05_plt_seg_group_size_segsize" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_plt_seg_group_size_segsize.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Check p</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_compare_p_segsize.pdf" alt="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
+<p class="caption">
+Figure: P value distribution under various segment sizes after filtering
+segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower
+panel shows the total number of tests under each scenario.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_compare_p_segsize">
+Past versions of 04_05_compare_p_segsize.pdf
+</button>
+</p>
+<div id="fig-04_05_compare_p_segsize" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_compare_p_segsize.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_05_compare_p_segsize_qqplot.pdf" alt="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<p class="caption">
+Figure: QQ-plot of P values under various segment sizes after filtering
+segments using 3*median(average CPM). I sorted all P values but here I
+only show P &lt; 1e-7
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_05_compare_p_segsize_qqplot">
+Past versions of 04_05_compare_p_segsize_qqplot.pdf
+</button>
+</p>
+<div id="fig-04_05_compare_p_segsize_qqplot" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_05_compare_p_segsize_qqplot.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="try-other-cpm-cutoff-factors" class="section level3">
+<h3>Try other CPM cutoff factors</h3>
+<ul>
+<li><p>Why? Use various cpm cutoff for various segment sizes. Larger
+segments, more reads, higher CPM, higher average CPM. If using the same
+cpm cutoff factor as smaller segments, the cutoff can be much higher and
+more segments would be filtered out.</p></li>
+<li><p>Check size of segment groups</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_12_plt_seg_group_size_avgcpmfct_segsize.pdf" alt="Figure: Segment group size across various segment sizes after filtering segments using various CPM factor cutoffes." width="50%" />
+<p class="caption">
+Figure: Segment group size across various segment sizes after filtering
+segments using various CPM factor cutoffes.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_12_plt_seg_group_size_avgcpmfct_segsize">
+Past versions of 04_12_plt_seg_group_size_avgcpmfct_segsize.pdf
+</button>
+</p>
+<div id="fig-04_12_plt_seg_group_size_avgcpmfct_segsize"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_12_plt_seg_group_size_avgcpmfct_segsize.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Check p</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_12_compare_p_avgcpmfct_segsize.pdf" alt="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
+<p class="caption">
+Figure: P value distribution under various segment sizes after filtering
+segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower
+panel shows the total number of tests under each scenario.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_12_compare_p_avgcpmfct_segsize">
+Past versions of 04_12_compare_p_avgcpmfct_segsize.pdf
+</button>
+</p>
+<div id="fig-04_12_compare_p_avgcpmfct_segsize" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_12_compare_p_avgcpmfct_segsize.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_12_compare_p_avgcpmfct_segsize_qqplot.pdf" alt="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<p class="caption">
+Figure: QQ-plot of P values under various segment sizes after filtering
+segments using 3*median(average CPM). I sorted all P values but here I
+only show P &lt; 1e-7
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_12_compare_p_avgcpmfct_segsize_qqplot">
+Past versions of 04_12_compare_p_avgcpmfct_segsize_qqplot.pdf
+</button>
+</p>
+<div id="fig-04_12_compare_p_avgcpmfct_segsize_qqplot" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_12_compare_p_avgcpmfct_segsize_qqplot.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p><strong>Observations</strong></p>
+<ul>
+<li><p>Segment size still smaller than peak width.</p></li>
+<li><p><strong>Again, peak-based is the best in terms of QQ-plot, due to
+much less number of tests. Increase segment size?</strong></p></li>
+</ul></li>
+<li><p>Solve questions written on the paper sheet - on read counting
+&amp; cpm cutoff for various segment size.</p></li>
+<li><p>Check if -p -reduce read1.bam<code>has same alignment as</code>
+-p -reduce -O`</p></li>
+<li><p>Read counting is problematic.</p>
+<ul>
+<li><p>seg1kb, different assigned reads for two run</p></li>
+<li><p><code>count_based/seg_chr/seg1kb_chr20.saf</code></p></li>
+<li><p><code>count_based/featurecounts/3_Counts_paired_leftmost_onlyread1.txt</code>
+v.s
+<code>count_based/featurecounts/Counts_paired_leftmost_onlyread1_seg1kb_chr20.txt</code></p></li>
+</ul></li>
+<li><p>Try size options, large or small, for current narrow peaks or
+future wide peaks. Check segment numbers, group size.</p></li>
+</ul>
+</div>
+</div>
+<div id="merge-reads-across-segments" class="section level2">
+<h2>3. Merge reads across segments</h2>
+<p>See some intuitions from <a href="#sum_reads_across_seg">reading
+below</a>.</p>
+<div id="how-1" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>Filter segments first.</p></li>
+<li><p>The total read counts across segs in a window.</p></li>
+<li><p>Same QC and normalizations.</p></li>
+<li><p>cis - 500kb. Probably more test than PCO.</p></li>
+</ul>
+<p>2266 groups.</p>
+</div>
+<div id="comparison" class="section level3">
+<h3>Comparison</h3>
+<ul>
+<li><p>Top p</p></li>
+<li><p>#cis SNPs tested for each group</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_12_compare_multi_sum.pdf" alt="Figure: (A) Comparion of top p of each group for segment_multi and segment_sum. Top p was bonferroni corrected by the number of cis SNPs tested for the group. (B) Distribution of number of cis SNPs tested for each group." width="50%" />
+<p class="caption">
+Figure: (A) Comparion of top p of each group for segment_multi and
+segment_sum. Top p was bonferroni corrected by the number of cis SNPs
+tested for the group. (B) Distribution of number of cis SNPs tested for
+each group.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_12_compare_multi_sum">
+Past versions of 04_12_compare_multi_sum.pdf
+</button>
+</p>
+<div id="fig-04_12_compare_multi_sum" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/61c7945a0b9796a3a6ba96911f4c8bb5c4d794ac/docs/asset/2023/04_12_compare_multi_sum.pdf" target="_blank">61c7945</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="ideas-from-reading" class="section level2">
+<h2>4. Ideas from reading</h2>
+<div id="sum_reads_across_seg" class="section level3">
+<h3>Sum of reads for a peak v.s. slice the peak by windows/segments
+<span class="citation">(Lun and Smyth 2016)</span></h3>
+<p>If a region/peak is broad/diffuse, QTL effects on all parts of the
+peak are weak but consistent. Then summing of reads provides greater
+detection power for such regions, as large peaks can collect more read
+counts than small windows. And since each subinterval of the region has
+the same/positively correlated QTL effects, no benefit is gained from
+considering each subinterval separately with small windows.</p>
+</div>
+<div id="when-is-window-based-strategy-powerful---some-intuitions"
+class="section level3">
+<h3>When is window-based strategy powerful - some intuitions</h3>
+<ul>
+<li>When detecting complex DB events, use windowing to increase spatial
+resolution missed by peak calling -</li>
+</ul>
+<blockquote>
+<p>csaw was more powerful than other methods at detecting complex DB
+events, especially those involving changes in the width of a binding
+event.</p>
+</blockquote>
+<blockquote>
+<p>The relatively poor performance of peak-based methods can be
+attributed to the fact that each binding site is defined as a single
+peak by MACS or HOMER.</p>
+</blockquote>
+<blockquote>
+<p>csaw is able to tile small windows across the binding site. Each
+window corresponds a different subinterval of the binding site, such
+that the magnitude of any changes in part of the site can be faithfully
+captured by a window.</p>
+</blockquote>
+<p>In my case, also add a case of where intensity difference is low.</p>
+<p><strong>This is actually different than our case, where we wanted the
+window size to be approximately peak size, so that a window group would
+contain multiple peaks to be jointly tested. However, the idea of csaw
+is to split a general complex peak to sub-intervals, each of which are
+captured by windows for increased resolution.</strong></p>
+<ul>
+<li>When the peak is narrow and easily identified, window-based strategy
+should have comparable power to peak calling.</li>
+</ul>
+<blockquote>
+<p>sharp peaks were easily identified by the peak calling software. In
+this case, windowing did not provide any useful gain in spatial
+resolution. Nevertheless, csaw still returned the same performance curve
+as the best peak-based methods.</p>
+</blockquote>
+<p><strong>In our case, our idea should be more powerful than peak
+calling even when the peaks are well-defined, since we test multiple
+peaks jointly.</strong></p>
+</div>
+</div>
+<div id="choose-ways-to-cluster-windowssegments-into-groups"
+class="section level2">
+<h2>Choose ways to cluster windows/segments into groups</h2>
+</div>
+</div>
 <div id="mar-29" class="section level1">
 <h1>Mar 29</h1>
-<div id="quick-summary" class="section level2">
+<div id="quick-summary-1" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li>Re-do segment-based by adding cpm filtering on segments.</li>
@@ -1178,7 +1956,7 @@ peak to multiple segments.</p></li>
 <div id="add-cpm-filtering-on-segments-and-re-do-segment-based"
 class="section level2">
 <h2>2. Add cpm filtering on segments and re-do segment-based</h2>
-<div id="how" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <p>Average log2 CPM for each segment across samples. Mean of average
 log2 CPM. Add a factor.</p>
@@ -1312,6 +2090,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/a8ba9a35e0a05265e2ad801f12bada97b91ba752/docs/asset/2023/03_29_compare_p_avgcpmfct.pdf" target="_blank">a8ba9a3</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/dfa6c34e5fdd493c43adce286558f43ad9da8de2/docs/asset/2023/03_29_compare_p_avgcpmfct.pdf" target="_blank">dfa6c34</a>
 </td>
 <td>
@@ -1356,6 +2145,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a8ba9a35e0a05265e2ad801f12bada97b91ba752/docs/asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf" target="_blank">a8ba9a3</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-04
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/liliw-w/GradLog/blob/dfa6c34e5fdd493c43adce286558f43ad9da8de2/docs/asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf" target="_blank">dfa6c34</a>
@@ -1410,7 +2210,7 @@ the QQ plot of all pvalues. Not sure if it is equal.</p></li>
 </ul>
 </div>
 </div>
-<div id="ideas-from-reading" class="section level2">
+<div id="ideas-from-reading-1" class="section level2">
 <h2>3. Ideas from reading</h2>
 <div id="kb-is-not-wide-as-segment-size-for-broad-peaks"
 class="section level3">
@@ -1452,7 +2252,7 @@ independently from the data.</li>
 </div>
 <div id="mar-08-march-15-march-22" class="section level1">
 <h1>Mar 08 &amp; March 15 &amp; March 22</h1>
-<div id="quick-summary-1" class="section level2">
+<div id="quick-summary-2" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Figured out Ben &amp; Carlos’s steps on their histone peak QTLs
@@ -2016,7 +2816,7 @@ liliw-w
 </div>
 <div id="feb-24-feb-29" class="section level1">
 <h1>Feb 24 &amp; Feb 29</h1>
-<div id="quick-summary-2" class="section level2">
+<div id="quick-summary-3" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Locus zoom of a region to visualize PCO and MinP
@@ -2086,7 +2886,7 @@ still necessary? (Does it really make sense to compare with MinP?)</p>
 <p>For coloc purpose, improve detection of mediate effects. How does it
 help with coloc power? or anything else?</p>
 </div>
-<div id="how-1" class="section level3">
+<div id="how-3" class="section level3">
 <h3>How?</h3>
 <p>For a peak group, cis region. Two methods: PCO &amp; MinP.</p>
 <ul>
@@ -2219,7 +3019,7 @@ liliw-w
 </ul>
 </div>
 </div>
-<div id="ideas-from-reading-1" class="section level2">
+<div id="ideas-from-reading-2" class="section level2">
 <h2>4. Ideas from reading</h2>
 <ul>
 <li><p>Define sliding windows with skip</p>
@@ -2238,7 +3038,7 @@ groups.</p></li>
 </div>
 <div id="feb-17" class="section level1">
 <h1>Feb 17</h1>
-<div id="quick-summary-3" class="section level2">
+<div id="quick-summary-4" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Evaluate PCO_ACAT</p></li>
@@ -2454,7 +3254,7 @@ improved coloc signals with traits, etc.</p></li>
 </div>
 <div id="feb-08" class="section level1">
 <h1>Feb 08</h1>
-<div id="quick-summary-4" class="section level2">
+<div id="quick-summary-5" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li>Tested (SNP, peak group) of groups defined by non-overlapping
@@ -2495,7 +3295,7 @@ then test again to obtain updated p for merged group?</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="how-2" class="section level3">
+<div id="how-4" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Define non-overlapping windows</p>
@@ -2503,7 +3303,7 @@ then test again to obtain updated p for merged group?</p></li>
 windows of a given window size.</p></li>
 </ul>
 </div>
-<div id="results" class="section level3">
+<div id="results-1" class="section level3">
 <h3>Results</h3>
 <ul>
 <li><p>Compare small p’s of three methods - Overall summary figures</p>
@@ -2645,7 +3445,7 @@ liliw-w
 </div>
 <div id="feb-01" class="section level1">
 <h1>Feb 01</h1>
-<div id="quick-summary-5" class="section level2">
+<div id="quick-summary-6" class="section level2">
 <h2>Quick summary</h2>
 <ul>
 <li><p>Compare small p, instead of top p, across three methods &amp;
@@ -2662,7 +3462,7 @@ p</h2>
 <div id="why-1" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-3" class="section level3">
+<div id="how-5" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -2674,7 +3474,7 @@ p</h2>
 by at least one method (ACAT, MinP, PCO) &lt; 1e-5.</p></li>
 </ul>
 </div>
-<div id="results-1" class="section level3">
+<div id="results-2" class="section level3">
 <h3>Results</h3>
 <ol style="list-style-type: decimal">
 <li>Compare small p’s of three methods</li>
@@ -2703,7 +3503,7 @@ window.</p></li>
 <div id="why-2" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-4" class="section level3">
+<div id="how-6" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -3106,7 +3906,7 @@ liliw-w
 </div>
 <div id="jan-25" class="section level1">
 <h1>Jan 25</h1>
-<div id="quick-summary-6" class="section level2">
+<div id="quick-summary-7" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Test peak group defined by smaller window sizes using ACAT, minP,
@@ -3126,7 +3926,7 @@ have physically closer peaks, thus more shared genetic control.</p></li>
 <p>Therefore, we wanted to check if that pattern persists under smaller
 window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.</p>
 </div>
-<div id="how-5" class="section level3">
+<div id="how-7" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Window sizes</p>
@@ -3139,7 +3939,7 @@ window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.</p>
 <p>chr - 20, 21, 22.</p></li>
 </ul>
 </div>
-<div id="results-2" class="section level3">
+<div id="results-3" class="section level3">
 <h3>Results</h3>
 <ul>
 <li>Compare methods under same window size</li>
@@ -3318,7 +4118,7 @@ sizes</p></li>
 </div>
 <div id="jan-18" class="section level1">
 <h1>Jan 18</h1>
-<div id="quick-summary-7" class="section level2">
+<div id="quick-summary-8" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Compare across window sizes</p></li>
@@ -3885,7 +4685,7 @@ significant SNPs</p></li>
 </div>
 <div id="jan-11" class="section level1">
 <h1>Jan 11</h1>
-<div id="quick-summary-8" class="section level2">
+<div id="quick-summary-9" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Make the pipeline automatic.</p></li>
@@ -3904,7 +4704,7 @@ peak group)</h2>
 window sizes using SNPs within 500kb of peak group.</p>
 <p>This time, I tried various window sizes, including 100kb, 250kb,
 500kb.</p>
-<div id="how-6" class="section level3">
+<div id="how-8" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Peaks are considered as a peak group using a sliding window of
@@ -3965,7 +4765,7 @@ liliw-w
 <h3>Numbers</h3>
 <p>Use a table or histogram …</p>
 </div>
-<div id="results-3" class="section level3">
+<div id="results-4" class="section level3">
 <h3>Results</h3>
 <ul>
 <li>Number of peaks in groups</li>
@@ -5156,7 +5956,7 @@ liliw-w
 </div>
 <div id="dec-21" class="section level1">
 <h1>Dec 21</h1>
-<div id="quick-summary-9" class="section level2">
+<div id="quick-summary-10" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li><p>Ran associations (by ACAT) between SNPs and peak groups using
@@ -5186,7 +5986,7 @@ have.</p></li>
 <li><p>Except peak groups on chr1.</p></li>
 </ul>
 </div>
-<div id="results-4" class="section level3">
+<div id="results-5" class="section level3">
 <h3>Results</h3>
 <ul>
 <li>Look at the distribution of top p-values of peak groups.</li>
@@ -5532,7 +6332,7 @@ liliw-w
 </div>
 <div id="dec-14" class="section level1">
 <h1>Dec 14</h1>
-<div id="quick-summary-10" class="section level2">
+<div id="quick-summary-11" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Run ACAT to test associations between (SNP, adjacent peak group) for
@@ -5545,7 +6345,7 @@ mark H3K27AC.</li>
 </div>
 <div id="adjacent-peaks-as-peak-groups" class="section level2">
 <h2>2. Adjacent peaks as peak groups</h2>
-<div id="how-7" class="section level3">
+<div id="how-9" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Sliding window of length 500kb.</p></li>
@@ -5709,7 +6509,7 @@ liliw-w
 <div id="test-a-snp-and-a-group-of-adjacent-peaks-by-acat"
 class="section level2">
 <h2>3. Test a SNP and a group of adjacent peaks by ACAT</h2>
-<div id="how-8" class="section level3">
+<div id="how-10" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>For each peak group, test its association across all overlapped
@@ -5735,7 +6535,7 @@ have.</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="results-5" class="section level3">
+<div id="results-6" class="section level3">
 <h3>Results</h3>
 <ul>
 <li><p>There are 25,853 peak groups considered for association
@@ -5996,7 +6796,7 @@ associations.</p></li>
 </div>
 <div id="dec-09" class="section level1">
 <h1>Dec 09</h1>
-<div id="quick-summary-11" class="section level2">
+<div id="quick-summary-12" class="section level2">
 <h2>Quick Summary</h2>
 <ul>
 <li>Preliminary analysis on Carlos’s hQTL results.</li>
@@ -6267,18 +7067,22 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] workflowr_1.7.0
+
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.8       pillar_1.7.0     compiler_4.1.2   bslib_0.3.1.9000
- [5] later_1.3.0      jquerylib_0.1.4  git2r_0.29.0     highr_0.9       
- [9] workflowr_1.7.0  tools_4.1.2      digest_0.6.29    jsonlite_1.8.0  
+ [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
+ [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
+ [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
 [13] evaluate_0.15    lifecycle_1.0.3  tibble_3.1.6     pkgconfig_2.0.3 
 [17] rlang_1.0.6      cli_3.6.0        rstudioapi_0.13  yaml_2.3.5      
-[21] xfun_0.31        fastmap_1.1.0    stringr_1.5.0    knitr_1.39      
-[25] fs_1.5.2         vctrs_0.5.1      sass_0.4.1       rprojroot_2.0.2 
-[29] glue_1.6.2       R6_2.5.1         fansi_1.0.2      rmarkdown_2.14.2
-[33] magrittr_2.0.3   whisker_0.4      promises_1.2.0.1 ellipsis_0.3.2  
-[37] htmltools_0.5.4  httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
-[41] cachem_1.0.6     crayon_1.4.2    </code></pre>
+[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.5.0   
+[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.5.1     
+[29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
+[33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
+[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.4 
+[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
+[45] cachem_1.0.6     crayon_1.4.2    </code></pre>
 </div>
 </div>
 </div>
