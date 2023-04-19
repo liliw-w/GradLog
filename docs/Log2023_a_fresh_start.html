@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-04-12
+<strong>Last updated:</strong> 2023-04-19
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6c19b31946a56d03a5ca6c1d620d05f9b14b848btargetblank6c19b31a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree5863abac67338aecc6ee1d931a3c4347019174a0targetblank5863abaa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/6c19b31946a56d03a5ca6c1d620d05f9b14b848b" target="_blank">6c19b31</a>
+<a href="https://github.com/liliw-w/GradLog/tree/5863abac67338aecc6ee1d931a3c4347019174a0" target="_blank">5863aba</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6c19b31946a56d03a5ca6c1d620d05f9b14b848btargetblank6c19b31a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree5863abac67338aecc6ee1d931a3c4347019174a0targetblank5863abaa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/6c19b31946a56d03a5ca6c1d620d05f9b14b848b" target="_blank">6c19b31</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/5863abac67338aecc6ee1d931a3c4347019174a0" target="_blank">5863aba</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -647,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5863abac67338aecc6ee1d931a3c4347019174a0/analysis/Log2023_a_fresh_start.Rmd" target="_blank">5863aba</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+<td>
+add quick summary
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/61f98020cf8a33913295550933f197d16fa42691/docs/Log2023_a_fresh_start.html" target="_blank">61f9802</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1199,16 +1233,23 @@ Safari.</strong></p>
 <li><p>Updated figures and observations from last time, adding factor 1
 and peak-based.</p></li>
 <li><p>Re-do segment-based by changing peak filtering from using average
-log2 CPM as cutoff to using log2 average CPM.</p></li>
+log2 CPM as cutoff to using average CPM.</p></li>
+<li><p>Tried using different segment sizes.</p></li>
+<li><p>Compared p-values of segment-multi PCO with segment-uni (merged
+reads from multiple segments).</p></li>
 </ul>
 </div>
 <div id="re-do-peak-filtering-using-average-cpm-not-log2-based"
 class="section level2">
 <h2>1. Re-do peak filtering using average CPM, not log2 based</h2>
-<p>cutoff to be log2 ave cpm, instead of ave log2 cpm as last time.</p>
-<p>Use median across segments instead of mean, as large variation
+<p><strong>Two changes on segment filtering based on cpm -</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Cutoff to be ave cpm, instead of ave log2 cpm as used in last
+time.</p></li>
+<li><p>Use median across segments instead of mean, as large variation
 expected across segments. [Use mean of one seg across individuals, as
-similar count expected for individuals.]</p>
+similar count expected for individuals.]</p></li>
+</ol>
 <ul>
 <li><p>Should be adding the factor instead of multiplying. More
 stringent cutoff and less segments.</p></li>
@@ -1423,8 +1464,8 @@ the difference from background is less obvious.</p>
 </blockquote>
 </div>
 </div>
-<div id="use-different-segment-size" class="section level2">
-<h2>2. Use different segment size</h2>
+<div id="use-different-segment-sizes" class="section level2">
+<h2>2. Use different segment sizes</h2>
 <div id="how" class="section level3">
 <h3>How?</h3>
 <p>Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size.</p>
