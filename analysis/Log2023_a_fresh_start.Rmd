@@ -31,16 +31,21 @@ blockquote {
 
 - Updated figures and observations from last time, adding factor 1 and peak-based.
 
-- Re-do segment-based by changing peak filtering from using average log2 CPM as cutoff to using log2 average CPM.
+- Re-do segment-based by changing peak filtering from using average log2 CPM as cutoff to using average CPM.
 
+- Tried using different segment sizes.
+
+- Compared p-values of segment-multi PCO with segment-uni (merged reads from multiple segments).
 
 
 
 ## 1. Re-do peak filtering using average CPM, not log2 based
 
-cutoff to be log2 ave cpm, instead of ave log2 cpm as last time.
+**Two changes on segment filtering based on cpm -**
 
-Use median across segments instead of mean, as large variation expected across segments. [Use mean of one seg across individuals, as similar count expected for individuals.]
+1. Cutoff to be ave cpm, instead of ave log2 cpm as used in last time.
+
+2. Use median across segments instead of mean, as large variation expected across segments. [Use mean of one seg across individuals, as similar count expected for individuals.]
 
 
 - Should be adding the factor instead of multiplying. More stringent cutoff and less segments.
@@ -99,7 +104,7 @@ knitr::include_graphics(c("asset/2023/04_05_compare_p_avgcpmfct_qqplot.pdf"), er
 
 
 
-## 2. Use different segment size
+## 2. Use different segment sizes
 
 ### How?
 
