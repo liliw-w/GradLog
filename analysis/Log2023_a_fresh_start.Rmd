@@ -25,6 +25,90 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+
+# Apr 19
+
+## Quick summary
+
+- Check peak width for marks
+
+- Compare p-values by multi-segments-PCO and uni-merged-segments in terms of top p, small p, and all p.
+
+- Not finish comparison in terms of cmerged_seg/csegment/cpeak-group. With questions.
+
+
+
+## 1. Check peak width for marks
+
+### Why?
+
+To see what segment size should be used to cover a whole peak for different marks.
+
+
+### Results
+
+```{r out.width="40%", fig.cap="Figure: Peak width of marks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_19_plt_peak_width_H3K27AC.pdf", 'asset/2023/04_19_plt_peak_width_H3K4ME1.pdf', 'asset/2023/04_19_plt_peak_width_H3K4ME3.pdf', 'asset/2023/04_19_plt_peak_width_H3K36ME3.pdf'), error = FALSE)
+```
+
+
+### Observations
+
+- For mark H3K27AC, the average peak width is ~1kb.
+
+- Mark H3K36ME3 has very wide peaks.
+
+
+## 2. Compare p-values by multi-segments-PCO and uni-merged-segments
+
+### Look top p at all scenarios - seg size and cpm cutoff factor {#top-p-comparsion-multi-merged}
+
+Last week, I compared top p for one scenario. See below for all scenarios across seg sizes and cpm cutoff factors.
+
+```{r out.width="30%", fig.cap="Figure: Peak width of marks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf", 'asset/2023/04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf', 'asset/2023/04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf', 'asset/2023/04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf', 'asset/2023/04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf', 'asset/2023/04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf'), error = FALSE)
+```
+
+**Observations -**
+
+- In terms of top p (with bonferroni correction on cis snps), seg_multi and seg_merged don't have much difference.
+
+
+
+### Look all p from (SNP, group), not only just top p
+
+No bonferroni correction just nominal p.
+
+```{r out.width="30%", fig.cap="Figure: Peak width of marks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf", 'asset/2023/04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf', 'asset/2023/04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf', 'asset/2023/04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf', 'asset/2023/04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf', 'asset/2023/04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf'), error = FALSE)
+```
+
+**Observations -**
+
+- In terms of all p (without multiple testing correction), seg_multi is better than seg_merged only in case avgcpmfct3_seg2kb.
+
+
+
+### Compare group in terms of csegment_group?
+
+> Use the way how people find cpeak to find csegment_group. With multiple testing correction.
+
+**Question -**
+
+- Isn't this the same as [what I did](#top-p-comparsion-multi-merged) where I looked at top p (with bonferroni correction on cis snps)?
+
+- Since last time we said what people want is csegment/cpeak_group, and given seg_multi and seg_merged are similar in terms of top p, should this be concerning?
+
+
+## 3. Compare seg-based and peak-based in terms of csegment/cpeak_group
+
+**Question -**
+
+Same reason as above.
+
+
+
+
 # Apr 05 & Apr 12
 
 ## Quick summary
