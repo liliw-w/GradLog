@@ -430,7 +430,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-04-19
+<strong>Last updated:</strong> 2023-04-26
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree46f2fde5deb67e2ca14c55523a3f43ca33ca43d0targetblank46f2fdea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreedd31c888a6f4198b3bd9a962393373c2f45c6cb5targetblankdd31c88a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/46f2fde5deb67e2ca14c55523a3f43ca33ca43d0" target="_blank">46f2fde</a>
+<a href="https://github.com/liliw-w/GradLog/tree/dd31c888a6f4198b3bd9a962393373c2f45c6cb5" target="_blank">dd31c88</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree46f2fde5deb67e2ca14c55523a3f43ca33ca43d0targetblank46f2fdea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreedd31c888a6f4198b3bd9a962393373c2f45c6cb5targetblankdd31c88a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/46f2fde5deb67e2ca14c55523a3f43ca33ca43d0" target="_blank">46f2fde</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/dd31c888a6f4198b3bd9a962393373c2f45c6cb5" target="_blank">dd31c88</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -647,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/dd31c888a6f4198b3bd9a962393373c2f45c6cb5/analysis/Log2023_a_fresh_start.Rmd" target="_blank">dd31c88</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-26
+</td>
+<td>
+Add new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/8046bfaa70abeb1338e938838f26cc1754d444dc/docs/Log2023_a_fresh_start.html" target="_blank">8046bfa</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1259,6 +1293,57 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="apr-26" class="section level1">
+<h1>Apr 26</h1>
+<div id="show-top-p-of-seg-based-and-peak-based" class="section level2">
+<h2>1. Show top p of seg-based and peak-based</h2>
+<p>Add this figure to previous section <a
+href="#try-other-cpm-cutoff-factors">Try other CPM cutoff
+factors</a>.</p>
+<ul>
+<li><p>Top p’s are bonferroni corrected by multiplying the number of cis
+SNPs of a group.</p></li>
+<li><p>Only show groups with top p &lt; 1e-3.</p></li>
+</ul>
+</div>
+<div
+id="more-figures-of-comparison-between-multi-segments-pco-and-uni-merged-segments"
+class="section level2">
+<h2>2. More figures of comparison between multi-segments-PCO and
+uni-merged-segments</h2>
+<div
+id="compare-nominal-top-p-values-by-multi-segments-pco-and-uni-merged-segments"
+class="section level3">
+<h3>Compare nominal top p-values by multi-segments-PCO and
+uni-merged-segments</h3>
+<p>Add this figure to previous section <a
+href="#top-p-comparsion-multi-merged">Compare top p-values by
+multi-segments-PCO and uni-merged-segments</a>.</p>
+<p>Use <strong>nominal top p</strong>, w.o. bonferroni correction by
+multiplifying number of cis SNPs of groups. We wanted to look at this
+because we think cis regions should have same #independent SNPs. Not
+much difference with top p with bonferroni correction.</p>
+</div>
+<div id="only-show-groups-with-large-top-p-difference"
+class="section level3">
+<h3>Only show groups with large top p difference</h3>
+<p>i.e. log(topp_diff)&gt;2.</p>
+<p>Add this figure to previous section <a
+href="#top-p-comparsion-multi-merged">Compare top p-values by
+multi-segments-PCO and uni-merged-segments</a>.</p>
+</div>
+<div id="what-are-these-groups" class="section level3">
+<h3>What are these groups?</h3>
+<p>Add figures to previous section <a
+href="#top-p-comparsion-multi-merged">Compare top p-values by
+multi-segments-PCO and uni-merged-segments</a>.</p>
+<ul>
+<li><p>Group size of seg/merged groups off diagonal line</p></li>
+<li><p>#Vars in cis of seg/merged groups off diagonal line</p></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="apr-19" class="section level1">
 <h1>Apr 19</h1>
 <div id="quick-summary" class="section level2">
@@ -1281,10 +1366,161 @@ different marks.</p>
 <div id="results" class="section level3">
 <h3>Results</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_19_plt_peak_width_H3K27AC.pdf" alt="Figure: Peak width of marks." width="40%" /><img src="asset/2023/04_19_plt_peak_width_H3K4ME1.pdf" alt="Figure: Peak width of marks." width="40%" /><img src="asset/2023/04_19_plt_peak_width_H3K4ME3.pdf" alt="Figure: Peak width of marks." width="40%" /><img src="asset/2023/04_19_plt_peak_width_H3K36ME3.pdf" alt="Figure: Peak width of marks." width="40%" />
+<p><img src="asset/2023/04_19_plt_peak_width_H3K27AC.pdf" alt="Figure: Peak width of marks." width="40%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K27AC">
+Past versions of 04_19_plt_peak_width_H3K27AC.pdf
+</button>
+</p>
+<div id="fig-04_19_plt_peak_width_H3K27AC" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_plt_peak_width_H3K27AC.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_plt_peak_width_H3K4ME1.pdf" alt="Figure: Peak width of marks." width="40%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K4ME1">
+Past versions of 04_19_plt_peak_width_H3K4ME1.pdf
+</button>
+</p>
+<div id="fig-04_19_plt_peak_width_H3K4ME1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_plt_peak_width_H3K4ME1.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_plt_peak_width_H3K4ME3.pdf" alt="Figure: Peak width of marks." width="40%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K4ME3">
+Past versions of 04_19_plt_peak_width_H3K4ME3.pdf
+</button>
+</p>
+<div id="fig-04_19_plt_peak_width_H3K4ME3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_plt_peak_width_H3K4ME3.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/04_19_plt_peak_width_H3K36ME3.pdf" alt="Figure: Peak width of marks." width="40%" />
 <p class="caption">
 Figure: Peak width of marks.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K36ME3">
+Past versions of 04_19_plt_peak_width_H3K36ME3.pdf
+</button>
+</p>
+<div id="fig-04_19_plt_peak_width_H3K36ME3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_plt_peak_width_H3K36ME3.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="observations" class="section level3">
@@ -1304,11 +1540,268 @@ uni-merged-segments</h2>
 <p>Last week, I compared top p for one scenario. See below for all
 scenarios across seg sizes and cpm cutoff factors.</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" alt="Figure: Peak width of marks." width="30%" />
+<p><img src="asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb">
+Past versions of
+04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf
+</button>
+</p>
+<div id="fig-04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb">
+Past versions of 04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf
+</button>
+</p>
+<div id="fig-04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb">
+Past versions of
+04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf
+</button>
+</p>
+<div id="fig-04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb">
+Past versions of 04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf
+</button>
+</p>
+<div id="fig-04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb">
+Past versions of
+04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf
+</button>
+</p>
+<div id="fig-04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" />
 <p class="caption">
-Figure: Peak width of marks.
+Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p
+of groups. Top p’s are bonferroni corrected by multiplying the number of
+cis SNPs of a group.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb">
+Past versions of 04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf
+</button>
+</p>
+<div id="fig-04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We also wanted to look at -</p>
+<p><a href="asset/2023/04_26_plt_topp_nominal_multi_sum_chr20.pdf">Use
+nominal top p, w.o. bonferroni correction by multiplifying number of cis
+SNPs of groups. We wanted to look at this because we think cis regions
+should have same #independent SNPs. Not much difference with top p with
+bonferroni correction.</a></p>
+<p>Look into those seg/merged groups off diagonal line -</p>
+<ul>
+<li><p><a
+href="asset/2023/04_26_plt_topp_bigdiff_multi_sum_chr20.pdf">Only show
+groups with large top p difference,
+i.e. log(topp_diff)&gt;2.</a></p></li>
+<li><p><a
+href="asset/2023/04_26_plt_topp_bigdiff_group_size_multi_sum_chr20.pdf">Group
+size of seg/merged groups off diagonal line</a></p></li>
+<li><p><a
+href="asset/2023/04_26_plt_topp_bigdiff_cissnp_multi_sum_chr20.pdf">#Vars
+in cis of seg/merged groups off diagonal line</a></p></li>
+</ul>
 <p><strong>Observations -</strong></p>
 <ul>
 <li>In terms of top p (with bonferroni correction on cis snps),
@@ -1320,10 +1813,248 @@ class="section level3">
 <h3>Look all p from (SNP, group), not only just top p</h3>
 <p>No bonferroni correction just nominal p.</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" alt="Figure: Peak width of marks." width="30%" /><img src="asset/2023/04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" alt="Figure: Peak width of marks." width="30%" />
-<p class="caption">
-Figure: Peak width of marks.
+<p><img src="asset/2023/04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb">
+Past versions of
+04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf
+</button>
 </p>
+<div id="fig-04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb">
+Past versions of 04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf
+</button>
+</p>
+<div id="fig-04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb">
+Past versions of
+04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf
+</button>
+</p>
+<div id="fig-04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb">
+Past versions of 04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf
+</button>
+</p>
+<div id="fig-04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="asset/2023/04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb">
+Past versions of
+04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf
+</button>
+</p>
+<div id="fig-04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src="asset/2023/04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" />
+<p class="caption">
+Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small
+p and all p of (SNP, seg group/merged group) pairs. Small p’s show p
+&lt; 1e-5. All p’s show truncated QQ plot.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb">
+Past versions of 04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf
+</button>
+</p>
+<div id="fig-04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <p><strong>Observations -</strong></p>
 <ul>
@@ -1939,6 +2670,51 @@ liliw-w
 </td>
 <td>
 2023-04-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/04_26_compare_topp_avgcpmfct_segsize.pdf" alt="Figure: Top P value distribution. Top p's are bonferroni corrected by multiplying the number of cis SNPs of groups. Only show groups with top p &lt; 1e-3." width="50%" />
+<p class="caption">
+Figure: Top P value distribution. Top p’s are bonferroni corrected by
+multiplying the number of cis SNPs of groups. Only show groups with top
+p &lt; 1e-3.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_26_compare_topp_avgcpmfct_segsize">
+Past versions of 04_26_compare_topp_avgcpmfct_segsize.pdf
+</button>
+</p>
+<div id="fig-04_26_compare_topp_avgcpmfct_segsize" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/0cd9785583f2a677fd805bb9c6be991dcd63fff4/docs/asset/2023/04_26_compare_topp_avgcpmfct_segsize.pdf" target="_blank">0cd9785</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-26
 </td>
 </tr>
 </tbody>
