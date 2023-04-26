@@ -25,6 +25,45 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# Apr 26
+
+## 1. Show top p of seg-based and peak-based
+
+Add this figure to previous section [Try other CPM cutoff factors](#try-other-cpm-cutoff-factors).
+
+- Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group. 
+
+- Only show groups with top p < 1e-3.
+
+
+## 2. More figures of comparison between multi-segments-PCO and uni-merged-segments
+
+
+### Compare nominal top p-values by multi-segments-PCO and uni-merged-segments
+
+Add this figure to previous section [Compare top p-values by multi-segments-PCO and uni-merged-segments](#top-p-comparsion-multi-merged).
+
+Use **nominal top p**, w.o. bonferroni correction by multiplifying number of cis SNPs of groups. We wanted to look at this because we think cis regions should have same #independent SNPs. Not much difference with top p with bonferroni correction.
+
+
+### Only show groups with large top p difference
+
+i.e. log(topp_diff)>2.
+
+Add this figure to previous section [Compare top p-values by multi-segments-PCO and uni-merged-segments](#top-p-comparsion-multi-merged).
+
+
+### What are these groups?
+
+Add figures to previous section [Compare top p-values by multi-segments-PCO and uni-merged-segments](#top-p-comparsion-multi-merged).
+
+
+- Group size of seg/merged groups off diagonal line
+
+- #Vars in cis of seg/merged groups off diagonal line
+
+
+
 
 # Apr 19
 
@@ -65,9 +104,27 @@ knitr::include_graphics(c("asset/2023/04_19_plt_peak_width_H3K27AC.pdf", 'asset/
 
 Last week, I compared top p for one scenario. See below for all scenarios across seg sizes and cpm cutoff factors.
 
-```{r out.width="30%", fig.cap="Figure: Peak width of marks.", fig.show='hold',fig.align='center'}
+```{r out.width="30%", fig.cap="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf", 'asset/2023/04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf', 'asset/2023/04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf', 'asset/2023/04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf', 'asset/2023/04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf', 'asset/2023/04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf'), error = FALSE)
 ```
+
+
+We also wanted to look at -
+
+[Use nominal top p, w.o. bonferroni correction by multiplifying number of cis SNPs of groups. We wanted to look at this because we think cis regions should have same #independent SNPs. Not much difference with top p with bonferroni correction.](asset/2023/04_26_plt_topp_nominal_multi_sum_chr20.pdf)
+
+
+
+Look into those seg/merged groups off diagonal line -
+
+- [Only show groups with large top p difference, i.e. log(topp_diff)>2.](asset/2023/04_26_plt_topp_bigdiff_multi_sum_chr20.pdf)
+
+- [Group size of seg/merged groups off diagonal line](asset/2023/04_26_plt_topp_bigdiff_group_size_multi_sum_chr20.pdf)
+
+- [#Vars in cis of seg/merged groups off diagonal line](asset/2023/04_26_plt_topp_bigdiff_cissnp_multi_sum_chr20.pdf)
+
+
+
 
 **Observations -**
 
@@ -79,7 +136,7 @@ knitr::include_graphics(c("asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct
 
 No bonferroni correction just nominal p.
 
-```{r out.width="30%", fig.cap="Figure: Peak width of marks.", fig.show='hold',fig.align='center'}
+```{r out.width="30%", fig.cap="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p < 1e-5. All p's show truncated QQ plot.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf", 'asset/2023/04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf', 'asset/2023/04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf', 'asset/2023/04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf', 'asset/2023/04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf', 'asset/2023/04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf'), error = FALSE)
 ```
 
@@ -226,7 +283,7 @@ knitr::include_graphics(c("asset/2023/04_05_compare_p_segsize_qqplot.pdf"), erro
 
 
 
-### Try other CPM cutoff factors
+### Try other CPM cutoff factors {#try-other-cpm-cutoff-factors}
 
 - Why? Use various cpm cutoff for various segment sizes. Larger segments, more reads, higher CPM, higher average CPM. If using the same cpm cutoff factor as smaller segments, the cutoff can be much higher and more segments would be filtered out.
 
@@ -248,6 +305,13 @@ knitr::include_graphics(c("asset/2023/04_12_compare_p_avgcpmfct_segsize.pdf"), e
 ```{r fig.cap="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P < 1e-7", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/04_12_compare_p_avgcpmfct_segsize_qqplot.pdf"), error = FALSE)
 ```
+
+
+
+```{r fig.cap="Figure: Top P value distribution. Top p's are bonferroni corrected by multiplying the number of cis SNPs of groups. Only show groups with top p < 1e-3.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/04_26_compare_topp_avgcpmfct_segsize.pdf"), error = FALSE)
+```
+
 
 
 - **Observations**
