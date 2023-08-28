@@ -25,6 +25,990 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# Aug 16 & Aug 23
+
+## 1. Change the way to define overlap of a window and a peak
+
+### New way
+
+<center>
+![Define overlap of window and peak.](asset/2023/08_23_def_overlap_window_peak.jpg){width=40%}
+</center>
+
+
+- Original way
+  
+  In the original def, (1) a window overlap with a peak if this peak's center is within the window. (2) a peak overlap with a window if this peak's center is within the window.
+
+- Issue
+  
+  However, there is issue with this def.
+  
+  When width_window > width_peak (mark H3K27ac), this def is okay.
+  
+  But when width_window < width_peak (mark H3K36me3), even when a window is included within a peak, the peak's center can still be outside the window.
+
+
+- New way
+  
+  So the new way is, a window overlap with a peak OR a peak overlap with a window, no matter width_window > width_peak OR width_window < width_peak, if
+  
+  **Peak center within window OR window center within peak.**
+  
+  Using center ensures at least half of the shorter one (window or peak) is included in the other long one.
+
+
+### Updated figures & observations
+
+- New way works
+  
+  Look at case of overlapseg (Lower panel right purple).
+  
+  H3K36ME3. Changed. Indicates the new way works.
+  
+  H3K27ac. Stay same. Indicates both old and new way work, as window larger than peak size.
+  
+- Less new signals but still many
+  
+  Look at upper panel right purple.
+  
+  Less purple that are cwindows but not cpeaks.
+
+- Less signals not overlap with any peak, but still many.
+  
+  Look at lower panel right purple.
+  
+
+
+1. H3K36ME3_window50kb_cis500kb_seg2kb
+
+- peak_overlapseg
+  
+  ![New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf){width=40%}
+  ![Old](asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf){width=40%}
+
+
+- peak_overlap
+  
+  ![New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap_new.pdf){width=40%}
+  ![Old](asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf){width=40%}
+
+
+- prop_40
+  
+  [New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40_new.pdf){width=40%}
+  [Old](asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf){width=40%}
+
+- prop_45
+  
+  [New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45_new.pdf){width=40%}
+  [Old](asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf){width=40%}
+
+- prop_50
+
+  [New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50_new.pdf){width=40%}
+  [Old](asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf){width=40%}
+
+
+2. H3K36ME3_window50kb_cis500kb_seg5kb
+
+- peak_overlapseg
+  
+  ![New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg_new.pdf){width=40%}
+  ![Old](asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf){width=40%}
+
+
+- peak_overlap
+  
+  ![New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap_new.pdf){width=40%}
+  ![Old](asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf){width=40%}
+
+
+
+3. H3K36ME3_window50kb_cis500kb_seg1kb
+
+- peak_overlap
+  
+  [New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap_new.pdf){width=40%}
+  [Old](asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf){width=40%}
+
+
+
+4. Previous figures on H3K27ac
+
+- peak_overlapseg
+  
+  ![New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg_new.pdf){width=40%}
+  ![Old](asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf){width=40%}
+
+
+- peak_overlap
+  
+  ![New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr_new.pdf){width=40%}
+  ![Old](asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr.pdf){width=40%}
+
+
+- prop_10
+  
+  [New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10_new.pdf){width=40%}
+  [Old](asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10.pdf){width=40%}
+
+- prop_15
+  
+  [New](asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15_new.pdf){width=40%}
+  [Old](asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15.pdf){width=40%}
+
+
+
+
+## 2. Revision on paper 1
+
+### Add simulations
+
+**Goal - According to reviewer 3, to show multi is not always more powerful than uni test, at some cases.** -
+
+- Reviewer's comment
+  
+  1. at high level of sparsity
+  
+  In current simulations with high sparsity, power of all methods is too low to be differentiated. So, to increase power at this setting to differentiate methods, I change to -
+  
+  - increase effect sizes
+    
+    e.g. change sparsity level in Fig. S1
+    
+    [**This is equivalent to say to zoom in Fig. 2A, to make three tests differiatable from each other - increase power and pull them away from 0.**]
+  
+  - Or, use a larger sample size
+    
+    > "if you think increasing effect size in high sparsity setting is artificial"
+
+
+  2. low level of correlation among variates
+
+
+- I will do the case of "increase effect sizes".
+
+
+- Simulation params
+  
+  $z \sim N_K(\sqrt{n} \beta, \Sigma_{K \times K})$, where $\beta \sim N(0, \sigma^2_b)$ for $\gamma$ SNPs, and $0$ otherwise.
+  
+  Params - $\Sigma_{K \times K}$, $n$, $\gamma$, $\sigma^2_b$.
+
+
+- How? (High sparsity, large effect size)
+  
+  High sparsity in Fig. 2A ($\gamma = 1\%, 5\%, 10\%$), with larger genetic variance $\sigma^2_b = 0.005, 0.01, 0.05, 0.1, 0.2$.
+  
+  101 genes, N 500, 10k SNPs, 1k simulations, 5% fdr level.
+
+
+- Calculate FDR & power
+  
+  Based on null empirical FDR ($10^7$ = null SNPs).
+  
+  #positive SNPs/#SNPs.
+
+
+- Figures & Observations
+  
+  - With effect sizes being increased, pco and minp have larger power at high sparsity, thus can be well compared - power away from 0.
+  
+  - When 1% (1) gene is causal, minp is better.
+  
+  - When 5% or 10% genes are causal, pco is better.
+
+
+```{r out.width="25%", fig.cap="Figure: ", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101.pdf"), error = FALSE)
+```
+
+
+
+### Compare to Dutte et. al
+
+- Their idea
+
+- How to compare with us?
+
+- Data to use
+
+
+
+
+## 3. Zicheng's experience on scataq
+
+- Inflation
+  
+  Due to error of not doing rank normal.
+
+- Caution on selecting window size for various cell types
+
+- Caution on rank normal peaks for minor cell types
+
+
+
+
+# Aug 09
+
+## 0. MultiCaQ-S for H3K27ac using QC peak_overlapseg {#H3K27ac-seg1b-peak-overlapseg}
+
+- Goal
+  
+  To show **peak_overlapseg** for mark H3K27ac. Should be no much difference from previous **peak_overlap** results, as H3K27ac peaks are well defined.
+  
+  [`peak_overlapseg` means to retain only segs included by a peak.]
+  
+  [`peak_overlap` means to retain top X segs with high cpm. X is the number of segs included by any peak.]
+
+
+- Signals
+  
+  Out of 26462 windows, 2994 are cwindows at FDR < 5%.
+  
+  [By comparison, peak_overlap: Out of 21290 windows, 2846 are cwindows at FDR < 5%.]
+
+  
+```{r out.width="25%", fig.cap="Figure: MultiCaQ-S for mark H3K27ac. QC filter on segments overlap with original peaks. (1) Comparison to univariate cPeaks. (2) Enrichment of eQTL in extra signals.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf", "asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf"), error = FALSE)
+```
+
+
+
+
+## 1. Change segment size of MultiCaQ-S for H3K36me3 {#H3K36me3-seg1b-peak-overlap}
+
+### Smaller seg size (1kb)
+
+- Goal
+  
+  To show **seg1kb** results for mark H3K36me3. Compare to seg2kb.
+
+
+- Signals
+
+  seg1kb: Out of 44171 windows, 1028 are cwindows at FDR < 5%. 790 extra cwindows, 241 overlap with eQTLs.
+  
+  seg2kb: Out of 36688 windows, 1139 are cwindows at FDR < 5%. 892 extra cwindows, 279 overlap with eQTLs.
+
+
+- Observations
+  
+  - Using 1kb seg has fewer cwindows than using 2kb seg.
+  
+  - Use even larger seg & window size?
+  
+  
+```{r out.width="25%", fig.cap="Figure: MultiCaQ-S for mark H3K36me3. Using 1kb segs. (1) Comparison to univariate cPeaks. (2) Enrichment of eQTL in extra signals.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf", "asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf"), error = FALSE)
+```
+
+
+### Larger seg size (5kb)
+
+- Why?
+  
+  Due to observations from [section](#H3K36me3-seg1b-peak-overlap) that using smaller seg size (1kb) has fewer cwindows than using 2kb seg.
+
+
+- Goal
+  
+  Increase seg size to 5kb. 
+  
+  Proportion? Group size? Why not window size?
+
+
+1. Segment group
+
+```{r out.width="40%", fig.cap="Figure: Segment groups of H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlap.pdf", "asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlapseg.pdf"), error = FALSE)
+```
+
+- Similar pattern as the case of using 2kb seg. 
+  
+  Many groups include full segments (i.e. 10 = 50kb/5kb) for QC `peak_overlapseg`, as segments are adjacent to each other, while segments spans across groups for QC `peak_overlap`, as they were chosen as top segs.
+
+
+
+2. cWindow
+
+```{r}
+knitr::kable(
+    data.frame(
+  'case' = c('Univariate', 'H3K36me3_window50kb_seg2kb_peak_overlap', 'H3K36me3_window50kb_seg2kb_peak_overlapseg', 'H3K36me3_window50kb_seg5kb_peak_overlap', 'H3K36me3_window50kb_seg5kb_peak_overlapseg'),
+  'total window/peak' = c(14000, 36688, 24706, 28106, 24165),
+  'cwindow/peak' = c(338, 1139, 636, 1355, 759)
+),
+    caption = "Out of *** windows/peaks, *** are cwindows/cpeaks at FDR < 5%."
+  )
+```
+
+
+
+3. Signal comparison v.s. uni
+
+```{r out.width="40%", fig.cap="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf", "asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf"), error = FALSE)
+```
+
+
+- More new cwindows found by using 5kb seg size than 2kb seg.
+
+- Similar as case of 2kb seg, we should include more seg than just segs overlap with any peak.
+
+
+4. Enrichment of eQTL in extra signals
+
+```{r out.width="25%", fig.cap="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf", "asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf"), error = FALSE)
+```
+
+
+
+## 2. MultiCaQ-S for H3K36me3 keeping larger proportion of segments
+
+- Why?
+  
+  Due to observations from [previous section](#H3K36me3-seg2kb-peak-overlap) that including extra segments that do not overlap with peak can generate extra windows. Therefore, I wanted to include those segs by increasing the proportion of segs with high cpm.
+
+
+- Goal
+  
+  To show results of including more segments that do not overlap with originally called peaks.
+
+
+- How?
+  
+  - Use proportion of segs to keep segs with high cpm.
+  
+  - ~35% (486843/1378402) segments (2kb) overlap with a peak.
+  
+  - Larger proportions: 40%, 45%, 50%.
+
+
+- Observations
+  
+  - In [previous section](#H3K27ac-seg1kb-qc) for mark H3K27ac, we showed including more segments that do not overlap with originally called peaks did not increase signals.
+
+
+
+1. Segment group
+
+```{r out.width="30%", fig.cap="Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs. Groups including higher proportion of segs have larger group sieze.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_40.pdf", "asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_45.pdf", "asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_50.pdf"), error = FALSE)
+```
+
+
+2. cWindow
+
+```{r}
+knitr::kable(
+    data.frame(
+  'case' = c('Univariate', 'H3K36me3_window50kb_seg2kb_peak_overlap', 'H3K36me3_window50kb_seg2kb_peak_overlapseg', 'H3K36me3_window50kb_seg5kb_peak_overlap', 'H3K36me3_window50kb_seg5kb_peak_overlapseg', 'H3K36me3_window50kb_seg2kb_prop_40', 'H3K36me3_window50kb_seg2kb_prop_45', 'H3K36me3_window50kb_seg2kb_prop_50'),
+  'total window/peak' = c(14000, 36688, 24706, 28106, 24165, 40490, 43760, 46340),
+  'cwindow/peak' = c(338, 1139, 636, 1355, 759, 1143, 1179, 1204)
+),
+    caption = "Out of *** windows/peaks, *** are cwindows/cpeaks at FDR < 5%."
+  )
+```
+
+
+
+3. Signal comparison v.s. uni
+
+```{r out.width="30%", fig.cap="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf", "asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf", "asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf"), error = FALSE)
+```
+
+
+4. Enrichment of eQTL in extra signals
+
+```{r out.width="30%", fig.cap="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf", "asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf", "asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf"), error = FALSE)
+```
+
+
+
+## 3. cwindows v.s. cpeaks
+
+- Issue
+  
+  There are windows/cwindows not overlap with any peak, while all windows should consist of segs overlap with a peak.
+  
+  `count_based/nonoverlap_window/plot/plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf`
+  
+  To see if a window overlap with any I used center of a pea
+  
+  All peak centers are in a window.
+  
+  
+- Why this issue diappears for mark H3K27AC?
+  
+  See [section](#H3K27ac-seg1b-peak-overlapseg).
+
+
+- Another way to check overlap
+
+
+
+
+
+# July 19 & July 26
+
+## 1. Whole-genome wide QC {#H3K27ac-seg1kb-qc}
+
+### Three ways
+
+- To make #segments ~ #peaks
+
+- To retain segments overlap with any peak
+
+- Use segment cpm proportion - 10%, 15%
+  
+  To retain seg overlap with any peak, the proportion is ~8%. Therefore, trying 10% and 15%.
+
+
+### Ways comparison
+
+Add the old way using chr-wise factor
+
+- #segment
+
+  QC_peak_number: 100845
+  
+  QC_peak_overlap: 210076
+  
+  QC_prop_10: 274161
+  
+  QC_prop_15: 411242
+
+
+- quantile cutoff
+  
+  0.03678267
+  
+  0.07662449
+  
+  0.1
+  
+  0.15
+
+- cpm cutoff
+  
+  0.4083591
+  
+  -0.860688
+  
+  -1.184399
+  
+  -1.547873
+
+- Individual total reads
+  
+  Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+  
+  10786452 14324385 15495376 15509431 16699293 19339800
+
+
+
+### Signals
+
+1. Segment group
+
+```{r out.width="23%", fig.cap="Figure: Segment group size of QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_19_plt_seg_group_window50kb_avgcpmfct2_seg1kb_peak_number.pdf", "asset/2023/07_19_plt_seg_group_window50kb_avgcpmfct2_seg1k_peak_overlap.pdf", "asset/2023/07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_10.pdf", "asset/2023/07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_15.pdf"), error = FALSE)
+```
+
+Largest group has  segments. Most groups have <10 segments.
+
+
+2. cWindow
+
+Peak_number: Out of 14523 windows, 2398 are cwindows at FDR < 5%.
+
+Peak_overlap: Out of 21290 windows, 2846 are cwindows at FDR < 5%.
+
+QC_prop_10: Out of 23750, 2806 are cwindows at FDR < 5%.
+
+QC_prop_15: Out of 27567, 2562 are cwindows at FDR < 5%.
+
+
+3. Signal comparison v.s. uni
+
+```{r out.width="23%", fig.cap="Figure: Comparison to univariate cPeaks. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_number_allchr.pdf", "asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr.pdf", "asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10.pdf", "asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15.pdf"), error = FALSE)
+```
+
+
+4. Extra cQTLs enrichment for eQTLs
+
+
+```{r out.width="23%", fig.cap="Figure: Enrichment of eQTLs in extra cQTLs. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_number.pdf", "asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_overlap.pdf", "asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_10.pdf", "asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_15.pdf"), error = FALSE)
+```
+
+
+
+
+## 2. MultiCAQ-S on broad mark H3K36me3 {#H3K36me3-seg2kb-peak-overlap}
+
+In total, 95 samples.
+
+
+### Way to filter segments?
+
+Goal -
+
+- To avoid peak calling (using the above QC dependent on peak calling is fine)
+
+- Inaccurate peak calling (QC shouldn't depend on peak calling)
+
+
+There are two ways of seg filtering -
+
+- `peak_overlap`
+  
+  Use the proportion of segments that overlap with any peak as the cpm cutoff to retain segments.
+  
+  Clarify - Previous results on mark H3K27ac used this QC.
+
+- `peak_overlapseg`
+  
+  Retain the exact segments that overlap with any peak.
+
+
+### Wrangle bam
+
+- Problematic sample reads assignment of mark H3K27ac
+  
+  There is one sample which had non-zero unassigned reads due to ambuiguity on chr20, which was supposed to be zero. (All other chr's and samples were fine.)
+
+```{r out.width="40%", fig.cap="Figure: Problematic sample reads assignment of mark H3K27ac.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_02_plt_count_unassigned_ambiguity_H3K27AC_seg1kb.pdf"), error = FALSE)
+```
+
+
+- Speed up featureCounts
+  
+  Previously feature counting was slow. I did below to speed up.
+  
+  - Remove `-p`
+  
+  - Add slurm flag `cpus-per-task` for multi-thread
+
+
+- For this mark, no samples with Unassigned_Ambiguity reads (featureCounts summary)
+  
+```{r out.width="40%", fig.cap="Figure: FeatureCounts summary for mark H3K36me3. No Unassigned_Ambiguity reads. This is seg2kb. Same for seg1kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_02_plt_read_assignment_sum_H3K36ME3_seg2kb.pdf"), error = FALSE)
+```
+
+
+### Parameters and why?
+
+```{r out.width="40%", fig.cap="Figure: Peak width of mark H3K36me3.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('asset/2023/04_19_plt_peak_width_H3K36ME3.pdf'), error = FALSE)
+```
+
+Peak width distribution -
+
+```
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+
+341   12992   32431   70270   77592 2172910
+```
+
+I wanted the window size to be approx median peak width, so that a window can span a whole peak for at least half of the peaks.
+
+
+- Segment size
+  
+  1kb. 2kb.
+
+- Window size
+  
+  50kb.
+
+- QC seg filter
+  
+  peak_overlap. peak_overlapseg.
+
+
+
+### Signals
+
+1. Segment group
+
+```{r out.width="40%", fig.cap="Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlap.pdf", "asset/2023/08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlapseg.pdf"), error = FALSE)
+```
+
+- Window size smaller than peak size? Dynamic? Half windows have full 2kb-seg (25), i.e. half peaks split into multiple windows.
+
+- We should include more seg than just segs overlap with any peak.
+  
+  Why? See results below, using peak_overlap QC generates extra cwindows that don't overlap with any peaks.
+  
+  This makes sense, as those called peaks were not accurate, some regions with high cpm were not included in the peaks.
+
+
+
+2. cWindow
+
+- Univariate
+  
+  Out of 14000 called peaks, 338 are cpeaks at FDR < 5%.
+
+
+- H3K36me3_window50kb_seg2kb_peak_overlap
+  
+  Out of 36688 windows, 1139 are cwindows at FDR < 5%.
+
+
+- H3K36me3_window50kb_seg2kb_peak_overlapseg
+  
+  Out of 24706 windows, 636 are cwindows at FDR < 5%.
+
+
+
+3. Signal comparison v.s. uni
+
+```{r out.width="40%", fig.cap="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf", "asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf"), error = FALSE)
+```
+
+
+- Extra cwindows not overlap with any peak, using QC peak_overlap (left figure, B, upper right)
+  
+  This indicates peak calling is not good in broad mark. Many segments with high cpm not called as peaks, but they have cQTLs by multicaq-S.
+  
+  Compared to narrow peak H3K27ac. Look at same panel. There is no purple bar, which means all cwindow overlap with a peak, which means segments with high cpm overlap with at least one peak, they are included by peak calling, i.e. peak calling was good.
+
+
+- Some extra signals overlap with a peak but not a cpeak.
+
+
+- As mentioned above, we should include more seg than just segs overlap with any peak.
+  
+  Why? Using peak_overlap QC generates extra cwindows that don't overlap with any peaks.
+  
+  This makes sense, as those called peaks were not accurate, some regions with high cpm were not included in the peaks.
+  
+  Including these extra segments generates extra signals.
+
+
+
+4. Enrichment of eQTL in extra signals
+
+```{r out.width="40%", fig.cap="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf", "asset/2023/08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf"), error = FALSE)
+```
+
+
+
+# July 12
+
+## 1. MultiCAQ-S on mark H3K27ac
+
+### Parameters
+
+- Mark: H3K27ac
+
+- Segment size: 1kb
+
+- Window size: 50kb
+
+- Nonoverlap window
+
+- QC AVE_CPM_FCT: 2
+
+  To filter low abundance segments. Factor multiplying median(ave_logcpm). CPM is chr-wise, i.e. sum reads of an individual on a chr. [From the results, should try genome-wise QC.]
+
+
+### Signals itself
+
+1. Segments and QC
+
+To filter segments, I calculate median(ave_logcpm) for each chr, and retain segments with logcpm > 2*median(ave_logcpm).
+
+```{r out.width="40%", fig.cap="Figure: QC on segments. (A) median(ave_logcpm) used for filtering segments across chr. (B) Total number of segments across chr. (C) Distribution of ave_logcpm for segments across chr. Leftmost density is for genome-wide segments. (D) Number of retained segments after QC.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_12_plt_seg1kb.pdf"), error = FALSE)
+```
+
+(A) Chr-wise cutoff of median(ave_logcpm) is all positive. Positive median(ave_logcpm) cutoff multiplying a factor elevates cutoff with less segments left.
+
+With (B), shorter chr has less sum reads, thus larger cpm, larger median(ave_logcpm) cutoff.
+
+(C) Genome-wide has negative median(ave_logcpm). Multiplying it by a factor lowers cutoff with more segments left. It doesn't work to filter low abundance segments. Should think about another way to filter segments by genome-wide QC.
+
+
+- chr-wise QC
+  
+  cpm < 0: c_i/sum_i(chr) < 1/10^6
+
+- genome-wide QC - median(cpm) < 0
+  
+  cpm < 0: c_i/sum_i(all_chr) < 1/10^6
+
+
+2. Segment group
+
+```{r out.width="40%", fig.cap="Figure: Segment groups.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_12_seg_group_size_window50kb_avgcpmfct2_seg1kb.pdf"), error = FALSE)
+```
+
+Largest group has 50 segments. Most groups have <10 segments.
+
+
+3. cWindow
+
+Out of 17921 windows, 2499 are cwindows at FDR < 5%.
+
+```{r out.width="40%", fig.cap="Figure: cWindows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_12_plt_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf"), error = FALSE)
+```
+
+
+### Signal comparison
+
+1. v.s. uni
+
+```{r out.width="40%", fig.cap="Figure: Comparison to univariate cPeaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf"), error = FALSE)
+```
+
+MultiCAQ-S found new signals than QTLTools. But less than MultiCAQ-P, see previous figure.
+
+Try genome-wide QC? Chr-wise QC filtered too many segments on shorter chr's, where cutoff is high.
+
+
+- with eQTLs
+
+```{r out.width="40%", fig.cap="Figure: Enrichment of eQTLs in new cwindows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/07_12_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb.pdf"), error = FALSE)
+```
+
+Those new cwindows are enriched for eQTLs.
+
+
+- with GWAS
+
+
+2. v.s. MultiCaQ-P
+
+At same window size 50kb, MultiCAQ-P found 7259 cwindows at FDR < 5%, out of 20648 windows.
+
+
+
+
+
+# May 31 & Jun 07
+
+## 1. coloc cQTLs with GWAS
+
+### Starting from cQTL loci
+
+- How?
+
+  - With 29 blood trait GWAS from Neale's lab.
+  
+  - For each window, define 1Mb (500kb as cis) as coloc region, take overlapped snps with GWAS.
+
+- Numbers
+
+
+### Starting from GWAS loci - Neale lab
+
+- How?
+
+  - Define GWAS loci - Start with the smallest p, define a 1Mb (500kb as cis) flanking region as coloc region, search any remained snps with p < 1e-7. 
+  
+  - For each loci, take overlapped snps with any window.
+
+  - PP4 > 0.75
+
+
+- Numbers
+  
+  - Each trait has ~400 loci, ~20 are colocalized with cQTLs.
+
+```{r out.width="40%", fig.cap="Figure: GWAS loci coloc with cQTLs. 29 blood traits.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/06_07_coloc_gwas_qtl.png"), error = FALSE)
+```
+
+
+- Low coloc number - possible reasons
+  
+  - Use maf for coloc. I used to use af that can be > 0.5.
+  
+  - Use 36 blood trait GWAS from Astle et al 2016 Cell that Ben used. Neale lab GWAS sum stats have some weird snps, e.g. af=1.
+  
+  - Region too wide? 500kb total.
+
+
+### Use 36 blood traits - Ben used
+
+- Ben's coloc results as comparison
+  
+  - Sample size smaller
+  
+  - Most of trait have between 100-300 gwas loci for coloc (though a lot of the loci are overlapping between the different gwas)
+  
+  - Overall, colocalize 329 gwas loci (not necessarily unique loci) to 183 distinct H3K27Ac peaks (not necessarily 1 peak per loci, could be more than one).
+
+
+- How?
+
+  - Define GWAS loci - Start with the smallest p, define a 1Mb (500kb as cis) flanking region as coloc region, search any remained snps with p < 1e-7. 
+  
+  - For each loci, take overlapped snps with any window.
+  
+  - Remove MHC region (chromosome 6: 25.9–33.4 Mb, genome build GRCh37).
+  
+  - PP4 > 0.5
+
+
+- Numbers
+
+  - Summary of gwas loci and coloc loci.
+    
+    Each trait has ~200 loci, ~10 (5%) are colocalized with cQTLs.
+  
+  - How many coloc gwas loci are extra new cQTLs (than univariate)?
+    
+    Most traits have only 1 coloc loci coloc with new cQTLs. 
+  
+  - How many coloc gwas loci are not eQTLs?
+    
+    Most traits have 5 coloc loci not overlap with any eQTL.
+
+
+```{r out.width="40%", fig.cap="Figure: Summary of gwas loci and coloc loci. 36 blood traits. (A) x-axis: trait. Grey bar: GWAS loci. Red bar: coloc loci. (B) Number of coloc loci across traits. (C) Coloc proportion across traits.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/06_07_coloc_num.pdf"), error = FALSE)
+```
+
+```{r out.width="40%", fig.cap="Figure: Coloc loci compare with (A) if coloc loci coloc with new cQTLs compared to univariate. (B) if coloc loci overlap with any eQTL.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/06_07_coloc_compare.pdf"), error = FALSE)
+```
+
+
+## 2. Other two marks
+
+### Enrichment
+
+
+
+
+# May 19 & May 24
+
+## 1. Peak-based all chromosome
+
+- Top p for each window, correction on cis SNPs by ACAT
+
+- Q-value fdr across windows genome-wide
+
+- Univariate - QTLTools permutation p & fdr q-value for each peak
+
+
+**Check window & peak overlaps**
+
+```{r out.width="30%", fig.cap="Figure: Overlaps between cwindow and cpeak. 10kb & 50kb & 100kb window.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_allchr.pdf", "asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window50kb_cis500kb_allchr.pdf", "asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window100kb_cis500kb_allchr.pdf"), error = FALSE)
+```
+
+
+## 2. The enrichment of eQTLs in extra identified cwindows/cQTLs
+
+### How?
+
+- Use cwindows from results of 50kb window.
+
+- Find those extra cwindows (top cQTL) that don't overlap with any cpeaks by univariate mapping.
+
+- Find those extra top cQTLs that overlap with eQTLGen eQTLs.
+  
+  - By overlap, I mean (1) simple overlap. (2) in LD (R2<0.8).
+  
+  - By eQTLGen eQTLs, I mean (1) all eQTLs. (2) top eQTL for each gene.
+
+
+- Quanfify the enrichment of eQTLs in cQTLs
+  
+  - I finally used top cQTLs with simple overlap with all eQTLs.
+    
+    The reason is, if the top cQTL is not the lead eQTL, but secondary eQTL, we can still capture that kind of overlap. In addition, this way equals to using LD with top eQTL, because if a top cQTL is in LD with top eQTL, then this cQTL should also be an eQTL.
+
+
+- Other details
+  
+  - I define matched SNPs between chip-seq and eqtlgen snps by lift over chip-seq to hg19. All successfully converted snps are considered to be matched SNPs in eqtlgen.
+  
+  - To quantify enrichment in those extra cQTLs, I used two sets of SNPs that belong to (1) matched SNPs & cQTLs & extra cQTLs. (2) matched SNPs & non-cQTLs (excluding those cQTLs).
+  
+  - One-side fisher exact test.
+
+
+### Enrichment figure with number and pvalue labelled
+
+The extra cQTLs are enriched for eQTLs. P-value is 1.8e-12. OR is 1.37.
+
+```{r out.width="40%", fig.cap="Figure: The extra cQTLs are enriched for eQTLs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/05_24_plt_enrich_extra_cqtl_eqtl_window50kb.pdf"), error = FALSE)
+```
+
+
+### Results for general cwindows
+
+I was also curious to see the enrichment in all cQTLs. The enrichment for eQTLs is even more significant. P-value is 1.1e-122. OR is 2.24.
+
+```{r out.width="40%", fig.cap="Figure: All identified cQTLs are enriched for eQTLs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/05_24_plt_enrich_all_cqtl_eqtl_window50kb.pdf"), error = FALSE)
+```
+
+
+
+
+# May 03
+
+## 1. Compare cwindow and cpeak overlaps
+
+- For window-based, get adjusted p of a window by taking the best hit of the window and multiple by the number of cis SNPs (Bonferroni correction). Then do q-value to get adjusted p across windows. Compare with FDR level 5% to get significant cwindow. (Same FDR procedure as cpeaks of Ben & Carlos results.)
+
+
+- Plot overlaps between cwindow and cpeak - four types of set replication
+
+```{r out.width="40%", fig.cap="Figure: Overlaps between cwindow and cpeak.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/05_03_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_chr20_avgcpmfct2_seg1kb.pdf"), error = FALSE)
+```
+
+
+- genometrack of cwindows do not overlap with cpeaks
+  
+  Check `/scratch/midway3/liliw1/chromatin/test_results`
+  
+- genometrack of cpeaks do not overlap with cwindows
+  
+  Check `/scratch/midway3/liliw1/chromatin/test_results`
+
+
+## 2. Add peak-based
+
+- The figure
+
+- Compare to the seg-based above
+
+- genometrack plot
+
+
+## 3. Change top p correction from using Bonferroni to ACAT
+
+- The figures
+
+- Compare to the seg-based & peak-based above
+
+
+
 # Apr 26
 
 ## 1. Show top p of seg-based and peak-based
