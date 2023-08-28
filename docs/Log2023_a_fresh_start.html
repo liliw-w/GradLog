@@ -13,7 +13,7 @@
 
 <title>Log2023</title>
 
-<script src="site_libs/header-attrs-2.14.2/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -29,14 +29,14 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -179,11 +179,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -212,8 +216,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -221,16 +225,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -430,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-04-26
+<strong>Last updated:</strong> 2023-08-28
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreedd31c888a6f4198b3bd9a962393373c2f45c6cb5targetblankdd31c88a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreee446595eff32ea807f01aa455a23b119a412579etargetblanke446595a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/dd31c888a6f4198b3bd9a962393373c2f45c6cb5" target="_blank">dd31c88</a>
+<a href="https://github.com/liliw-w/GradLog/tree/e446595eff32ea807f01aa455a23b119a412579e" target="_blank">e446595</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreedd31c888a6f4198b3bd9a962393373c2f45c6cb5targetblankdd31c88a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreee446595eff32ea807f01aa455a23b119a412579etargetblanke446595a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/dd31c888a6f4198b3bd9a962393373c2f45c6cb5" target="_blank">dd31c88</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/e446595eff32ea807f01aa455a23b119a412579e" target="_blank">e446595</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -602,6 +599,9 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/week_log.Rmd
+
+Unstaged changes:
+    Deleted:    Main.docx
 
 </code></pre>
 <p>
@@ -647,6 +647,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/e446595eff32ea807f01aa455a23b119a412579e/analysis/Log2023_a_fresh_start.Rmd" target="_blank">e446595</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+<td>
+Add new weeks
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/210c2519c9b729e732e7f50cac31aace22b8b22a/docs/Log2023_a_fresh_start.html" target="_blank">210c251</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1293,6 +1327,3458 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="aug-16-aug-23" class="section level1">
+<h1>Aug 16 &amp; Aug 23</h1>
+<div id="change-the-way-to-define-overlap-of-a-window-and-a-peak"
+class="section level2">
+<h2>1. Change the way to define overlap of a window and a peak</h2>
+<div id="new-way" class="section level3">
+<h3>New way</h3>
+<center>
+<div class="float">
+<img src="asset/2023/08_23_def_overlap_window_peak.jpg"
+style="width:40.0%" alt="Define overlap of window and peak." />
+<div class="figcaption">Define overlap of window and peak.</div>
+</div>
+</center>
+<ul>
+<li><p>Original way</p>
+<p>In the original def, (1) a window overlap with a peak if this peak’s
+center is within the window. (2) a peak overlap with a window if this
+peak’s center is within the window.</p></li>
+<li><p>Issue</p>
+<p>However, there is issue with this def.</p>
+<p>When width_window &gt; width_peak (mark H3K27ac), this def is
+okay.</p>
+<p>But when width_window &lt; width_peak (mark H3K36me3), even when a
+window is included within a peak, the peak’s center can still be outside
+the window.</p></li>
+<li><p>New way</p>
+<p>So the new way is, a window overlap with a peak OR a peak overlap
+with a window, no matter width_window &gt; width_peak OR width_window
+&lt; width_peak, if</p>
+<p><strong>Peak center within window OR window center within
+peak.</strong></p>
+<p>Using center ensures at least half of the shorter one (window or
+peak) is included in the other long one.</p></li>
+</ul>
+</div>
+<div id="updated-figures-observations" class="section level3">
+<h3>Updated figures &amp; observations</h3>
+<ul>
+<li><p>New way works</p>
+<p>Look at case of overlapseg (Lower panel right purple).</p>
+<p>H3K36ME3. Changed. Indicates the new way works.</p>
+<p>H3K27ac. Stay same. Indicates both old and new way work, as window
+larger than peak size.</p></li>
+<li><p>Less new signals but still many</p>
+<p>Look at upper panel right purple.</p>
+<p>Less purple that are cwindows but not cpeaks.</p></li>
+<li><p>Less signals not overlap with any peak, but still many.</p>
+<p>Look at lower panel right purple.</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>H3K36ME3_window50kb_cis500kb_seg2kb</li>
+</ol>
+<ul>
+<li><p>peak_overlapseg</p>
+<p><embed
+src="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf"
+style="width:40.0%" /> <embed
+src="asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf"
+style="width:40.0%" /></p></li>
+<li><p>peak_overlap</p>
+<p><embed
+src="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap_new.pdf"
+style="width:40.0%" /> <embed
+src="asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf"
+style="width:40.0%" /></p></li>
+<li><p>prop_40</p>
+<p><a
+href="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40_new.pdf"
+width="40%">New</a> <a
+href="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf"
+width="40%">Old</a></p></li>
+<li><p>prop_45</p>
+<p><a
+href="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45_new.pdf"
+width="40%">New</a> <a
+href="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf"
+width="40%">Old</a></p></li>
+<li><p>prop_50</p>
+<p><a
+href="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50_new.pdf"
+width="40%">New</a> <a
+href="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf"
+width="40%">Old</a></p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>H3K36ME3_window50kb_cis500kb_seg5kb</li>
+</ol>
+<ul>
+<li><p>peak_overlapseg</p>
+<p><embed
+src="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg_new.pdf"
+style="width:40.0%" /> <embed
+src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf"
+style="width:40.0%" /></p></li>
+<li><p>peak_overlap</p>
+<p><embed
+src="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap_new.pdf"
+style="width:40.0%" /> <embed
+src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf"
+style="width:40.0%" /></p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>H3K36ME3_window50kb_cis500kb_seg1kb</li>
+</ol>
+<ul>
+<li><p>peak_overlap</p>
+<p><a
+href="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap_new.pdf"
+width="40%">New</a> <a
+href="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf"
+width="40%">Old</a></p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Previous figures on H3K27ac</li>
+</ol>
+<ul>
+<li><p>peak_overlapseg</p>
+<p><embed
+src="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg_new.pdf"
+style="width:40.0%" /> <embed
+src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf"
+style="width:40.0%" /></p></li>
+<li><p>peak_overlap</p>
+<p><embed
+src="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr_new.pdf"
+style="width:40.0%" /> <embed
+src="asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr.pdf"
+style="width:40.0%" /></p></li>
+<li><p>prop_10</p>
+<p><a
+href="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10_new.pdf"
+width="40%">New</a> <a
+href="asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10.pdf"
+width="40%">Old</a></p></li>
+<li><p>prop_15</p>
+<p><a
+href="asset/2023/08_23_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15_new.pdf"
+width="40%">New</a> <a
+href="asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15.pdf"
+width="40%">Old</a></p></li>
+</ul>
+</div>
+</div>
+<div id="revision-on-paper-1" class="section level2">
+<h2>2. Revision on paper 1</h2>
+<div id="add-simulations" class="section level3">
+<h3>Add simulations</h3>
+<p><strong>Goal - According to reviewer 3, to show multi is not always
+more powerful than uni test, at some cases.</strong> -</p>
+<ul>
+<li><p>Reviewer’s comment</p>
+<ol style="list-style-type: decimal">
+<li>at high level of sparsity</li>
+</ol>
+<p>In current simulations with high sparsity, power of all methods is
+too low to be differentiated. So, to increase power at this setting to
+differentiate methods, I change to -</p>
+<ul>
+<li><p>increase effect sizes</p>
+<p>e.g. change sparsity level in Fig. S1</p>
+<p>[<strong>This is equivalent to say to zoom in Fig. 2A, to make three
+tests differiatable from each other - increase power and pull them away
+from 0.</strong>]</p></li>
+<li><p>Or, use a larger sample size</p>
+<blockquote>
+<p>“if you think increasing effect size in high sparsity setting is
+artificial”</p>
+</blockquote></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>low level of correlation among variates</li>
+</ol></li>
+<li><p>I will do the case of “increase effect sizes”.</p></li>
+<li><p>Simulation params</p>
+<p><span class="math inline">\(z \sim N_K(\sqrt{n} \beta, \Sigma_{K
+\times K})\)</span>, where <span class="math inline">\(\beta \sim N(0,
+\sigma^2_b)\)</span> for <span class="math inline">\(\gamma\)</span>
+SNPs, and <span class="math inline">\(0\)</span> otherwise.</p>
+<p>Params - <span class="math inline">\(\Sigma_{K \times K}\)</span>,
+<span class="math inline">\(n\)</span>, <span
+class="math inline">\(\gamma\)</span>, <span
+class="math inline">\(\sigma^2_b\)</span>.</p></li>
+<li><p>How? (High sparsity, large effect size)</p>
+<p>High sparsity in Fig. 2A (<span class="math inline">\(\gamma = 1\%,
+5\%, 10\%\)</span>), with larger genetic variance <span
+class="math inline">\(\sigma^2_b = 0.005, 0.01, 0.05, 0.1,
+0.2\)</span>.</p>
+<p>101 genes, N 500, 10k SNPs, 1k simulations, 5% fdr level.</p></li>
+<li><p>Calculate FDR &amp; power</p>
+<p>Based on null empirical FDR (<span
+class="math inline">\(10^7\)</span> = null SNPs).</p>
+<p>#positive SNPs/#SNPs.</p></li>
+<li><p>Figures &amp; Observations</p>
+<ul>
+<li><p>With effect sizes being increased, pco and minp have larger power
+at high sparsity, thus can be well compared - power away from
+0.</p></li>
+<li><p>When 1% (1) gene is causal, minp is better.</p></li>
+<li><p>When 5% or 10% genes are causal, pco is better.</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101">
+Past versions of
+08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101.pdf
+</button>
+</p>
+<div
+id="fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101">
+Past versions of
+08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101.pdf
+</button>
+</p>
+<div
+id="fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101">
+Past versions of
+08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101.pdf
+</button>
+</p>
+<div
+id="fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101">
+Past versions of
+08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101.pdf
+</button>
+</p>
+<div id="fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" />
+<p class="caption">
+Figure:
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101">
+Past versions of
+08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101.pdf
+</button>
+</p>
+<div id="fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="compare-to-dutte-et.-al" class="section level3">
+<h3>Compare to Dutte et. al</h3>
+<ul>
+<li><p>Their idea</p></li>
+<li><p>How to compare with us?</p></li>
+<li><p>Data to use</p></li>
+</ul>
+</div>
+</div>
+<div id="zichengs-experience-on-scataq" class="section level2">
+<h2>3. Zicheng’s experience on scataq</h2>
+<ul>
+<li><p>Inflation</p>
+<p>Due to error of not doing rank normal.</p></li>
+<li><p>Caution on selecting window size for various cell types</p></li>
+<li><p>Caution on rank normal peaks for minor cell types</p></li>
+</ul>
+</div>
+</div>
+<div id="aug-09" class="section level1">
+<h1>Aug 09</h1>
+<div id="H3K27ac-seg1b-peak-overlapseg" class="section level2">
+<h2>0. MultiCaQ-S for H3K27ac using QC peak_overlapseg</h2>
+<ul>
+<li><p>Goal</p>
+<p>To show <strong>peak_overlapseg</strong> for mark H3K27ac. Should be
+no much difference from previous <strong>peak_overlap</strong> results,
+as H3K27ac peaks are well defined.</p>
+<p>[<code>peak_overlapseg</code> means to retain only segs included by a
+peak.]</p>
+<p>[<code>peak_overlap</code> means to retain top X segs with high cpm.
+X is the number of segs included by any peak.]</p></li>
+<li><p>Signals</p>
+<p>Out of 26462 windows, 2994 are cwindows at FDR &lt; 5%.</p>
+<p>[By comparison, peak_overlap: Out of 21290 windows, 2846 are cwindows
+at FDR &lt; 5%.]</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf" title="Figure: MultiCaQ-S for mark H3K27ac. QC filter on segments overlap with original peaks. (1) Comparison to univariate cPeaks. (2) Enrichment of eQTL in extra signals." width="25%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg">
+Past versions of
+08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf" title="Figure: MultiCaQ-S for mark H3K27ac. QC filter on segments overlap with original peaks. (1) Comparison to univariate cPeaks. (2) Enrichment of eQTL in extra signals." width="25%" type="application/pdf" />
+<p class="caption">
+Figure: MultiCaQ-S for mark H3K27ac. QC filter on segments overlap with
+original peaks. (1) Comparison to univariate cPeaks. (2) Enrichment of
+eQTL in extra signals.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg">
+Past versions of
+08_09_plt_enrich_extra_cqtl_eqtl_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K27AC_window50kb_cis500kb_seg1kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="H3K36me3-seg1b-peak-overlap" class="section level2">
+<h2>1. Change segment size of MultiCaQ-S for H3K36me3</h2>
+<div id="smaller-seg-size-1kb" class="section level3">
+<h3>Smaller seg size (1kb)</h3>
+<ul>
+<li><p>Goal</p>
+<p>To show <strong>seg1kb</strong> results for mark H3K36me3. Compare to
+seg2kb.</p></li>
+<li><p>Signals</p>
+<p>seg1kb: Out of 44171 windows, 1028 are cwindows at FDR &lt; 5%. 790
+extra cwindows, 241 overlap with eQTLs.</p>
+<p>seg2kb: Out of 36688 windows, 1139 are cwindows at FDR &lt; 5%. 892
+extra cwindows, 279 overlap with eQTLs.</p></li>
+<li><p>Observations</p>
+<ul>
+<li><p>Using 1kb seg has fewer cwindows than using 2kb seg.</p></li>
+<li><p>Use even larger seg &amp; window size?</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf" title="Figure: MultiCaQ-S for mark H3K36me3. Using 1kb segs. (1) Comparison to univariate cPeaks. (2) Enrichment of eQTL in extra signals." width="25%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap">
+Past versions of
+08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf" title="Figure: MultiCaQ-S for mark H3K36me3. Using 1kb segs. (1) Comparison to univariate cPeaks. (2) Enrichment of eQTL in extra signals." width="25%" type="application/pdf" />
+<p class="caption">
+Figure: MultiCaQ-S for mark H3K36me3. Using 1kb segs. (1) Comparison to
+univariate cPeaks. (2) Enrichment of eQTL in extra signals.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap">
+Past versions of
+08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg1kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="larger-seg-size-5kb" class="section level3">
+<h3>Larger seg size (5kb)</h3>
+<ul>
+<li><p>Why?</p>
+<p>Due to observations from <a
+href="#H3K36me3-seg1b-peak-overlap">section</a> that using smaller seg
+size (1kb) has fewer cwindows than using 2kb seg.</p></li>
+<li><p>Goal</p>
+<p>Increase seg size to 5kb.</p>
+<p>Proportion? Group size? Why not window size?</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Segment group</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlap.pdf" title="Figure: Segment groups of H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlap">
+Past versions of
+08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlapseg.pdf" title="Figure: Segment groups of H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Segment groups of H3K36me3_window50kb_seg5kb, using QC
+peak_overlap (left) and peak_overlapseg (right).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlapseg">
+Past versions of
+08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg5kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Similar pattern as the case of using 2kb seg.</p>
+<p>Many groups include full segments (i.e. 10 = 50kb/5kb) for QC
+<code>peak_overlapseg</code>, as segments are adjacent to each other,
+while segments spans across groups for QC <code>peak_overlap</code>, as
+they were chosen as top segs.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>cWindow</li>
+</ol>
+<table>
+<caption>Out of *** windows/peaks, *** are cwindows/cpeaks at FDR &lt;
+5%.</caption>
+<colgroup>
+<col width="58%" />
+<col width="24%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">case</th>
+<th align="right">total.window.peak</th>
+<th align="right">cwindow.peak</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Univariate</td>
+<td align="right">14000</td>
+<td align="right">338</td>
+</tr>
+<tr class="even">
+<td align="left">H3K36me3_window50kb_seg2kb_peak_overlap</td>
+<td align="right">36688</td>
+<td align="right">1139</td>
+</tr>
+<tr class="odd">
+<td align="left">H3K36me3_window50kb_seg2kb_peak_overlapseg</td>
+<td align="right">24706</td>
+<td align="right">636</td>
+</tr>
+<tr class="even">
+<td align="left">H3K36me3_window50kb_seg5kb_peak_overlap</td>
+<td align="right">28106</td>
+<td align="right">1355</td>
+</tr>
+<tr class="odd">
+<td align="left">H3K36me3_window50kb_seg5kb_peak_overlapseg</td>
+<td align="right">24165</td>
+<td align="right">759</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>Signal comparison v.s. uni</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" title="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap">
+Past versions of
+08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf" title="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg5kb,
+using QC peak_overlap (left) and peak_overlapseg (right).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg">
+Past versions of
+08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>More new cwindows found by using 5kb seg size than 2kb
+seg.</p></li>
+<li><p>Similar as case of 2kb seg, we should include more seg than just
+segs overlap with any peak.</p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Enrichment of eQTL in extra signals</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" title="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="25%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap">
+Past versions of
+08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf" title="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg5kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="25%" type="application/pdf" />
+<p class="caption">
+Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg5kb,
+using QC peak_overlap (left) and peak_overlapseg (right).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg">
+Past versions of
+08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="multicaq-s-for-h3k36me3-keeping-larger-proportion-of-segments"
+class="section level2">
+<h2>2. MultiCaQ-S for H3K36me3 keeping larger proportion of
+segments</h2>
+<ul>
+<li><p>Why?</p>
+<p>Due to observations from <a
+href="#H3K36me3-seg2kb-peak-overlap">previous section</a> that including
+extra segments that do not overlap with peak can generate extra windows.
+Therefore, I wanted to include those segs by increasing the proportion
+of segs with high cpm.</p></li>
+<li><p>Goal</p>
+<p>To show results of including more segments that do not overlap with
+originally called peaks.</p></li>
+<li><p>How?</p>
+<ul>
+<li><p>Use proportion of segs to keep segs with high cpm.</p></li>
+<li><p>~35% (486843/1378402) segments (2kb) overlap with a
+peak.</p></li>
+<li><p>Larger proportions: 40%, 45%, 50%.</p></li>
+</ul></li>
+<li><p>Observations</p>
+<ul>
+<li>In <a href="#H3K27ac-seg1kb-qc">previous section</a> for mark
+H3K27ac, we showed including more segments that do not overlap with
+originally called peaks did not increase signals.</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Segment group</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_40.pdf" title="Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs. Groups including higher proportion of segs have larger group sieze." width="30%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_40">
+Past versions of
+08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_40.pdf
+</button>
+</p>
+<div id="fig-08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_40"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_40.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_45.pdf" title="Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs. Groups including higher proportion of segs have larger group sieze." width="30%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_45">
+Past versions of
+08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_45.pdf
+</button>
+</p>
+<div id="fig-08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_45"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_45.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_50.pdf" title="Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs. Groups including higher proportion of segs have larger group sieze." width="30%" type="application/pdf" />
+<p class="caption">
+Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC based on
+proportion of included segs. Groups including higher proportion of segs
+have larger group sieze.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_50">
+Past versions of
+08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_50.pdf
+</button>
+</p>
+<div id="fig-08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_50"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_seg_group_size_H3K36ME3_window50kb_seg2kb_prop_50.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>cWindow</li>
+</ol>
+<table>
+<caption>Out of *** windows/peaks, *** are cwindows/cpeaks at FDR &lt;
+5%.</caption>
+<colgroup>
+<col width="58%" />
+<col width="24%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">case</th>
+<th align="right">total.window.peak</th>
+<th align="right">cwindow.peak</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Univariate</td>
+<td align="right">14000</td>
+<td align="right">338</td>
+</tr>
+<tr class="even">
+<td align="left">H3K36me3_window50kb_seg2kb_peak_overlap</td>
+<td align="right">36688</td>
+<td align="right">1139</td>
+</tr>
+<tr class="odd">
+<td align="left">H3K36me3_window50kb_seg2kb_peak_overlapseg</td>
+<td align="right">24706</td>
+<td align="right">636</td>
+</tr>
+<tr class="even">
+<td align="left">H3K36me3_window50kb_seg5kb_peak_overlap</td>
+<td align="right">28106</td>
+<td align="right">1355</td>
+</tr>
+<tr class="odd">
+<td align="left">H3K36me3_window50kb_seg5kb_peak_overlapseg</td>
+<td align="right">24165</td>
+<td align="right">759</td>
+</tr>
+<tr class="even">
+<td align="left">H3K36me3_window50kb_seg2kb_prop_40</td>
+<td align="right">40490</td>
+<td align="right">1143</td>
+</tr>
+<tr class="odd">
+<td align="left">H3K36me3_window50kb_seg2kb_prop_45</td>
+<td align="right">43760</td>
+<td align="right">1179</td>
+</tr>
+<tr class="even">
+<td align="left">H3K36me3_window50kb_seg2kb_prop_50</td>
+<td align="right">46340</td>
+<td align="right">1204</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>Signal comparison v.s. uni</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf" title="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs." width="30%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40">
+Past versions of
+08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf" title="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs." width="30%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45">
+Past versions of
+08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf" title="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs." width="30%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb,
+using QC based on proportion of included segs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50">
+Past versions of
+08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>Enrichment of eQTL in extra signals</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf" title="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs" width="30%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40">
+Past versions of
+08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_40.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf" title="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs" width="30%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45">
+Past versions of
+08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_45.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf" title="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb, using QC based on proportion of included segs" width="30%" type="application/pdf" />
+<p class="caption">
+Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb,
+using QC based on proportion of included segs
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50">
+Past versions of
+08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf
+</button>
+</p>
+<div
+id="fig-08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_09_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_prop_50.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cwindows-v.s.-cpeaks" class="section level2">
+<h2>3. cwindows v.s. cpeaks</h2>
+<ul>
+<li><p>Issue</p>
+<p>There are windows/cwindows not overlap with any peak, while all
+windows should consist of segs overlap with a peak.</p>
+<p><code>count_based/nonoverlap_window/plot/plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf</code></p>
+<p>To see if a window overlap with any I used center of a pea</p>
+<p>All peak centers are in a window.</p></li>
+<li><p>Why this issue diappears for mark H3K27AC?</p>
+<p>See <a href="#H3K27ac-seg1b-peak-overlapseg">section</a>.</p></li>
+<li><p>Another way to check overlap</p></li>
+</ul>
+</div>
+</div>
+<div id="july-19-july-26" class="section level1">
+<h1>July 19 &amp; July 26</h1>
+<div id="H3K27ac-seg1kb-qc" class="section level2">
+<h2>1. Whole-genome wide QC</h2>
+<div id="three-ways" class="section level3">
+<h3>Three ways</h3>
+<ul>
+<li><p>To make #segments ~ #peaks</p></li>
+<li><p>To retain segments overlap with any peak</p></li>
+<li><p>Use segment cpm proportion - 10%, 15%</p>
+<p>To retain seg overlap with any peak, the proportion is ~8%.
+Therefore, trying 10% and 15%.</p></li>
+</ul>
+</div>
+<div id="ways-comparison" class="section level3">
+<h3>Ways comparison</h3>
+<p>Add the old way using chr-wise factor</p>
+<ul>
+<li><p>#segment</p>
+<p>QC_peak_number: 100845</p>
+<p>QC_peak_overlap: 210076</p>
+<p>QC_prop_10: 274161</p>
+<p>QC_prop_15: 411242</p></li>
+<li><p>quantile cutoff</p>
+<p>0.03678267</p>
+<p>0.07662449</p>
+<p>0.1</p>
+<p>0.15</p></li>
+<li><p>cpm cutoff</p>
+<p>0.4083591</p>
+<p>-0.860688</p>
+<p>-1.184399</p>
+<p>-1.547873</p></li>
+<li><p>Individual total reads</p>
+<p>Min. 1st Qu. Median Mean 3rd Qu. Max.</p>
+<p>10786452 14324385 15495376 15509431 16699293 19339800</p></li>
+</ul>
+</div>
+<div id="signals" class="section level3">
+<h3>Signals</h3>
+<ol style="list-style-type: decimal">
+<li>Segment group</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_19_plt_seg_group_window50kb_avgcpmfct2_seg1kb_peak_number.pdf" title="Figure: Segment group size of QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_19_plt_seg_group_window50kb_avgcpmfct2_seg1kb_peak_number">
+Past versions of
+07_19_plt_seg_group_window50kb_avgcpmfct2_seg1kb_peak_number.pdf
+</button>
+</p>
+<div
+id="fig-07_19_plt_seg_group_window50kb_avgcpmfct2_seg1kb_peak_number"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_19_plt_seg_group_window50kb_avgcpmfct2_seg1kb_peak_number.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/07_19_plt_seg_group_window50kb_avgcpmfct2_seg1k_peak_overlap.pdf" title="Figure: Segment group size of QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_19_plt_seg_group_window50kb_avgcpmfct2_seg1k_peak_overlap">
+Past versions of
+07_19_plt_seg_group_window50kb_avgcpmfct2_seg1k_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-07_19_plt_seg_group_window50kb_avgcpmfct2_seg1k_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_19_plt_seg_group_window50kb_avgcpmfct2_seg1k_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_10.pdf" title="Figure: Segment group size of QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_10">
+Past versions of
+07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_10.pdf
+</button>
+</p>
+<div id="fig-07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_10"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_10.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_15.pdf" title="Figure: Segment group size of QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" />
+<p class="caption">
+Figure: Segment group size of QC to make segments number be the same as
+(1) peak number, (2) segments overlap with any peak, (3) top 10% segs,
+and (4) top 15% segs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_15">
+Past versions of
+07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_15.pdf
+</button>
+</p>
+<div id="fig-07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_15"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_seg_group_H3K27AC_window50kb_seg1k_prop_15.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Largest group has segments. Most groups have &lt;10 segments.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>cWindow</li>
+</ol>
+<p>Peak_number: Out of 14523 windows, 2398 are cwindows at FDR &lt;
+5%.</p>
+<p>Peak_overlap: Out of 21290 windows, 2846 are cwindows at FDR &lt;
+5%.</p>
+<p>QC_prop_10: Out of 23750, 2806 are cwindows at FDR &lt; 5%.</p>
+<p>QC_prop_15: Out of 27567, 2562 are cwindows at FDR &lt; 5%.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Signal comparison v.s. uni</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_number_allchr.pdf" title="Figure: Comparison to univariate cPeaks. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_number_allchr">
+Past versions of
+07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_number_allchr.pdf
+</button>
+</p>
+<div
+id="fig-07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_number_allchr"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_number_allchr.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr.pdf" title="Figure: Comparison to univariate cPeaks. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr">
+Past versions of
+07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr.pdf
+</button>
+</p>
+<div
+id="fig-07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_19_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_peak_overlap_allchr.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10.pdf" title="Figure: Comparison to univariate cPeaks. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10">
+Past versions of
+07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10.pdf
+</button>
+</p>
+<div
+id="fig-07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_10.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15.pdf" title="Figure: Comparison to univariate cPeaks. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison to univariate cPeaks. Use QC to make segments number
+be the same as (1) peak number, (2) segments overlap with any peak, (3)
+top 10% segs, and (4) top 15% segs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15">
+Past versions of
+07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15.pdf
+</button>
+</p>
+<div
+id="fig-07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg1kb_prop_15.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>Extra cQTLs enrichment for eQTLs</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_number.pdf" title="Figure: Enrichment of eQTLs in extra cQTLs. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_number">
+Past versions of
+07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_number.pdf
+</button>
+</p>
+<div
+id="fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_number"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_number.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_overlap.pdf" title="Figure: Enrichment of eQTLs in extra cQTLs. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_overlap">
+Past versions of
+07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_10.pdf" title="Figure: Enrichment of eQTLs in extra cQTLs. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_10">
+Past versions of
+07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_10.pdf
+</button>
+</p>
+<div id="fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_10"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_10.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_15.pdf" title="Figure: Enrichment of eQTLs in extra cQTLs. Use QC to make segments number be the same as (1) peak number, (2) segments overlap with any peak, (3) top 10% segs, and (4) top 15% segs." width="23%" type="application/pdf" />
+<p class="caption">
+Figure: Enrichment of eQTLs in extra cQTLs. Use QC to make segments
+number be the same as (1) peak number, (2) segments overlap with any
+peak, (3) top 10% segs, and (4) top 15% segs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_15">
+Past versions of
+07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_15.pdf
+</button>
+</p>
+<div id="fig-07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_15"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_26_plt_enrich_extra_cqtl_eqtl_window50kb_seg1kb_prop_15.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="H3K36me3-seg2kb-peak-overlap" class="section level2">
+<h2>2. MultiCAQ-S on broad mark H3K36me3</h2>
+<p>In total, 95 samples.</p>
+<div id="way-to-filter-segments" class="section level3">
+<h3>Way to filter segments?</h3>
+<p>Goal -</p>
+<ul>
+<li><p>To avoid peak calling (using the above QC dependent on peak
+calling is fine)</p></li>
+<li><p>Inaccurate peak calling (QC shouldn’t depend on peak
+calling)</p></li>
+</ul>
+<p>There are two ways of seg filtering -</p>
+<ul>
+<li><p><code>peak_overlap</code></p>
+<p>Use the proportion of segments that overlap with any peak as the cpm
+cutoff to retain segments.</p>
+<p>Clarify - Previous results on mark H3K27ac used this QC.</p></li>
+<li><p><code>peak_overlapseg</code></p>
+<p>Retain the exact segments that overlap with any peak.</p></li>
+</ul>
+</div>
+<div id="wrangle-bam" class="section level3">
+<h3>Wrangle bam</h3>
+<ul>
+<li><p>Problematic sample reads assignment of mark H3K27ac</p>
+<p>There is one sample which had non-zero unassigned reads due to
+ambuiguity on chr20, which was supposed to be zero. (All other chr’s and
+samples were fine.)</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_02_plt_count_unassigned_ambiguity_H3K27AC_seg1kb.pdf" title="Figure: Problematic sample reads assignment of mark H3K27ac." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Problematic sample reads assignment of mark H3K27ac.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_plt_count_unassigned_ambiguity_H3K27AC_seg1kb">
+Past versions of 08_02_plt_count_unassigned_ambiguity_H3K27AC_seg1kb.pdf
+</button>
+</p>
+<div id="fig-08_02_plt_count_unassigned_ambiguity_H3K27AC_seg1kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_plt_count_unassigned_ambiguity_H3K27AC_seg1kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Speed up featureCounts</p>
+<p>Previously feature counting was slow. I did below to speed up.</p>
+<ul>
+<li><p>Remove <code>-p</code></p></li>
+<li><p>Add slurm flag <code>cpus-per-task</code> for
+multi-thread</p></li>
+</ul></li>
+<li><p>For this mark, no samples with Unassigned_Ambiguity reads
+(featureCounts summary)</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_02_plt_read_assignment_sum_H3K36ME3_seg2kb.pdf" title="Figure: FeatureCounts summary for mark H3K36me3. No Unassigned_Ambiguity reads. This is seg2kb. Same for seg1kb." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: FeatureCounts summary for mark H3K36me3. No Unassigned_Ambiguity
+reads. This is seg2kb. Same for seg1kb.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_plt_read_assignment_sum_H3K36ME3_seg2kb">
+Past versions of 08_02_plt_read_assignment_sum_H3K36ME3_seg2kb.pdf
+</button>
+</p>
+<div id="fig-08_02_plt_read_assignment_sum_H3K36ME3_seg2kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_plt_read_assignment_sum_H3K36ME3_seg2kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="parameters-and-why" class="section level3">
+<h3>Parameters and why?</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/04_19_plt_peak_width_H3K36ME3.pdf" title="Figure: Peak width of mark H3K36me3." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Peak width of mark H3K36me3.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K36ME3">
+Past versions of 04_19_plt_peak_width_H3K36ME3.pdf
+</button>
+</p>
+<div id="fig-04_19_plt_peak_width_H3K36ME3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc575927109853d7da4fa40ba70811e7a66404dc/docs/asset/2023/04_19_plt_peak_width_H3K36ME3.pdf" target="_blank">fc57592</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-04-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Peak width distribution -</p>
+<pre><code>Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+
+341   12992   32431   70270   77592 2172910</code></pre>
+<p>I wanted the window size to be approx median peak width, so that a
+window can span a whole peak for at least half of the peaks.</p>
+<ul>
+<li><p>Segment size</p>
+<p>1kb. 2kb.</p></li>
+<li><p>Window size</p>
+<p>50kb.</p></li>
+<li><p>QC seg filter</p>
+<p>peak_overlap. peak_overlapseg.</p></li>
+</ul>
+</div>
+<div id="signals-1" class="section level3">
+<h3>Signals</h3>
+<ol style="list-style-type: decimal">
+<li>Segment group</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlap.pdf" title="Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlap">
+Past versions of
+08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlapseg.pdf" title="Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Segment groups of H3K36me3_window50kb_seg2kb, using QC
+peak_overlap (left) and peak_overlapseg (right).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlapseg">
+Past versions of
+08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_seg_group_size_H3K36ME3_window50kb_seg2kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Window size smaller than peak size? Dynamic? Half windows have
+full 2kb-seg (25), i.e. half peaks split into multiple windows.</p></li>
+<li><p>We should include more seg than just segs overlap with any
+peak.</p>
+<p>Why? See results below, using peak_overlap QC generates extra
+cwindows that don’t overlap with any peaks.</p>
+<p>This makes sense, as those called peaks were not accurate, some
+regions with high cpm were not included in the peaks.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>cWindow</li>
+</ol>
+<ul>
+<li><p>Univariate</p>
+<p>Out of 14000 called peaks, 338 are cpeaks at FDR &lt; 5%.</p></li>
+<li><p>H3K36me3_window50kb_seg2kb_peak_overlap</p>
+<p>Out of 36688 windows, 1139 are cwindows at FDR &lt; 5%.</p></li>
+<li><p>H3K36me3_window50kb_seg2kb_peak_overlapseg</p>
+<p>Out of 24706 windows, 636 are cwindows at FDR &lt; 5%.</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Signal comparison v.s. uni</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf" title="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap">
+Past versions of
+08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf" title="Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison to univariate cPeaks. H3K36me3_window50kb_seg2kb,
+using QC peak_overlap (left) and peak_overlapseg (right).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg">
+Past versions of
+08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Extra cwindows not overlap with any peak, using QC peak_overlap
+(left figure, B, upper right)</p>
+<p>This indicates peak calling is not good in broad mark. Many segments
+with high cpm not called as peaks, but they have cQTLs by
+multicaq-S.</p>
+<p>Compared to narrow peak H3K27ac. Look at same panel. There is no
+purple bar, which means all cwindow overlap with a peak, which means
+segments with high cpm overlap with at least one peak, they are included
+by peak calling, i.e. peak calling was good.</p></li>
+<li><p>Some extra signals overlap with a peak but not a cpeak.</p></li>
+<li><p>As mentioned above, we should include more seg than just segs
+overlap with any peak.</p>
+<p>Why? Using peak_overlap QC generates extra cwindows that don’t
+overlap with any peaks.</p>
+<p>This makes sense, as those called peaks were not accurate, some
+regions with high cpm were not included in the peaks.</p>
+<p>Including these extra segments generates extra signals.</p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Enrichment of eQTL in extra signals</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf" title="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap">
+Past versions of
+08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlap.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf" title="Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb, using QC peak_overlap (left) and peak_overlapseg (right)." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Enrichment of eQTL in extra signals. H3K36me3_window50kb_seg2kb,
+using QC peak_overlap (left) and peak_overlapseg (right).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg">
+Past versions of
+08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf
+</button>
+</p>
+<div
+id="fig-08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/08_02_plt_enrich_extra_cqtl_eqtl_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="july-12" class="section level1">
+<h1>July 12</h1>
+<div id="multicaq-s-on-mark-h3k27ac" class="section level2">
+<h2>1. MultiCAQ-S on mark H3K27ac</h2>
+<div id="parameters" class="section level3">
+<h3>Parameters</h3>
+<ul>
+<li><p>Mark: H3K27ac</p></li>
+<li><p>Segment size: 1kb</p></li>
+<li><p>Window size: 50kb</p></li>
+<li><p>Nonoverlap window</p></li>
+<li><p>QC AVE_CPM_FCT: 2</p>
+<p>To filter low abundance segments. Factor multiplying
+median(ave_logcpm). CPM is chr-wise, i.e. sum reads of an individual on
+a chr. [From the results, should try genome-wise QC.]</p></li>
+</ul>
+</div>
+<div id="signals-itself" class="section level3">
+<h3>Signals itself</h3>
+<ol style="list-style-type: decimal">
+<li>Segments and QC</li>
+</ol>
+<p>To filter segments, I calculate median(ave_logcpm) for each chr, and
+retain segments with logcpm &gt; 2*median(ave_logcpm).</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_12_plt_seg1kb.pdf" title="Figure: QC on segments. (A) median(ave_logcpm) used for filtering segments across chr. (B) Total number of segments across chr. (C) Distribution of ave_logcpm for segments across chr. Leftmost density is for genome-wide segments. (D) Number of retained segments after QC." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: QC on segments. (A) median(ave_logcpm) used for filtering
+segments across chr. (B) Total number of segments across chr. (C)
+Distribution of ave_logcpm for segments across chr. Leftmost density is
+for genome-wide segments. (D) Number of retained segments after QC.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_12_plt_seg1kb">
+Past versions of 07_12_plt_seg1kb.pdf
+</button>
+</p>
+<div id="fig-07_12_plt_seg1kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_12_plt_seg1kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol style="list-style-type: upper-alpha">
+<li>Chr-wise cutoff of median(ave_logcpm) is all positive. Positive
+median(ave_logcpm) cutoff multiplying a factor elevates cutoff with less
+segments left.</li>
+</ol>
+<p>With (B), shorter chr has less sum reads, thus larger cpm, larger
+median(ave_logcpm) cutoff.</p>
+<ol start="3" style="list-style-type: upper-alpha">
+<li>Genome-wide has negative median(ave_logcpm). Multiplying it by a
+factor lowers cutoff with more segments left. It doesn’t work to filter
+low abundance segments. Should think about another way to filter
+segments by genome-wide QC.</li>
+</ol>
+<ul>
+<li><p>chr-wise QC</p>
+<p>cpm &lt; 0: c_i/sum_i(chr) &lt; 1/10^6</p></li>
+<li><p>genome-wide QC - median(cpm) &lt; 0</p>
+<p>cpm &lt; 0: c_i/sum_i(all_chr) &lt; 1/10^6</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Segment group</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_12_seg_group_size_window50kb_avgcpmfct2_seg1kb.pdf" title="Figure: Segment groups." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Segment groups.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_12_seg_group_size_window50kb_avgcpmfct2_seg1kb">
+Past versions of 07_12_seg_group_size_window50kb_avgcpmfct2_seg1kb.pdf
+</button>
+</p>
+<div id="fig-07_12_seg_group_size_window50kb_avgcpmfct2_seg1kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_12_seg_group_size_window50kb_avgcpmfct2_seg1kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Largest group has 50 segments. Most groups have &lt;10 segments.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>cWindow</li>
+</ol>
+<p>Out of 17921 windows, 2499 are cwindows at FDR &lt; 5%.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_12_plt_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf" title="Figure: cWindows." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: cWindows.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_12_plt_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr">
+Past versions of
+07_12_plt_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf
+</button>
+</p>
+<div
+id="fig-07_12_plt_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_12_plt_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="signal-comparison" class="section level3">
+<h3>Signal comparison</h3>
+<ol style="list-style-type: decimal">
+<li>v.s. uni</li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf" title="Figure: Comparison to univariate cPeaks." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison to univariate cPeaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr">
+Past versions of
+07_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf
+</button>
+</p>
+<div
+id="fig-07_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_avgcpmfct2_seg1kb_allchr.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>MultiCAQ-S found new signals than QTLTools. But less than MultiCAQ-P,
+see previous figure.</p>
+<p>Try genome-wide QC? Chr-wise QC filtered too many segments on shorter
+chr’s, where cutoff is high.</p>
+<ul>
+<li>with eQTLs</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/07_12_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb.pdf" title="Figure: Enrichment of eQTLs in new cwindows." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Enrichment of eQTLs in new cwindows.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-07_12_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb">
+Past versions of
+07_12_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb.pdf
+</button>
+</p>
+<div
+id="fig-07_12_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/07_12_plt_enrich_extra_cqtl_eqtl_window50kb_avgcpmfct2_seg1kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Those new cwindows are enriched for eQTLs.</p>
+<ul>
+<li>with GWAS</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>v.s. MultiCaQ-P</li>
+</ol>
+<p>At same window size 50kb, MultiCAQ-P found 7259 cwindows at FDR &lt;
+5%, out of 20648 windows.</p>
+</div>
+</div>
+</div>
+<div id="may-31-jun-07" class="section level1">
+<h1>May 31 &amp; Jun 07</h1>
+<div id="coloc-cqtls-with-gwas" class="section level2">
+<h2>1. coloc cQTLs with GWAS</h2>
+<div id="starting-from-cqtl-loci" class="section level3">
+<h3>Starting from cQTL loci</h3>
+<ul>
+<li><p>How?</p>
+<ul>
+<li><p>With 29 blood trait GWAS from Neale’s lab.</p></li>
+<li><p>For each window, define 1Mb (500kb as cis) as coloc region, take
+overlapped snps with GWAS.</p></li>
+</ul></li>
+<li><p>Numbers</p></li>
+</ul>
+</div>
+<div id="starting-from-gwas-loci---neale-lab" class="section level3">
+<h3>Starting from GWAS loci - Neale lab</h3>
+<ul>
+<li><p>How?</p>
+<ul>
+<li><p>Define GWAS loci - Start with the smallest p, define a 1Mb (500kb
+as cis) flanking region as coloc region, search any remained snps with p
+&lt; 1e-7.</p></li>
+<li><p>For each loci, take overlapped snps with any window.</p></li>
+<li><p>PP4 &gt; 0.75</p></li>
+</ul></li>
+<li><p>Numbers</p>
+<ul>
+<li>Each trait has ~400 loci, ~20 are colocalized with cQTLs.</li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2023/06_07_coloc_gwas_qtl.png" alt="Figure: GWAS loci coloc with cQTLs. 29 blood traits." width="40%" />
+<p class="caption">
+Figure: GWAS loci coloc with cQTLs. 29 blood traits.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-06_07_coloc_gwas_qtl">
+Past versions of 06_07_coloc_gwas_qtl.png
+</button>
+</p>
+<div id="fig-06_07_coloc_gwas_qtl" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/06_07_coloc_gwas_qtl.png" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Low coloc number - possible reasons</p>
+<ul>
+<li><p>Use maf for coloc. I used to use af that can be &gt;
+0.5.</p></li>
+<li><p>Use 36 blood trait GWAS from Astle et al 2016 Cell that Ben used.
+Neale lab GWAS sum stats have some weird snps, e.g. af=1.</p></li>
+<li><p>Region too wide? 500kb total.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="use-36-blood-traits---ben-used" class="section level3">
+<h3>Use 36 blood traits - Ben used</h3>
+<ul>
+<li><p>Ben’s coloc results as comparison</p>
+<ul>
+<li><p>Sample size smaller</p></li>
+<li><p>Most of trait have between 100-300 gwas loci for coloc (though a
+lot of the loci are overlapping between the different gwas)</p></li>
+<li><p>Overall, colocalize 329 gwas loci (not necessarily unique loci)
+to 183 distinct H3K27Ac peaks (not necessarily 1 peak per loci, could be
+more than one).</p></li>
+</ul></li>
+<li><p>How?</p>
+<ul>
+<li><p>Define GWAS loci - Start with the smallest p, define a 1Mb (500kb
+as cis) flanking region as coloc region, search any remained snps with p
+&lt; 1e-7.</p></li>
+<li><p>For each loci, take overlapped snps with any window.</p></li>
+<li><p>Remove MHC region (chromosome 6: 25.9–33.4 Mb, genome build
+GRCh37).</p></li>
+<li><p>PP4 &gt; 0.5</p></li>
+</ul></li>
+<li><p>Numbers</p>
+<ul>
+<li><p>Summary of gwas loci and coloc loci.</p>
+<p>Each trait has ~200 loci, ~10 (5%) are colocalized with
+cQTLs.</p></li>
+<li><p>How many coloc gwas loci are extra new cQTLs (than
+univariate)?</p>
+<p>Most traits have only 1 coloc loci coloc with new cQTLs.</p></li>
+<li><p>How many coloc gwas loci are not eQTLs?</p>
+<p>Most traits have 5 coloc loci not overlap with any eQTL.</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/06_07_coloc_num.pdf" title="Figure: Summary of gwas loci and coloc loci. 36 blood traits. (A) x-axis: trait. Grey bar: GWAS loci. Red bar: coloc loci. (B) Number of coloc loci across traits. (C) Coloc proportion across traits." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Summary of gwas loci and coloc loci. 36 blood traits. (A)
+x-axis: trait. Grey bar: GWAS loci. Red bar: coloc loci. (B) Number of
+coloc loci across traits. (C) Coloc proportion across traits.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-06_07_coloc_num">
+Past versions of 06_07_coloc_num.pdf
+</button>
+</p>
+<div id="fig-06_07_coloc_num" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/06_07_coloc_num.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/06_07_coloc_compare.pdf" title="Figure: Coloc loci compare with (A) if coloc loci coloc with new cQTLs compared to univariate. (B) if coloc loci overlap with any eQTL." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc loci compare with (A) if coloc loci coloc with new cQTLs
+compared to univariate. (B) if coloc loci overlap with any eQTL.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-06_07_coloc_compare">
+Past versions of 06_07_coloc_compare.pdf
+</button>
+</p>
+<div id="fig-06_07_coloc_compare" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/06_07_coloc_compare.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="other-two-marks" class="section level2">
+<h2>2. Other two marks</h2>
+<div id="enrichment" class="section level3">
+<h3>Enrichment</h3>
+</div>
+</div>
+</div>
+<div id="may-19-may-24" class="section level1">
+<h1>May 19 &amp; May 24</h1>
+<div id="peak-based-all-chromosome" class="section level2">
+<h2>1. Peak-based all chromosome</h2>
+<ul>
+<li><p>Top p for each window, correction on cis SNPs by ACAT</p></li>
+<li><p>Q-value fdr across windows genome-wide</p></li>
+<li><p>Univariate - QTLTools permutation p &amp; fdr q-value for each
+peak</p></li>
+</ul>
+<p><strong>Check window &amp; peak overlaps</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_allchr.pdf" title="Figure: Overlaps between cwindow and cpeak. 10kb &amp; 50kb &amp; 100kb window." width="30%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_19_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_allchr">
+Past versions of
+05_19_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_allchr.pdf
+</button>
+</p>
+<div id="fig-05_19_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_allchr"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_allchr.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><embed src="asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window50kb_cis500kb_allchr.pdf" title="Figure: Overlaps between cwindow and cpeak. 10kb &amp; 50kb &amp; 100kb window." width="30%" type="application/pdf" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_19_plt_cpeak_cwindow_H3K27AC_window50kb_cis500kb_allchr">
+Past versions of
+05_19_plt_cpeak_cwindow_H3K27AC_window50kb_cis500kb_allchr.pdf
+</button>
+</p>
+<div id="fig-05_19_plt_cpeak_cwindow_H3K27AC_window50kb_cis500kb_allchr"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window50kb_cis500kb_allchr.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window100kb_cis500kb_allchr.pdf" title="Figure: Overlaps between cwindow and cpeak. 10kb &amp; 50kb &amp; 100kb window." width="30%" type="application/pdf" />
+<p class="caption">
+Figure: Overlaps between cwindow and cpeak. 10kb &amp; 50kb &amp; 100kb
+window.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_19_plt_cpeak_cwindow_H3K27AC_window100kb_cis500kb_allchr">
+Past versions of
+05_19_plt_cpeak_cwindow_H3K27AC_window100kb_cis500kb_allchr.pdf
+</button>
+</p>
+<div
+id="fig-05_19_plt_cpeak_cwindow_H3K27AC_window100kb_cis500kb_allchr"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/05_19_plt_cpeak_cwindow_H3K27AC_window100kb_cis500kb_allchr.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="the-enrichment-of-eqtls-in-extra-identified-cwindowscqtls"
+class="section level2">
+<h2>2. The enrichment of eQTLs in extra identified cwindows/cQTLs</h2>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>Use cwindows from results of 50kb window.</p></li>
+<li><p>Find those extra cwindows (top cQTL) that don’t overlap with any
+cpeaks by univariate mapping.</p></li>
+<li><p>Find those extra top cQTLs that overlap with eQTLGen eQTLs.</p>
+<ul>
+<li><p>By overlap, I mean (1) simple overlap. (2) in LD
+(R2&lt;0.8).</p></li>
+<li><p>By eQTLGen eQTLs, I mean (1) all eQTLs. (2) top eQTL for each
+gene.</p></li>
+</ul></li>
+<li><p>Quanfify the enrichment of eQTLs in cQTLs</p>
+<ul>
+<li><p>I finally used top cQTLs with simple overlap with all eQTLs.</p>
+<p>The reason is, if the top cQTL is not the lead eQTL, but secondary
+eQTL, we can still capture that kind of overlap. In addition, this way
+equals to using LD with top eQTL, because if a top cQTL is in LD with
+top eQTL, then this cQTL should also be an eQTL.</p></li>
+</ul></li>
+<li><p>Other details</p>
+<ul>
+<li><p>I define matched SNPs between chip-seq and eqtlgen snps by lift
+over chip-seq to hg19. All successfully converted snps are considered to
+be matched SNPs in eqtlgen.</p></li>
+<li><p>To quantify enrichment in those extra cQTLs, I used two sets of
+SNPs that belong to (1) matched SNPs &amp; cQTLs &amp; extra cQTLs. (2)
+matched SNPs &amp; non-cQTLs (excluding those cQTLs).</p></li>
+<li><p>One-side fisher exact test.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="enrichment-figure-with-number-and-pvalue-labelled"
+class="section level3">
+<h3>Enrichment figure with number and pvalue labelled</h3>
+<p>The extra cQTLs are enriched for eQTLs. P-value is 1.8e-12. OR is
+1.37.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/05_24_plt_enrich_extra_cqtl_eqtl_window50kb.pdf" title="Figure: The extra cQTLs are enriched for eQTLs." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: The extra cQTLs are enriched for eQTLs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_24_plt_enrich_extra_cqtl_eqtl_window50kb">
+Past versions of 05_24_plt_enrich_extra_cqtl_eqtl_window50kb.pdf
+</button>
+</p>
+<div id="fig-05_24_plt_enrich_extra_cqtl_eqtl_window50kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/05_24_plt_enrich_extra_cqtl_eqtl_window50kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="results-for-general-cwindows" class="section level3">
+<h3>Results for general cwindows</h3>
+<p>I was also curious to see the enrichment in all cQTLs. The enrichment
+for eQTLs is even more significant. P-value is 1.1e-122. OR is 2.24.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/05_24_plt_enrich_all_cqtl_eqtl_window50kb.pdf" title="Figure: All identified cQTLs are enriched for eQTLs." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: All identified cQTLs are enriched for eQTLs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_24_plt_enrich_all_cqtl_eqtl_window50kb">
+Past versions of 05_24_plt_enrich_all_cqtl_eqtl_window50kb.pdf
+</button>
+</p>
+<div id="fig-05_24_plt_enrich_all_cqtl_eqtl_window50kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/05_24_plt_enrich_all_cqtl_eqtl_window50kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="may-03" class="section level1">
+<h1>May 03</h1>
+<div id="compare-cwindow-and-cpeak-overlaps" class="section level2">
+<h2>1. Compare cwindow and cpeak overlaps</h2>
+<ul>
+<li><p>For window-based, get adjusted p of a window by taking the best
+hit of the window and multiple by the number of cis SNPs (Bonferroni
+correction). Then do q-value to get adjusted p across windows. Compare
+with FDR level 5% to get significant cwindow. (Same FDR procedure as
+cpeaks of Ben &amp; Carlos results.)</p></li>
+<li><p>Plot overlaps between cwindow and cpeak - four types of set
+replication</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/05_03_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_chr20_avgcpmfct2_seg1kb.pdf" title="Figure: Overlaps between cwindow and cpeak." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Overlaps between cwindow and cpeak.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_03_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_chr20_avgcpmfct2_seg1kb">
+Past versions of
+05_03_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_chr20_avgcpmfct2_seg1kb.pdf
+</button>
+</p>
+<div
+id="fig-05_03_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_chr20_avgcpmfct2_seg1kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/493db6ceab3eadf112c4063856ee5494a3dad77f/docs/asset/2023/05_03_plt_cpeak_cwindow_H3K27AC_window10kb_cis500kb_chr20_avgcpmfct2_seg1kb.pdf" target="_blank">493db6c</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>genometrack of cwindows do not overlap with cpeaks</p>
+<p>Check
+<code>/scratch/midway3/liliw1/chromatin/test_results</code></p></li>
+<li><p>genometrack of cpeaks do not overlap with cwindows</p>
+<p>Check
+<code>/scratch/midway3/liliw1/chromatin/test_results</code></p></li>
+</ul>
+</div>
+<div id="add-peak-based" class="section level2">
+<h2>2. Add peak-based</h2>
+<ul>
+<li><p>The figure</p></li>
+<li><p>Compare to the seg-based above</p></li>
+<li><p>genometrack plot</p></li>
+</ul>
+</div>
+<div id="change-top-p-correction-from-using-bonferroni-to-acat"
+class="section level2">
+<h2>3. Change top p correction from using Bonferroni to ACAT</h2>
+<ul>
+<li><p>The figures</p></li>
+<li><p>Compare to the seg-based &amp; peak-based above</p></li>
+</ul>
+</div>
+</div>
 <div id="apr-26" class="section level1">
 <h1>Apr 26</h1>
 <div id="show-top-p-of-seg-based-and-peak-based" class="section level2">
@@ -1366,7 +4852,7 @@ different marks.</p>
 <div id="results" class="section level3">
 <h3>Results</h3>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/04_19_plt_peak_width_H3K27AC.pdf" alt="Figure: Peak width of marks." width="40%" /></p>
+<embed src="asset/2023/04_19_plt_peak_width_H3K27AC.pdf" title="Figure: Peak width of marks." width="40%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K27AC">
 Past versions of 04_19_plt_peak_width_H3K27AC.pdf
@@ -1404,7 +4890,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_plt_peak_width_H3K4ME1.pdf" alt="Figure: Peak width of marks." width="40%" /></p>
+<p><embed src="asset/2023/04_19_plt_peak_width_H3K4ME1.pdf" title="Figure: Peak width of marks." width="40%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K4ME1">
 Past versions of 04_19_plt_peak_width_H3K4ME1.pdf
@@ -1442,7 +4928,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_plt_peak_width_H3K4ME3.pdf" alt="Figure: Peak width of marks." width="40%" /></p>
+<p><embed src="asset/2023/04_19_plt_peak_width_H3K4ME3.pdf" title="Figure: Peak width of marks." width="40%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_plt_peak_width_H3K4ME3">
 Past versions of 04_19_plt_peak_width_H3K4ME3.pdf
@@ -1480,7 +4966,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/04_19_plt_peak_width_H3K36ME3.pdf" alt="Figure: Peak width of marks." width="40%" />
+<embed src="asset/2023/04_19_plt_peak_width_H3K36ME3.pdf" title="Figure: Peak width of marks." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Peak width of marks.
 </p>
@@ -1540,7 +5026,7 @@ uni-merged-segments</h2>
 <p>Last week, I compared top p for one scenario. See below for all
 scenarios across seg sizes and cpm cutoff factors.</p>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<embed src="asset/2023/04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_1_plt_topp_multi_sum_chr20_avgcpmfct2_seg1.5kb">
 Past versions of
@@ -1580,7 +5066,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p><embed src="asset/2023/04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb">
 Past versions of 04_19_2_plt_topp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf
@@ -1619,7 +5105,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p><embed src="asset/2023/04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_3_plt_topp_multi_sum_chr20_avgcpmfct3_seg0.5kb">
 Past versions of
@@ -1659,7 +5145,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p><embed src="asset/2023/04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb">
 Past versions of 04_19_4_plt_topp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf
@@ -1698,7 +5184,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" /></p>
+<p><embed src="asset/2023/04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_5_plt_topp_multi_sum_chr20_avgcpmfct3_seg1.5kb">
 Past versions of
@@ -1738,7 +5224,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" />
+<embed src="asset/2023/04_19_6_plt_topp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p of groups. Top p's are bonferroni corrected by multiplying the number of cis SNPs of a group." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of top p
 of groups. Top p’s are bonferroni corrected by multiplying the number of
@@ -1813,7 +5299,7 @@ class="section level3">
 <h3>Look all p from (SNP, group), not only just top p</h3>
 <p>No bonferroni correction just nominal p.</p>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<embed src="asset/2023/04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_1_plt_allp_multi_sum_chr20_avgcpmfct2_seg1.5kb">
 Past versions of
@@ -1853,7 +5339,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p><embed src="asset/2023/04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb">
 Past versions of 04_19_2_plt_allp_multi_sum_chr20_avgcpmfct2_seg2kb.pdf
@@ -1892,7 +5378,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p><embed src="asset/2023/04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_3_plt_allp_multi_sum_chr20_avgcpmfct3_seg0.5kb">
 Past versions of
@@ -1932,7 +5418,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p><embed src="asset/2023/04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb">
 Past versions of 04_19_4_plt_allp_multi_sum_chr20_avgcpmfct3_seg1kb.pdf
@@ -1971,7 +5457,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" /></p>
+<p><embed src="asset/2023/04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-04_19_5_plt_allp_multi_sum_chr20_avgcpmfct3_seg1.5kb">
 Past versions of
@@ -2011,7 +5497,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" alt="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" />
+<embed src="asset/2023/04_19_6_plt_allp_multi_sum_chr20_avgcpmfct3_seg2kb.pdf" title="Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small p and all p of (SNP, seg group/merged group) pairs. Small p's show p &lt; 1e-5. All p's show truncated QQ plot." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Compare p of seg_multi_pco and seg_merged_uni in terms of small
 p and all p of (SNP, seg group/merged group) pairs. Small p’s show p
@@ -2120,7 +5606,7 @@ stringent cutoff and less segments.</p></li>
 <li><p>Under CPM filtering cutoff, check segment numbers</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_plt_seg_avgcpmfct.pdf" alt="Figure: How many segments are retained after removing segments based on average log2 CPM?" width="50%" />
+<embed src="asset/2023/04_05_plt_seg_avgcpmfct.pdf" title="Figure: How many segments are retained after removing segments based on average log2 CPM?" width="50%" type="application/pdf" />
 <p class="caption">
 Figure: How many segments are retained after removing segments based on
 average log2 CPM?
@@ -2167,7 +5653,7 @@ liliw-w
 <li>Under CPM filtering cutoff, check group size</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_plt_seg_group_size_avgcpmfct.pdf" alt="Figure: Segment group size across various factors of average log2 CPM." width="50%" />
+<embed src="asset/2023/04_05_plt_seg_group_size_avgcpmfct.pdf" title="Figure: Segment group size across various factors of average log2 CPM." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Segment group size across various factors of average log2 CPM.
 </p>
@@ -2213,7 +5699,7 @@ liliw-w
 <li>Run all thing - Check p</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_compare_p_avgcpmfct.pdf" alt="Figure: P value distribution under various factors of log2 average CPM. Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
+<embed src="asset/2023/04_05_compare_p_avgcpmfct.pdf" title="Figure: P value distribution under various factors of log2 average CPM. Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: P value distribution under various factors of log2 average CPM.
 Only show small P &lt; 1e-5. Lower panel shows the total number of tests
@@ -2258,7 +5744,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_compare_p_avgcpmfct_qqplot.pdf" alt="Figure: QQ-plot of P values under various factors of log2 average CPM. I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<embed src="asset/2023/04_05_compare_p_avgcpmfct_qqplot.pdf" title="Figure: QQ-plot of P values under various factors of log2 average CPM. I sorted all P values but here I only show P &lt; 1e-7" width="50%" type="application/pdf" />
 <p class="caption">
 Figure: QQ-plot of P values under various factors of log2 average CPM. I
 sorted all P values but here I only show P &lt; 1e-7
@@ -2330,7 +5816,7 @@ the difference from background is less obvious.</p>
 </div>
 <div id="use-different-segment-sizes" class="section level2">
 <h2>2. Use different segment sizes</h2>
-<div id="how" class="section level3">
+<div id="how-1" class="section level3">
 <h3>How?</h3>
 <p>Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size.</p>
 <p>Use factor 3 for all segment sizes.</p>
@@ -2342,7 +5828,7 @@ the difference from background is less obvious.</p>
 filtering</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_plt_seg_segsize.pdf" alt="Figure: Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size. With that, split chr20 into segments, and then apply cpm filtering using factor 3. (A) Log2(average cpm) distribution across segments under various segment sizes. (B) The number of retained segments after filtering segments based on (median of average cpm) times various factors." width="50%" />
+<embed src="asset/2023/04_05_plt_seg_segsize.pdf" title="Figure: Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size. With that, split chr20 into segments, and then apply cpm filtering using factor 3. (A) Log2(average cpm) distribution across segments under various segment sizes. (B) The number of retained segments after filtering segments based on (median of average cpm) times various factors." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Use 0.5kb, 1kb, 1.5kb, 2kb to define segment size. With that,
 split chr20 into segments, and then apply cpm filtering using factor 3.
@@ -2392,7 +5878,7 @@ liliw-w
 <li>Check size of segment groups</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_plt_seg_group_size_segsize.pdf" alt="Figure: Segment group size across various segment sizes after filtering segments using 3*median(average CPM)." width="50%" />
+<embed src="asset/2023/04_05_plt_seg_group_size_segsize.pdf" title="Figure: Segment group size across various segment sizes after filtering segments using 3*median(average CPM)." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Segment group size across various segment sizes after filtering
 segments using 3*median(average CPM).
@@ -2439,7 +5925,7 @@ liliw-w
 <li>Check p</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_compare_p_segsize.pdf" alt="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
+<embed src="asset/2023/04_05_compare_p_segsize.pdf" title="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: P value distribution under various segment sizes after filtering
 segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower
@@ -2484,7 +5970,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_05_compare_p_segsize_qqplot.pdf" alt="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<embed src="asset/2023/04_05_compare_p_segsize_qqplot.pdf" title="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P &lt; 1e-7" width="50%" type="application/pdf" />
 <p class="caption">
 Figure: QQ-plot of P values under various segment sizes after filtering
 segments using 3*median(average CPM). I sorted all P values but here I
@@ -2539,7 +6025,7 @@ more segments would be filtered out.</p></li>
 <li><p>Check size of segment groups</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_12_plt_seg_group_size_avgcpmfct_segsize.pdf" alt="Figure: Segment group size across various segment sizes after filtering segments using various CPM factor cutoffes." width="50%" />
+<embed src="asset/2023/04_12_plt_seg_group_size_avgcpmfct_segsize.pdf" title="Figure: Segment group size across various segment sizes after filtering segments using various CPM factor cutoffes." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Segment group size across various segment sizes after filtering
 segments using various CPM factor cutoffes.
@@ -2587,7 +6073,7 @@ liliw-w
 <li>Check p</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_12_compare_p_avgcpmfct_segsize.pdf" alt="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
+<embed src="asset/2023/04_12_compare_p_avgcpmfct_segsize.pdf" title="Figure: P value distribution under various segment sizes after filtering segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: P value distribution under various segment sizes after filtering
 segments using 3*median(average CPM). Only show small P &lt; 1e-5. Lower
@@ -2632,7 +6118,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_12_compare_p_avgcpmfct_segsize_qqplot.pdf" alt="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<embed src="asset/2023/04_12_compare_p_avgcpmfct_segsize_qqplot.pdf" title="Figure: QQ-plot of P values under various segment sizes after filtering segments using 3*median(average CPM). I sorted all P values but here I only show P &lt; 1e-7" width="50%" type="application/pdf" />
 <p class="caption">
 Figure: QQ-plot of P values under various segment sizes after filtering
 segments using 3*median(average CPM). I sorted all P values but here I
@@ -2677,7 +6163,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_26_compare_topp_avgcpmfct_segsize.pdf" alt="Figure: Top P value distribution. Top p's are bonferroni corrected by multiplying the number of cis SNPs of groups. Only show groups with top p &lt; 1e-3." width="50%" />
+<embed src="asset/2023/04_26_compare_topp_avgcpmfct_segsize.pdf" title="Figure: Top P value distribution. Top p's are bonferroni corrected by multiplying the number of cis SNPs of groups. Only show groups with top p &lt; 1e-3." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Top P value distribution. Top p’s are bonferroni corrected by
 multiplying the number of cis SNPs of groups. Only show groups with top
@@ -2749,7 +6235,7 @@ future wide peaks. Check segment numbers, group size.</p></li>
 <h2>3. Merge reads across segments</h2>
 <p>See some intuitions from <a href="#sum_reads_across_seg">reading
 below</a>.</p>
-<div id="how-1" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Filter segments first.</p></li>
@@ -2766,7 +6252,7 @@ below</a>.</p>
 <li><p>#cis SNPs tested for each group</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/04_12_compare_multi_sum.pdf" alt="Figure: (A) Comparion of top p of each group for segment_multi and segment_sum. Top p was bonferroni corrected by the number of cis SNPs tested for the group. (B) Distribution of number of cis SNPs tested for each group." width="50%" />
+<embed src="asset/2023/04_12_compare_multi_sum.pdf" title="Figure: (A) Comparion of top p of each group for segment_multi and segment_sum. Top p was bonferroni corrected by the number of cis SNPs tested for the group. (B) Distribution of number of cis SNPs tested for each group." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: (A) Comparion of top p of each group for segment_multi and
 segment_sum. Top p was bonferroni corrected by the number of cis SNPs
@@ -2906,7 +6392,7 @@ peak to multiple segments.</p></li>
 <div id="add-cpm-filtering-on-segments-and-re-do-segment-based"
 class="section level2">
 <h2>2. Add cpm filtering on segments and re-do segment-based</h2>
-<div id="how-2" class="section level3">
+<div id="how-3" class="section level3">
 <h3>How?</h3>
 <p>Average log2 CPM for each segment across samples. Mean of average
 log2 CPM. Add a factor.</p>
@@ -2915,7 +6401,7 @@ log2 CPM. Add a factor.</p>
 class="section level3">
 <h3>Under CPM filtering cutoff, check segment numbers</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_29_plt_seg_avgcpmfct.pdf" alt="Figure: How many segments are retained after removing segments based on average log2 CPM?" width="50%" />
+<embed src="asset/2023/03_29_plt_seg_avgcpmfct.pdf" title="Figure: How many segments are retained after removing segments based on average log2 CPM?" width="50%" type="application/pdf" />
 <p class="caption">
 Figure: How many segments are retained after removing segments based on
 average log2 CPM?
@@ -2963,7 +6449,7 @@ liliw-w
 class="section level3">
 <h3>Under CPM filtering cutoff, check group size</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_29_plt_seg_group_size_avgcpmfct.pdf" alt="Figure: Segment group size across various factors of average log2 CPM." width="50%" />
+<embed src="asset/2023/03_29_plt_seg_group_size_avgcpmfct.pdf" title="Figure: Segment group size across various factors of average log2 CPM." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Segment group size across various factors of average log2 CPM.
 </p>
@@ -3009,7 +6495,7 @@ liliw-w
 <div id="run-all-thing" class="section level3">
 <h3>Run all thing</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_29_compare_p_avgcpmfct.pdf" alt="Figure: P value distribution under various factors of average log2 CPM. Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" />
+<embed src="asset/2023/03_29_compare_p_avgcpmfct.pdf" title="Figure: P value distribution under various factors of average log2 CPM. Only show small P &lt; 1e-5. Lower panel shows the total number of tests under each scenario." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: P value distribution under various factors of average log2 CPM.
 Only show small P &lt; 1e-5. Lower panel shows the total number of tests
@@ -3067,7 +6553,7 @@ liliw-w
 <p>See histogram for peak-based and factor 2 and 3 <a
 href="asset/2023/03_29_compare_p_avgcpmfct_sub.pdf">here</a>.</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf" alt="Figure: QQ-plot of P values under various factors of average log2 CPM. I sorted all P values but here I only show P &lt; 1e-7" width="50%" />
+<embed src="asset/2023/03_29_compare_p_avgcpmfct_qqplot.pdf" title="Figure: QQ-plot of P values under various factors of average log2 CPM. I sorted all P values but here I only show P &lt; 1e-7" width="50%" type="application/pdf" />
 <p class="caption">
 Figure: QQ-plot of P values under various factors of average log2 CPM. I
 sorted all P values but here I only show P &lt; 1e-7
@@ -3219,7 +6705,7 @@ QTL mapping, in order to make consistent window-based and count-based
 QTL mapping. Below is a mindmap of steps, QC, normalization etc. of Ben
 &amp; Carlos did to generate peak QTLs.</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_08_Histone_mark_reads.pdf" alt="Figure: What Ben &amp; Carlos did to process data." width="100%" />
+<embed src="asset/2023/03_08_Histone_mark_reads.pdf" title="Figure: What Ben &amp; Carlos did to process data." width="100%" type="application/pdf" />
 <p class="caption">
 Figure: What Ben &amp; Carlos did to process data.
 </p>
@@ -3288,7 +6774,7 @@ regions.</p></li>
 <li><p>Number of segments across chr</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_08_num_features.pdf" alt="Figure: Number of split segments compared to the called peaks." width="50%" />
+<embed src="asset/2023/03_08_num_features.pdf" title="Figure: Number of split segments compared to the called peaks." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Number of split segments compared to the called peaks.
 </p>
@@ -3417,7 +6903,7 @@ largest overlap</td>
 </tbody>
 </table>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_22_plt_count_mode.pdf" alt="Figure: (un)Assigned reads under various counting modes." width="50%" />
+<embed src="asset/2023/03_22_plt_count_mode.pdf" title="Figure: (un)Assigned reads under various counting modes." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: (un)Assigned reads under various counting modes.
 </p>
@@ -3490,7 +6976,7 @@ individual.</p></li>
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/03_08_seg_count.pdf" alt="Figure: Raw counts across segments." width="30%" /></p>
+<embed src="asset/2023/03_08_seg_count.pdf" title="Figure: Raw counts across segments." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-03_08_seg_count">
 Past versions of 03_08_seg_count.pdf
@@ -3528,7 +7014,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/03_08_seg_count_zoom.pdf" alt="Figure: Raw counts across segments." width="30%" />
+<embed src="asset/2023/03_08_seg_count_zoom.pdf" title="Figure: Raw counts across segments." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Raw counts across segments.
 </p>
@@ -3571,7 +7057,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_08_perct_ind.pdf" alt="Figure: % Individuals with nonzero raw counts." width="30%" />
+<embed src="asset/2023/03_08_perct_ind.pdf" title="Figure: % Individuals with nonzero raw counts." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: % Individuals with nonzero raw counts.
 </p>
@@ -3654,7 +7140,7 @@ way.</p></li>
 <li><p>Segment size - 1kb</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_22_plt_seg_group_size.pdf" alt="Figure: Segment group size under 10kb window size across prop_nonzero (1, 0.5)." width="50%" />
+<embed src="asset/2023/03_22_plt_seg_group_size.pdf" title="Figure: Segment group size under 10kb window size across prop_nonzero (1, 0.5)." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Segment group size under 10kb window size across prop_nonzero
 (1, 0.5).
@@ -3718,7 +7204,7 @@ from mark H3K27ac with narrow peaks.</p>
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/03_22_plt_smallp.pdf" alt="Figure: Comparison of small p of segment group size under 10kb window size across prop_nonzero (1, 0.5)." width="50%" />
+<embed src="asset/2023/03_22_plt_smallp.pdf" title="Figure: Comparison of small p of segment group size under 10kb window size across prop_nonzero (1, 0.5)." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Comparison of small p of segment group size under 10kb window
 size across prop_nonzero (1, 0.5).
@@ -3779,7 +7265,7 @@ class="section level2">
 <h2>1. Compare p’s of specific association pairs by MinP and PCO</h2>
 <p>Change the way of visualization -</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare MinP and PCO." width="50%" />
+<embed src="asset/2023/02_24_plt_small_p_pco_acat_methods_diag_H3K27AC_window_all_cis500kb_chr20-22.pdf" title="Figure: To compare MinP and PCO." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: To compare MinP and PCO.
 </p>
@@ -3836,7 +7322,7 @@ still necessary? (Does it really make sense to compare with MinP?)</p>
 <p>For coloc purpose, improve detection of mediate effects. How does it
 help with coloc power? or anything else?</p>
 </div>
-<div id="how-3" class="section level3">
+<div id="how-4" class="section level3">
 <h3>How?</h3>
 <p>For a peak group, cis region. Two methods: PCO &amp; MinP.</p>
 <ul>
@@ -3852,7 +7338,7 @@ midway3.</del></p></li>
 <div id="example-regions" class="section level3">
 <h3>Example regions</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_.pdf" alt="Figure: Locus compare MinP and PCO." width="30%" />
+<embed src="asset/2023/02_24_G55137_chr20_2_peaks_0_4588_snps_10kb_.pdf" title="Figure: Locus compare MinP and PCO." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Locus compare MinP and PCO.
 </p>
@@ -3920,7 +7406,7 @@ group</p></li>
 <div id="example-regions-1" class="section level3">
 <h3>Example regions</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/1.pdf" alt="Figure: Genome tracks." width="50%" />
+<embed src="asset/2023/1.pdf" title="Figure: Genome tracks." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Genome tracks.
 </p>
@@ -4009,7 +7495,7 @@ href="#non_overlapping_window">previous progress</a>.</p>
 <li>Compare P value distribution</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare PCO and PCO_ACAT. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" />
+<embed src="asset/2023/02_15_plt_compare_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" title="Figure: To compare PCO and PCO_ACAT. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: To compare PCO and PCO_ACAT. Color: methods. Panel: window size.
 x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of
@@ -4091,7 +7577,7 @@ method.</p>
 <li>Compare P value distribution</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare PCO_ACAT and ACAT?MinP. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" />
+<embed src="asset/2023/02_15_plt_small_p_pco_acat_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" title="Figure: To compare PCO_ACAT and ACAT?MinP. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: To compare PCO_ACAT and ACAT?MinP. Color: methods. Panel: window
 size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number
@@ -4245,7 +7731,7 @@ then test again to obtain updated p for merged group?</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="how-4" class="section level3">
+<div id="how-5" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Define non-overlapping windows</p>
@@ -4263,7 +7749,7 @@ or smaller.</li>
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_08_nonoverlap_window_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare three methods under non-overlapping windows. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" />
+<embed src="asset/2023/02_08_nonoverlap_window_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" title="Figure: To compare three methods under non-overlapping windows. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: To compare three methods under non-overlapping windows. Color:
 methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5.
@@ -4340,7 +7826,7 @@ size. These p’s are from all chr20-22.</a></p>
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_08_nonoverlap_window_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare window sizes under non-overlapping windows. Color: window sizes. (A) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: density of (SNP, peak group) associations with corresponding P. (B) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: number of (SNP, peak group) associations with corresponding P. (C) Numbers of tests across window sizes. These p's are from all chr20-22." width="50%" />
+<embed src="asset/2023/02_08_nonoverlap_window_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf" title="Figure: To compare window sizes under non-overlapping windows. Color: window sizes. (A) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: density of (SNP, peak group) associations with corresponding P. (B) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: number of (SNP, peak group) associations with corresponding P. (C) Numbers of tests across window sizes. These p's are from all chr20-22." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: To compare window sizes under non-overlapping windows. Color:
 window sizes. (A) x-axis: -log10(small P), small P &lt; 1e-5. y-axis:
@@ -4412,7 +7898,7 @@ p</h2>
 <div id="why-2" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-5" class="section level3">
+<div id="how-6" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -4453,7 +7939,7 @@ window.</p></li>
 <div id="why-3" class="section level3">
 <h3>Why</h3>
 </div>
-<div id="how-6" class="section level3">
+<div id="how-7" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Available results</p>
@@ -4470,7 +7956,7 @@ class="section level3">
 <li>Compare small p’s of three methods</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_01_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare three methods. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" />
+<embed src="asset/2023/02_01_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22.pdf" title="Figure: To compare three methods. Color: methods. Panel: window size. x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of (SNP, peak group),(C) Density of (SNP, peak group) with corresponding P. These p's are from all chr20-22." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: To compare three methods. Color: methods. Panel: window size.
 x-axis: -log10(small P), small P &lt; 1e-5. y-axis: (A-B) number of
@@ -4533,7 +8019,7 @@ liliw-w
 <li>Compare small p’s of window sizes</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_01_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf" alt="Figure: To compare window sizes. Color: window sizes. (A) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: density of (SNP, peak group) associations with corresponding P. (B) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: number of (SNP, peak group) associations with corresponding P. (C) Numbers of tests across window sizes. These p's are from all chr20-22." width="50%" />
+<embed src="asset/2023/02_01_plt_small_p_windows_H3K27AC_window_all_cis500kb_chr20-22.pdf" title="Figure: To compare window sizes. Color: window sizes. (A) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: density of (SNP, peak group) associations with corresponding P. (B) x-axis: -log10(small P), small P &lt; 1e-5. y-axis: number of (SNP, peak group) associations with corresponding P. (C) Numbers of tests across window sizes. These p's are from all chr20-22." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: To compare window sizes. Color: window sizes. (A) x-axis:
 -log10(small P), small P &lt; 1e-5. y-axis: density of (SNP, peak group)
@@ -4599,7 +8085,7 @@ liliw-w
 stats: #groups, #tests</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/02_01_plt_all_p_stats_H3K27AC_windowall_cis500kb_chr20-22.pdf" alt="Figure: " width="40%" />
+<embed src="asset/2023/02_01_plt_all_p_stats_H3K27AC_windowall_cis500kb_chr20-22.pdf" title="Figure: " width="40%" type="application/pdf" />
 <p class="caption">
 Figure:
 </p>
@@ -4650,7 +8136,7 @@ liliw-w
 <p>P values lower than 1e-8, 1e-10 will be included.</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/02_01_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22_pthre1e-08.pdf" alt="Figure: LEFT: P cutoff 1e-8. RIGHT: P cutoff 1e-10." width="50%" /></p>
+<embed src="asset/2023/02_01_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22_pthre1e-08.pdf" title="Figure: LEFT: P cutoff 1e-8. RIGHT: P cutoff 1e-10." width="50%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_01_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22_pthre1e-08">
 Past versions of
@@ -4691,7 +8177,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/02_01_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22_pthre1e-10.pdf" alt="Figure: LEFT: P cutoff 1e-8. RIGHT: P cutoff 1e-10." width="50%" />
+<embed src="asset/2023/02_01_plt_small_p_methods_H3K27AC_window_all_cis500kb_chr20-22_pthre1e-10.pdf" title="Figure: LEFT: P cutoff 1e-8. RIGHT: P cutoff 1e-10." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: LEFT: P cutoff 1e-8. RIGHT: P cutoff 1e-10.
 </p>
@@ -4765,7 +8251,7 @@ another example where PCO doesn’t improve pvalue?”</p>
 <li><p>Window - 100kb; Chr - 20-22</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/02_01_eg_H3K27AC_window100kb_cis500kb_G58821_22-21484558-CT-C_7_0_5.pdf" alt="Figure: " width="20%" /></p>
+<embed src="asset/2023/02_01_eg_H3K27AC_window100kb_cis500kb_G58821_22-21484558-CT-C_7_0_5.pdf" title="Figure: " width="20%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-02_01_eg_H3K27AC_window100kb_cis500kb_G58821_22-21484558-CT-C_7_0_5">
 Past versions of
@@ -4806,7 +8292,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/02_01_eg_H3K27AC_window100kb_cis500kb_G57611_21-8836656-C-CAA_32_0_-5.pdf" alt="Figure: " width="20%" />
+<embed src="asset/2023/02_01_eg_H3K27AC_window100kb_cis500kb_G57611_21-8836656-C-CAA_32_0_-5.pdf" title="Figure: " width="20%" type="application/pdf" />
 <p class="caption">
 Figure:
 </p>
@@ -4876,7 +8362,7 @@ have physically closer peaks, thus more shared genetic control.</p></li>
 <p>Therefore, we wanted to check if that pattern persists under smaller
 window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.</p>
 </div>
-<div id="how-7" class="section level3">
+<div id="how-8" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Window sizes</p>
@@ -4895,7 +8381,7 @@ window sizes. So, I tried extreme window sizes, 10kb, 25kb, 50kb.</p>
 <li>Compare methods under same window size</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21.pdf" alt="Figure: Scatter plot of top p by three methods under same window size on chr21. x-axis: Each peak group. y-axis: -log10(P). Color show methods. Panel show window sizes." width="50%" />
+<embed src="asset/2023/01_25_plt_top_p_methods_scatter_H3K27AC_window_all_cis500kb_chr21.pdf" title="Figure: Scatter plot of top p by three methods under same window size on chr21. x-axis: Each peak group. y-axis: -log10(P). Color show methods. Panel show window sizes." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Scatter plot of top p by three methods under same window size on
 chr21. x-axis: Each peak group. y-axis: -log10(P). Color show methods.
@@ -4943,7 +8429,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21.pdf" alt="Figure: Distribution density of top p by three methods under same window size on chr21. x-axis: -log10(P). y-axis: density of peak group with corresponding P. Color show methods. Panel show window sizes. Same total number of groups within each panel." width="50%" />
+<embed src="asset/2023/01_25_plt_top_p_methods_density_H3K27AC_window_all_cis500kb_chr21.pdf" title="Figure: Distribution density of top p by three methods under same window size on chr21. x-axis: -log10(P). y-axis: density of peak group with corresponding P. Color show methods. Panel show window sizes. Same total number of groups within each panel." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Distribution density of top p by three methods under same window
 size on chr21. x-axis: -log10(P). y-axis: density of peak group with
@@ -4999,7 +8485,7 @@ windows better or ACAT/minP worse?</p>
 </ul>
 <p>(more complicated as different numbers of groups tested)</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21.pdf" alt="Figure: Distribution of top p across window sizes by same method on chr21. x-axis: -log10(P). y-axis: (A) density, (B) number of peak group with corresponding P. Color show window sizes. Panel show methods. (C) Different numbers of groups (size &gt; 1) tested for window sizes in each panel." width="50%" />
+<embed src="asset/2023/01_25_plt_top_p_windows_density_H3K27AC_window_all_cis500kb_chr21.pdf" title="Figure: Distribution of top p across window sizes by same method on chr21. x-axis: -log10(P). y-axis: (A) density, (B) number of peak group with corresponding P. Color show window sizes. Panel show methods. (C) Different numbers of groups (size &gt; 1) tested for window sizes in each panel." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Distribution of top p across window sizes by same method on
 chr21. x-axis: -log10(P). y-axis: (A) density, (B) number of peak group
@@ -5083,7 +8569,7 @@ sizes</p></li>
 <li>Compare p using ACAT and minp</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: ." width="30%" /></p>
+<embed src="asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf" title="Figure: ." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_18_plt_small_p_peak_group_density_H3K27AC_window100kb_cis500kb">
 Past versions of
@@ -5124,7 +8610,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: ." width="30%" /></p>
+<p><embed src="asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf" title="Figure: ." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_18_plt_small_p_peak_group_density_H3K27AC_window250kb_cis500kb">
 Past versions of
@@ -5165,7 +8651,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: ." width="30%" />
+<embed src="asset/2023/01_18_plt_small_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf" title="Figure: ." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5215,7 +8701,7 @@ liliw-w
 tests)</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_small_p_window_size_H3K27AC_cis500kb.pdf" alt="Figure: ." width="60%" />
+<embed src="asset/2023/01_18_plt_small_p_window_size_H3K27AC_cis500kb.pdf" title="Figure: ." width="60%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5264,7 +8750,7 @@ same number of cpeaks in group</p>
 <p>small_p_thre &lt;- 1e-8</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_small_p_same_peak_H3K27AC_cis500kb.pdf" alt="Figure: ." width="40%" />
+<embed src="asset/2023/01_18_plt_small_p_same_peak_H3K27AC_cis500kb.pdf" title="Figure: ." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5313,7 +8799,7 @@ peaks in group &amp; same number of cpeaks in group</p>
 <p>small_p_thre &lt;- 1e-8</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_small_p_perct_cpeak_same_peak_H3K27AC_cis500kb.pdf" alt="Figure: ." width="40%" />
+<embed src="asset/2023/01_18_plt_small_p_perct_cpeak_same_peak_H3K27AC_cis500kb.pdf" title="Figure: ." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5361,7 +8847,7 @@ liliw-w
 <li>Number of groups</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_small_p_group_same_peak_H3K27AC_cis500kb.pdf" alt="Figure: ." width="40%" />
+<embed src="asset/2023/01_18_plt_small_p_group_same_peak_H3K27AC_cis500kb.pdf" title="Figure: ." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5408,7 +8894,7 @@ liliw-w
 <li>Number of cis-SNPs</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_small_p_cis_snp_same_peak_H3K27AC_cis500kb.pdf" alt="Figure: ." width="40%" />
+<embed src="asset/2023/01_18_plt_small_p_cis_snp_same_peak_H3K27AC_cis500kb.pdf" title="Figure: ." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5475,7 +8961,7 @@ liliw-w
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_top_p_pco_peak_group_H3K27AC_window500kb_cis500kb_chr21.pdf" alt="Figure: ." width="30%" />
+<embed src="asset/2023/01_18_plt_top_p_pco_peak_group_H3K27AC_window500kb_cis500kb_chr21.pdf" title="Figure: ." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5524,7 +9010,7 @@ liliw-w
 <li>Distribution of top p</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_top_p_pco_peak_group_density_H3K27AC_window500kb_cis500kb_chr21.pdf" alt="Figure: ." width="30%" />
+<embed src="asset/2023/01_18_plt_top_p_pco_peak_group_density_H3K27AC_window500kb_cis500kb_chr21.pdf" title="Figure: ." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5573,7 +9059,7 @@ liliw-w
 <li>Top p v.s. group size</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_18_plt_top_p_pco_peak_group_on_num_peaks_H3K27AC_window500kb_cis500kb_chr21.pdf" alt="Figure: ." width="80%" />
+<embed src="asset/2023/01_18_plt_top_p_pco_peak_group_on_num_peaks_H3K27AC_window500kb_cis500kb_chr21.pdf" title="Figure: ." width="80%" type="application/pdf" />
 <p class="caption">
 Figure: .
 </p>
@@ -5654,7 +9140,7 @@ peak group)</h2>
 window sizes using SNPs within 500kb of peak group.</p>
 <p>This time, I tried various window sizes, including 100kb, 250kb,
 500kb.</p>
-<div id="how-8" class="section level3">
+<div id="how-9" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Peaks are considered as a peak group using a sliding window of
@@ -5721,7 +9207,7 @@ liliw-w
 <li>Number of peaks in groups</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_11_peaks_in_group_H3K27AC_window100kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" /></p>
+<embed src="asset/2023/01_11_peaks_in_group_H3K27AC_window100kb.pdf" title="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_H3K27AC_window100kb">
 Past versions of 01_11_peaks_in_group_H3K27AC_window100kb.pdf
@@ -5759,7 +9245,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_11_peaks_in_group_H3K27AC_window250kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" /></p>
+<p><embed src="asset/2023/01_11_peaks_in_group_H3K27AC_window250kb.pdf" title="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_H3K27AC_window250kb">
 Past versions of 01_11_peaks_in_group_H3K27AC_window250kb.pdf
@@ -5797,7 +9283,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_11_peaks_in_group_H3K27AC_window500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" />
+<embed src="asset/2023/01_11_peaks_in_group_H3K27AC_window500kb.pdf" title="Figure: Number of peaks in peak groups defined by different window sizes." width="20%" type="application/pdf" />
 <p class="caption">
 Figure: Number of peaks in peak groups defined by different window
 sizes.
@@ -5846,7 +9332,7 @@ liliw-w
 500kb cis distance.]</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" /></p>
+<embed src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb.pdf" title="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window100kb_cpeak500kb">
 Past versions of
@@ -5886,7 +9372,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" /></p>
+<p><embed src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb.pdf" title="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_peaks_in_group_w_cqtl_H3K27AC_window250kb_cpeak500kb">
 Past versions of
@@ -5926,7 +9412,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb.pdf" alt="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" />
+<embed src="asset/2023/01_11_peaks_in_group_w_cqtl_H3K27AC_window500kb_cpeak500kb.pdf" title="Figure: Number of peaks in peak groups defined by different window sizes." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Number of peaks in peak groups defined by different window
 sizes.
@@ -5996,7 +9482,7 @@ window</a></p>
 <li>Distribution of the top p-value of a peak group</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<embed src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_density_H3K27AC_window100kb_cis500kb">
 Past versions of
@@ -6037,7 +9523,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p><embed src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_density_H3K27AC_window250kb_cis500kb">
 Past versions of
@@ -6078,7 +9564,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<embed src="asset/2023/01_11_plt_top_p_peak_group_density_H3K27AC_window500kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Distribution of top p-values across peak groups.
 </p>
@@ -6127,7 +9613,7 @@ liliw-w
 <li>Top p of a peak group v.s. number of peaks in the group</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<embed src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_H3K27AC_window100kb_cis500kb">
 Past versions of
@@ -6167,7 +9653,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p><embed src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_H3K27AC_window250kb_cis500kb">
 Past versions of
@@ -6207,7 +9693,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<embed src="asset/2023/01_11_plt_top_p_at_peaks_H3K27AC_window500kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Distribution of top p-values across peak groups.
 </p>
@@ -6255,7 +9741,7 @@ liliw-w
 <li>Top p of a peak group v.s. number of cPeaks in the group</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<embed src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window100kb_cis500kb">
 Past versions of
@@ -6296,7 +9782,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p><embed src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window250kb_cis500kb">
 Past versions of
@@ -6337,7 +9823,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<embed src="asset/2023/01_11_plt_top_p_at_peaks_w_cqtl_H3K27AC_window500kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Distribution of top p-values across peak groups.
 </p>
@@ -6386,7 +9872,7 @@ liliw-w
 <li>Top p of a peak group on chromosomal position</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="35%" /></p>
+<embed src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="35%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window100kb_cis500kb">
 Past versions of
@@ -6427,7 +9913,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="35%" /></p>
+<p><embed src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="35%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_H3K27AC_window250kb_cis500kb">
 Past versions of
@@ -6468,7 +9954,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="35%" />
+<embed src="asset/2023/01_11_plt_top_p_peak_group_manhattan_H3K27AC_window500kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="35%" type="application/pdf" />
 <p class="caption">
 Figure: Distribution of top p-values across peak groups.
 </p>
@@ -6518,7 +10004,7 @@ liliw-w
 in the group</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<embed src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window100kb_cis500kb">
 Past versions of
@@ -6559,7 +10045,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" /></p>
+<p><embed src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window250kb_cis500kb">
 Past versions of
@@ -6600,7 +10086,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb.pdf" alt="Figure: Distribution of top p-values across peak groups." width="30%" />
+<embed src="asset/2023/01_11_plt_top_p_peak_group_manhattan_cqtl_H3K27AC_window500kb_cis500kb.pdf" title="Figure: Distribution of top p-values across peak groups." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Distribution of top p-values across peak groups.
 </p>
@@ -6679,7 +10165,7 @@ sizes in terms of (1) cQTLs (2) peak groups.</p>
 class="section level3">
 <h3>Top p-value distribution across window sizes</h3>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_11_plt_top_p_window_size_H3K27AC_cis500kb.pdf" alt="Figure: Top p-vaue of a peak group across window sizes." width="50%" />
+<embed src="asset/2023/01_11_plt_top_p_window_size_H3K27AC_cis500kb.pdf" title="Figure: Top p-vaue of a peak group across window sizes." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: Top p-vaue of a peak group across window sizes.
 </p>
@@ -6741,7 +10227,7 @@ tested.</p>
 <li>But not same number of SNPs tested?</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10.pdf" alt="Figure: Number of cQTLs across window sizes." width="30%" />
+<embed src="asset/2023/01_11_plt_cqtl_window_size_H3K27AC_cis500kb_logp10.pdf" title="Figure: Number of cQTLs across window sizes." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Number of cQTLs across window sizes.
 </p>
@@ -6791,7 +10277,7 @@ liliw-w
 <li>Use 1e-10 as the uniform p-value cutoff across window sizes.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10.pdf" alt="Figure: Overlaps among cQTLs of different window sizes." width="40%" />
+<embed src="asset/2023/01_11_plt_cqtl_overlap_H3K27AC_cis500kb_logp10.pdf" title="Figure: Overlaps among cQTLs of different window sizes." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Overlaps among cQTLs of different window sizes.
 </p>
@@ -6848,7 +10334,7 @@ their target peak groups, therefore, were not considered for association
 tests? Or is it because true higher power?</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2023/01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10.pdf" alt="Figure: Window-size-specific cQTLs v.s. their distances to target peak groups." width="40%" />
+<embed src="asset/2023/01_11_plt_window_spec_cqtl_dist_group_H3K27AC_cis500kb_logp10.pdf" title="Figure: Window-size-specific cQTLs v.s. their distances to target peak groups." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Window-size-specific cQTLs v.s. their distances to target peak
 groups.
@@ -6942,7 +10428,7 @@ have.</p></li>
 <li>Look at the distribution of top p-values of peak groups.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_21_plt_top_p_peak_group_density_H3K27AC.pdf" alt="LEFT: Distribution of the top p-value (by ACAT and minp_adjusted) across peak groups." width="30%" />
+<embed src="asset/2022/12_21_plt_top_p_peak_group_density_H3K27AC.pdf" title="LEFT: Distribution of the top p-value (by ACAT and minp_adjusted) across peak groups." width="30%" type="application/pdf" />
 <p class="caption">
 LEFT: Distribution of the top p-value (by ACAT and minp_adjusted) across
 peak groups.
@@ -6991,7 +10477,7 @@ liliw-w
 of peak groups and chromosomes.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/12_21_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" /></p>
+<embed src="asset/2022/12_21_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf" title="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_21_plt_top_p_peak_group_on_num_peaks_H3K27AC">
 Past versions of 12_21_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf
@@ -7030,7 +10516,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/12_21_plt_top_p_peak_group_on_chr_H3K27AC.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" />
+<embed src="asset/2022/12_21_plt_top_p_peak_group_on_chr_H3K27AC.pdf" title="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" type="application/pdf" />
 <p class="caption">
 Distribution of the top p-value across peak groups on, LEFT: the groups
 with different number of peaks. RIGHT: chromosomes.
@@ -7078,7 +10564,7 @@ liliw-w
 <li>Distribution of top p-values on chromosomal position.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_21_plt_top_p_peak_group_manhattan_H3K27AC.pdf" alt="Distribution of the top p-value across peak groups on chromosomal position." width="60%" />
+<embed src="asset/2022/12_21_plt_top_p_peak_group_manhattan_H3K27AC.pdf" title="Distribution of the top p-value across peak groups on chromosomal position." width="60%" type="application/pdf" />
 <p class="caption">
 Distribution of the top p-value across peak groups on chromosomal
 position.
@@ -7126,7 +10612,7 @@ liliw-w
 <li>Top p values of a peak group v.s. the number of peaks?</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_21_plt_top_p_peak_group_peaks.pdf" alt="Similar figure as the above, except dividing the peak groups by the number of peaks in the group. Color: the number of peaks in a peak group." width="50%" />
+<embed src="asset/2022/12_21_plt_top_p_peak_group_peaks.pdf" title="Similar figure as the above, except dividing the peak groups by the number of peaks in the group. Color: the number of peaks in a peak group." width="50%" type="application/pdf" />
 <p class="caption">
 Similar figure as the above, except dividing the peak groups by the
 number of peaks in the group. Color: the number of peaks in a peak
@@ -7179,7 +10665,7 @@ below</li>
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_21_plt_top_p_peak_group_w_cqtl.pdf" alt="Similar figure as the above, except dividing the peak groups by the number of peaks in the group that have cQTLs. Color: the number of peaks in a peak group that have cQTLs." width="50%" />
+<embed src="asset/2022/12_21_plt_top_p_peak_group_w_cqtl.pdf" title="Similar figure as the above, except dividing the peak groups by the number of peaks in the group that have cQTLs. Color: the number of peaks in a peak group that have cQTLs." width="50%" type="application/pdf" />
 <p class="caption">
 Similar figure as the above, except dividing the peak groups by the
 number of peaks in the group that have cQTLs. Color: the number of peaks
@@ -7224,7 +10710,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_21_plt_top_p_peak_group_manhattan_cqtl_H3K27AC.pdf" alt="A more detailed zoom-in. Top p-values across peak groups on chromosomal position, grouped and colored by #peaks with uni-cQTLs." width="70%" />
+<embed src="asset/2022/12_21_plt_top_p_peak_group_manhattan_cqtl_H3K27AC.pdf" title="A more detailed zoom-in. Top p-values across peak groups on chromosomal position, grouped and colored by #peaks with uni-cQTLs." width="70%" type="application/pdf" />
 <p class="caption">
 A more detailed zoom-in. Top p-values across peak groups on chromosomal
 position, grouped and colored by #peaks with uni-cQTLs.
@@ -7295,7 +10781,7 @@ mark H3K27AC.</li>
 </div>
 <div id="adjacent-peaks-as-peak-groups" class="section level2">
 <h2>2. Adjacent peaks as peak groups</h2>
-<div id="how-9" class="section level3">
+<div id="how-10" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Sliding window of length 500kb.</p></li>
@@ -7312,7 +10798,7 @@ window, include all peaks in this window as a peak group.</p></li>
 <li><p>Number of peaks in each group</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_14_peaks_in_group_H3K27AC.pdf" alt="How many peaks are included in the preak groups? x-axis: the number of peaks. y-axis: the number of peaks groups with the corresponding number of peaks." width="30%" />
+<embed src="asset/2022/12_14_peaks_in_group_H3K27AC.pdf" title="How many peaks are included in the preak groups? x-axis: the number of peaks. y-axis: the number of peaks groups with the corresponding number of peaks." width="30%" type="application/pdf" />
 <p class="caption">
 How many peaks are included in the preak groups? x-axis: the number of
 peaks. y-axis: the number of peaks groups with the corresponding number
@@ -7361,7 +10847,7 @@ liliw-w
 cQTLs? <u><strong>[Here I used the 100kb cis-cQTL]</strong></u></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_14_peaks_in_group_w_cqtl_H3K27AC.pdf" alt="Similar figure as the above, except dividing the peak groups by the number of peaks in the group that have cQTLs. Color: the number of peaks in a peak group that have cQTLs." width="30%" />
+<embed src="asset/2022/12_14_peaks_in_group_w_cqtl_H3K27AC.pdf" title="Similar figure as the above, except dividing the peak groups by the number of peaks in the group that have cQTLs. Color: the number of peaks in a peak group that have cQTLs." width="30%" type="application/pdf" />
 <p class="caption">
 Similar figure as the above, except dividing the peak groups by the
 number of peaks in the group that have cQTLs. Color: the number of peaks
@@ -7410,7 +10896,7 @@ liliw-w
 used the 100kb cis-cQTL]</strong></u></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_14_peaks_w_cqtl_in_group_H3K27AC.pdf" alt="How many peaks within a peak group have cQTLs? x-axis: the number of peaks with cQTLs. y-axis: the number of peak groups that have corresponding cPeaks." width="30%" />
+<embed src="asset/2022/12_14_peaks_w_cqtl_in_group_H3K27AC.pdf" title="How many peaks within a peak group have cQTLs? x-axis: the number of peaks with cQTLs. y-axis: the number of peak groups that have corresponding cPeaks." width="30%" type="application/pdf" />
 <p class="caption">
 How many peaks within a peak group have cQTLs? x-axis: the number of
 peaks with cQTLs. y-axis: the number of peak groups that have
@@ -7459,7 +10945,7 @@ liliw-w
 <div id="test-a-snp-and-a-group-of-adjacent-peaks-by-acat"
 class="section level2">
 <h2>3. Test a SNP and a group of adjacent peaks by ACAT</h2>
-<div id="how-10" class="section level3">
+<div id="how-11" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>For each peak group, test its association across all overlapped
@@ -7501,7 +10987,7 @@ group.</p>
 <li>Look at the distribution of top p-values of peak groups.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/12_14_plt_top_p_peak_group_H3K27AC.pdf" alt="LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT: Distribution of the top p-value across peak groups." width="30%" /></p>
+<embed src="asset/2022/12_14_plt_top_p_peak_group_H3K27AC.pdf" title="LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT: Distribution of the top p-value across peak groups." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_plt_top_p_peak_group_H3K27AC">
 Past versions of 12_14_plt_top_p_peak_group_H3K27AC.pdf
@@ -7539,7 +11025,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/12_14_plt_top_p_peak_group_density_H3K27AC.pdf" alt="LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT: Distribution of the top p-value across peak groups." width="30%" />
+<embed src="asset/2022/12_14_plt_top_p_peak_group_density_H3K27AC.pdf" title="LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT: Distribution of the top p-value across peak groups." width="30%" type="application/pdf" />
 <p class="caption">
 LEFT: Top p-value (by ACAT and minp_adjusted) across peak groups. RIGHT:
 Distribution of the top p-value across peak groups.
@@ -7588,7 +11074,7 @@ liliw-w
 of peak groups and chromosomes.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" /></p>
+<embed src="asset/2022/12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf" title="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC">
 Past versions of 12_14_plt_top_p_peak_group_on_num_peaks_H3K27AC.pdf
@@ -7627,7 +11113,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/12_14_plt_top_p_peak_group_on_chr_H3K27AC.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" />
+<embed src="asset/2022/12_14_plt_top_p_peak_group_on_chr_H3K27AC.pdf" title="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="40%" type="application/pdf" />
 <p class="caption">
 Distribution of the top p-value across peak groups on, LEFT: the groups
 with different number of peaks. RIGHT: chromosomes.
@@ -7679,7 +11165,7 @@ href="asset/2022/12_14_plt_p_peak_group_H3K27AC_G57648.pdf">here</a>, <a
 href="asset/2022/12_14_plt_p_peak_group_H3K27AC_G57649.pdf">here</a>.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/12_14_plt_p_peak_group_H3K27AC_G57644.pdf" alt="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="30%" />
+<embed src="asset/2022/12_14_plt_p_peak_group_H3K27AC_G57644.pdf" title="Distribution of the top p-value across peak groups on, LEFT: the groups with different number of peaks. RIGHT: chromosomes." width="30%" type="application/pdf" />
 <p class="caption">
 Distribution of the top p-value across peak groups on, LEFT: the groups
 with different number of peaks. RIGHT: chromosomes.
@@ -7861,7 +11347,7 @@ preprocessing, 55769 peaks are left for QTL calling. <strong>3246 peaks
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/1209_dis_sig_peak_H3K27AC.pdf" alt="Significant peaks of mark H3K27AC." width="30%" />
+<embed src="asset/2022/1209_dis_sig_peak_H3K27AC.pdf" title="Significant peaks of mark H3K27AC." width="30%" type="application/pdf" />
 <p class="caption">
 Significant peaks of mark H3K27AC.
 </p>
@@ -7907,7 +11393,7 @@ liliw-w
 <li>Length of peaks with &amp; w.o. pQTLs</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/1209_dis_peak_len_H3K27AC.pdf" alt="Peak length of mark H3K27AC." width="50%" />
+<embed src="asset/2022/1209_dis_peak_len_H3K27AC.pdf" title="Peak length of mark H3K27AC." width="50%" type="application/pdf" />
 <p class="caption">
 Peak length of mark H3K27AC.
 </p>
@@ -8003,13 +11489,13 @@ Session information
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<pre><code>R version 4.1.2 (2021-11-01)
+<pre><code>R version 4.2.3 (2023-03-15)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Big Sur 10.16
+Running under: macOS Big Sur ... 10.16
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -8021,18 +11507,16 @@ other attached packages:
 [1] workflowr_1.7.0
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
- [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
- [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
-[13] evaluate_0.15    lifecycle_1.0.3  tibble_3.1.6     pkgconfig_2.0.3 
-[17] rlang_1.0.6      cli_3.6.0        rstudioapi_0.13  yaml_2.3.5      
-[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.5.0   
-[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.5.1     
-[29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
-[33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
-[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.4 
-[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.12  
-[45] cachem_1.0.6     crayon_1.4.2    </code></pre>
+ [1] Rcpp_1.0.11       rstudioapi_0.15.0 knitr_1.43        whisker_0.4.1    
+ [5] magrittr_2.0.3    getPass_0.2-2     R6_2.5.1          rlang_1.1.1      
+ [9] fastmap_1.1.1     highr_0.10        stringr_1.5.0     httr_1.4.6       
+[13] tools_4.2.3       xfun_0.39         cli_3.6.1         jquerylib_0.1.4  
+[17] git2r_0.32.0      htmltools_0.5.5   yaml_2.3.7        digest_0.6.33    
+[21] rprojroot_2.0.3   lifecycle_1.0.3   processx_3.8.2    callr_3.7.3      
+[25] later_1.3.1       sass_0.4.6        vctrs_0.6.3       promises_1.2.0.1 
+[29] fs_1.6.2          ps_1.7.5          cachem_1.0.8      glue_1.6.2       
+[33] evaluate_0.21     rmarkdown_2.23    stringi_1.7.12    bslib_0.5.0      
+[37] compiler_4.2.3    jsonlite_1.8.7    httpuv_1.6.11    </code></pre>
 </div>
 </div>
 </div>
