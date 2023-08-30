@@ -427,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-08-28
+<strong>Last updated:</strong> 2023-08-29
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -558,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreee446595eff32ea807f01aa455a23b119a412579etargetblanke446595a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreec34957bae42e29e3d3cb607c63032e73c63e55a6targetblankc34957ba">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/e446595eff32ea807f01aa455a23b119a412579e" target="_blank">e446595</a>
+<a href="https://github.com/liliw-w/GradLog/tree/c34957bae42e29e3d3cb607c63032e73c63e55a6" target="_blank">c34957b</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreee446595eff32ea807f01aa455a23b119a412579etargetblanke446595a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreec34957bae42e29e3d3cb607c63032e73c63e55a6targetblankc34957ba"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -576,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/e446595eff32ea807f01aa455a23b119a412579e" target="_blank">e446595</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/c34957bae42e29e3d3cb607c63032e73c63e55a6" target="_blank">c34957b</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -599,9 +599,6 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/week_log.Rmd
-
-Unstaged changes:
-    Deleted:    Main.docx
 
 </code></pre>
 <p>
@@ -647,6 +644,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/c34957bae42e29e3d3cb607c63032e73c63e55a6/analysis/Log2023_a_fresh_start.Rmd" target="_blank">c34957b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-29
+</td>
+<td>
+update a week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/8ed8c82abde828dc1f3ea8b3ecfbdf95949dcf90/docs/Log2023_a_fresh_start.html" target="_blank">8ed8c82</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1471,14 +1502,13 @@ width="40%">Old</a></p></li>
 </ul>
 </div>
 </div>
-<div id="revision-on-paper-1" class="section level2">
-<h2>2. Revision on paper 1</h2>
-<div id="add-simulations" class="section level3">
-<h3>Add simulations</h3>
+<div id="revision-on-paper-1---add-simulations" class="section level2">
+<h2>2. Revision on paper 1 - Add simulations</h2>
 <p><strong>Goal - According to reviewer 3, to show multi is not always
 more powerful than uni test, at some cases.</strong> -</p>
-<ul>
-<li><p>Reviewer’s comment</p>
+</div>
+<div id="reviewers-comment" class="section level2">
+<h2>Reviewer’s comment</h2>
 <ol style="list-style-type: decimal">
 <li>at high level of sparsity</li>
 </ol>
@@ -1491,17 +1521,17 @@ differentiate methods, I change to -</p>
 <p>[<strong>This is equivalent to say to zoom in Fig. 2A, to make three
 tests differiatable from each other - increase power and pull them away
 from 0.</strong>]</p></li>
-<li><p>Or, use a larger sample size</p>
+<li><p><del>Or, use a larger sample size</del></p>
 <blockquote>
 <p>“if you think increasing effect size in high sparsity setting is
 artificial”</p>
 </blockquote></li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
-<li>low level of correlation among variates</li>
-</ol></li>
-<li><p>I will do the case of “increase effect sizes”.</p></li>
-<li><p>Simulation params</p>
+<p><del>2. low level of correlation among variates</del></p>
+<p>[<strong>I will do the case of “increase effect sizes”.</strong>]</p>
+</div>
+<div id="simulation-params" class="section level2">
+<h2>Simulation params</h2>
 <p><span class="math inline">\(z \sim N_K(\sqrt{n} \beta, \Sigma_{K
 \times K})\)</span>, where <span class="math inline">\(\beta \sim N(0,
 \sigma^2_b)\)</span> for <span class="math inline">\(\gamma\)</span>
@@ -1509,28 +1539,33 @@ SNPs, and <span class="math inline">\(0\)</span> otherwise.</p>
 <p>Params - <span class="math inline">\(\Sigma_{K \times K}\)</span>,
 <span class="math inline">\(n\)</span>, <span
 class="math inline">\(\gamma\)</span>, <span
-class="math inline">\(\sigma^2_b\)</span>.</p></li>
-<li><p>How? (High sparsity, large effect size)</p>
+class="math inline">\(\sigma^2_b\)</span>.</p>
+</div>
+<div id="how-high-sparsity-large-effect-size" class="section level2">
+<h2>How? (High sparsity, large effect size)</h2>
 <p>High sparsity in Fig. 2A (<span class="math inline">\(\gamma = 1\%,
 5\%, 10\%\)</span>), with larger genetic variance <span
 class="math inline">\(\sigma^2_b = 0.005, 0.01, 0.05, 0.1,
 0.2\)</span>.</p>
-<p>101 genes, N 500, 10k SNPs, 1k simulations, 5% fdr level.</p></li>
+<p>101 genes, N 500, 10k SNPs, 1k simulations, 5% fdr level.</p>
+<ul>
 <li><p>Calculate FDR &amp; power</p>
 <p>Based on null empirical FDR (<span
 class="math inline">\(10^7\)</span> = null SNPs).</p>
 <p>#positive SNPs/#SNPs.</p></li>
-<li><p>Figures &amp; Observations</p>
+</ul>
+</div>
+<div id="figures-observations" class="section level2">
+<h2>Figures &amp; Observations</h2>
 <ul>
 <li><p>With effect sizes being increased, pco and minp have larger power
 at high sparsity, thus can be well compared - power away from
 0.</p></li>
 <li><p>When 1% (1) gene is causal, minp is better.</p></li>
 <li><p>When 5% or 10% genes are causal, pco is better.</p></li>
-</ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" />
+<embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101.pdf" title="Figure: Power plot across various genetic variances. x-axis shows causal proportion. y-axis shows power. Color for three methods." width="25%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101">
 Past versions of
@@ -1571,7 +1606,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" /></p>
+<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101.pdf" title="Figure: Power plot across various genetic variances. x-axis shows causal proportion. y-axis shows power. Color for three methods." width="25%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101">
 Past versions of
@@ -1612,7 +1647,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" /></p>
+<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101.pdf" title="Figure: Power plot across various genetic variances. x-axis shows causal proportion. y-axis shows power. Color for three methods." width="25%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101">
 Past versions of
@@ -1653,7 +1688,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" /></p>
+<p><embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101.pdf" title="Figure: Power plot across various genetic variances. x-axis shows causal proportion. y-axis shows power. Color for three methods." width="25%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101">
 Past versions of
@@ -1693,9 +1728,10 @@ liliw-w
 </table>
 </div>
 </div>
-<embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101.pdf" title="Figure: " width="25%" type="application/pdf" />
+<embed src="asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101.pdf" title="Figure: Power plot across various genetic variances. x-axis shows causal proportion. y-axis shows power. Color for three methods." width="25%" type="application/pdf" />
 <p class="caption">
-Figure:
+Figure: Power plot across various genetic variances. x-axis shows causal
+proportion. y-axis shows power. Color for three methods.
 </p>
 </div>
 <p>
@@ -1738,22 +1774,197 @@ liliw-w
 </div>
 </div>
 </div>
-<div id="compare-to-dutte-et.-al" class="section level3">
-<h3>Compare to Dutte et. al</h3>
+<div id="revision-on-paper-1---compare-to-dutta-et.-al."
+class="section level2">
+<h2>3. Revision on paper 1 - Compare to Dutta et. al.</h2>
+<div id="their-idea" class="section level3">
+<h3>Their idea</h3>
 <ul>
-<li><p>Their idea</p></li>
-<li><p>How to compare with us?</p></li>
-<li><p>Data to use</p></li>
+<li><p>Goal</p>
+<p>Estimate correlation between gene sets associated to set of
+trait-related SNPs.</p></li>
+<li><p>Method</p>
+<p>Use sparse CCA.</p></li>
+<li><p>Result</p>
+<p>Selected genes associated with selected variants from sets.</p></li>
+<li><p>Data</p>
+<p>eQTLGen sum stats, LD matrix among variants, co-expression matrix
+among genes.</p></li>
+<li><p>Output</p>
+<p>cc value (association between the selected sets of variants and
+genes). Not p value. They use empirical p value by re-sampling random
+eQTLGen SNPs and genes.</p>
+<p>P value is for trait specific trans associations (not general
+associations).</p></li>
+</ul>
+</div>
+<div id="how-to-compare-to" class="section level3">
+<h3>How to compare to?</h3>
+<ul>
+<li><p>Why archie and trans-pco are not directly comparable?</p>
+<ul>
+<li><p>Goals of ARCHIE <del>and the standard analysis</del> and our
+method are different and therefore not directly comparable.</p></li>
+<li><p>ARCHIE identify gene sets associated to set of variants.</p></li>
+<li><p>Output cc value (measure of association between the selected sets
+of variants and genes) not p value. empirical p value for trait specific
+associations.</p></li>
+</ul></li>
+</ul>
+<p>[<strong>But I come up with several ways for a general comparison
+-</strong>]</p>
+<ol style="list-style-type: decimal">
+<li>Direct comparison - compare eQTLGen results</li>
+</ol>
+<p>This is to compare <strong>trait specific associations</strong> under
+competitive null. To see if archie genes and variants were replicated in
+our analysis.</p>
+<ul>
+<li><p>Compare gene component (selected genes)</p>
+<p>See if selected genes are replicated in trans target gene modules.
+<del>If same module (number of module distributed). If same
+variants.</del></p></li>
+</ul>
+<blockquote>
+<p>The set of selected target genes in the gene component is one of the
+key outputs of ARCHIE.</p>
+</blockquote>
+<ul>
+<li><p>Compare variant component (selected variants)</p>
+<p>See if selected variants are replicated in trans signals. <del>If
+same target module.</del></p></li>
+<li><p><del>Association patterns of (module, variants) including these
+components.</del></p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Under our case - reduce archie multiple variants to one single
+variant</li>
+</ol>
+<p>This is to compare general associations under general null.</p>
+<p>Run archie for each module we analyzed in eQTLGen and a SNP. Only use
+top component for significance. Try different cutoff on cc-value to
+claim significance and compare signals. Not to use their way of using
+empirical null p, computational expensive.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><del>Under their case - aggregate trans-pco single variants as a
+set</del></li>
+</ol>
+<p>[<strong>I will use the first way -</strong>]</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/08_23_fig_compare_archie.pdf" title="Figure: Comparison with archie results. x-axis shows significant pairs of selected gene and variant set across three traits. 2/1/2 pairs for prostate cancer/schizophrenia/UC. y-axis shows the number of selected (A) genes and (B) variants. Lightest blue is the total number of selected (A) genes and (B) variants by archie. Middle blue is the number of these (A) genes and (B) variants included in our eQTLGen analysis. Dark blue is (A) genes one of our trans target modules, (B) variants that are also signals in our analysis. Red line shows the number of replicated signals whose target module also include their corresponding selected genes by archie." width="40%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison with archie results. x-axis shows significant pairs
+of selected gene and variant set across three traits. 2/1/2 pairs for
+prostate cancer/schizophrenia/UC. y-axis shows the number of selected
+(A) genes and (B) variants. Lightest blue is the total number of
+selected (A) genes and (B) variants by archie. Middle blue is the number
+of these (A) genes and (B) variants included in our eQTLGen analysis.
+Dark blue is (A) genes one of our trans target modules, (B) variants
+that are also signals in our analysis. Red line shows the number of
+replicated signals whose target module also include their corresponding
+selected genes by archie.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-08_23_fig_compare_archie">
+Past versions of 08_23_fig_compare_archie.pdf
+</button>
+</p>
+<div id="fig-08_23_fig_compare_archie" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/c34957bae42e29e3d3cb607c63032e73c63e55a6/docs/asset/2023/08_23_fig_compare_archie.pdf" target="_blank">c34957b</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-08-29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Their results</p>
+<p>Pairs of (selected genes, selected variants of a trait) with
+significant correlations.</p>
+<p>Only results of three traits are available. They didn’t update
+results of all 29 traits they analyzed.</p>
+<p>2/1/2 pairs of (selected genes, selected variants of a trait) for
+prostate cancer/schizophrenia/UC.</p></li>
+<li><p>Our results</p>
+<p>DGN 166 co-expression modules and eQTLGen sum stats.</p>
+<blockquote>
+<p>Of the 166 co-expression gene modules identified in DGN, we used 129
+modules with reliable correlation matrix approximations to ensure the
+trans-eQTL signals are well-controlled for inflation.</p>
+</blockquote>
+<blockquote>
+<p>We identified 8116 trans-eQTL SNP-gene coexpression module pairs,
+corresponding to 2161 eQTLGen test SNPs and 122 gene modules (Figure 5B,
+Table S11);</p>
+</blockquote></li>
+<li><p>Comparison &amp; observations</p>
+<ul>
+<li><p>Among selected genes by archie, all of those included in our
+eQTLGen analysis were in a trans target module (122). Could this because
+122 modules out of 129 modules were all trans target module?</p></li>
+<li><p>Among selected variants by archie, most were included in our
+analysis. But less than half were also trans signals.</p></li>
+<li><p>And most of these trans signals are signals of the target module
+that include their corresponding selected genes by archie.</p></li>
+</ul></li>
+<li><p>Add a paragraph</p>
+<blockquote>
+<p>Although ARCHIE also … identify gene sets associated to trait-related
+SNPs (regulated by sets of variants) by aggregating weaker trans
+associations, our method has different goals and are not directly
+comparable. Their primary objective is to capture trait specific
+trans-associations among gene and variant sets in the background of
+broad trans-associations that are expected to be seen in the genome,
+whereas our aim is to identify a comprehensive map of association in
+single-variant-module pairs irrespective of trait specificity. To
+compare generally …, we looked into if the selected genes/variants were
+replicated in trans target gene modules/trans signals (eQTLGen, supp
+notes, supp fig, supp table).</p>
+</blockquote></li>
 </ul>
 </div>
 </div>
 <div id="zichengs-experience-on-scataq" class="section level2">
-<h2>3. Zicheng’s experience on scataq</h2>
+<h2>4. Zicheng’s experience on scataq</h2>
 <ul>
-<li><p>Inflation</p>
-<p>Due to error of not doing rank normal.</p></li>
-<li><p>Caution on selecting window size for various cell types</p></li>
-<li><p>Caution on rank normal peaks for minor cell types</p></li>
+<li><p>Observed Inflation</p>
+<p>Due to the error of not doing rank normal. Have been
+corrected.</p></li>
+<li><p>Caution on selecting window size for various cell types</p>
+<p>To keep peaks within window fewer than sample size, which can be
+small for some minor cell types after samples filtering. For these cell
+types, sample size small, window size should be small.</p>
+<p>Zicheng did whole blood, large cell type, no problem.</p></li>
+<li><p>Caution on normalization by rank normal peaks for minor cell
+types</p>
+<p>For minor cell types, peak read depth low, many peaks can have few
+reads. normalization points clustered at low reads. Should find out a
+way to remove or …</p></li>
 </ul>
 </div>
 </div>
