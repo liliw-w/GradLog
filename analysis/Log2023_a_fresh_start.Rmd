@@ -161,43 +161,41 @@ blockquote {
 
 
 
-## 2. Revision on paper 1
-
-### Add simulations
+## 2. Revision on paper 1 - Add simulations
 
 **Goal - According to reviewer 3, to show multi is not always more powerful than uni test, at some cases.** -
 
-- Reviewer's comment
+## Reviewer's comment
   
-  1. at high level of sparsity
+1. at high level of sparsity
   
-  In current simulations with high sparsity, power of all methods is too low to be differentiated. So, to increase power at this setting to differentiate methods, I change to -
+In current simulations with high sparsity, power of all methods is too low to be differentiated. So, to increase power at this setting to differentiate methods, I change to -
   
-  - increase effect sizes
+- increase effect sizes
+  
+  e.g. change sparsity level in Fig. S1
+  
+  [**This is equivalent to say to zoom in Fig. 2A, to make three tests differiatable from each other - increase power and pull them away from 0.**]
+
+- ~~Or, use a larger sample size~~
     
-    e.g. change sparsity level in Fig. S1
-    
-    [**This is equivalent to say to zoom in Fig. 2A, to make three tests differiatable from each other - increase power and pull them away from 0.**]
-  
-  - Or, use a larger sample size
-    
-    > "if you think increasing effect size in high sparsity setting is artificial"
+  > "if you think increasing effect size in high sparsity setting is artificial"
 
 
-  2. low level of correlation among variates
+~~2. low level of correlation among variates~~
 
 
-- I will do the case of "increase effect sizes".
+[**I will do the case of "increase effect sizes".**]
 
 
-- Simulation params
+## Simulation params
   
   $z \sim N_K(\sqrt{n} \beta, \Sigma_{K \times K})$, where $\beta \sim N(0, \sigma^2_b)$ for $\gamma$ SNPs, and $0$ otherwise.
   
   Params - $\Sigma_{K \times K}$, $n$, $\gamma$, $\sigma^2_b$.
 
 
-- How? (High sparsity, large effect size)
+## How? (High sparsity, large effect size)
   
   High sparsity in Fig. 2A ($\gamma = 1\%, 5\%, 10\%$), with larger genetic variance $\sigma^2_b = 0.005, 0.01, 0.05, 0.1, 0.2$.
   
@@ -211,7 +209,7 @@ blockquote {
   #positive SNPs/#SNPs.
 
 
-- Figures & Observations
+## Figures & Observations
   
   - With effect sizes being increased, pco and minp have larger power at high sparsity, thus can be well compared - power away from 0.
   
@@ -220,32 +218,139 @@ blockquote {
   - When 5% or 10% genes are causal, pco is better.
 
 
-```{r out.width="25%", fig.cap="Figure: ", fig.show='hold',fig.align='center'}
+```{r out.width="25%", fig.cap="Figure: Power plot across various genetic variances. x-axis shows causal proportion. y-axis shows power. Color for three methods.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.005_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.01_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.05_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.1_N500_K101.pdf", "asset/2023/08_23_plt_power_lowCaus_highb_changecaus_varb0.2_N500_K101.pdf"), error = FALSE)
 ```
 
 
 
-### Compare to Dutte et. al
+## 3. Revision on paper 1 - Compare to Dutta et. al.
 
-- Their idea
-
-- How to compare with us?
-
-- Data to use
-
-
-
-
-## 3. Zicheng's experience on scataq
-
-- Inflation
+### Their idea
   
-  Due to error of not doing rank normal.
+- Goal
+  
+  Estimate correlation between gene sets associated to set of trait-related SNPs.
+  
+- Method
+  
+  Use sparse CCA.
+  
+- Result
+  
+  Selected genes associated with selected variants from sets.
+
+- Data
+  
+  eQTLGen sum stats, LD matrix among variants, co-expression matrix among genes.
+
+- Output
+  
+  cc value (association between the selected sets of variants and genes). Not p value. They use empirical p value by re-sampling random eQTLGen SNPs and genes.
+  
+  P value is for trait specific trans associations (not general associations).
+
+
+### How to compare to?
+
+- Why archie and trans-pco are not directly comparable?
+
+  - Goals of ARCHIE ~~and the standard analysis~~ and our method are different and therefore not directly comparable.
+  
+  - ARCHIE identify gene sets associated to set of variants.
+  
+  - Output cc value (measure of association between the selected sets of variants and genes) not p value. empirical p value for trait specific associations.
+
+
+[**But I come up with several ways for a general comparison -**]
+
+1. Direct comparison - compare eQTLGen results
+
+This is to compare **trait specific associations** under competitive null. To see if archie genes and variants were replicated in our analysis.
+
+  - Compare gene component (selected genes)
+    
+    See if selected genes are replicated in trans target gene modules. ~~If same module (number of module distributed). If same variants.~~
+    
+  > The set of selected target genes in the gene component is one of the key outputs of ARCHIE.
+
+
+  - Compare variant component (selected variants)
+    
+    See if selected variants are replicated in trans signals. ~~If same target module.~~
+    
+  - ~~Association patterns of (module, variants) including these components.~~
+
+
+2. Under our case - reduce archie multiple variants to one single variant
+    
+This is to compare general associations under general null.
+
+Run archie for each module we analyzed in eQTLGen and a SNP. Only use top component for significance. Try different cutoff on cc-value to claim significance and compare signals. Not to use their way of using empirical null p, computational expensive.
+
+
+3. ~~Under their case - aggregate trans-pco single variants as a set~~
+
+
+
+[**I will use the first way -**]
+
+
+
+```{r out.width="40%", out.height="100%", fig.cap="Figure: Comparison with archie results. x-axis shows significant pairs of selected gene and variant set across three traits. 2/1/2 pairs for prostate cancer/schizophrenia/UC. y-axis shows the number of selected (A) genes and (B) variants. Lightest blue is the total number of selected (A) genes and (B) variants by archie. Middle blue is the number of these (A) genes and (B) variants included in our eQTLGen analysis. Dark blue is (A) genes one of our trans target modules, (B) variants that are also signals in our analysis. Red line shows the number of replicated signals whose target module also include their corresponding selected genes by archie.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/08_23_fig_compare_archie.pdf"), error = FALSE)
+```
+
+
+- Their results
+  
+  Pairs of (selected genes, selected variants of a trait) with significant correlations.
+  
+  Only results of three traits are available. They didn’t update results of all 29 traits they analyzed.
+  
+  2/1/2 pairs of (selected genes, selected variants of a trait) for prostate cancer/schizophrenia/UC.
+
+
+- Our results
+
+  DGN 166 co-expression modules and eQTLGen sum stats.
+  
+  > Of the 166 co-expression gene modules identified in DGN, we used 129 modules with reliable correlation matrix approximations to ensure the trans-eQTL signals are well-controlled for inflation.
+  
+  > We identified 8116 trans-eQTL SNP-gene coexpression module pairs, corresponding to 2161 eQTLGen test SNPs and 122 gene modules (Figure 5B, Table S11);
+
+
+- Comparison & observations
+  
+  - Among selected genes by archie, all of those included in our eQTLGen analysis were in a trans target module (122). Could this because 122 modules out of 129 modules were all trans target module?
+  
+  - Among selected variants by archie, most were included in our analysis. But less than half were also trans signals.
+  
+  - And most of these trans signals are signals of the target module that include their corresponding selected genes by archie.
+
+
+
+- Add a paragraph
+  
+  > Although ARCHIE also … identify gene sets associated to trait-related SNPs (regulated by sets of variants) by aggregating weaker trans associations, our method has different goals and are not directly comparable. Their primary objective is to capture trait specific trans-associations among gene and variant sets in the background of broad trans-associations that are expected to be seen in the genome, whereas our aim is to identify a comprehensive map of association in single-variant-module pairs irrespective of trait specificity. To compare generally …, we looked into if the selected genes/variants were replicated in trans target gene modules/trans signals (eQTLGen, supp notes, supp fig, supp table).
+
+
+
+## 4. Zicheng's experience on scataq
+
+- Observed Inflation
+  
+  Due to the error of not doing rank normal. Have been corrected.
 
 - Caution on selecting window size for various cell types
+  
+  To keep peaks within window fewer than sample size, which can be small for some minor cell types after samples filtering. For these cell types, sample size small, window size should be small.
+  
+  Zicheng did whole blood, large cell type, no problem.
 
-- Caution on rank normal peaks for minor cell types
+- Caution on normalization by rank normal peaks for minor cell types
+  
+  For minor cell types, peak read depth low, many peaks can have few reads. normalization points clustered at low reads. Should find out a way to remove or ...
 
 
 
