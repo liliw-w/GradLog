@@ -25,6 +25,208 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# Sep 06 & Sep 13
+
+As shown in last week, to compre to Dutta et. al., I proposed three ways -
+
+1. Direct comparison - compare eQTLGen results
+
+2. Under our case - reduce archie multiple variants to one single variant
+  
+   Use our simulated data.
+
+3. Under their case - ~~aggregate trans-pco single variants as a set~~
+  
+   Instead, run trans-pco on archie selected gene sets and all eQTLGen single variants.
+
+
+I did way 1. This week I will do 2 and 3.
+
+
+
+## 1. Trans-PCO on archie selected gene sets (Way 3)
+
+### How?
+
+- Estimate $\hat{\Sigma}_{nullZ}$ for each gene set
+  
+  A SNP has p > 1e-4 for all genes in the set, as a null SNP. Same threshold as used in paper. Use independent null SNPs to estimate $\hat{\Sigma}_{nullZ}$.
+
+- Define trans variants
+  
+  Run for only trans variants. Same def of trans as used in archie paper. Either more 5Mb away from all genes or on a different chromosome.
+
+
+
+### Results
+
+- #independent null SNPs for estimating $\Sigma_{nullZ}$ v.s. gene set size
+
+- p value distribution
+
+```{r out.width="40%", fig.cap="Figure: #independent null SNPs for estimating Sigma_{nullZ} v.s. gene set size for archie signal sets. X-axis is archie significant gene sets. Y-axis is either gene set size (light blue) or number of independent null SNPs used for estimating Sigma for that set (dark blue).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_06_plt_gene_indepnull_size.pdf"), error = FALSE)
+```
+
+
+```{r out.width="40%", fig.cap="Figure: P value of archie gene sets by trans-pco. Each panel is a trait and a significant archie component (selected genes, selected snps). X-axis is snps, y-axis is -log10(P). Each point is a snp. (A) Archie gene set v.s. all eQTLGen SNPs (trans). Red cross are variants selected by archie corresponding to the gene set. (B) Draw archie variants only. Dash line is p cutoff 0.05.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_06_plt_archie_pco.pdf"), error = FALSE)
+```
+
+
+
+### Observations
+
+- Some archie gene sets also have small p values for their corresponding selected variants by trans-pco (fig. B), e.g. gene sets of Schizophrenia_C1, Prosc_C1, UC_C1. Mostly first component.
+
+- But some archie gene sets have large p values for their corresponding selected variants by trans-pco (fig. B), e.g. gene sets of Pros_C2, UC_C2. Mostly second component.
+
+- Some archie gene sets have small p values for additional variants by trans-pco (fig. A).
+
+
+### Updated results
+
+For each trait, I adjusted pco p using bonferroni correction by multiplying nominal p by total number of test for each trait (~9918 * #components). FDR level 0.05. Figure below shows adjusted pco p values.
+
+We observe that -
+
+- For most archie signal components (except UC_C2), there is at least one archie-selected snp that are also significant by trans-pco.
+
+- Similar observation as above, less variants from the second component (Prosc_C2, UC_C2) are replicated.
+
+
+```{r out.width="40%", fig.cap="Figure: Adjusted P value of archie gene sets by trans-pco. Each panel is a trait and a significant archie component (selected genes, selected snps). X-axis is snps, y-axis is -log10(P). Each point is a snp. (A) Archie gene set v.s. all eQTLGen SNPs (trans). Red cross are variants selected by archie corresponding to the gene set. (B) Draw archie variants only. Dash line is p cutoff 0.05. (C) Number of archie selected variants of each component that are (dark) or not (light) trans-pco signals.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_13_plt_archie_pco.pdf"), error = FALSE)
+```
+
+
+
+## 2. Archie on our simulated data (Way 2)
+
+
+### How?
+
+Input of archie -
+
+- $\Sigma_{GG}$
+  
+  Column-correlations of genetic variants.
+  
+- $\Sigma_{EE}$
+  
+  Column-correlations of gene expressions.
+
+- $\Sigma_{GE}$
+  
+  Cross-covariance matrix between variants and gene expressions.
+
+
+Our simulated data -
+
+- Gene module of size 101, and one snp.
+
+- In this case, $\Sigma_{GG}=1$, $\Sigma_{EE}=\Sigma$
+
+- $\Sigma_{GE}$ is tricky **[Is it correct?]**
+  
+  According to archie paper, $(\Sigma_{GE})_{ij} = \frac{Z_{ij}}{\sqrt{2Nmaf_i(1-maf_i)}}$.
+  
+  We don't have $maf_i$. Instead, I used $(\Sigma_{GE})_{ij} = \frac{\beta}{\sigma_b}$.
+  
+  So, $(\Sigma_{GE})_{ij}$ only depends on $prop_caus$, $\sigma^2_b$.
+
+- Simulation params **[Is it correct?]**
+  
+  I change various $\sigma^2_b$, generate $\beta \sim N(0, \sigma^2_b)$ for $\gamma$ SNPs, and $0$ otherwise, estimate $(\Sigma_{GE})$, run 1000 simulation, calculate 1000 cc value by archie.
+  
+  A bit different than trans-pco simulation, where I generated 10k z scores for each simulation.
+
+
+### Results
+
+
+```{r out.width="30%", fig.cap="Figure: Distribution of archie cc value of simulated data across various genetic variance. Box plot for 1000 simulations.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_06_plt_archie_cc_value.pdf"), error = FALSE)
+```
+
+
+### Observations
+
+- All cc values are small. Power is low no matter what cc value cutoff is used.
+
+- Not sure results are correct, mainly due to confusions on running archie code -
+  
+  - Is archie $(\Sigma_{GE})$ correct? Only depend on caus, var? not N?
+  
+  - Archie code bug in W?
+    
+    In archie paper, $W = \Sigma_{GG}^{-1/2} \Sigma_{GE} \Sigma_{EE}^{-1/2}$.
+    
+    However, in code `W <- Sigma_GG%*%Sigma_GE%*%Sigma_EE;`
+
+- Were my previous simulations of trans-pco correct?
+  
+  For (gene set, a snp), I generated one $\beta \sim N(0, \sigma^2_b)$ for 10k snps in each simulation. In one simulation, 10k SNPs have z scores generated from same $\beta$ of $z \sim N_K(\sqrt{n} \beta, \Sigma_{K \times K})$. Across simulation, $\beta$ are different.
+
+
+
+### ~~New equation to estimate $\Sigma_{GE}$~~
+
+~~It should be $(\Sigma_{GE})_{ij} = \frac{\beta}{\sigma_b} \sqrt{N}$. So, $(\Sigma_{GE})_{ij}$ depends on $prop_caus$, $\sigma^2_b$, $N$.~~
+
+I run 1000 simulation using this new equation. cc values of simulated data shown in figure below. Observations keep same -
+
+- All cc values are small. Power is low no matter what cc value cutoff is used.
+
+- cc values are even smaller (<1e-4) than above case.
+
+```{r out.width="30%", fig.cap="Figure: Distribution of archie cc value of simulated data across various genetic variance. Box plot for 1000 simulations. Use new equation adding sqrt{N}.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_13_plt_archie_cc_value_addN.pdf"), error = FALSE)
+```
+
+
+
+### Cutoff of cc value
+
+Previously, I thought ~0.07 cc value is low. But I checked ccvalues of signals in archie paper, turns out the cc values are also ~0.08.
+
+
+- Cutoff used in archie paper
+
+  Their cc value of significant signals are low as ~0.08 [figure in their paper](https://www.nature.com/articles/s41467-022-31845-9/figures/3).
+
+  So we can't define significance simply based on a general sense of correlation.
+
+
+- Solutions to define cutoff
+
+  Use empirical null of cc values of null simulations
+
+  I wanted to calculate p value of cc value of null simulations, as the way they used in the above figure, where they use competitive null distributions.
+    
+  Here is how they did it -
+
+  > Then we use ARCHIE with the same sparsity levels as the original analysis, to extract the gene and variant components and calculate corresponding cc values. We repeat this step multiple (M) times to generate a competitive null distribution of cc values. We then evaluate the observed cc-values from the original analysis against the corresponding competitive null distributions to calculate the p-value.
+
+  p-value = expected number of null cc-value larger than the observed cc-value (wrong equation (5) used in the paper). Then we will have P value distribution and calculate the power under $\alpha$.
+ 
+  However, in our simulation setting where we simulated from $\beta$,  $(\Sigma_{GE})_{ij} = 0$, $W = 0$.
+
+
+
+- Look at selection of SNPs & genes
+
+  Another way to look at the performance of archie is to check if the selected genes by archie are real target genes (we have 30% genes out of 101 have non-zero effect). So I looked at the numebr of selected genes by archie on simulated alternative data.
+  
+  Archie selected more genes than real target genes.
+
+```{r out.width="30%", fig.cap="Figure: Numebr of selected genes by archie on simulated alternative data across various genetic variance. Box plot for 1000 simulations. LEFT: old derivation. RIGHT: new derivation with sqrt{N}.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_13_plt_archie_selected_gene.pdf", "asset/2023/09_13_plt_archie_selected_gene_addN.pdf"), error = FALSE)
+```
+
+
+
+
 # Aug 16 & Aug 23
 
 ## 1. Change the way to define overlap of a window and a peak
