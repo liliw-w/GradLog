@@ -174,21 +174,36 @@ knitr::include_graphics(c("asset/2023/09_06_plt_archie_cc_value.pdf"), error = F
 
 ~~It should be $(\Sigma_{GE})_{ij} = \frac{\beta}{\sigma_b} \sqrt{N}$. So, $(\Sigma_{GE})_{ij}$ depends on $prop_caus$, $\sigma^2_b$, $N$.~~
 
-I run 1000 simulation using this new equation. cc values of simulated data shown in figure below. Observations keep same -
+~~I run 1000 simulation using this new equation. cc values of simulated data shown in figure below. Observations keep same -~~
 
-- All cc values are small. Power is low no matter what cc value cutoff is used.
+~~- All cc values are small. Power is low no matter what cc value cutoff is used.~~
 
-- cc values are even smaller (<1e-4) than above case.
+~~- cc values are even smaller (<1e-4) than above case.~~
 
 ```{r out.width="30%", fig.cap="Figure: Distribution of archie cc value of simulated data across various genetic variance. Box plot for 1000 simulations. Use new equation adding sqrt{N}.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/09_13_plt_archie_cc_value_addN.pdf"), error = FALSE)
 ```
 
 
+### New equation to estimate $\Sigma_{GE}$ (Correct version)
+
+$(\Sigma_{GE})_{ij} = \frac{Z_{GE}}{\sqrt{N}}$
+
+
+I run 1000 simulation using this new equation. cc values of simulated data shown in figure below. Observations -
+
+- cc values are large.
+
+- Archie selected more genes than real target genes.
+
+```{r out.width="40%", fig.cap="Figure: (LEFT) Distribution of archie cc value of simulated data across various genetic variance. Box plot for 1000 simulations. (RIGHT) Numebr of selected genes by archie on simulated alternative data across various genetic variance. Dashed line is the true number of target genes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_20_plt_archie_cc_value_z.pdf", "asset/2023/09_20_plt_archie_selected_gene_z.pdf"), error = FALSE)
+```
+
 
 ### Cutoff of cc value
 
-Previously, I thought ~0.07 cc value is low. But I checked ccvalues of signals in archie paper, turns out the cc values are also ~0.08.
+Previously, I thought ~0.07 cc value is low. But I checked cc-values of signals in archie paper, turns out the cc values are also ~0.08.
 
 
 - Cutoff used in archie paper
@@ -209,8 +224,24 @@ Previously, I thought ~0.07 cc value is low. But I checked ccvalues of signals i
   > Then we use ARCHIE with the same sparsity levels as the original analysis, to extract the gene and variant components and calculate corresponding cc values. We repeat this step multiple (M) times to generate a competitive null distribution of cc values. We then evaluate the observed cc-values from the original analysis against the corresponding competitive null distributions to calculate the p-value.
 
   p-value = expected number of null cc-value larger than the observed cc-value (wrong equation (5) used in the paper). Then we will have P value distribution and calculate the power under $\alpha$.
- 
-  However, in our simulation setting where we simulated from $\beta$,  $(\Sigma_{GE})_{ij} = 0$, $W = 0$.
+  
+  I ran 1e+6 null simulations, obtained an empirical distribution of null cc values. Then calculate p values for each observed cc value. Then do qvalue to adjust for multiple testing. Lastly, calculate power, i.e. how many adjusted observed p values < 0.05.
+  
+  Observations -
+  
+  - P values are deflated.
+  
+  - None of 1000 simulations are significant under 5% fdr, i.e. adjusted p < 0.05.
+
+
+```{r out.width="40%", fig.cap="Figure: (LEFT) Distribution of null archie cc value of simulated null data. Box plot for 1e+6 simulations. (RIGHT) Numebr of selected genes by archie on simulated null data. Dashed line is the true number of target genes.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_20_plt_archie_null_cc_value_z.pdf", "asset/2023/09_20_plt_archie_null_selected_gene_z.pdf"), error = FALSE)
+```
+
+
+```{r out.width="50%", fig.cap="Figure: (A) QQ plot of empirical nominal p values. (B) Distribution of empirical nominal p values. (C) Distribution of adjusted p values. Dashed line is 0.05 fdr level.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/09_20_archie_p_sim.pdf"), error = FALSE)
+```
 
 
 
@@ -223,6 +254,12 @@ Previously, I thought ~0.07 cc value is low. But I checked ccvalues of signals i
 ```{r out.width="30%", fig.cap="Figure: Numebr of selected genes by archie on simulated alternative data across various genetic variance. Box plot for 1000 simulations. LEFT: old derivation. RIGHT: new derivation with sqrt{N}.", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("asset/2023/09_13_plt_archie_selected_gene.pdf", "asset/2023/09_13_plt_archie_selected_gene_addN.pdf"), error = FALSE)
 ```
+
+
+
+
+
+
 
 
 
