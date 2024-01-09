@@ -25,6 +25,1140 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+
+# Dec 06
+
+## 2. Run CACTI-P on all cells (whole blood)
+
+### Run QTLTools
+
+To-do's -
+
+~~- Ask and confirm questions with Phoenix on slack~~
+
+~~- Check if current QTLTools results fit our needs~~
+
+~~- Re-run QTLTools if needed~~
+
+- Check rasqual scripts & results for pseodo-bulk (scqtl is not what I need)
+
+
+
+**Take-aways -**
+
+- Pseudo-bulk data is in rasqual folder. (scqtl folder is for single cell)
+
+
+### Basic info
+
+- Whole blood (using all cells)
+
+- #individuals
+  
+  - All individuals: 56
+  
+  - #cells for each individual
+  
+  - read coverage across individuals
+
+- #peaks
+  
+  - All peaks: 280,249
+  
+  - Peak width: 500bp
+  
+  - Peak distance: 
+  
+  - #peaks across chr's
+  
+  - Peak coverage
+  
+  - Signal peaks (fdr<0.05, cis 500kb) by qtltools - 2561
+  
+  - Signal peaks (fdr<0.05, cis 500kb) by rasqual - 11,848
+
+
+- Window size to choose
+  
+  Need to consider (1) window v.s. sample size, (2) ATAC-seq peak charateristics. 
+  
+  - 50kb?
+  
+  - #windows (non-overlapping) - 36,358
+  
+  - #peaks within windows (v.s. sample size) - 1~66. median 5 (v.s. 56)
+
+
+- Cis region to use for association test
+  
+  - Same as window size, 50kb, because ...
+  
+    - Many caQTLs are within or very close to peaks.
+    
+    - To make sure the leftmost and rightmost peaks in the window have at least common cis snps within in the window. 
+    
+    - To reduce computational burden. We have much more windows than ChIP-seq data, and smaller window, so not to use same cis region (500kb). 
+  
+  - Add 500kb as cis window to analysis.
+
+
+
+```{r out.width="40%", fig.cap="Figure: Number of peaks across chr's.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/12_06_peak_num.pdf"), error = FALSE)
+```
+
+```{r out.width="40%", fig.cap="Figure: Number of peak groups across chr's.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/12_06_peaks_on_chr_window50kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="40%", fig.cap="Figure: Number of peaks in peak windows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/12_06_peaks_in_group_window50kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="40%", fig.cap="Figure: Number of cpeaks in peak windows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/12_06_peaks_w_cqtl_in_group_window50kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="40%", fig.cap="Figure: Number of cpeaks in peak windows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/12_06_peaks_in_group_w_cqtl_window50kb.pdf"), error = FALSE)
+```
+
+
+
+
+### Association results
+
+1. p-value distribution
+
+- Top p-values (bonbforroni corrected)
+
+- Top p-values (ACAT corrected)
+
+
+2. Number of significant peak groups
+
+
+
+### Comparison results
+
+- Compare to uni-pop (qtltools)
+  
+  - Signal numbers
+  
+  - Effect size?
+  
+  - Overlaps? (new vis) [fig](atac/figs/whole_blood/plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf)
+
+- Compare to uni-allelic (rasqual)
+  
+  - Signal numbers
+  
+  - Effect size?
+  
+  - Overlaps? (new vis) [fig](atac/figs/whole_blood/plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf)
+
+
+~~- Compare to sc-PME ???~~
+  
+~~  - Signal numbers~~
+  
+~~  - Effect size?~~
+  
+~~  - Overlaps? (new vis)~~
+
+
+```{r out.width="40%", fig.cap="Figure: Number of cpeaks in peak windows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis500kb.pdf"), error = FALSE)
+```
+
+
+**Choose new window size and cis region - **
+
+[window50kb_cis50kb](asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis50kb.pdf)
+
+[window25kb_cis500kb](asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis500kb.pdf)
+
+[window25kb_cis25kb](asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf)
+
+[window5kb_cis5kb](asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window5kb_cis5kb.pdf)
+
+```{r out.width="40%", fig.cap="Figure: Comparison of cwindows and cpeaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="40%", fig.cap="Figure: Distance from lead cQTL to cpeak/cwindow (and if within any peak for cwindow). Cis region used for (1) multi (500kb, 25kb), (2) qtltools (500kb), (3) rasqual (10kb).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_dis_leadsnp_cpeak.pdf"), error = FALSE)
+```
+
+Observations -
+
+- Most lead cQTLs are close to cpeaks. 
+
+- Using 25kb as cis region is reasonable? 500kb too far
+
+
+
+**Change the way to visualize numbers - **
+
+as the number of peaks and windows differ a lot. Focus on windows, i.e. only use the right column, to show the number of cwindows not overlap with any cpeaks, and non-significant windows overlap with any cpeaks. 
+
+Better way - two figures with different angles -
+
+(A1) Significant peaks, filled by overlap with cwindows. (replicated cpeaks & missed cpeaks)
+
+(A2) Non significant peaks, filled by overlap with at least one cwindow. (new cpeaks)
+
+(B1) Significant windows, filled by overlap with cpeaks. (new windows)
+
+(B2) Non significant windows, filled by overlap with at least one cpeak. (missed cpeaks)
+
+
+```{r out.width="40%", fig.cap="Figure: Comparison of cwindows and cpeaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+
+**Observations -**
+
+CACTI v.s. QTLTools -
+
+- CACTI replicated most cpeaks by qtltools (upper left). 
+
+- CACTI found many more new signals, much more new cpeaks (upper right) and ~1k cwindows (lower left). 
+
+- CACTI missed a few cpeaks (upper left) and cwindows (lower right). Most missed cwindows have only 1 cpeak by QTLTools.
+
+
+
+CACTI v.s. RASQUAL -
+
+- CACTI did not replicate most cpeaks by rasqual (upper left). 
+
+- CACTI found many more new new cpeaks (upper right), but only a few cwindows (lower left). 
+
+- CACTI missed many cpeaks (upper left) and cwindows (lower right). Most missed cwindows have only 1 cpeak by QTLTools.
+
+
+Looks like CACTI and RASQUAL find different signals. CACTI finds cwindows containing multiple cpeaks, whereas cpeaks missed by cwindows are those containing only one cpeaks. 
+
+
+
+**Observations -**
+
+- Is it necessary to use large cis region? Decrease cis regions from 500kb to 50kb found more signals. Check - Variants within 500kb v.s. p-value. 
+
+- Decrease window size found a bit more signals but not much. 
+
+- Use smaller window size & smaller cis region?
+  
+  - Using smaller cis region (25kb window, 25kb cis region) results in more signals. More than qtltools, but still not good as rasqual. 
+  
+  - 5kb window & 5kb cis reigon is too small, resulting in missed overlap windows with qtltools peaks, and with qtltools cpeaks. 
+
+
+- Why so few signals? (compared to the other two methods, especially to rasqual)
+  
+  - What are those missed signals?
+    
+    - Those missed signals by multi (but identified by rasqual or qtltools) tend to have low signal to noise ratio, i.e. in a window only a few (1 or 2) peaks are cpeaks. rasqual tends to find these "isolated" cpeaks, whereas cacti finds co-regulated cwindows. 
+    
+    - For writing, we can emphasize that cacti finds co-regulated cwindows, and examples of those new cwindows. 
+
+
+
+
+### Show CACTI and RASQUAL find different signals
+
+1. signal to noise ratio of missed and replicated windows
+
+> Looks like CACTI and RASQUAL find different signals. CACTI finds cwindows containing multiple cpeaks, whereas cpeaks missed by cwindows are those containing only one cpeaks. 
+
+- missed and replicated windows have difference signal to noise ratio, therefore, CACTI finds cQTLs of co-regulated peaks. 
+
+  - num of cpeaks for missed and replicated windows
+
+  - size of missed and replicated windows
+
+  - signal to noise ratio of missed and replicated windows
+
+
+```{r out.width="40%", fig.cap="Figure: Missed and replicated windows have difference signal to noise ratio.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+
+
+2. Compare to CRDs or TADs
+
+**Rational -**
+
+[Ref]
+
+- Physical interactions between REs are commonly mapped with chromosome conformation capture (3C) techniques, such as Hi-C. In practice, Hi-C measures 3D contacts between distinct DNA regions and therefore potential functional links between REs. 
+- By contrast, interindividual correlation captures the coordinated activity of REs resulting from (direct or indirect) functional links. 
+
+- We therefore looked at how structure among peaks within cwindows compare to functional links and 3D contacts.
+
+
+
+**Basis info about CRDs -**
+
+- How?
+
+- "... regrouped 40.9% (n = 111,005) and 16.6% (n = 45,062) of the chromatin peaks within 12,583 and 10,442 CRDs in LCLs and fibroblasts, respectively."
+
+
+**Do replicated cwindows more likely overlap with any CRDs than missed cwindows by rasqual/qtltools?**
+
+```{r out.width="40%", fig.cap="Figure: Do replicated cwindows more likely overlap with any CRDs than missed cwindows by rasqual/qtltools?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_rep_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+- Observations -
+
+  - No significant enrichment. 
+
+
+**Do replicated cwindows more likely fall within same CRDs than missed cwindows by rasqual/qtltools?**
+
+```{r out.width="40%", fig.cap="Figure: Do replicated cwindows more likely fall within same CRDs than missed cwindows by rasqual/qtltools?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_rep_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+- Observations -
+    
+  - No significant enrichment. 
+
+
+
+3. Compare to ChromHMM functional annotations
+
+**Rational -**
+
+RASQUAL cpeaks less likely fall within functional annotations (false positives). 
+
+
+**Basis info about ChromHMM functional annotations -**
+
+- ChromHMM: automating chromatin-state discovery and characterization.
+
+- ChromHMM functional annotations of chromatin states in hg19, across 127 Reference Epigenomes (111 Roadmap cell types and 16 ENCODE cell lines), using 12 histone marks and 25 states. 
+
+
+**Do replicated cwindows more likely fall within functional annotations than missed cwindows by rasqual/qtltools?**
+
+```{r out.width="40%", fig.cap="Figure: Do replicated cwindows more likely fall within functional annotations than missed cwindows by rasqual/qtltools?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_func_annot_new.pdf"), error = FALSE)
+```
+
+
+
+### Characterization of signals & new signals
+
+1. compare to CRDs or TADs
+
+Rational -
+
+CACTI finds cwindows of co-regulated peaks. 
+
+
+**(all signals) Do cwindows more likely overlap with any CRDs than non-cwindows?**
+
+```{r out.width="40%", fig.cap="Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+```{r out.width="40%", fig.cap="Figure: if cwindows and CRDs frequently overlap", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_cwindow_crd_num_overlap_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="40%", fig.cap="Figure: if cwindows closer to CRDs than non-cwindows", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_cwindow_crd_dis_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+
+- Observations -
+
+  - cwindows are enriched for CRDs. They have correlations. TADS functional links. 
+
+  - cwindows and CRDs frequently overlap. 
+
+  - But distance from cwindow and non-cwindows to CRDs no significant difference. 
+
+
+**(all signals) Are cwindows more likely with same CRDs than non-cwindows?**
+
+```{r out.width="40%", fig.cap="Figure: Are cwindows more likely with same CRDs than non-cwindows?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+- Observations -
+
+  - No significant enrichment. 
+
+
+
+
+2. compare to chromHMM functional annotations
+
+**Do cwindows more likely fall within functional annotations than non-cwindows?**
+
+```{r out.width="40%", fig.cap="Figure: Do cwindows more likely fall within functional annotations than non-cwindows?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/01_05_fig_func_annot_all.pdf"), error = FALSE)
+```
+
+
+
+
+3. eQTLs (uni-pop, uni-allelic, sc-PME)
+
+
+
+4. GWAS (uni-pop, uni-allelic, sc-PME)
+
+
+
+
+
+
+## 2. Run CACTI-P on cell types
+
+### Steps of caution
+
+- Check rasqual scripts & results for pseudo-bulk data
+
+- Run QTLTools on cell types
+
+- Data QC on several scales (see below)
+
+- Data normalization on several scales (see below)
+
+- Window size to choose
+
+
+
+### Basic info
+
+(Make a table for main cell types)
+
+
+
+
+
+
+
+
+
+## 1. Phoenix's results of PBMC scATAC from 56 individuals
+
+Base directory: `/project/yangili1/zpmu/xijing/ra/`.
+
+
+For now, use cells/results from all threee datasets. (But downsample to ~20 samples?)
+
+
+### Cell level data
+
+#### Cell by peak matrix
+  
+  Single-cell level count matrix as `SummarizedExperiment` objects. 
+  
+  `data/scqtl/peakMtrx_chr{1..22}_3study.rds`
+
+- Cell-level metadata - individual information
+
+- Cell-level metadata - cell type information
+
+
+#### Covariates
+
+- Single-cell level phenotypic PC (LSI embedding)
+
+  `data/scqtl/IterativeLSI50_3study.rds`
+
+- Genotype PC calculated by smartPCA together with 1000G samples
+
+  `data/glimpse/1kg_merged3_chr1-22.merged.1kgfmt.pruned.eigenvec`
+
+
+
+### Pseudo-bulk level data
+
+#### individual data
+
+For `all cell1` (whole blood), `data/rasqual/harmonised_smp.txt`. 
+
+For `L1` and `L2` cell types, some individuals with low cell number were removed, therefore the list of individuals are in these files, `data/rasqual/smp_to_use_L{1..2}_{cell}.txt`. 
+
+
+#### Genotype
+
+`data/rasqual/as_vcf_3study/chr{1..22}.filtered.dosage.txt.gz`
+
+`data/rasqual/as_vcf_3study/chr{1..22}.filtered.vcf.gz` (vcf format)
+
+
+#### Pseudo-bulk count data
+
+Whole-blood: `data/rasqual/sum_3study_allCell_hornet.txt.gz`
+
+L1 cell types: `data/rasqual/sum_3study_L1_hornet.txt.gz`
+
+L2 cell types: `data/rasqual/sum_3study_L2_hornet.txt.gz`
+
+
+#### Covariates for count data
+
+Whole-blood: `data/rasqual/input_table_3study/PC-{nPC}_3study_allCell_hornet.txt`
+
+L1 cell types: `data/rasqual/input_table_3study/PC-{nPC}_3study_L1_hornet_{cell}.txt`
+
+L2 cell types: `data/rasqual/input_table_3study/PC-{nPC}_3study_L2_hornet_{cell}.txt`
+
+
+#### Summary stats
+
+Summary stats for all SNPs from Metasoft in whole blood and seven cell-types: `results/metasoft/poi_scale_*_noGC_formatted_v1.txt.gz`
+
+Lead caQTL from Metasoft in whole blood and seven cell-types: `results/metasoft/poi_scale_*_noGC_formatted_v1_lead.txt.gz`
+
+
+
+
+## 2. Data QC
+
+1. Cells
+
+2. Individuals
+
+3. Peaks
+
+4. Variants
+
+
+**All cells --> Cell types --> (1) Cell numbers, (2) Read coverage --> (1) Individuals (cell numbers), (2) Peaks (read coverage) **
+
+
+
+## 3. Data normalization
+
+1. Cells
+
+2. Individuals
+
+3. Peaks
+
+4. Variants
+
+
+
+## 4. CACTI-P in whole blood
+
+1. Univariate z-scores of snps v.s. peaks (fastQTL)
+
+- Inputs of Metasoft (PME)? (ind by peak mat, covariates, geno)
+  
+  - Pipeline `/project2/yangili1/zpmu/xijing/ra/scripts/scqtl/scqtl.smk`
+  
+  - Check what QC and normalization were done?
+    
+    - Script? `/project2/yangili1/zpmu/xijing/ra/scripts/scatac/16_merged3_analysis_clean.R`
+
+- Ben's fastQTL pipeline (double check outputs are same as Ben's previous results)
+
+
+
+
+ArchR project folder, containing all other types of data and many files I used in my own analysis. 
+
+data/scatac/archR_3study_v1New_clean
+
+
+
+
+
+
+# Nov 15
+
+## 1. Paper revision 1
+
+Table of signal numbers in googlesheets. A fews things to note -
+
+
+- I have the numbers for LD independent signals in eQTLGen, but I still don’t think it makes sense to report these numbers -
+
+  - As we already explained in main text (line 505)
+
+  > “As in eQTLGen, we did not perform LD clumping on trans-eSNPs, because they were GWAS SNPs associated with different traits and diseases.”
+
+  - To do LD clumping, we need to use DGN genotypes. However, not all eQTLGen variants are in DGN, so many top trans variants are missed, and #independent loci is underestimated and inaccurate.
+
+
+- To answer question b, I think our main text description is clear, but maybe adding the numbers as a supp table?
+
+
+- To answer the first part of question c,
+  
+  The number of LD-independent signals and trans-eQTL module pairs (179) are defined in different ways and for different purposes.
+  
+  - The LD-independent signals are defined by using LD clumping while accounting for LD (R2<0.2). This is for reporting the number of independent signals.
+  
+  - The 179 trans-eQTL loci are regions for performing colocalizaiton analysis. They are defined as fixed-width (200kb) flanking genomic regions centered at a lead signal. Please see Lines 812-822 for more detailed descriptions.
+  
+  - These two types of regions are similar, as we expect those 200kb flanking genomic regions have low LD. In fact, there are 145 (LD independent trans-loci, module) pairs, which is similar to 179 pairs we used for coloc.
+
+
+- To answer the second part of question c, it’s the last row in the table.
+
+
+## 2. Paper revision 2
+
+- Traits v.s. transQTL of co-expression gene module in DGN
+  
+  I looked at those six immune traits, in terms of finding the coloc region between a trait and a co-expression gene module in DGN. The coloc region is defined as a 200kb region centered at a transQTL (before merging with other neighboring coloc regions). I then take the transQTL (lead SNP), and find its nearest/near genes. See files attached.
+
+- Traits v.s. transQTL of co-expression gene module in eQTLGen
+  
+  I looked at if trait signal snps are also transQTLs of co-expression gene modules in eQTLGen. Trait signal snps are defined as those with p<5e-8. I then check if they are also transQTLs, and find its nearest/near genes. See files attached. Each row of a file is a trait signal snp, and its corresponding trans target module. One trait signal snp can appear in multiple rows if they have multiple trans target module in eQTLGen. 
+
+
+## 3. Paper revision 3
+
+### V1
+
+**To look at the enrichment of target genes in the transeQTL nearest genes**, I did steps -
+
+- I looked at 5 immune diseases. 
+
+- I found significant trait-associated snps in eQTLGen for each trait.
+
+- I looked at the nearest genes and check if they are trans signals.
+
+- I also checked if they are target genes of the trait.
+
+
+**Figure -**
+
+- x: if a snp is trans signal
+
+- y: number of snps
+
+- each panel: a trait
+
+- color: if the snp’s nearest gene is target gene
+
+- lower panel: I used only target genes of the corresponding trait
+
+- upper [anel: I used all target genes of any trait
+
+
+**Observations -**
+
+- There is no enrichment of target genes in nearest genes of trans snps
+
+- If I use only target gene of the corresponding trait (lower panel), there is basically no overlap between nearest genes of trait-associated snps (no matter it’s trans or not) and target genes, i.e. few red color. 
+
+- If I use all target genes of any trait, there are some overlap (more red), but the enrichment is not significant.
+
+
+**Some reasons/changes may improve enrichment -**
+
+- Use other lists of target genes
+
+- We were looking at eQTLGen trans snps that are disease associated snp. These snps are already trait-associated. If we directly look at the enrichemnt, I think we are more looking at the “trait specific” enrichment, as basically all those snps are expected to be enriched for trans snps. it’s like the logic in Dutta et al. Should we use general snps in DGN? or just use the absolute number of overlap genes?
+
+- Should we use trans snp across all traits instead of consider each trait separately?
+
+- I think you mentioned to look at if snps are trans snps of only those immune related module, but now I am using all modules to define trans snps. If I use the former, the overlap will be less (red color)
+
+
+```{r out.width="40%", fig.cap="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. ", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/target_enrich.pdf"), error = FALSE)
+```
+
+
+
+### V2
+
+**Updated results for using transeqtl of only immune related co-expression gene modules.** Steps -
+
+- I first go through all coexpression gene modules, and pick those are immune/blood related. There are 26 such modules.
+
+- I then define a trait-associated snp to be transeqtl if it’s associated at least one of those 26 modules.
+
+- Similarly as previous, I overlap trans eqtls’ nearest genes with target genes
+
+- Updated results are in the third row.
+
+
+**Observations -**
+
+- Less transeqtls under this definition
+
+- Seems no significant enrichment in target genes
+
+
+```{r out.width="40%", fig.cap="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. ", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/target_enrich.pdf"), error = FALSE)
+```
+
+
+
+### V3
+
+**Changes -**
+
+- Change visualization to the opposite, i.e. to see if drug targets are more likely to be trans signals of immune related modules. 
+
+- Use genes instead of SNPs. 
+
+```{r out.width="40%", fig.cap="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. ", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/target_enrich_target_vs_trans_snp.pdf", "asset/2023/target_enrich_target_vs_trans_gene.pdf"), error = FALSE)
+```
+
+
+**Observations -**
+
+1. Obs 1 for disease allergy
+
+It might be interesting to check out gene plot, Panel A &C, of allergy. Out of 3 trait-associated genes that are target, all of them are near to a trans snp (A), and two of them are near to a trans snp corresponding to a immune related gene module
+
+The genes are -
+
+- ERBB3 (chr12), corresponding to M87 and M97, all of which are immune/blood related.
+
+- IL2 (chr4), corresponding to no modules that are immune/blood related. 
+
+- UGT3A1 (chr5), corresponding to M62, M76, M87, all of which are immune/blood related. 
+
+
+Their corresponding trans gene modules are -
+```
+gene_module                                                                      GO:BP_term_name
+1:          62 cytokine-mediated signaling pathway;tumor necrosis factor-mediated signaling pathway
+2:          76                                system development;multicellular organism development
+3:          87             positive regulation of T cell activation;regulation of T cell activation
+4:          97                                                  cytoplasmic translation;translation
+                                                   GO:MF_term_name
+1:                                      cytokine receptor activity
+2:                           molecular function regulator activity
+3:                                         T cell receptor binding
+4: structural constituent of ribosome;structural molecule activity
+                                                                                         KEGG_term_name
+1: Cytokine-cytokine receptor interaction;Viral protein interaction with cytokine and cytokine receptor
+2:                                             Prolactin signaling pathway;NF-kappa B signaling pathway
+3:                                           Th17 cell differentiation;Th1 and Th2 cell differentiation
+4:                                                              Ribosome;Coronavirus disease - COVID-19
+                                                                                                                    REAC_term_name
+1:                                                          TNFR1-induced NFkappaB signaling pathway;Regulation of TNFR1 signaling
+2: Nucleotide-binding domain, leucine rich repeat containing receptor (NLR) signaling pathways;Cytokine Signaling in Immune system
+3:                                     Generation of second messenger molecules;Binding of TCF/LEF:CTNNB1 to target gene promoters
+4:                                                                                 Viral mRNA Translation;Peptide chain elongation
+```
+
+
+2. Obs 2 across all traits
+
+The above is for allergy trait. Across all traits -
+
+- Genes that are target and near a trans eqtl -
+
+```
+        nearest_gene
+ 1:       DNMT3A
+ 2:        ERBB3
+ 3:       GPBAR1
+ 4:          IL2
+ 5:          IL3
+ 6:         NCF4
+ 7:         PPIF
+ 8:        PSMB8
+ 9:       PTGER4
+10:        SH2B3
+11:          TNF
+12:       UGT3A1
+```
+
+- Genes that are target and near a trans eqtl of an immune-related module -
+
+```
+   nearest_gene
+1:       DNMT3A
+2:        ERBB3
+3:         NCF4
+4:         PPIF
+5:        SH2B3
+6:          TNF
+7:       UGT3A1
+```
+
+
+
+### Hall mark gene sets
+
+Using hallmark gene sets as modules, 11 have signals, 5 are immune related gene sets.
+
+- I define a gene set as immune related if it has direct relation with immune response or blood, e.g. genes are immune related genes, or pathway description includes blood cells.
+
+**Figures -**
+
+- 1st fig: using snps
+
+- 2nd fig: using genes
+
+```{r out.width="40%", fig.cap="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. ", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/target_enrich_target_vs_trans_snp_hallmark.pdf", "asset/2023/target_enrich_target_vs_trans_gene_hallmark.pdf"), error = FALSE)
+```
+
+
+**Observations -**
+
+- Less snps/genes are drug targets as well as being trans signal of an immune related module. 
+
+
+- Genes that are target and near a trans eqtl -
+
+```
+   nearest_gene
+1:        ERBB3
+2:          IL3
+3:         NCF4
+4:        SH2B3
+```
+
+- Genes that are target and near a trans eqtl of an immune-related module -
+
+```
+   nearest_gene
+1:          IL3
+2:         NCF4
+3:        SH2B3
+```
+
+- My definition of a gene set being immune related might be inaccurate. 
+  
+  - In coexpression module, gene ERBB3 belongs to the second category, its near trans eqtl of an immune related module. So I checked the gene’s associated hallmark gene sets. There are two - HALLMARK_CHOLESTEROL_HOMEOSTASIS and HALLMARK_PANCREAS_BETA_CELLS. I digged deeper and found that HALLMARK_PANCREAS_BETA_CELLS can be immune related. so does HALLMARK_CHOLESTEROL_HOMEOSTASIS. so, ERBB3 should also be in the second categoty.
+  
+  - Def file `/project2/xuanyao/llw/MODULES/MSigDB/msig_50_table_immune_related.txt`
+  
+  - Modify the file ...
+    
+    - Out of 50 hallmark gene sets, 9 are immune related gene sets. 
+    
+    - Using updated immune gene set def, enrichment OR and p don’t change much. 
+
+
+
+### Enrichment OR & p
+
+Results see slack. 
+
+Use genes and for the immune related modules only. 
+
+- Co-expression modules
+
+- Hallmark
+
+- Co-expression & Hallmark
+
+
+## 4. Redo LD clumping
+
+Issue - there are 145 loci-module pairs and 145 loci too. Does that mean there is no loci that regulate multiple modules?
+
+
+Previously I had a bug in code of ld clumping, where I assign signal files of all modules to plink clumping in one run. I thought plink would do clumping for each file separately, but it actually take all signals across all files. That’s why the number was the same when I consider only the snps. 
+
+So I loop over each module instead and run plink clumping for each module separately. The current numbers should be correct. 
+
+(LD independent trans-loci, module) is more than LD independent trans-loci, which means some loci regulate multiple modules. 
+
+
+
+## 5. A few numbers of allergy example for drug target
+
+**Q 1) How many launched drug targets are there for allergy in the broad database**
+
+```
+There are 2184 targets in total.
+1338 are launched.
+1153 are with a disease,
+55 are for allergy trait.
+```
+
+
+**Q 2) How many are near a GWAS loci included in eQTLGen (eg, within 1Mb)**
+
+```
+47 are near a eQTGen snp (within 1Mb).
+```
+
+
+**Q 3) How many are trans-eQTLs of immune related pathways?**
+
+- #1. trans-eQTLs of coexp-module
+  
+  - 23 targets are near (<1Mb) a trans-qtl associated with at least one coexp-module.
+  
+  - 12 targets are near (<1Mb) a trans-qtl associated with at least one immune related coexp-module.
+
+
+- #2. trans-eQTLs of hallmark-module
+  
+  - 10 targets are near (<1Mb) a trans-qtl associated with at least one hallmark-module.
+  
+  - 9 targets are near (<1Mb) a trans-qtl associated with at least one immune related hallmark-module.
+
+
+
+**Q 4) If the number is not zero for 2 and 3, can you also provide the names of the genes and the gene modules**
+
+- Coexp-module
+  
+  `/project2/xuanyao/llw/translation/target_eqtlgen_trans_module_coexp.txt`
+
+- Hallmark-module
+  
+  `/project2/xuanyao/llw/translation/target_eqtlgen_trans_module_hallmark.txt`
+
+- Columns are -
+  
+  - target
+  
+  - n_trans_module: number of trans target modules regulated by any trans-eqtl (1Mb)    near the target
+  
+  - trans_module: trans target modules regulated by any trans-eqtl (1Mb) near the target
+  
+  - n_trans_module_immune: number of trans target modules (immune related) regulated by any trans-eqtl (1Mb) near the target
+  
+  - trans_module_immune: trans target modules (immune related) regulated by any trans-eqtl (1Mb) near the target
+
+
+
+**note -**
+
+- this is for allergy trait only
+
+- By a snp near a gene, the def is if a snp is within 500kb of a gene’s upstream or downstream (1Mb in total)
+
+
+
+### Updated results using allergy gwas significant snps
+
+**Q 2) How many are near a GWAS loci included in eQTLGen (eg, within 1Mb)**
+
+```
+5 are near a eQTGen snp (within 1Mb).
+```
+
+
+**Q 3) How many are trans-eQTLs of immune related pathways?**
+
+- #1. trans-eQTLs of coexp-module
+  
+  - 2 targets are near (<1Mb) a trans-qtl associated with at least one coexp-module.
+  
+  - 2 targets are near (<1Mb) a trans-qtl associated with at least one immune related coexp-module.
+  
+  - Target genes are: UGT3A1 and IL3
+
+
+- #2. trans-eQTLs of hallmark-module
+  
+  - 1 targets are near (<1Mb) a trans-qtl associated with at least one hallmark-module.
+  
+  - 1 targets are near (<1Mb) a trans-qtl associated with at least one immune related hallmark-module.
+  
+  - Target genes are: IL3
+
+
+
+**Q 4) If the number is not zero for 2 and 3, can you also provide the names of the genes and the gene modules**
+
+- Coexp-module
+  
+  `/project2/xuanyao/llw/translation/target_gwas_eqtlgen_trans_module_coexp.txt`
+
+- Hallmark-module
+  
+  `/project2/xuanyao/llw/translation/target_gwas_eqtlgen_trans_module_hallmark.txt`
+
+
+**A few things to note -**
+
+- This is actually similar to the analysis I did before, as in previous message, where I used the “nearest gene”, here I am using cis genes <1Mb
+
+- Previous version using nearest gene, there were three target genes: ERBB3, IL2, UGT3A1 (compared to two genes: UGT3A1 and IL3, using cis genes)
+  
+  - UGT3A1 is also target gene using cis genes
+  
+  - IL2 is not, as it’s not corresponding to immune related modules, whereas here we use only immune modules
+  
+  - ERBB3 is not target gene in current results, as it’s not a target of allergy trait, so it’s filtered out (see table below for this target info)
+
+
+- Overall, using “cis genes” increases one gene “IL3” as a target near a allergy associated snp in eQTLGen that regulates a tran target coexpression-gene-module and hallmark-gene-set
+  
+  - Regulated coexp-module (Module108)
+  
+  - Regulated hallmark gene set
+  
+```
+gene_module
+108
+                                                                                                       GO:BP_term_name
+antigen processing and presentation of exogenous antigen;peptide antigen assembly with MHC class II protein complex
+                                                    GO:MF_term_name
+MHC class II protein complex binding;MHC protein complex binding
+                               KEGG_term_name
+Antigen processing and presentation;Asthma
+                                                                       REAC_term_name
+MHC class II antigen presentation;Translocation of ZAP-70 to Immunological synapse
+```
+
+```
+HALLMARK_IL6_JAK_STAT3_SIGNALING
+HALLMARK_NOTCH_SIGNALING
+```
+
+
+## 6. New way to do enrichment
+
+See results on slack thread -
+
+https://liulabuchicago.slack.com/archives/DSHGE9T63/p1701392735355239
+
+
+### Gene-based enrichment
+
+1. Basing on eQTLGen snps. 
+
+2. Basing on trans snps in eQTLGen. 
+
+
+- Table 1
+
+- Table 2
+
+- Table 3
+
+- How I did?
+
+- Note
+
+
+### SNP-based enrichment
+
+1. Basing on eQTLGen snps. 
+
+2. Basing on trans snps in eQTLGen. 
+
+
+
+
+### Immune modules
+
+How many co-expression gene modules and hall mark gene sets are immune related? and how many gene modules and hallmark gene sets in total?
+
+- co-expression: 166 in total, 26 immune related. 129 used for eQTLGen, 17 immune related. 
+
+- hallmark: 50 in total, 9 immune related. 11 used for eQTLGen, 2 immune related.
+
+
+
+
+
+
+## 3. Peak calling in ArchR
+
+Per pseudo-bulk replicate under each cell cluster.
+
+1. MACS2, peak calling, summit. The  majority of ATAC-seq peaks are less than 500bp.
+
+2. Expand a 500bp fix-width peak centered at the summit.
+
+3. Merged non-overlapping fixed-width peak set across replicates by iterative overlap peak merging.
+
+
+
+## 4. Apply two applications of CACTI to single cell data
+
+- Different goals
+  
+  - Improve power by aggregating 500bp peaks based on ArchR results (Mainly to compare QTL mapping methods, e.g. QTLTool, allele specific mapping.)
+  
+  - Improve power by skip peak calling of MACS2 for narrow elements (Genome-wide 500bp segments. Mainly to compare peak calling. Is it necessary given that MACS2 calls accurate peaks for narrow elements?)
+
+
+**What is the goal of applying CACTI to single cell data?** To show CACTI can find more cQTLs even given small sample size? To show CACTI is more powerful cQTL calling tool in single cell data? Compare to single cell methods instead of bulk methods? Which way we should apply CACTI?
+
+
+- Implementation
+  
+  - To tease out Xijing data, we need to redo single cell processing from the beginning.
+    
+    - We can't simply remove cells of Xijing data from the step before pseudo-bulk.
+    
+    - As removal of cells affect many pre-processing steps, e.g. batch effect removal, cell clustering, ArchR project setup, etc.
+    
+    - It also affects manuscript writing, e.g. how we cluster cells using three datasets and remove cells from clusters.
+  
+  - Ask Phoenix to do this processing step. Two weeks.
+  
+  - Meanwhile, I work on "teasing cells from given cell clusters" as trail.
+
+
+
+
+
+# Oct 04
+
+## 1. MultiCaQ-S coloc with GWAS loci
+
+### MultiCaQ-S on mark H3K36me3
+
+- Window 50kb, Segment size 2kb, Segment filtering `peak_overlap`, Start from GWAS loci.
+
+- [Coloc procedure with GWAS as in previous section of MultiCaQ-P on H3K27ac](#multicaqp-H3K27ac-gwas-coloc)
+
+- Numbers
+
+  - Summary of gwas loci and coloc loci.
+    
+    Each trait has ~200 loci, ~3.5 (1.8%) are colocalized with cQTLs.
+  
+  - How many coloc gwas loci are extra new cQTLs (than univariate)?
+    
+    In total, 52 coloc gwas loci are extra new cqtl. On average, traits have 2 coloc loci coloc with new cQTLs. 
+  
+  - How many coloc gwas loci are not eQTLs?
+    
+    In total, 46 coloc gwas loci are not eqtl. On average, traits have 1.7 coloc loci not overlap with any eQTL.
+
+
+```{r out.width="40%", fig.cap="Figure: Summary of gwas loci and coloc loci. 36 blood traits. (A) x-axis: trait. Grey bar: GWAS loci. Red bar: coloc loci. (B) Number of coloc loci across traits. (C) Coloc proportion across traits.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/10_04_coloc_num.pdf"), error = FALSE)
+```
+
+```{r out.width="40%", fig.cap="Figure: Coloc loci compare with (A) if coloc loci coloc with new cQTLs compared to univariate. (B) if coloc loci overlap with any eQTL.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2023/10_04_coloc_compare.pdf"), error = FALSE)
+```
+
+
+- Add loci of H3K27ac?
+
+
+### MultiCaQ-S on mark H3K27ac
+
+- Compare with results of same mark by MultiCaQ-P
+
+
+
 # Sep 06 & Sep 13
 
 As shown in last week, to compre to Dutta et. al., I proposed three ways -
@@ -1191,7 +2325,7 @@ knitr::include_graphics(c("asset/2023/06_07_coloc_gwas_qtl.png"), error = FALSE)
   - Region too wide? 500kb total.
 
 
-### Use 36 blood traits - Ben used
+### Use 36 blood traits - Ben used {#multicaqp-H3K27ac-gwas-coloc}
 
 - Ben's coloc results as comparison
   
