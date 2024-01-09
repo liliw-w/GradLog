@@ -406,7 +406,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -417,8 +417,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -427,13 +427,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-09-19
+<strong>Last updated:</strong> 2024-01-09
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -456,21 +456,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -561,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree17f3513a8f932600c6a08a4709de6fd87d490192targetblank17f3513a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6289d6e2f7d4ed98ba31e74b350534925c543b8ftargetblank6289d6ea">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/17f3513a8f932600c6a08a4709de6fd87d490192" target="_blank">17f3513</a>
+<a href="https://github.com/liliw-w/GradLog/tree/6289d6e2f7d4ed98ba31e74b350534925c543b8f" target="_blank">6289d6e</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree17f3513a8f932600c6a08a4709de6fd87d490192targetblank17f3513a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree6289d6e2f7d4ed98ba31e74b350534925c543b8ftargetblank6289d6ea"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/17f3513a8f932600c6a08a4709de6fd87d490192" target="_blank">17f3513</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/6289d6e2f7d4ed98ba31e74b350534925c543b8f" target="_blank">6289d6e</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -602,9 +599,6 @@ Ignored files:
 
 Untracked files:
     Untracked:  analysis/week_log.Rmd
-
-Unstaged changes:
-    Modified:   analysis/Log2023_a_fresh_start.Rmd
 
 </code></pre>
 <p>
@@ -650,6 +644,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/6289d6e2f7d4ed98ba31e74b350534925c543b8f/analysis/Log2023_a_fresh_start.Rmd" target="_blank">6289d6e</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+<td>
+add weeks
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a0755ce84dfa6219b49c45710c2464a5cf9fa880/analysis/Log2023_a_fresh_start.Rmd" target="_blank">a0755ce</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-09-19
+</td>
+<td>
+updates to last week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/a0755ce84dfa6219b49c45710c2464a5cf9fa880/docs/Log2023_a_fresh_start.html" target="_blank">a0755ce</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-09-19
+</td>
+<td>
+updates to last week
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1415,6 +1460,1917 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="dec-06" class="section level1">
+<h1>Dec 06</h1>
+<div id="run-cacti-p-on-all-cells-whole-blood" class="section level2">
+<h2>2. Run CACTI-P on all cells (whole blood)</h2>
+<div id="run-qtltools" class="section level3">
+<h3>Run QTLTools</h3>
+<p>To-do’s -</p>
+<p><del>- Ask and confirm questions with Phoenix on slack</del></p>
+<p><del>- Check if current QTLTools results fit our needs</del></p>
+<p><del>- Re-run QTLTools if needed</del></p>
+<ul>
+<li>Check rasqual scripts &amp; results for pseodo-bulk (scqtl is not
+what I need)</li>
+</ul>
+<p><strong>Take-aways -</strong></p>
+<ul>
+<li>Pseudo-bulk data is in rasqual folder. (scqtl folder is for single
+cell)</li>
+</ul>
+</div>
+<div id="basic-info" class="section level3">
+<h3>Basic info</h3>
+<ul>
+<li><p>Whole blood (using all cells)</p></li>
+<li><p>#individuals</p>
+<ul>
+<li><p>All individuals: 56</p></li>
+<li><p>#cells for each individual</p></li>
+<li><p>read coverage across individuals</p></li>
+</ul></li>
+<li><p>#peaks</p>
+<ul>
+<li><p>All peaks: 280,249</p></li>
+<li><p>Peak width: 500bp</p></li>
+<li><p>Peak distance:</p></li>
+<li><p>#peaks across chr’s</p></li>
+<li><p>Peak coverage</p></li>
+<li><p>Signal peaks (fdr&lt;0.05, cis 500kb) by qtltools - 2561</p></li>
+<li><p>Signal peaks (fdr&lt;0.05, cis 500kb) by rasqual -
+11,848</p></li>
+</ul></li>
+<li><p>Window size to choose</p>
+<p>Need to consider (1) window v.s. sample size, (2) ATAC-seq peak
+charateristics.</p>
+<ul>
+<li><p>50kb?</p></li>
+<li><p>#windows (non-overlapping) - 36,358</p></li>
+<li><p>#peaks within windows (v.s. sample size) - 1~66. median 5 (v.s.
+56)</p></li>
+</ul></li>
+<li><p>Cis region to use for association test</p>
+<ul>
+<li><p>Same as window size, 50kb, because …</p>
+<ul>
+<li><p>Many caQTLs are within or very close to peaks.</p></li>
+<li><p>To make sure the leftmost and rightmost peaks in the window have
+at least common cis snps within in the window.</p></li>
+<li><p>To reduce computational burden. We have much more windows than
+ChIP-seq data, and smaller window, so not to use same cis region
+(500kb).</p></li>
+</ul></li>
+<li><p>Add 500kb as cis window to analysis.</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/12_06_peak_num.pdf" title="Figure: Number of peaks across chr's." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Number of peaks across chr’s.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_06_peak_num">
+Past versions of 12_06_peak_num.pdf
+</button>
+</p>
+<div id="fig-12_06_peak_num" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/12_06_peak_num.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/12_06_peaks_on_chr_window50kb.pdf" title="Figure: Number of peak groups across chr's." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Number of peak groups across chr’s.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_06_peaks_on_chr_window50kb">
+Past versions of 12_06_peaks_on_chr_window50kb.pdf
+</button>
+</p>
+<div id="fig-12_06_peaks_on_chr_window50kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/12_06_peaks_on_chr_window50kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/12_06_peaks_in_group_window50kb.pdf" title="Figure: Number of peaks in peak windows." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Number of peaks in peak windows.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_06_peaks_in_group_window50kb">
+Past versions of 12_06_peaks_in_group_window50kb.pdf
+</button>
+</p>
+<div id="fig-12_06_peaks_in_group_window50kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/12_06_peaks_in_group_window50kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/12_06_peaks_w_cqtl_in_group_window50kb.pdf" title="Figure: Number of cpeaks in peak windows." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Number of cpeaks in peak windows.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_06_peaks_w_cqtl_in_group_window50kb">
+Past versions of 12_06_peaks_w_cqtl_in_group_window50kb.pdf
+</button>
+</p>
+<div id="fig-12_06_peaks_w_cqtl_in_group_window50kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/12_06_peaks_w_cqtl_in_group_window50kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/12_06_peaks_in_group_w_cqtl_window50kb.pdf" title="Figure: Number of cpeaks in peak windows." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Number of cpeaks in peak windows.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-12_06_peaks_in_group_w_cqtl_window50kb">
+Past versions of 12_06_peaks_in_group_w_cqtl_window50kb.pdf
+</button>
+</p>
+<div id="fig-12_06_peaks_in_group_w_cqtl_window50kb" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/12_06_peaks_in_group_w_cqtl_window50kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="association-results" class="section level3">
+<h3>Association results</h3>
+<ol style="list-style-type: decimal">
+<li>p-value distribution</li>
+</ol>
+<ul>
+<li><p>Top p-values (bonbforroni corrected)</p></li>
+<li><p>Top p-values (ACAT corrected)</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Number of significant peak groups</li>
+</ol>
+</div>
+<div id="comparison-results" class="section level3">
+<h3>Comparison results</h3>
+<ul>
+<li><p>Compare to uni-pop (qtltools)</p>
+<ul>
+<li><p>Signal numbers</p></li>
+<li><p>Effect size?</p></li>
+<li><p>Overlaps? (new vis) <a
+href="atac/figs/whole_blood/plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf">fig</a></p></li>
+</ul></li>
+<li><p>Compare to uni-allelic (rasqual)</p>
+<ul>
+<li><p>Signal numbers</p></li>
+<li><p>Effect size?</p></li>
+<li><p>Overlaps? (new vis) <a
+href="atac/figs/whole_blood/plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf">fig</a></p></li>
+</ul></li>
+</ul>
+<p><del>- Compare to sc-PME ???</del></p>
+<p>~~ - Signal numbers~~</p>
+<p>~~ - Effect size?~~</p>
+<p>~~ - Overlaps? (new vis)~~</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis500kb.pdf" title="Figure: Number of cpeaks in peak windows." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Number of cpeaks in peak windows.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis500kb">
+Past versions of
+01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis500kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Choose new window size and cis region - </strong></p>
+<p><a
+href="asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window50kb_cis50kb.pdf">window50kb_cis50kb</a></p>
+<p><a
+href="asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis500kb.pdf">window25kb_cis500kb</a></p>
+<p><a
+href="asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf">window25kb_cis25kb</a></p>
+<p><a
+href="asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window5kb_cis5kb.pdf">window5kb_cis5kb</a></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Comparison of cwindows and cpeaks." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison of cwindows and cpeaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_plt_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_dis_leadsnp_cpeak.pdf" title="Figure: Distance from lead cQTL to cpeak/cwindow (and if within any peak for cwindow). Cis region used for (1) multi (500kb, 25kb), (2) qtltools (500kb), (3) rasqual (10kb)." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Distance from lead cQTL to cpeak/cwindow (and if within any peak
+for cwindow). Cis region used for (1) multi (500kb, 25kb), (2) qtltools
+(500kb), (3) rasqual (10kb).
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_dis_leadsnp_cpeak">
+Past versions of 01_05_dis_leadsnp_cpeak.pdf
+</button>
+</p>
+<div id="fig-01_05_dis_leadsnp_cpeak" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_dis_leadsnp_cpeak.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Observations -</p>
+<ul>
+<li><p>Most lead cQTLs are close to cpeaks.</p></li>
+<li><p>Using 25kb as cis region is reasonable? 500kb too far</p></li>
+</ul>
+<p><strong>Change the way to visualize numbers - </strong></p>
+<p>as the number of peaks and windows differ a lot. Focus on windows,
+i.e. only use the right column, to show the number of cwindows not
+overlap with any cpeaks, and non-significant windows overlap with any
+cpeaks.</p>
+<p>Better way - two figures with different angles -</p>
+<p>(A1) Significant peaks, filled by overlap with cwindows. (replicated
+cpeaks &amp; missed cpeaks)</p>
+<p>(A2) Non significant peaks, filled by overlap with at least one
+cwindow. (new cpeaks)</p>
+<p>(B1) Significant windows, filled by overlap with cpeaks. (new
+windows)</p>
+<p>(B2) Non significant windows, filled by overlap with at least one
+cpeak. (missed cpeaks)</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Comparison of cwindows and cpeaks." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison of cwindows and cpeaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_plt_new_cpeak_cwindow_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Observations -</strong></p>
+<p>CACTI v.s. QTLTools -</p>
+<ul>
+<li><p>CACTI replicated most cpeaks by qtltools (upper left).</p></li>
+<li><p>CACTI found many more new signals, much more new cpeaks (upper
+right) and ~1k cwindows (lower left).</p></li>
+<li><p>CACTI missed a few cpeaks (upper left) and cwindows (lower
+right). Most missed cwindows have only 1 cpeak by QTLTools.</p></li>
+</ul>
+<p>CACTI v.s. RASQUAL -</p>
+<ul>
+<li><p>CACTI did not replicate most cpeaks by rasqual (upper
+left).</p></li>
+<li><p>CACTI found many more new new cpeaks (upper right), but only a
+few cwindows (lower left).</p></li>
+<li><p>CACTI missed many cpeaks (upper left) and cwindows (lower right).
+Most missed cwindows have only 1 cpeak by QTLTools.</p></li>
+</ul>
+<p>Looks like CACTI and RASQUAL find different signals. CACTI finds
+cwindows containing multiple cpeaks, whereas cpeaks missed by cwindows
+are those containing only one cpeaks.</p>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Is it necessary to use large cis region? Decrease cis regions
+from 500kb to 50kb found more signals. Check - Variants within 500kb
+v.s. p-value.</p></li>
+<li><p>Decrease window size found a bit more signals but not
+much.</p></li>
+<li><p>Use smaller window size &amp; smaller cis region?</p>
+<ul>
+<li><p>Using smaller cis region (25kb window, 25kb cis region) results
+in more signals. More than qtltools, but still not good as
+rasqual.</p></li>
+<li><p>5kb window &amp; 5kb cis reigon is too small, resulting in missed
+overlap windows with qtltools peaks, and with qtltools cpeaks.</p></li>
+</ul></li>
+<li><p>Why so few signals? (compared to the other two methods,
+especially to rasqual)</p>
+<ul>
+<li><p>What are those missed signals?</p>
+<ul>
+<li><p>Those missed signals by multi (but identified by rasqual or
+qtltools) tend to have low signal to noise ratio, i.e. in a window only
+a few (1 or 2) peaks are cpeaks. rasqual tends to find these “isolated”
+cpeaks, whereas cacti finds co-regulated cwindows.</p></li>
+<li><p>For writing, we can emphasize that cacti finds co-regulated
+cwindows, and examples of those new cwindows.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="show-cacti-and-rasqual-find-different-signals"
+class="section level3">
+<h3>Show CACTI and RASQUAL find different signals</h3>
+<ol style="list-style-type: decimal">
+<li>signal to noise ratio of missed and replicated windows</li>
+</ol>
+<blockquote>
+<p>Looks like CACTI and RASQUAL find different signals. CACTI finds
+cwindows containing multiple cpeaks, whereas cpeaks missed by cwindows
+are those containing only one cpeaks.</p>
+</blockquote>
+<ul>
+<li><p>missed and replicated windows have difference signal to noise
+ratio, therefore, CACTI finds cQTLs of co-regulated peaks.</p>
+<ul>
+<li><p>num of cpeaks for missed and replicated windows</p></li>
+<li><p>size of missed and replicated windows</p></li>
+<li><p>signal to noise ratio of missed and replicated windows</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Missed and replicated windows have difference signal to noise ratio." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Missed and replicated windows have difference signal to noise
+ratio.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Compare to CRDs or TADs</li>
+</ol>
+<p><strong>Rational -</strong></p>
+<p>[Ref]</p>
+<ul>
+<li><p>Physical interactions between REs are commonly mapped with
+chromosome conformation capture (3C) techniques, such as Hi-C. In
+practice, Hi-C measures 3D contacts between distinct DNA regions and
+therefore potential functional links between REs.</p></li>
+<li><p>By contrast, interindividual correlation captures the coordinated
+activity of REs resulting from (direct or indirect) functional
+links.</p></li>
+<li><p>We therefore looked at how structure among peaks within cwindows
+compare to functional links and 3D contacts.</p></li>
+</ul>
+<p><strong>Basis info about CRDs -</strong></p>
+<ul>
+<li><p>How?</p></li>
+<li><p>“… regrouped 40.9% (n = 111,005) and 16.6% (n = 45,062) of the
+chromatin peaks within 12,583 and 10,442 CRDs in LCLs and fibroblasts,
+respectively.”</p></li>
+</ul>
+<p><strong>Do replicated cwindows more likely overlap with any CRDs than
+missed cwindows by rasqual/qtltools?</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_rep_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Do replicated cwindows more likely overlap with any CRDs than missed cwindows by rasqual/qtltools?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Do replicated cwindows more likely overlap with any CRDs than
+missed cwindows by rasqual/qtltools?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_rep_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_fig_rep_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_fig_rep_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_rep_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Observations -</p>
+<ul>
+<li>No significant enrichment.</li>
+</ul></li>
+</ul>
+<p><strong>Do replicated cwindows more likely fall within same CRDs than
+missed cwindows by rasqual/qtltools?</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_rep_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Do replicated cwindows more likely fall within same CRDs than missed cwindows by rasqual/qtltools?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Do replicated cwindows more likely fall within same CRDs than
+missed cwindows by rasqual/qtltools?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_rep_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_fig_rep_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_fig_rep_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_rep_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Observations -</p>
+<ul>
+<li>No significant enrichment.</li>
+</ul></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Compare to ChromHMM functional annotations</li>
+</ol>
+<p><strong>Rational -</strong></p>
+<p>RASQUAL cpeaks less likely fall within functional annotations (false
+positives).</p>
+<p><strong>Basis info about ChromHMM functional annotations
+-</strong></p>
+<ul>
+<li><p>ChromHMM: automating chromatin-state discovery and
+characterization.</p></li>
+<li><p>ChromHMM functional annotations of chromatin states in hg19,
+across 127 Reference Epigenomes (111 Roadmap cell types and 16 ENCODE
+cell lines), using 12 histone marks and 25 states.</p></li>
+</ul>
+<p><strong>Do replicated cwindows more likely fall within functional
+annotations than missed cwindows by rasqual/qtltools?</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_func_annot_new.pdf" title="Figure: Do replicated cwindows more likely fall within functional annotations than missed cwindows by rasqual/qtltools?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Do replicated cwindows more likely fall within functional
+annotations than missed cwindows by rasqual/qtltools?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_func_annot_new">
+Past versions of 01_05_fig_func_annot_new.pdf
+</button>
+</p>
+<div id="fig-01_05_fig_func_annot_new" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_func_annot_new.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="characterization-of-signals-new-signals"
+class="section level3">
+<h3>Characterization of signals &amp; new signals</h3>
+<ol style="list-style-type: decimal">
+<li>compare to CRDs or TADs</li>
+</ol>
+<p>Rational -</p>
+<p>CACTI finds cwindows of co-regulated peaks.</p>
+<p><strong>(all signals) Do cwindows more likely overlap with any CRDs
+than non-cwindows?</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_fig_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_fig_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_cwindow_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_cwindow_crd_num_overlap_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: if cwindows and CRDs frequently overlap" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: if cwindows and CRDs frequently overlap
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_cwindow_crd_num_overlap_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_fig_cwindow_crd_num_overlap_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_fig_cwindow_crd_num_overlap_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_cwindow_crd_num_overlap_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_cwindow_crd_dis_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: if cwindows closer to CRDs than non-cwindows" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: if cwindows closer to CRDs than non-cwindows
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_cwindow_crd_dis_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_fig_cwindow_crd_dis_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_fig_cwindow_crd_dis_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_cwindow_crd_dis_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Observations -</p>
+<ul>
+<li><p>cwindows are enriched for CRDs. They have correlations. TADS
+functional links.</p></li>
+<li><p>cwindows and CRDs frequently overlap.</p></li>
+<li><p>But distance from cwindow and non-cwindows to CRDs no significant
+difference.</p></li>
+</ul></li>
+</ul>
+<p><strong>(all signals) Are cwindows more likely with same CRDs than
+non-cwindows?</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Are cwindows more likely with same CRDs than non-cwindows?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Are cwindows more likely with same CRDs than non-cwindows?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_05_fig_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_05_fig_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_cwindow_crd_same_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Observations -</p>
+<ul>
+<li>No significant enrichment.</li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>compare to chromHMM functional annotations</li>
+</ol>
+<p><strong>Do cwindows more likely fall within functional annotations
+than non-cwindows?</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/01_05_fig_func_annot_all.pdf" title="Figure: Do cwindows more likely fall within functional annotations than non-cwindows?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Do cwindows more likely fall within functional annotations than
+non-cwindows?
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_05_fig_func_annot_all">
+Past versions of 01_05_fig_func_annot_all.pdf
+</button>
+</p>
+<div id="fig-01_05_fig_func_annot_all" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/01_05_fig_func_annot_all.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>eQTLs (uni-pop, uni-allelic, sc-PME)</p></li>
+<li><p>GWAS (uni-pop, uni-allelic, sc-PME)</p></li>
+</ol>
+</div>
+</div>
+<div id="run-cacti-p-on-cell-types" class="section level2">
+<h2>2. Run CACTI-P on cell types</h2>
+<div id="steps-of-caution" class="section level3">
+<h3>Steps of caution</h3>
+<ul>
+<li><p>Check rasqual scripts &amp; results for pseudo-bulk data</p></li>
+<li><p>Run QTLTools on cell types</p></li>
+<li><p>Data QC on several scales (see below)</p></li>
+<li><p>Data normalization on several scales (see below)</p></li>
+<li><p>Window size to choose</p></li>
+</ul>
+</div>
+<div id="basic-info-1" class="section level3">
+<h3>Basic info</h3>
+<p>(Make a table for main cell types)</p>
+</div>
+</div>
+<div id="phoenixs-results-of-pbmc-scatac-from-56-individuals"
+class="section level2">
+<h2>1. Phoenix’s results of PBMC scATAC from 56 individuals</h2>
+<p>Base directory: <code>/project/yangili1/zpmu/xijing/ra/</code>.</p>
+<p>For now, use cells/results from all threee datasets. (But downsample
+to ~20 samples?)</p>
+<div id="cell-level-data" class="section level3">
+<h3>Cell level data</h3>
+<div id="cell-by-peak-matrix" class="section level4">
+<h4>Cell by peak matrix</h4>
+<p>Single-cell level count matrix as <code>SummarizedExperiment</code>
+objects.</p>
+<p><code>data/scqtl/peakMtrx_chr{1..22}_3study.rds</code></p>
+<ul>
+<li><p>Cell-level metadata - individual information</p></li>
+<li><p>Cell-level metadata - cell type information</p></li>
+</ul>
+</div>
+<div id="covariates" class="section level4">
+<h4>Covariates</h4>
+<ul>
+<li><p>Single-cell level phenotypic PC (LSI embedding)</p>
+<p><code>data/scqtl/IterativeLSI50_3study.rds</code></p></li>
+<li><p>Genotype PC calculated by smartPCA together with 1000G
+samples</p>
+<p><code>data/glimpse/1kg_merged3_chr1-22.merged.1kgfmt.pruned.eigenvec</code></p></li>
+</ul>
+</div>
+</div>
+<div id="pseudo-bulk-level-data" class="section level3">
+<h3>Pseudo-bulk level data</h3>
+<div id="individual-data" class="section level4">
+<h4>individual data</h4>
+<p>For <code>all cell1</code> (whole blood),
+<code>data/rasqual/harmonised_smp.txt</code>.</p>
+<p>For <code>L1</code> and <code>L2</code> cell types, some individuals
+with low cell number were removed, therefore the list of individuals are
+in these files,
+<code>data/rasqual/smp_to_use_L{1..2}_{cell}.txt</code>.</p>
+</div>
+<div id="genotype" class="section level4">
+<h4>Genotype</h4>
+<p><code>data/rasqual/as_vcf_3study/chr{1..22}.filtered.dosage.txt.gz</code></p>
+<p><code>data/rasqual/as_vcf_3study/chr{1..22}.filtered.vcf.gz</code>
+(vcf format)</p>
+</div>
+<div id="pseudo-bulk-count-data" class="section level4">
+<h4>Pseudo-bulk count data</h4>
+<p>Whole-blood:
+<code>data/rasqual/sum_3study_allCell_hornet.txt.gz</code></p>
+<p>L1 cell types:
+<code>data/rasqual/sum_3study_L1_hornet.txt.gz</code></p>
+<p>L2 cell types:
+<code>data/rasqual/sum_3study_L2_hornet.txt.gz</code></p>
+</div>
+<div id="covariates-for-count-data" class="section level4">
+<h4>Covariates for count data</h4>
+<p>Whole-blood:
+<code>data/rasqual/input_table_3study/PC-{nPC}_3study_allCell_hornet.txt</code></p>
+<p>L1 cell types:
+<code>data/rasqual/input_table_3study/PC-{nPC}_3study_L1_hornet_{cell}.txt</code></p>
+<p>L2 cell types:
+<code>data/rasqual/input_table_3study/PC-{nPC}_3study_L2_hornet_{cell}.txt</code></p>
+</div>
+<div id="summary-stats" class="section level4">
+<h4>Summary stats</h4>
+<p>Summary stats for all SNPs from Metasoft in whole blood and seven
+cell-types:
+<code>results/metasoft/poi_scale_*_noGC_formatted_v1.txt.gz</code></p>
+<p>Lead caQTL from Metasoft in whole blood and seven cell-types:
+<code>results/metasoft/poi_scale_*_noGC_formatted_v1_lead.txt.gz</code></p>
+</div>
+</div>
+</div>
+<div id="data-qc" class="section level2">
+<h2>2. Data QC</h2>
+<ol style="list-style-type: decimal">
+<li><p>Cells</p></li>
+<li><p>Individuals</p></li>
+<li><p>Peaks</p></li>
+<li><p>Variants</p></li>
+</ol>
+<p><strong>All cells –&gt; Cell types –&gt; (1) Cell numbers, (2) Read
+coverage –&gt; (1) Individuals (cell numbers), (2) Peaks (read coverage)
+</strong></p>
+</div>
+<div id="data-normalization" class="section level2">
+<h2>3. Data normalization</h2>
+<ol style="list-style-type: decimal">
+<li><p>Cells</p></li>
+<li><p>Individuals</p></li>
+<li><p>Peaks</p></li>
+<li><p>Variants</p></li>
+</ol>
+</div>
+<div id="cacti-p-in-whole-blood" class="section level2">
+<h2>4. CACTI-P in whole blood</h2>
+<ol style="list-style-type: decimal">
+<li>Univariate z-scores of snps v.s. peaks (fastQTL)</li>
+</ol>
+<ul>
+<li><p>Inputs of Metasoft (PME)? (ind by peak mat, covariates, geno)</p>
+<ul>
+<li><p>Pipeline
+<code>/project2/yangili1/zpmu/xijing/ra/scripts/scqtl/scqtl.smk</code></p></li>
+<li><p>Check what QC and normalization were done?</p>
+<ul>
+<li>Script?
+<code>/project2/yangili1/zpmu/xijing/ra/scripts/scatac/16_merged3_analysis_clean.R</code></li>
+</ul></li>
+</ul></li>
+<li><p>Ben’s fastQTL pipeline (double check outputs are same as Ben’s
+previous results)</p></li>
+</ul>
+<p>ArchR project folder, containing all other types of data and many
+files I used in my own analysis.</p>
+<p>data/scatac/archR_3study_v1New_clean</p>
+</div>
+</div>
+<div id="nov-15" class="section level1">
+<h1>Nov 15</h1>
+<div id="paper-revision-1" class="section level2">
+<h2>1. Paper revision 1</h2>
+<p>Table of signal numbers in googlesheets. A fews things to note -</p>
+<ul>
+<li><p>I have the numbers for LD independent signals in eQTLGen, but I
+still don’t think it makes sense to report these numbers -</p>
+<ul>
+<li>As we already explained in main text (line 505)</li>
+</ul>
+<blockquote>
+<p>“As in eQTLGen, we did not perform LD clumping on trans-eSNPs,
+because they were GWAS SNPs associated with different traits and
+diseases.”</p>
+</blockquote>
+<ul>
+<li>To do LD clumping, we need to use DGN genotypes. However, not all
+eQTLGen variants are in DGN, so many top trans variants are missed, and
+#independent loci is underestimated and inaccurate.</li>
+</ul></li>
+<li><p>To answer question b, I think our main text description is clear,
+but maybe adding the numbers as a supp table?</p></li>
+<li><p>To answer the first part of question c,</p>
+<p>The number of LD-independent signals and trans-eQTL module pairs
+(179) are defined in different ways and for different purposes.</p>
+<ul>
+<li><p>The LD-independent signals are defined by using LD clumping while
+accounting for LD (R2&lt;0.2). This is for reporting the number of
+independent signals.</p></li>
+<li><p>The 179 trans-eQTL loci are regions for performing colocalizaiton
+analysis. They are defined as fixed-width (200kb) flanking genomic
+regions centered at a lead signal. Please see Lines 812-822 for more
+detailed descriptions.</p></li>
+<li><p>These two types of regions are similar, as we expect those 200kb
+flanking genomic regions have low LD. In fact, there are 145 (LD
+independent trans-loci, module) pairs, which is similar to 179 pairs we
+used for coloc.</p></li>
+</ul></li>
+<li><p>To answer the second part of question c, it’s the last row in the
+table.</p></li>
+</ul>
+</div>
+<div id="paper-revision-2" class="section level2">
+<h2>2. Paper revision 2</h2>
+<ul>
+<li><p>Traits v.s. transQTL of co-expression gene module in DGN</p>
+<p>I looked at those six immune traits, in terms of finding the coloc
+region between a trait and a co-expression gene module in DGN. The coloc
+region is defined as a 200kb region centered at a transQTL (before
+merging with other neighboring coloc regions). I then take the transQTL
+(lead SNP), and find its nearest/near genes. See files
+attached.</p></li>
+<li><p>Traits v.s. transQTL of co-expression gene module in eQTLGen</p>
+<p>I looked at if trait signal snps are also transQTLs of co-expression
+gene modules in eQTLGen. Trait signal snps are defined as those with
+p&lt;5e-8. I then check if they are also transQTLs, and find its
+nearest/near genes. See files attached. Each row of a file is a trait
+signal snp, and its corresponding trans target module. One trait signal
+snp can appear in multiple rows if they have multiple trans target
+module in eQTLGen.</p></li>
+</ul>
+</div>
+<div id="paper-revision-3" class="section level2">
+<h2>3. Paper revision 3</h2>
+<div id="v1" class="section level3">
+<h3>V1</h3>
+<p><strong>To look at the enrichment of target genes in the transeQTL
+nearest genes</strong>, I did steps -</p>
+<ul>
+<li><p>I looked at 5 immune diseases.</p></li>
+<li><p>I found significant trait-associated snps in eQTLGen for each
+trait.</p></li>
+<li><p>I looked at the nearest genes and check if they are trans
+signals.</p></li>
+<li><p>I also checked if they are target genes of the trait.</p></li>
+</ul>
+<p><strong>Figure -</strong></p>
+<ul>
+<li><p>x: if a snp is trans signal</p></li>
+<li><p>y: number of snps</p></li>
+<li><p>each panel: a trait</p></li>
+<li><p>color: if the snp’s nearest gene is target gene</p></li>
+<li><p>lower panel: I used only target genes of the corresponding
+trait</p></li>
+<li><p>upper [anel: I used all target genes of any trait</p></li>
+</ul>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>There is no enrichment of target genes in nearest genes of trans
+snps</p></li>
+<li><p>If I use only target gene of the corresponding trait (lower
+panel), there is basically no overlap between nearest genes of
+trait-associated snps (no matter it’s trans or not) and target genes,
+i.e. few red color.</p></li>
+<li><p>If I use all target genes of any trait, there are some overlap
+(more red), but the enrichment is not significant.</p></li>
+</ul>
+<p><strong>Some reasons/changes may improve enrichment -</strong></p>
+<ul>
+<li><p>Use other lists of target genes</p></li>
+<li><p>We were looking at eQTLGen trans snps that are disease associated
+snp. These snps are already trait-associated. If we directly look at the
+enrichemnt, I think we are more looking at the “trait specific”
+enrichment, as basically all those snps are expected to be enriched for
+trans snps. it’s like the logic in Dutta et al. Should we use general
+snps in DGN? or just use the absolute number of overlap genes?</p></li>
+<li><p>Should we use trans snp across all traits instead of consider
+each trait separately?</p></li>
+<li><p>I think you mentioned to look at if snps are trans snps of only
+those immune related module, but now I am using all modules to define
+trans snps. If I use the former, the overlap will be less (red
+color)</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/target_enrich.pdf" title="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. " width="40%" type="application/pdf" />
+<p class="caption">
+Figure: To look at the enrichment of target genes in the transeQTL
+nearest genes.
+</p>
+</div>
+</div>
+<div id="v2" class="section level3">
+<h3>V2</h3>
+<p><strong>Updated results for using transeqtl of only immune related
+co-expression gene modules.</strong> Steps -</p>
+<ul>
+<li><p>I first go through all coexpression gene modules, and pick those
+are immune/blood related. There are 26 such modules.</p></li>
+<li><p>I then define a trait-associated snp to be transeqtl if it’s
+associated at least one of those 26 modules.</p></li>
+<li><p>Similarly as previous, I overlap trans eqtls’ nearest genes with
+target genes</p></li>
+<li><p>Updated results are in the third row.</p></li>
+</ul>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Less transeqtls under this definition</p></li>
+<li><p>Seems no significant enrichment in target genes</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/target_enrich.pdf" title="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. " width="40%" type="application/pdf" />
+<p class="caption">
+Figure: To look at the enrichment of target genes in the transeQTL
+nearest genes.
+</p>
+</div>
+</div>
+<div id="v3" class="section level3">
+<h3>V3</h3>
+<p><strong>Changes -</strong></p>
+<ul>
+<li><p>Change visualization to the opposite, i.e. to see if drug targets
+are more likely to be trans signals of immune related modules.</p></li>
+<li><p>Use genes instead of SNPs.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/target_enrich_target_vs_trans_snp.pdf" title="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. " width="40%" type="application/pdf" />
+<embed src="asset/2023/target_enrich_target_vs_trans_gene.pdf" title="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. " width="40%" type="application/pdf" />
+<p class="caption">
+Figure: To look at the enrichment of target genes in the transeQTL
+nearest genes.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ol style="list-style-type: decimal">
+<li>Obs 1 for disease allergy</li>
+</ol>
+<p>It might be interesting to check out gene plot, Panel A &amp;C, of
+allergy. Out of 3 trait-associated genes that are target, all of them
+are near to a trans snp (A), and two of them are near to a trans snp
+corresponding to a immune related gene module</p>
+<p>The genes are -</p>
+<ul>
+<li><p>ERBB3 (chr12), corresponding to M87 and M97, all of which are
+immune/blood related.</p></li>
+<li><p>IL2 (chr4), corresponding to no modules that are immune/blood
+related.</p></li>
+<li><p>UGT3A1 (chr5), corresponding to M62, M76, M87, all of which are
+immune/blood related.</p></li>
+</ul>
+<p>Their corresponding trans gene modules are -</p>
+<pre><code>gene_module                                                                      GO:BP_term_name
+1:          62 cytokine-mediated signaling pathway;tumor necrosis factor-mediated signaling pathway
+2:          76                                system development;multicellular organism development
+3:          87             positive regulation of T cell activation;regulation of T cell activation
+4:          97                                                  cytoplasmic translation;translation
+                                                   GO:MF_term_name
+1:                                      cytokine receptor activity
+2:                           molecular function regulator activity
+3:                                         T cell receptor binding
+4: structural constituent of ribosome;structural molecule activity
+                                                                                         KEGG_term_name
+1: Cytokine-cytokine receptor interaction;Viral protein interaction with cytokine and cytokine receptor
+2:                                             Prolactin signaling pathway;NF-kappa B signaling pathway
+3:                                           Th17 cell differentiation;Th1 and Th2 cell differentiation
+4:                                                              Ribosome;Coronavirus disease - COVID-19
+                                                                                                                    REAC_term_name
+1:                                                          TNFR1-induced NFkappaB signaling pathway;Regulation of TNFR1 signaling
+2: Nucleotide-binding domain, leucine rich repeat containing receptor (NLR) signaling pathways;Cytokine Signaling in Immune system
+3:                                     Generation of second messenger molecules;Binding of TCF/LEF:CTNNB1 to target gene promoters
+4:                                                                                 Viral mRNA Translation;Peptide chain elongation</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Obs 2 across all traits</li>
+</ol>
+<p>The above is for allergy trait. Across all traits -</p>
+<ul>
+<li>Genes that are target and near a trans eqtl -</li>
+</ul>
+<pre><code>        nearest_gene
+ 1:       DNMT3A
+ 2:        ERBB3
+ 3:       GPBAR1
+ 4:          IL2
+ 5:          IL3
+ 6:         NCF4
+ 7:         PPIF
+ 8:        PSMB8
+ 9:       PTGER4
+10:        SH2B3
+11:          TNF
+12:       UGT3A1</code></pre>
+<ul>
+<li>Genes that are target and near a trans eqtl of an immune-related
+module -</li>
+</ul>
+<pre><code>   nearest_gene
+1:       DNMT3A
+2:        ERBB3
+3:         NCF4
+4:         PPIF
+5:        SH2B3
+6:          TNF
+7:       UGT3A1</code></pre>
+</div>
+<div id="hall-mark-gene-sets" class="section level3">
+<h3>Hall mark gene sets</h3>
+<p>Using hallmark gene sets as modules, 11 have signals, 5 are immune
+related gene sets.</p>
+<ul>
+<li>I define a gene set as immune related if it has direct relation with
+immune response or blood, e.g. genes are immune related genes, or
+pathway description includes blood cells.</li>
+</ul>
+<p><strong>Figures -</strong></p>
+<ul>
+<li><p>1st fig: using snps</p></li>
+<li><p>2nd fig: using genes</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/target_enrich_target_vs_trans_snp_hallmark.pdf" title="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. " width="40%" type="application/pdf" />
+<embed src="asset/2023/target_enrich_target_vs_trans_gene_hallmark.pdf" title="Figure: To look at the enrichment of target genes in the transeQTL nearest genes. " width="40%" type="application/pdf" />
+<p class="caption">
+Figure: To look at the enrichment of target genes in the transeQTL
+nearest genes.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Less snps/genes are drug targets as well as being trans signal of
+an immune related module.</p></li>
+<li><p>Genes that are target and near a trans eqtl -</p></li>
+</ul>
+<pre><code>   nearest_gene
+1:        ERBB3
+2:          IL3
+3:         NCF4
+4:        SH2B3</code></pre>
+<ul>
+<li>Genes that are target and near a trans eqtl of an immune-related
+module -</li>
+</ul>
+<pre><code>   nearest_gene
+1:          IL3
+2:         NCF4
+3:        SH2B3</code></pre>
+<ul>
+<li><p>My definition of a gene set being immune related might be
+inaccurate.</p>
+<ul>
+<li><p>In coexpression module, gene ERBB3 belongs to the second
+category, its near trans eqtl of an immune related module. So I checked
+the gene’s associated hallmark gene sets. There are two -
+HALLMARK_CHOLESTEROL_HOMEOSTASIS and HALLMARK_PANCREAS_BETA_CELLS. I
+digged deeper and found that HALLMARK_PANCREAS_BETA_CELLS can be immune
+related. so does HALLMARK_CHOLESTEROL_HOMEOSTASIS. so, ERBB3 should also
+be in the second categoty.</p></li>
+<li><p>Def file
+<code>/project2/xuanyao/llw/MODULES/MSigDB/msig_50_table_immune_related.txt</code></p></li>
+<li><p>Modify the file …</p>
+<ul>
+<li><p>Out of 50 hallmark gene sets, 9 are immune related gene
+sets.</p></li>
+<li><p>Using updated immune gene set def, enrichment OR and p don’t
+change much.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="enrichment-or-p" class="section level3">
+<h3>Enrichment OR &amp; p</h3>
+<p>Results see slack.</p>
+<p>Use genes and for the immune related modules only.</p>
+<ul>
+<li><p>Co-expression modules</p></li>
+<li><p>Hallmark</p></li>
+<li><p>Co-expression &amp; Hallmark</p></li>
+</ul>
+</div>
+</div>
+<div id="redo-ld-clumping" class="section level2">
+<h2>4. Redo LD clumping</h2>
+<p>Issue - there are 145 loci-module pairs and 145 loci too. Does that
+mean there is no loci that regulate multiple modules?</p>
+<p>Previously I had a bug in code of ld clumping, where I assign signal
+files of all modules to plink clumping in one run. I thought plink would
+do clumping for each file separately, but it actually take all signals
+across all files. That’s why the number was the same when I consider
+only the snps.</p>
+<p>So I loop over each module instead and run plink clumping for each
+module separately. The current numbers should be correct.</p>
+<p>(LD independent trans-loci, module) is more than LD independent
+trans-loci, which means some loci regulate multiple modules.</p>
+</div>
+<div id="a-few-numbers-of-allergy-example-for-drug-target"
+class="section level2">
+<h2>5. A few numbers of allergy example for drug target</h2>
+<p><strong>Q 1) How many launched drug targets are there for allergy in
+the broad database</strong></p>
+<pre><code>There are 2184 targets in total.
+1338 are launched.
+1153 are with a disease,
+55 are for allergy trait.</code></pre>
+<p><strong>Q 2) How many are near a GWAS loci included in eQTLGen (eg,
+within 1Mb)</strong></p>
+<pre><code>47 are near a eQTGen snp (within 1Mb).</code></pre>
+<p><strong>Q 3) How many are trans-eQTLs of immune related
+pathways?</strong></p>
+<ul>
+<li><p>#1. trans-eQTLs of coexp-module</p>
+<ul>
+<li><p>23 targets are near (&lt;1Mb) a trans-qtl associated with at
+least one coexp-module.</p></li>
+<li><p>12 targets are near (&lt;1Mb) a trans-qtl associated with at
+least one immune related coexp-module.</p></li>
+</ul></li>
+<li><p>#2. trans-eQTLs of hallmark-module</p>
+<ul>
+<li><p>10 targets are near (&lt;1Mb) a trans-qtl associated with at
+least one hallmark-module.</p></li>
+<li><p>9 targets are near (&lt;1Mb) a trans-qtl associated with at least
+one immune related hallmark-module.</p></li>
+</ul></li>
+</ul>
+<p><strong>Q 4) If the number is not zero for 2 and 3, can you also
+provide the names of the genes and the gene modules</strong></p>
+<ul>
+<li><p>Coexp-module</p>
+<p><code>/project2/xuanyao/llw/translation/target_eqtlgen_trans_module_coexp.txt</code></p></li>
+<li><p>Hallmark-module</p>
+<p><code>/project2/xuanyao/llw/translation/target_eqtlgen_trans_module_hallmark.txt</code></p></li>
+<li><p>Columns are -</p>
+<ul>
+<li><p>target</p></li>
+<li><p>n_trans_module: number of trans target modules regulated by any
+trans-eqtl (1Mb) near the target</p></li>
+<li><p>trans_module: trans target modules regulated by any trans-eqtl
+(1Mb) near the target</p></li>
+<li><p>n_trans_module_immune: number of trans target modules (immune
+related) regulated by any trans-eqtl (1Mb) near the target</p></li>
+<li><p>trans_module_immune: trans target modules (immune related)
+regulated by any trans-eqtl (1Mb) near the target</p></li>
+</ul></li>
+</ul>
+<p><strong>note -</strong></p>
+<ul>
+<li><p>this is for allergy trait only</p></li>
+<li><p>By a snp near a gene, the def is if a snp is within 500kb of a
+gene’s upstream or downstream (1Mb in total)</p></li>
+</ul>
+<div id="updated-results-using-allergy-gwas-significant-snps"
+class="section level3">
+<h3>Updated results using allergy gwas significant snps</h3>
+<p><strong>Q 2) How many are near a GWAS loci included in eQTLGen (eg,
+within 1Mb)</strong></p>
+<pre><code>5 are near a eQTGen snp (within 1Mb).</code></pre>
+<p><strong>Q 3) How many are trans-eQTLs of immune related
+pathways?</strong></p>
+<ul>
+<li><p>#1. trans-eQTLs of coexp-module</p>
+<ul>
+<li><p>2 targets are near (&lt;1Mb) a trans-qtl associated with at least
+one coexp-module.</p></li>
+<li><p>2 targets are near (&lt;1Mb) a trans-qtl associated with at least
+one immune related coexp-module.</p></li>
+<li><p>Target genes are: UGT3A1 and IL3</p></li>
+</ul></li>
+<li><p>#2. trans-eQTLs of hallmark-module</p>
+<ul>
+<li><p>1 targets are near (&lt;1Mb) a trans-qtl associated with at least
+one hallmark-module.</p></li>
+<li><p>1 targets are near (&lt;1Mb) a trans-qtl associated with at least
+one immune related hallmark-module.</p></li>
+<li><p>Target genes are: IL3</p></li>
+</ul></li>
+</ul>
+<p><strong>Q 4) If the number is not zero for 2 and 3, can you also
+provide the names of the genes and the gene modules</strong></p>
+<ul>
+<li><p>Coexp-module</p>
+<p><code>/project2/xuanyao/llw/translation/target_gwas_eqtlgen_trans_module_coexp.txt</code></p></li>
+<li><p>Hallmark-module</p>
+<p><code>/project2/xuanyao/llw/translation/target_gwas_eqtlgen_trans_module_hallmark.txt</code></p></li>
+</ul>
+<p><strong>A few things to note -</strong></p>
+<ul>
+<li><p>This is actually similar to the analysis I did before, as in
+previous message, where I used the “nearest gene”, here I am using cis
+genes &lt;1Mb</p></li>
+<li><p>Previous version using nearest gene, there were three target
+genes: ERBB3, IL2, UGT3A1 (compared to two genes: UGT3A1 and IL3, using
+cis genes)</p>
+<ul>
+<li><p>UGT3A1 is also target gene using cis genes</p></li>
+<li><p>IL2 is not, as it’s not corresponding to immune related modules,
+whereas here we use only immune modules</p></li>
+<li><p>ERBB3 is not target gene in current results, as it’s not a target
+of allergy trait, so it’s filtered out (see table below for this target
+info)</p></li>
+</ul></li>
+<li><p>Overall, using “cis genes” increases one gene “IL3” as a target
+near a allergy associated snp in eQTLGen that regulates a tran target
+coexpression-gene-module and hallmark-gene-set</p>
+<ul>
+<li><p>Regulated coexp-module (Module108)</p></li>
+<li><p>Regulated hallmark gene set</p></li>
+</ul></li>
+</ul>
+<pre><code>gene_module
+108
+                                                                                                       GO:BP_term_name
+antigen processing and presentation of exogenous antigen;peptide antigen assembly with MHC class II protein complex
+                                                    GO:MF_term_name
+MHC class II protein complex binding;MHC protein complex binding
+                               KEGG_term_name
+Antigen processing and presentation;Asthma
+                                                                       REAC_term_name
+MHC class II antigen presentation;Translocation of ZAP-70 to Immunological synapse</code></pre>
+<pre><code>HALLMARK_IL6_JAK_STAT3_SIGNALING
+HALLMARK_NOTCH_SIGNALING</code></pre>
+</div>
+</div>
+<div id="new-way-to-do-enrichment" class="section level2">
+<h2>6. New way to do enrichment</h2>
+<p>See results on slack thread -</p>
+<p><a
+href="https://liulabuchicago.slack.com/archives/DSHGE9T63/p1701392735355239"
+class="uri">https://liulabuchicago.slack.com/archives/DSHGE9T63/p1701392735355239</a></p>
+<div id="gene-based-enrichment" class="section level3">
+<h3>Gene-based enrichment</h3>
+<ol style="list-style-type: decimal">
+<li><p>Basing on eQTLGen snps.</p></li>
+<li><p>Basing on trans snps in eQTLGen.</p></li>
+</ol>
+<ul>
+<li><p>Table 1</p></li>
+<li><p>Table 2</p></li>
+<li><p>Table 3</p></li>
+<li><p>How I did?</p></li>
+<li><p>Note</p></li>
+</ul>
+</div>
+<div id="snp-based-enrichment" class="section level3">
+<h3>SNP-based enrichment</h3>
+<ol style="list-style-type: decimal">
+<li><p>Basing on eQTLGen snps.</p></li>
+<li><p>Basing on trans snps in eQTLGen.</p></li>
+</ol>
+</div>
+<div id="immune-modules" class="section level3">
+<h3>Immune modules</h3>
+<p>How many co-expression gene modules and hall mark gene sets are
+immune related? and how many gene modules and hallmark gene sets in
+total?</p>
+<ul>
+<li><p>co-expression: 166 in total, 26 immune related. 129 used for
+eQTLGen, 17 immune related.</p></li>
+<li><p>hallmark: 50 in total, 9 immune related. 11 used for eQTLGen, 2
+immune related.</p></li>
+</ul>
+</div>
+</div>
+<div id="peak-calling-in-archr" class="section level2">
+<h2>3. Peak calling in ArchR</h2>
+<p>Per pseudo-bulk replicate under each cell cluster.</p>
+<ol style="list-style-type: decimal">
+<li><p>MACS2, peak calling, summit. The majority of ATAC-seq peaks are
+less than 500bp.</p></li>
+<li><p>Expand a 500bp fix-width peak centered at the summit.</p></li>
+<li><p>Merged non-overlapping fixed-width peak set across replicates by
+iterative overlap peak merging.</p></li>
+</ol>
+</div>
+<div id="apply-two-applications-of-cacti-to-single-cell-data"
+class="section level2">
+<h2>4. Apply two applications of CACTI to single cell data</h2>
+<ul>
+<li><p>Different goals</p>
+<ul>
+<li><p>Improve power by aggregating 500bp peaks based on ArchR results
+(Mainly to compare QTL mapping methods, e.g. QTLTool, allele specific
+mapping.)</p></li>
+<li><p>Improve power by skip peak calling of MACS2 for narrow elements
+(Genome-wide 500bp segments. Mainly to compare peak calling. Is it
+necessary given that MACS2 calls accurate peaks for narrow
+elements?)</p></li>
+</ul></li>
+</ul>
+<p><strong>What is the goal of applying CACTI to single cell
+data?</strong> To show CACTI can find more cQTLs even given small sample
+size? To show CACTI is more powerful cQTL calling tool in single cell
+data? Compare to single cell methods instead of bulk methods? Which way
+we should apply CACTI?</p>
+<ul>
+<li><p>Implementation</p>
+<ul>
+<li><p>To tease out Xijing data, we need to redo single cell processing
+from the beginning.</p>
+<ul>
+<li><p>We can’t simply remove cells of Xijing data from the step before
+pseudo-bulk.</p></li>
+<li><p>As removal of cells affect many pre-processing steps, e.g. batch
+effect removal, cell clustering, ArchR project setup, etc.</p></li>
+<li><p>It also affects manuscript writing, e.g. how we cluster cells
+using three datasets and remove cells from clusters.</p></li>
+</ul></li>
+<li><p>Ask Phoenix to do this processing step. Two weeks.</p></li>
+<li><p>Meanwhile, I work on “teasing cells from given cell clusters” as
+trail.</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="oct-04" class="section level1">
+<h1>Oct 04</h1>
+<div id="multicaq-s-coloc-with-gwas-loci" class="section level2">
+<h2>1. MultiCaQ-S coloc with GWAS loci</h2>
+<div id="multicaq-s-on-mark-h3k36me3" class="section level3">
+<h3>MultiCaQ-S on mark H3K36me3</h3>
+<ul>
+<li><p>Window 50kb, Segment size 2kb, Segment filtering
+<code>peak_overlap</code>, Start from GWAS loci.</p></li>
+<li><p><a href="#multicaqp-H3K27ac-gwas-coloc">Coloc procedure with GWAS
+as in previous section of MultiCaQ-P on H3K27ac</a></p></li>
+<li><p>Numbers</p>
+<ul>
+<li><p>Summary of gwas loci and coloc loci.</p>
+<p>Each trait has ~200 loci, ~3.5 (1.8%) are colocalized with
+cQTLs.</p></li>
+<li><p>How many coloc gwas loci are extra new cQTLs (than
+univariate)?</p>
+<p>In total, 52 coloc gwas loci are extra new cqtl. On average, traits
+have 2 coloc loci coloc with new cQTLs.</p></li>
+<li><p>How many coloc gwas loci are not eQTLs?</p>
+<p>In total, 46 coloc gwas loci are not eqtl. On average, traits have
+1.7 coloc loci not overlap with any eQTL.</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/10_04_coloc_num.pdf" title="Figure: Summary of gwas loci and coloc loci. 36 blood traits. (A) x-axis: trait. Grey bar: GWAS loci. Red bar: coloc loci. (B) Number of coloc loci across traits. (C) Coloc proportion across traits." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Summary of gwas loci and coloc loci. 36 blood traits. (A)
+x-axis: trait. Grey bar: GWAS loci. Red bar: coloc loci. (B) Number of
+coloc loci across traits. (C) Coloc proportion across traits.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-10_04_coloc_num">
+Past versions of 10_04_coloc_num.pdf
+</button>
+</p>
+<div id="fig-10_04_coloc_num" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/10_04_coloc_num.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2023/10_04_coloc_compare.pdf" title="Figure: Coloc loci compare with (A) if coloc loci coloc with new cQTLs compared to univariate. (B) if coloc loci overlap with any eQTL." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc loci compare with (A) if coloc loci coloc with new cQTLs
+compared to univariate. (B) if coloc loci overlap with any eQTL.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-10_04_coloc_compare">
+Past versions of 10_04_coloc_compare.pdf
+</button>
+</p>
+<div id="fig-10_04_coloc_compare" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/186602a01af3bcb5f185e0ab72499da3b049a802/docs/asset/2023/10_04_coloc_compare.pdf" target="_blank">186602a</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Add loci of H3K27ac?</li>
+</ul>
+</div>
+<div id="multicaq-s-on-mark-h3k27ac" class="section level3">
+<h3>MultiCaQ-S on mark H3K27ac</h3>
+<ul>
+<li>Compare with results of same mark by MultiCaQ-P</li>
+</ul>
+</div>
+</div>
+</div>
 <div id="sep-06-sep-13" class="section level1">
 <h1>Sep 06 &amp; Sep 13</h1>
 <p>As shown in last week, to compre to Dutta et. al., I proposed three
@@ -1819,6 +3775,43 @@ data shown in figure below. Observations -</p>
 </ul>
 <div class="figure" style="text-align: center">
 <embed src="asset/2023/09_20_plt_archie_cc_value_z.pdf" title="Figure: (LEFT) Distribution of archie cc value of simulated data across various genetic variance. Box plot for 1000 simulations. (RIGHT) Numebr of selected genes by archie on simulated alternative data across various genetic variance. Dashed line is the true number of target genes." width="40%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_20_plt_archie_cc_value_z">
+Past versions of 09_20_plt_archie_cc_value_z.pdf
+</button>
+</p>
+<div id="fig-09_20_plt_archie_cc_value_z" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a0755ce84dfa6219b49c45710c2464a5cf9fa880/docs/asset/2023/09_20_plt_archie_cc_value_z.pdf" target="_blank">a0755ce</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-09-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <embed src="asset/2023/09_20_plt_archie_selected_gene_z.pdf" title="Figure: (LEFT) Distribution of archie cc value of simulated data across various genetic variance. Box plot for 1000 simulations. (RIGHT) Numebr of selected genes by archie on simulated alternative data across various genetic variance. Dashed line is the true number of target genes." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: (LEFT) Distribution of archie cc value of simulated data across
@@ -1826,6 +3819,43 @@ various genetic variance. Box plot for 1000 simulations. (RIGHT) Numebr
 of selected genes by archie on simulated alternative data across various
 genetic variance. Dashed line is the true number of target genes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_20_plt_archie_selected_gene_z">
+Past versions of 09_20_plt_archie_selected_gene_z.pdf
+</button>
+</p>
+<div id="fig-09_20_plt_archie_selected_gene_z" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a0755ce84dfa6219b49c45710c2464a5cf9fa880/docs/asset/2023/09_20_plt_archie_selected_gene_z.pdf" target="_blank">a0755ce</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-09-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="cutoff-of-cc-value" class="section level3">
@@ -1871,6 +3901,43 @@ i.e. adjusted p &lt; 0.05.</p></li>
 </ul>
 <div class="figure" style="text-align: center">
 <embed src="asset/2023/09_20_plt_archie_null_cc_value_z.pdf" title="Figure: (LEFT) Distribution of null archie cc value of simulated null data. Box plot for 1e+6 simulations. (RIGHT) Numebr of selected genes by archie on simulated null data. Dashed line is the true number of target genes." width="40%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_20_plt_archie_null_cc_value_z">
+Past versions of 09_20_plt_archie_null_cc_value_z.pdf
+</button>
+</p>
+<div id="fig-09_20_plt_archie_null_cc_value_z" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a0755ce84dfa6219b49c45710c2464a5cf9fa880/docs/asset/2023/09_20_plt_archie_null_cc_value_z.pdf" target="_blank">a0755ce</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-09-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <embed src="asset/2023/09_20_plt_archie_null_selected_gene_z.pdf" title="Figure: (LEFT) Distribution of null archie cc value of simulated null data. Box plot for 1e+6 simulations. (RIGHT) Numebr of selected genes by archie on simulated null data. Dashed line is the true number of target genes." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: (LEFT) Distribution of null archie cc value of simulated null
@@ -1879,6 +3946,43 @@ archie on simulated null data. Dashed line is the true number of target
 genes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_20_plt_archie_null_selected_gene_z">
+Past versions of 09_20_plt_archie_null_selected_gene_z.pdf
+</button>
+</p>
+<div id="fig-09_20_plt_archie_null_selected_gene_z" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a0755ce84dfa6219b49c45710c2464a5cf9fa880/docs/asset/2023/09_20_plt_archie_null_selected_gene_z.pdf" target="_blank">a0755ce</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-09-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2023/09_20_archie_p_sim.pdf" title="Figure: (A) QQ plot of empirical nominal p values. (B) Distribution of empirical nominal p values. (C) Distribution of adjusted p values. Dashed line is 0.05 fdr level." width="50%" type="application/pdf" />
 <p class="caption">
@@ -1886,6 +3990,43 @@ Figure: (A) QQ plot of empirical nominal p values. (B) Distribution of
 empirical nominal p values. (C) Distribution of adjusted p values.
 Dashed line is 0.05 fdr level.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_20_archie_p_sim">
+Past versions of 09_20_archie_p_sim.pdf
+</button>
+</p>
+<div id="fig-09_20_archie_p_sim" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a0755ce84dfa6219b49c45710c2464a5cf9fa880/docs/asset/2023/09_20_archie_p_sim.pdf" target="_blank">a0755ce</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2023-09-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>Look at selection of SNPs &amp; genes</p>
@@ -4732,7 +6873,7 @@ liliw-w
 </div>
 <div id="july-12" class="section level1">
 <h1>July 12</h1>
-<div id="multicaq-s-on-mark-h3k27ac" class="section level2">
+<div id="multicaq-s-on-mark-h3k27ac-1" class="section level2">
 <h2>1. MultiCAQ-S on mark H3K27ac</h2>
 <div id="parameters" class="section level3">
 <h3>Parameters</h3>
@@ -5120,7 +7261,7 @@ Neale lab GWAS sum stats have some weird snps, e.g. af=1.</p></li>
 </ul></li>
 </ul>
 </div>
-<div id="use-36-blood-traits---ben-used" class="section level3">
+<div id="multicaqp-H3K27ac-gwas-coloc" class="section level3">
 <h3>Use 36 blood traits - Ben used</h3>
 <ul>
 <li><p>Ben’s coloc results as comparison</p>
@@ -7956,7 +10097,7 @@ count only the left-most-base.</p></li>
 way.</p></li>
 </ul>
 </div>
-<div id="covariates" class="section level3">
+<div id="covariates-1" class="section level3">
 <h3>Covariates</h3>
 <p>Temporary workaround - Use PC’s of peaks.</p>
 </div>
@@ -12337,16 +14478,21 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] workflowr_1.7.0
+
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.11       rstudioapi_0.15.0 whisker_0.4.1     knitr_1.43       
- [5] magrittr_2.0.3    workflowr_1.7.0   R6_2.5.1          rlang_1.1.1      
- [9] fastmap_1.1.1     highr_0.10        stringr_1.5.0     tools_4.2.3      
-[13] xfun_0.39         cli_3.6.1         git2r_0.32.0      jquerylib_0.1.4  
-[17] htmltools_0.5.5   rprojroot_2.0.3   yaml_2.3.7        digest_0.6.33    
-[21] lifecycle_1.0.3   later_1.3.1       sass_0.4.6        vctrs_0.6.3      
-[25] promises_1.2.0.1  fs_1.6.2          glue_1.6.2        cachem_1.0.8     
-[29] evaluate_0.21     rmarkdown_2.23    stringi_1.7.12    compiler_4.2.3   
-[33] bslib_0.5.0       jsonlite_1.8.7    httpuv_1.6.11    </code></pre>
+ [1] Rcpp_1.0.11       highr_0.10        compiler_4.2.3    pillar_1.9.0     
+ [5] bslib_0.5.0       later_1.3.1       git2r_0.32.0      jquerylib_0.1.4  
+ [9] tools_4.2.3       getPass_0.2-2     digest_0.6.33     jsonlite_1.8.7   
+[13] evaluate_0.21     lifecycle_1.0.3   tibble_3.2.1      pkgconfig_2.0.3  
+[17] rlang_1.1.1       cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7       
+[21] xfun_0.39         fastmap_1.1.1     httr_1.4.6        stringr_1.5.0    
+[25] knitr_1.43        fs_1.6.2          vctrs_0.6.3       sass_0.4.6       
+[29] rprojroot_2.0.3   glue_1.6.2        R6_2.5.1          processx_3.8.2   
+[33] fansi_1.0.4       rmarkdown_2.23    callr_3.7.3       magrittr_2.0.3   
+[37] whisker_0.4.1     ps_1.7.5          promises_1.2.0.1  htmltools_0.5.5  
+[41] httpuv_1.6.11     utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </code></pre>
 </div>
 </div>
 </div>
