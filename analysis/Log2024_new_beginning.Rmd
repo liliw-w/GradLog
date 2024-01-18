@@ -24,3 +24,217 @@ blockquote {
 ```
 
 **If any figures don't show, try opening in Safari.**
+
+# Jan 18
+
+## 1. Distance from lead SNP to cpeaks of histone marks in bulk data
+
+```{r out.width="40%", fig.cap="Figure: cpeaks by QTLTools across cis regions.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_18_dis_leadsnp_cpeak_histone_marks_cis500kb.pdf"), error = FALSE)
+```
+
+- Change of cpeaks by QTLTools across various cis regions for bulk histone marks
+
+```{r out.width="40%", fig.cap="Figure: Change of cpeaks by QTLTools across various cis regions for bulk histone marks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_18_cpeak_qtltools_cis_reg_bulk.pdf"), error = FALSE)
+```
+
+
+
+## 2. Compare our cQTLs to activity cQTLs in Delaunea paper
+
+
+### How aCRDQTLs were defined?
+
+- LCL.aCRDQTLs - QTLs for the activity of CRDs in LCLs. 
+
+- The activity of CRDs are defined as the mean activity of the peaks it contains. 
+
+- 6157 significant aCRDs (out of 12583 total CRDs) at 5% FDR. 
+
+
+
+### Signal comparison cwindows/cCRDs
+
+
+```{r out.width="40%", fig.cap="Figure: Comparison of cwindows and aCRDQTLs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_18_fig_cwindow_acrd_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+
+**Observations -**
+
+CACTI v.s. cCRDs -
+
+- Many signals are missed by CACTI. 
+  
+  - Those aCRDs overlap multiple windows, while missed cwindows overlap mostly one aCRD. 
+
+- Increase window size? 50kb, similar case. 
+
+- Does the comparison even make sense given CRD (calculated using three histone marks by ChIP-seq) v.s. ATAC-seq?
+
+
+
+
+### Enrichment of cCRDs in cwindows
+
+**Questions to be asked -**
+
+1. If being a cwindow more likely be a aCRDQTL?
+
+2. Restrict to cwindow overlap with CRDs
+
+```{r out.width="40%", fig.cap="Figure: If being a cwindow more likely be a aCRDQTL? If being a cwindow that overlaps with CRDs more likely be a aCRDQTL?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_18_fig_cwindow_sig_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+
+**Observations -**
+
+- cwindows are enriched for aCRDQTLs, no matter for windows overlap with a CRD or not. 
+
+- The enrichment and OR are more significant than the enrichment of cwindows for CRDs. 
+
+
+To-do's -
+
+- Apply to previous other cases to see if there is significant enrichment. 
+
+- Change the name of cQTLs to something like cWindowQTLs?
+
+
+
+
+## 3. Another angle to explain power difference between CACTI and RASQUAL - RASQUAL mostly captures allelic effects?
+
+- No such information in RASQUAL output. 
+
+- Previously, I said RASQUAL uses 10kb as cis window because the SNP should be within the feature to have aligned reads overlap with the SNP. This is wrong. RASQUAL can take larger cis window outside the feature. They combined the pop effect and allelic effect for any SNPs. See their paper. 
+
+- So, to have a fair power comparsion, we still need to think of a way to harmonize the multiple testing burden, since QTLTools have almost three times more signals at 10kb cis region than 500kb cis region. 
+
+
+
+## 4. Using two datasets
+
+
+
+
+# Jan 11
+
+## 0. some insights
+
+- Why cis region used by RASQUAL is so small?
+  
+  Because in order to calculate the allelic effect, snps should be located inside the sequenced feature within where the feature reads are counted. Otherwise, RASQUAL effects are just between-individual signals not allele-specific signals. Therefore, RASQUAL cis regions should be the feature length on average. 
+
+
+## 1. PCO using RASQUA sum stats
+
+### Why?
+  
+  Current CACTI uses sum stats by QTLTools (uni-pop). We wanted to show the advantage of aggregating muliple peaks, so to fairly compare with RASQUAL which uses allelic effects, we want to use PCO on RASQUAL sum stats. 
+
+
+**To-do's -**
+
+- Check PCO on RASQUAL p-values (not from z-scores), if it's feasible. 
+
+- Use PCO to combine RASQUAL p's. 
+
+
+### Why PCO won't work to combine RASQUAL p's?
+
+- Six tests of PCO combine p-values, not depending on the test statistics. 
+
+- But the distribution of six tests depends on $\Sigma$, which is calculated as the correlation among residual y's, is actually the covariance matrix of the test statistic corresponding to the p-values (z-scores) across y's. The equivalence depends on the fact that the test statistic is linear to y (see equation 2 in [paper](https://onlinelibrary-wiley-com.proxy.uchicago.edu/doi/full/10.1111/biom.12735). 
+
+- The issue is RASQUAL test statistic is not linear to y, which make the calculation of $\Sigma$ impossible. RASQUAL p-value for a pair of snp and feature comes from LRT testing for $\pi=0.5$, where $\pi$ is the metric for cis regulatory effect parameter (see "Hypothesis testing for inference of QTLs" in [paper](https://www.nature.com/articles/ng.3467#Sec13)). We need to know the correlation among LRT test statistics of a snp across peaks, but we can't. It is difference case than where the test statistic is OLS estimate and we can easily derive the correlations. 
+
+> Under the null hypothesis, all parameters except π are estimated for each feature independently, whereas π is set to 0.5, and we use a likelihood-ratio test to compare the null and alternative hypotheses for each SNP-feature combination using the $\chi^2$ distribution with 1 degree of freedom (for $\pi$). 
+
+
+
+
+## 2. Effect of the choice of cis region on #cpeaks by QTLTools
+
+```{r out.width="40%", fig.cap="Figure: cpeaks by QTLTools across cis regions.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_11_cpeak_qtltools_cis_reg.pdf"), error = FALSE)
+```
+
+- Observations
+  
+  - Using 500kb as cis region in previous results should have less signals than using shorter cis regions. 
+  
+  - Lead SNPs are very close to cpeaks across various cis regions. 
+
+
+
+## 3. Use QTLTools cpeaks for signal-to-noise ratio plot
+
+```{r out.width="40%", fig.cap="Figure: Signal to noise ratio of missed & replicated cwindows compared to QTLTools and RASQUAL.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_11_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf"), error = FALSE)
+```
+
+I added the third panel, where I compared the signal to noise ratio of missed & replicated cwindows compared to RASQUAL and the number of signals (cpeaks) in a window was from QTLTools. To compare with the first panel. 
+
+
+- Observations
+  
+  - The missed & replicated cwindows compared to RASQUAL have even fewer cpeaks in the windows by QTLTools. This indicate that RASQUAL lends power from allelic effects. 
+  
+  - The power difference between RASQUAL and CACTI comes from two aspects - aggregating multiple peaks and combining allelic effects. 
+
+
+
+
+## 5. Characterization of CACTI signals in bulk in terms of CRD
+
+### Rational
+
+To check if CACTI finds cwindows of co-regulated peaks, we investigate two questions -
+
+- Do cwindows more likely overlap with any CRDs than non-cwindows?
+
+- Are cwindows more likely with same CRDs than non-cwindows?
+
+
+I checked cwindows by CACTI-P for mark H3K27ac and CACTI-S for mark H3K36me. 
+
+(12583 CRDs on hg38. 12433 converted to hg19. 150 CRDs deleted.)
+
+
+### CACTI-P for mark H3K27ac
+
+```{r out.width="40%", fig.cap="Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_11_fig_cwindow_crd_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf"), error = FALSE)
+```
+
+```{r out.width="40%", fig.cap="Figure: Are cwindows more likely with same CRDs than non-cwindows?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_11_fig_cwindow_crd_same_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf"), error = FALSE)
+```
+
+- Observations
+
+  - No significant enrichment. 
+
+
+### CACTI-S for mark H3K36me3
+
+```{r out.width="40%", fig.cap="Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_11_fig_cwindow_crd_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf"), error = FALSE)
+```
+
+```{r out.width="40%", fig.cap="Figure: Are cwindows more likely with same CRDs than non-cwindows?", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/01_11_fig_cwindow_crd_same_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf"), error = FALSE)
+```
+
+- Observations
+
+  - No significant enrichment. 
+
+
+
+## 6. Use 50kb window to be consistent with previous bulk results?
+
