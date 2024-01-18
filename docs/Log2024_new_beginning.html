@@ -427,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-01-09
+<strong>Last updated:</strong> 2024-01-18
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -558,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8bfc0386a02aec0687e4c678333f7bf06d7f10c4targetblank8bfc038a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree55c9df22c52dc3e6c03eff7173d4da55e9157df1targetblank55c9df2a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/8bfc0386a02aec0687e4c678333f7bf06d7f10c4" target="_blank">8bfc038</a>
+<a href="https://github.com/liliw-w/GradLog/tree/55c9df22c52dc3e6c03eff7173d4da55e9157df1" target="_blank">55c9df2</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8bfc0386a02aec0687e4c678333f7bf06d7f10c4targetblank8bfc038a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree55c9df22c52dc3e6c03eff7173d4da55e9157df1targetblank55c9df2a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -576,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/8bfc0386a02aec0687e4c678333f7bf06d7f10c4" target="_blank">8bfc038</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/55c9df22c52dc3e6c03eff7173d4da55e9157df1" target="_blank">55c9df2</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -649,6 +649,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/55c9df22c52dc3e6c03eff7173d4da55e9157df1/analysis/Log2024_new_beginning.Rmd" target="_blank">55c9df2</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+<td>
+add new weeks
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/8b691e2e4bcb05f0031ed5e2d54300d101cb60c8/docs/Log2024_new_beginning.html" target="_blank">8b691e2</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/8bfc0386a02aec0687e4c678333f7bf06d7f10c4/analysis/Log2024_new_beginning.Rmd" target="_blank">8bfc038</a>
 </td>
 <td>
@@ -678,6 +712,285 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="jan-18" class="section level1">
+<h1>Jan 18</h1>
+<div id="distance-from-lead-snp-to-cpeaks-of-histone-marks-in-bulk-data"
+class="section level2">
+<h2>1. Distance from lead SNP to cpeaks of histone marks in bulk
+data</h2>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_18_dis_leadsnp_cpeak_histone_marks_cis500kb.pdf" title="Figure: cpeaks by QTLTools across cis regions." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: cpeaks by QTLTools across cis regions.
+</p>
+</div>
+<ul>
+<li>Change of cpeaks by QTLTools across various cis regions for bulk
+histone marks</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_18_cpeak_qtltools_cis_reg_bulk.pdf" title="Figure: Change of cpeaks by QTLTools across various cis regions for bulk histone marks." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Change of cpeaks by QTLTools across various cis regions for bulk
+histone marks.
+</p>
+</div>
+</div>
+<div id="compare-our-cqtls-to-activity-cqtls-in-delaunea-paper"
+class="section level2">
+<h2>2. Compare our cQTLs to activity cQTLs in Delaunea paper</h2>
+<div id="how-acrdqtls-were-defined" class="section level3">
+<h3>How aCRDQTLs were defined?</h3>
+<ul>
+<li><p>LCL.aCRDQTLs - QTLs for the activity of CRDs in LCLs.</p></li>
+<li><p>The activity of CRDs are defined as the mean activity of the
+peaks it contains.</p></li>
+<li><p>6157 significant aCRDs (out of 12583 total CRDs) at 5%
+FDR.</p></li>
+</ul>
+</div>
+<div id="signal-comparison-cwindowsccrds" class="section level3">
+<h3>Signal comparison cwindows/cCRDs</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_18_fig_cwindow_acrd_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Comparison of cwindows and aCRDQTLs." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison of cwindows and aCRDQTLs.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<p>CACTI v.s. cCRDs -</p>
+<ul>
+<li><p>Many signals are missed by CACTI.</p>
+<ul>
+<li>Those aCRDs overlap multiple windows, while missed cwindows overlap
+mostly one aCRD.</li>
+</ul></li>
+<li><p>Increase window size? 50kb, similar case.</p></li>
+<li><p>Does the comparison even make sense given CRD (calculated using
+three histone marks by ChIP-seq) v.s. ATAC-seq?</p></li>
+</ul>
+</div>
+<div id="enrichment-of-ccrds-in-cwindows" class="section level3">
+<h3>Enrichment of cCRDs in cwindows</h3>
+<p><strong>Questions to be asked -</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>If being a cwindow more likely be a aCRDQTL?</p></li>
+<li><p>Restrict to cwindow overlap with CRDs</p></li>
+</ol>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_18_fig_cwindow_sig_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: If being a cwindow more likely be a aCRDQTL? If being a cwindow that overlaps with CRDs more likely be a aCRDQTL?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: If being a cwindow more likely be a aCRDQTL? If being a cwindow
+that overlaps with CRDs more likely be a aCRDQTL?
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>cwindows are enriched for aCRDQTLs, no matter for windows overlap
+with a CRD or not.</p></li>
+<li><p>The enrichment and OR are more significant than the enrichment of
+cwindows for CRDs.</p></li>
+</ul>
+<p>To-do’s -</p>
+<ul>
+<li><p>Apply to previous other cases to see if there is significant
+enrichment.</p></li>
+<li><p>Change the name of cQTLs to something like cWindowQTLs?</p></li>
+</ul>
+</div>
+</div>
+<div
+id="another-angle-to-explain-power-difference-between-cacti-and-rasqual---rasqual-mostly-captures-allelic-effects"
+class="section level2">
+<h2>3. Another angle to explain power difference between CACTI and
+RASQUAL - RASQUAL mostly captures allelic effects?</h2>
+<ul>
+<li><p>No such information in RASQUAL output.</p></li>
+<li><p>Previously, I said RASQUAL uses 10kb as cis window because the
+SNP should be within the feature to have aligned reads overlap with the
+SNP. This is wrong. RASQUAL can take larger cis window outside the
+feature. They combined the pop effect and allelic effect for any SNPs.
+See their paper.</p></li>
+<li><p>So, to have a fair power comparsion, we still need to think of a
+way to harmonize the multiple testing burden, since QTLTools have almost
+three times more signals at 10kb cis region than 500kb cis
+region.</p></li>
+</ul>
+</div>
+<div id="using-two-datasets" class="section level2">
+<h2>4. Using two datasets</h2>
+</div>
+</div>
+<div id="jan-11" class="section level1">
+<h1>Jan 11</h1>
+<div id="some-insights" class="section level2">
+<h2>0. some insights</h2>
+<ul>
+<li><p>Why cis region used by RASQUAL is so small?</p>
+<p>Because in order to calculate the allelic effect, snps should be
+located inside the sequenced feature within where the feature reads are
+counted. Otherwise, RASQUAL effects are just between-individual signals
+not allele-specific signals. Therefore, RASQUAL cis regions should be
+the feature length on average.</p></li>
+</ul>
+</div>
+<div id="pco-using-rasqua-sum-stats" class="section level2">
+<h2>1. PCO using RASQUA sum stats</h2>
+<div id="why" class="section level3">
+<h3>Why?</h3>
+<p>Current CACTI uses sum stats by QTLTools (uni-pop). We wanted to show
+the advantage of aggregating muliple peaks, so to fairly compare with
+RASQUAL which uses allelic effects, we want to use PCO on RASQUAL sum
+stats.</p>
+<p><strong>To-do’s -</strong></p>
+<ul>
+<li><p>Check PCO on RASQUAL p-values (not from z-scores), if it’s
+feasible.</p></li>
+<li><p>Use PCO to combine RASQUAL p’s.</p></li>
+</ul>
+</div>
+<div id="why-pco-wont-work-to-combine-rasqual-ps"
+class="section level3">
+<h3>Why PCO won’t work to combine RASQUAL p’s?</h3>
+<ul>
+<li><p>Six tests of PCO combine p-values, not depending on the test
+statistics.</p></li>
+<li><p>But the distribution of six tests depends on <span
+class="math inline">\(\Sigma\)</span>, which is calculated as the
+correlation among residual y’s, is actually the covariance matrix of the
+test statistic corresponding to the p-values (z-scores) across y’s. The
+equivalence depends on the fact that the test statistic is linear to y
+(see equation 2 in <a
+href="https://onlinelibrary-wiley-com.proxy.uchicago.edu/doi/full/10.1111/biom.12735">paper</a>.</p></li>
+<li><p>The issue is RASQUAL test statistic is not linear to y, which
+make the calculation of <span class="math inline">\(\Sigma\)</span>
+impossible. RASQUAL p-value for a pair of snp and feature comes from LRT
+testing for <span class="math inline">\(\pi=0.5\)</span>, where <span
+class="math inline">\(\pi\)</span> is the metric for cis regulatory
+effect parameter (see “Hypothesis testing for inference of QTLs” in <a
+href="https://www.nature.com/articles/ng.3467#Sec13">paper</a>). We need
+to know the correlation among LRT test statistics of a snp across peaks,
+but we can’t. It is difference case than where the test statistic is OLS
+estimate and we can easily derive the correlations.</p></li>
+</ul>
+<blockquote>
+<p>Under the null hypothesis, all parameters except π are estimated for
+each feature independently, whereas π is set to 0.5, and we use a
+likelihood-ratio test to compare the null and alternative hypotheses for
+each SNP-feature combination using the <span
+class="math inline">\(\chi^2\)</span> distribution with 1 degree of
+freedom (for <span class="math inline">\(\pi\)</span>).</p>
+</blockquote>
+</div>
+</div>
+<div id="effect-of-the-choice-of-cis-region-on-cpeaks-by-qtltools"
+class="section level2">
+<h2>2. Effect of the choice of cis region on #cpeaks by QTLTools</h2>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_11_cpeak_qtltools_cis_reg.pdf" title="Figure: cpeaks by QTLTools across cis regions." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: cpeaks by QTLTools across cis regions.
+</p>
+</div>
+<ul>
+<li><p>Observations</p>
+<ul>
+<li><p>Using 500kb as cis region in previous results should have less
+signals than using shorter cis regions.</p></li>
+<li><p>Lead SNPs are very close to cpeaks across various cis
+regions.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="use-qtltools-cpeaks-for-signal-to-noise-ratio-plot"
+class="section level2">
+<h2>3. Use QTLTools cpeaks for signal-to-noise ratio plot</h2>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_11_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf" title="Figure: Signal to noise ratio of missed &amp; replicated cwindows compared to QTLTools and RASQUAL." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Signal to noise ratio of missed &amp; replicated cwindows
+compared to QTLTools and RASQUAL.
+</p>
+</div>
+<p>I added the third panel, where I compared the signal to noise ratio
+of missed &amp; replicated cwindows compared to RASQUAL and the number
+of signals (cpeaks) in a window was from QTLTools. To compare with the
+first panel.</p>
+<ul>
+<li><p>Observations</p>
+<ul>
+<li><p>The missed &amp; replicated cwindows compared to RASQUAL have
+even fewer cpeaks in the windows by QTLTools. This indicate that RASQUAL
+lends power from allelic effects.</p></li>
+<li><p>The power difference between RASQUAL and CACTI comes from two
+aspects - aggregating multiple peaks and combining allelic
+effects.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="characterization-of-cacti-signals-in-bulk-in-terms-of-crd"
+class="section level2">
+<h2>5. Characterization of CACTI signals in bulk in terms of CRD</h2>
+<div id="rational" class="section level3">
+<h3>Rational</h3>
+<p>To check if CACTI finds cwindows of co-regulated peaks, we
+investigate two questions -</p>
+<ul>
+<li><p>Do cwindows more likely overlap with any CRDs than
+non-cwindows?</p></li>
+<li><p>Are cwindows more likely with same CRDs than
+non-cwindows?</p></li>
+</ul>
+<p>I checked cwindows by CACTI-P for mark H3K27ac and CACTI-S for mark
+H3K36me.</p>
+<p>(12583 CRDs on hg38. 12433 converted to hg19. 150 CRDs deleted.)</p>
+</div>
+<div id="cacti-p-for-mark-h3k27ac" class="section level3">
+<h3>CACTI-P for mark H3K27ac</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_11_fig_cwindow_crd_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf" title="Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_11_fig_cwindow_crd_same_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf" title="Figure: Are cwindows more likely with same CRDs than non-cwindows?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Are cwindows more likely with same CRDs than non-cwindows?
+</p>
+</div>
+<ul>
+<li><p>Observations</p>
+<ul>
+<li>No significant enrichment.</li>
+</ul></li>
+</ul>
+</div>
+<div id="cacti-s-for-mark-h3k36me3" class="section level3">
+<h3>CACTI-S for mark H3K36me3</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_11_fig_cwindow_crd_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf" title="Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_11_fig_cwindow_crd_same_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf" title="Figure: Are cwindows more likely with same CRDs than non-cwindows?" width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Are cwindows more likely with same CRDs than non-cwindows?
+</p>
+</div>
+<ul>
+<li><p>Observations</p>
+<ul>
+<li>No significant enrichment.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="use-50kb-window-to-be-consistent-with-previous-bulk-results"
+class="section level2">
+<h2>6. Use 50kb window to be consistent with previous bulk results?</h2>
 <div id="refs">
 
 </div>
@@ -707,17 +1020,19 @@ other attached packages:
 [1] workflowr_1.7.0
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.11       compiler_4.2.3    pillar_1.9.0      bslib_0.5.0      
- [5] later_1.3.1       git2r_0.32.0      jquerylib_0.1.4   tools_4.2.3      
- [9] getPass_0.2-2     digest_0.6.33     jsonlite_1.8.7    evaluate_0.21    
-[13] lifecycle_1.0.3   tibble_3.2.1      pkgconfig_2.0.3   rlang_1.1.1      
-[17] cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7        xfun_0.39        
-[21] fastmap_1.1.1     httr_1.4.6        stringr_1.5.0     knitr_1.43       
-[25] fs_1.6.2          vctrs_0.6.3       sass_0.4.6        rprojroot_2.0.3  
-[29] glue_1.6.2        R6_2.5.1          processx_3.8.2    fansi_1.0.4      
-[33] rmarkdown_2.23    callr_3.7.3       magrittr_2.0.3    whisker_0.4.1    
-[37] ps_1.7.5          promises_1.2.0.1  htmltools_0.5.5   httpuv_1.6.11    
-[41] utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </code></pre>
+ [1] Rcpp_1.0.11       highr_0.10        compiler_4.2.3    pillar_1.9.0     
+ [5] bslib_0.5.0       later_1.3.1       git2r_0.32.0      jquerylib_0.1.4  
+ [9] tools_4.2.3       getPass_0.2-2     digest_0.6.33     jsonlite_1.8.7   
+[13] evaluate_0.21     lifecycle_1.0.3   tibble_3.2.1      pkgconfig_2.0.3  
+[17] rlang_1.1.1       cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7       
+[21] xfun_0.39         fastmap_1.1.1     httr_1.4.6        stringr_1.5.0    
+[25] knitr_1.43        fs_1.6.2          vctrs_0.6.3       sass_0.4.6       
+[29] rprojroot_2.0.3   glue_1.6.2        R6_2.5.1          processx_3.8.2   
+[33] fansi_1.0.4       rmarkdown_2.23    callr_3.7.3       magrittr_2.0.3   
+[37] whisker_0.4.1     ps_1.7.5          promises_1.2.0.1  htmltools_0.5.5  
+[41] httpuv_1.6.11     utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </code></pre>
+</div>
+</div>
 </div>
 
 
