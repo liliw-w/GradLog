@@ -3,7 +3,7 @@ title: "Log2024"
 output:
   workflowr::wflow_html:
               toc: true
-              toc_depth: 4
+              toc_depth: 3
 editor_options:
   chunk_output_type: console
 bibliography: references.bib
@@ -12,7 +12,6 @@ bibliography: references.bib
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, out.width = "50%")
 ```
-
 
 ```{css style settings, echo = FALSE}
 blockquote {
