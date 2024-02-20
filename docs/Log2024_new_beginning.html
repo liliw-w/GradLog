@@ -427,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-01-18
+<strong>Last updated:</strong> 2024-02-20
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -558,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree55c9df22c52dc3e6c03eff7173d4da55e9157df1targetblank55c9df2a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree24a0be1963d9bb1f4aabf38bd9f386b81c04c1ddtargetblank24a0be1a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/55c9df22c52dc3e6c03eff7173d4da55e9157df1" target="_blank">55c9df2</a>
+<a href="https://github.com/liliw-w/GradLog/tree/24a0be1963d9bb1f4aabf38bd9f386b81c04c1dd" target="_blank">24a0be1</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree55c9df22c52dc3e6c03eff7173d4da55e9157df1targetblank55c9df2a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree24a0be1963d9bb1f4aabf38bd9f386b81c04c1ddtargetblank24a0be1a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -576,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/55c9df22c52dc3e6c03eff7173d4da55e9157df1" target="_blank">55c9df2</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/24a0be1963d9bb1f4aabf38bd9f386b81c04c1dd" target="_blank">24a0be1</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -649,6 +649,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/liliw-w/GradLog/blob/24a0be1963d9bb1f4aabf38bd9f386b81c04c1dd/analysis/Log2024_new_beginning.Rmd" target="_blank">24a0be1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-02-20
+</td>
+<td>
+add new week
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/2ab6eac96840c3dea03bec5c7a23fab6b9dcb315/docs/Log2024_new_beginning.html" target="_blank">2ab6eac</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/liliw-w/GradLog/blob/55c9df22c52dc3e6c03eff7173d4da55e9157df1/analysis/Log2024_new_beginning.Rmd" target="_blank">55c9df2</a>
 </td>
 <td>
@@ -712,6 +746,126 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="feb-15" class="section level1">
+<h1>Feb 15</h1>
+<div id="simulations-to-evaluate-pco-on-non-zscore-tests"
+class="section level2">
+<h2>1. Simulations to evaluate PCO on non-zscore tests</h2>
+<div id="ways-to-estimate-sigma" class="section level3">
+<h3>Ways to estimate Sigma</h3>
+<ul>
+<li><p>P-value of test statistic from a non-zscore test is converted to
+a z-score by inverse-normal transformation.</p></li>
+<li><p>Sigma of the converted z-scores is the corresponding
+cov.</p></li>
+<li><p>Run PCO on the converted z-scores.</p></li>
+</ul>
+</div>
+<div id="null-simulations" class="section level3">
+<h3>Null simulations</h3>
+<ul>
+<li><p><span class="math inline">\(Y\)</span> from residualized
+expression matrix of <span class="math inline">\(K=101\)</span> gene
+module.</p></li>
+<li><p><span class="math inline">\(G\)</span> from binomial
+distribution, with maf being 0.2, 1k snps.</p></li>
+<li><p><span class="math inline">\(G\)</span> is independent with <span
+class="math inline">\(Y\)</span>.</p></li>
+<li><p>Run a non-zscore test, e.g. LRT, between every pairs of genes and
+snps.</p></li>
+<li><p>Obtain chi-square test statistics and p-value.</p></li>
+<li><p>Convert p to z-score by <span class="math inline">\(z_{convert} =
+\Phi^{-1}(p)\)</span>, where <span
+class="math inline">\(\Phi^{-1}\)</span> is the inverse cdf of standard
+normal distribution.</p></li>
+<li><p>Estimate <span class="math inline">\(\Sigma_{convert} =
+cov(z_{convert})\)</span></p></li>
+<li><p>Run PCO on <span class="math inline">\(z_{convert}\)</span> using
+<span class="math inline">\(\Sigma_{convert}\)</span>.</p></li>
+</ul>
+</div>
+<div id="pco-p-value-inflation-under-null-distribution"
+class="section level3">
+<h3>PCO p-value inflation under null distribution</h3>
+<p>To look at if PCO p-values are inflated under the null simulations
+using <span class="math inline">\(z_{convert}\)</span> and <span
+class="math inline">\(\Sigma_{convert}\)</span> -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_14_pco_nullp_int.pdf" title="Figure: PCO p-value inflation under null distribution using z_{convert} and Sigma_{convert}." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: PCO p-value inflation under null distribution using z_{convert}
+and Sigma_{convert}.
+</p>
+</div>
+<p><strong>Problem</strong> -</p>
+<ul>
+<li>The way Zhonghua mentioned should be <span
+class="math inline">\(\Phi^{-1}(p)\)</span>, where <span
+class="math inline">\(\Phi\)</span> is the cdf of standard normal
+distribution. However, it might not work, as while a small p is
+converted to a positively large z, a large p can be falsely converted to
+a negatively large z. Therefore, some non signals with large p can be a
+false signal and lead to inflation. We want both the converted test to
+be normally distributed and correspond to magnitude of p-values as
+well.</li>
+</ul>
+</div>
+<div id="other-ways-to-convert-p" class="section level3">
+<h3>Other ways to convert p</h3>
+<p>I tried other ways to convert p-values to “z-scores”.</p>
+<ul>
+<li>Convert to a chi-square test, then take square root and assign signs
+randomly.</li>
+<li>Rank-based inverse-normal transformation.</li>
+</ul>
+<p>They all have inflations as well.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_14_pco_nullp_other.pdf" title="Figure: Other normal transformation. PCO p-value inflation under null distribution using z_{convert} and Sigma_{convert}." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Other normal transformation. PCO p-value inflation under null
+distribution using z_{convert} and Sigma_{convert}.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="jan-25" class="section level1">
+<h1>Jan 25</h1>
+<div id="saige-qtl-saige-qtl-pco" class="section level2">
+<h2>1. SAIGE-QTL &amp; SAIGE-QTL-PCO</h2>
+<div id="how-does-saige-qtl-work" class="section level3">
+<h3>How does SAIGE-QTL work?</h3>
+<ul>
+<li><p>Step 1: fitting the null Poisson mixed model</p></li>
+<li><p>Step 2: performing single-variant association tests</p></li>
+<li><p>Step 3: obtaining gene-level p-values using the ACAT
+test</p></li>
+</ul>
+</div>
+<div id="questions-to-be-confirmed-before-running-saige-qtl"
+class="section level3">
+<h3>Questions to be confirmed before running SAIGE-QTL</h3>
+<ul>
+<li>Is association test of SAIGE-QTL (score test statistic) linear to Y?
+It has to be so in order to calculate the correlation matrix of the
+tests using correlation matrix of Y’s.</li>
+</ul>
+</div>
+<div id="run-saige-qtl" class="section level3">
+<h3>Run SAIGE-QTL</h3>
+<ul>
+<li>How is the number of cpeaks by SAIGE-QTL compared to RASQUAL and
+scPME?</li>
+</ul>
+</div>
+</div>
+<div id="using-crd-defined-windows" class="section level2">
+<h2>2. Using CRD-defined windows</h2>
+</div>
+<div id="using-two-datasets" class="section level2">
+<h2>3. Using two datasets</h2>
+</div>
+</div>
 <div id="jan-18" class="section level1">
 <h1>Jan 18</h1>
 <div id="distance-from-lead-snp-to-cpeaks-of-histone-marks-in-bulk-data"
@@ -724,6 +878,44 @@ data</h2>
 Figure: cpeaks by QTLTools across cis regions.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_18_dis_leadsnp_cpeak_histone_marks_cis500kb">
+Past versions of 01_18_dis_leadsnp_cpeak_histone_marks_cis500kb.pdf
+</button>
+</p>
+<div id="fig-01_18_dis_leadsnp_cpeak_histone_marks_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_18_dis_leadsnp_cpeak_histone_marks_cis500kb.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li>Change of cpeaks by QTLTools across various cis regions for bulk
 histone marks</li>
@@ -734,6 +926,43 @@ histone marks</li>
 Figure: Change of cpeaks by QTLTools across various cis regions for bulk
 histone marks.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_18_cpeak_qtltools_cis_reg_bulk">
+Past versions of 01_18_cpeak_qtltools_cis_reg_bulk.pdf
+</button>
+</p>
+<div id="fig-01_18_cpeak_qtltools_cis_reg_bulk" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_18_cpeak_qtltools_cis_reg_bulk.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="compare-our-cqtls-to-activity-cqtls-in-delaunea-paper"
@@ -756,6 +985,46 @@ FDR.</p></li>
 <p class="caption">
 Figure: Comparison of cwindows and aCRDQTLs.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_18_fig_cwindow_acrd_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_18_fig_cwindow_acrd_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_18_fig_cwindow_acrd_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_18_fig_cwindow_acrd_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <p><strong>Observations -</strong></p>
 <p>CACTI v.s. cCRDs -</p>
@@ -783,6 +1052,46 @@ three histone marks by ChIP-seq) v.s. ATAC-seq?</p></li>
 Figure: If being a cwindow more likely be a aCRDQTL? If being a cwindow
 that overlaps with CRDs more likely be a aCRDQTL?
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_18_fig_cwindow_sig_crd_enrich_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_18_fig_cwindow_sig_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_18_fig_cwindow_sig_crd_enrich_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_18_fig_cwindow_sig_crd_enrich_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <p><strong>Observations -</strong></p>
 <ul>
@@ -816,9 +1125,6 @@ way to harmonize the multiple testing burden, since QTLTools have almost
 three times more signals at 10kb cis region than 500kb cis
 region.</p></li>
 </ul>
-</div>
-<div id="using-two-datasets" class="section level2">
-<h2>4. Using two datasets</h2>
 </div>
 </div>
 <div id="jan-11" class="section level1">
@@ -892,6 +1198,43 @@ class="section level2">
 Figure: cpeaks by QTLTools across cis regions.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_cpeak_qtltools_cis_reg">
+Past versions of 01_11_cpeak_qtltools_cis_reg.pdf
+</button>
+</p>
+<div id="fig-01_11_cpeak_qtltools_cis_reg" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_11_cpeak_qtltools_cis_reg.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li><p>Observations</p>
 <ul>
@@ -911,6 +1254,46 @@ class="section level2">
 Figure: Signal to noise ratio of missed &amp; replicated cwindows
 compared to QTLTools and RASQUAL.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb">
+Past versions of
+01_11_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_11_fig_sig_2_noise_peak_group_whole_blood_window25kb_cis25kb.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <p>I added the third panel, where I compared the signal to noise ratio
 of missed &amp; replicated cwindows compared to RASQUAL and the number
@@ -953,11 +1336,91 @@ H3K36me.</p>
 Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_fig_cwindow_crd_enrich_peak_group_H3K27AC_window50kb_cis500kb">
+Past versions of
+01_11_fig_cwindow_crd_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_fig_cwindow_crd_enrich_peak_group_H3K27AC_window50kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_11_fig_cwindow_crd_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/01_11_fig_cwindow_crd_same_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf" title="Figure: Are cwindows more likely with same CRDs than non-cwindows?" width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Are cwindows more likely with same CRDs than non-cwindows?
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_fig_cwindow_crd_same_enrich_peak_group_H3K27AC_window50kb_cis500kb">
+Past versions of
+01_11_fig_cwindow_crd_same_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-01_11_fig_cwindow_crd_same_enrich_peak_group_H3K27AC_window50kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_11_fig_cwindow_crd_same_enrich_peak_group_H3K27AC_window50kb_cis500kb.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>Observations</p>
@@ -974,11 +1437,91 @@ Figure: Are cwindows more likely with same CRDs than non-cwindows?
 Figure: Do cwindows more likely overlap with any CRDs than non-cwindows?
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_fig_cwindow_crd_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new">
+Past versions of
+01_11_fig_cwindow_crd_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf
+</button>
+</p>
+<div
+id="fig-01_11_fig_cwindow_crd_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_11_fig_cwindow_crd_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/01_11_fig_cwindow_crd_same_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf" title="Figure: Are cwindows more likely with same CRDs than non-cwindows?" width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Are cwindows more likely with same CRDs than non-cwindows?
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-01_11_fig_cwindow_crd_same_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new">
+Past versions of
+01_11_fig_cwindow_crd_same_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf
+</button>
+</p>
+<div
+id="fig-01_11_fig_cwindow_crd_same_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/fc2b1c5594509819e9f0a262fca9b3e3e5ec7cae/docs/asset/2024/01_11_fig_cwindow_crd_same_enrich_seg_group_H3K36ME3_window50kb_cis500kb_seg2kb_peak_overlapseg_new.pdf" target="_blank">fc2b1c5</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-01-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>Observations</p>
