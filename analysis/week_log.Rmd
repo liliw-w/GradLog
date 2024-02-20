@@ -1,5 +1,5 @@
 ---
-title: "Weekly Log"
+title: "week"
 output:
   workflowr::wflow_html:
               toc: true
@@ -7,21 +7,22 @@ output:
 editor_options:
   chunk_output_type: console
 bibliography: references.bib
-link-citations: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, out.width = "50%")
+knitr::opts_chunk$set(echo=FALSE)
 ```
 
 ```{css style settings, echo = FALSE}
 blockquote {
     padding: 10px 20px;
     margin: 0 0 20px;
-    font-size: 14px;
+    font-size: 16px;
     border-left: 5px solid #eee;
 }
 ```
+
+**If any figures don't show, try opening in Safari.**
 
 ## 1. lm v.s. acat_lm v.s. pco (previous results in bulk)
 
