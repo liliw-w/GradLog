@@ -1,5 +1,5 @@
 ---
-title: "week"
+title: "Log2022"
 output:
   workflowr::wflow_html:
               toc: true
@@ -23,23 +23,6 @@ blockquote {
 ```
 
 **If any figures don't show, try opening in Safari.**
-
-## 1. lm v.s. acat_lm v.s. pco (previous results in bulk)
-
-- lm v.s. acat_lm (to show the power of combination)
-
-- acat_lm v.s. pco (to show overall power)
-
-
-
-## 2. lm v.s. acat_lm v.s. rasqual v.s. acat_rasqual (in single cell)
-
-- lm v.s. acat_lm (to show the power of combination)
-
-- rasqual v.s. acat_rasqual (to show the power of combination)
-
-
-
 
 ## Oct 5
 
