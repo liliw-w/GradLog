@@ -1,5 +1,5 @@
 ---
-title: "Weekly Log"
+title: "Log2022"
 output:
   workflowr::wflow_html:
               toc: true
@@ -7,37 +7,25 @@ output:
 editor_options:
   chunk_output_type: console
 bibliography: references.bib
-link-citations: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, out.width = "50%")
+knitr::opts_chunk$set(echo=FALSE)
 ```
 
 ```{css style settings, echo = FALSE}
 blockquote {
     padding: 10px 20px;
     margin: 0 0 20px;
-    font-size: 14px;
+    font-size: 16px;
     border-left: 5px solid #eee;
 }
 ```
 
+**If any figures don't show, try opening in Safari.**
 
-## 1. lm v.s. acat_lm v.s. pco (previous results in bulk)
+## Oct 5
 
-- lm v.s. acat_lm (to show the power of combination)
+### 1. Coloc between trans-eQLTs of MSigDB modules and blood traits
 
-- acat_lm v.s. pco (to show overall power)
-
-
-
-## 2. lm v.s. acat_lm v.s. rasqual v.s. acat_rasqual (in single cell)
-
-- lm v.s. acat_lm (to show the power of combination)
-
-- rasqual v.s. acat_rasqual (to show the power of combination)
-
-
-
-
+We observed something interesting on one of the MSigDB module: HALLMARK_HEME_METABOLISM (module 9). The trans signals corresponding to this pathway are near genes with relevant functions with the pathway in red blood cells.
