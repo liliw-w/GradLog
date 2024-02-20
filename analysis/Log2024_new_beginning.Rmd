@@ -25,6 +25,106 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# Feb 15
+
+## 1. Simulations to evaluate PCO on non-zscore tests
+
+### Ways to estimate Sigma
+
+- P-value of test statistic from a non-zscore test is converted to a z-score by inverse-normal transformation. 
+
+- Sigma of the converted z-scores is the corresponding cov. 
+
+- Run PCO on the converted z-scores. 
+
+
+### Null simulations
+
+- $Y$ from residualized expression matrix of $K=101$ gene module. 
+
+- $G$ from binomial distribution, with maf being 0.2, 1k snps. 
+
+- $G$ is independent with $Y$. 
+
+- Run a non-zscore test, e.g. LRT, between every pairs of genes and snps. 
+
+- Obtain chi-square test statistics and p-value. 
+
+- Convert p to z-score by $z_{convert} = \Phi^{-1}(p)$, where $\Phi^{-1}$ is the inverse cdf of standard normal distribution. 
+
+- Estimate $\Sigma_{convert} = cov(z_{convert})$
+
+- Run PCO on $z_{convert}$ using $\Sigma_{convert}$. 
+
+
+
+### PCO p-value inflation under null distribution
+
+To look at if PCO p-values are inflated under the null simulations using $z_{convert}$ and $\Sigma_{convert}$ - 
+
+```{r out.width="40%", fig.cap="Figure: PCO p-value inflation under null distribution using z_{convert} and Sigma_{convert}.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/02_14_pco_nullp_int.pdf"), error = FALSE)
+```
+
+
+**Problem** -
+
+- The way Zhonghua mentioned should be $\Phi^{-1}(p)$, where $\Phi$ is the cdf of standard normal distribution. However, it might not work, as while a small p is converted to a positively large z, a large p can be falsely converted to a negatively large z. Therefore, some non signals with large p can be a false signal and lead to inflation. We want both the converted test to be normally distributed and correspond to magnitude of p-values as well. 
+
+
+### Other ways to convert p
+
+I tried other ways to convert p-values to "z-scores". 
+
+- Convert to a chi-square test, then take square root and assign signs randomly. 
+- Rank-based inverse-normal transformation. 
+
+They all have inflations as well. 
+
+
+```{r out.width="40%", fig.cap="Figure: Other normal transformation. PCO p-value inflation under null distribution using z_{convert} and Sigma_{convert}.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/02_14_pco_nullp_other.pdf"), error = FALSE)
+```
+
+
+
+# Jan 25
+
+## 1. SAIGE-QTL & SAIGE-QTL-PCO
+
+### How does SAIGE-QTL work?
+
+- Step 1: fitting the null Poisson mixed model
+
+- Step 2: performing single-variant association tests
+
+- Step 3: obtaining gene-level p-values using the ACAT test
+
+
+
+### Questions to be confirmed before running SAIGE-QTL
+
+- Is association test of SAIGE-QTL (score test statistic) linear to Y? It has to be so in order to calculate the correlation matrix of the tests using correlation matrix of Y's. 
+
+
+
+
+### Run SAIGE-QTL
+
+- How is the number of cpeaks by SAIGE-QTL compared to RASQUAL and scPME?
+
+
+## 2. Using CRD-defined windows
+
+
+## 3. Using two datasets
+
+
+
+
+
+
+
 # Jan 18
 
 ## 1. Distance from lead SNP to cpeaks of histone marks in bulk data
@@ -115,8 +215,6 @@ To-do's -
 - So, to have a fair power comparsion, we still need to think of a way to harmonize the multiple testing burden, since QTLTools have almost three times more signals at 10kb cis region than 500kb cis region. 
 
 
-
-## 4. Using two datasets
 
 
 
