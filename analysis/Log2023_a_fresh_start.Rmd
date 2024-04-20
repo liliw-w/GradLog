@@ -1076,13 +1076,18 @@ How many co-expression gene modules and hall mark gene sets are immune related? 
 
 ## 3. Peak calling in ArchR
 
-Per pseudo-bulk replicate under each cell cluster.
+Peak calling in scatac data was done using peak calling method in ArchR (a software for integrative scatac data analysis). 
+
+Per pseudo-bulk replicate under each cell cluster. Summary of main steps -
 
 1. MACS2, peak calling, summit. The  majority of ATAC-seq peaks are less than 500bp.
 
 2. Expand a 500bp fix-width peak centered at the summit.
 
 3. Merged non-overlapping fixed-width peak set across replicates by iterative overlap peak merging.
+
+
+Detailed explaination of these steps can be found in the [supp note of ArchR paper (“ArchR Methods – Peak Calling”)](https://static-content.springer.com/esm/art%3A10.1038%2Fs41588-021-00790-6/MediaObjects/41588_2021_790_MOESM1_ESM.pdf). Also see Supplementary Fig. 9b for other details on peak merging. 
 
 
 
