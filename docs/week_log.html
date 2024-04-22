@@ -406,7 +406,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -417,8 +417,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -427,13 +427,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-02-20
+<strong>Last updated:</strong> 2024-04-20
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -456,18 +456,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -558,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecd276715dd17defbcb4678497f6e0c83a430504atargetblankcd27671a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree76794f9b78aac10f7a732dfa23aa11b3470f39f1targetblank76794f9a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/cd276715dd17defbcb4678497f6e0c83a430504a" target="_blank">cd27671</a>
+<a href="https://github.com/liliw-w/GradLog/tree/76794f9b78aac10f7a732dfa23aa11b3470f39f1" target="_blank">76794f9</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreecd276715dd17defbcb4678497f6e0c83a430504atargetblankcd27671a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree76794f9b78aac10f7a732dfa23aa11b3470f39f1targetblank76794f9a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -576,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/cd276715dd17defbcb4678497f6e0c83a430504a" target="_blank">cd27671</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/76794f9b78aac10f7a732dfa23aa11b3470f39f1" target="_blank">76794f9</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -596,6 +599,10 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
     Ignored:    analysis/.Rhistory
+
+Unstaged changes:
+    Modified:   analysis/Log2023_a_fresh_start.Rmd
+    Modified:   analysis/week_log.Rmd
 
 </code></pre>
 <p>
@@ -641,6 +648,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/76794f9b78aac10f7a732dfa23aa11b3470f39f1/docs/week_log.html" target="_blank">76794f9</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-02-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -945,25 +969,819 @@ blockquote {
     border-left: 5px solid #eee;
 }
 </style>
+<div id="apr-18" class="section level1">
+<h1>Apr 18</h1>
+<div id="merge-left-out-single-peaks-to-closest-peak-groups"
+class="section level2">
+<h2>1. Merge left out single peaks to closest peak groups</h2>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<p>I merge a left out single peak to its closest peak group, which is
+within a maximum window size. This is basically to expand some peak
+groups to include nearby single peaks. If a peak is far from any peak
+group, then it is not merged and tested.</p>
+<p>I used two maximum merging window sizes -</p>
+<ul>
+<li><p>50kb. The maximum window size can be 100kb + orignal window
+size.</p></li>
+<li><p>100kb. The maximum window size can be 200kb + orignal window
+size.</p></li>
+</ul>
+</div>
+<div id="analysis" class="section level3">
+<h3>Analysis</h3>
+<p>I redefined peak groups with merged single peaks, of datasets in
+Aracena et al and GTEx. I performed CACTI on the new peak groups across
+-</p>
+<ul>
+<li><p>window sizes</p>
+<p>‘50kb’, ‘25kb’, ‘20kb’, ‘10kb’</p></li>
+<li><p>maximum merging window sizes</p>
+<p>50kb, 100kb</p></li>
+<li><p>marks and conditions in Aracena et al</p>
+<p>‘H3K27ac’, ‘H3K27me3’, ‘H3K4me1’, ‘H3K4me3’</p>
+<p>‘Flu’, ‘NI’</p></li>
+<li><p>tissues of mark H3K27ac in GTEx</p>
+<p>‘Brain’, ‘Heart’, ‘Lung’, ‘Muscle’</p></li>
+</ul>
+</div>
+<div id="comparison" class="section level3">
+<h3>Comparison</h3>
+<p>I performed a series of comparisons to investigate different
+questions -</p>
+<ul>
+<li><p>Originals window v.s. extended merged window under same window
+size</p>
+<p>Check if merging single peaks improves power and reduces missing
+signals, or worse, or no change at all.</p></li>
+<li><p>(Minor) Extended merged window across window sizes</p>
+<p>To check if using smaller window size is better in the case of
+extended merging windows, given last time we saw it is not better in
+data of Aracena et al. </p></li>
+</ul>
+</div>
+</div>
+<div id="aracena-et-al-by-cacti-with-merged-single-peaks"
+class="section level2">
+<h2>2. Aracena et al by CACTI with merged single peaks</h2>
+<div id="datasets-analyzed" class="section level3">
+<h3>Datasets analyzed</h3>
+<ul>
+<li><p>MARK_ARACENA = [‘H3K27ac’, ‘H3K27me3’, ‘H3K4me1’,
+‘H3K4me3’]</p></li>
+<li><p>CONDITION_ARACENA = [‘Flu’, ‘NI’]</p></li>
+<li><p>L_WINDOW = [‘50kb’, ‘25kb’, ‘20kb’, ‘10kb’]</p></li>
+<li><p>MAX_L_WINDOW = [‘100kb’, ‘50kb’]</p></li>
+</ul>
+</div>
+<div
+id="distance-distribution-from-single-left-out-peaks-to-peak-groups"
+class="section level3">
+<h3>Distance distribution from single left out peaks to peak groups</h3>
+<p>To have a general sense of how far single peaks are from already
+defined peak groups and what maximum merging window size we should use,
+I looked at -</p>
+<ul>
+<li><p>Distance from single left-out peak to its closest peak
+group</p></li>
+<li><p>Distance from single peak to its closest peak group</p></li>
+</ul>
+<p>Below I only show results for Mark H3K27ac, condition Flu.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_peak_dis_group_H3K27ac_Flu_peak_group_window10kb.pdf" title="Figure: Distribution of (A) distance of a peak to its left closest peak, and (B) distance from a left-out single peak to its closest peak group, across window sizes 10kb, 25kb, 50kb. Mark H3K27ac, condition Flu." width="60%" type="application/pdf" />
+<embed src="asset/2024/04_18_peak_dis_group_H3K27ac_Flu_peak_group_window25kb.pdf" title="Figure: Distribution of (A) distance of a peak to its left closest peak, and (B) distance from a left-out single peak to its closest peak group, across window sizes 10kb, 25kb, 50kb. Mark H3K27ac, condition Flu." width="60%" type="application/pdf" />
+<embed src="asset/2024/04_18_peak_dis_group_H3K27ac_Flu_peak_group_window50kb.pdf" title="Figure: Distribution of (A) distance of a peak to its left closest peak, and (B) distance from a left-out single peak to its closest peak group, across window sizes 10kb, 25kb, 50kb. Mark H3K27ac, condition Flu." width="60%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of (A) distance of a peak to its left closest peak,
+and (B) distance from a left-out single peak to its closest peak group,
+across window sizes 10kb, 25kb, 50kb. Mark H3K27ac, condition Flu.
+</p>
+</div>
+<p><strong>Observation -</strong></p>
+<ul>
+<li><p>50kb and 100kb include ???% single peaks.</p></li>
+<li><p>???% are still left out and not tested.</p></li>
+<li><p>If to include ~50% single peaks, use at least 50kb -
+100kb.</p></li>
+<li><p>Larger window size needs larger maximum window size to include
+more singe peaks.</p></li>
+<li><p>Using the same maximum window size, smaller windows can include
+more singe peaks. But at the same time, more single peaks were left out
+already.</p></li>
+<li><p>Increase maximum merging group size to include more signle peaks?
+To include all single peaks, the maximum window size is ???.</p></li>
+</ul>
+<p>As for other datasets -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_peak_dis_to_left_peak.pdf" title="Figure: Distance distribution of a peak to its left closest peak defined for marks. Two condition NI and Flu have same peak sets." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Distance distribution of a peak to its left closest peak defined
+for marks. Two condition NI and Flu have same peak sets.
+</p>
+</div>
+<p><strong>Observation -</strong></p>
+<ul>
+<li><p>Other marks has similar results, except mark H3K4me3 has larger
+peak distance.</p></li>
+<li><p>Do we use larger maximum merging window size?</p></li>
+<li><p>Do we use larger window size for this mark?</p></li>
+</ul>
+</div>
+<div id="groups-changes-after-merging" class="section level3">
+<h3>Groups changes after merging</h3>
+<ul>
+<li><p>Number of groups</p></li>
+<li><p>Size of groups</p></li>
+<li><p>Single left out peaks not merged thus not tested</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_H3K27ac_Flu_peaks_in_group_combined.pdf" title="Figure: Distribution of peak group size across window sizes and maximum merging window size. This is for Mark H3K27ac, condition Flu." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of peak group size across window sizes and maximum
+merging window size. This is for Mark H3K27ac, condition Flu.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_H3K27ac_Flu_peaks_in_group_w_cqtl_cpeak100kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for Mark H3K27ac, condition Flu." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes and
+maximum merging window size. This is for Mark H3K27ac, condition Flu.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_H3K27ac_Flu_peaks_w_cqtl_in_group_cpeak100kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for Mark H3K27ac, condition Flu." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes and
+maximum merging window size. This is for Mark H3K27ac, condition Flu.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Merging single peaks into peak group increase group
+size.</p></li>
+<li><p>Merging single peaks into peak group increase number of uni
+cpeaks in peak groups, which means we are able to include those left-out
+single cpeaks to our windows and include them into test.</p></li>
+</ul>
+</div>
+<div id="signal-change-after-merging" class="section level3">
+<h3>Signal change after merging</h3>
+<ul>
+<li><p>Compare to the original results with results of merging single
+peaks</p></li>
+<li><p>(Minor) Compare window sizes under the same maximum merging
+window size</p></li>
+</ul>
+<p>Below I show results for Mark H3K27ac, condition Flu.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_plt_cpeak_cwindow_H3K27ac_Flu_cis100kb_combined.pdf" title="Figure: Compare CACTI signals to uni signals across window sizes and maximum merging window size. This is for Mark H3K27ac, condition Flu." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to uni signals across window sizes and
+maximum merging window size. This is for Mark H3K27ac, condition Flu.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_plt_cpeak_cwindow_H3K27ac_Flu_cis100kb_prop_combined.pdf" title="Figure: Compare CACTI signals to uni signals proportions across window sizes and maximum merging window size. This is for Mark H3K27ac, condition Flu." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to uni signals proportions across window
+sizes and maximum merging window size. This is for Mark H3K27ac,
+condition Flu.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Merging single peaks can decrease the missed uni cpeaks by CACTI,
+by including them into our test.</p></li>
+<li><p>Merging single peaks can increase cwindows and new
+cwindows.</p></li>
+<li><p>Merging helps less under larger window size, in terms of
+including less uni cpeaks to windows and less improvement in finding
+more cwindows.</p></li>
+<li><p>Other marks has similar results, except mark H3K4me3, which has
+less improvement.</p></li>
+</ul>
+</div>
+</div>
+<div id="gtex-by-cacti-with-merged-single-peaks" class="section level2">
+<h2>3. GTEx by CACTI with merged single peaks</h2>
+<div id="datasets-analyzed-1" class="section level3">
+<h3>Datasets analyzed</h3>
+<ul>
+<li><p>TISSUE_TYPE = [‘Brain’, ‘Heart’, ‘Lung’, ‘Muscle’]</p></li>
+<li><p>L_WINDOW = [‘50kb’, ‘25kb’, ‘20kb’, ‘10kb’]</p></li>
+<li><p>MAX_L_WINDOW = [‘100kb’, ‘50kb’]</p></li>
+</ul>
+</div>
+<div
+id="distance-distribution-from-single-left-out-peaks-to-peak-groups-1"
+class="section level3">
+<h3>Distance distribution from single left out peaks to peak groups</h3>
+<p>To have a general sense of how far single peaks are from already
+defined peak groups and what maximum merging window size we should use,
+I looked at -</p>
+<ul>
+<li>Distance from single left-out peak to its closest peak group</li>
+</ul>
+<p>Below I show results across tissues (rows) and window sizes
+(columns).</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_peak_dis_to_group_gtex.pdf" title="Figure: Distribution of distance from a left-out single peak to its closest peak group, across tissues (rows) and window sizes (columns)." width="60%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of distance from a left-out single peak to its
+closest peak group, across tissues (rows) and window sizes (columns).
+</p>
+</div>
+<p><strong>Observation -</strong></p>
+<ul>
+<li><p>50kb and 100kb include over 20% and 50% single peaks using 50kb
+window.</p></li>
+<li><p>If to include ~50% single peaks, use at least 100kb.</p></li>
+<li><p>Using the same maximum window size, smaller windows can include
+more singe peaks. But at the same time, more single peaks were left out
+already.</p></li>
+<li><p>Increase maximum merging group size to include more signle peaks?
+To include all single peaks, the maximum window size is ???.</p></li>
+<li><p>No distinct difference across tissues. (though distinct
+difference observed across marks in Aracena et al.)</p></li>
+</ul>
+<p>I then looked at the overall distance distribution among peaks -</p>
+<ul>
+<li>Distance of a peak to its left peak to show distance among
+peaks</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_peak_dis_to_left_peak_gtex.pdf" title="Figure: Distance distribution of a peak to its left closest peak defined for marks." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Distance distribution of a peak to its left closest peak defined
+for marks.
+</p>
+</div>
+<p><strong>Observation -</strong></p>
+<ul>
+<li>GTEx has more H3K27ac peaks. They are closer (distance ~1kb - 10kb)
+than H3K27ac peaks in Aracena et al (distance ~10kb).</li>
+</ul>
+</div>
+<div id="groups-changes-after-merging-1" class="section level3">
+<h3>Groups changes after merging</h3>
+<ul>
+<li><p>Number of groups</p></li>
+<li><p>Size of groups</p></li>
+<li><p>Single left out peaks not merged thus not tested</p></li>
+</ul>
+<p>Below are results of tissue Brain.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_Brain_peaks_in_group_combined.pdf" title="Figure: Distribution of peak group size across window sizes and maximum merging window size. This is for tissue Brain." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of peak group size across window sizes and maximum
+merging window size. This is for tissue Brain.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_Brain_peaks_in_group_w_cqtl_cpeak100kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes and
+maximum merging window size. This is for tissue Brain.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_Brain_peaks_w_cqtl_in_group_cpeak100kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes and
+maximum merging window size. This is for tissue Brain.
+</p>
+</div>
+<p>For other tissues, check <a
+href="asset/2024/04_18_gourp_results_heart.pdf">here for Heart</a>, <a
+href="asset/2024/04_18_gourp_results_lung.pdf">here for Lung</a>, <a
+href="asset/2024/04_18_gourp_results_muscle.pdf">here for
+Muscle</a>.</p>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Merging single peaks into peak group increase group
+size.</p></li>
+<li><p>Merging single peaks into peak group increase number of uni
+cpeaks in peak groups, which means we are able to include those left-out
+single cpeaks to our windows and include them into test.</p></li>
+<li><p>The increase of uni cpeaks in merged windows is not as much as
+observed in Aracena et al, where more uni cpeaks were
+identified.</p></li>
+</ul>
+</div>
+<div id="signal-change-after-merging-1" class="section level3">
+<h3>Signal change after merging</h3>
+<ul>
+<li><p>Compare to the original results with results of merging single
+peaks</p></li>
+<li><p>(Minor) Compare window sizes under the same maximum merging
+window size</p></li>
+</ul>
+<p>Below I show results for tissue Brian.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_plt_cpeak_cwindow_Brain_cis100kb_combined.pdf" title="Figure: Compare CACTI signals to uni signals across window sizes and maximum merging window size. This is for tissue Brian." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to uni signals across window sizes and
+maximum merging window size. This is for tissue Brian.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_18_plt_cpeak_cwindow_Brain_cis100kb_prop_combined.pdf" title="Figure: Compare CACTI signals to uni signals proportions across window sizes and maximum merging window size. This is for tissue Brian." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to uni signals proportions across window
+sizes and maximum merging window size. This is for tissue Brian.
+</p>
+</div>
+<p>For other tissues, check <a
+href="asset/2024/04_18_plt_cpeak_cwindow_Heart_cis100kb_combined.pdf">here
+for Heart</a>, <a
+href="asset/2024/04_18_plt_cpeak_cwindow_Lung_cis100kb_combined.pdf">here
+for Lung</a>, <a
+href="asset/2024/04_18_plt_cpeak_cwindow_Muscle_cis100kb_combined.pdf">here
+for Muscle</a>.</p>
+<p>Proportions - check <a
+href="asset/2024/04_18_plt_cpeak_cwindow_Heart_cis100kb_prop_combined.pdf">here
+for Heart</a>, <a
+href="asset/2024/04_18_plt_cpeak_cwindow_Lung_cis100kb_prop_combined.pdf">here
+for Lung</a>, <a
+href="asset/2024/04_18_plt_cpeak_cwindow_Muscle_cis100kb_prop_combined.pdf">here
+for Muscle</a>.</p>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Merging single peaks can decrease the missed uni cpeaks by CACTI,
+by including them into our test. Although less cpeaks were included by
+merging than Aracena et al, as not many uni cpeaks were found in
+GTEx.</p></li>
+<li><p>Although Merging single peaks can increase cwindows and new
+cwindows, it’s much less than improvement seen in Aracena et al
+dataset.</p></li>
+<li><p>Merging helps less under larger window size, in terms of
+including less uni cpeaks to windows and less improvement in finding
+more cwindows. Same as in Aracena et al dataset.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="apr-04-apr-11" class="section level1">
+<h1>Apr 04 &amp; Apr 11</h1>
+<div id="perform-test-on-window-of-single-peak-by-mixing-two-tests"
+class="section level2">
+<h2>1. Perform test on window of single peak by mixing two tests</h2>
+<p>To reduce CACTI missing signals, by reducing the purple bar of uni
+that do not overlap with any window, and therefore reduce the purple bar
+of uni that do not overlap with any CACTI cwindows.</p>
+<p>So we have two tests -</p>
+<ul>
+<li><p>Test on window of single peak</p></li>
+<li><p>Test on window of multiple peaks</p></li>
+</ul>
+<p>We wanted to include the test on window of single peak in our test. A
+few candidate options are -</p>
+<div id="acatpco-minp" class="section level3">
+<h3>ACAT(pco, minp)</h3>
+</div>
+<div id="mixture-test" class="section level3">
+<h3>mixture test</h3>
+</div>
+</div>
+<div
+id="look-into-the-43-non-cwindows-missed-by-cacti-move-this-section-to-below"
+class="section level2">
+<h2>2. Look into the 43 non-cwindows missed by CACTI (move this section
+to <a href="#what-are-those-cacti-missing-signals">below</a>)</h2>
+<ul>
+<li><p>a genometrack by genotype plots etc</p></li>
+<li><p>a plot shows all the univariate pvalues</p></li>
+</ul>
+</div>
+<div id="dig-into-gtex-peaks-and-windows" class="section level2">
+<h2>3. Dig into GTEx peaks and windows</h2>
+<p>Is there something weird going on in GTEx results?</p>
+<div id="check-gtex-univariate-peak-pvalues-distribution"
+class="section level3">
+<h3>Check GTEx univariate peak pvalues distribution</h3>
+<p><strong>Goal -</strong></p>
+<p>To make sure the pvalues are well calibrated before combining
+them.</p>
+<p><strong>How?</strong></p>
+<p>As XY suggested - for a peak, look at the pvalue distribution,
+i.e. histogram and qqplot.</p>
+<p>Instead, inspired by the way MatrixeQTL used to visualize the
+associations, I looked at the distribution of all peak and SNP pairs, in
+terms of the histogram and qqplot.</p>
+<ul>
+<li>Histogram</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_04_p_hist_allchr_gtex_Brain.pdf" title="Figure: Histogram of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_04_p_hist_allchr_gtex_Heart.pdf" title="Figure: Histogram of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_04_p_hist_allchr_gtex_Muscle.pdf" title="Figure: Histogram of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_04_p_hist_allchr_gtex_Lung.pdf" title="Figure: Histogram of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" type="application/pdf" />
+<p class="caption">
+Figure: Histogram of GTEx p-values across all pairs of peaks and snps,
+for four tissues, Brain, Heart, Muscle, and Lung.
+</p>
+</div>
+<ul>
+<li>qqplot</li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2024/04_04_p_qqplot_allchr_gtex_Brain.png" alt="Figure: QQplot of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" /><img src="asset/2024/04_04_p_qqplot_allchr_gtex_Heart.png" alt="Figure: QQplot of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" /><img src="asset/2024/04_04_p_qqplot_allchr_gtex_Muscle.png" alt="Figure: QQplot of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" /><img src="asset/2024/04_04_p_qqplot_allchr_gtex_Lung.png" alt="Figure: QQplot of GTEx p-values across all pairs of peaks and snps, for four tissues, Brain, Heart, Muscle, and Lung." width="20%" />
+<p class="caption">
+Figure: QQplot of GTEx p-values across all pairs of peaks and snps, for
+four tissues, Brain, Heart, Muscle, and Lung.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li>The power is pretty low compared to data in Aracena et al and
+Grubert et al (LCL).</li>
+</ul>
+<p><strong>Aracena et al</strong></p>
+<p>Similar p-value distribution for four marks (‘H3K27ac’, ‘H3K27me3’,
+‘H3K4me1’, ‘H3K4me3’) and two conditions (‘Flu’, “NI”). Below is an
+example of Mark H3K27ac, Condition Flu, Tissue primary macrophages.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2024/04_04_aracena_H3K27ac_pval_histogram.png" alt="Figure: Histogram and QQplot of p-values across all pairs of peaks and snps used in Aracena et al. Mark H3K27ac, Condition Flu, Tissue primary macrophages." width="20%" /><img src="asset/2024/04_04_aracena_H3K27ac_pval_qqplot.png" alt="Figure: Histogram and QQplot of p-values across all pairs of peaks and snps used in Aracena et al. Mark H3K27ac, Condition Flu, Tissue primary macrophages." width="20%" />
+<p class="caption">
+Figure: Histogram and QQplot of p-values across all pairs of peaks and
+snps used in Aracena et al. Mark H3K27ac, Condition Flu, Tissue primary
+macrophages.
+</p>
+</div>
+<p><strong>Grubert et al</strong></p>
+<div class="figure" style="text-align: center">
+<img src="asset/2024/04_04_" alt="Figure: Histogram of p-values across all pairs of peaks and snps used in Grubert et al. Mark H3K27ac, Tissue LCL." width="20%" />
+<p class="caption">
+Figure: Histogram of p-values across all pairs of peaks and snps used in
+Grubert et al. Mark H3K27ac, Tissue LCL.
+</p>
+</div>
+</div>
+<div id="compare-to-lcl-signals" class="section level3">
+<h3>Compare to LCL signals</h3>
+<ul>
+<li><p>Number of cpeaks in GTEx and LCL cwindows</p></li>
+<li><p>Number of weak cpeaks in LCL cwindows</p>
+<p>Use a loose p value cutoff like 0.0005, to see if on average LCL
+datasets have more weak signals in each window.</p></li>
+<li><p>Check the correlation between peaks in both GTEx and LCL
+datasets</p></li>
+</ul>
+</div>
+</div>
+<div id="analyze-data-in-aracena-et-al---part-1" class="section level2">
+<h2>4. Analyze data in Aracena et al - Part 1</h2>
+<p>Their paper is <a
+href="https://www.nature.com/articles/s41588-024-01668-z#data-availability">online</a>.</p>
+<div id="number-of-peaks-cpeaks-across-marks-conditions"
+class="section level3">
+<h3>Number of peaks (&amp;cpeaks) across marks &amp; conditions</h3>
+<ul>
+<li><p>Number of total peaks. Number of cpeaks under 5% FDR, and 10% FDR
+(see <a
+href="https://www.nature.com/articles/s41588-024-01668-z/figures/11">Extended
+Data Fig. 4a</a>).</p></li>
+<li><p>Compare to GTEx and LCL, more cpeaks and higher cpeak
+proportion?</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_11_signal_aracena_et_al.pdf" title="Figure: Uni cpeak signal results in Aracena et al (LEFT) and GTEx (RIGHT). (A) Number of cpeaks, (B) Proportion of cpeaks among total peaks. Across datasets, 5% FDR, and 10% FDR. X-axis is datasets in Aracena et al and GTEx. Aracena et al used 10% fdr in the paper, while GTEx used empp&lt;0.005 in the paper. I added results using 5% fdr to both datasets. Note, GTEx results are of mark H3K27ac across four tissues, while Aracena et al analyzed several marks in primary macrophages under two conditions." width="45%" type="application/pdf" />
+<embed src="asset/2024/04_11_signal_gtex_v2.pdf" title="Figure: Uni cpeak signal results in Aracena et al (LEFT) and GTEx (RIGHT). (A) Number of cpeaks, (B) Proportion of cpeaks among total peaks. Across datasets, 5% FDR, and 10% FDR. X-axis is datasets in Aracena et al and GTEx. Aracena et al used 10% fdr in the paper, while GTEx used empp&lt;0.005 in the paper. I added results using 5% fdr to both datasets. Note, GTEx results are of mark H3K27ac across four tissues, while Aracena et al analyzed several marks in primary macrophages under two conditions." width="45%" type="application/pdf" />
+<p class="caption">
+Figure: Uni cpeak signal results in Aracena et al (LEFT) and GTEx
+(RIGHT). (A) Number of cpeaks, (B) Proportion of cpeaks among total
+peaks. Across datasets, 5% FDR, and 10% FDR. X-axis is datasets in
+Aracena et al and GTEx. Aracena et al used 10% fdr in the paper, while
+GTEx used empp&lt;0.005 in the paper. I added results using 5% fdr to
+both datasets. Note, GTEx results are of mark H3K27ac across four
+tissues, while Aracena et al analyzed several marks in primary
+macrophages under two conditions.
+</p>
+</div>
+<p><strong>Observations</strong></p>
+<ul>
+<li><p>GTEx has much more total called peaks, ~3x more.</p></li>
+<li><p>GTEx has less significant cpeaks under the same 5% FDR.</p></li>
+<li><p>GTEx has lower signal cpeak proportion.</p></li>
+</ul>
+</div>
+<div id="sample-size-across-marks-conditions" class="section level3">
+<h3>Sample size across marks &amp; conditions</h3>
+<p>35 individuals.</p>
+</div>
+<div id="covaraites-they-used" class="section level3">
+<h3>Covaraites they used</h3>
+<p>batch and age are already accounted for in input reads.</p>
+<p>PC1 of genotype data is the only covariate included (to account for
+population structure).</p>
+</div>
+<div id="figure-how-their-matrixeqtl-works" class="section level3">
+<h3>Figure how their matrixeqtl works</h3>
+<ul>
+<li><p>what is the statistics? From t-test?</p></li>
+<li><p>Do the statistics correspond to pvalues?</p></li>
+<li><p>What is the beta column? How is it generated?</p></li>
+<li><p>Does the statistics equal z-scores? Can their correlation be
+estimated from cor(residual pheno)?</p></li>
+<li><p>Run fastqtl and see if the number of cpeaks changes?</p></li>
+</ul>
+</div>
+</div>
+<div id="analyze-data-in-aracena-et-al---part-2" class="section level2">
+<h2>5. Analyze data in Aracena et al - Part 2</h2>
+<div id="datasets-analyzed-2" class="section level3">
+<h3>Datasets analyzed</h3>
+<ul>
+<li><p>MARK_ARACENA = [‘H3K27ac’, ‘H3K27me3’, ‘H3K4me1’,
+‘H3K4me3’]</p></li>
+<li><p>CONDITION_ARACENA = [‘Flu’, ‘NI’]</p></li>
+<li><p>L_WINDOW = [‘50kb’, ‘25kb’, ‘20kb’, ‘10kb’]</p></li>
+</ul>
+</div>
+<div id="number-of-peak-groups-group-size" class="section level3">
+<h3>Number of peak groups &amp; group size</h3>
+<ul>
+<li>Compare to LCL and GTEx, fewer groups? more single-peak-group?</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_window10kb.pdf" title="Figure: Distribution of peak group size across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_window20kb.pdf" title="Figure: Distribution of peak group size across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_window25kb.pdf" title="Figure: Distribution of peak group size across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_window50kb.pdf" title="Figure: Distribution of peak group size across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of peak group size across window sizes 10kb, 20kb,
+25kb, 50kb.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_w_cqtl_window10kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_w_cqtl_window20kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_w_cqtl_window25kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_in_group_w_cqtl_window50kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes 10kb,
+20kb, 25kb, 50kb.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_w_cqtl_in_group_window10kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_w_cqtl_in_group_window20kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_w_cqtl_in_group_window25kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_H3K27ac_Flu_peaks_w_cqtl_in_group_window50kb_cpeak100kb.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes 10kb,
+20kb, 25kb, 50kb.
+</p>
+</div>
+</div>
+<div id="cacti-signal-comparison-with-univairate-signals"
+class="section level3">
+<h3>CACTI signal comparison with univairate signals</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/04_11_plt_cpeak_cwindow_H3K27ac_Flu_window10kb_cis100kb.pdf" title="Figure: Compare CACTI signals to uni signals using FDR 0.05 across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_plt_cpeak_cwindow_H3K27ac_Flu_window20kb_cis100kb.pdf" title="Figure: Compare CACTI signals to uni signals using FDR 0.05 across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_plt_cpeak_cwindow_H3K27ac_Flu_window25kb_cis100kb.pdf" title="Figure: Compare CACTI signals to uni signals using FDR 0.05 across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<embed src="asset/2024/04_11_plt_cpeak_cwindow_H3K27ac_Flu_window50kb_cis100kb.pdf" title="Figure: Compare CACTI signals to uni signals using FDR 0.05 across window sizes 10kb, 20kb, 25kb, 50kb." width="20%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to uni signals using FDR 0.05 across
+window sizes 10kb, 20kb, 25kb, 50kb.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>CACTI found more signals than univariate signals.</p></li>
+<li><p>Univariate signals missed by CACTI are due to not being included
+in any peak groups, therefore, not being tested.</p></li>
+<li><p>CACTI found more signals in this dataset than in the GTEx
+dataset.</p></li>
+<li><p>Using 50kb window seems to have better power, in terms of finding
+more new signals, in this dataset, whereas in GTEx 10kb window seems
+better.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="mar-28" class="section level1">
+<h1>Mar 28</h1>
+<div id="to-reduce-missing-signals-and-increase-new-signals"
+class="section level2">
+<h2>1. To reduce missing signals and increase new signals</h2>
+<div id="lift-fdr-threshold-narrower-windows" class="section level3">
+<h3>Lift fdr threshold &amp; Narrower windows</h3>
+<p>No big difference.</p>
+<div class="figure" style="text-align: center">
+<img src="asset/2024/03_28_signal_across_fdr.png" alt="Figure: Compare CACTI signals to their signals in Brain across FDR thresholds (LEFT) and across window sizes (RIGHT)." width="30%" /><img src="asset/2024/03_28_signal_across_window_size.png" alt="Figure: Compare CACTI signals to their signals in Brain across FDR thresholds (LEFT) and across window sizes (RIGHT)." width="30%" />
+<p class="caption">
+Figure: Compare CACTI signals to their signals in Brain across FDR
+thresholds (LEFT) and across window sizes (RIGHT).
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>To reduce the non-cwindows, decrease window size.</p></li>
+<li><p>Compare to results of the mark in LCL using 10kb and 50kb window,
+is there a similar trend?</p></li>
+<li><p>To use 10kb in GTEx to get fewer missing cwindows.</p></li>
+<li><p>To use 10kb in LCL to keep consistent to GTEx window size
+choice.</p></li>
+</ul>
+</div>
+</div>
+<div id="what-are-those-cacti-missing-signals" class="section level2">
+<h2>2. What are those CACTI missing signals?</h2>
+<div id="general-aspects" class="section level3">
+<h3>General aspects</h3>
+<ul>
+<li><p>Signal to noise ratio</p>
+<p>Replicated signals by multi have higher signal to noise ratio,
+i.e. smaller window size and more cpeaks by uni.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/03_28_fig_sig_2_noise_Brain_window50kb_cis100kb.pdf" title="Figure: Signal to noise ratio of uni signals missed &amp; replicated by multi in Brain." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Signal to noise ratio of uni signals missed &amp; replicated by
+multi in Brain.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="mar-21" class="section level1">
+<h1>Mar 21</h1>
+<div id="cacti-on-gtex-multitissue-chip-datasets"
+class="section level2">
+<h2>1. CACTI on GTEx multitissue ChIP datasets</h2>
+<div id="background-on-datasets" class="section level3">
+<h3>Background on datasets</h3>
+<ul>
+<li><p>Sample sizes across tissues.</p>
+<ul>
+<li>sample size used to estimate </li>
+</ul></li>
+<li><p>Number of peaks across tissues.</p></li>
+<li><p>Covaraites across tissues.</p>
+<blockquote>
+<p>We inferred the latent factors for our samples in each of the four
+tissues by Peer45 (R package v1.0) and identified the optimum number of
+Peer factors (5, 5, 10 and 2 for brain, heart, muscle and lung) to
+correct for during haQTL calling. Additionally, we took into account
+age, batches for H3K27ac ChIP–seq experiment, top five genotype PCs, and
+those technical effects related to platform and PCR.</p>
+</blockquote></li>
+<li><p>Number of cpeaks across tissues (empirical p &lt; 0.005 or
+FDR).</p>
+<p>Their way to call cpeaks -</p>
+<blockquote>
+<p>An empirical P value for each ARE was estimated based on the lead
+nominal P value and permutation results (–permute 1000 10000) by fitting
+a β distribution to account for multiple variants tested. We used an
+empirical P value threshold of 0.005 to identify gAREs as in a previous
+study, and then for each gARE, we applied the nominal P value threshold
+corresponding to the empirical P value of 0.005 for each locus to
+identify haQTLs.</p>
+</blockquote>
+<p>From <a href="https://doi.org/10.1038/s41588-021-00890-3">another
+paper of theirs</a> that uses similar method -</p>
+<blockquote>
+<p>To identify g-m6A sites, the nominal P value of the lead SNP of each
+m6A peak was corrected to get an empirical P value that accounts for the
+multiple variants tested. The empirical P value was extrapolated based
+on beta distribution fitting to the permutation results by FastQTL
+(parameter –permute 1,000). We applied a threshold of empirical P
+value&lt;0.005 on the lead variant to identify g-m6A sites, and then for
+each g-m6A we applied the nominal P value threshold that corresponds to
+the empirical P value of 0.005 for each locus to identify m6A QTLs
+(Supplementary Table 2). Given the larger sample size in brain, we
+provided higher-confidence sets of g-m6A sites and m6A QTLs by further
+correcting the empirical P value with the Benjamini–Hochberg procedure
+and applying a threshold of FDR&lt;0.2 (Supplementary Table 3).</p>
+</blockquote>
+<ul>
+<li>There are over 500 cpeaks in lung, but the cpeaks are problematic as
+they correspond to fdr &lt; 0.966. Lung has only one cpeak under FDR
+&lt; 0.05.</li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/03_21_signal_gtex.pdf" title="Figure: The equivalent FDR level to using empirical p &lt; 0.005." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: The equivalent FDR level to using empirical p &lt; 0.005.
+</p>
+</div>
+</div>
+<div id="distribution-of-peak-windows" class="section level3">
+<h3>Distribution of peak windows</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/03_21_Brain_peaks_in_group_window50kb.pdf" title="Figure: Distribution of peak group size in Brain and Lung." width="40%" type="application/pdf" />
+<embed src="asset/2024/03_21_Lung_peaks_in_group_window50kb.pdf" title="Figure: Distribution of peak group size in Brain and Lung." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of peak group size in Brain and Lung.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/03_21_Brain_peaks_in_group_w_cqtl_window50kb.pdf" title="Figure: cPeaks defined by (1) empirical p &lt; 0.005, (2) FDR &lt; 0.05 in peak groups in Brain and Lung." width="40%" type="application/pdf" />
+<embed src="asset/2024/03_21_Lung_peaks_in_group_w_cqtl_window50kb.pdf" title="Figure: cPeaks defined by (1) empirical p &lt; 0.005, (2) FDR &lt; 0.05 in peak groups in Brain and Lung." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: cPeaks defined by (1) empirical p &lt; 0.005, (2) FDR &lt; 0.05
+in peak groups in Brain and Lung.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li>The difference in number of cpeaks in each peak groups is huge
+between using different ways to define cpeaks.</li>
+</ul>
+</div>
+</div>
+<div id="cacti-signal-comparison-with-univairate-signals-1"
+class="section level2">
+<h2>2. CACTI signal comparison with univairate signals</h2>
+<p>To make a fair comparison between CACTI signals and their cpeaks, and
+avoid false positives at the same time, I performed multiple testing
+correction on the level of peaks and used fdr &lt; 0.05 to define
+cwindows or cpeaks. Then I compar</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/03_21_plt_cpeak_cwindow_Brain_window50kb_cis100kb.pdf" title="Figure: Compare CACTI signals to their signals using FDR threshold of 0.05 in Brain." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to their signals using FDR threshold of
+0.05 in Brain.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>CACTI cwindows overlap with most of the cpeaks.</p></li>
+<li><p>Some CACTI cwindows are new signals containing no
+cpeaks.</p></li>
+<li><p>Some cpeaks are missed by CACTI windows, all containing only one
+cpeak.</p></li>
+<li><p>Similar story in Heart and Muscle.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/03_21_plt_cpeak_cwindow_Lung_window50kb_cis100kb.pdf" title="Figure: Compare CACTI signals to their signals using FDR threshold of 0.05 in Lung." width="40%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to their signals using FDR threshold of
+0.05 in Lung.
+</p>
+</div>
+<p><strong>Observations -</strong></p>
+<ul>
+<li><p>Only one significant cpeak under FDR &lt; 0.05. It is replicated
+in a CACTI cwindow.</p></li>
+<li><p>CACTI detects two other cwindows, containing no cpeaks.</p></li>
+</ul>
+</div>
+<div id="cacti-signal-comparison-across-different-aspects"
+class="section level2">
+<h2>3. CACTI signal comparison across different aspects</h2>
+<div id="across-tissues" class="section level3">
+<h3>Across tissues</h3>
+</div>
+</div>
+</div>
 <div id="feb-22" class="section level1">
 <h1>Feb 22</h1>
+<div id="single-cell-analysis-terminated" class="section level2">
+<h2>1. Single cell analysis (Terminated)</h2>
+<div id="pco-on-rasqual-in-single-cells" class="section level3">
+<h3>PCO on rasqual in single cells</h3>
+</div>
+<div id="acatskat-combined-rasqual-in-single-cells"
+class="section level3">
+<h3>ACAT/SKAT combined rasqual in single cells</h3>
 <div id="lm-v.s.-acat_lm-v.s.-pco-previous-results-in-bulk"
-class="section level2">
-<h2>1. lm v.s. acat_lm v.s. pco (previous results in bulk)</h2>
+class="section level4">
+<h4>1. lm v.s. acat_lm v.s. pco (previous results in bulk)</h4>
 <ul>
 <li><p>lm v.s. acat_lm (to show the power of combination)</p></li>
 <li><p>acat_lm v.s. pco (to show overall power)</p></li>
 </ul>
 </div>
 <div id="lm-v.s.-acat_lm-v.s.-rasqual-v.s.-acat_rasqual-in-single-cell"
-class="section level2">
-<h2>2. lm v.s. acat_lm v.s. rasqual v.s. acat_rasqual (in single
-cell)</h2>
+class="section level4">
+<h4>2. lm v.s. acat_lm v.s. rasqual v.s. acat_rasqual (in single
+cell)</h4>
 <ul>
 <li><p>lm v.s. acat_lm (to show the power of combination)</p></li>
 <li><p>rasqual v.s. acat_rasqual (to show the power of
 combination)</p></li>
 </ul>
+</div>
+<div
+id="try-other-tests-in-the-simulation-to-understand-the-source-of-inflation-of-estimated-sigma-in-pco"
+class="section level4">
+<h4>3. try other tests in the simulation to understand the source of
+inflation of estimated sigma in PCO</h4>
+<ul>
+<li>z test</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="across-tissues-1" class="section level2">
+<h2>2. Across tissues</h2>
+</div>
+<div id="across-marks" class="section level2">
+<h2>3. Across marks</h2>
 <div id="refs">
 
 </div>
@@ -989,21 +1807,17 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
-other attached packages:
-[1] workflowr_1.7.0
-
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.11       compiler_4.2.3    pillar_1.9.0      bslib_0.5.0      
- [5] later_1.3.1       git2r_0.32.0      jquerylib_0.1.4   tools_4.2.3      
- [9] getPass_0.2-2     digest_0.6.33     jsonlite_1.8.7    evaluate_0.21    
-[13] lifecycle_1.0.3   tibble_3.2.1      pkgconfig_2.0.3   rlang_1.1.1      
-[17] cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7        xfun_0.39        
-[21] fastmap_1.1.1     httr_1.4.6        stringr_1.5.0     knitr_1.43       
-[25] fs_1.6.2          vctrs_0.6.3       sass_0.4.6        rprojroot_2.0.3  
-[29] glue_1.6.2        R6_2.5.1          processx_3.8.2    fansi_1.0.4      
-[33] rmarkdown_2.23    callr_3.7.3       magrittr_2.0.3    whisker_0.4.1    
-[37] ps_1.7.5          promises_1.2.0.1  htmltools_0.5.5   httpuv_1.6.11    
-[41] utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </code></pre>
+ [1] Rcpp_1.0.11       rstudioapi_0.15.0 whisker_0.4.1     knitr_1.43       
+ [5] magrittr_2.0.3    workflowr_1.7.0   R6_2.5.1          rlang_1.1.1      
+ [9] fastmap_1.1.1     fansi_1.0.4       highr_0.10        stringr_1.5.0    
+[13] tools_4.2.3       xfun_0.39         utf8_1.2.3        cli_3.6.1        
+[17] git2r_0.32.0      jquerylib_0.1.4   htmltools_0.5.5   rprojroot_2.0.3  
+[21] yaml_2.3.7        digest_0.6.33     tibble_3.2.1      lifecycle_1.0.3  
+[25] later_1.3.1       sass_0.4.6        vctrs_0.6.3       promises_1.2.0.1 
+[29] fs_1.6.2          cachem_1.0.8      glue_1.6.2        evaluate_0.21    
+[33] rmarkdown_2.23    stringi_1.7.12    bslib_0.5.0       compiler_4.2.3   
+[37] pillar_1.9.0      jsonlite_1.8.7    httpuv_1.6.11     pkgconfig_2.0.3  </code></pre>
 </div>
 </div>
 </div>
