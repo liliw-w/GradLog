@@ -24,21 +24,12 @@ blockquote {
 }
 ```
 
-# Feb 22
+# Apr 18
 
-## 1. lm v.s. acat_lm v.s. pco (previous results in bulk)
+## 1. Merge left out single peaks to closest peak groups
 
-- lm v.s. acat_lm (to show the power of combination)
+### How?
 
-- acat_lm v.s. pco (to show overall power)
-
-
-
-## 2. lm v.s. acat_lm v.s. rasqual v.s. acat_rasqual (in single cell)
-
-- lm v.s. acat_lm (to show the power of combination)
-
-- rasqual v.s. acat_rasqual (to show the power of combination)
 
 
 
