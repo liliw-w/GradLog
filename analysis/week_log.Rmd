@@ -1,15 +1,14 @@
 ---
 title: "Weekly Log"
 output:
-  md_document:
-    variant: markdown_github
-    toc: true
-    toc_depth: 2
+  workflowr::wflow_html:
+              toc: true
+              toc_depth: 4
 editor_options:
   chunk_output_type: console
 bibliography: references.bib
-link-citations: true
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, out.width = "50%")
