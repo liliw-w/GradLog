@@ -18,7 +18,7 @@ This is a website where I keep track of my research progress.
 
 # Topics
 
--Weekly log. [click](week_log.html)
+- Weekly log. [click](week_log.html)
 
 - Logs in 2022. [click](Log2022.html)
 
