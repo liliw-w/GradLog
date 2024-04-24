@@ -1,33 +1,23 @@
 ---
-title: "Weekly Log"
+title: "toc"
+author: "John Blischak"
+date: "2024-04-24"
 output:
   workflowr::wflow_html:
               toc: true
               toc_depth: 4
 editor_options:
   chunk_output_type: console
-bibliography: references.bib
 ---
 
+# Apr 25
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, out.width = "50%")
-```
+## Table of Contents
 
-```{css style settings, echo = FALSE}
-blockquote {
-    padding: 10px 20px;
-    margin: 0 0 20px;
-    font-size: 14px;
-    border-left: 5px solid #eee;
-}
-```
+[1. Peak merging results of LCL dataset](#1-Peak-merging-results-of-LCL-dataset)
 
-# Apr 18
 
-## 1. Merge left out single peaks to closest peak groups
-
-### How?
+## 1. Peak merging results of LCL dataset
 
 
 
