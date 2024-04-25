@@ -13,8 +13,8 @@
 
 <title>Log2020</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -29,16 +29,16 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
@@ -73,6 +73,8 @@ if (window.hljs) {
 
 
 
+<link rel="stylesheet" href="style.css" type="text/css" />
+
 
 
 <style type = "text/css">
@@ -95,6 +97,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -152,11 +157,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -185,8 +194,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -194,16 +203,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -320,7 +322,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -333,7 +335,7 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Projects
      
     <span class="caret"></span>
@@ -381,7 +383,9 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -390,7 +394,9 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -399,17 +405,27 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-03
+<strong>Last updated:</strong> 2024-04-25
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>GradLog/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>GradLog/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -418,91 +434,138 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
 </p>
 </div>
 <div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201014code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201014)</code> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201014code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20201014)</code> </a>
 </p>
 </div>
-<div id="strongSeedstrongcodesetseed20201014code" class="panel-collapse collapse">
+<div id="strongSeedstrongcodesetseed20201014code"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>The command <code>set.seed(20201014)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+<p>The command <code>set.seed(20201014)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
 </p>
 </div>
-<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
 </p>
 </div>
 <div id="strongCachestrongnone" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
 </p>
 </div>
 <div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree68ded6fafda2c750d6daf577fa3019160d657b0dtargetblank68ded6fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/liliw-w/GradLog/tree/68ded6fafda2c750d6daf577fa3019160d657b0d" target="_blank">68ded6f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeff0bca7b335cd7a4331f7211666bfea05bbe7f53targetblankff0bca7a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/liliw-w/GradLog/tree/ff0bca7b335cd7a4331f7211666bfea05bbe7f53" target="_blank">ff0bca7</a>
+</a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree68ded6fafda2c750d6daf577fa3019160d657b0dtargetblank68ded6fa" class="panel-collapse collapse">
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeff0bca7b335cd7a4331f7211666bfea05bbe7f53targetblankff0bca7a"
+class="panel-collapse collapse">
 <div class="panel-body">
 <p>
-Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/liliw-w/GradLog/tree/68ded6fafda2c750d6daf577fa3019160d657b0d" target="_blank">68ded6f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version
+<a href="https://github.com/liliw-w/GradLog/tree/ff0bca7b335cd7a4331f7211666bfea05bbe7f53" target="_blank">ff0bca7</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
 </p>
 <p>
-Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
 </p>
 <pre><code>
 Ignored files:
@@ -510,14 +573,21 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
-    Ignored:    analysis/test_log.Rmd
-    Ignored:    code/.DS_Store
-    Ignored:    data/.DS_Store
-    Ignored:    output/.DS_Store
+    Ignored:    analysis/.Rhistory
+
+Untracked files:
+    Untracked:  rstudio_server_config_midway3.Rmd
+
+Unstaged changes:
+    Modified:   analysis/Trans.Rmd
+    Deleted:    analysis/rstudio_server_config_midway3.Rmd
+    Modified:   analysis/week_log.Rmd
 
 </code></pre>
 <p>
-Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
 </p>
 </div>
 </div>
@@ -528,7 +598,12 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/Log2020.Rmd</code>) and HTML (<code>docs/Log2020.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/Log2020.Rmd</code>) and HTML
+(<code>docs/Log2020.html</code>) files. If you’ve configured a remote
+Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -552,6 +627,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/97b4ca1336ea92e396991f1569177c14360eb07c/docs/Log2020.html" target="_blank">97b4ca1</a>
+</td>
+<td>
+llw
+</td>
+<td>
+2022-01-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -631,8 +723,15 @@ wflow_git_commit(c("analysis/_site.yml", "analysis/index.Rmd",
 <h2>Dec 17</h2>
 <div id="gtex-v8-whole-blood" class="section level3">
 <h3>GTEx v8 Whole Blood</h3>
-<p>To make it easier for updates, I summarized all results <a href="./all_signals.txt">here</a>. ???</p>
+<p>To make it easier for updates, I summarized all results <a
+href="./all_signals.txt">here</a>. ???</p>
 <table>
+<colgroup>
+<col width="27%" />
+<col width="24%" />
+<col width="20%" />
+<col width="27%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">FDR</th>
@@ -662,8 +761,13 @@ wflow_git_commit(c("analysis/_site.yml", "analysis/index.Rmd",
 </tr>
 </tbody>
 </table>
-<p>There are only 4 significant signals, including 3:56815721, 9:26583610, 9:26583818, and 9:26584038, of which 2 are independent. The first 3:56815721 is SNP rs1354034, which is an intron variant of gene <em>ARHGEF3</em>.</p>
-<p>There are much fewer signals than DGN. To take a closer look at the signals pvalues, I plot the histogram of <span class="math inline">\(p&lt;10^{-6}\)</span>.</p>
+<p>There are only 4 significant signals, including 3:56815721,
+9:26583610, 9:26583818, and 9:26584038, of which 2 are independent. The
+first 3:56815721 is SNP rs1354034, which is an intron variant of gene
+<em>ARHGEF3</em>.</p>
+<p>There are much fewer signals than DGN. To take a closer look at the
+signals pvalues, I plot the histogram of <span
+class="math inline">\(p&lt;10^{-6}\)</span>.</p>
 <div class="figure" style="text-align: center">
 <img src="Whole_Blood.p.png" alt="GTEx_v8.Whole_Blood"  />
 <p class="caption">
@@ -772,69 +876,135 @@ Lili Wang
 </table>
 </div>
 </div>
-<p>It shows that pvalues of GTEx are generally larger than that of DGN. So there are fewer signals.</p>
-<p>Is it due to the relatively small sample size? GTEx whole blood (670) v.s. DGN whole blood (913)? Run DGN using similar sample size?</p>
+<p>It shows that pvalues of GTEx are generally larger than that of DGN.
+So there are fewer signals.</p>
+<p>Is it due to the relatively small sample size? GTEx whole blood (670)
+v.s. DGN whole blood (913)? Run DGN using similar sample size?</p>
 </div>
 <div id="multiple-permutations-in-dec-01" class="section level3">
 <h3>Multiple permutations in Dec 01</h3>
-<p>Update results of perm20 using the completely independent permutations? For combined chr and module FDR, perm1 and perm20 don’t differ much? For combined chr FDR, perm20 is completely included in perm1? For module and chr FDR, most of perm20 signals are included in perm1?</p>
-<p>Rerun completely independent samples for perm 5 and perm10? For multiple times?</p>
+<p>Update results of perm20 using the completely independent
+permutations? For combined chr and module FDR, perm1 and perm20 don’t
+differ much? For combined chr FDR, perm20 is completely included in
+perm1? For module and chr FDR, most of perm20 signals are included in
+perm1?</p>
+<p>Rerun completely independent samples for perm 5 and perm10? For
+multiple times?</p>
 </div>
 </div>
 <div id="dec-14" class="section level2">
 <h2>Dec 14</h2>
 <div id="eqtlgen" class="section level3">
 <h3>eQTLGen</h3>
-<p><em>This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog.</em></p>
-<p>After gene filter steps described in <code>Dec 10</code>, there are 4963 left. Applying the same filtering to 13634 DGN genes, there are 3695 genes left, among which 3642 are included in eQTLGen. So, I will use these genes to do the downstream analysis, e.g. constructing co-expressed gene modules.</p>
-<p>The 3642 genes result in 19 gene modules. Next, I will do two things.</p>
+<p><em>This full dataset includes 19942 genes that showed expression in
+blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS
+Catalog.</em></p>
+<p>After gene filter steps described in <code>Dec 10</code>, there are
+4963 left. Applying the same filtering to 13634 DGN genes, there are
+3695 genes left, among which 3642 are included in eQTLGen. So, I will
+use these genes to do the downstream analysis, e.g. constructing
+co-expressed gene modules.</p>
+<p>The 3642 genes result in 19 gene modules. Next, I will do two
+things.</p>
 <ol style="list-style-type: decimal">
-<li><p>Apply PCO to the these modules and eQTLGen SNPs, based on eQTLGen zscores.</p>
-<p>Remark: Among 10317 eQTLGen SNPs, 9918 have zscores for all genes on the different chromosomes.</p></li>
+<li><p>Apply PCO to the these modules and eQTLGen SNPs, based on eQTLGen
+zscores.</p>
+<p>Remark: Among 10317 eQTLGen SNPs, 9918 have zscores for all genes on
+the different chromosomes.</p></li>
 </ol>
 <ul>
-<li><p>FDR correction based on qvalue (threshold <span class="math inline">\(0.05\)</span>).</p>
+<li><p>FDR correction based on qvalue (threshold <span
+class="math inline">\(0.05\)</span>).</p>
 <p>2194 (module, signal) pairs; 909 unique signals.</p>
-<p>The largest pvalue is <span class="math inline">\(5.82*10^{-4}\)</span>.</p></li>
-<li><p>Use significance threshold as <span class="math inline">\(\frac{0.05}{\#DGN signals}\)</span>.</p></li>
+<p>The largest pvalue is <span
+class="math inline">\(5.82*10^{-4}\)</span>.</p></li>
+<li><p>Use significance threshold as <span
+class="math inline">\(\frac{0.05}{\#DGN signals}\)</span>.</p></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li>Apply PCO to these modules and whole genome SNPs, based on tensorQTL zscores.</li>
+<li>Apply PCO to these modules and whole genome SNPs, based on tensorQTL
+zscores.</li>
 </ol>
 </div>
 </div>
 <div id="dec-10" class="section level2">
 <h2>Dec 10</h2>
-<div id="description-of-datasets-and-mappability-files" class="section level3">
+<div id="description-of-datasets-and-mappability-files"
+class="section level3">
 <h3>Description of datasets and mappability files</h3>
 <ul>
 <li><p>DGN</p>
-<p>Genes expressed in DGN are based on the human genome GRCh37 and gene symbols were mapped to unique Ensembl gene ids according to Gencode v19, corresponding to the annotations used in the mappability file.</p>
-<p>Gene annotation file for mappability is <code>gencode.v19.annotation.table.txt</code>, which is based on the human genome GRCh37 using annotations from Gencode v19 and includes <strong>57820</strong> genes in total. Each of 57820 genes has a mappability score in <code>hg19_gencode19_75merExon_36merUTR_2mismatch_gene_mappability.txt.gz</code>. And only those gene pairs with cross-mappable score larger than 1 are included in <code>hg19_gencode19_75merExon_36merUTR_2mismatch_cross_mappability_symmetric_mean.txt.gz</code>.</p>
-<p>Not all DGN-expressed genes have mappbility info. So in the gene filtering step, I will first filter out genes that are included in the mappability file.</p>
-<p><strong>Remark</strong>: The pseudogene list <code>/project2/xuanyao/data/mappability/pseudogenes.txt</code> only includes pseudogenes in category “pseudogene” but not other pseudogene categories in file <code>gencode.v19.annotation.table.txt</code>. Since we need to remove all kinds of pseudogenes, using this list is enough.</p></li>
+<p>Genes expressed in DGN are based on the human genome GRCh37 and gene
+symbols were mapped to unique Ensembl gene ids according to Gencode v19,
+corresponding to the annotations used in the mappability file.</p>
+<p>Gene annotation file for mappability is
+<code>gencode.v19.annotation.table.txt</code>, which is based on the
+human genome GRCh37 using annotations from Gencode v19 and includes
+<strong>57820</strong> genes in total. Each of 57820 genes has a
+mappability score in
+<code>hg19_gencode19_75merExon_36merUTR_2mismatch_gene_mappability.txt.gz</code>.
+And only those gene pairs with cross-mappable score larger than 1 are
+included in
+<code>hg19_gencode19_75merExon_36merUTR_2mismatch_cross_mappability_symmetric_mean.txt.gz</code>.</p>
+<p>Not all DGN-expressed genes have mappbility info. So in the gene
+filtering step, I will first filter out genes that are included in the
+mappability file.</p>
+<p><strong>Remark</strong>: The pseudogene list
+<code>/project2/xuanyao/data/mappability/pseudogenes.txt</code> only
+includes pseudogenes in category “pseudogene” but not other pseudogene
+categories in file <code>gencode.v19.annotation.table.txt</code>. Since
+we need to remove all kinds of pseudogenes, using this list is
+enough.</p></li>
 <li><p>GTEx v8</p>
-<p>Gene annotation file for expression matrices is <code>gencode.v26.GRCh38.genes_annotation_table.txt</code>, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes <strong>56200</strong> genes in total.</p>
-<p>Gene annotation file for mappability is <code>gencode.v26.annotation.table.txt</code>, which is based on the human genome GRCh38 using annotations from Gencode v26 and includes <strong>58219</strong> genes in total. Each of 58219 genes has a mappability score in <code>hg38_gene_mappability.txt.gz</code>. And only those gene pairs with cross-mappable score larger than 1 are included in <code>hg38_cross_mappability_strength_symmetric_mean_sorted.txt.gz</code>.</p>
-<p>All 56200 genes used in expression matrices are included in the gene annotation file for mappability, which means they all have mappability info.</p></li>
+<p>Gene annotation file for expression matrices is
+<code>gencode.v26.GRCh38.genes_annotation_table.txt</code>, which is
+based on the human genome GRCh38 using annotations from Gencode v26 and
+includes <strong>56200</strong> genes in total.</p>
+<p>Gene annotation file for mappability is
+<code>gencode.v26.annotation.table.txt</code>, which is based on the
+human genome GRCh38 using annotations from Gencode v26 and includes
+<strong>58219</strong> genes in total. Each of 58219 genes has a
+mappability score in <code>hg38_gene_mappability.txt.gz</code>. And only
+those gene pairs with cross-mappable score larger than 1 are included in
+<code>hg38_cross_mappability_strength_symmetric_mean_sorted.txt.gz</code>.</p>
+<p>All 56200 genes used in expression matrices are included in the gene
+annotation file for mappability, which means they all have mappability
+info.</p></li>
 </ul>
 </div>
 <div id="gene-filter" class="section level3">
 <h3>Gene filter</h3>
 <p>The following are the filtering steps.</p>
 <ol style="list-style-type: decimal">
-<li><p>Remove genes that are not in the gencode annotation file (Gencode v19 or Gencode v26).</p>
-<p>This filtering step aims to remove genes without mappability info.</p></li>
-<li><p>Remove genes that are not protein coding genes or lincRNA genes.</p>
-<p>This step removes all pseudogenes and genes that don’t have clear “annotation and functional interpretations” and “avoid genes enriched for mapping artefacts”, like <a href="https://www.biorxiv.org/content/biorxiv/early/2019/10/03/787903/DC1/embed/media-1.pdf?download=false">GTEx 2019 paper</a>. We can have the gene class from the gencode annotation file.</p></li>
+<li><p>Remove genes that are not in the gencode annotation file (Gencode
+v19 or Gencode v26).</p>
+<p>This filtering step aims to remove genes without mappability
+info.</p></li>
+<li><p>Remove genes that are not protein coding genes or lincRNA
+genes.</p>
+<p>This step removes all pseudogenes and genes that don’t have clear
+“annotation and functional interpretations” and “avoid genes enriched
+for mapping artefacts”, like <a
+href="https://www.biorxiv.org/content/biorxiv/early/2019/10/03/787903/DC1/embed/media-1.pdf?download=false">GTEx
+2019 paper</a>. We can have the gene class from the gencode annotation
+file.</p></li>
 </ol>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Remove genes with mappability <span class="math inline">\(&lt;0.9\)</span>.</p></li>
-<li><p>Remove gene pairs with cross-mappability <span class="math inline">\(\ge 1\)</span>.</p>
-<p>The cross-mappable gene pairs are defined to be all genes included in the cross-mappability file.</p></li>
+<li><p>Remove genes with mappability <span
+class="math inline">\(&lt;0.9\)</span>.</p></li>
+<li><p>Remove gene pairs with cross-mappability <span
+class="math inline">\(\ge 1\)</span>.</p>
+<p>The cross-mappable gene pairs are defined to be all genes included in
+the cross-mappability file.</p></li>
 <li><p>Remove genes that are not autosomal.</p></li>
 </ol>
-<p>Number of genes left/removed in each filter step is summarized in the following table. “All” is for the number of all genes in the “Dataset”; “Annotated” is for genes included in the gencode annotation file; “Filtered” is for genes that are not protein coding/lincRNA, poorly mapped, cross-mapped, or not autosomal in total; “Filtered.info” gives genes in the four categories; “Final” gives genes for the downstream use.</p>
+<p>Number of genes left/removed in each filter step is summarized in the
+following table. “All” is for the number of all genes in the “Dataset”;
+“Annotated” is for genes included in the gencode annotation file;
+“Filtered” is for genes that are not protein coding/lincRNA, poorly
+mapped, cross-mapped, or not autosomal in total; “Filtered.info” gives
+genes in the four categories; “Final” gives genes for the downstream
+use.</p>
 <table>
 <thead>
 <tr class="header">
@@ -868,43 +1038,77 @@ Lili Wang
 </div>
 <div id="eqtlgen-1" class="section level3">
 <h3>eQTLGen?</h3>
-<p>We want to check if signals in DGN can be replicated using the full trans-eQTL summary statistics from <a href="https://www.eqtlgen.org/trans-eqtls.html">eQTLGen</a>. This full dataset includes 19942 genes that showed expression in blood tested and 10317 SNPs that are trait-associated SNPs based on GWAS Catalog. So it’s not what we expected for the whole genome. In addition, not all genes have zscores for all snps.</p>
+<p>We want to check if signals in DGN can be replicated using the full
+trans-eQTL summary statistics from <a
+href="https://www.eqtlgen.org/trans-eqtls.html">eQTLGen</a>. This full
+dataset includes 19942 genes that showed expression in blood tested and
+10317 SNPs that are trait-associated SNPs based on GWAS Catalog. So it’s
+not what we expected for the whole genome. In addition, not all genes
+have zscores for all snps.</p>
 </div>
 </div>
 <div id="dec-07" class="section level2">
 <h2>Dec 07</h2>
-<div id="update-results-for-multiple-permutations." class="section level3">
+<div id="update-results-for-multiple-permutations."
+class="section level3">
 <h3>Update results for multiple permutations.</h3>
-<p>In order to check if keep increasing permutations will keep decreasing signals, I ran more permutations, i.e. 1, 5, 10, 15, 20. See section in <code>Dec 01</code>. The figures show that if we use the FDR based on the combined chr and modules, maybe we should use 10 permutations rather than just 1 permutation, since the number of signals starts to be stable from 10-perm.</p>
+<p>In order to check if keep increasing permutations will keep
+decreasing signals, I ran more permutations, i.e. 1, 5, 10, 15, 20. See
+section in <code>Dec 01</code>. The figures show that if we use the FDR
+based on the combined chr and modules, maybe we should use 10
+permutations rather than just 1 permutation, since the number of signals
+starts to be stable from 10-perm.</p>
 </div>
 <div id="gtex-genes" class="section level3">
 <h3>GTEx genes</h3>
-<p>Last week, we wanted to check how many GTEx genes are cross-mapped, poorly mapped, or pseudogenes in the following way <em>“If many genes not in the protein coding/lincRNA category don’t have mappability score or multimappablity scores, we can remove them too.”</em></p>
-<p>However, I found that in the cross-mappability file, there are 27949 genes in total, the minimum cross-mappability score is 1 and 0.5 in files <code>*cross_mappability_strength.txt.gz</code> and <code>*cross_mappability_strength_symmetric_mean_sorted.txt.gz</code>, respectively. So I think all genes in this cross-mappability file should be considered cross-mapped (cross-mappability &gt; 0), according to <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6305209/">Battle 2018</a></p>
-<p>For example, in whole blood, there are 20315 genes in total, among which, 14582 and 1189 are protein_coding and lincRNA, respectively, with the remaining 4544 genes in other catogories. Among 14582 protein coding genes, 9962 are in the cross-mappability file, 2015 have mappability of NA or <span class="math inline">\(&lt;0.9\)</span>. Combined together, 9991 are removed, leaving 4591 genes.</p>
+<p>Last week, we wanted to check how many GTEx genes are cross-mapped,
+poorly mapped, or pseudogenes in the following way <em>“If many genes
+not in the protein coding/lincRNA category don’t have mappability score
+or multimappablity scores, we can remove them too.”</em></p>
+<p>However, I found that in the cross-mappability file, there are 27949
+genes in total, the minimum cross-mappability score is 1 and 0.5 in
+files <code>*cross_mappability_strength.txt.gz</code> and
+<code>*cross_mappability_strength_symmetric_mean_sorted.txt.gz</code>,
+respectively. So I think all genes in this cross-mappability file should
+be considered cross-mapped (cross-mappability &gt; 0), according to <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6305209/">Battle
+2018</a></p>
+<p>For example, in whole blood, there are 20315 genes in total, among
+which, 14582 and 1189 are protein_coding and lincRNA, respectively, with
+the remaining 4544 genes in other catogories. Among 14582 protein coding
+genes, 9962 are in the cross-mappability file, 2015 have mappability of
+NA or <span class="math inline">\(&lt;0.9\)</span>. Combined together,
+9991 are removed, leaving 4591 genes.</p>
 <ul>
 <li>protein_coding: 14582, 9962, 2015, 9991, 4591</li>
 <li>lincRNA: 1189, 512, 215, 533, 656</li>
 <li>Others: 4544, 2622, 1476, 2668, 1876</li>
 </ul>
-<p>Question: Can we simply use the GTEx genes that are protein coding/lincRNA?</p>
+<p>Question: Can we simply use the GTEx genes that are protein
+coding/lincRNA?</p>
 </div>
 <div id="eqtlgen-and-dgn" class="section level3">
 <h3>eQTLGen and DGN</h3>
 <p>Some genes in DGN modules are not in eQTLGen trans dataset.</p>
 <p>Do DGN provide the ENS id of the gene symbols?</p>
-<p>New ways to filter DGN genes? (1) genes not in <code>gencode.v19.annotation.gtf.gz</code>; (2) gene_type “pseudogene”; (3)</p>
+<p>New ways to filter DGN genes? (1) genes not in
+<code>gencode.v19.annotation.gtf.gz</code>; (2) gene_type “pseudogene”;
+(3)</p>
 </div>
 </div>
 <div id="dec-01" class="section level2">
 <h2>Dec 01</h2>
 <div id="work-i-did." class="section level3">
 <h3>Work I did.</h3>
-<p>Here I give a brief summary of my last week’s work. Firstly, I ran multiple permutations to generate multiple empirical nulls so that I can validate if our previous results based on one-time permutation are stable. Secondly, I ran GTEx datesets for all tissues.</p>
+<p>Here I give a brief summary of my last week’s work. Firstly, I ran
+multiple permutations to generate multiple empirical nulls so that I can
+validate if our previous results based on one-time permutation are
+stable. Secondly, I ran GTEx datesets for all tissues.</p>
 </div>
 <div id="multiple-permutations" class="section level3">
 <h3>Multiple permutations</h3>
-<p>The following table and figures summarize the signals under different numbers of permutations.</p>
+<p>The following table and figures summarize the signals under different
+numbers of permutations.</p>
 <table style="width:100%;">
 <colgroup>
 <col width="18%" />
@@ -951,7 +1155,15 @@ Lili Wang
 </tr>
 </tbody>
 </table>
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="21%" />
+<col width="15%" />
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">FDR</th>
@@ -1073,7 +1285,8 @@ Lili Wang
 </table>
 </div>
 </div>
-<p>NULL <img src="figure/Log2020.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>NULL
+<img src="figure/Log2020.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-2">
 Past versions of unnamed-chunk-4-2.png
@@ -1111,53 +1324,132 @@ Lili Wang
 </table>
 </div>
 </div>
-<p>Before interpreting the reuslt, I will first describe these figures.</p>
+<p>Before interpreting the reuslt, I will first describe these
+figures.</p>
 <ul>
-<li><p>The table gives the number of signals under different FDR methods (“FDR”) and signal types (i.e. (QTL, module) signal pair, unique signal, independent signal). For each case combination, I also give the results based on one permutation (“#1”) and five permuations (“#5”).</p></li>
-<li><p>For a more intuitive sense of these numbers, I also plot them in the second figure, where colors represent the FDR methods, sub-figures are for signal types, x-axis is for number of permutations, and y-axis is for number of signals.</p></li>
-<li><p>To look at the difference and interactions of the signals under different permutations, I draw the Venn diagram in the third figure. Still, colors represent the FDR methods. For simplicity, I only looked at the unique signals.</p></li>
+<li><p>The table gives the number of signals under different FDR methods
+(“FDR”) and signal types (i.e. (QTL, module) signal pair, unique signal,
+independent signal). For each case combination, I also give the results
+based on one permutation (“#1”) and five permuations (“#5”).</p></li>
+<li><p>For a more intuitive sense of these numbers, I also plot them in
+the second figure, where colors represent the FDR methods, sub-figures
+are for signal types, x-axis is for number of permutations, and y-axis
+is for number of signals.</p></li>
+<li><p>To look at the difference and interactions of the signals under
+different permutations, I draw the Venn diagram in the third figure.
+Still, colors represent the FDR methods. For simplicity, I only looked
+at the unique signals.</p></li>
 </ul>
-<p>Generally speaking, increasing the number of permutations decreases the number of signals.</p>
+<p>Generally speaking, increasing the number of permutations decreases
+the number of signals.</p>
 <ul>
-<li><p>For FDR based on each (module, chr) pair, there were 3439 unique QTLs under 1-perm. However, these signals decrease to 1286 after increasing the number of permutations to 5. From the Venn plot (red), we can see that among the 3439 QTLs from 1-perm, 2247 are no longer signals after increasing permutations.</p></li>
-<li><p>For FDR based on combined chromosomes, using 1-perm and 5-perm generated 671 and 261 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. 410 QTLs become insignificant under more permutations.</p></li>
-<li><p>For FDR based on combined chromosomes and modules, using 1-perm and 5-perm generated 641 abd 589 signals, respectively. All signals detected by 5-perm are also detected by 1-perm. Only 52 QTLs become insignificant under more permutations.</p></li>
+<li><p>For FDR based on each (module, chr) pair, there were 3439 unique
+QTLs under 1-perm. However, these signals decrease to 1286 after
+increasing the number of permutations to 5. From the Venn plot (red), we
+can see that among the 3439 QTLs from 1-perm, 2247 are no longer signals
+after increasing permutations.</p></li>
+<li><p>For FDR based on combined chromosomes, using 1-perm and 5-perm
+generated 671 and 261 signals, respectively. All signals detected by
+5-perm are also detected by 1-perm. 410 QTLs become insignificant under
+more permutations.</p></li>
+<li><p>For FDR based on combined chromosomes and modules, using 1-perm
+and 5-perm generated 641 abd 589 signals, respectively. All signals
+detected by 5-perm are also detected by 1-perm. Only 52 QTLs become
+insignificant under more permutations.</p></li>
 </ul>
-<p>The results show that (module, chr) pair and combined chromosomes-based FDR are not stable if we only use one permutation. However, combined chromosomes and modules-based FDR seems quite stable. (WHY?) In order to check if keep increasing permutations will keep decreasing signals, I am running 10 permutations.</p>
+<p>The results show that (module, chr) pair and combined
+chromosomes-based FDR are not stable if we only use one permutation.
+However, combined chromosomes and modules-based FDR seems quite stable.
+(WHY?) In order to check if keep increasing permutations will keep
+decreasing signals, I am running 10 permutations.</p>
 </div>
 </div>
 <div id="nov-23" class="section level2">
 <h2>Nov 23</h2>
-<p>Last week, I used three ways to correct for the multiple testing based on the empirical null distributions, including correction based on (1) each module and chromosome pair; (2) combined chromosomes for each module; and (3) combined all chromosomes and modules. For the signals obtained from these three ways, I looked at their pvalues and the chromosomes they are on and found out that the latter two correction ways make more sense. So next I will look at the enrichment of the signals’ nearest genes.</p>
-<p>Some notes about what I did. I use the signals obtained from the combined chr’s and modules. I used all unique signals (rather than independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For each signal, I define its <strong>nearest</strong> gene as the <strong>closest</strong> gene of which TSS is upstream/downstream 0.5Mbp away from the signal. As a result, there are 50 nearest genes for DGN and 548 for TCGA.</p>
+<p>Last week, I used three ways to correct for the multiple testing
+based on the empirical null distributions, including correction based on
+(1) each module and chromosome pair; (2) combined chromosomes for each
+module; and (3) combined all chromosomes and modules. For the signals
+obtained from these three ways, I looked at their pvalues and the
+chromosomes they are on and found out that the latter two correction
+ways make more sense. So next I will look at the enrichment of the
+signals’ nearest genes.</p>
+<p>Some notes about what I did. I use the signals obtained from the
+combined chr’s and modules. I used all unique signals (rather than
+independent signals), i.e. 641 signals for DGN and 9196 for TCGA. For
+each signal, I define its <strong>nearest</strong> gene as the
+<strong>closest</strong> gene of which TSS is upstream/downstream 0.5Mbp
+away from the signal. As a result, there are 50 nearest genes for DGN
+and 548 for TCGA.</p>
 <p>Next, I looked at the enrichment of these genes.</p>
 <div id="dgn" class="section level3">
 <h3>DGN</h3>
-<p>Since I am not able to share the link to the complete enrichment result, I posted the 47 genes used by <a href="https://david.ncifcrf.gov/">David</a> enrichment tool <a href="asset/1123_converted.DGN.txt">here</a> to reproduce the results.</p>
-<p>Under BH correction with 0.05 as threshold, there is one significant enrichment cluster: SPRY-domain-related, which includes four genes <em>BTNL3, BTNL8, BTNL9, TRIM58</em>.</p>
-<p>I doubt that this enrichment happens because some signals are physically close to each other but their nearest genes are different. So I looked at the enrichment of genes that are closest to the independent signals (previously I used all signals). The gene list used by David is <a href="asset/1123_converted.indep.DGN.txt">here</a>. There is no enriched term under 0.05 BH.</p>
+<p>Since I am not able to share the link to the complete enrichment
+result, I posted the 47 genes used by <a
+href="https://david.ncifcrf.gov/">David</a> enrichment tool <a
+href="asset/1123_converted.DGN.txt">here</a> to reproduce the
+results.</p>
+<p>Under BH correction with 0.05 as threshold, there is one significant
+enrichment cluster: SPRY-domain-related, which includes four genes
+<em>BTNL3, BTNL8, BTNL9, TRIM58</em>.</p>
+<p>I doubt that this enrichment happens because some signals are
+physically close to each other but their nearest genes are different. So
+I looked at the enrichment of genes that are closest to the independent
+signals (previously I used all signals). The gene list used by David is
+<a href="asset/1123_converted.indep.DGN.txt">here</a>. There is no
+enriched term under 0.05 BH.</p>
 </div>
 <div id="tcga" class="section level3">
 <h3>TCGA</h3>
-<p>I post the 474 genes used by David enrichment tool <a href="asset/1123_converted.TCGA.txt">here</a> to reproduce the results.</p>
-<p>Under BH correction with 0.05 as threshold, there are basically two types of enrichment.</p>
+<p>I post the 474 genes used by David enrichment tool <a
+href="asset/1123_converted.TCGA.txt">here</a> to reproduce the
+results.</p>
+<p>Under BH correction with 0.05 as threshold, there are basically two
+types of enrichment.</p>
 <ol style="list-style-type: decimal">
 <li><p>Guanylate-binding protein</p>
-<p>Relation with cancer: <a href="https://pubmed.ncbi.nlm.nih.gov/29115931/">[source]</a> <a href="https://www.frontiersin.org/articles/10.3389/fimmu.2019.03139/full">[source]</a></p></li>
+<p>Relation with cancer: <a
+href="https://pubmed.ncbi.nlm.nih.gov/29115931/">[source]</a> <a
+href="https://www.frontiersin.org/articles/10.3389/fimmu.2019.03139/full">[source]</a></p></li>
 </ol>
 <ol start="2" style="list-style-type: decimal">
-<li>MHC class II receptor activity/immunity-related: <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/imm.12675">Antigen processing and presentation</a>, <a href="https://ard.bmj.com/content/79/5/581.abstract">Rheumatoid arthritis</a>, et al.</li>
+<li>MHC class II receptor activity/immunity-related: <a
+href="https://onlinelibrary.wiley.com/doi/full/10.1111/imm.12675">Antigen
+processing and presentation</a>, <a
+href="https://ard.bmj.com/content/79/5/581.abstract">Rheumatoid
+arthritis</a>, et al.</li>
 </ol>
-<p>I also tried the independent signals (gene list is <a href="asset/1123_converted.indep.TCGA.txt">here</a>). There is no enriched term under 0.05 BH.</p>
+<p>I also tried the independent signals (gene list is <a
+href="asset/1123_converted.indep.TCGA.txt">here</a>). There is no
+enriched term under 0.05 BH.</p>
 </div>
 <div id="gbat-signals" class="section level3">
 <h3>GBAT signals</h3>
-<p>The following table summarizes the signals from GBAT and whether they are reproduced by our method.</p>
-<p>From the Figure 4 of <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02120-1/figures/4Form">GBAT paper</a>, there are 5 labeled transcription factors that regulate multiple genes in trans. I checked that if these 5 genes have nearby SNPs that are identified as signals in our analysis (<code>Regulator.signal</code>). Then checked the modules the signals correspond to (<code>signal.module</code>). Next, I checked whether the TF target genes identified by GBAT (<code>Target</code>) are in our modules (<code>Target.in.module</code>). If so, check which module these genes are (<code>Target.module</code>).</p>
-<p>The regulator <em>PLAGL1</em> is close to the signal 6:144304358, which corresponds to module 11. Only 5 of this regulator’s target genes are in our modules and none of them are clustered into module 11.</p>
-<p>The regulator <em>NFE2</em> is close to the signal 12:54685880, which corresponds to module 1 and module 11. Among the 6 target genes, 2 are in our modules. One is in module1, the other one is in module 5.</p>
-<p>The regulator <em>NFKBIA</em> is close to the signal 14:35602108, which corresponds to module 11. Among the 3 target genes, one is in our modules and it is in module 11.</p>
-<p>The regulator <em>IKZF1</em> is close to multiple signals, which are introns of <em>IKZF1</em>. The signals correspond to multiple modules including 1,2,5,6,7,8,11,18. Among the regulator’s 4 target genes, one is in our modules and it is in module 18.</p>
+<p>The following table summarizes the signals from GBAT and whether they
+are reproduced by our method.</p>
+<p>From the Figure 4 of <a
+href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02120-1/figures/4Form">GBAT
+paper</a>, there are 5 labeled transcription factors that regulate
+multiple genes in trans. I checked that if these 5 genes have nearby
+SNPs that are identified as signals in our analysis
+(<code>Regulator.signal</code>). Then checked the modules the signals
+correspond to (<code>signal.module</code>). Next, I checked whether the
+TF target genes identified by GBAT (<code>Target</code>) are in our
+modules (<code>Target.in.module</code>). If so, check which module these
+genes are (<code>Target.module</code>).</p>
+<p>The regulator <em>PLAGL1</em> is close to the signal 6:144304358,
+which corresponds to module 11. Only 5 of this regulator’s target genes
+are in our modules and none of them are clustered into module 11.</p>
+<p>The regulator <em>NFE2</em> is close to the signal 12:54685880, which
+corresponds to module 1 and module 11. Among the 6 target genes, 2 are
+in our modules. One is in module1, the other one is in module 5.</p>
+<p>The regulator <em>NFKBIA</em> is close to the signal 14:35602108,
+which corresponds to module 11. Among the 3 target genes, one is in our
+modules and it is in module 11.</p>
+<p>The regulator <em>IKZF1</em> is close to multiple signals, which are
+introns of <em>IKZF1</em>. The signals correspond to multiple modules
+including 1,2,5,6,7,8,11,18. Among the regulator’s 4 target genes, one
+is in our modules and it is in module 18.</p>
 <p>The regulator <em>SENP7</em> is not close to any signals.</p>
 <table>
 <colgroup>
@@ -1192,7 +1484,8 @@ Lili Wang
 <td align="left">144329396</td>
 <td align="left">6:144304358</td>
 <td align="left">11</td>
-<td align="left">PAQR7;IDI1;MAPKAPK3;VAV1;TTC9;RGL4;CERS2;RAB37;JAK3;HM13;PNPLA1;OGDH;AMPD2;CYFIP2;TGM3;CKAP4;GPX3;PRAM1;CD82;MFSD12;AP5B1;GAPVD1;IQCE;BRAT1</td>
+<td
+align="left">PAQR7;IDI1;MAPKAPK3;VAV1;TTC9;RGL4;CERS2;RAB37;JAK3;HM13;PNPLA1;OGDH;AMPD2;CYFIP2;TGM3;CKAP4;GPX3;PRAM1;CD82;MFSD12;AP5B1;GAPVD1;IQCE;BRAT1</td>
 <td align="left">AMPD2;CERS2;MAPKAPK3;TTC9;TGM3</td>
 <td align="left">7;8;6;0;2</td>
 </tr>
@@ -1236,7 +1529,8 @@ Lili Wang
 <td align="left">101232056</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">ZNF418;ZNF671;ZNF211;ZNF304;ZNF135;ZNF551;TRAPPC2P1;ZNF547;ZNF134;ZNF256;ZNF416;ZNF667-AS1;OPLAH;ZNF649;ZNF85;ZNF264</td>
+<td
+align="left">ZNF418;ZNF671;ZNF211;ZNF304;ZNF135;ZNF551;TRAPPC2P1;ZNF547;ZNF134;ZNF256;ZNF416;ZNF667-AS1;OPLAH;ZNF649;ZNF85;ZNF264</td>
 <td align="left">OPLAH</td>
 <td align="left">7</td>
 </tr>
@@ -1256,8 +1550,14 @@ Lili Wang
 </div>
 <div id="look-at-some-top-signals" class="section level3">
 <h3>Look at some top signals</h3>
-<p>I looked at part of the top signals with very small pvalues. The following table summarizes the signals’ postions, the corresponding modules, pvalues, the signal’s nearest gene, and the gene info. The first two rows give the signals that are near two TFs, <em>IKZF1, KLF2</em>.</p>
-<p>Notes: Some pvalues are zero because they are smaller than the numerical precision (<span class="math inline">\(&lt;10^{-16}\)</span>).</p>
+<p>I looked at part of the top signals with very small pvalues. The
+following table summarizes the signals’ postions, the corresponding
+modules, pvalues, the signal’s nearest gene, and the gene info. The
+first two rows give the signals that are near two TFs, <em>IKZF1,
+KLF2</em>.</p>
+<p>Notes: Some pvalues are zero because they are smaller than the
+numerical precision (<span
+class="math inline">\(&lt;10^{-16}\)</span>).</p>
 <table>
 <colgroup>
 <col width="8%" />
@@ -1350,13 +1650,18 @@ Lili Wang
 <h2>Nov 16</h2>
 <div id="work-i-did.-1" class="section level3">
 <h3>Work I did.</h3>
-<p>For the last week, I re-write the whole pipeline into snakemake files, so that I can run different datasets with ease. <a href="https://github.com/liliw-w/Trans/tree/main/script">script</a></p>
-<p>Before listing the results, I will first describe the key steps in the pipeine.</p>
+<p>For the last week, I re-write the whole pipeline into snakemake
+files, so that I can run different datasets with ease. <a
+href="https://github.com/liliw-w/Trans/tree/main/script">script</a></p>
+<p>Before listing the results, I will first describe the key steps in
+the pipeine.</p>
 <ol style="list-style-type: decimal">
-<li>Construct co-expressed modules using <code>minModuleSize=20</code>.</li>
+<li>Construct co-expressed modules using
+<code>minModuleSize=20</code>.</li>
 <li>Compute zscores by tensorQTL.</li>
 <li>Compute pvalues by TruncPCO.</li>
-<li>Adjust for multiple testing based on one-time permutation, followed by Bonferroni.</li>
+<li>Adjust for multiple testing based on one-time permutation, followed
+by Bonferroni.</li>
 </ol>
 </div>
 <div id="results-summary." class="section level3">
@@ -1475,10 +1780,21 @@ Lili Wang
 </div>
 <div id="tcga-1" class="section level3">
 <h3>TCGA</h3>
-<p>The following three plots are for FDR correction based on each module and chr pair; combined chr’s for each module; combined chr’s and modules.</p>
-<p>The first plot is for the 2063 independent signals. The left plot is the histogram of <span class="math inline">\(-logp\)</span>. Since signals with <span class="math inline">\(p&lt;10^{-16}\)</span> have pvalue as 0 in R, here I give these signals pvalue of <span class="math inline">\(10^{-17}\)</span>, which have <span class="math inline">\(-logp=17\)</span>. The plot shows that among 2063 signals, most of them have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
-<p><strong>Question</strong>: Is this too small for claiming significance for trans?</p>
-<p>The right plot is the histogram of the chromosomes the signals are on.</p>
+<p>The following three plots are for FDR correction based on each module
+and chr pair; combined chr’s for each module; combined chr’s and
+modules.</p>
+<p>The first plot is for the 2063 independent signals. The left plot is
+the histogram of <span class="math inline">\(-logp\)</span>. Since
+signals with <span class="math inline">\(p&lt;10^{-16}\)</span> have
+pvalue as 0 in R, here I give these signals pvalue of <span
+class="math inline">\(10^{-17}\)</span>, which have <span
+class="math inline">\(-logp=17\)</span>. The plot shows that among 2063
+signals, most of them have <span class="math inline">\(p \approx
+10^{-5}\)</span>.</p>
+<p><strong>Question</strong>: Is this too small for claiming
+significance for trans?</p>
+<p>The right plot is the histogram of the chromosomes the signals are
+on.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1116_plot.TCGA.png" alt="(module, chr) pair"  />
 <p class="caption">
@@ -1611,8 +1927,12 @@ liliw-w
 </div>
 <div id="dgn-1" class="section level3">
 <h3>DGN</h3>
-<p>The following three plots are for FDR correction based on each module and chr pair; combined chr’s for each module; combined chr’s and modules.</p>
-<p>As showed in the plot for DGN, among 500 independent signals, most of their pvalues have <span class="math inline">\(p \approx 10^{-5}\)</span>.</p>
+<p>The following three plots are for FDR correction based on each module
+and chr pair; combined chr’s for each module; combined chr’s and
+modules.</p>
+<p>As showed in the plot for DGN, among 500 independent signals, most of
+their pvalues have <span class="math inline">\(p \approx
+10^{-5}\)</span>.</p>
 <div class="figure" style="text-align: center">
 <img src="asset/1116_plot.DGN.png" alt="(module, chr) pair"  />
 <p class="caption">
@@ -1749,7 +2069,21 @@ liliw-w
 <li>Expression data pre-process.</li>
 </ol>
 <p>Below is how GTEx 2020 paper pre-processs expression data.</p>
-<p>“Gene-level expression quantification was performed using RNA-SeQC [68]. Gene-level read counts and TPM values were produced using the following read-level filters: 1) reads were uniquely mapped (corresponding to a mapping quality of 255 for STAR BAMs); 2) reads were aligned in proper pairs; 3) the read alignment distance was ≤ 6; 4) reads were fully contained within exon boundaries. Reads overlapping introns were not counted. These filters were applied using the “-strictMode” flag in RNA-SeQC. Gene expression values for all samples from a given tissue were normalized for eQTL analyses using the following procedure: 1) read counts were normalized between samples using TMM [69]; 2) genes were selected based on expression thresholds of ≥0.1 TPM in ≥20% of samples and ≥6 reads (unnormalized) in ≥20% of samples; 3) expression values for each gene were inverse normal transformed across samples." <a href="https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf">source</a></p>
+<p>“Gene-level expression quantification was performed using RNA-SeQC
+[68]. Gene-level read counts and TPM values were produced using the
+following read-level filters: 1) reads were uniquely mapped
+(corresponding to a mapping quality of 255 for STAR BAMs); 2) reads were
+aligned in proper pairs; 3) the read alignment distance was ≤ 6; 4)
+reads were fully contained within exon boundaries. Reads overlapping
+introns were not counted. These filters were applied using the
+“-strictMode” flag in RNA-SeQC. Gene expression values for all samples
+from a given tissue were normalized for eQTL analyses using the
+following procedure: 1) read counts were normalized between samples
+using TMM [69]; 2) genes were selected based on expression thresholds of
+≥0.1 TPM in ≥20% of samples and ≥6 reads (unnormalized) in ≥20% of
+samples; 3) expression values for each gene were inverse normal
+transformed across samples.” <a
+href="https://science.sciencemag.org/content/sci/suppl/2020/09/09/369.6509.1318.DC1/aaz1776_Aguet_SM.pdf">source</a></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Genotype data pre-process.</li>
 </ol>
@@ -1758,16 +2092,26 @@ liliw-w
 </div>
 <div id="nov-09" class="section level2">
 <h2>Nov 09</h2>
-<div id="paper-using-permutation-based-false-discovery-rate." class="section level3">
+<div id="paper-using-permutation-based-false-discovery-rate."
+class="section level3">
 <h3>Paper using permutation-based false discovery rate.</h3>
-<p>This <a href="https://www-nature-com.proxy.uchicago.edu/articles/ng.2756#Sec12">paper</a> uses permutations to correct for FDR of a complex test statistic. Like in our cases, it’s unrealistic to do thousands of permutations. Specifically, they did 10 permutations and adjusted pvalues based on these 10 empirical null distributions. They justied why 10 permutations are enough.</p>
+<p>This <a
+href="https://www-nature-com.proxy.uchicago.edu/articles/ng.2756#Sec12">paper</a>
+uses permutations to correct for FDR of a complex test statistic. Like
+in our cases, it’s unrealistic to do thousands of permutations.
+Specifically, they did 10 permutations and adjusted pvalues based on
+these 10 empirical null distributions. They justied why 10 permutations
+are enough.</p>
 </div>
-<div id="modify-pco-code-from-one-snp-a-time-to-multiple-snps." class="section level3">
+<div id="modify-pco-code-from-one-snp-a-time-to-multiple-snps."
+class="section level3">
 <h3>Modify PCO code from one SNP a time to multiple SNPs.</h3>
 <ol style="list-style-type: decimal">
 <li>davies method</li>
 </ol>
-<p><code>davies.R</code>: Remove <code>PACKAGE=MPAT</code>; Run in command line <code>R SMP SHLIB qfc.cpp</code>; Run in R <code>dyn.load("./script/qfc.so")</code></p>
+<p><code>davies.R</code>: Remove <code>PACKAGE=MPAT</code>; Run in
+command line <code>R SMP SHLIB qfc.cpp</code>; Run in R
+<code>dyn.load("./script/qfc.so")</code></p>
 <ol start="2" style="list-style-type: decimal">
 <li>liumod method</li>
 </ol>
@@ -1786,11 +2130,17 @@ liliw-w
 </div>
 <div id="nov-02" class="section level2">
 <h2>Nov 02</h2>
-<div id="why-use-minmodulesize30-in-wgcna-for-tcga" class="section level3">
+<div id="why-use-minmodulesize30-in-wgcna-for-tcga"
+class="section level3">
 <h3>Why use <code>minModuleSize=30</code> in WGCNA for TCGA?</h3>
-<p>There are three reasons why I set the minimum number of genes in modules to be 30.</p>
+<p>There are three reasons why I set the minimum number of genes in
+modules to be 30.</p>
 <p><strong>1. DGN used this setting.</strong></p>
-<p>At first, we looked at the variance explained by the top three PC of each modules under different settings, i.e. <code>minModuleSize=100, 50, 30</code>. We found that under setting of 30, the top three PC’s explained more variance, so we tended to use 30.</p>
+<p>At first, we looked at the variance explained by the top three PC of
+each modules under different settings,
+i.e. <code>minModuleSize=100, 50, 30</code>. We found that under setting
+of 30, the top three PC’s explained more variance, so we tended to use
+30.</p>
 <p><img src="asset/1102_fig1.minModuleSize.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1102_fig1.minModuleSize">
@@ -1829,7 +2179,12 @@ liliw-w
 </table>
 </div>
 </div>
-<p>The above plots used all 13634 genes without removing any poorly mapped genes. Next, I removed the poorly mapped genes, with 5258 genes left. I used 30 to cluster these 5258 genes and resulted in 18 modules. We then looked at the explained variance and found nothing seemed wrong. So we decided to use 30 for WGCNA and these 18 modules for downstream analysis.</p>
+<p>The above plots used all 13634 genes without removing any poorly
+mapped genes. Next, I removed the poorly mapped genes, with 5258 genes
+left. I used 30 to cluster these 5258 genes and resulted in 18 modules.
+We then looked at the explained variance and found nothing seemed wrong.
+So we decided to use 30 for WGCNA and these 18 modules for downstream
+analysis.</p>
 <p><img src="asset/1102_fig2.minModuleSize.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1102_fig2.minModuleSize">
@@ -1868,9 +2223,17 @@ liliw-w
 </table>
 </div>
 </div>
-<p><strong>2. 30 is the default module size in WGCNA tutorial, and also used by the elife paper.</strong></p>
-<p><a href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/FemaleLiver-02-networkConstr-auto.pdf">WGCNA tutorial</a> used 30 as default. <del>The <a href="https://elifesciences.org/articles/58705#s4">elife method</a> also used the default parameters.</del> (Correction: elife method used the default parameters in the R package, where <code>minClusterSize = 20</code>.)</p>
-<p><strong>3. I tried other parameters, e.g. 100. 50, which both increase the unclassified genes.</strong></p>
+<p><strong>2. 30 is the default module size in WGCNA tutorial, and also
+used by the elife paper.</strong></p>
+<p><a
+href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/FemaleLiver-02-networkConstr-auto.pdf">WGCNA
+tutorial</a> used 30 as default. <del>The <a
+href="https://elifesciences.org/articles/58705#s4">elife method</a> also
+used the default parameters.</del> (Correction: elife method used the
+default parameters in the R package, where
+<code>minClusterSize = 20</code>.)</p>
+<p><strong>3. I tried other parameters, e.g. 100. 50, which both
+increase the unclassified genes.</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -1910,10 +2273,18 @@ liliw-w
 </div>
 <div id="look-into-enrichment-of-tcga-modules." class="section level3">
 <h3>Look into enrichment of TCGA modules.</h3>
-<p>Here is the <a href="https://biit.cs.ut.ee/gplink/l/5R4sgZawQC">complete enrichment result</a>.</p>
+<p>Here is the <a
+href="https://biit.cs.ut.ee/gplink/l/5R4sgZawQC">complete enrichment
+result</a>.</p>
 <div id="kegg-pathway-enrichment" class="section level4">
 <h4>KEGG pathway enrichment</h4>
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="8%" />
+<col width="49%" />
+<col width="13%" />
+<col width="28%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">source</th>
@@ -1968,23 +2339,51 @@ liliw-w
 </tbody>
 </table>
 <ul>
-<li><p><strong>ErbB signaling pathway</strong>: "ErbB family members and some of their ligands are often over-expressed, amplified, or mutated in many forms of cancer, making them important therapeutic targets. For example, researchers have found EGFR to be amplified and/or mutated in gliomas and NSCLC while ErbB2 amplifications are seen in breast, ovarian, bladder, NSCLC, as well as several other tumor types. <a href="https://www.cellsignal.com/contents/science-cst-pathways-kinase-signaling/erbb-her-signaling/pathways-erbb#:~:text=The%20ErbB%20receptors%20signal%20through,making%20them%20important%20therapeutic%20targets.">[source]</a></p></li>
+<li><p><strong>ErbB signaling pathway</strong>: “ErbB family members and
+some of their ligands are often over-expressed, amplified, or mutated in
+many forms of cancer, making them important therapeutic targets. For
+example, researchers have found EGFR to be amplified and/or mutated in
+gliomas and NSCLC while ErbB2 amplifications are seen in breast,
+ovarian, bladder, NSCLC, as well as several other tumor types. <a
+href="https://www.cellsignal.com/contents/science-cst-pathways-kinase-signaling/erbb-her-signaling/pathways-erbb#:~:text=The%20ErbB%20receptors%20signal%20through,making%20them%20important%20therapeutic%20targets.">[source]</a></p></li>
 <li><p><strong>Neuroactive ligand-receptor interaction</strong>:</p>
 <ul>
-<li>Influence on breast cancer MCF-7 cells: “Telocinobufagin might regulate neuroactive ligand-receptor interaction pathway to exert its influences in breast cancer MCF-7 cells.” <a href="https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/S0344033818301018">[source]</a></li>
-<li>Involved in the regulation of renal cell carcinoma. <a href="https://www.karger.com/Article/Pdf/368504">[source]</a></li>
+<li>Influence on breast cancer MCF-7 cells: “Telocinobufagin might
+regulate neuroactive ligand-receptor interaction pathway to exert its
+influences in breast cancer MCF-7 cells.” <a
+href="https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/S0344033818301018">[source]</a></li>
+<li>Involved in the regulation of renal cell carcinoma. <a
+href="https://www.karger.com/Article/Pdf/368504">[source]</a></li>
 </ul></li>
-<li><p><strong>Mucin type O-glycan biosynthesis</strong>: “Changes in mucin-type O-linked glycosylation are seen in over 90% of breast cancers” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6103458/">[source]</a> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1479595/">[source]</a></p></li>
-<li><p><strong>Human papillomavirus infection</strong>: “We demonstrated that HPV is associated with breast cancer development, although the role of HPV in breast cancers is still questionable and further research is required to investigate, in more detail, the role of HPV infection in breast cancer.” <a href="https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-5286-0#Sec17">[source]</a></p></li>
-<li><p><strong>Prolactin signaling pathway</strong>: “elevated PRL levels are correlated with increased breast cancer risk and metastasis” “In vitro studies have indicated a role for PRL in breast cancer proliferation and survival.” <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5653461/">[source]</a></p></li>
+<li><p><strong>Mucin type O-glycan biosynthesis</strong>: “Changes in
+mucin-type O-linked glycosylation are seen in over 90% of breast
+cancers” <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6103458/">[source]</a>
+<a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1479595/">[source]</a></p></li>
+<li><p><strong>Human papillomavirus infection</strong>: “We demonstrated
+that HPV is associated with breast cancer development, although the role
+of HPV in breast cancers is still questionable and further research is
+required to investigate, in more detail, the role of HPV infection in
+breast cancer.” <a
+href="https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-5286-0#Sec17">[source]</a></p></li>
+<li><p><strong>Prolactin signaling pathway</strong>: “elevated PRL
+levels are correlated with increased breast cancer risk and metastasis”
+“In vitro studies have indicated a role for PRL in breast cancer
+proliferation and survival.” <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5653461/">[source]</a></p></li>
 <li><p><strong>Cocaine addiction</strong>: ???</p></li>
-<li><p><strong>PI3K-Akt signaling pathway</strong>: “PI3K/Akt signaling pathway is key in the development of BC” (breast cancer) <a href="https://link.springer.com/article/10.1007%2Fs10555-010-9261-0">[source]</a></p></li>
+<li><p><strong>PI3K-Akt signaling pathway</strong>: “PI3K/Akt signaling
+pathway is key in the development of BC” (breast cancer) <a
+href="https://link.springer.com/article/10.1007%2Fs10555-010-9261-0">[source]</a></p></li>
 </ul>
 </div>
 </div>
 <div id="debug-code-for-truncpco." class="section level3">
 <h3>Debug code for TruncPCO.</h3>
-<p>I was doubting that TruncPCO (using only <span class="math inline">\(\lambda&gt;1\)</span>) code may have bugs because of the following weird qqplot and histogram of pvalues.</p>
+<p>I was doubting that TruncPCO (using only <span
+class="math inline">\(\lambda&gt;1\)</span>) code may have bugs because
+of the following weird qqplot and histogram of pvalues.</p>
 <p><img src="asset/1102_fig3.TruncPCO.png" width="70%" height="70%" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1102_fig3.TruncPCO">
@@ -2023,10 +2422,56 @@ liliw-w
 </table>
 </div>
 </div>
-<p>Rows are qqplot and histogram of pvalues. These pvalues are observed pvalues rather than null pvalues. Left column is for standard PCO (using all <span class="math inline">\(\lambda\)</span>’s); right is for TruncPCO. I thought TruncPCO is weird because a histogram of pvalues shouldn’t be as skewed as the lower right one. This skewed plot means pvalues by TruncPCO are overall smaller than PCO. We thought this may be due to LD among snps, i.e. the tests are not independent. However, even with the LD complication, the histogram should be approximately flat as in the lower left plot, where the tests are not independent either.</p>
-<p>So I looked into the code for TruncPCO and see if there are bugs I didn’t notice. <em>(This paragraph explains what the bug is. See the histogram by the debugged code in next paragraph.)</em> PCO uses the minimum pvalue of six tests as the test statistic, i.e. <span class="math display">\[T_{PCO}=min(p_{PCMinP}, p_{PCFisher}, p_{PCLC}, p_{WI}, p_{Wald}, p_{VC})\]</span></p>
-<p>Then use a inverse normal distribution to calculate pvalue of <span class="math inline">\(T_{PCO}\)</span>. So the key step is to compute the six pvalues. The bug happens in the step of computing <span class="math inline">\(p_{WI}\)</span>. The test statistic for this pvalus is, <span class="math display">\[T_{WI}=\sum_{k=1}^K {z_k^2} = \sum_{k=1}^K {PC_k^2}=\sum_{k=1}^K {\lambda_k \chi_{1k}^2}\]</span> ,where <span class="math inline">\(K\)</span> is number of all PC’s of expression matrix, <span class="math inline">\(PC_k=u_k^Tz \sim N(0, \lambda_k)\)</span>, <span class="math inline">\(u_k\)</span> is k-th eigenvector with eigenvalue <span class="math inline">\(\lambda_k\)</span>; <span class="math inline">\(z\)</span> is zscore vector for one snp to <span class="math inline">\(K\)</span> genes, <span class="math inline">\(\chi_{1k}\)</span> is chi-square distribution with DF 1. If we only use <span class="math inline">\(\lambda&gt;1\)</span> for TruncPCO, i.e. <span class="math inline">\(T_{WI}^{Trunc}=\sum_{k=1}^{k_0} {PC_k^2}=\sum_{k=1}^{k_0} {\lambda_k \chi_{1k}^2}\)</span>, what I only need to do is to subset <span class="math inline">\(\lambda\)</span>’s and <span class="math inline">\(PC_k\)</span>’s. That is what I did for other five tests. However, in the original PCO package, <span class="math inline">\(T_{WI}\)</span> is calculated using <span class="math inline">\(\sum_{k=1}^K {z_k^2}\)</span> and I should have changed <span class="math inline">\(z_k\)</span>’s to <span class="math inline">\(PC_k\)</span>’s. But I missed this. So, <span class="math inline">\(T_{WI}\)</span> actually used all <span class="math inline">\(K\)</span> <span class="math inline">\(z_k\)</span>’s, and it’s larger than the real <span class="math inline">\(T_{WI}^{Trunc}\)</span>, therefore the pvalue is smaller than the real <span class="math inline">\(p_{WI}^{Trunc}\)</span>. That is why in the above plot, TruncPCO has many small pvalues and its histogram skews to the left.</p>
-<p>So I used the debuged code and re-computed pvalues for the same (module, chr). The result is in the third column.</p>
+<p>Rows are qqplot and histogram of pvalues. These pvalues are observed
+pvalues rather than null pvalues. Left column is for standard PCO (using
+all <span class="math inline">\(\lambda\)</span>’s); right is for
+TruncPCO. I thought TruncPCO is weird because a histogram of pvalues
+shouldn’t be as skewed as the lower right one. This skewed plot means
+pvalues by TruncPCO are overall smaller than PCO. We thought this may be
+due to LD among snps, i.e. the tests are not independent. However, even
+with the LD complication, the histogram should be approximately flat as
+in the lower left plot, where the tests are not independent either.</p>
+<p>So I looked into the code for TruncPCO and see if there are bugs I
+didn’t notice. <em>(This paragraph explains what the bug is. See the
+histogram by the debugged code in next paragraph.)</em> PCO uses the
+minimum pvalue of six tests as the test statistic, i.e. <span
+class="math display">\[T_{PCO}=min(p_{PCMinP}, p_{PCFisher}, p_{PCLC},
+p_{WI}, p_{Wald}, p_{VC})\]</span></p>
+<p>Then use a inverse normal distribution to calculate pvalue of <span
+class="math inline">\(T_{PCO}\)</span>. So the key step is to compute
+the six pvalues. The bug happens in the step of computing <span
+class="math inline">\(p_{WI}\)</span>. The test statistic for this
+pvalus is, <span class="math display">\[T_{WI}=\sum_{k=1}^K {z_k^2} =
+\sum_{k=1}^K {PC_k^2}=\sum_{k=1}^K {\lambda_k \chi_{1k}^2}\]</span>
+,where <span class="math inline">\(K\)</span> is number of all PC’s of
+expression matrix, <span class="math inline">\(PC_k=u_k^Tz \sim N(0,
+\lambda_k)\)</span>, <span class="math inline">\(u_k\)</span> is k-th
+eigenvector with eigenvalue <span
+class="math inline">\(\lambda_k\)</span>; <span
+class="math inline">\(z\)</span> is zscore vector for one snp to <span
+class="math inline">\(K\)</span> genes, <span
+class="math inline">\(\chi_{1k}\)</span> is chi-square distribution with
+DF 1. If we only use <span class="math inline">\(\lambda&gt;1\)</span>
+for TruncPCO, i.e. <span
+class="math inline">\(T_{WI}^{Trunc}=\sum_{k=1}^{k_0}
+{PC_k^2}=\sum_{k=1}^{k_0} {\lambda_k \chi_{1k}^2}\)</span>, what I only
+need to do is to subset <span class="math inline">\(\lambda\)</span>’s
+and <span class="math inline">\(PC_k\)</span>’s. That is what I did for
+other five tests. However, in the original PCO package, <span
+class="math inline">\(T_{WI}\)</span> is calculated using <span
+class="math inline">\(\sum_{k=1}^K {z_k^2}\)</span> and I should have
+changed <span class="math inline">\(z_k\)</span>’s to <span
+class="math inline">\(PC_k\)</span>’s. But I missed this. So, <span
+class="math inline">\(T_{WI}\)</span> actually used all <span
+class="math inline">\(K\)</span> <span
+class="math inline">\(z_k\)</span>’s, and it’s larger than the real
+<span class="math inline">\(T_{WI}^{Trunc}\)</span>, therefore the
+pvalue is smaller than the real <span
+class="math inline">\(p_{WI}^{Trunc}\)</span>. That is why in the above
+plot, TruncPCO has many small pvalues and its histogram skews to the
+left.</p>
+<p>So I used the debuged code and re-computed pvalues for the same
+(module, chr). The result is in the third column.</p>
 <p><img src="asset/1102_fig4.TruncPCO.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1102_fig4.TruncPCO">
@@ -2065,7 +2510,9 @@ liliw-w
 </table>
 </div>
 </div>
-<p>The histogram became approximately flat. For this (module13, chr19), there seems to be some signals. Next, I give another example (module, chr), where there seems no signals.</p>
+<p>The histogram became approximately flat. For this (module13, chr19),
+there seems to be some signals. Next, I give another example (module,
+chr), where there seems no signals.</p>
 <p><img src="asset/1102_fig5.TruncPCO.png" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-1102_fig5.TruncPCO">
@@ -2104,19 +2551,44 @@ liliw-w
 </table>
 </div>
 </div>
-<p>The histogram by the debugged TruncPCO is still almost flat in this cese, which makes sense.</p>
-<p>Now I have the updated pvalues. Next, I rerun TruncPCO for the null zscore, and use the null p’s to adjust for these updated pvalues. Then see how many snps are significant (<span class="math inline">\(p_{adj}&lt;\frac{0.05}{18\times22}\)</span>). I do this because I want to see how are the signals by this debugged TruncPCO compared with those by the previous TruncPCO. For now, I checked for the above two (module, chr) and the signals are almost the same.</p>
-<p>From now on, I will use this correct version of TruncPCO to compute p’s for other datasets and update p’s for datasets I’ve analyzed.</p>
+<p>The histogram by the debugged TruncPCO is still almost flat in this
+cese, which makes sense.</p>
+<p>Now I have the updated pvalues. Next, I rerun TruncPCO for the null
+zscore, and use the null p’s to adjust for these updated pvalues. Then
+see how many snps are significant (<span
+class="math inline">\(p_{adj}&lt;\frac{0.05}{18\times22}\)</span>). I do
+this because I want to see how are the signals by this debugged TruncPCO
+compared with those by the previous TruncPCO. For now, I checked for the
+above two (module, chr) and the signals are almost the same.</p>
+<p>From now on, I will use this correct version of TruncPCO to compute
+p’s for other datasets and update p’s for datasets I’ve analyzed.</p>
 </div>
 <div id="use-tensorqtl-do-more-permutation" class="section level3">
 <h3>Use tensorQTL do more permutation?</h3>
-<p>So far, the way we use to adjust p is to permute samples once, calculate null z, then null p, then using this null p distribution to adjust the observe p’s. This one-time permutation procedure should work. We do the permutation once because multiple permutation is computation-time heavy. So can we use tensorQTL to make permutation faster?</p>
-<p>As far as I understand, tensorQTL is like FastQTL, which does fast permutation to provide the adjusted minimum pvalues for each gene. This is gene-level adjustment, not the snp-level adjustment as we want. So we can’t have more faster permutations by tensorQTL.</p>
+<p>So far, the way we use to adjust p is to permute samples once,
+calculate null z, then null p, then using this null p distribution to
+adjust the observe p’s. This one-time permutation procedure should work.
+We do the permutation once because multiple permutation is
+computation-time heavy. So can we use tensorQTL to make permutation
+faster?</p>
+<p>As far as I understand, tensorQTL is like FastQTL, which does fast
+permutation to provide the adjusted minimum pvalues for each gene. This
+is gene-level adjustment, not the snp-level adjustment as we want. So we
+can’t have more faster permutations by tensorQTL.</p>
 </div>
 <div id="do-another-round-of-permutation." class="section level3">
 <h3>Do another round of permutation.</h3>
-<p>To see how stable the signals are, I do another round of permutation for the above two (module, chr). Here I use TruncPCO for pvalues and empirical null for p adjustment. The following table gives the results.</p>
+<p>To see how stable the signals are, I do another round of permutation
+for the above two (module, chr). Here I use TruncPCO for pvalues and
+empirical null for p adjustment. The following table gives the
+results.</p>
 <table>
+<colgroup>
+<col width="25%" />
+<col width="27%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">example</th>
@@ -2143,7 +2615,8 @@ liliw-w
 </div>
 <div id="notation-table" class="section level3">
 <h3>Notation table</h3>
-<p>To make it clear, the following table is for notations of different methods.</p>
+<p>To make it clear, the following table is for notations of different
+methods.</p>
 <table>
 <thead>
 <tr class="header">
@@ -2169,14 +2642,28 @@ liliw-w
 </tbody>
 </table>
 <ul>
-<li>“data” is for the data used. “observe” means pvalues are calculated from the observed data. “null” means pvalues are computed from permutation data. This is needed because we need to adjust pvalues in the downstream FDR analysis using the empirical null distribution of pvalues.
+<li>“data” is for the data used. “observe” means pvalues are calculated
+from the observed data. “null” means pvalues are computed from
+permutation data. This is needed because we need to adjust pvalues in
+the downstream FDR analysis using the empirical null distribution of
+pvalues.
 <ul>
-<li>We use empirical null because snps are in LD, so the tests are not independent and therefore the null distribution of p is not necessarily uniform.</li>
-<li>Why not using BH? BH assumes independent tests and uniform null.</li>
-<li>Why not using Bonferroni? Conservative for snp-level FDR correction, particularly for the trans snp-level FDR.</li>
-<li><del>Approaches to deal with the multiple testing in QTL studies, cis and trans. (???)</del></li>
+<li>We use empirical null because snps are in LD, so the tests are not
+independent and therefore the null distribution of p is not necessarily
+uniform.</li>
+<li>Why not using BH? BH assumes independent tests and uniform
+null.</li>
+<li>Why not using Bonferroni? Conservative for snp-level FDR correction,
+particularly for the trans snp-level FDR.</li>
+<li><del>Approaches to deal with the multiple testing in QTL studies,
+cis and trans. (???)</del></li>
 </ul></li>
-<li>“PCO” is the standard PCO using all <span class="math inline">\(\lambda\)</span>’s. “TruncPCO.old” is PCO using only <span class="math inline">\(\lambda&gt;1\)</span>. This is the method used for all results obtained before 11/02/2020. I added “.old” because the code of this TruncPCO has bugs. “TruncPCO” uses the debugded code.</li>
+<li>“PCO” is the standard PCO using all <span
+class="math inline">\(\lambda\)</span>’s. “TruncPCO.old” is PCO using
+only <span class="math inline">\(\lambda&gt;1\)</span>. This is the
+method used for all results obtained before 11/02/2020. I added “.old”
+because the code of this TruncPCO has bugs. “TruncPCO” uses the debugded
+code.</li>
 </ul>
 </div>
 <div id="signals-we-have-so-far." class="section level3">
@@ -2222,17 +2709,18 @@ liliw-w
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
-<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<pre><code>R version 4.1.0 (2021-05-18)
+<pre><code>R version 4.2.3 (2023-03-15)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+Running under: macOS Big Sur ... 10.16
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -2242,36 +2730,33 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] gridExtra_2.3       VennDiagram_1.6.20  futile.logger_1.4.3
-[4] ggpubr_0.4.0        ggplot2_3.3.3       workflowr_1.6.2    
+[1] gridExtra_2.3       VennDiagram_1.7.3   futile.logger_1.4.3
+[4] ggpubr_0.6.0        ggplot2_3.4.3       workflowr_1.7.0    
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.7           tidyr_1.1.3          assertthat_0.2.1    
- [4] rprojroot_2.0.2      digest_0.6.29        utf8_1.2.2          
- [7] plyr_1.8.6           R6_2.5.1             cellranger_1.1.0    
-[10] futile.options_1.0.1 backports_1.2.1      evaluate_0.14       
-[13] highr_0.9            pillar_1.6.4         rlang_0.4.12        
-[16] curl_4.3.2           readxl_1.3.1         data.table_1.14.0   
-[19] car_3.0-10           whisker_0.4          jquerylib_0.1.4     
-[22] rmarkdown_2.10       labeling_0.4.2       stringr_1.4.0       
-[25] foreign_0.8-81       munsell_0.5.0        broom_0.7.7         
-[28] compiler_4.1.0       httpuv_1.6.4         xfun_0.23           
-[31] pkgconfig_2.0.3      htmltools_0.5.2      tidyselect_1.1.1    
-[34] tibble_3.1.6         rio_0.5.26           fansi_0.5.0         
-[37] crayon_1.4.2         dplyr_1.0.7          withr_2.4.3         
-[40] later_1.3.0          jsonlite_1.7.2       gtable_0.3.0        
-[43] lifecycle_1.0.1      DBI_1.1.1            formatR_1.11        
-[46] git2r_0.28.0         magrittr_2.0.1       scales_1.1.1        
-[49] zip_2.2.0            stringi_1.7.6        carData_3.0-4       
-[52] farver_2.1.0         reshape2_1.4.4       ggsignif_0.6.1      
-[55] fs_1.5.2             promises_1.2.0.1     bslib_0.3.1         
-[58] ellipsis_0.3.2       generics_0.1.1       vctrs_0.3.8         
-[61] cowplot_1.1.1        openxlsx_4.2.3       lambda.r_1.2.4      
-[64] tools_4.1.0          forcats_0.5.1        glue_1.6.0          
-[67] purrr_0.3.4          hms_1.1.0            abind_1.4-5         
-[70] fastmap_1.1.0        yaml_2.2.1           colorspace_2.0-1    
-[73] rstatix_0.7.0        knitr_1.33           haven_2.4.1         
-[76] sass_0.4.0          </code></pre>
+ [1] Rcpp_1.0.11          tidyr_1.3.0          getPass_0.2-2       
+ [4] ps_1.7.5             rprojroot_2.0.3      digest_0.6.33       
+ [7] utf8_1.2.3           R6_2.5.1             plyr_1.8.8          
+[10] futile.options_1.0.1 backports_1.4.1      evaluate_0.21       
+[13] httr_1.4.6           highr_0.10           pillar_1.9.0        
+[16] rlang_1.1.1          rstudioapi_0.15.0    whisker_0.4.1       
+[19] car_3.1-2            callr_3.7.3          jquerylib_0.1.4     
+[22] rmarkdown_2.23       labeling_0.4.3       stringr_1.5.0       
+[25] munsell_0.5.0        broom_1.0.5          compiler_4.2.3      
+[28] httpuv_1.6.11        xfun_0.39            pkgconfig_2.0.3     
+[31] htmltools_0.5.5      tidyselect_1.2.0     tibble_3.2.1        
+[34] fansi_1.0.4          dplyr_1.1.3          withr_2.5.1         
+[37] later_1.3.1          jsonlite_1.8.7       gtable_0.3.4        
+[40] lifecycle_1.0.3      git2r_0.32.0         magrittr_2.0.3      
+[43] formatR_1.14         scales_1.2.1         cli_3.6.1           
+[46] stringi_1.7.12       cachem_1.0.8         carData_3.0-5       
+[49] farver_2.1.1         ggsignif_0.6.4       reshape2_1.4.4      
+[52] fs_1.6.2             promises_1.2.0.1     bslib_0.5.0         
+[55] generics_0.1.3       vctrs_0.6.3          cowplot_1.1.3       
+[58] lambda.r_1.2.4       tools_4.2.3          glue_1.6.2          
+[61] purrr_1.0.2          processx_3.8.2       abind_1.4-5         
+[64] fastmap_1.1.1        yaml_2.3.7           colorspace_2.1-0    
+[67] rstatix_0.7.2        knitr_1.43           sass_0.4.6          </code></pre>
 </div>
 </div>
 </div>
@@ -2279,7 +2764,7 @@ loaded via a namespace (and not attached):
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->

@@ -13,7 +13,7 @@
 
 <title>Log2022</title>
 
-<script src="site_libs/header-attrs-2.14.2/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -29,14 +29,14 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -179,11 +179,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -212,8 +216,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -221,16 +225,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -430,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-10-04
+<strong>Last updated:</strong> 2024-04-25
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -561,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreed902cc148bcf404da30b62cfc9d3f8cf512523a7targetblankd902cc1a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeff0bca7b335cd7a4331f7211666bfea05bbe7f53targetblankff0bca7a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/d902cc148bcf404da30b62cfc9d3f8cf512523a7" target="_blank">d902cc1</a>
+<a href="https://github.com/liliw-w/GradLog/tree/ff0bca7b335cd7a4331f7211666bfea05bbe7f53" target="_blank">ff0bca7</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreed902cc148bcf404da30b62cfc9d3f8cf512523a7targetblankd902cc1a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeff0bca7b335cd7a4331f7211666bfea05bbe7f53targetblankff0bca7a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/d902cc148bcf404da30b62cfc9d3f8cf512523a7" target="_blank">d902cc1</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/ff0bca7b335cd7a4331f7211666bfea05bbe7f53" target="_blank">ff0bca7</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -601,7 +598,12 @@ Ignored files:
     Ignored:    analysis/.Rhistory
 
 Untracked files:
-    Untracked:  analysis/week_log.Rmd
+    Untracked:  rstudio_server_config_midway3.Rmd
+
+Unstaged changes:
+    Modified:   analysis/Trans.Rmd
+    Deleted:    analysis/rstudio_server_config_midway3.Rmd
+    Modified:   analysis/week_log.Rmd
 
 </code></pre>
 <p>
@@ -647,6 +649,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/2551271290da8aed12b4fadc67e2b68f50eb5c19/docs/Log2022.html" target="_blank">2551271</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2022-10-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1800,7 +1819,7 @@ regions, there are 112 merged regions left.</p></li>
 traits</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/1005_coloc_region_prop_merged.pdf" alt="Figure: Coloc proportion of trans loci of MSig pathways and blood traits, based on 129 originally defined regions and 112 merged regions. Blue: original non-merged regions. Green: merged regions. Dark: coloc." width="80%" />
+<embed src="asset/2022/1005_coloc_region_prop_merged.pdf" title="Figure: Coloc proportion of trans loci of MSig pathways and blood traits, based on 129 originally defined regions and 112 merged regions. Blue: original non-merged regions. Green: merged regions. Dark: coloc." width="80%" type="application/pdf" />
 <p class="caption">
 Figure: Coloc proportion of trans loci of MSig pathways and blood
 traits, based on 129 originally defined regions and 112 merged regions.
@@ -1851,7 +1870,7 @@ liliw-w
 trait)</li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/1005_reg_module_trait_merged.pdf" alt="Figure: Number of coloc merged regions for all pairs of (pathway, trait). Colors: Traits of various types." width="80%" />
+<embed src="asset/2022/1005_reg_module_trait_merged.pdf" title="Figure: Number of coloc merged regions for all pairs of (pathway, trait). Colors: Traits of various types." width="80%" type="application/pdf" />
 <p class="caption">
 Figure: Number of coloc merged regions for all pairs of (pathway,
 trait). Colors: Traits of various types.
@@ -1950,7 +1969,7 @@ traits.</p></li>
 <div id="figures-observations" class="section level4">
 <h4>Figures &amp; observations</h4>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0921_h2_enrich_order_by_dist.pdf" alt="Figure: LEFT: only coloc modules. RIGHT: all modules." width="50%" /></p>
+<embed src="asset/2022/0921_h2_enrich_order_by_dist.pdf" title="Figure: LEFT: only coloc modules. RIGHT: all modules." width="50%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0921_h2_enrich_order_by_dist">
 Past versions of 0921_h2_enrich_order_by_dist.pdf
@@ -1988,7 +2007,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0921_h2_enrich_order_by_dist_all_modules.pdf" alt="Figure: LEFT: only coloc modules. RIGHT: all modules." width="50%" />
+<embed src="asset/2022/0921_h2_enrich_order_by_dist_all_modules.pdf" title="Figure: LEFT: only coloc modules. RIGHT: all modules." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: LEFT: only coloc modules. RIGHT: all modules.
 </p>
@@ -2100,7 +2119,7 @@ href="asset/2022/0921_signal_module_chr_rm_infl_ratio_50_module_chr.pdf">figure<
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0921_signal_module_rm_infl_ratio_50_module_chr.pdf" alt="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" /></p>
+<embed src="asset/2022/0921_signal_module_rm_infl_ratio_50_module_chr.pdf" title="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0921_signal_module_rm_infl_ratio_50_module_chr">
 Past versions of 0921_signal_module_rm_infl_ratio_50_module_chr.pdf
@@ -2139,7 +2158,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2022/0921_signal_chr_rm_infl_ratio_50_module_chr.pdf" alt="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" /></p>
+<p><embed src="asset/2022/0921_signal_chr_rm_infl_ratio_50_module_chr.pdf" title="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0921_signal_chr_rm_infl_ratio_50_module_chr">
 Past versions of 0921_signal_chr_rm_infl_ratio_50_module_chr.pdf
@@ -2178,7 +2197,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0921_signal_module_chr_rm_infl_ratio_50_module_chr.pdf" alt="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" />
+<embed src="asset/2022/0921_signal_module_chr_rm_infl_ratio_50_module_chr.pdf" title="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: LEFT: on modules. MIDDLE: on chr’s. RIGHT: on (module, chr).
 </p>
@@ -2255,7 +2274,7 @@ href="asset/2022/0921_signal_module_chr_rm_infl_ratio_50.pdf">figure</a></p></li
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0921_signal_module_rm_infl_ratio_50.pdf" alt="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" /></p>
+<embed src="asset/2022/0921_signal_module_rm_infl_ratio_50.pdf" title="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0921_signal_module_rm_infl_ratio_50">
 Past versions of 0921_signal_module_rm_infl_ratio_50.pdf
@@ -2293,7 +2312,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2022/0921_signal_chr_rm_infl_ratio_50.pdf" alt="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" /></p>
+<p><embed src="asset/2022/0921_signal_chr_rm_infl_ratio_50.pdf" title="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0921_signal_chr_rm_infl_ratio_50">
 Past versions of 0921_signal_chr_rm_infl_ratio_50.pdf
@@ -2331,7 +2350,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0921_signal_module_chr_rm_infl_ratio_50.pdf" alt="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" />
+<embed src="asset/2022/0921_signal_module_chr_rm_infl_ratio_50.pdf" title="Figure: LEFT: on modules. MIDDLE: on chr's. RIGHT: on (module, chr)." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: LEFT: on modules. MIDDLE: on chr’s. RIGHT: on (module, chr).
 </p>
@@ -2404,7 +2423,7 @@ genes:
 <p>Make chr the chromosome position.</p>
 <p>P-value as point size.</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0921_signal_module_chr_pos.pdf" alt="Figure: Signals for (chr, module). Y-axis is chromosome postiion. X-axis is module. Each point is a signal. Point size means -logP." width="70%" />
+<embed src="asset/2022/0921_signal_module_chr_pos.pdf" title="Figure: Signals for (chr, module). Y-axis is chromosome postiion. X-axis is module. Each point is a signal. Point size means -logP." width="70%" type="application/pdf" />
 <p class="caption">
 Figure: Signals for (chr, module). Y-axis is chromosome postiion. X-axis
 is module. Each point is a signal. Point size means -logP.
@@ -2504,7 +2523,7 @@ being cis to SNPs.</p></li>
 (<code>num_gene_snp_used_M*.pdf</code>).</p></li>
 </ol>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0914_num_gene_snp_used_M1.pdf" alt="Figure: Updated number of genes for a gene used for trans-PCO." width="40%" /></p>
+<embed src="asset/2022/0914_num_gene_snp_used_M1.pdf" title="Figure: Updated number of genes for a gene used for trans-PCO." width="40%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0914_num_gene_snp_used_M1">
 Past versions of 0914_num_gene_snp_used_M1.pdf
@@ -2542,7 +2561,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0914_num_gene_snp_used_M50.pdf" alt="Figure: Updated number of genes for a gene used for trans-PCO." width="40%" />
+<embed src="asset/2022/0914_num_gene_snp_used_M50.pdf" title="Figure: Updated number of genes for a gene used for trans-PCO." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Updated number of genes for a gene used for trans-PCO.
 </p>
@@ -2617,7 +2636,7 @@ inflations.</p>
 <li>Histogram and qq-plots</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0914_plot_qq_Sigma_DGN_module100.rds.pdf" alt="Figure: QQ-plots of p-values under estimated sigmas of various ratios between 10 and 50." width="30%" /></p>
+<embed src="asset/2022/0914_plot_qq_Sigma_DGN_module100.rds.pdf" title="Figure: QQ-plots of p-values under estimated sigmas of various ratios between 10 and 50." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0914_plot_qq_Sigma_DGN_module100.rds">
 Past versions of 0914_plot_qq_Sigma_DGN_module100.rds.pdf
@@ -2655,7 +2674,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2022/0914_plot_qq_Sigma_DGN_module150.rds.pdf" alt="Figure: QQ-plots of p-values under estimated sigmas of various ratios between 10 and 50." width="30%" /></p>
+<p><embed src="asset/2022/0914_plot_qq_Sigma_DGN_module150.rds.pdf" title="Figure: QQ-plots of p-values under estimated sigmas of various ratios between 10 and 50." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0914_plot_qq_Sigma_DGN_module150.rds">
 Past versions of 0914_plot_qq_Sigma_DGN_module150.rds.pdf
@@ -2693,7 +2712,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0914_plot_qq_Sigma_DGN_module166.rds.pdf" alt="Figure: QQ-plots of p-values under estimated sigmas of various ratios between 10 and 50." width="30%" />
+<embed src="asset/2022/0914_plot_qq_Sigma_DGN_module166.rds.pdf" title="Figure: QQ-plots of p-values under estimated sigmas of various ratios between 10 and 50." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: QQ-plots of p-values under estimated sigmas of various ratios
 between 10 and 50.
@@ -2751,7 +2770,7 @@ module, i.e. $. Because for a (SNP, module), the actually used genes are
 module size - gene not in eqtlgen - remove cis genes - remove cross map
 gene. So I thought using this new definition can increase the ratio.</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0914_plot_nullSNP_module_size_pthre1e-04_ratio_chr.pdf" alt="Figure: Ratio used for each (module, chr). Each dot is ratio for a chr. Red dot is the ratio for each module by #null SNPs/#genes in module." width="70%" />
+<embed src="asset/2022/0914_plot_nullSNP_module_size_pthre1e-04_ratio_chr.pdf" title="Figure: Ratio used for each (module, chr). Each dot is ratio for a chr. Red dot is the ratio for each module by #null SNPs/#genes in module." width="70%" type="application/pdf" />
 <p class="caption">
 Figure: Ratio used for each (module, chr). Each dot is ratio for a chr.
 Red dot is the ratio for each module by #null SNPs/#genes in module.
@@ -2817,7 +2836,7 @@ eQTLGen genes.</p></li>
 <li><p>Figures</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0830_nmodule_msigdb_gene.pdf" alt="Figure: LEFT: Each module has overlapped genes. How many modules do every gene belongs to? RIGHT: Size of MSigDB modules and how many are eQTLGen genes?" width="50%" /></p>
+<embed src="asset/2022/0830_nmodule_msigdb_gene.pdf" title="Figure: LEFT: Each module has overlapped genes. How many modules do every gene belongs to? RIGHT: Size of MSigDB modules and how many are eQTLGen genes?" width="50%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0830_nmodule_msigdb_gene">
 Past versions of 0830_nmodule_msigdb_gene.pdf
@@ -2855,7 +2874,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0830_msigdb_module_eqtlgen.pdf" alt="Figure: LEFT: Each module has overlapped genes. How many modules do every gene belongs to? RIGHT: Size of MSigDB modules and how many are eQTLGen genes?" width="50%" />
+<embed src="asset/2022/0830_msigdb_module_eqtlgen.pdf" title="Figure: LEFT: Each module has overlapped genes. How many modules do every gene belongs to? RIGHT: Size of MSigDB modules and how many are eQTLGen genes?" width="50%" type="application/pdf" />
 <p class="caption">
 Figure: LEFT: Each module has overlapped genes. How many modules do
 every gene belongs to? RIGHT: Size of MSigDB modules and how many are
@@ -2905,7 +2924,7 @@ class="section level4">
 <h4>Choose z cutoff to define null snps for estimating <span
 class="math inline">\(\Sigma\)</span></h4>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0907_msigdb_num_nullSNP.pdf" alt="Figure: Which z-score cutoff should be chosen for defining null SNPs to estimate Sigma?" width="70%" />
+<embed src="asset/2022/0907_msigdb_num_nullSNP.pdf" title="Figure: Which z-score cutoff should be chosen for defining null SNPs to estimate Sigma?" width="70%" type="application/pdf" />
 <p class="caption">
 Figure: Which z-score cutoff should be chosen for defining null SNPs to
 estimate Sigma?
@@ -2953,7 +2972,7 @@ liliw-w
 <div id="msig_eqtlgen_module_ratio" class="section level4">
 <h4>Ratios</h4>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0907_plot_nullSNP_module_size_pthre1e-04.pdf" alt="Figure: LEFT: module size v.s. null SNPs that can be used for Sigma estimation. RIGHT: Ratio of these two numbers for each module." width="40%" /></p>
+<embed src="asset/2022/0907_plot_nullSNP_module_size_pthre1e-04.pdf" title="Figure: LEFT: module size v.s. null SNPs that can be used for Sigma estimation. RIGHT: Ratio of these two numbers for each module." width="40%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0907_plot_nullSNP_module_size_pthre1e-04">
 Past versions of 0907_plot_nullSNP_module_size_pthre1e-04.pdf
@@ -2991,7 +3010,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0907_plot_nullSNP_module_size_pthre1e-04_ratio.pdf" alt="Figure: LEFT: module size v.s. null SNPs that can be used for Sigma estimation. RIGHT: Ratio of these two numbers for each module." width="40%" />
+<embed src="asset/2022/0907_plot_nullSNP_module_size_pthre1e-04_ratio.pdf" title="Figure: LEFT: module size v.s. null SNPs that can be used for Sigma estimation. RIGHT: Ratio of these two numbers for each module." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: LEFT: module size v.s. null SNPs that can be used for Sigma
 estimation. RIGHT: Ratio of these two numbers for each module.
@@ -3047,7 +3066,7 @@ SNP.</p></li>
 <p>Therefore, each SNP may correspond to a different gene set for a same
 module.</p>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0907_num_gene_snp_used_M1.pdf" alt="Figure: How many genes in a module were finally used for each SNP, after removing cis genes on the same chr and removing cross map genes with the SNP's cis genes." width="50%" />
+<embed src="asset/2022/0907_num_gene_snp_used_M1.pdf" title="Figure: How many genes in a module were finally used for each SNP, after removing cis genes on the same chr and removing cross map genes with the SNP's cis genes." width="50%" type="application/pdf" />
 <p class="caption">
 Figure: How many genes in a module were finally used for each SNP, after
 removing cis genes on the same chr and removing cross map genes with the
@@ -3157,7 +3176,7 @@ the gwas catalog cis snps</p></li>
 <div id="signal-module-annotation" class="section level4">
 <h4>Signal module annotation</h4>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0907_signal_module_annot.pdf" alt="Figure: How many genes in a module were finally used for each SNP, after removing cis genes on the same chr and removing cross map genes with the SNP's cis genes." width="80%" />
+<embed src="asset/2022/0907_signal_module_annot.pdf" title="Figure: How many genes in a module were finally used for each SNP, after removing cis genes on the same chr and removing cross map genes with the SNP's cis genes." width="80%" type="application/pdf" />
 <p class="caption">
 Figure: How many genes in a module were finally used for each SNP, after
 removing cis genes on the same chr and removing cross map genes with the
@@ -3244,7 +3263,7 @@ some other traits (including height).</p></li>
 <div id="figures-observations-1" class="section level4">
 <h4>Figures &amp; Observations</h4>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0817_coloc_region_prop_merged_blood_immu_other.pdf" alt="Figure: Coloc proportion of blood traits, autoimmune diseases, and other traits, based on 255 originally defined regions and 179 merged regions. Blue: original non-merged regions. Green: merged regions. Dark: coloc." width="100%" />
+<embed src="asset/2022/0817_coloc_region_prop_merged_blood_immu_other.pdf" title="Figure: Coloc proportion of blood traits, autoimmune diseases, and other traits, based on 255 originally defined regions and 179 merged regions. Blue: original non-merged regions. Green: merged regions. Dark: coloc." width="100%" type="application/pdf" />
 <p class="caption">
 Figure: Coloc proportion of blood traits, autoimmune diseases, and other
 traits, based on 255 originally defined regions and 179 merged regions.
@@ -3319,7 +3338,7 @@ Similar for autoimmune traits.</p>
 <div id="other-updated-figures" class="section level4">
 <h4>Other updated figures</h4>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0817_reg_module_trait.pdf" alt="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types." width="40%" /></p>
+<embed src="asset/2022/0817_reg_module_trait.pdf" title="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types." width="40%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0817_reg_module_trait">
 Past versions of 0817_reg_module_trait.pdf
@@ -3357,7 +3376,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0817_reg_module_trait_merged.pdf" alt="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types." width="40%" />
+<embed src="asset/2022/0817_reg_module_trait_merged.pdf" title="Figure: Number of coloc regions for pairs of (module, trait) for all traits. Left: non-merged coloc regions. Right: merged coloc regions. Colors: Traits of various types." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Number of coloc regions for pairs of (module, trait) for all
 traits. Left: non-merged coloc regions. Right: merged coloc regions.
@@ -3426,7 +3445,7 @@ liliw-w
 <p><code>/project2/xuanyao/llw/ldsc/plots/h2_enrich_all.pdf</code></p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0824_h2_enrich_w_other.pdf" alt="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" />
+<embed src="asset/2022/0824_h2_enrich_w_other.pdf" title="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" type="application/pdf" />
 <p class="caption">
 Figure: Heatmap of coloc regions and h2 enrichment for pairs of module
 and trait.
@@ -3483,7 +3502,7 @@ signal cutoff,</p>
 <li><p>1028 unique trans-eQTLs</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0824_sig_m.pdf" alt="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" />
+<embed src="asset/2022/0824_sig_m.pdf" title="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" type="application/pdf" />
 <p class="caption">
 Figure: Heatmap of coloc regions and h2 enrichment for pairs of module
 and trait.
@@ -3538,7 +3557,7 @@ liliw-w
 </div>
 </div>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0824_sig_chr.pdf" alt="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" />
+<embed src="asset/2022/0824_sig_chr.pdf" title="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" type="application/pdf" />
 <p class="caption">
 Figure: Heatmap of coloc regions and h2 enrichment for pairs of module
 and trait.
@@ -3666,7 +3685,7 @@ class="math inline">\(N=800\)</span> (previous setting)</p></li>
 <div id="observation" class="section level4">
 <h4>Observation</h4>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0810_power_b_corr.pdf" alt="Figure: coloc between trans and cis loci." width="60%" />
+<embed src="asset/2022/0810_power_b_corr.pdf" title="Figure: coloc between trans and cis loci." width="60%" type="application/pdf" />
 <p class="caption">
 Figure: coloc between trans and cis loci.
 </p>
@@ -3841,7 +3860,7 @@ and have more significant z-scores.</p>
 <div id="h2-enrichment-heatmap" class="section level3">
 <h3>4. h2 enrichment heatmap</h3>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/ukbb_blood_immune_module.pdf" alt="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" /></p>
+<embed src="asset/2022/ukbb_blood_immune_module.pdf" title="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-ukbb_blood_immune_module">
 Past versions of ukbb_blood_immune_module.pdf
@@ -3879,7 +3898,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/h2_enrich_all.pdf" alt="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" />
+<embed src="asset/2022/h2_enrich_all.pdf" title="Figure: Heatmap of coloc regions and h2 enrichment for pairs of module and trait." width="60%" type="application/pdf" />
 <p class="caption">
 Figure: Heatmap of coloc regions and h2 enrichment for pairs of module
 and trait.
@@ -3963,7 +3982,7 @@ with trans. Numbers are updated as below.</p>
 <div id="upset-plot" class="section level4">
 <h4>Upset plot</h4>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0629_coloc_trans_cis_upset.pdf" alt="Figure: coloc between trans and cis loci." width="40%" />
+<embed src="asset/2022/0629_coloc_trans_cis_upset.pdf" title="Figure: coloc between trans and cis loci." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: coloc between trans and cis loci.
 </p>
@@ -4032,7 +4051,7 @@ simulations.</p></li>
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0706_power.large.paras.rds3.pdf" alt="Figure: Simulation power when parameters, N, caus, var, are large. Green point is mean +- 95% CI." width="40%" />
+<embed src="asset/2022/0706_power.large.paras.rds3.pdf" title="Figure: Simulation power when parameters, N, caus, var, are large. Green point is mean +- 95% CI." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Simulation power when parameters, N, caus, var, are large. Green
 point is mean +- 95% CI.
@@ -4103,7 +4122,7 @@ class="math inline">\(u_1 \times ||beta^{default}||/0.3 \times
 </ul></li>
 </ul>
 <div class="figure" style="text-align: center">
-<img src="asset/2022/0706_power.pc1.rds3.pdf" alt="Figure: Simulation power when PC1 has the highest power. Error bar is mean +- 95% CI." width="40%" />
+<embed src="asset/2022/0706_power.pc1.rds3.pdf" title="Figure: Simulation power when PC1 has the highest power. Error bar is mean +- 95% CI." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: Simulation power when PC1 has the highest power. Error bar is
 mean +- 95% CI.
@@ -4210,7 +4229,7 @@ But only M154 has significant coloc.</p></li>
 PLAGL1 and M154, M74, and one causal variant for M71?</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0706_module154.6.144291150.PLAGL1.reg.coloc.pdf" alt="Figure: Coloc near loci PLAGL1." width="30%" /></p>
+<embed src="asset/2022/0706_module154.6.144291150.PLAGL1.reg.coloc.pdf" title="Figure: Coloc near loci PLAGL1." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0706_module154.6.144291150.PLAGL1.reg.coloc">
 Past versions of 0706_module154.6.144291150.PLAGL1.reg.coloc.pdf
@@ -4249,7 +4268,7 @@ liliw-w
 </table>
 </div>
 </div>
-<p><img src="asset/2022/0706_module74.6.144304358.PLAGL1.reg.coloc.pdf" alt="Figure: Coloc near loci PLAGL1." width="30%" /></p>
+<p><embed src="asset/2022/0706_module74.6.144304358.PLAGL1.reg.coloc.pdf" title="Figure: Coloc near loci PLAGL1." width="30%" type="application/pdf" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0706_module74.6.144304358.PLAGL1.reg.coloc">
 Past versions of 0706_module74.6.144304358.PLAGL1.reg.coloc.pdf
@@ -4288,7 +4307,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0706_module71.6.144304358.PLAGL1.reg.coloc.pdf" alt="Figure: Coloc near loci PLAGL1." width="30%" />
+<embed src="asset/2022/0706_module71.6.144304358.PLAGL1.reg.coloc.pdf" title="Figure: Coloc near loci PLAGL1." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: Coloc near loci PLAGL1.
 </p>
@@ -4466,7 +4485,7 @@ max abs z of each (SNP, module) pair across all modules.</p>
 figures below, try opening this site in safari</strong>)</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0615_M_all_maxz_cdf.pdf" alt="Figure: cdf and pdf of max abs for all signal (SNP, module)." width="40%" /></p>
+<embed src="asset/2022/0615_M_all_maxz_cdf.pdf" title="Figure: cdf and pdf of max abs for all signal (SNP, module)." width="40%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0615_M_all_maxz_cdf">
 Past versions of 0615_M_all_maxz_cdf.pdf
@@ -4504,7 +4523,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0615_M_all_maxz_pdf.pdf" alt="Figure: cdf and pdf of max abs for all signal (SNP, module)." width="40%" />
+<embed src="asset/2022/0615_M_all_maxz_pdf.pdf" title="Figure: cdf and pdf of max abs for all signal (SNP, module)." width="40%" type="application/pdf" />
 <p class="caption">
 Figure: cdf and pdf of max abs for all signal (SNP, module).
 </p>
@@ -4550,7 +4569,7 @@ liliw-w
 <li>I also looked at min abs z comparison for all modules.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<p><img src="asset/2022/0615_M_all_minz_cdf.pdf" alt="Figure: cdf and pdf of min abs z for all signal (SNP, module)." width="30%" /></p>
+<embed src="asset/2022/0615_M_all_minz_cdf.pdf" title="Figure: cdf and pdf of min abs z for all signal (SNP, module)." width="30%" type="application/pdf" />
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-0615_M_all_minz_cdf">
 Past versions of 0615_M_all_minz_cdf.pdf
@@ -4588,7 +4607,7 @@ liliw-w
 </table>
 </div>
 </div>
-<img src="asset/2022/0615_M_all_minz_pdf.pdf" alt="Figure: cdf and pdf of min abs z for all signal (SNP, module)." width="30%" />
+<embed src="asset/2022/0615_M_all_minz_pdf.pdf" title="Figure: cdf and pdf of min abs z for all signal (SNP, module)." width="30%" type="application/pdf" />
 <p class="caption">
 Figure: cdf and pdf of min abs z for all signal (SNP, module).
 </p>
@@ -4953,10 +4972,10 @@ modules to further look at for signals.</p>
 <ul>
 <li>Updated signal distribution</li>
 </ul>
-<div class="figure">
+<div class="float">
 <img src="asset/2022/0420_signal_module_chr_rm_infl_ratio_50.png"
-alt="" />
-<p class="caption">signal distribution on modules and chrs</p>
+alt="signal distribution on modules and chrs" />
+<div class="figcaption">signal distribution on modules and chrs</div>
 </div>
 <p><img src="asset/2022/0420_signal_module_rm_infl_ratio_50.png"
 alt="signal distribution on modules" /> <img
@@ -6531,13 +6550,13 @@ Session information
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<pre><code>R version 4.1.2 (2021-11-01)
+<pre><code>R version 4.2.3 (2023-03-15)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Big Sur 10.16
+Running under: macOS Big Sur ... 10.16
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -6549,18 +6568,17 @@ other attached packages:
 [1] workflowr_1.7.0
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1.9000 compiler_4.1.2  
- [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
- [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.8.0  
-[13] evaluate_0.15    tibble_3.1.6     lifecycle_1.0.1  pkgconfig_2.0.3 
-[17] rlang_1.0.2      cli_3.1.1        rstudioapi_0.13  yaml_2.3.5      
-[21] xfun_0.31        fastmap_1.1.0    httr_1.4.2       stringr_1.4.0   
-[25] knitr_1.39       sass_0.4.1       fs_1.5.2         vctrs_0.3.8     
-[29] rprojroot_2.0.2  glue_1.6.2       R6_2.5.1         processx_3.5.2  
-[33] fansi_1.0.2      rmarkdown_2.14.2 callr_3.7.0      magrittr_2.0.3  
-[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.2 
-[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.6   
-[45] cachem_1.0.6     crayon_1.4.2    </code></pre>
+ [1] Rcpp_1.0.11       highr_0.10        compiler_4.2.3    pillar_1.9.0     
+ [5] bslib_0.5.0       later_1.3.1       git2r_0.32.0      jquerylib_0.1.4  
+ [9] tools_4.2.3       getPass_0.2-2     digest_0.6.33     jsonlite_1.8.7   
+[13] evaluate_0.21     lifecycle_1.0.3   tibble_3.2.1      pkgconfig_2.0.3  
+[17] rlang_1.1.1       cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7       
+[21] xfun_0.39         fastmap_1.1.1     httr_1.4.6        stringr_1.5.0    
+[25] knitr_1.43        fs_1.6.2          vctrs_0.6.3       sass_0.4.6       
+[29] rprojroot_2.0.3   glue_1.6.2        R6_2.5.1          processx_3.8.2   
+[33] fansi_1.0.4       rmarkdown_2.23    callr_3.7.3       magrittr_2.0.3   
+[37] whisker_0.4.1     ps_1.7.5          promises_1.2.0.1  htmltools_0.5.5  
+[41] httpuv_1.6.11     utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </code></pre>
 </div>
 </div>
 </div>
