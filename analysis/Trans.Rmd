@@ -21,18 +21,18 @@ knitr::opts_chunk$set(eval = FALSE)
 
 ### Convert plink files of genotype to .txt
 
-```{r code=readLines('../code/make.geno.sh')}
+```{r code=readLines('code/make.geno.sh')}
 ```
 
 
 `make.geno.R`
 
-```{r code=readLines('../code/make.geno.R')}
+```{r code=readLines('code/make.geno.R')}
 ```
 
 ### Regress out covariates from expression data
 
-```{r code=readLines('../code/regress.out.covariates.R')}
+```{r code=readLines('code/regress.out.covariates.R')}
 ```
 
 
@@ -42,7 +42,7 @@ Remove seudogenes, genes with mappability$<0.9$, and gene pairs with cross-mappa
 
 The code here is for the breast cancer TCGA data. So the genes on chromosomes X and Y are also removed.
 
-```{r code=readLines('../code/low.quality.genes.R')}
+```{r code=readLines('code/low.quality.genes.R')}
 ```
 
 
@@ -50,7 +50,7 @@ The code here is for the breast cancer TCGA data. So the genes on chromosomes X 
 
 Cluster the co-expressed genes by WGCNA.
 
-```{r code=readLines('../code/coexp.module.R')}
+```{r code=readLines('code/coexp.module.R')}
 ```
 
 
@@ -60,7 +60,7 @@ Cluster the co-expressed genes by WGCNA.
 
 Update the code to calculate the **observed zscores** from **TCGA data**.
 
-```{r code=readLines('../code/z.R')}
+```{r code=readLines('code/z.R')}
 ```
 
 
@@ -68,13 +68,13 @@ Update the code to calculate the **observed zscores** from **TCGA data**.
 
 Here is the code using PCO to calculate pvalues. This uses only PC's with eigenvalue $\lambda > 1$. Modified PCO code in `./script/*`.
 
-```{r code=readLines('../code/p.R')}
+```{r code=readLines('code/p.R')}
 ```
 
 
 ## Multi-testing correction
 ### Pvalue adjustment based on uniform null pvalue
-```{r code=readLines('../code/fdr.R')}
+```{r code=readLines('code/fdr.R')}
 ```
 
 ### Pvalue adjustment using empirical null pvalue
