@@ -406,7 +406,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -417,8 +417,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -427,13 +427,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-25
+<strong>Last updated:</strong> 2024-05-16
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -456,18 +456,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -558,15 +561,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef1090b1fecef54522cbb07c77c3b22db0f7dfc3etargetblankf1090b1a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree37af3e05b8d909d9548bc86a7c390939c2b4fcdatargetblank37af3e0a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/f1090b1fecef54522cbb07c77c3b22db0f7dfc3e" target="_blank">f1090b1</a>
+<a href="https://github.com/liliw-w/GradLog/tree/37af3e05b8d909d9548bc86a7c390939c2b4fcda" target="_blank">37af3e0</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreef1090b1fecef54522cbb07c77c3b22db0f7dfc3etargetblankf1090b1a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree37af3e05b8d909d9548bc86a7c390939c2b4fcdatargetblank37af3e0a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -576,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/f1090b1fecef54522cbb07c77c3b22db0f7dfc3e" target="_blank">f1090b1</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/37af3e05b8d909d9548bc86a7c390939c2b4fcda" target="_blank">37af3e0</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -598,7 +601,9 @@ Ignored files:
     Ignored:    analysis/.Rhistory
 
 Unstaged changes:
-    Modified:   analysis/Trans.Rmd
+    Modified:   .gitignore
+    Modified:   analysis/Log2024_new_beginning.Rmd
+    Modified:   analysis/style.css
     Modified:   analysis/week_log.Rmd
 
 </code></pre>
@@ -645,6 +650,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/8b813c24b4e0392a2a982455fd964e15dc108843/docs/Log2024_new_beginning.html" target="_blank">8b813c2</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-04-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -883,6 +905,337 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="apr-25-may-2-may-9" class="section level1">
+<h1>Apr 25 &amp; May 2 &amp; May 9</h1>
+<div id="peak-merging-results-of-lcl-dataset" class="section level2">
+<h2>1. Peak merging results of LCL dataset</h2>
+<div id="groups-changes-after-merging" class="section level3">
+<h3>Groups changes after merging</h3>
+<ul>
+<li><p>Number of groups</p></li>
+<li><p>Size of groups</p></li>
+<li><p>Single left out peaks not merged thus not tested</p></li>
+</ul>
+<p>Below are results of tissue Brain.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/H3K27AC_peaks_in_group_combined.pdf" title="Figure: Distribution of peak group size across window sizes and maximum merging window size. This is for tissue Brain." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of peak group size across window sizes and maximum
+merging window size. This is for tissue Brain.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/H3K27AC_peaks_in_group_w_cqtl_cpeak500kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes and
+maximum merging window size. This is for tissue Brain.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/H3K27AC_peaks_w_cqtl_in_group_cpeak500kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of uni cpeaks in peak groups across window sizes and
+maximum merging window size. This is for tissue Brain.
+</p>
+</div>
+</div>
+<div id="signal-change-after-merging" class="section level3">
+<h3>Signal change after merging</h3>
+<ul>
+<li><p>Compare to the original results with results of merging single
+peaks</p></li>
+<li><p>(Minor) Compare window sizes under the same maximum merging
+window size</p></li>
+</ul>
+<p>Below I show results for tissue Brian.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/plt_cpeak_cwindow_H3K27AC_cis500kb_combined.pdf" title="Figure: Compare CACTI signals to uni signals across window sizes and maximum merging window size. This is for tissue Brian." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to uni signals across window sizes and
+maximum merging window size. This is for tissue Brian.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/plt_cpeak_cwindow_H3K27AC_cis500kb_prop_combined.pdf" title="Figure: Compare CACTI signals to uni signals proportions across window sizes and maximum merging window size. This is for tissue Brian." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare CACTI signals to uni signals proportions across window
+sizes and maximum merging window size. This is for tissue Brian.
+</p>
+</div>
+</div>
+</div>
+<div id="combine-p-values-from-two-tests" class="section level2">
+<h2>2. Combine p-values from two tests</h2>
+<div id="zhonghuas-idea-not-work" class="section level3">
+<h3>Zhonghua’s idea not work</h3>
+<p>FDR on window and single peak pvalues separately not work, as the
+total number of tests in the single-peak-test pool decreased.</p>
+<p>FDR on the window and single peak pvalues together makes more
+sense.</p>
+<ul>
+<li><p>Why XY’s idea of a/b=c/d=a+b/c+d=not work?</p>
+<p>The discoveries (c and d) and true positives in these discoveries
+would change, as the tests included change, i.e. changing from all
+windows (all peaks) to all windows plus isolated peaks.</p></li>
+</ul>
+</div>
+<div id="how-simulation" class="section level3">
+<h3>How simulation?</h3>
+<p>100k overall tests, including -</p>
+<ul>
+<li><p>uni test (z-score), to simulate the single left out peaks.</p>
+<p>NULL - <span class="math inline">\(z \sim N(0, 1)\)</span></p></li>
+<li><p>multi test (PCO), to simulate a group of peaks.</p>
+<p>NULL - $ z_multi N_k(0, <em>{101</em>{DGN}})$</p></li>
+</ul>
+<p>To look at if T1E in simulation are well calibreated, I evaluated
+different scenarios -</p>
+<ul>
+<li><p>across different proportion of uni test (z-score), the rest are
+pco test.</p>
+<p><code>c(0.01, 0.05, 0.1, 0.3, 0.5, 0.7, 0.9, 0.95, 0.99)</code></p></li>
+<li><p>across different sigma dimension K</p>
+<p>Randomly take a subset of <span class="math inline">\(\Sigma\)</span>
+with dimension <code>c(2, 10, 40, 50, 80)</code>. I chose proportion of
+uni tests to be 50% and 20%.</p></li>
+</ul>
+<p>Caveats -</p>
+<p>Not gonna be useful for follow up analysis that require test
+statistics …</p>
+</div>
+<div id="t1e-in-simulation---well-calibrated" class="section level3">
+<h3>T1E in simulation - well calibrated</h3>
+<p>Calculate T1E by {#nominal P &lt; alpha}/{#tests}.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_new_fig_num_null_prop_test.pdf" title="Figure: T1E and pvalue range across scenarios of different proportion of uni tests." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: T1E and pvalue range across scenarios of different proportion of
+uni tests.
+</p>
+</div>
+<p>See <a href="asset/2024/05_02_fig_qq_null_prop_test.pdf">here for qq
+plot</a>.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_new_fig_num_null_K.pdf" title="Figure: T1E and pvalue range across scenarios of different sigma dimension using 50% uni tests (Upper) and 20% uni tests (Lower)." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: T1E and pvalue range across scenarios of different sigma
+dimension using 50% uni tests (Upper) and 20% uni tests (Lower).
+</p>
+</div>
+</div>
+<div id="simulation-on-fdr-control" class="section level3">
+<h3>Simulation on FDR control</h3>
+<p>I first simulated z-scores of (SNP, peak) and (SNP, peak group) with
+a mixture of null and alt tests, then I perform z test and pco test, get
+the pvalues, perform fdr correction under a given fdr cutoff, identify
+the signals, calculated the false discovery rate by <span
+class="math inline">\(\frac{\# signals not true}{\# signals}\)</span>,
+iterated simulation multiple times, in order to check if the false
+positive discovery rate is well controlled.</p>
+<p><strong>Parameter settings</strong></p>
+<ul>
+<li><p>overall tests - 10^5</p></li>
+<li><p>A proportion of tests are uni tests
+<code>prop_uni_seq &lt;- c(0.01, 0.2, 0.5, 0.8, 0.99)</code></p></li>
+<li><p>Among uni tests and multi tests, a proportion are casual</p>
+<p><code>caus_prop_test_seq &lt;- c(0, 0.1, 0.3, 0.5, 0.8, 1)</code></p>
+<p>[NOTE - There is no point to look at 0 and 1. Explanation see
+below.]</p></li>
+<li><p>Uni test - (SNP, peak)</p>
+<p>NULL: <span class="math inline">\(z \sim N(0, 1)\)</span></p>
+<p>ALT: <span class="math inline">\(z \sim N(\beta \sqrt{N}, 1), \beta
+\sim N(0, \sigma_b)\)</span>. <span
+class="math inline">\(\sigma_b\)</span> is the genetic variance
+explained by each SNP.</p></li>
+<li><p>Multi test - (SNP, peak group)</p>
+<p>NULL: <span class="math inline">\(z \sim N(0_{K},
+\Sigma)\)</span></p>
+<p>ALT: <span class="math inline">\(z \sim N(B_{K} \sqrt{N},
+\Sigma)\)</span>. <span class="math inline">\(B_{K}\)</span> is the
+effect of a SNP on K peaks in the group. I set a proportion of these K
+peaks (<code>caus_prop_K</code>) are causal peaks that have non zero
+effects. So, for zero-effect peaks <span class="math inline">\(\beta_k =
+0\)</span>. For non-zero-effect peaks, <span
+class="math inline">\(\beta_k \sim N(0, \sigma_b)\)</span> <span
+class="math inline">\(\sigma_b\)</span> is the genetic variance
+explained by each SNP.</p></li>
+<li><p>single snp variance</p>
+<p><code>var.b_seq &lt;- c(0.001, 0.005, 0.01, 0.05)</code></p></li>
+<li><p>fdr cutoff</p>
+<p><code>fdr_seq &lt;- c(1e-4, 1e-3, 1e-2, 5e-2, 1e-1)</code></p></li>
+<li><p>sample size <code>N &lt;- 100</code></p></li>
+<li><p>causal proportion among multi K
+<code>caus_prop_K &lt;- 0.3</code></p></li>
+<li><p>number of simulations <code>ITER_sim &lt;- 10</code></p></li>
+</ul>
+<p><strong>Results</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_fig_sim_fdr.pdf" title="Figure: To check if FDR is well controlled across settings. x-axis is single snp variance, y-axis is average false discovery rate across 10 simualtions, colors are causal test proportion. Column panels are uni test proportion. Rows are fdr cutoff." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: To check if FDR is well controlled across settings. x-axis is
+single snp variance, y-axis is average false discovery rate across 10
+simualtions, colors are causal test proportion. Column panels are uni
+test proportion. Rows are fdr cutoff.
+</p>
+</div>
+<ul>
+<li><p>Under 0.01 FDR cutoff, fdr are well controlled under most
+settings.</p></li>
+<li><p>Under 0.05 FDR cutoff, fdr are well controlled under most
+settings, except when single snp variance is very low. This is because
+for most of 10 simulations, there was no signals. For 1 or 2
+simulations, there was 1 signal that are not true positive. FDR will be
+well controlled with more simulations.</p></li>
+<li><p>Some fdr are 1 under the case where no tests are causal. This is
+because for most of 10 simulations, there was no signals. For 1
+simulation, there was 1 signal that are not true positive. FDR will be
+well controlled with more simulations.</p></li>
+<li><p>There is no point to show FDR for cases where causal proportion
+tests are 0 (all NULL) or 1 (all ALT).</p>
+<ul>
+<li><p>When all tests are null, then there is no true signals, any
+signals will be false, fdr will always be 1. Should check T1E in this
+case.</p></li>
+<li><p>When all tests are alt, then any signals will be true signals,
+fdr will always be 0. Should check power in this case.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="power-in-real-data" class="section level3">
+<h3>Power in real data</h3>
+<ul>
+<li><p>How?</p>
+<p>I included those single left out single peaks in included in any
+windows into FDR procedure with multi tests. Specifically, I take all
+pairs of cis SNPs and those single peaks, take the best lead association
+(ACAT on all cis SNP pvalues), then use the adjusted lead pvalue of each
+single peaks, finally perform FDR on these lead pvalues with those of
+windows.</p></li>
+<li><p>From ChatGPT -</p>
+<p>Consideration of power in interpretation -</p>
+<p>When interpreting the results of multiple testing correction, it’s
+important to consider the power of the individual tests. Significant
+p-values surviving correction may indicate not only statistical
+significance but also the relative strength of evidence provided by each
+test.</p>
+<p>Confidence in non-significant results: Non-significant results from
+tests with higher power may be more credible than those from tests with
+lower power. If a test has sufficient power to detect meaningful
+effects, the absence of a significant result may suggest weaker evidence
+against the null hypothesis. Conversely, non-significant results from
+tests with lower power may be less informative and may not necessarily
+provide strong evidence in favor of the null hypothesis.</p>
+<p>Interpretation of effect sizes: Considering the power of each test
+can also inform the interpretation of effect sizes. Tests with higher
+power are more likely to detect smaller effect sizes as statistically
+significant. Therefore, significant results from tests with higher power
+may indicate not only the presence of an effect but also the magnitude
+of that effect, whereas significant results from tests with lower power
+may be more indicative of larger effect sizes.</p></li>
+<li><p>Results. Take one dataset from Aracena et al. as
+example.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_ccomb_H3K27ac_Flu_window50kb_cis100kb.pdf" title="Figure: Signal comparison with uni test and multi test by including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Signal comparison with uni test and multi test by including
+single left out peaks in to FDR procedure. This is an example result for
+mark H3K27ac_Flu data in Aracena et al. Window size is 50kb.
+</p>
+</div>
+<ul>
+<li><p>Compared to previous one with no single peak.</p>
+<p>The four panel plot compared to previous one with no single peak
+(combined plot)</p>
+<ul>
+<li><p>Original peak groups</p></li>
+<li><p>Merged peak groups (2 maximum merging window)</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow0kb_cis100kb.pdf" title="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Signal comparison before and after including single left out
+peaks in to FDR procedure. This is an example result for mark
+H3K27ac_Flu data in Aracena et al. Window size is 50kb.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow50kb_cis100kb.pdf" title="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum window size is 50kb." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Signal comparison before and after including single left out
+peaks in to FDR procedure. This is an example result for mark
+H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum
+window size is 50kb.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow100kb_cis100kb.pdf" title="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum window size is 100kb." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Signal comparison before and after including single left out
+peaks in to FDR procedure. This is an example result for mark
+H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum
+window size is 100kb.
+</p>
+</div>
+<ul>
+<li>Changes in numbers. Across all datasets and parameters.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_total_cwindows_cis100kb.pdf" title="Figure: Total number of cwindows." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Total number of cwindows.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_new_cwindows_cis100kb.pdf" title="Figure: Number of new cwindows." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of new cwindows.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeaks_cis100kb.pdf" title="Figure: Number of missed cpeaks." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of missed cpeaks.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeak_windows_cis100kb.pdf" title="Figure: Number of non signal windows containing cpeaks." width="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of non signal windows containing cpeaks.
+</p>
+</div>
+<ul>
+<li><p>What are those lost cwindows after fdr on comb? Pvalue, corrected
+pvalue changes …</p></li>
+<li><p>What are those still significant cwindows? Pvalue, corrected
+pvalue changes …</p></li>
+<li><p>Are those new cwindows after fdr on comb?</p></li>
+<li><p>What are those repeated cpeaks? pvalue and corrected pvalue
+changes …</p></li>
+<li><p>What are those still missed cpeaks? pvalue and corrected pvalue
+changes …</p></li>
+<li><p>Are those new cpeaks after fdr on comb?</p></li>
+</ul>
+<p><strong>Observations and speculated reasons</strong></p>
+<ul>
+<li><p>Observation –&gt; indication</p></li>
+<li><p>The cost of including those single peaks is to lose some weak
+cwindows.</p></li>
+</ul>
+<p><strong>Prove reasons and indications</strong></p>
+<ul>
+<li><p>Pattern of changes</p></li>
+<li><p>Example of changes</p></li>
+</ul>
+<p><strong>Conclusions</strong></p>
+<ul>
+<li>We should use 50kb window size, 100kb maximum merging window (or
+not?), perform FDR on both windows and left out peaks.</li>
+</ul>
+</div>
+</div>
+</div>
 <div id="apr-18" class="section level1">
 <h1>Apr 18</h1>
 <div id="merge-left-out-single-peaks-to-closest-peak-groups"
@@ -1155,7 +1508,7 @@ peak distance.</p></li>
 <li><p>Do we use larger window size for this mark?</p></li>
 </ul>
 </div>
-<div id="groups-changes-after-merging" class="section level3">
+<div id="groups-changes-after-merging-1" class="section level3">
 <h3>Groups changes after merging</h3>
 <ul>
 <li><p>Number of groups</p></li>
@@ -1310,7 +1663,7 @@ cpeaks in peak groups, which means we are able to include those left-out
 single cpeaks to our windows and include them into test.</p></li>
 </ul>
 </div>
-<div id="signal-change-after-merging" class="section level3">
+<div id="signal-change-after-merging-1" class="section level3">
 <h3>Signal change after merging</h3>
 <ul>
 <li><p>Compare to the original results with results of merging single
@@ -1560,7 +1913,7 @@ liliw-w
 than H3K27ac peaks in Aracena et al (distance ~10kb).</li>
 </ul>
 </div>
-<div id="groups-changes-after-merging-1" class="section level3">
+<div id="groups-changes-after-merging-2" class="section level3">
 <h3>Groups changes after merging</h3>
 <ul>
 <li><p>Number of groups</p></li>
@@ -1721,7 +2074,7 @@ observed in Aracena et al, where more uni cpeaks were
 identified.</p></li>
 </ul>
 </div>
-<div id="signal-change-after-merging-1" class="section level3">
+<div id="signal-change-after-merging-2" class="section level3">
 <h3>Signal change after merging</h3>
 <ul>
 <li><p>Compare to the original results with results of merging single
@@ -4653,21 +5006,17 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
-other attached packages:
-[1] workflowr_1.7.0
-
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.11       highr_0.10        compiler_4.2.3    pillar_1.9.0     
- [5] bslib_0.5.0       later_1.3.1       git2r_0.32.0      jquerylib_0.1.4  
- [9] tools_4.2.3       getPass_0.2-2     digest_0.6.33     jsonlite_1.8.7   
-[13] evaluate_0.21     lifecycle_1.0.3   tibble_3.2.1      pkgconfig_2.0.3  
-[17] rlang_1.1.1       cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7       
-[21] xfun_0.39         fastmap_1.1.1     httr_1.4.6        stringr_1.5.0    
-[25] knitr_1.43        fs_1.6.2          vctrs_0.6.3       sass_0.4.6       
-[29] rprojroot_2.0.3   glue_1.6.2        R6_2.5.1          processx_3.8.2   
-[33] fansi_1.0.4       rmarkdown_2.23    callr_3.7.3       magrittr_2.0.3   
-[37] whisker_0.4.1     ps_1.7.5          promises_1.2.0.1  htmltools_0.5.5  
-[41] httpuv_1.6.11     utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </code></pre>
+ [1] Rcpp_1.0.11       rstudioapi_0.15.0 whisker_0.4.1     knitr_1.43       
+ [5] magrittr_2.0.3    workflowr_1.7.0   R6_2.5.1          rlang_1.1.1      
+ [9] fastmap_1.1.1     fansi_1.0.4       highr_0.10        stringr_1.5.0    
+[13] tools_4.2.3       xfun_0.39         utf8_1.2.3        cli_3.6.1        
+[17] git2r_0.32.0      jquerylib_0.1.4   htmltools_0.5.5   rprojroot_2.0.3  
+[21] yaml_2.3.7        digest_0.6.33     tibble_3.2.1      lifecycle_1.0.3  
+[25] later_1.3.1       sass_0.4.6        vctrs_0.6.3       promises_1.2.0.1 
+[29] fs_1.6.2          cachem_1.0.8      glue_1.6.2        evaluate_0.21    
+[33] rmarkdown_2.23    stringi_1.7.12    bslib_0.5.0       compiler_4.2.3   
+[37] pillar_1.9.0      jsonlite_1.8.7    httpuv_1.6.11     pkgconfig_2.0.3  </code></pre>
 </div>
 </div>
 </div>

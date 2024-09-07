@@ -24,6 +24,289 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# Apr 25 & May 2 & May 9
+
+## 1. Peak merging results of LCL dataset
+
+### Groups changes after merging
+
+- Number of groups
+
+- Size of groups
+
+- Single left out peaks not merged thus not tested
+
+
+Below are results of tissue Brain. 
+
+
+```{r out.height = "100%", fig.cap="Figure: Distribution of peak group size across window sizes and maximum merging window size. This is for tissue Brain.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/H3K27AC_peaks_in_group_combined.pdf"), error = FALSE)
+```
+
+
+```{r out.width="100%", fig.cap="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/H3K27AC_peaks_in_group_w_cqtl_cpeak500kb_combined.pdf"), error = FALSE)
+```
+
+
+```{r out.width="100%", fig.cap="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/H3K27AC_peaks_w_cqtl_in_group_cpeak500kb_combined.pdf"), error = FALSE)
+```
+
+
+### Signal change after merging
+
+- Compare to the original results with results of merging single peaks
+
+- (Minor) Compare window sizes under the same maximum merging window size
+
+
+Below I show results for tissue Brian. 
+
+```{r out.width="100%", fig.cap="Figure: Compare CACTI signals to uni signals across window sizes and maximum merging window size. This is for tissue Brian.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/plt_cpeak_cwindow_H3K27AC_cis500kb_combined.pdf"), error = FALSE)
+```
+
+
+```{r out.width="100%", fig.cap="Figure: Compare CACTI signals to uni signals proportions across window sizes and maximum merging window size. This is for tissue Brian.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/plt_cpeak_cwindow_H3K27AC_cis500kb_prop_combined.pdf"), error = FALSE)
+```
+
+
+## 2. Combine p-values from two tests
+
+### Zhonghua's idea not work
+
+FDR on window and single peak pvalues separately not work, as the total number of tests in the single-peak-test pool decreased. 
+
+FDR on the window and single peak pvalues together makes more sense. 
+
+- Why XY's idea of a/b=c/d=a+b/c+d=\alpha not work?
+  
+  The discoveries (c and d) and true positives in these discoveries would change, as the tests included change, i.e. changing from all windows (all peaks) to all windows plus isolated peaks. 
+
+
+### How simulation?
+
+100k overall tests, including -
+
+- uni test (z-score), to simulate the single left out peaks. 
+  
+  NULL - $z \sim N(0, 1)$
+
+- multi test (PCO), to simulate a group of peaks. 
+  
+  NULL - $ z_multi \sim N_k(0, \Sigma_{101_{DGN}})$
+
+
+To look at if T1E in simulation are well calibreated, I evaluated different scenarios -
+
+- across different proportion of uni test (z-score), the rest are pco test. 
+  
+  `c(0.01, 0.05, 0.1, 0.3, 0.5, 0.7, 0.9, 0.95, 0.99)`
+  
+- across different sigma dimension K
+  
+  Randomly take a subset of $\Sigma$ with dimension `c(2, 10, 40, 50, 80)`. I chose proportion of uni tests to be 50% and 20%. 
+
+
+
+Caveats - 
+
+Not gonna be useful for follow up analysis that require test statistics ...
+
+
+
+### T1E in simulation - well calibrated
+
+Calculate T1E by {#nominal P < alpha}/{#tests}. 
+
+```{r out.width="100%", fig.cap="Figure: T1E and pvalue range across scenarios of different proportion of uni tests.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_new_fig_num_null_prop_test.pdf"), error = FALSE)
+```
+
+See [here for qq plot](asset/2024/05_02_fig_qq_null_prop_test.pdf). 
+
+```{r out.width="100%", fig.cap="Figure: T1E and pvalue range across scenarios of different sigma dimension using 50% uni tests (Upper) and 20% uni tests (Lower).", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_new_fig_num_null_K.pdf"), error = FALSE)
+```
+
+
+### Simulation on FDR control
+
+I first simulated z-scores of (SNP, peak) and (SNP, peak group) with a mixture of null and alt tests, then I perform z test and pco test, get the pvalues, perform fdr correction under a given fdr cutoff, identify the signals, calculated the false discovery rate by $\frac{\# signals not true}{\# signals}$, iterated simulation multiple times, in order to check if the false positive discovery rate is well controlled. 
+
+**Parameter settings**
+
+- overall tests - 10^5
+
+- A proportion of tests are uni tests
+  `prop_uni_seq <- c(0.01, 0.2, 0.5, 0.8, 0.99)`
+
+- Among uni tests and multi tests, a proportion are casual
+  
+  `caus_prop_test_seq <- c(0, 0.1, 0.3, 0.5, 0.8, 1)`
+  
+  [NOTE - There is no point to look at 0 and 1. Explanation see below.]
+
+- Uni test - (SNP, peak)
+  
+  NULL: $z \sim N(0, 1)$
+  
+  ALT: $z \sim N(\beta \sqrt{N}, 1), \beta \sim N(0, \sigma_b)$. $\sigma_b$ is the genetic variance explained by each SNP. 
+
+- Multi test - (SNP, peak group)
+  
+  NULL: $z \sim N(0_{K}, \Sigma)$
+  
+  ALT: $z \sim N(B_{K} \sqrt{N}, \Sigma)$. $B_{K}$ is the effect of a SNP on K peaks in the group. I set a proportion of these K peaks (`caus_prop_K`) are causal peaks that have non zero effects. So, for zero-effect peaks $\beta_k = 0$. For non-zero-effect peaks, $\beta_k \sim N(0, \sigma_b)$ $\sigma_b$ is the genetic variance explained by each SNP. 
+
+- single snp variance
+  
+  `var.b_seq <- c(0.001, 0.005, 0.01, 0.05)`
+
+- fdr cutoff
+  
+  `fdr_seq <- c(1e-4, 1e-3, 1e-2, 5e-2, 1e-1)`
+
+- sample size `N <- 100`
+
+- causal proportion among multi K `caus_prop_K <- 0.3`
+
+- number of simulations `ITER_sim <- 10`
+
+
+
+**Results**
+
+```{r out.width="100%", fig.cap="Figure: To check if FDR is well controlled across settings. x-axis is single snp variance, y-axis is average false discovery rate across 10 simualtions, colors are causal test proportion. Column panels are uni test proportion. Rows are fdr cutoff.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_fig_sim_fdr.pdf"), error = FALSE)
+```
+
+
+- Under 0.01 FDR cutoff, fdr are well controlled under most settings. 
+
+- Under 0.05 FDR cutoff, fdr are well controlled under most settings, except when single snp variance is very low. This is because for most of 10 simulations, there was no signals. For 1 or 2 simulations, there was 1 signal that are not true positive. FDR will be well controlled with more simulations. 
+
+- Some fdr are 1 under the case where no tests are causal. This is because for most of 10 simulations, there was no signals. For 1 simulation, there was 1 signal that are not true positive. FDR will be well controlled with more simulations. 
+
+- There is no point to show FDR for cases where causal proportion tests are 0 (all NULL) or 1 (all ALT). 
+  
+  - When all tests are null, then there is no true signals, any signals will be false, fdr will always be 1. Should check T1E in this case. 
+  
+  - When all tests are alt, then any signals will be true signals, fdr will always be 0. Should check power in this case. 
+
+
+
+
+### Power in real data
+
+- How?
+  
+  I included those single left out single peaks in included in any windows into FDR procedure with multi tests. Specifically, I take all pairs of cis SNPs and those single peaks, take the best lead association (ACAT on all cis SNP pvalues), then use the adjusted lead pvalue of each single peaks, finally perform FDR on these lead pvalues with those of windows. 
+
+
+- From ChatGPT -
+  
+  Consideration of power in interpretation -
+  
+  When interpreting the results of multiple testing correction, it's important to consider the power of the individual tests. Significant p-values surviving correction may indicate not only statistical significance but also the relative strength of evidence provided by each test. 
+  
+  Confidence in non-significant results: Non-significant results from tests with higher power may be more credible than those from tests with lower power. If a test has sufficient power to detect meaningful effects, the absence of a significant result may suggest weaker evidence against the null hypothesis. Conversely, non-significant results from tests with lower power may be less informative and may not necessarily provide strong evidence in favor of the null hypothesis. 
+  
+  Interpretation of effect sizes: Considering the power of each test can also inform the interpretation of effect sizes. Tests with higher power are more likely to detect smaller effect sizes as statistically significant. Therefore, significant results from tests with higher power may indicate not only the presence of an effect but also the magnitude of that effect, whereas significant results from tests with lower power may be more indicative of larger effect sizes. 
+
+
+- Results. Take one dataset from Aracena et al. as example. 
+
+```{r out.width="100%", fig.cap="Figure: Signal comparison with uni test and multi test by including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_ccomb_H3K27ac_Flu_window50kb_cis100kb.pdf"), error = FALSE)
+```
+
+
+
+- Compared to previous one with no single peak. 
+  
+  The four panel plot compared to previous one with no single peak (combined plot)
+  
+  - Original peak groups
+  
+  - Merged peak groups (2 maximum merging window)
+
+```{r out.width="100%", fig.cap="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow0kb_cis100kb.pdf"), error = FALSE)
+```
+
+```{r out.width="100%", fig.cap="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum window size is 50kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow50kb_cis100kb.pdf"), error = FALSE)
+```
+
+```{r out.width="100%", fig.cap="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum window size is 100kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow100kb_cis100kb.pdf"), error = FALSE)
+```
+
+
+
+- Changes in numbers. Across all datasets and parameters. 
+
+
+```{r out.width="100%", fig.cap="Figure: Total number of cwindows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_total_cwindows_cis100kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="100%", fig.cap="Figure: Number of new cwindows.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_new_cwindows_cis100kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="100%", fig.cap="Figure: Number of missed cpeaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeaks_cis100kb.pdf"), error = FALSE)
+```
+
+
+```{r out.width="100%", fig.cap="Figure: Number of non signal windows containing cpeaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeak_windows_cis100kb.pdf"), error = FALSE)
+```
+
+
+  - What are those lost cwindows after fdr on comb? Pvalue, corrected pvalue changes ...
+  
+  - What are those still significant cwindows? Pvalue, corrected pvalue changes ...
+  
+  - Are those new cwindows after fdr on comb?
+  
+  - What are those repeated cpeaks? pvalue and corrected pvalue changes ...
+  
+  - What are those still missed cpeaks? pvalue and corrected pvalue changes ...
+  
+  - Are those new cpeaks after fdr on comb?
+
+
+**Observations and speculated reasons**
+
+- Observation --> indication
+
+- The cost of including those single peaks is to lose some weak cwindows. 
+
+
+**Prove reasons and indications**
+
+- Pattern of changes
+
+- Example of changes
+
+
+**Conclusions**
+
+- We should use 50kb window size, 100kb maximum merging window (or not?), perform FDR on both windows and left out peaks. 
+
+
+
+
+
+
 
 # Apr 18
 
