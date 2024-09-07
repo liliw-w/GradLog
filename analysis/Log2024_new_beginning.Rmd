@@ -24,6 +24,224 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+# July 25
+
+## Sharing
+
+Ways to define sharing -
+
+- mashr
+
+- cQTL sharing as in Luis paper
+  
+  - get (SNP, window) level significance
+
+
+
+
+# May 27
+
+## 1. cQTL sharing across cell types
+
+### How?
+
+I compared for one mark, what is the sharing of cQTLs across cell types?
+
+- I looked at three marks H3K27ac, H3K4me1, and H3K4me3. 
+
+- Three cell types LCL, Microphage-NI, and Microphage-Flu. 
+
+- I define the sharing of cQTLs by -
+  
+  For a focal cell type, I took the lead cQTL associations of all cwindows, I extracted all associations of the lead cQTLs from a compared cell type, took the minumum pvalue of the lead cQTLs from a compared cell type, and finally calculate the correlation (spearman) among the lead pvalue in the focal cell type and the corresponding minimum pvalue in the compared cell type. 
+  
+  Is it better to use lead SNPs of only significant cwindows?
+
+
+- Why not use the number of replicated cQTLs?
+  
+  Another intuitive way is to look at if a significant cQTL in a focal cell type is also a cQTL in the compared cell type. This won't work in our case as there is no easy for use to obtain all cQTLs rather than only lead cQTLs. QTLTools makes it easy to identify all cQTLs by defining a feature-level significance cutoff based on the feature-level empiircal pvalue obtained from beta approximation. However, we can't do this for pco pvalues. 
+
+
+### Results
+
+```{r out.height = "100%", fig.cap="Figure: The correlation (spearman) among the lead pvalue in the focal cell type and the corresponding minimum pvalue in the compared cell type. Across three marks. (A) Use all windows. (B) Use only the significant windows", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_27_sharing_cell_type.pdf"), error = FALSE)
+```
+
+- Note the cis region of LCL (500kb) and Microphage (100kb) are different. 
+
+
+### Compare to uni results
+
+Run R^2 in their datasets which uses uni for fair comparison. 
+
+
+```{r out.height = "100%", fig.cap="Figure: The correlation (spearman) among the lead pvalue by uni test.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_27_sharing_cell_type_uni.pdf"), error = FALSE)
+```
+
+
+
+
+## 2. cQTL sharing across marks
+
+### How?
+
+- Three cell types LCL, Microphage-NI, and Microphage-Flu. 
+
+- Marks H3K27ac, H3K4me1, and H3K4me3. 
+
+
+I compared in cell type, what is the sharing of cQTLs across marks?
+
+- I define the sharing of cQTLs by -
+  
+  The enrichment of cwindows of one mark in another mark - if a peak of a mark being significant also means it's significant for another mark (the peak should be overlapped between two marks). 
+
+
+### Results
+
+```{r out.height = "100%", fig.cap="Figure: cQTL sharing across marks in LCL. (A) The enrichment of cwindows of one mark in another mark. (B) Enrich pvalue. (C) Proportion of cwindows of one mark are also significant for another mark.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_27_enrich_cwindow_across_mark_lcl.pdf"), error = FALSE)
+```
+
+Similar results of cell type [microphage NI](asset/2024/05_27_enrich_cwindow_across_mark_microphage_ni.pdf) and [microphage flu](asset/2024/05_27_enrich_cwindow_across_mark_microphage_flu.pdf). 
+
+
+### Compare to uni results
+
+Run same enrichment analysis in their datasets which uses uni for fair comparison. 
+
+Three cell types. 
+
+
+- Overlap peak number
+  
+  - Compare to previous number
+
+- Enrich
+  
+  - Compare to previous enrichment
+
+
+```{r out.height = "100%", fig.cap="Figure: (LEFT) Windows (RIGHT) Peaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_27_num_overlap_window_lcl.pdf", "asset/2024/05_27_num_overlap_window_lcl_uni.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure: (LEFT) Windows (RIGHT) Peaks.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_27_enrich_cwindow_across_mark_lcl.pdf", "asset/2024/05_27_enrich_cwindow_across_mark_lcl_uni.pdf"), error = FALSE)
+```
+
+
+Similar results of other cell type -
+
+- [window - microphage NI](asset/2024/05_27_enrich_cwindow_across_mark_microphage_ni.pdf) v.s. [peak - microphage NI](asset/2024/05_27_enrich_cwindow_across_mark_microphage_ni_uni.pdf)
+
+- [window - microphage flu](asset/2024/05_27_enrich_cwindow_across_mark_microphage_flu.pdf) v.s. [peak - microphage flu](asset/2024/05_27_enrich_cwindow_across_mark_microphage_flu_uni.pdf)
+
+
+Overlap peak number of other cell type -
+
+- [window - microphage NI](asset/2024/05_27_num_overlap_window_microphage_ni.pdf) v.s. [peak - microphage NI](asset/2024/05_27_num_overlap_window_microphage_ni_uni.pdf)
+
+- [window - microphage flu](asset/2024/05_27_num_overlap_window_microphage_flu.pdf) v.s. [peak - microphage flu](asset/2024/05_27_num_overlap_window_microphage_flu_uni.pdf)
+
+
+
+**Observations**
+
+- More overlaps of single peaks than windows across marks
+
+- Less sharing using cwindows
+
+
+
+
+
+
+
+# May 16
+
+## 1. GWAS loci coloc with cQTLs
+
+### 36 traits v.s. cQTLs of three marks in LCL
+
+- Window size 50kb. 
+
+
+I looked at a set of numbers, including ...
+
+
+**Overall number -**
+
+- Number of GWAS loci
+
+- Number of GWAS loci coloc with any cqtls
+
+
+**Single mark & mark specificity & mark sharing -**
+
+- Number of GWAS loci coloc with each mark
+
+- Number of GWAS loci coloc with only one mark
+
+- Number of GWAS loci coloc with more than two marks
+
+
+```{r out.height = "100%", fig.cap="Figure: Number of coloc loci across 36 traits and three histone marks in LCL. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_16_coloc_num_alltrait_allmark.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure: Proportion of coloc loci across 36 traits and three histone marks in LCL. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_16_coloc_prop_alltrait_allmark.pdf"), error = FALSE)
+```
+
+
+### 36 traits v.s. cQTLs of four marks in Microphage of Aracena et al.
+
+- Window size 50kb. 
+
+- Flu only.
+
+
+```{r out.height = "100%", fig.cap="Figure: Number of coloc loci across 36 traits and four histone marks in Microphage. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_16_coloc_aracena_num_alltrait_allmark.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure: Proportion of coloc loci across 36 traits and four histone marks in Microphage. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/05_16_coloc_aracena_prop_alltrait_allmark.pdf"), error = FALSE)
+```
+
+
+
+
+
+### Cell types
+
+- LCL v.s. Microphage
+
+
+### New coloc loci
+
+- Number of GWAS loci coloc with only new cqtls
+
+- Number of GWAS loci new coloc proportion by each mark
+
+- Number of GWAS loci new coloc proportion by more than two marks
+
+- Number of GWAS loci new coloc proportion by only one mark
+
+
+### Coloc loci not with eQTLs
+
+
+
+
+
 # Apr 25 & May 2 & May 9
 
 ## 1. Peak merging results of LCL dataset
