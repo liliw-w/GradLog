@@ -406,7 +406,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -417,8 +417,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -427,13 +427,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-05-16
+<strong>Last updated:</strong> 2024-09-07
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -456,21 +456,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -561,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree37af3e05b8d909d9548bc86a7c390939c2b4fcdatargetblank37af3e0a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree13fe371e67517ac3d29a30e782497764c3b5db3dtargetblank13fe371a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/37af3e05b8d909d9548bc86a7c390939c2b4fcda" target="_blank">37af3e0</a>
+<a href="https://github.com/liliw-w/GradLog/tree/13fe371e67517ac3d29a30e782497764c3b5db3d" target="_blank">13fe371</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree37af3e05b8d909d9548bc86a7c390939c2b4fcdatargetblank37af3e0a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree13fe371e67517ac3d29a30e782497764c3b5db3dtargetblank13fe371a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -579,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/37af3e05b8d909d9548bc86a7c390939c2b4fcda" target="_blank">37af3e0</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/13fe371e67517ac3d29a30e782497764c3b5db3d" target="_blank">13fe371</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -601,9 +598,6 @@ Ignored files:
     Ignored:    analysis/.Rhistory
 
 Unstaged changes:
-    Modified:   .gitignore
-    Modified:   analysis/Log2024_new_beginning.Rmd
-    Modified:   analysis/style.css
     Modified:   analysis/week_log.Rmd
 
 </code></pre>
@@ -650,6 +644,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/13fe371e67517ac3d29a30e782497764c3b5db3d/analysis/Log2024_new_beginning.Rmd" target="_blank">13fe371</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+<td>
+update
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/a94a2f1d1c6312f94926f0ce9db56a42f9643ca2/analysis/Log2024_new_beginning.Rmd" target="_blank">a94a2f1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+<td>
+update
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/a94a2f1d1c6312f94926f0ce9db56a42f9643ca2/docs/Log2024_new_beginning.html" target="_blank">a94a2f1</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+<td>
+update
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -905,6 +950,643 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="july-25" class="section level1">
+<h1>July 25</h1>
+<div id="sharing" class="section level2">
+<h2>Sharing</h2>
+<p>Ways to define sharing -</p>
+<ul>
+<li><p>mashr</p></li>
+<li><p>cQTL sharing as in Luis paper</p>
+<ul>
+<li>get (SNP, window) level significance</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="may-27" class="section level1">
+<h1>May 27</h1>
+<div id="cqtl-sharing-across-cell-types" class="section level2">
+<h2>1. cQTL sharing across cell types</h2>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<p>I compared for one mark, what is the sharing of cQTLs across cell
+types?</p>
+<ul>
+<li><p>I looked at three marks H3K27ac, H3K4me1, and H3K4me3.</p></li>
+<li><p>Three cell types LCL, Microphage-NI, and Microphage-Flu.</p></li>
+<li><p>I define the sharing of cQTLs by -</p>
+<p>For a focal cell type, I took the lead cQTL associations of all
+cwindows, I extracted all associations of the lead cQTLs from a compared
+cell type, took the minumum pvalue of the lead cQTLs from a compared
+cell type, and finally calculate the correlation (spearman) among the
+lead pvalue in the focal cell type and the corresponding minimum pvalue
+in the compared cell type.</p>
+<p>Is it better to use lead SNPs of only significant cwindows?</p></li>
+<li><p>Why not use the number of replicated cQTLs?</p>
+<p>Another intuitive way is to look at if a significant cQTL in a focal
+cell type is also a cQTL in the compared cell type. This won’t work in
+our case as there is no easy for use to obtain all cQTLs rather than
+only lead cQTLs. QTLTools makes it easy to identify all cQTLs by
+defining a feature-level significance cutoff based on the feature-level
+empiircal pvalue obtained from beta approximation. However, we can’t do
+this for pco pvalues.</p></li>
+</ul>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_27_sharing_cell_type.pdf" title="Figure: The correlation (spearman) among the lead pvalue in the focal cell type and the corresponding minimum pvalue in the compared cell type. Across three marks. (A) Use all windows. (B) Use only the significant windows" width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: The correlation (spearman) among the lead pvalue in the focal
+cell type and the corresponding minimum pvalue in the compared cell
+type. Across three marks. (A) Use all windows. (B) Use only the
+significant windows
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_27_sharing_cell_type">
+Past versions of 05_27_sharing_cell_type.pdf
+</button>
+</p>
+<div id="fig-05_27_sharing_cell_type" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_27_sharing_cell_type.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Note the cis region of LCL (500kb) and Microphage (100kb) are
+different.</li>
+</ul>
+</div>
+<div id="compare-to-uni-results" class="section level3">
+<h3>Compare to uni results</h3>
+<p>Run R^2 in their datasets which uses uni for fair comparison.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_27_sharing_cell_type_uni.pdf" title="Figure: The correlation (spearman) among the lead pvalue by uni test." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: The correlation (spearman) among the lead pvalue by uni test.
+</p>
+</div>
+</div>
+</div>
+<div id="cqtl-sharing-across-marks" class="section level2">
+<h2>2. cQTL sharing across marks</h2>
+<div id="how-1" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>Three cell types LCL, Microphage-NI, and Microphage-Flu.</p></li>
+<li><p>Marks H3K27ac, H3K4me1, and H3K4me3.</p></li>
+</ul>
+<p>I compared in cell type, what is the sharing of cQTLs across
+marks?</p>
+<ul>
+<li><p>I define the sharing of cQTLs by -</p>
+<p>The enrichment of cwindows of one mark in another mark - if a peak of
+a mark being significant also means it’s significant for another mark
+(the peak should be overlapped between two marks).</p></li>
+</ul>
+</div>
+<div id="results-1" class="section level3">
+<h3>Results</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_27_enrich_cwindow_across_mark_lcl.pdf" title="Figure: cQTL sharing across marks in LCL. (A) The enrichment of cwindows of one mark in another mark. (B) Enrich pvalue. (C) Proportion of cwindows of one mark are also significant for another mark." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: cQTL sharing across marks in LCL. (A) The enrichment of cwindows
+of one mark in another mark. (B) Enrich pvalue. (C) Proportion of
+cwindows of one mark are also significant for another mark.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_27_enrich_cwindow_across_mark_lcl">
+Past versions of 05_27_enrich_cwindow_across_mark_lcl.pdf
+</button>
+</p>
+<div id="fig-05_27_enrich_cwindow_across_mark_lcl" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_27_enrich_cwindow_across_mark_lcl.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Similar results of cell type <a
+href="asset/2024/05_27_enrich_cwindow_across_mark_microphage_ni.pdf">microphage
+NI</a> and <a
+href="asset/2024/05_27_enrich_cwindow_across_mark_microphage_flu.pdf">microphage
+flu</a>.</p>
+</div>
+<div id="compare-to-uni-results-1" class="section level3">
+<h3>Compare to uni results</h3>
+<p>Run same enrichment analysis in their datasets which uses uni for
+fair comparison.</p>
+<p>Three cell types.</p>
+<ul>
+<li><p>Overlap peak number</p>
+<ul>
+<li>Compare to previous number</li>
+</ul></li>
+<li><p>Enrich</p>
+<ul>
+<li>Compare to previous enrichment</li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_27_num_overlap_window_lcl.pdf" title="Figure: (LEFT) Windows (RIGHT) Peaks." width="50%" height="100%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_27_num_overlap_window_lcl">
+Past versions of 05_27_num_overlap_window_lcl.pdf
+</button>
+</p>
+<div id="fig-05_27_num_overlap_window_lcl" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_27_num_overlap_window_lcl.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2024/05_27_num_overlap_window_lcl_uni.pdf" title="Figure: (LEFT) Windows (RIGHT) Peaks." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: (LEFT) Windows (RIGHT) Peaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_27_num_overlap_window_lcl_uni">
+Past versions of 05_27_num_overlap_window_lcl_uni.pdf
+</button>
+</p>
+<div id="fig-05_27_num_overlap_window_lcl_uni" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_27_num_overlap_window_lcl_uni.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_27_enrich_cwindow_across_mark_lcl.pdf" title="Figure: (LEFT) Windows (RIGHT) Peaks." width="50%" height="100%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_27_enrich_cwindow_across_mark_lcl">
+Past versions of 05_27_enrich_cwindow_across_mark_lcl.pdf
+</button>
+</p>
+<div id="fig-05_27_enrich_cwindow_across_mark_lcl" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_27_enrich_cwindow_across_mark_lcl.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2024/05_27_enrich_cwindow_across_mark_lcl_uni.pdf" title="Figure: (LEFT) Windows (RIGHT) Peaks." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: (LEFT) Windows (RIGHT) Peaks.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_27_enrich_cwindow_across_mark_lcl_uni">
+Past versions of 05_27_enrich_cwindow_across_mark_lcl_uni.pdf
+</button>
+</p>
+<div id="fig-05_27_enrich_cwindow_across_mark_lcl_uni" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_27_enrich_cwindow_across_mark_lcl_uni.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Similar results of other cell type -</p>
+<ul>
+<li><p><a
+href="asset/2024/05_27_enrich_cwindow_across_mark_microphage_ni.pdf">window
+- microphage NI</a> v.s. <a
+href="asset/2024/05_27_enrich_cwindow_across_mark_microphage_ni_uni.pdf">peak
+- microphage NI</a></p></li>
+<li><p><a
+href="asset/2024/05_27_enrich_cwindow_across_mark_microphage_flu.pdf">window
+- microphage flu</a> v.s. <a
+href="asset/2024/05_27_enrich_cwindow_across_mark_microphage_flu_uni.pdf">peak
+- microphage flu</a></p></li>
+</ul>
+<p>Overlap peak number of other cell type -</p>
+<ul>
+<li><p><a
+href="asset/2024/05_27_num_overlap_window_microphage_ni.pdf">window -
+microphage NI</a> v.s. <a
+href="asset/2024/05_27_num_overlap_window_microphage_ni_uni.pdf">peak -
+microphage NI</a></p></li>
+<li><p><a
+href="asset/2024/05_27_num_overlap_window_microphage_flu.pdf">window -
+microphage flu</a> v.s. <a
+href="asset/2024/05_27_num_overlap_window_microphage_flu_uni.pdf">peak -
+microphage flu</a></p></li>
+</ul>
+<p><strong>Observations</strong></p>
+<ul>
+<li><p>More overlaps of single peaks than windows across marks</p></li>
+<li><p>Less sharing using cwindows</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="may-16" class="section level1">
+<h1>May 16</h1>
+<div id="gwas-loci-coloc-with-cqtls" class="section level2">
+<h2>1. GWAS loci coloc with cQTLs</h2>
+<div id="traits-v.s.-cqtls-of-three-marks-in-lcl"
+class="section level3">
+<h3>36 traits v.s. cQTLs of three marks in LCL</h3>
+<ul>
+<li>Window size 50kb.</li>
+</ul>
+<p>I looked at a set of numbers, including …</p>
+<p><strong>Overall number -</strong></p>
+<ul>
+<li><p>Number of GWAS loci</p></li>
+<li><p>Number of GWAS loci coloc with any cqtls</p></li>
+</ul>
+<p><strong>Single mark &amp; mark specificity &amp; mark sharing
+-</strong></p>
+<ul>
+<li><p>Number of GWAS loci coloc with each mark</p></li>
+<li><p>Number of GWAS loci coloc with only one mark</p></li>
+<li><p>Number of GWAS loci coloc with more than two marks</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_16_coloc_num_alltrait_allmark.pdf" title="Figure: Number of coloc loci across 36 traits and three histone marks in LCL. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of coloc loci across 36 traits and three histone marks in
+LCL. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc
+with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci
+coloc with any mark in red, gwas loci coloc with only one mark in cream.
+(D-F) gwas loci coloc with any mark in red, gwas loci coloc with the
+mark in violet, gwas loci coloc with only the mark in cream.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_16_coloc_num_alltrait_allmark">
+Past versions of 05_16_coloc_num_alltrait_allmark.pdf
+</button>
+</p>
+<div id="fig-05_16_coloc_num_alltrait_allmark" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_16_coloc_num_alltrait_allmark.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_16_coloc_prop_alltrait_allmark.pdf" title="Figure: Proportion of coloc loci across 36 traits and three histone marks in LCL. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Proportion of coloc loci across 36 traits and three histone
+marks in LCL. 36 traits on y-axis. (A) total gwas loci in grey, gwas
+loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C)
+gwas loci coloc with any mark in red, gwas loci coloc with only one mark
+in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc
+with the mark in violet, gwas loci coloc with only the mark in cream.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_16_coloc_prop_alltrait_allmark">
+Past versions of 05_16_coloc_prop_alltrait_allmark.pdf
+</button>
+</p>
+<div id="fig-05_16_coloc_prop_alltrait_allmark" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_16_coloc_prop_alltrait_allmark.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div
+id="traits-v.s.-cqtls-of-four-marks-in-microphage-of-aracena-et-al."
+class="section level3">
+<h3>36 traits v.s. cQTLs of four marks in Microphage of Aracena et
+al.</h3>
+<ul>
+<li><p>Window size 50kb.</p></li>
+<li><p>Flu only.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_16_coloc_aracena_num_alltrait_allmark.pdf" title="Figure: Number of coloc loci across 36 traits and four histone marks in Microphage. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of coloc loci across 36 traits and four histone marks in
+Microphage. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci
+coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas
+loci coloc with any mark in red, gwas loci coloc with only one mark in
+cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with
+the mark in violet, gwas loci coloc with only the mark in cream.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_16_coloc_aracena_num_alltrait_allmark">
+Past versions of 05_16_coloc_aracena_num_alltrait_allmark.pdf
+</button>
+</p>
+<div id="fig-05_16_coloc_aracena_num_alltrait_allmark" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_16_coloc_aracena_num_alltrait_allmark.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/05_16_coloc_aracena_prop_alltrait_allmark.pdf" title="Figure: Proportion of coloc loci across 36 traits and four histone marks in Microphage. 36 traits on y-axis. (A) total gwas loci in grey, gwas loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C) gwas loci coloc with any mark in red, gwas loci coloc with only one mark in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc with the mark in violet, gwas loci coloc with only the mark in cream." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Proportion of coloc loci across 36 traits and four histone marks
+in Microphage. 36 traits on y-axis. (A) total gwas loci in grey, gwas
+loci coloc with any mark in red. (B) gwas loci coloc with any mark. (C)
+gwas loci coloc with any mark in red, gwas loci coloc with only one mark
+in cream. (D-F) gwas loci coloc with any mark in red, gwas loci coloc
+with the mark in violet, gwas loci coloc with only the mark in cream.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_16_coloc_aracena_prop_alltrait_allmark">
+Past versions of 05_16_coloc_aracena_prop_alltrait_allmark.pdf
+</button>
+</p>
+<div id="fig-05_16_coloc_aracena_prop_alltrait_allmark"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_16_coloc_aracena_prop_alltrait_allmark.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cell-types" class="section level3">
+<h3>Cell types</h3>
+<ul>
+<li>LCL v.s. Microphage</li>
+</ul>
+</div>
+<div id="new-coloc-loci" class="section level3">
+<h3>New coloc loci</h3>
+<ul>
+<li><p>Number of GWAS loci coloc with only new cqtls</p></li>
+<li><p>Number of GWAS loci new coloc proportion by each mark</p></li>
+<li><p>Number of GWAS loci new coloc proportion by more than two
+marks</p></li>
+<li><p>Number of GWAS loci new coloc proportion by only one
+mark</p></li>
+</ul>
+</div>
+<div id="coloc-loci-not-with-eqtls" class="section level3">
+<h3>Coloc loci not with eQTLs</h3>
+</div>
+</div>
+</div>
 <div id="apr-25-may-2-may-9" class="section level1">
 <h1>Apr 25 &amp; May 2 &amp; May 9</h1>
 <div id="peak-merging-results-of-lcl-dataset" class="section level2">
@@ -924,6 +1606,43 @@ Figure: Distribution of peak group size across window sizes and maximum
 merging window size. This is for tissue Brain.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-H3K27AC_peaks_in_group_combined">
+Past versions of H3K27AC_peaks_in_group_combined.pdf
+</button>
+</p>
+<div id="fig-H3K27AC_peaks_in_group_combined" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/H3K27AC_peaks_in_group_combined.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/H3K27AC_peaks_in_group_w_cqtl_cpeak500kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain." width="100%" type="application/pdf" />
 <p class="caption">
@@ -931,12 +1650,88 @@ Figure: Number of uni cpeaks in peak groups across window sizes and
 maximum merging window size. This is for tissue Brain.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-H3K27AC_peaks_in_group_w_cqtl_cpeak500kb_combined">
+Past versions of H3K27AC_peaks_in_group_w_cqtl_cpeak500kb_combined.pdf
+</button>
+</p>
+<div id="fig-H3K27AC_peaks_in_group_w_cqtl_cpeak500kb_combined"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/H3K27AC_peaks_in_group_w_cqtl_cpeak500kb_combined.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/H3K27AC_peaks_w_cqtl_in_group_cpeak500kb_combined.pdf" title="Figure: Number of uni cpeaks in peak groups across window sizes and maximum merging window size. This is for tissue Brain." width="100%" type="application/pdf" />
 <p class="caption">
 Figure: Number of uni cpeaks in peak groups across window sizes and
 maximum merging window size. This is for tissue Brain.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-H3K27AC_peaks_w_cqtl_in_group_cpeak500kb_combined">
+Past versions of H3K27AC_peaks_w_cqtl_in_group_cpeak500kb_combined.pdf
+</button>
+</p>
+<div id="fig-H3K27AC_peaks_w_cqtl_in_group_cpeak500kb_combined"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/H3K27AC_peaks_w_cqtl_in_group_cpeak500kb_combined.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="signal-change-after-merging" class="section level3">
@@ -955,12 +1750,88 @@ Figure: Compare CACTI signals to uni signals across window sizes and
 maximum merging window size. This is for tissue Brian.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt_cpeak_cwindow_H3K27AC_cis500kb_combined">
+Past versions of plt_cpeak_cwindow_H3K27AC_cis500kb_combined.pdf
+</button>
+</p>
+<div id="fig-plt_cpeak_cwindow_H3K27AC_cis500kb_combined"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/plt_cpeak_cwindow_H3K27AC_cis500kb_combined.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/plt_cpeak_cwindow_H3K27AC_cis500kb_prop_combined.pdf" title="Figure: Compare CACTI signals to uni signals proportions across window sizes and maximum merging window size. This is for tissue Brian." width="100%" type="application/pdf" />
 <p class="caption">
 Figure: Compare CACTI signals to uni signals proportions across window
 sizes and maximum merging window size. This is for tissue Brian.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt_cpeak_cwindow_H3K27AC_cis500kb_prop_combined">
+Past versions of plt_cpeak_cwindow_H3K27AC_cis500kb_prop_combined.pdf
+</button>
+</p>
+<div id="fig-plt_cpeak_cwindow_H3K27AC_cis500kb_prop_combined"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/plt_cpeak_cwindow_H3K27AC_cis500kb_prop_combined.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1013,6 +1884,43 @@ Figure: T1E and pvalue range across scenarios of different proportion of
 uni tests.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_new_fig_num_null_prop_test">
+Past versions of 05_02_new_fig_num_null_prop_test.pdf
+</button>
+</p>
+<div id="fig-05_02_new_fig_num_null_prop_test" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_new_fig_num_null_prop_test.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>See <a href="asset/2024/05_02_fig_qq_null_prop_test.pdf">here for qq
 plot</a>.</p>
 <div class="figure" style="text-align: center">
@@ -1021,6 +1929,43 @@ plot</a>.</p>
 Figure: T1E and pvalue range across scenarios of different sigma
 dimension using 50% uni tests (Upper) and 20% uni tests (Lower).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_new_fig_num_null_K">
+Past versions of 05_02_new_fig_num_null_K.pdf
+</button>
+</p>
+<div id="fig-05_02_new_fig_num_null_K" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_new_fig_num_null_K.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="simulation-on-fdr-control" class="section level3">
@@ -1077,6 +2022,43 @@ single snp variance, y-axis is average false discovery rate across 10
 simualtions, colors are causal test proportion. Column panels are uni
 test proportion. Rows are fdr cutoff.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_fig_sim_fdr">
+Past versions of 05_02_fig_sim_fdr.pdf
+</button>
+</p>
+<div id="fig-05_02_fig_sim_fdr" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_fig_sim_fdr.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>Under 0.01 FDR cutoff, fdr are well controlled under most
@@ -1143,6 +2125,45 @@ single left out peaks in to FDR procedure. This is an example result for
 mark H3K27ac_Flu data in Aracena et al. Window size is 50kb.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_ccomb_H3K27ac_Flu_window50kb_cis100kb">
+Past versions of
+05_02_plt_cpeak_ccomb_H3K27ac_Flu_window50kb_cis100kb.pdf
+</button>
+</p>
+<div id="fig-05_02_plt_cpeak_ccomb_H3K27ac_Flu_window50kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_ccomb_H3K27ac_Flu_window50kb_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li><p>Compared to previous one with no single peak.</p>
 <p>The four panel plot compared to previous one with no single peak
@@ -1160,6 +2181,46 @@ peaks in to FDR procedure. This is an example result for mark
 H3K27ac_Flu data in Aracena et al. Window size is 50kb.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow0kb_cis100kb">
+Past versions of
+05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow0kb_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow0kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow0kb_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow50kb_cis100kb.pdf" title="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum window size is 50kb." width="100%" type="application/pdf" />
 <p class="caption">
@@ -1168,6 +2229,46 @@ peaks in to FDR procedure. This is an example result for mark
 H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum
 window size is 50kb.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow50kb_cis100kb">
+Past versions of
+05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow50kb_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow50kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow50kb_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow100kb_cis100kb.pdf" title="Figure: Signal comparison before and after including single left out peaks in to FDR procedure. This is an example result for mark H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum window size is 100kb." width="100%" type="application/pdf" />
@@ -1178,6 +2279,46 @@ H3K27ac_Flu data in Aracena et al. Window size is 50kb. Merging maximum
 window size is 100kb.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow100kb_cis100kb">
+Past versions of
+05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow100kb_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow100kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_cwindow_ccomb_H3K27ac_Flu_maxwindow100kb_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li>Changes in numbers. Across all datasets and parameters.</li>
 </ul>
@@ -1187,11 +2328,89 @@ window size is 100kb.
 Figure: Total number of cwindows.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_cwindow_ccomb_num_total_cwindows_cis100kb">
+Past versions of
+05_02_plt_cpeak_cwindow_ccomb_num_total_cwindows_cis100kb.pdf
+</button>
+</p>
+<div id="fig-05_02_plt_cpeak_cwindow_ccomb_num_total_cwindows_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_total_cwindows_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_new_cwindows_cis100kb.pdf" title="Figure: Number of new cwindows." width="100%" type="application/pdf" />
 <p class="caption">
 Figure: Number of new cwindows.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_cwindow_ccomb_num_new_cwindows_cis100kb">
+Past versions of
+05_02_plt_cpeak_cwindow_ccomb_num_new_cwindows_cis100kb.pdf
+</button>
+</p>
+<div id="fig-05_02_plt_cpeak_cwindow_ccomb_num_new_cwindows_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_new_cwindows_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeaks_cis100kb.pdf" title="Figure: Number of missed cpeaks." width="100%" type="application/pdf" />
@@ -1199,11 +2418,90 @@ Figure: Number of new cwindows.
 Figure: Number of missed cpeaks.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeaks_cis100kb">
+Past versions of
+05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeaks_cis100kb.pdf
+</button>
+</p>
+<div id="fig-05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeaks_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeaks_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="figure" style="text-align: center">
 <embed src="asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeak_windows_cis100kb.pdf" title="Figure: Number of non signal windows containing cpeaks." width="100%" type="application/pdf" />
 <p class="caption">
 Figure: Number of non signal windows containing cpeaks.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeak_windows_cis100kb">
+Past versions of
+05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeak_windows_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeak_windows_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5ddc7b79dd1bbf902d2485ae17108e3bb17a1722/docs/asset/2024/05_02_plt_cpeak_cwindow_ccomb_num_missed_cpeak_windows_cis100kb.pdf" target="_blank">5ddc7b7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <ul>
 <li><p>What are those lost cwindows after fdr on comb? Pvalue, corrected
@@ -1241,7 +2539,7 @@ not?), perform FDR on both windows and left out peaks.</li>
 <div id="merge-left-out-single-peaks-to-closest-peak-groups"
 class="section level2">
 <h2>1. Merge left out single peaks to closest peak groups</h2>
-<div id="how" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <p>I merge a left out single peak to its closest peak group, which is
 within a maximum window size. This is basically to expand some peak
@@ -5006,17 +6304,21 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] workflowr_1.7.0
+
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.11       rstudioapi_0.15.0 whisker_0.4.1     knitr_1.43       
- [5] magrittr_2.0.3    workflowr_1.7.0   R6_2.5.1          rlang_1.1.1      
- [9] fastmap_1.1.1     fansi_1.0.4       highr_0.10        stringr_1.5.0    
-[13] tools_4.2.3       xfun_0.39         utf8_1.2.3        cli_3.6.1        
-[17] git2r_0.32.0      jquerylib_0.1.4   htmltools_0.5.5   rprojroot_2.0.3  
-[21] yaml_2.3.7        digest_0.6.33     tibble_3.2.1      lifecycle_1.0.3  
-[25] later_1.3.1       sass_0.4.6        vctrs_0.6.3       promises_1.2.0.1 
-[29] fs_1.6.2          cachem_1.0.8      glue_1.6.2        evaluate_0.21    
-[33] rmarkdown_2.23    stringi_1.7.12    bslib_0.5.0       compiler_4.2.3   
-[37] pillar_1.9.0      jsonlite_1.8.7    httpuv_1.6.11     pkgconfig_2.0.3  </code></pre>
+ [1] Rcpp_1.0.11       highr_0.10        compiler_4.2.3    pillar_1.9.0     
+ [5] bslib_0.5.0       later_1.3.1       git2r_0.32.0      jquerylib_0.1.4  
+ [9] tools_4.2.3       getPass_0.2-2     digest_0.6.33     jsonlite_1.8.7   
+[13] evaluate_0.21     lifecycle_1.0.3   tibble_3.2.1      pkgconfig_2.0.3  
+[17] rlang_1.1.1       cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7       
+[21] xfun_0.39         fastmap_1.1.1     httr_1.4.6        stringr_1.5.0    
+[25] knitr_1.43        fs_1.6.2          vctrs_0.6.3       sass_0.4.6       
+[29] rprojroot_2.0.3   glue_1.6.2        R6_2.5.1          processx_3.8.2   
+[33] fansi_1.0.4       rmarkdown_2.23    callr_3.7.3       magrittr_2.0.3   
+[37] whisker_0.4.1     ps_1.7.5          promises_1.2.0.1  htmltools_0.5.5  
+[41] httpuv_1.6.11     utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </code></pre>
 </div>
 </div>
 </div>
