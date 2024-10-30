@@ -427,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-09-07
+<strong>Last updated:</strong> 2024-10-30
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -558,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree13fe371e67517ac3d29a30e782497764c3b5db3dtargetblank13fe371a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreee69c1a0ae421d413fbd10c2320a363ba41ca65f3targetblanke69c1a0a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/13fe371e67517ac3d29a30e782497764c3b5db3d" target="_blank">13fe371</a>
+<a href="https://github.com/liliw-w/GradLog/tree/e69c1a0ae421d413fbd10c2320a363ba41ca65f3" target="_blank">e69c1a0</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree13fe371e67517ac3d29a30e782497764c3b5db3dtargetblank13fe371a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreee69c1a0ae421d413fbd10c2320a363ba41ca65f3targetblanke69c1a0a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -576,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/13fe371e67517ac3d29a30e782497764c3b5db3d" target="_blank">13fe371</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/e69c1a0ae421d413fbd10c2320a363ba41ca65f3" target="_blank">e69c1a0</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -644,6 +644,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/e69c1a0ae421d413fbd10c2320a363ba41ca65f3/analysis/Log2024_new_beginning.Rmd" target="_blank">e69c1a0</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+<td>
+wflow_publish("analysis/Log2024_new_beginning.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/7c5ef748d49c731790817e97977c3b6cb2351d70/docs/Log2024_new_beginning.html" target="_blank">7c5ef74</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-09-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -950,6 +984,942 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="sep-12" class="section level1">
+<h1>Sep 12</h1>
+<div id="insert-numbers-to-current-draft" class="section level2">
+<h2>0. Insert numbers to current draft</h2>
+</div>
+<div id="cacti-s-on-mark-h3k27ac-lcl-and-macrophage"
+class="section level2">
+<h2>1. CACTI-s on mark H3K27ac (LCL and macrophage)</h2>
+<p>Goal -</p>
+<p>To show cacti-s is slightly worse than cacti-p but still better than
+univariates, which indicates a balance of skipping peak calling and
+reduced power.</p>
+<p>[Not include this part in the paper. Put it in package README. Add
+observations to README. Add this part in thesis.]</p>
+<div id="how" class="section level3">
+<h3>How?</h3>
+<ul>
+<li><p>segment size option</p>
+<p>‘1kb’, ‘2kb’, ‘5kb’, ‘10kb’</p></li>
+<li><p>segment filter - Exclude segments not overlap with peaks</p>
+<p>Reason - to keep comparison fair</p></li>
+</ul>
+</div>
+<div id="compare-h3k27ac-cacti-s-and-h3k27ac-cacti-p"
+class="section level3">
+<h3>Compare H3K27ac-cacti-s and H3K27ac-cacti-p</h3>
+<ul>
+<li><p>Signal number</p></li>
+<li><p>Signal overlap</p></li>
+<li><p>Compare H3K27ac-cacti-s to H3K27ac-fastQTL</p></li>
+</ul>
+<p><strong>Observations &amp; Conclusions -</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_plt_cpeak_cwindow_H3K27AC_window50kb_maxwindow50kb_cis500kb.pdf" title="Figure: CACTI-P on H3K27AC in LCL v.s. uni. window50kb." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: CACTI-P on H3K27AC in LCL v.s. uni. window50kb.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_plt_cpeak_cwindow_H3K27AC_window50kb_maxwindow50kb_cis500kb">
+Past versions of
+09_12_plt_cpeak_cwindow_H3K27AC_window50kb_maxwindow50kb_cis500kb.pdf
+</button>
+</p>
+<div
+id="fig-09_12_plt_cpeak_cwindow_H3K27AC_window50kb_maxwindow50kb_cis500kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_plt_cpeak_cwindow_H3K27AC_window50kb_maxwindow50kb_cis500kb.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg5kb_overlap_peak.pdf" title="Figure:  CACTI-S on H3K27AC in LCL v.s. uni. window50kb. seg10kb." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: CACTI-S on H3K27AC in LCL v.s. uni. window50kb. seg10kb.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_plt_cwindow_cactip_vs_cactis_H3K27AC_window50kb_cis500kb_seg5kb_overlap_peak.pdf" title="Figure:  CACTI-P on H3K27AC in LCL v.s. CACTI-S. window50kb. seg10kb." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: CACTI-P on H3K27AC in LCL v.s. CACTI-S. window50kb. seg10kb.
+</p>
+</div>
+</div>
+<div id="results-using-other-segment-options" class="section level3">
+<h3>Results using other segment options</h3>
+<p>Done.</p>
+</div>
+<div id="results-using-the-same-segment-filtering-as-in-broad-mark"
+class="section level3">
+<h3>Results using the same segment filtering as in broad mark</h3>
+<p>Done.</p>
+</div>
+<div id="try-another-filtering-based-on-cpm-check-bens-code"
+class="section level3">
+<h3>try another filtering based on cpm (check Ben’s code)</h3>
+</div>
+</div>
+<div id="coloc-analysis-on-cqtls-of-mark-h3k27ac-by-cacti-s"
+class="section level2">
+<h2>2. coloc analysis on cQTLs of mark H3K27ac by CACTI-s</h2>
+<p>Done.</p>
+</div>
+<div id="proportion-of-cwindow-sharing-among-marks-details-see-on-slack"
+class="section level2">
+<h2>Proportion of cwindow sharing among marks (details see on
+slack)</h2>
+<blockquote>
+<p>Figure 4G of your manuscript, I think enrichment values are less
+intuitive. Do you have proportion of sharing instead?</p>
+</blockquote>
+<p>Done.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_enrich_cwindow_across_mark_lcl.pdf" title="Figure:" width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure:
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_enrich_cwindow_across_mark_lcl">
+Past versions of 09_12_enrich_cwindow_across_mark_lcl.pdf
+</button>
+</p>
+<div id="fig-09_12_enrich_cwindow_across_mark_lcl" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_enrich_cwindow_across_mark_lcl.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="number-of-cwindows-and-overlap-with-cpeaks-figure"
+class="section level2">
+<h2>Number of cwindows (and overlap with cpeaks) figure</h2>
+<p>Done.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/cwindow_across_datasets.pdf" title="Figure:" width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure:
+</p>
+</div>
+</div>
+<div id="cacti-s-on-broad-mark-h3k27me3-macrophage"
+class="section level2">
+<h2>3. CACTI-s on broad mark H3K27me3 (macrophage)</h2>
+<p>Done.</p>
+<p>To make cacti-s ’s data processing consistent with Aracena et al.,
+see their analysis path <a
+href="asset/2024/09_12_Aracena_analysis_path.png">here</a>.</p>
+<ul>
+<li><del>Get chrome size for hg19 for H3K27me3 in macrophage</del></li>
+</ul>
+<div id="sample-filtering" class="section level3">
+<h3>sample filtering</h3>
+<blockquote>
+<p>3 samples labels will differ between the bams and sample labels in
+the paper and all paper inputs - AF22, AF36 and AF38. Despite having the
+AF prefix these samples are nearly 100% European ancestry. We changed
+these sample labels to EU prefixes (EU22, EU36 and EU38) in the
+manuscript but the bams have these “original” names. I would recommend
+changing any output files you create to EU22, EU36 and EU38 if you’re
+going to publish this work eventually just to keep things concordant</p>
+</blockquote>
+<p><del>change sample labels in snmk pipeline, as the updated sample
+labels will be used in meta and regress covariates</del></p>
+</div>
+<div id="peakseg-filtering" class="section level3">
+<h3>peak/seg filtering</h3>
+<p>To be consistent with the peak filtering in Aracena et al., I keep
+only the segments that are present in at least 50% of Flu or NI samples
+(&gt;=14).</p>
+</div>
+<div id="geno-filtering" class="section level3">
+<h3>geno filtering</h3>
+<blockquote>
+<p>WGS fastq files were processed using GenPipes’ (v3.1.4) DNA
+sequencing pipeline62 Briefly, raw reads were trimmed using Skewer
+(v0.2.2)63 and the resulting reads were aligned to the hg19 human
+reference genome using BWA-MEM (v0.7.17)64. Insertion/deletion
+realignment and base quality score recalibration were performed using
+GATK (v3.8)65, and duplicates were marked using Picard (v2.23.3)66. We
+used GATK’s HaplotypeCaller in gvcf mode to perform SNV and insertion
+and deletions calling. We filtered the joint genotyped file to exclude
+nonautosomal and nonbiallelic variants. Additionally, we used PLINK
+(v1.90b6.9)67,68 to remove SNPs that had a call rate of &lt;90% across
+all samples, that deviated from Hardy–Weinberg equilibrium at
+P&lt;10e−5, and with minor allele frequency less than 5%. We used the
+resulting 7,383,243 SNPs in QTL mapping and other downstream analyses.
+We annotated the SNPs using dbSNP (human_9606_b151_GRCH37p13)69.</p>
+</blockquote>
+</div>
+<div id="covariates" class="section level3">
+<h3>covariates</h3>
+<ul>
+<li><p>Non genetic factors, e.g. batch, age, et al</p></li>
+<li><p>Expression PCs</p>
+<p>I used same number PCs used for peaks in Aracena et al, where they
+tried different number of PCs.</p>
+<p>For H3K27me3, 1 and 2 PCs were used for condition NI and
+Flu.</p></li>
+<li><p>Genotype first PC</p>
+<p>PC1 of genotype data is the only covariate included (to account for
+population structure)</p></li>
+</ul>
+</div>
+<div id="compare-h3k27me3-cacti-s-h3k27me3-fastqtl-and-h3k27me3-cacti-p"
+class="section level3">
+<h3>Compare H3K27me3-cacti-s, H3K27me3-fastQTL, and
+H3K27me3-cacti-p</h3>
+<ul>
+<li><p>Signal number</p></li>
+<li><p>Signal overlap</p></li>
+</ul>
+<p><strong>Observations &amp; Conclusions -</strong></p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_plt_cpeak_cwindow_H3K27me3_NI_window50kb_cis100kb.pdf" title="Figure: CACTI-P on H3K27me3 v.s. uni. window50kb." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: CACTI-P on H3K27me3 v.s. uni. window50kb.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_plt_cpeak_cwindow_H3K27me3_NI_window50kb_cis100kb">
+Past versions of
+09_12_plt_cpeak_cwindow_H3K27me3_NI_window50kb_cis100kb.pdf
+</button>
+</p>
+<div id="fig-09_12_plt_cpeak_cwindow_H3K27me3_NI_window50kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_plt_cpeak_cwindow_H3K27me3_NI_window50kb_cis100kb.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_plt_cpeak_cwindow_seg_group_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" title="Figure:  CACTI-S on H3K27me3 v.s. uni. window50kb. seg5kb." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: CACTI-S on H3K27me3 v.s. uni. window50kb. seg5kb.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_plt_cpeak_cwindow_seg_group_H3K27me3_NI_window50kb_seg5kb_cis100kb">
+Past versions of
+09_12_plt_cpeak_cwindow_seg_group_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-09_12_plt_cpeak_cwindow_seg_group_H3K27me3_NI_window50kb_seg5kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_plt_cpeak_cwindow_seg_group_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_plt_cwindow_cactip_vs_cactis_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" title="Figure:  CACTI-P on H3K27me3 v.s. CACTI-S. window50kb. seg5kb." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: CACTI-P on H3K27me3 v.s. CACTI-S. window50kb. seg5kb.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_plt_cwindow_cactip_vs_cactis_H3K27me3_NI_window50kb_seg5kb_cis100kb">
+Past versions of
+09_12_plt_cwindow_cactip_vs_cactis_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-09_12_plt_cwindow_cactip_vs_cactis_H3K27me3_NI_window50kb_seg5kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_plt_cwindow_cactip_vs_cactis_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="other-options-of-cacti-s-on-broad-mark-h3k27me3-macrophage"
+class="section level2">
+<h2>other options of CACTI-s on broad mark H3K27me3 (macrophage)</h2>
+</div>
+<div
+id="coloc-analysis-on-cqtls-of-broad-marks-h3k36me3-lcl-and-h3k27me3-macrophage-by-cacti-s"
+class="section level2">
+<h2>4. coloc analysis on cQTLs of broad marks H3K36me3 (LCL) and
+H3K27me3 (macrophage) by CACTI-s</h2>
+<p>Done.</p>
+<ul>
+<li>Figures H3K36me3 (LCL)</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" title="Figure: Coloc with H3K36me3 in LCL by cacti-p." width="50%" height="100%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_num_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap">
+Past versions of
+09_12_coloc_num_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-09_12_coloc_num_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_num_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2024/09_12_coloc_compare_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" title="Figure: Coloc with H3K36me3 in LCL by cacti-p." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc with H3K36me3 in LCL by cacti-p.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_compare_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap">
+Past versions of
+09_12_coloc_compare_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf
+</button>
+</p>
+<div
+id="fig-09_12_coloc_compare_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_compare_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Figures H3K27me3 (macrophage)</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" title="Figure: Coloc with H3K27me3 in Macrophage by cacti-p." width="50%" height="100%" type="application/pdf" />
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_num_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb">
+Past versions of
+09_12_coloc_num_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-09_12_coloc_num_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_num_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<embed src="asset/2024/09_12_coloc_compare_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" title="Figure: Coloc with H3K27me3 in Macrophage by cacti-p." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc with H3K27me3 in Macrophage by cacti-p.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_compare_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb">
+Past versions of
+09_12_coloc_compare_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf
+</button>
+</p>
+<div
+id="fig-09_12_coloc_compare_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_compare_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="update-coloc-any" class="section level2">
+<h2>Update coloc any</h2>
+<p>Done.</p>
+<ul>
+<li><p>Any</p></li>
+<li><p>Any of narrow</p></li>
+<li><p>Any of broad</p></li>
+<li><p>Any of cell type</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_any_dataset_cacti_ps.pdf" title="Figure: Coloc with any cQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc with any cQTLs.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_any_dataset_cacti_ps">
+Past versions of 09_12_coloc_any_dataset_cacti_ps.pdf
+</button>
+</p>
+<div id="fig-09_12_coloc_any_dataset_cacti_ps" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_any_dataset_cacti_ps.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="add-other-traits-to-coloc-analysis" class="section level2">
+<h2>5. Add other traits to coloc analysis</h2>
+<ul>
+<li><p>coloc brain cQTLs of mark H3K27ac in GTEx with
+schizophrenia</p></li>
+<li><p>coloc with immune related diseases</p></li>
+</ul>
+</div>
+<div id="coloc-with-new-cqtls-in-def-of-cqtls-of-single-peaks-not-coloc"
+class="section level2">
+<h2>7. Coloc with new cQTLs in def of cQTLs of single peaks not
+coloc</h2>
+<ul>
+<li><p>LCL</p>
+<ul>
+<li><p>mark set 1</p></li>
+<li><p>mark set 2: H3K36ME</p></li>
+</ul></li>
+<li><p>Macrophage</p>
+<ul>
+<li><p>mark set 1</p></li>
+<li><p>mark set 2: H3K27me3</p></li>
+</ul></li>
+<li><p>coloc number with uni cqtls</p>
+<ul>
+<li><p>Single dataset</p></li>
+<li><p>All datasets</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_uni_cqtl.pdf" title="Figure: Coloc loci with uni cQTLs. Upper panel - coloc with single dataset. Lower panel - coloc with cQTLs of any dataset." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc loci with uni cQTLs. Upper panel - coloc with single
+dataset. Lower panel - coloc with cQTLs of any dataset.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_num_uni_cqtl">
+Past versions of 09_12_coloc_num_uni_cqtl.pdf
+</button>
+</p>
+<div id="fig-09_12_coloc_num_uni_cqtl" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_num_uni_cqtl.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>coloc number with multi cqtls</p>
+<ul>
+<li><p>Single dataset</p></li>
+<li><p>All dataset</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_multi_cqtl.pdf" title="Figure: Coloc loci with multi cQTLs. Upper panel - coloc with single dataset. Lower panel - coloc with cQTLs of any dataset." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc loci with multi cQTLs. Upper panel - coloc with single
+dataset. Lower panel - coloc with cQTLs of any dataset.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_num_multi_cqtl">
+Past versions of 09_12_coloc_num_multi_cqtl.pdf
+</button>
+</p>
+<div id="fig-09_12_coloc_num_multi_cqtl" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_num_multi_cqtl.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Compare to cacti p &amp; cacti s (single dataset)</p>
+<ul>
+<li><p>LCL</p></li>
+<li><p>Macrophage</p></li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_uni_multi_single_dataset.pdf" title="Figure: Compare loci coloc with multi or uni cQTLs across single dataset." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare loci coloc with multi or uni cQTLs across single
+dataset.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_num_uni_multi_single_dataset">
+Past versions of 09_12_coloc_num_uni_multi_single_dataset.pdf
+</button>
+</p>
+<div id="fig-09_12_coloc_num_uni_multi_single_dataset" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_num_uni_multi_single_dataset.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_uni_multi_single_dataset_distribution.pdf" title="Figure: Distribution of coloc loci with multi or uni cQTLs across single dataset and traits." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of coloc loci with multi or uni cQTLs across single
+dataset and traits.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_num_uni_multi_single_dataset_distribution">
+Past versions of
+09_12_coloc_num_uni_multi_single_dataset_distribution.pdf
+</button>
+</p>
+<div id="fig-09_12_coloc_num_uni_multi_single_dataset_distribution"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_num_uni_multi_single_dataset_distribution.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Compare to cacti p &amp; cacti s (all datasets)</p>
+<p>Make a bar plot of three categories of coloc loci - uni cQTL only,
+multi cQTL only, shared.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_uni_multi_any_dataset.pdf" title="Figure: Compare loci coloc with multi or uni cQTLs of any dataset." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare loci coloc with multi or uni cQTLs of any dataset.
+</p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_coloc_num_uni_multi_any_dataset">
+Past versions of 09_12_coloc_num_uni_multi_any_dataset.pdf
+</button>
+</p>
+<div id="fig-09_12_coloc_num_uni_multi_any_dataset" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_coloc_num_uni_multi_any_dataset.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="gwas-coloc-with-cqtl-not-eqtl-in-gtex-tissues"
+class="section level2">
+<h2>6. GWAS coloc with cQTL not eQTL in GTEx tissues</h2>
+</div>
+<div id="check-mark-h3k27me3-peak-length" class="section level2">
+<h2>9. Check mark H3K27me3 peak length</h2>
+<p>Mixed? Broad? Narrow?</p>
+</div>
+<div id="link-cwindows-to-genes" class="section level2">
+<h2><del>8. Link cwindows to genes</del></h2>
+<p>Not necessary.</p>
+</div>
+<div id="performance-with-varying-window-sizes" class="section level2">
+<h2>7. Performance with varying window sizes</h2>
+</div>
+<div id="add-analysis---pathway-or-gene-set-enrichment-analysis"
+class="section level2">
+<h2>Add analysis - pathway or gene set enrichment analysis</h2>
+<p>Add analysis of pathway or gene set enrichment analysis on the genes
+associated with cQTLs identified by CACTI but missed by single-peak
+mapping -</p>
+<ul>
+<li><p>Assess whether these genes or regions are enriched for specific
+biological functions, pathways, or diseases.</p></li>
+<li><p>This adds a layer of biological interpretation to the findings,
+showing that the additional cQTLs identified by CACTI are not just
+statistically significant but also biologically relevant, thereby
+reinforcing the practical importance of CACTI’s improved detection
+power.</p></li>
+</ul>
+</div>
+<div id="cqtl-enrichment-in-cell-type-specific-variants"
+class="section level2">
+<h2>cQTL enrichment in cell type specific variants</h2>
+<p>Explain why cQTLs not eQTLs …</p>
+</div>
+</div>
 <div id="july-25" class="section level1">
 <h1>July 25</h1>
 <div id="sharing" class="section level2">
@@ -968,7 +1938,7 @@ Safari.</strong></p>
 <h1>May 27</h1>
 <div id="cqtl-sharing-across-cell-types" class="section level2">
 <h2>1. cQTL sharing across cell types</h2>
-<div id="how" class="section level3">
+<div id="how-1" class="section level3">
 <h3>How?</h3>
 <p>I compared for one mark, what is the sharing of cQTLs across cell
 types?</p>
@@ -1059,7 +2029,7 @@ Figure: The correlation (spearman) among the lead pvalue by uni test.
 </div>
 <div id="cqtl-sharing-across-marks" class="section level2">
 <h2>2. cQTL sharing across marks</h2>
-<div id="how-1" class="section level3">
+<div id="how-2" class="section level3">
 <h3>How?</h3>
 <ul>
 <li><p>Three cell types LCL, Microphage-NI, and Microphage-Flu.</p></li>
@@ -2539,7 +3509,7 @@ not?), perform FDR on both windows and left out peaks.</li>
 <div id="merge-left-out-single-peaks-to-closest-peak-groups"
 class="section level2">
 <h2>1. Merge left out single peaks to closest peak groups</h2>
-<div id="how-2" class="section level3">
+<div id="how-3" class="section level3">
 <h3>How?</h3>
 <p>I merge a left out single peak to its closest peak group, which is
 within a maximum window size. This is basically to expand some peak
