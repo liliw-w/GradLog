@@ -24,6 +24,339 @@ blockquote {
 
 **If any figures don't show, try opening in Safari.**
 
+
+# Sep 12
+
+
+## 0. Insert numbers to current draft
+
+
+
+## 1. CACTI-s on mark H3K27ac (LCL and macrophage)
+
+Goal -
+  
+  To show cacti-s is slightly worse than cacti-p but still better than univariates, which indicates a balance of skipping peak calling and reduced power.
+
+
+
+[Not include this part in the paper. Put it in package README. Add observations to README. Add this part in thesis.]
+
+
+### How?
+
+- segment size option
+  
+  '1kb', '2kb', '5kb', '10kb'
+
+- segment filter - Exclude segments not overlap with peaks
+  
+  Reason - to keep comparison fair
+
+
+### Compare H3K27ac-cacti-s and H3K27ac-cacti-p
+
+- Signal number
+
+- Signal overlap
+
+- Compare H3K27ac-cacti-s to H3K27ac-fastQTL
+
+
+**Observations & Conclusions -**
+
+
+```{r out.height = "100%", fig.cap="Figure: CACTI-P on H3K27AC in LCL v.s. uni. window50kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_plt_cpeak_cwindow_H3K27AC_window50kb_maxwindow50kb_cis500kb.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure:  CACTI-S on H3K27AC in LCL v.s. uni. window50kb. seg10kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg5kb_overlap_peak.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure:  CACTI-P on H3K27AC in LCL v.s. CACTI-S. window50kb. seg10kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_plt_cwindow_cactip_vs_cactis_H3K27AC_window50kb_cis500kb_seg5kb_overlap_peak.pdf"), error = FALSE)
+```
+
+
+### Results using other segment options
+
+Done. 
+
+
+### Results using the same segment filtering as in broad mark
+
+Done. 
+
+
+### try another filtering based on cpm (check Ben's code)
+
+
+
+
+
+## 2. coloc analysis on cQTLs of mark H3K27ac by CACTI-s
+
+Done. 
+
+
+
+## Proportion of cwindow sharing among marks (details see on slack)
+
+> Figure 4G of your manuscript, I think enrichment values are less intuitive. Do you have proportion of sharing instead?
+
+Done. 
+
+```{r out.height = "100%", fig.cap="Figure:", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_enrich_cwindow_across_mark_lcl.pdf"), error = FALSE)
+```
+
+
+
+## Number of cwindows (and overlap with cpeaks) figure
+
+Done. 
+
+```{r out.height = "100%", fig.cap="Figure:", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/cwindow_across_datasets.pdf"), error = FALSE)
+```
+
+
+
+## 3. CACTI-s on broad mark H3K27me3 (macrophage)
+
+Done. 
+
+To make cacti-s 's data processing consistent with Aracena et al., see their analysis path [here](asset/2024/09_12_Aracena_analysis_path.png). 
+
+
+- ~~Get chrome size for hg19 for H3K27me3 in macrophage~~
+
+
+### sample filtering
+
+> 3 samples labels will differ between the bams and sample labels in the paper and all paper inputs - AF22, AF36 and AF38. Despite having the AF prefix these samples are nearly 100% European ancestry. We changed these sample labels to EU prefixes (EU22, EU36 and EU38) in the manuscript but the bams have these "original" names. I would recommend changing any output files you create to EU22, EU36 and EU38 if you're going to publish this work eventually just to keep things concordant
+
+~~change sample labels in snmk pipeline, as the updated sample labels will be used in meta and regress covariates~~
+
+
+
+### peak/seg filtering
+
+To be consistent with the peak filtering in Aracena et al., I keep only the segments that are present in at least 50% of Flu or NI samples (>=14). 
+
+
+
+### geno filtering
+
+> WGS fastq files were processed using GenPipes’ (v3.1.4) DNA sequencing pipeline62 Briefly, raw reads were trimmed using Skewer (v0.2.2)63 and the resulting reads were aligned to the hg19 human reference genome using BWA-MEM (v0.7.17)64. Insertion/deletion realignment and base quality score recalibration were performed using GATK (v3.8)65, and duplicates were marked using Picard (v2.23.3)66. We used GATK’s HaplotypeCaller in gvcf mode to perform SNV and insertion and deletions calling. We filtered the joint genotyped file to exclude nonautosomal and nonbiallelic variants. Additionally, we used PLINK (v1.90b6.9)67,68 to remove SNPs that had a call rate of <90% across all samples, that deviated from Hardy–Weinberg equilibrium at P<10e−5, and with minor allele frequency less than 5%. We used the resulting 7,383,243 SNPs in QTL mapping and other downstream analyses. We annotated the SNPs using dbSNP (human_9606_b151_GRCH37p13)69.
+
+
+### covariates
+
+- Non genetic factors, e.g. batch, age, et al
+
+- Expression PCs
+  
+  I used same number PCs used for peaks in Aracena et al, where they tried different number of PCs. 
+  
+  For H3K27me3, 1 and 2 PCs were used for condition NI and Flu. 
+
+- Genotype first PC
+  
+  PC1 of genotype data is the only covariate included (to account for population structure)
+
+
+
+### Compare H3K27me3-cacti-s, H3K27me3-fastQTL, and H3K27me3-cacti-p
+
+- Signal number
+
+- Signal overlap
+
+
+**Observations & Conclusions -**
+
+
+```{r out.height = "100%", fig.cap="Figure: CACTI-P on H3K27me3 v.s. uni. window50kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_plt_cpeak_cwindow_H3K27me3_NI_window50kb_cis100kb.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure:  CACTI-S on H3K27me3 v.s. uni. window50kb. seg5kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_plt_cpeak_cwindow_seg_group_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure:  CACTI-P on H3K27me3 v.s. CACTI-S. window50kb. seg5kb.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_plt_cwindow_cactip_vs_cactis_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf"), error = FALSE)
+```
+
+
+## other options of CACTI-s on broad mark H3K27me3 (macrophage)
+
+
+
+
+
+## 4. coloc analysis on cQTLs of broad marks H3K36me3 (LCL) and H3K27me3 (macrophage) by CACTI-s
+
+Done. 
+
+- Figures H3K36me3 (LCL)
+
+```{r out.height = "100%", fig.cap="Figure: Coloc with H3K36me3 in LCL by cacti-p.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf", "asset/2024/09_12_coloc_compare_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf"), error = FALSE)
+```
+
+
+- Figures H3K27me3 (macrophage)
+
+```{r out.height = "100%", fig.cap="Figure: Coloc with H3K27me3 in Macrophage by cacti-p.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf", "asset/2024/09_12_coloc_compare_aracena_H3K27me3_NI_window50kb_seg5kb_cis100kb.pdf"), error = FALSE)
+```
+
+
+
+## Update coloc any
+
+Done.
+
+- Any
+
+- Any of narrow
+
+- Any of broad
+
+- Any of cell type
+
+```{r out.height = "100%", fig.cap="Figure: Coloc with any cQTLs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_any_dataset_cacti_ps.pdf"), error = FALSE)
+```
+
+
+
+
+## 5. Add other traits to coloc analysis
+
+- coloc brain cQTLs of mark H3K27ac in GTEx with schizophrenia
+
+- coloc with immune related diseases
+
+
+
+
+## 7. Coloc with new cQTLs in def of cQTLs of single peaks not coloc
+
+- LCL
+  
+  - mark set 1
+  
+  - mark set 2: H3K36ME
+
+
+- Macrophage
+  
+  - mark set 1
+  
+  - mark set 2: H3K27me3
+
+
+- coloc number with uni cqtls
+  
+  - Single dataset
+  
+  - All datasets
+
+
+```{r out.height = "100%", fig.cap="Figure: Coloc loci with uni cQTLs. Upper panel - coloc with single dataset. Lower panel - coloc with cQTLs of any dataset.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_cqtl.pdf"), error = FALSE)
+```
+
+
+
+- coloc number with multi cqtls
+  
+  - Single dataset
+  
+  - All dataset
+
+```{r out.height = "100%", fig.cap="Figure: Coloc loci with multi cQTLs. Upper panel - coloc with single dataset. Lower panel - coloc with cQTLs of any dataset.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_multi_cqtl.pdf"), error = FALSE)
+```
+
+
+
+
+- Compare to cacti p & cacti s (single dataset)
+  
+  - LCL
+  
+  - Macrophage
+
+
+```{r out.height = "100%", fig.cap="Figure: Compare loci coloc with multi or uni cQTLs across single dataset.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_single_dataset.pdf"), error = FALSE)
+```
+
+
+```{r out.height = "100%", fig.cap="Figure: Distribution of coloc loci with multi or uni cQTLs across single dataset and traits.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_single_dataset_distribution.pdf"), error = FALSE)
+```
+
+
+- Compare to cacti p & cacti s (all datasets)
+  
+  Make a bar plot of three categories of coloc loci - uni cQTL only, multi cQTL only, shared. 
+
+
+```{r out.height = "100%", fig.cap="Figure: Compare loci coloc with multi or uni cQTLs of any dataset.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_any_dataset.pdf"), error = FALSE)
+```
+
+
+
+## 6. GWAS coloc with cQTL not eQTL in GTEx tissues
+
+
+
+
+## 9. Check mark H3K27me3 peak length
+
+Mixed? Broad? Narrow?
+
+
+
+
+
+## ~~8. Link cwindows to genes~~
+
+Not necessary. 
+
+
+## 7. Performance with varying window sizes
+
+
+
+
+## Add analysis - pathway or gene set enrichment analysis
+
+Add analysis of pathway or gene set enrichment analysis on the genes associated with cQTLs identified by CACTI but missed by single-peak mapping -
+
+- Assess whether these genes or regions are enriched for specific biological functions, pathways, or diseases. 
+
+- This adds a layer of biological interpretation to the findings, showing that the additional cQTLs identified by CACTI are not just statistically significant but also biologically relevant, thereby reinforcing the practical importance of CACTI’s improved detection power. 
+
+
+## cQTL enrichment in cell type specific variants
+
+Explain why cQTLs not eQTLs ...
+
+
+
+
 # July 25
 
 ## Sharing
