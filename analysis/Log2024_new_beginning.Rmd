@@ -233,7 +233,14 @@ Done.
 - Any of cell type
 
 ```{r out.height = "100%", fig.cap="Figure: Coloc with any cQTLs.", fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("asset/2024/09_12_coloc_any_dataset_cacti_ps.pdf"), error = FALSE)
+knitr::include_graphics(c("asset/2024/09_12_coloc_any_dataset_celltype_cactips.pdf"), error = FALSE)
+```
+
+[Old version before harmonizing ref genome](asset/2024/09_12_coloc_any_dataset_cacti_ps.pdf). 
+
+
+```{r out.height = "100%", fig.cap="Figure: Coloc with any cQTLs of each mark.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("asset/2024/09_12_coloc_any_dataset_mark.pdf"), error = FALSE)
 ```
 
 
@@ -272,8 +279,10 @@ knitr::include_graphics(c("asset/2024/09_12_coloc_any_dataset_cacti_ps.pdf"), er
 
 
 ```{r out.height = "100%", fig.cap="Figure: Coloc loci with uni cQTLs. Upper panel - coloc with single dataset. Lower panel - coloc with cQTLs of any dataset.", fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_cqtl.pdf"), error = FALSE)
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_cqtl_new.pdf"), error = FALSE)
 ```
+
+[Old version before harmonizing ref genome](asset/2024/09_12_coloc_num_uni_cqtl.pdf). 
 
 
 
@@ -284,9 +293,10 @@ knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_cqtl.pdf"), error = FA
   - All dataset
 
 ```{r out.height = "100%", fig.cap="Figure: Coloc loci with multi cQTLs. Upper panel - coloc with single dataset. Lower panel - coloc with cQTLs of any dataset.", fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("asset/2024/09_12_coloc_num_multi_cqtl.pdf"), error = FALSE)
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_multi_cqtl_new.pdf"), error = FALSE)
 ```
 
+[Old version before harmonizing ref genome](asset/2024/09_12_coloc_num_multi_cqtl.pdf). 
 
 
 
@@ -298,13 +308,18 @@ knitr::include_graphics(c("asset/2024/09_12_coloc_num_multi_cqtl.pdf"), error = 
 
 
 ```{r out.height = "100%", fig.cap="Figure: Compare loci coloc with multi or uni cQTLs across single dataset.", fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_single_dataset.pdf"), error = FALSE)
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_single_dataset_new.pdf"), error = FALSE)
 ```
+
+[Old version before harmonizing ref genome](asset/2024/09_12_coloc_num_uni_multi_single_dataset.pdf). 
+
 
 
 ```{r out.height = "100%", fig.cap="Figure: Distribution of coloc loci with multi or uni cQTLs across single dataset and traits.", fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_single_dataset_distribution.pdf"), error = FALSE)
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_single_dataset_distribution_new.pdf"), error = FALSE)
 ```
+
+[Old version before harmonizing ref genome](asset/2024/09_12_coloc_num_uni_multi_single_dataset_distribution.pdf). 
 
 
 - Compare to cacti p & cacti s (all datasets)
@@ -313,12 +328,15 @@ knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_single_dataset_d
 
 
 ```{r out.height = "100%", fig.cap="Figure: Compare loci coloc with multi or uni cQTLs of any dataset.", fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_any_dataset.pdf"), error = FALSE)
+knitr::include_graphics(c("asset/2024/09_12_coloc_num_uni_multi_any_dataset_new.pdf"), error = FALSE)
 ```
+
+[Old version before harmonizing ref genome](asset/2024/09_12_coloc_num_uni_multi_any_dataset.pdf). 
 
 
 
 ## 6. GWAS coloc with cQTL not eQTL in GTEx tissues
+
 
 
 
