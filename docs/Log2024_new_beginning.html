@@ -427,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-11-03
+<strong>Last updated:</strong> 2025-04-28
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -558,15 +558,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreedaeae1d773978aad145988c7106f05066f8898b2targetblankdaeae1da">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8133a83797a22a126901ca88106dd5f46e60a6e5targetblank8133a83a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/daeae1d773978aad145988c7106f05066f8898b2" target="_blank">daeae1d</a>
+<a href="https://github.com/liliw-w/GradLog/tree/8133a83797a22a126901ca88106dd5f46e60a6e5" target="_blank">8133a83</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreedaeae1d773978aad145988c7106f05066f8898b2targetblankdaeae1da"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtree8133a83797a22a126901ca88106dd5f46e60a6e5targetblank8133a83a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -576,7 +576,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/daeae1d773978aad145988c7106f05066f8898b2" target="_blank">daeae1d</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/8133a83797a22a126901ca88106dd5f46e60a6e5" target="_blank">8133a83</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -644,6 +644,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/8133a83797a22a126901ca88106dd5f46e60a6e5/analysis/Log2024_new_beginning.Rmd" target="_blank">8133a83</a>
+</td>
+<td>
+Lili Wang
+</td>
+<td>
+2025-04-28
+</td>
+<td>
+wflow_publish("analysis/Log2024_new_beginning.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/d3806017b549188b7f4b1b8ea7ad3460f9da628d/docs/Log2024_new_beginning.html" target="_blank">d380601</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-11-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1018,6 +1052,694 @@ blockquote {
 </style>
 <p><strong>If any figures don’t show, try opening in
 Safari.</strong></p>
+<div id="manuscript-finalization" class="section level1">
+<h1>Manuscript finalization</h1>
+<div id="rerun-signals-for-narrow-marks" class="section level2">
+<h2>Rerun signals for narrow marks</h2>
+<p>Rerun all datasets by combining peak groups containing multiple peaks
+and single peaks.</p>
+<ul>
+<li>Macrophage - three narrow marks, two conditions</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/H3K27ac_Flu_p_comb_window50kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/H3K27ac_NI_p_comb_window50kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/H3K4me1_Flu_p_comb_window50kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/H3K4me1_NI_p_comb_window50kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/H3K4me3_Flu_p_comb_window50kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/H3K4me3_NI_p_comb_window50kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<p><strong>Group meta</strong></p>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/H3K27ac_Flu_peak_group_window50kb.rds</code></p>
+<ul>
+<li>LCL - three narrow marks</li>
+</ul>
+<p><code>finalized_pip/lcl/results/{h_mark}_p_comb_window50kb_cis500kb_allchr_fdr_added.txt.gz</code></p>
+<ul>
+<li>GTEx narrow mark in four tissues</li>
+</ul>
+<p><code>finalized_pip/multitissue/results/{tissue_type}_p_comb_window50kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<div id="compare-to-single-peak" class="section level3">
+<h3>Compare to single peak</h3>
+<ul>
+<li>Macrophage</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/figs/plt_cpeak_ccomb_*_window50kb_cis100kb.pdf</code></p>
+<ul>
+<li>LCL</li>
+</ul>
+<p><code>finalized_pip/lcl/figs/plt_cpeak_ccomb_{h_mark}_window50kb_cis500kb.pdf</code></p>
+<ul>
+<li>GTEx</li>
+</ul>
+<p><code>finalized_pip/multitissue/figs/plt_cpeak_ccomb_{tissue_type}_window50kb_cis100kb.pdf</code></p>
+</div>
+<div id="enrichment-of-cqtls-for-eqtls" class="section level3">
+<h3>Enrichment of cQTLs for eQTLs</h3>
+<ul>
+<li>LCL</li>
+</ul>
+<p><code>finalized_pip/lcl/figs/plt_enrich_extra_cqtl_eqtl_{h_mark}_window50kb_cis500kb.pdf</code></p>
+</div>
+</div>
+<div id="rerun-signals-for-broad-marks" class="section level2">
+<h2>Rerun signals for broad marks</h2>
+<p>Finalize the pipeline - Determine how to filter segments</p>
+<ul>
+<li>Macrophage - one broad mark H3K27me3, two conditions</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/p/p_pco_acat_seg_group_H3K27me3_(NI|Flu)_window50kb_seg5kb_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<ul>
+<li>??? LCL - one broad mark H3K36ME3</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/p/p_pco_acat_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap_allchr_fdr_added.txt.gz</code></p>
+<ul>
+<li>??? LCL - narrow mark H3K27ac, cacti-p v.s. cacti-s</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/p/p_pco_acat_seg_group_H3K27AC_window50kb_cis500kb_seg5kb_peak_overlap_allchr_fdr_added.txt.gz</code></p>
+<div id="compare-to-single-peak-1" class="section level3">
+<h3>Compare to single peak</h3>
+<ul>
+<li>Macrophage - one broad mark H3K27me3, two conditions</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/plot/plt_cpeak_cwindow_seg_group_H3K27me3_(NI|Flu)_window50kb_seg5kb_cis100kb.pdf</code></p>
+<ul>
+<li>??? LCL - one broad mark H3K36ME3</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/plot/plt_cpeak_cwindow_seg_group_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap.pdf</code></p>
+<ul>
+<li>??? LCL - narrow mark H3K27ac, cacti-p v.s. cacti-s</li>
+</ul>
+<p><del><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/p/p_pco_acat_seg_group_H3K27AC_window50kb_cis500kb_seg5kb_(overlap_peak)_allchr_fdr_added.txt.gz</code></del></p>
+<p>Rerun with <code>peak_overlap</code> QC mode -</p>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/plot/plt_cpeak_cwindow_seg_group_H3K27AC_window50kb_cis500kb_seg5kb_peak_overlap.pdf</code></p>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/nonoverlap_window/plot/plt_cwindow_cactip_vs_cactis_H3K27AC_window50kb_cis500kb_seg5kb_peak_overlap.pdf</code></p>
+</div>
+</div>
+<div
+id="experimented-with-different-window-sizes-after-finalize-pipeline-for-both-narrow-and-broad-marks"
+class="section level2">
+<h2>Experimented with different window sizes (after finalize pipeline
+for both narrow and broad marks)</h2>
+<p><code>/project/xuanyao/llw/chromatin/aracena_et_al/results/(H3K27ac|H3K4me1|H3K4me3)_NI_p_comb_window(10kb|25kb|50kb)_cis100kb_allchr_fdr_added.txt.gz</code></p>
+<p>Need to come up with a better way to visualize the results and
+demonstrate the point.</p>
+</div>
+<div id="coloc-with-the-finalized-signals" class="section level2">
+<h2>Coloc with the finalized signals</h2>
+<ul>
+<li><p>Use the finalized signals to do coloc (merged with uni
+coloc)</p></li>
+<li><p>Blood traits and immune diseases</p></li>
+</ul>
+<div id="lcl-multi-cqtls" class="section level3">
+<h3>LCL multi cQTLs</h3>
+<ul>
+<li>blood traits</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/coloc_merge_uni_multi/results/coloc_{gwasPhenocode_36bloodtraits}_(H3K27AC|H3K4ME1|H3K4ME3)_window50kb_cis500kb_merge_uni_multi_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/coloc/results/coloc_{gwasPhenocode_36bloodtraits}_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap_allchr.txt.gz</code></p>
+<ul>
+<li>immune diseases</li>
+</ul>
+<p><code>coloc/results/coloc_{gwasPhenocode_immu}_(H3K27AC|H3K4ME1|H3K4ME3)_window50kb_cis500kb_merge_uni_multi_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/coloc/results/coloc_{gwasPhenocode_immu}_H3K36ME3_window50kb_cis500kb_seg5kb_peak_overlap_allchr.txt.gz</code></p>
+</div>
+<div id="macrophage-multi-cqtls" class="section level3">
+<h3>Macrophage multi cQTLs</h3>
+<ul>
+<li>blood traits</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/coloc_merge_uni_multi/results/coloc_{gwasPhenocode_36bloodtraits}_(H3K27ac|H3K4me1|H3K4me3)_(Flu|NI)_window50kb_cis100kb_merge_uni_multi_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/coloc/results/coloc_{gwasPhenocode_36bloodtraits}_aracena_H3K27me3_(Flu|NI)_window50kb_seg5kb_cis100kb_allchr.txt.gz</code></p>
+<ul>
+<li>immune diseases</li>
+</ul>
+<p><code>coloc/results/coloc_{gwasPhenocode_immu}_aracena_(H3K27ac|H3K4me1|H3K4me3)_(Flu|NI)_window50kb_cis100kb_merge_uni_multi_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/count_based4/coloc/results/coloc_{gwasPhenocode_immu}_aracena_H3K27me3_(Flu|NI)_window50kb_seg5kb_cis100kb_allchr.txt.gz</code></p>
+</div>
+<div id="uni-cqtls" class="section level3">
+<h3>uni cQTLs</h3>
+<ul>
+<li>LCL</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/coloc_uni_cqtl/results/coloc_{gwasPhenocode_36bloodtraits}_{h_mark}_uni_cqtl_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/coloc_uni_cqtl/results/coloc_{gwasPhenocode_immu}_{h_mark}_uni_cqtl_allchr.txt.gz</code></p>
+<ul>
+<li>Macrophage</li>
+</ul>
+<p><code>/project/xuanyao/llw/chromatin/coloc_uni_cqtl/results/coloc_{gwasPhenocode_36bloodtraits}_aracena_{mark_aracena}_{condition_aracena}_uni_cqtl_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/coloc_uni_cqtl/results/coloc_{gwasPhenocode_immu}_aracena_{mark_aracena}_{condition_aracena}_uni_cqtl_allchr.txt.gz</code></p>
+</div>
+<div id="eqtlgen-genes" class="section level3">
+<h3>eQTLGen genes</h3>
+<p><code>/project/xuanyao/llw/chromatin/coloc_eqtlgen_gene/results/coloc_{gwasPhenocode_36bloodtraits}_eqtlgen_gene_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/coloc_eqtlgen_gene/results/coloc_{gwasPhenocode_immu}_eqtlgen_gene_allchr.txt.gz</code></p>
+</div>
+<div id="gtex-genes" class="section level3">
+<h3>GTEx genes</h3>
+<p><code>/project/xuanyao/llw/chromatin/coloc_gtex_gene/results/coloc_{gwasPhenocode_36bloodtraits}_gtex_gene_Cells_EBV-transformed_lymphocytes_allchr.txt.gz</code></p>
+<p><code>/project/xuanyao/llw/chromatin/coloc_gtex_gene/results/coloc_{gwasPhenocode_immu}_gtex_gene_Cells_EBV-transformed_lymphocytes_allchr.txt.gz</code></p>
+</div>
+</div>
+</div>
+<div id="jan-16" class="section level1">
+<h1>Jan 16</h1>
+<div id="downsample-size" class="section level2">
+<h2>Downsample size</h2>
+<div id="downsample-to-35" class="section level3">
+<h3>Downsample to 35</h3>
+<p>For one mark H3K27ac in LCL, downsized to 35 -</p>
+<ul>
+<li><p>QTLTools under downsample size</p></li>
+<li><p>Multivaraite using sum stats under downsample</p></li>
+<li><p>Coloc with uni and multi under downsample</p></li>
+<li><p>Visualize the comparison</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_16_coloc_num_uni_multi_single_dataset.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs of H3K27ac in LCL under downsample size, 35." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with uni and multi cQTLs of H3K27ac in LCL under
+downsample size, 35.
+</p>
+</div>
+<p><strong>Observations</strong></p>
+<ul>
+<li><p>Most traits has only 1 loci coloc with uni cQTLs under downsample
+size.</p></li>
+<li><p>All traits has no loci coloc with multi cQTLs under downsample
+size.</p></li>
+<li><p>For loci coloc with uni cQTLs, there are 17 (uni peak, trait)
+pairs, corresponding to 8 unique uni peaks, which are included in peak
+groups of size 3 to 10, mostly 5.</p></li>
+</ul>
+</div>
+<div id="downsample-to-60" class="section level3">
+<h3>Downsample to 60</h3>
+<p>I then increase the sample size from 35 to 60 -</p>
+<p>Results in folder <code>downsample_lcl_60</code></p>
+</div>
+</div>
+</div>
+<div id="compare-signal-number-of-multi_n35-uni_n35-and-uni_n72"
+class="section level1">
+<h1>Compare signal number of multi_N35, uni_N35, and uni_N72</h1>
+<ul>
+<li><p>multi_N35 vs uni_N35</p></li>
+<li><p>multi_N35 vs uni_N72</p></li>
+<li><p>multi_N60 vs uni_N60</p></li>
+<li><p>multi_N60 vs uni_N72</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_30_plt_cpeak_cwindow_H3K27AC_window50kb_multi_N35.pdf" title="Figure: Comparison between uni and multi cQTLs under downsample size 35." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs under downsample size 35.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_30_plt_cpeak_cwindow_H3K27AC_window50kb_multi_N35_uni_N72.pdf" title="Figure: Comparison between uni and multi cQTLs. Uni under sample size 72, multi under downsample 35." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs. Uni under sample size
+72, multi under downsample 35.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_30_plt_cpeak_cwindow_H3K27AC_window50kb_multi_N60.pdf" title="Figure: Comparison between uni and multi cQTLs under downsample size 60." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs under downsample size 60.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_30_plt_cpeak_cwindow_H3K27AC_window50kb_multi_N60_uni_N72.pdf" title="Figure: Comparison between uni and multi cQTLs. Uni under sample size 72, multi under downsample 60." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs. Uni under sample size
+72, multi under downsample 60.
+</p>
+</div>
+<div id="downsample-to-40" class="section level3">
+<h3>Downsample to 40</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_07_plt_cpeak_cwindow_H3K27AC_window50kb_downsample_40.pdf" title="Figure: Comparison between uni and multi cQTLs under downsample size 40." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs under downsample size 40.
+</p>
+</div>
+</div>
+<div id="downsample-to-50" class="section level3">
+<h3>Downsample to 50</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_07_plt_cpeak_cwindow_H3K27AC_window50kb_downsample_50.pdf" title="Figure: Comparison between uni and multi cQTLs under downsample size 50." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs under downsample size 50.
+</p>
+</div>
+</div>
+<div id="use-original-sample-size-72-as-sanity-check"
+class="section level3">
+<h3>Use original sample size 72 as sanity check</h3>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_07_plt_cpeak_cwindow_H3K27AC_window50kb_downsample_72.pdf" title="Figure: Comparison between uni and multi cQTLs under downsample size 72." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs under downsample size 72.
+</p>
+</div>
+<p>Compare to the original signal numbers -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_07_plt_cpeak_cwindow_H3K27AC_window50kb_cis500kb_allchr.pdf" title="Figure: Comparison between uni and multi cQTLs in orignal results." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Comparison between uni and multi cQTLs in orignal results.
+</p>
+</div>
+<p>Something wrong with window cQTLs …</p>
+</div>
+</div>
+<div id="add-pvalue-cutoff-on-qtl-coloc-regions" class="section level1">
+<h1>Add pvalue cutoff on QTL coloc regions</h1>
+<div id="how-does-it-change-the-coloc-results" class="section level2">
+<h2>How does it change the coloc results?</h2>
+<p>I added significance threshold to cQTLs, which means only cQTLs of
+cpeaks and cwindows are considered for coloc.</p>
+<p>In coloc regions, are most uni or multi QTLs signals or not?</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_30_coloc_num_multi_new_any_dataset.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/01_30_coloc_num_uni_multi_any_dataset.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/01_30_coloc_num_uni_multi_single_dataset.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/01_30_coloc_num_uni_multi_single_dataset_distribution.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with uni and multi cQTLs when adding
+significance threshold to cQTLs.
+</p>
+</div>
+<p><a href="asset/2024/09_12_coloc_num_uni_multi_single_dataset.pdf">Old
+version before applying threshold on cQTLs</a>.</p>
+<p><a
+href="asset/2024/09_12_coloc_num_uni_multi_single_dataset_distribution_new.pdf">Old
+version before applying threshold on cQTLs</a></p>
+<p><a
+href="asset/2024/09_12_coloc_num_uni_multi_any_dataset_new.pdf">Old
+version before applying threshold on cQTLs</a></p>
+</div>
+<div id="coloc-results-with-not-eqtls" class="section level2">
+<h2>Coloc results with not eQTLs</h2>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_30_coloc_num_cqtl_not_eqtl_any_dataset.pdf" title="Figure: GWAS loci coloc with eQTLs and cQTLs when adding significance threshold to cQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with eQTLs and cQTLs when adding significance
+threshold to cQTLs.
+</p>
+</div>
+<p><a
+href="asset/2024/09_12_coloc_num_eqtl_cqtl_any_dataset_eqtlgen.pdf">Old
+version before applying threshold on cQTLs</a></p>
+</div>
+<div id="further-change-pp4-cutoff-from-0.5-to-0.75"
+class="section level2">
+<h2>Further change PP4 cutoff from 0.5 to 0.75</h2>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/01_30_coloc_num_multi_new_any_dataset_pp4_75.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs and increase PP4 cutoff to 0.75." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/01_30_coloc_num_uni_multi_any_dataset_pp4_75.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs and increase PP4 cutoff to 0.75." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/01_30_coloc_num_uni_multi_single_dataset_pp4_75.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs and increase PP4 cutoff to 0.75." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/01_30_coloc_num_uni_multi_single_dataset_distribution_pp4_75.pdf" title="Figure: GWAS loci coloc with uni and multi cQTLs when adding significance threshold to cQTLs and increase PP4 cutoff to 0.75." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with uni and multi cQTLs when adding
+significance threshold to cQTLs and increase PP4 cutoff to 0.75.
+</p>
+</div>
+</div>
+</div>
+<div id="data-quality-of-lcl-and-macrophage" class="section level1">
+<h1>Data quality of LCL and Macrophage</h1>
+<p>LCL - 105043 peaks</p>
+<p>Macrophage - 45233 peaks</p>
+<ul>
+<li><p>reads</p></li>
+<li><p>peak length</p></li>
+<li><p>Average reads on peak</p></li>
+<li><p>38 cpeaks under downsample size 35</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_07_peak_reads.pdf" title="Figure: Number of reads aligned to peaks of H3K27ac in dataset LCL and Macrophage. All peaks and cpeaks under downsampled size 35." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/02_07_peak_reads_cpeaks_35.pdf" title="Figure: Number of reads aligned to peaks of H3K27ac in dataset LCL and Macrophage. All peaks and cpeaks under downsampled size 35." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of reads aligned to peaks of H3K27ac in dataset LCL and
+Macrophage. All peaks and cpeaks under downsampled size 35.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_07_peak_length.pdf" title="Figure: Peak length of H3K27ac in dataset LCL and Macrophage. All peaks and cpeaks under downsampled size 35." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/02_07_peak_length_cpeaks_35.pdf" title="Figure: Peak length of H3K27ac in dataset LCL and Macrophage. All peaks and cpeaks under downsampled size 35." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Peak length of H3K27ac in dataset LCL and Macrophage. All peaks
+and cpeaks under downsampled size 35.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_07_reads_ave.pdf" title="Figure: Average number of reads aligned to single base of peaks of H3K27ac in dataset LCL and Macrophage. All peaks and cpeaks under downsampled size 35." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/02_07_reads_ave_cpeaks_35.pdf" title="Figure: Average number of reads aligned to single base of peaks of H3K27ac in dataset LCL and Macrophage. All peaks and cpeaks under downsampled size 35." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Average number of reads aligned to single base of peaks of
+H3K27ac in dataset LCL and Macrophage. All peaks and cpeaks under
+downsampled size 35.
+</p>
+</div>
+<div id="why" class="section level2">
+<h2>Why?</h2>
+<p>hope to better understand what factors determine the power of cQTL
+mapping. Sample size is one, but for data of the sample size, the
+performance also differs a lot.</p>
+</div>
+<div id="library-size-sequencing-depth-read-depth"
+class="section level2">
+<h2>Library size / sequencing depth / read depth</h2>
+<p>Sequencing depth, also known as read depth or depth of coverage,
+refers to the number of times a specific base (nucleotide) in the DNA is
+read during the sequencing process. In other words, it’s the average
+number of times a given position in the genome is sequenced. A higher
+sequencing depth provides more confidence in the accuracy of the base
+calls at that position and helps to reduce sequencing errors and
+noise.</p>
+<p>For example, if a specific nucleotide is sequenced 30 times, the
+sequencing depth at that position is 30x.</p>
+<ul>
+<li><p>Definition: Sequencing depth refers to the number of times a
+particular nucleotide is read during the sequencing process.</p></li>
+<li><p>Purpose: Higher sequencing depth increases the confidence in
+calling a variant at a specific location. It is particularly important
+when looking for rare variants or when sequencing heterogeneous samples
+(like tumor tissues).</p></li>
+<li><p>Measurement: Expressed as an average, e.g., “100x depth.” This
+means that, on average, each nucleotide in the sequenced region was read
+100 times.</p></li>
+<li><p>library size</p></li>
+<li><p>The total number of reads mapped to all peaks for each data</p>
+<ul>
+<li><p>Total number of reads</p></li>
+<li><p>Total number of peaks</p></li>
+<li><p>Average depth</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="read-depth-of-cpeaks-total-reads-and-peak-length"
+class="section level2">
+<h2>Read depth of cpeaks (total reads and peak length)</h2>
+<p>Peak properties of the few hundred cpeaks at sample size 35 in LCL
+-</p>
+<p>Why they are still cpeaks under downsampled size? Their pvalues?
+Their peak length? Total mapped reads? Read depth? Are they on the
+higher end?</p>
+<p>Does it matter given normalization? If any?</p>
+</div>
+<div id="something-wrong-with-normalization-under-downsampled-size"
+class="section level2">
+<h2>Something wrong with normalization under downsampled size?</h2>
+</div>
+</div>
+<div id="coloc" class="section level1">
+<h1>Coloc</h1>
+<div id="add-other-traits-for-coloc" class="section level2">
+<h2>Add other traits for coloc</h2>
+<p>Coloc cQTLs with 11 immune diseases -</p>
+<ul>
+<li>cQTLs of three marks in macrophage</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_coloc_num_immu_aracena_H3K27ac_NI_window50kb_cis100kb.pdf" title="Figure: Coloc between cQTLs of three marks in macrophage and 11 immune diseases." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/02_13_coloc_num_immu_aracena_H3K4me1_NI_window50kb_cis100kb.pdf" title="Figure: Coloc between cQTLs of three marks in macrophage and 11 immune diseases." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/02_13_coloc_num_immu_aracena_H3K4me3_NI_window50kb_cis100kb.pdf" title="Figure: Coloc between cQTLs of three marks in macrophage and 11 immune diseases." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Coloc between cQTLs of three marks in macrophage and 11 immune
+diseases.
+</p>
+</div>
+</div>
+<div id="new-coloc-loci" class="section level2">
+<h2>New coloc loci</h2>
+<ul>
+<li>Coloc immune gwas loci with uni cQTLs of three marks</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_coloc_num_immu_uni_multi_aracena_H3K27ac_NI_window50kb_cis100kb.pdf" title="Figure: Loci coloc with uni cQTLs, multi cQTLs, or both." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/02_13_coloc_num_immu_uni_multi_aracena_H3K4me1_NI_window50kb_cis100kb.pdf" title="Figure: Loci coloc with uni cQTLs, multi cQTLs, or both." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/02_13_coloc_num_immu_uni_multi_aracena_H3K4me3_NI_window50kb_cis100kb.pdf" title="Figure: Loci coloc with uni cQTLs, multi cQTLs, or both." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Loci coloc with uni cQTLs, multi cQTLs, or both.
+</p>
+</div>
+<div id="example" class="section level3">
+<h3>Example</h3>
+</div>
+</div>
+</div>
+<div id="change-examples-to-macrophage-signals" class="section level1">
+<h1>Change examples to Macrophage signals</h1>
+<div id="blood-traits" class="section level2">
+<h2>Blood traits</h2>
+<div id="new-cqtl-by-cacti-p" class="section level3">
+<h3>New cQTL by cacti-p</h3>
+</div>
+<div id="new-cqtl-by-cacti-s" class="section level3">
+<h3>New cQTL by cacti-s</h3>
+<ul>
+<li><p>with no pre-defined peaks</p></li>
+<li><p>with pre-defined peaks</p></li>
+</ul>
+</div>
+<div id="coloc-example-with-new-cqtls" class="section level3">
+<h3>Coloc example with new cQTLs</h3>
+<p><strong>Example 1</strong></p>
+<p>Loci coloc with new cQTL and eQTL of relevant gene.
+<code>c('hgb_N172925', '3:58456811', 'G20859', 'PDHB')</code></p>
+<ul>
+<li><p>Trait: HGB, hgb, Hemoglobin concentration</p></li>
+<li><p>Gene: PDHB – Affects cellular metabolism and has implications for
+red blood cell function.</p></li>
+<li><p>See full figure of coloc between all nearby genes <a
+href="asset/2024/02_13_coloc_new_cqtl_hgb_N172925_reg_3_58456811_gene_PDHB.pdf">here</a>.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2024/02_13_trunc_coloc_new_cqtl_hgb_N172925_reg_3_58456811_gene_PDHB.png" alt="Figure: Loci coloc with new cQTL. The trait is HGB, hgb, Hemoglobin concentration. The relevant nearby gene of cQTLs is PDHB. But there is no coloc in eqTLGen or GTEx." width="50%" height="30%" />
+<p class="caption">
+Figure: Loci coloc with new cQTL. The trait is HGB, hgb, Hemoglobin
+concentration. The relevant nearby gene of cQTLs is PDHB. But there is
+no coloc in eqTLGen or GTEx.
+</p>
+</div>
+<p><strong>Example 2, related to monocyte traits</strong></p>
+<p>Loci coloc with new cQTL and eQTL of relevant gene.
+<code>c(Trait: MONO_P, Region: 17:16176883, Macrophage, mark: H3K27ac_NI, peak: G7756, near gene: NCOR1)</code></p>
+<ul>
+<li><p>Trait: MONO_P, mono_p, Monocyte percentage of white
+cells</p></li>
+<li><p>Gene: NCOR1 - NCOR1 is a critical regulator of macrophage
+inflammation and proliferation and that deficiency of NCOR1 in
+macrophages attenuates myocardial infarction and neointimal
+hyperplasia.</p>
+<p>Not nearest gene, but close gene, distance 238,224bp.</p></li>
+<li><p>Coloc figure</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_trunc_coloc_new_cqtl_mono_p_N170494_reg_17_16176883_gene_NCOR1.pdf" title="Figure: Loci coloc with new cQTL. The trait is MONO_P, mono_p, Monocyte percentage of white cells. The relevant nearby gene of cQTLs is NCOR1. There is also coloc with eQTLs in eQTLGen but not in GTEx." width="50%" height="30%" type="application/pdf" />
+<p class="caption">
+Figure: Loci coloc with new cQTL. The trait is MONO_P, mono_p, Monocyte
+percentage of white cells. The relevant nearby gene of cQTLs is NCOR1.
+There is also coloc with eQTLs in eQTLGen but not in GTEx.
+</p>
+</div>
+</div>
+<div id="coloc-example-with-cqtls-andor-eqtls" class="section level3">
+<h3>Coloc example with cQTLs and/or eQTLs</h3>
+<p><strong>Example 1</strong></p>
+<p>Loci coloc with cQTL not eQTL of relevant gene.
+<code>c('eo_p_gran_N170536', '11:88090210', 'RAB38')</code></p>
+<ul>
+<li><p>Trait: EO%GRAN, eo_p_gran, Eosinophil percentage of
+granulocytes</p></li>
+<li><p>Gene: RAB38 – Implicated in platelet function and granule
+secretion.</p></li>
+<li><p>See full figure of coloc between all nearby genes <a
+href="asset/2024/02_13_coloc_cqtl_not_eqtl_eo_p_gran_N170536_reg_11_88090210_gene_RAB38.pdf">here</a>.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<img src="asset/2024/02_13_trunc_coloc_cqtl_not_eqtl_eo_p_gran_N170536_reg_11_88090210_gene_RAB38.png" alt="Figure: Loci coloc with cQTL not eQTL of relevant gene. The trait is eo_p_gran, Eosinophil percentage of granulocytes. The relevant nearby gene of cQTLs is RAB38. There is no coloc between this gene and the locus either in eQTLGen or GTEx." width="50%" height="30%" />
+<p class="caption">
+Figure: Loci coloc with cQTL not eQTL of relevant gene. The trait is
+eo_p_gran, Eosinophil percentage of granulocytes. The relevant nearby
+gene of cQTLs is RAB38. There is no coloc between this gene and the
+locus either in eQTLGen or GTEx.
+</p>
+</div>
+<p><strong>Example 2, related to monocyte traits</strong></p>
+<p>Loci coloc with cQTL not eQTL of relevant gene.
+<code>c('mono_N170721', '4:185251371', 'IRF2')</code></p>
+<ul>
+<li><p>Trait: mono, Monocyte count</p></li>
+<li><p>Gene: IRF2 – IRF2 is an important regulator of the
+proinflammatory response in macrophages …</p></li>
+<li><p>Coloc figure</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_trunc_coloc_cqtl_not_eqtl_mono_N170721_reg_4_185251371_gene_IRF2.pdf" title="Figure: Loci coloc with cQTL not eQTL of relevant gene. The trait is mono, Monocyte count. The relevant nearby gene of cQTLs is IRF2. There is no coloc between this gene and the locus either in eQTLGen or GTEx." width="50%" height="30%" type="application/pdf" />
+<p class="caption">
+Figure: Loci coloc with cQTL not eQTL of relevant gene. The trait is
+mono, Monocyte count. The relevant nearby gene of cQTLs is IRF2. There
+is no coloc between this gene and the locus either in eQTLGen or GTEx.
+</p>
+</div>
+</div>
+</div>
+<div id="immune-diseases" class="section level2">
+<h2>Immune diseases</h2>
+<div id="coloc-example-with-new-cqtls-1" class="section level3">
+<h3>Coloc example with new cQTLs</h3>
+<p><strong>Example 1</strong></p>
+<p>Loci coloc with new cQTL and eQTL of relevant gene.
+<code>c(Trait: MS Multiple sclerosis, Region: 17:45702280, Macrophage, mark: H3K4me3_NI, peak: G6479, near gene: TBKBP1)</code></p>
+<ul>
+<li><p>Trait: pmid31604244_MS, Multiple sclerosis</p></li>
+<li><p>Gene: TBKBP1 - Adapter protein which constitutively binds TBK1
+and IKBKE playing a role in antiviral innate immunity.</p></li>
+<li><p>Coloc figure</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_trunc_coloc_cqtl_not_eqtl_pmid31604244_MS_reg_17_45702280_gene_TBKBP1.pdf" title="Figure: Loci coloc with new cQTL. The trait is pmid31604244_MS. The relevant nearby gene of cQTLs is TBKBP1. There is also coloc with eQTLs in eQTLGen." width="50%" height="30%" type="application/pdf" />
+<p class="caption">
+Figure: Loci coloc with new cQTL. The trait is pmid31604244_MS. The
+relevant nearby gene of cQTLs is TBKBP1. There is also coloc with eQTLs
+in eQTLGen.
+</p>
+</div>
+<p><strong>Example 2 - New coloc cQTL near a relevant gene with no
+coloc</strong></p>
+<p>Loci coloc with new cQTL and eQTL of relevant gene.
+<code>c(Trait: pmid29892013_ALLERGY_ECZEMA, Region: 2:204585956, Macrophage, mark: H3K27ac_NI, peak: G11035, near gene: CD28)</code></p>
+<ul>
+<li><p>Trait: pmid29892013_ALLERGY_ECZEMA</p></li>
+<li><p>Gene: CD28 - T-cell activation is a critical driver of immune
+responses. The CD28 costimulation is an essential regulator of CD4
+T-cell responses …</p></li>
+<li><p>Coloc figure</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_trunc_coloc_cqtl_not_eqtl_pmid29892013_ALLERGY_ECZEMA_reg_2_204585956_gene_CD28.pdf" title="Figure: Loci coloc with new cQTL. The trait is pmid29892013_ALLERGY_ECZEMA. The relevant nearby gene of cQTLs is CD28. There is no coloc with eQTLs in eQTLGen." width="50%" height="30%" type="application/pdf" />
+<p class="caption">
+Figure: Loci coloc with new cQTL. The trait is
+pmid29892013_ALLERGY_ECZEMA. The relevant nearby gene of cQTLs is CD28.
+There is no coloc with eQTLs in eQTLGen.
+</p>
+</div>
+</div>
+<div id="coloc-example-with-cqtls-andor-eqtls-1" class="section level3">
+<h3>Coloc example with cQTLs and/or eQTLs</h3>
+<p>Loci coloc with cQTL not eQTL of relevant gene.
+<code>c(Trait: MS Multiple sclerosis, Region: 6:137959455, Macrophage, mark: H3K4me1_NI, peak: G27458, near gene: TNFAIP3)</code></p>
+<ul>
+<li><p>Trait: pmid31604244_MS, Multiple sclerosis</p></li>
+<li><p>Gene: TNFAIP3 – The protein encoded by this gene is a zinc finger
+protein and ubiqitin-editing enzyme, and has been shown to inhibit
+NF-kappa B activation as well as TNF-mediated apoptosis.</p></li>
+<li><p>Coloc figure</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_trunc_coloc_cqtl_not_eqtl_pmid31604244_MS_reg_6_137959455_gene_TNFAIP3.pdf" title="Figure: Loci coloc with cQTL not eQTL of relevant gene. The trait is pmid31604244_MS, Multiple sclerosis. The relevant nearby gene of cQTLs is TNFAIP3. There is no coloc between this gene and the locus either in eQTLGen or GTEx." width="50%" height="30%" type="application/pdf" />
+<p class="caption">
+Figure: Loci coloc with cQTL not eQTL of relevant gene. The trait is
+pmid31604244_MS, Multiple sclerosis. The relevant nearby gene of cQTLs
+is TNFAIP3. There is no coloc between this gene and the locus either in
+eQTLGen or GTEx.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="check-the-importance-of-genes-near-windows-coloc-with-traits"
+class="section level1">
+<h1>Check the importance of genes near windows coloc with traits</h1>
+<p>Goal - we wanted to look into those loci only coloc with multi QTLs
+but not uni QTLs, i.e. new coloc loci. We think the cwindows
+corresponding to those new coloc loci are weak signals, and wanted to
+see if they have important function by checking if their nearest genes
+are important in terms of pLI score.</p>
+<p>Some numbers -</p>
+<ul>
+<li><p>Overall coloc pairs between loci and multi cQTLs: 6153</p></li>
+<li><p>Strong coloc signals, coloc with multi and uni: 5132</p></li>
+<li><p>Weak coloc signals, coloc with multi but not uni: 1021</p></li>
+</ul>
+<p>I define the cwindows to be a new coloc signal if all the loci they
+coloc with do not coloc with any uni cQTLs. I then checked their nearest
+genes are different from those of the other cwindows. I also categorized
+the cwindows into multiple categories based on the number loci across
+traits that they coloc with but not coloc with any uni cQTLs.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_pli_new_coloc_window.pdf" title="Figure: Blue box shows all cwindows coloc with loci that do not coloc with any cQTLs, i.e. cwindows of new coloc signals. Yellow box shows all the other cwindows coloc with loci that also coloc with at least one uni cQLTs. Numbers give the number of the cwindows in each category. Y-axis shows pLI score of nearest genes of cwindows in two categories. Comparision pvalue is on the top. The genes near new cwindows are more tolerant to loss-of-function variants, although the difference is not statistically different. Most of the gene score are not higher than 0.9." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Blue box shows all cwindows coloc with loci that do not coloc
+with any cQTLs, i.e. cwindows of new coloc signals. Yellow box shows all
+the other cwindows coloc with loci that also coloc with at least one uni
+cQLTs. Numbers give the number of the cwindows in each category. Y-axis
+shows pLI score of nearest genes of cwindows in two categories.
+Comparision pvalue is on the top. The genes near new cwindows are more
+tolerant to loss-of-function variants, although the difference is not
+statistically different. Most of the gene score are not higher than 0.9.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_pli_new_coloc_window_sorted_by_coloc_num.pdf" title="Figure: All cwindows are categoried into groups based on how many new loci they coloc with but are not coloc with uni cQTLs. This metric is associated with the level of the windows being new coloc signal. Y-axis shows pLI score of nearest genes of cwindows in each category." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: All cwindows are categoried into groups based on how many new
+loci they coloc with but are not coloc with uni cQTLs. This metric is
+associated with the level of the windows being new coloc signal. Y-axis
+shows pLI score of nearest genes of cwindows in each category.
+</p>
+</div>
+<div id="updates" class="section level2">
+<h2>Updates</h2>
+<ul>
+<li>The numbers are windows, not nearest genes. The number can contain
+duplicated genes.</li>
+</ul>
+<p><strong>Number of genes with pLI larger than 0.9 for different gene
+groups</strong></p>
+<ul>
+<li>Enrichment of genes with large pli in nearest genes</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_27_pli_new_coloc_window_large_pli_09_enrich.pdf" title="Figure: Enrichment of genes with large pli (&gt;0.9) in nearest genes of new coloc cQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Enrichment of genes with large pli (&gt;0.9) in nearest genes of
+new coloc cQTLs.
+</p>
+</div>
+<ul>
+<li>Proportion of genes with large pli in nearest genes of coloc
+cQTLs</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_27_pli_new_coloc_window_large_pli_09_sorted_by_coloc_num.pdf" title="Figure: Proportion of genes with large pli in nearest genes of coloc cQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Proportion of genes with large pli in nearest genes of coloc
+cQTLs.
+</p>
+</div>
+</div>
+<div id="check-eds-score" class="section level2">
+<h2>Check EDS score</h2>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_EDS_new_coloc_window.pdf" title="Figure: EDS score of nearest genes of new coloc cQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: EDS score of nearest genes of new coloc cQTLs.
+</p>
+</div>
+<p>EDS score of genes near windows with new coloc signals have higher
+score, which means they are more resilient to perturbations, indicating
+their importance.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/02_13_EDS_new_coloc_window_sorted_by_coloc_num.pdf" title="Figure: EDS score of nearest genes of window coloc with different number of new coloc cQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: EDS score of nearest genes of window coloc with different number
+of new coloc cQTLs.
+</p>
+</div>
+</div>
+</div>
 <div id="sep-12" class="section level1">
 <h1>Sep 12</h1>
 <div id="insert-numbers-to-current-draft" class="section level2">
@@ -1186,10 +1908,47 @@ class="section level2">
 <h2>Number of cwindows (and overlap with cpeaks) figure</h2>
 <p>Done.</p>
 <div class="figure" style="text-align: center">
-<embed src="asset/2024/cwindow_across_datasets.pdf" title="Figure:" width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_cwindow_across_datasets.pdf" title="Figure:" width="50%" height="100%" type="application/pdf" />
 <p class="caption">
 Figure:
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-09_12_cwindow_across_datasets">
+Past versions of 09_12_cwindow_across_datasets.pdf
+</button>
+</p>
+<div id="fig-09_12_cwindow_across_datasets" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/liliw-w/GradLog/blob/5bd4413b03f7f7ff36be5e3b9fc758e3a865127c/docs/asset/2024/09_12_cwindow_across_datasets.pdf" target="_blank">5bd4413</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-10-30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="cacti-s-on-broad-mark-h3k27me3-macrophage"
@@ -1974,10 +2733,212 @@ liliw-w
 </div>
 <p><a href="asset/2024/09_12_coloc_num_uni_multi_any_dataset.pdf">Old
 version before harmonizing ref genome</a>.</p>
+<div id="why-uni-cqtls-coloc-with-many-loci" class="section level3">
+<h3>Why uni cQTLs coloc with many loci?</h3>
+<p>The essential question becomes whether those uni peaks that
+specifically coloc with loci (grey bars) are included in any windows. If
+they are not, it means they are missed by our multi signals simply bc
+not being included into the test. If they are inclued in a window, and
+that window not coloc with loci, could mean out multi test masked that
+uni signal.</p>
+<p>Therefore, as a first-step simple check, I only need to check if the
+uni peaks corresponding to grey bars are included in any window of any
+dataset.</p>
+<p><strong>Among those uni peaks which coloc with gwas loci that noc
+loci with any windows, 398 are isolated peaks not included in any
+window, while 6809 are included in windows that not coloc with the
+loci.</strong></p>
+<p>As a second step, I add uni peaks and update figure. What I did was
+to include all isolated single peaks that were not included in our multi
+test into coloc analysis. I run coloc with both windows and those
+isolated uni peaks. If a loci coloc with a uni peak, it’s accounted as
+being explained by multi.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_merge_uni_multi_single_dataset.pdf" title="Figure: Compare loci coloc with multi or uni cQTLs across single dataset." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare loci coloc with multi or uni cQTLs across single
+dataset.
+</p>
 </div>
-<div id="gwas-coloc-with-cqtl-not-eqtl-in-gtex-tissues"
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_merge_uni_multi_single_dataset_distribution.pdf" title="Figure: Distribution of coloc loci with multi or uni cQTLs across single dataset and traits." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Distribution of coloc loci with multi or uni cQTLs across single
+dataset and traits.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_merge_uni_multi_any_dataset.pdf" title="Figure: Compare loci coloc with multi or uni cQTLs of any dataset." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Compare loci coloc with multi or uni cQTLs of any dataset.
+</p>
+</div>
+</div>
+</div>
+<div
+id="gwas-coloc-with-cqtl-and-eqtls-in-gtex-lcl-and-eqtlgen-whole-blood"
 class="section level2">
-<h2>6. GWAS coloc with cQTL not eQTL in GTEx tissues</h2>
+<h2>6. GWAS coloc with cQTL and eQTLs in GTEx LCL and eQTLGen whole
+blood</h2>
+<div id="gwas-loci-coloc-with-cqtls-in-lcl-but-not-eqtls-from-gtex-lcl"
+class="section level3">
+<h3>GWAS loci coloc with cQTLs in LCL but not eQTLs from GTEx LCL</h3>
+<ul>
+<li>Bars divided into three categories - coloc specific to cQTLs,
+specific to eQTLs, shared. (as in the case compare to uni cQTLs) (GWAS
+loci coloc with eQTLs from GTEx LCL)</li>
+</ul>
+<p>Restricted to LCL cQTLs -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_any_dataset_LCL_gtex.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in GTEx LCL." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_LCL_gtex.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in GTEx LCL." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_distribution_LCL_gtex.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in GTEx LCL." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in GTEx LCL.
+</p>
+</div>
+<p>Use cQTLs of both LCL and Macrophage -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_any_dataset_gtex.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in GTEx LCL." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_gtex.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in GTEx LCL." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_distribution_gtex.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in GTEx LCL." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in
+GTEx LCL.
+</p>
+</div>
+<ul>
+<li>Compare to loci not coloc with eQTLs from whole blood in
+eQTLGen</li>
+</ul>
+<p>Restricted to LCL cQTLs -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_any_dataset_LCL_eqtlgen.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in eQTLGen whole blood." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_LCL_eqtlgen.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in eQTLGen whole blood." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_distribution_LCL_eqtlgen.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in eQTLGen whole blood." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in eQTLGen whole
+blood.
+</p>
+</div>
+<p>Use cQTLs of both LCL and Macrophage -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_any_dataset_eqtlgen.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in eQTLGen whole blood." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_eqtlgen.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in eQTLGen whole blood." width="50%" height="100%" type="application/pdf" />
+<embed src="asset/2024/09_12_coloc_num_eqtl_cqtl_single_dataset_distribution_eqtlgen.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in eQTLGen whole blood." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with cQTLs in LCL or Macrophage and eQTLs in
+eQTLGen whole blood.
+</p>
+</div>
+</div>
+<div id="gwas-loci-coloc-with-cqtls-from-lcl-or-whole-blood"
+class="section level3">
+<h3>GWAS loci coloc with cQTLs from LCL or whole blood</h3>
+<p>Based the relationship of gwas loci that are coloc with cQTLs with
+eQTLs from LCL or whole blood, the coloc loci can be divided into three
+categories and intepreted in different ways.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">LCL</th>
+<th align="left">Whole.blood</th>
+<th align="left">Intepretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">Using the right cell type helps</td>
+</tr>
+<tr class="odd">
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Large sample size helps</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">cQTL capture the right cell type</td>
+</tr>
+</tbody>
+</table>
+<p>Restricted to LCL cQTLs -</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_loci_with_eqtl_cell_type_gtex.pdf" title="Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in GTEx LCL or eQTLGen whole blood." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: GWAS loci coloc with cQTLs in LCL and eQTLs in GTEx LCL or
+eQTLGen whole blood.
+</p>
+</div>
+<ul>
+<li><p>Visualize different categories</p>
+<p>Manhattan plot of examples of different categories.</p></li>
+</ul>
+</div>
+</div>
+<div id="gwas-coloc-with-cqtls-of-multiple-marks"
+class="section level2">
+<h2>6. GWAS coloc with cQTLs of multiple marks</h2>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_num_coloc_mark.pdf" title="Figure: Number of marks a region coloc with." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of marks a region coloc with.
+</p>
+</div>
+<p>I picked one region coloc with 5 marks - trait is
+<code>baso_neut_sum_N170143</code>, region is
+<code>8:8094870</code>.</p>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_manhattan_coloc_multi_mark_nmark5_baso_neut_sum_N170143_8/8094870.pdf.pdf" title="Figure: Manhattan plot of a gwas loci coloc with five marks." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Manhattan plot of a gwas loci coloc with five marks.
+</p>
+</div>
+</div>
+<div
+id="manhattan-plot-of-gwas-loci-cqtls-and-eqtls-in-multiple-tissues"
+class="section level2">
+<h2>Manhattan plot of GWAS loci, cQTLs and eQTLs in multiple
+tissues</h2>
+<p>Manhattan plot of examples of different categories.</p>
+<ul>
+<li>HFE example used in the manuscript</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_cqtl_eqtl_HFE.pdf" title="Figure: Manhattan plot of GWAS loci, cQTLs and eQTLs in multiple tissues. HFE example used in the manuscript." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Manhattan plot of GWAS loci, cQTLs and eQTLs in multiple
+tissues. HFE example used in the manuscript.
+</p>
+</div>
+<ul>
+<li>An example of coloc with eQTLs in both tissues</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="asset/2024/09_12_coloc_cqtl_eqtl_both.pdf" title="Figure: Manhattan plot of GWAS loci, cQTLs and eQTLs in multiple tissues. An example of coloc with both cQTLs and eQTLs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Manhattan plot of GWAS loci, cQTLs and eQTLs in multiple
+tissues. An example of coloc with both cQTLs and eQTLs.
+</p>
+</div>
+</div>
+<div id="update-figures" class="section level2">
+<h2>11. Update figures</h2>
+<div id="why-uni-cqtls-coloc-with-many-loci-1" class="section level3">
+<h3>Why uni cQTLs coloc with many loci?</h3>
+<p>First add uni peaks and update figure.</p>
+</div>
+</div>
+<div id="sarahs-edits" class="section level2">
+<h2>10. Sarah’s edits</h2>
+<p>Done.</p>
 </div>
 <div id="check-mark-h3k27me3-peak-length" class="section level2">
 <h2>9. Check mark H3K27me3 peak length</h2>
@@ -2633,7 +3594,7 @@ liliw-w
 <li>LCL v.s. Microphage</li>
 </ul>
 </div>
-<div id="new-coloc-loci" class="section level3">
+<div id="new-coloc-loci-1" class="section level3">
 <h3>New coloc loci</h3>
 <ul>
 <li><p>Number of GWAS loci coloc with only new cqtls</p></li>
@@ -6949,7 +7910,7 @@ the feature length on average.</p></li>
 </div>
 <div id="pco-using-rasqua-sum-stats" class="section level2">
 <h2>1. PCO using RASQUA sum stats</h2>
-<div id="why" class="section level3">
+<div id="why-1" class="section level3">
 <h3>Why?</h3>
 <p>Current CACTI uses sum stats by QTLTools (uni-pop). We wanted to show
 the advantage of aggregating muliple peaks, so to fairly compare with
