@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="John Blischak" />
 
-<meta name="date" content="2024-04-24" />
 
-<title>toc</title>
+<title>Weekly Log</title>
 
 <script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -74,6 +72,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
@@ -378,9 +398,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">toc</h1>
-<h4 class="author">John Blischak</h4>
-<h4 class="date">2024-04-24</h4>
+<h1 class="title toc-ignore">Weekly Log</h1>
 
 </div>
 
@@ -388,7 +406,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -399,8 +417,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -409,13 +427,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-24
+<strong>Last updated:</strong> 2025-04-09
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>GradLog/</code> <span
@@ -438,33 +456,120 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb99accfa075c402d810c2e0ba1ae1d75d3444cfctargetblankb99accfa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201014code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20201014)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201014code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201014)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreed3806017b549188b7f4b1b8ea7ad3460f9da628dtargetblankd380601a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/liliw-w/GradLog/tree/b99accfa075c402d810c2e0ba1ae1d75d3444cfc" target="_blank">b99accf</a>
+<a href="https://github.com/liliw-w/GradLog/tree/d3806017b549188b7f4b1b8ea7ad3460f9da628d" target="_blank">d380601</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreeb99accfa075c402d810c2e0ba1ae1d75d3444cfctargetblankb99accfa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomliliwwGradLogtreed3806017b549188b7f4b1b8ea7ad3460f9da628dtargetblankd380601a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -474,7 +579,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/liliw-w/GradLog/tree/b99accfa075c402d810c2e0ba1ae1d75d3444cfc" target="_blank">b99accf</a>.
+<a href="https://github.com/liliw-w/GradLog/tree/d3806017b549188b7f4b1b8ea7ad3460f9da628d" target="_blank">d380601</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -495,12 +600,9 @@ Ignored files:
     Ignored:    analysis/.DS_Store
     Ignored:    analysis/.Rhistory
 
-Untracked files:
-    Untracked:  rstudio_server_config_midway3.Rmd
-
 Unstaged changes:
-    Modified:   analysis/Trans.Rmd
-    Deleted:    analysis/rstudio_server_config_midway3.Rmd
+    Modified:   analysis/Log2024_new_beginning.Rmd
+    Modified:   analysis/week_log.Rmd
 
 </code></pre>
 <p>
@@ -546,6 +648,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/liliw-w/GradLog/ff0bca7b335cd7a4331f7211666bfea05bbe7f53/docs/week_log.html" target="_blank">ff0bca7</a>
+</td>
+<td>
+liliw-w
+</td>
+<td>
+2024-04-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1012,15 +1131,244 @@ test
 </div>
 </div>
 </div>
-<div id="apr-25" class="section level1">
-<h1>Apr 25</h1>
-<div id="table-of-contents" class="section level2">
-<h2>Table of Contents</h2>
-<p><a href="#id_1-Peak-merging-results-of-LCL-dataset">1. Peak merging
-results of LCL dataset</a></p>
+<style type="text/css">
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+</style>
+<div id="april-09" class="section level1">
+<h1>April 09</h1>
+<div id="progress-summary" class="section level2">
+<h2>Progress summary</h2>
+<ul>
+<li><p>Get familiar with and set up cluster.</p></li>
+<li><p>Looked at the serial biopsies data.</p></li>
+</ul>
 </div>
-<div id="peak-merging-results-of-lcl-dataset" class="section level2">
-<h2>1. Peak merging results of LCL dataset</h2>
+<div id="genomic_specimen.csv" class="section level2">
+<h2><code>GENOMIC_SPECIMEN.csv</code></h2>
+<div id="dataset-info" class="section level3">
+<h3>Dataset Info</h3>
+<ul>
+<li><p>Each row is a sample. Multiple samples can come from one patient.
+These samples are profiled in different time points.</p></li>
+<li><p>One patient’s samples can be tested by multiple TEST_TYPE
+(3%).</p></li>
+</ul>
+</div>
+<div id="filter-samples-and-patients" class="section level3">
+<h3>Filter samples and patients</h3>
+<ul>
+<li><p>Only consider patient specimens tested with OncoPanel from
+PROFILECOHORT, by filtering
+<code>TEST_TYPE == 'ONCOPANEL_PROFILECOHORT'</code>.</p></li>
+<li><p>There are 27,148 specimen, 26,307 unique patients, 773 patients
+have their multiple samples tested.</p></li>
+<li><p>719 patients have been tested twice. The other patients were
+tested 3 to 6 times.</p></li>
+<li><p>I only keep specimen samples from patients that were sampled
+twice, corresponding to 1438 sample left. [This corresponds to what we
+mentioned about the data - “~1000 patients”, “sequenced twice”]</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="../../serial_biopsies/figs/patient_multi_sampled.pdf" title="Figure: Number of samples each patient has." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of samples each patient has.
+</p>
+</div>
+</div>
+<div id="patient-classification" class="section level3">
+<h3>Patient classification</h3>
+<ul>
+<li>To classify a patient of two samples, I use flag
+<code>IS_MATCHED_FLG</code> (normal or tumor sample) and
+<code>REPORT_DT</code> (Date this report was signed out by the
+pathologist), which results in four categories.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">patient_category</th>
+<th align="right">n_patients</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">normal−normal</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">normal−tumor</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">tumor−normal</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">tumor−tumor</td>
+<td align="right">691</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center">
+<embed src="../../serial_biopsies/figs/patient_categoties_across_biopsy.pdf" title="Figure: Number of patients belong to each catogory." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of patients belong to each catogory.
+</p>
+</div>
+<p><strong>Questions -</strong></p>
+<ul>
+<li><p>No flag SAMPLE_COLLECTION_DT to record accurate date when sample
+was collected first.</p></li>
+<li><p>Does “tumor-tumor” mean two samples were collected before and
+after treatment?</p></li>
+<li><p>Why normal samples have non zero tumor purity? Some samples also
+have negative tumor purity.</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="../../serial_biopsies/figs/normal_sample_non_zero_tumor_purity.pdf" title="Figure: Normal samples have non zero tumor purity." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Normal samples have non zero tumor purity.
+</p>
+</div>
+</div>
+<div id="tumor_purity-change-across-patients-two-biopsies"
+class="section level3">
+<h3>TUMOR_PURITY change across patients’ two biopsies</h3>
+<ul>
+<li>TUMOR_PURITY - Estimated percentage of neoplastic cells in the
+sample.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="../../serial_biopsies/figs/TUMOR_PURITY_change_across_biopsies.pdf" title="Figure: TUMOR_PURITY changes across two biopsies of each patient belonging to four catogories." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: TUMOR_PURITY changes across two biopsies of each patient
+belonging to four catogories.
+</p>
+</div>
+</div>
+</div>
+<div id="genomic_mutation_results.csv" class="section level2">
+<h2><code>GENOMIC_MUTATION_RESULTS.csv</code></h2>
+<div id="filter-samples-and-variants" class="section level3">
+<h3>Filter samples and variants</h3>
+<ul>
+<li><p>Use samples from above</p></li>
+<li><p>Only SNP variants</p></li>
+<li><p>Keep only patients that have two samples across mutation changes
+(some patients have only one sample with mutation info)</p></li>
+<li><p>Resulting in 650 patients</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="../../serial_biopsies/figs/patient_categoties_across_biopsy_with_mutation_change.pdf" title="Figure: Number of patients belong to each catogory." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of patients belong to each catogory.
+</p>
+</div>
+</div>
+<div id="allele_fraction-change-across-patients-two-biopsies-for-snps"
+class="section level3">
+<h3>ALLELE_FRACTION change across patients’ two biopsies for SNPs</h3>
+<ul>
+<li><p>ALLELE_FRACTION - Fraction of reads for the observed
+allele.</p></li>
+<li><p>How many SNPs does each patient have?</p></li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="../../serial_biopsies/figs/num_snp_for_patient.pdf" title="Figure: Number of SNP varaints each patient has." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: Number of SNP varaints each patient has.
+</p>
+</div>
+<ul>
+<li>ALLELE_FRACTION change across patients’ two biopsies for SNPs</li>
+</ul>
+<div class="figure" style="text-align: center">
+<embed src="../../serial_biopsies/figs/af_change_across_biopsies.pdf" title="Figure: ALLELE_FRACTION change across patients' two biopsies for SNPs." width="50%" height="100%" type="application/pdf" />
+<p class="caption">
+Figure: ALLELE_FRACTION change across patients’ two biopsies for SNPs.
+</p>
+</div>
+<p><strong>Questions -</strong></p>
+<ul>
+<li>Use ALLELE_FRACTION directly or adjusted for TUMOR_PURITY by
+ALLELE_FRACTION/TUMOR_PURITY?</li>
+</ul>
+</div>
+</div>
+<div id="misc" class="section level2">
+<h2>Misc</h2>
+<ul>
+<li><p>Set up Eris cluster</p>
+<ul>
+<li><p>Can’t login after creating account? Wait 24 hours for the account
+to be activated.</p></li>
+<li><p>Can’t submit job to slurm? Permission issue, contact help
+team.</p></li>
+</ul></li>
+<li><p>Access to rstudio server and jupyter notebook</p>
+<ul>
+<li><p>Username is lower case</p></li>
+<li><p>Incorrect username or password? Contact help team to restart the
+server.</p></li>
+</ul></li>
+</ul>
+<p>Things to double check -</p>
+<ul>
+<li><p>Results put in <code>/data/gusev/USER/llw</code>?</p></li>
+<li><p>Dropbox lab access?</p></li>
+<li><p>MPG weekly meeting, location?</p></li>
+<li><p>Download Doug’s data &amp; upload to cluster</p></li>
+</ul>
+<div id="refs">
+
+</div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre><code>R version 4.2.3 (2023-03-15)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur ... 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] lubridate_1.9.3 forcats_1.0.0   stringr_1.5.0   dplyr_1.1.3    
+ [5] purrr_1.0.2     readr_2.1.4     tidyr_1.3.0     tibble_3.2.1   
+ [9] ggplot2_3.4.3   tidyverse_2.0.0
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.2.0  xfun_0.39         bslib_0.5.0       colorspace_2.1-0 
+ [5] vctrs_0.6.3       generics_0.1.3    htmltools_0.5.5   yaml_2.3.7       
+ [9] utf8_1.2.3        rlang_1.1.1       jquerylib_0.1.4   later_1.3.1      
+[13] pillar_1.9.0      glue_1.6.2        withr_2.5.1       lifecycle_1.0.3  
+[17] munsell_0.5.0     gtable_0.3.4      workflowr_1.7.0   evaluate_0.21    
+[21] knitr_1.43        tzdb_0.4.0        fastmap_1.1.1     httpuv_1.6.11    
+[25] fansi_1.0.4       highr_0.10        Rcpp_1.0.11       promises_1.2.0.1 
+[29] scales_1.2.1      cachem_1.0.8      jsonlite_1.8.7    fs_1.6.2         
+[33] hms_1.1.3         digest_0.6.33     stringi_1.7.12    rprojroot_2.0.3  
+[37] grid_4.2.3        cli_3.6.1         tools_4.2.3       magrittr_2.0.3   
+[41] sass_0.4.6        whisker_0.4.1     pkgconfig_2.0.3   timechange_0.2.0 
+[45] rmarkdown_2.23    rstudioapi_0.15.0 R6_2.5.1          git2r_0.32.0     
+[49] compiler_4.2.3   </code></pre>
+</div>
 </div>
 </div>
 

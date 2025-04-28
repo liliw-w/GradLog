@@ -1,24 +1,169 @@
 ---
-title: "toc"
-author: "John Blischak"
-date: "2024-04-24"
+title: "Weekly Log"
 output:
   workflowr::wflow_html:
               toc: true
               toc_depth: 4
 editor_options:
   chunk_output_type: console
+bibliography: references.bib
 ---
 
-# Apr 25
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, out.width = "50%")
+library(tidyverse)
+```
 
-## Table of Contents
+```{css style settings, echo = FALSE}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+```
 
-[1. Peak merging results of LCL dataset](#1-Peak-merging-results-of-LCL-dataset)
+# April 09
+
+## Progress summary
+
+- Get familiar with and set up cluster. 
+
+- Looked at the serial biopsies data. 
 
 
-## 1. Peak merging results of LCL dataset
+
+## `GENOMIC_SPECIMEN.csv`
+
+### Dataset Info
+
+- Each row is a sample. Multiple samples can come from one patient. These samples are profiled in different time points. 
+
+- One patient's samples can be tested by multiple TEST_TYPE (3%). 
+
+
+### Filter samples and patients
+
+- Only consider patient specimens tested with OncoPanel from PROFILECOHORT, by filtering `TEST_TYPE == 'ONCOPANEL_PROFILECOHORT'`. 
+
+- There are 27,148 specimen, 26,307 unique patients, 773 patients have their multiple samples tested. 
+
+- 719 patients have been tested twice. The other patients were tested 3 to 6 times.
+
+- I only keep specimen samples from patients that were sampled twice, corresponding to 1438 sample left. [This corresponds to what we mentioned about the data - "~1000 patients", "sequenced twice"]
+
+
+```{r out.height = "100%", fig.cap="Figure: Number of samples each patient has.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('../../serial_biopsies/figs/patient_multi_sampled.pdf'), error = FALSE)
+```
+
+
+### Patient classification
+
+- To classify a patient of two samples, I use flag `IS_MATCHED_FLG` (normal or tumor sample) and `REPORT_DT` (Date this report was signed out by the pathologist), which results in four categories. 
+
+```{r}
+knitr::kable(
+  tibble(
+    'patient_category' = c('normal−normal', 'normal−tumor', 'tumor−normal', 'tumor−tumor'),
+    'n_patients' = c(13, 1, 14, 691)
+  )
+)
+```
+
+```{r out.height = "100%", fig.cap="Figure: Number of patients belong to each catogory.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('../../serial_biopsies/figs/patient_categoties_across_biopsy.pdf'), error = FALSE)
+```
+
+**Questions -**
+
+- No flag SAMPLE_COLLECTION_DT to record accurate date when sample was collected first. 
+
+- Does "tumor-tumor" mean two samples were collected before and after treatment?
+
+- Why normal samples have non zero tumor purity? Some samples also have negative tumor purity. 
+
+```{r out.height = "100%", fig.cap="Figure: Normal samples have non zero tumor purity.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('../../serial_biopsies/figs/normal_sample_non_zero_tumor_purity.pdf'), error = FALSE)
+```
 
 
 
+### TUMOR_PURITY change across patients' two biopsies
+
+- TUMOR_PURITY - Estimated percentage of neoplastic cells in the sample.
+
+
+```{r out.height = "100%", fig.cap="Figure: TUMOR_PURITY changes across two biopsies of each patient belonging to four catogories.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('../../serial_biopsies/figs/TUMOR_PURITY_change_across_biopsies.pdf'), error = FALSE)
+```
+
+
+
+
+## `GENOMIC_MUTATION_RESULTS.csv`
+
+### Filter samples and variants
+
+- Use samples from above
+
+- Only SNP variants
+
+- Keep only patients that have two samples across mutation changes (some patients have only one sample with mutation info)
+
+- Resulting in 650 patients
+
+```{r out.height = "100%", fig.cap="Figure: Number of patients belong to each catogory.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('../../serial_biopsies/figs/patient_categoties_across_biopsy_with_mutation_change.pdf'), error = FALSE)
+```
+
+
+### ALLELE_FRACTION change across patients' two biopsies for SNPs
+
+- ALLELE_FRACTION - Fraction of reads for the observed allele. 
+
+
+- How many SNPs does each patient have?
+
+```{r out.height = "100%", fig.cap="Figure: Number of SNP varaints each patient has.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('../../serial_biopsies/figs/num_snp_for_patient.pdf'), error = FALSE)
+```
+
+
+- ALLELE_FRACTION change across patients' two biopsies for SNPs
+
+```{r out.height = "100%", fig.cap="Figure: ALLELE_FRACTION change across patients' two biopsies for SNPs.", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('../../serial_biopsies/figs/af_change_across_biopsies.pdf'), error = FALSE)
+```
+
+
+**Questions -**
+
+- Use ALLELE_FRACTION directly or adjusted for TUMOR_PURITY by ALLELE_FRACTION/TUMOR_PURITY?
+
+
+## Misc
+
+- Set up Eris cluster
+  
+  - Can't login after creating account? Wait 24 hours for the account to be activated.
+  
+  - Can't submit job to slurm? Permission issue, contact help team. 
+  
+- Access to rstudio server and jupyter notebook
+  
+  - Username is lower case
+  
+  - Incorrect username or password? Contact help team to restart the server. 
+
+
+Things to double check -
+
+- Results put in `/data/gusev/USER/llw`?
+
+- Dropbox lab access?
+
+- MPG weekly meeting, location?
+
+- Download Doug's data & upload to cluster
 
